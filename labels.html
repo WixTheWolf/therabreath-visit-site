@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sample Kit Labels | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#d8e2ec; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#e8edf2; }
+      .toolbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
+      .toolbar button, .toolbar a { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.8rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .hint { padding:12px 20px; font-size:0.78rem; color:var(--muted); text-align:center; }
+      .sheet {
+        width:8.5in; margin:0 auto 24px; padding:0.35in;
+        background:#fff; border:1px solid var(--line);
+        box-shadow:0 16px 48px rgba(10,22,40,0.08);
+        page-break-after:always;
+      }
+      .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.28in; }
+      .label {
+        width:3.5in; height:2in;
+        padding:0.18in 0.2in;
+        border:2px dashed var(--line);
+        border-radius:12px;
+        display:grid;
+        grid-template-rows:auto 1fr auto;
+        position:relative;
+        overflow:hidden;
+      }
+      .label::before { content:""; position:absolute; top:0; left:0; right:0; height:4px; }
+      .label.fresh::before { background:var(--green); }
+      .label.func::before { background:var(--orange); }
+      .label-top { display:flex; justify-content:space-between; align-items:center; }
+      .num {
+        width:40px; height:40px; display:grid; place-items:center;
+        border-radius:10px; background:var(--ink); color:#fff;
+        font-family:"Sora",sans-serif; font-weight:800; font-size:1rem;
+      }
+      .tag { font-size:0.58rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
+      .label h2 { margin:6px 0 2px; font-family:"Sora",sans-serif; font-size:1rem; font-weight:800; color:var(--ink); letter-spacing:-0.02em; }
+      .label p { margin:0; font-size:0.68rem; color:var(--muted); line-height:1.35; }
+      .label-foot { display:flex; justify-content:space-between; align-items:center; font-size:0.55rem; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; }
+      .label-foot span:last-child { color:var(--muted); }
+      @media print {
+        body { background:#fff; }
+        .toolbar, .hint { display:none; }
+        .sheet { margin:0; border:none; box-shadow:none; padding:0.25in; }
+        .label { border-style:solid; border-color:#ccc; }
+      }
+      @page { size:letter portrait; margin:0.3in; }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Sample kit labels</strong> · 10 labels · 3.5×2 in · Cut along dashed lines</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <button onclick="window.print()">Print labels</button>
+      </div>
+    </div>
+    <p class="hint">Apply to rinse sample bottles before the 9:30 tasting block. Numbers match passport, slides, and live scorer.</p>
+
+    <section class="sheet">
+      <div class="grid" id="labels-p1"></div>
+    </section>
+    <section class="sheet">
+      <div class="grid" id="labels-p2"></div>
+    </section>
+
+    <script>
+      var concepts = [
+        { id:1, name:"Spearmint Garden", sub:"Sweet spearmint + green herb", type:"fresh" },
+        { id:2, name:"Green Tea Fresh", sub:"Green tea + spearmint", type:"fresh" },
+        { id:3, name:"Crisp Cucumber Mint", sub:"Cucumber + cooling mint", type:"fresh" },
+        { id:4, name:"Warm Ginger Mint", sub:"Ginger + peppermint", type:"fresh" },
+        { id:5, name:"Vanilla Mint Silk", sub:"Vanilla + peppermint", type:"fresh" },
+        { id:6, name:"Overnight Calm Mint", sub:"Chamomile + lavender", type:"func" },
+        { id:7, name:"Crystal Whitening Mint", sub:"Bright peppermint + icy cool", type:"func" },
+        { id:8, name:"Icy Peak Refresh", sub:"Extra-cooling signature mint", type:"func" },
+        { id:9, name:"Winter Frost", sub:"Peppermint + vanilla · LE", type:"func" },
+        { id:10, name:"Healthy Gums Herbal", sub:"Eucalyptus + tea tree", type:"func" }
+      ];
+
+      function label(c) {
+        var station = c.id <= 5 ? "Station 2 · Fresh" : "Station 3 · Functional";
+        return '<article class="label ' + c.type + '">' +
+          '<div class="label-top"><span class="num">' + String(c.id).padStart(2,'0') + '</span><span class="tag">Chlorite-stable</span></div>' +
+          '<div><h2>' + c.name + '</h2><p>' + c.sub + '</p></div>' +
+          '<footer class="label-foot"><span>TFF × TheraBreath</span><span>' + station + '</span></footer>' +
+          '</article>';
+      }
+
+      document.getElementById('labels-p1').innerHTML = concepts.slice(0,5).map(label).join('');
+      document.getElementById('labels-p2').innerHTML = concepts.slice(5,10).map(label).join('');
+    </script>
+  </body>
+</html>

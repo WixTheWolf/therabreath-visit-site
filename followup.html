@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Follow-Up Email Template | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f6fafc; color:var(--ink); padding-bottom:80px; }
+      header { padding:20px 24px; background:var(--ink); color:#fff; }
+      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.2rem; }
+      header p { margin:6px 0 0; font-size:0.82rem; opacity:0.75; }
+      .wrap { width:min(720px,calc(100vw - 32px)); margin:0 auto; padding:24px 0; }
+      .meta { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+      .meta span { padding:8px 12px; border-radius:999px; background:#fff; border:1px solid var(--line); font-size:0.78rem; font-weight:600; }
+      .panel { padding:20px; background:#fff; border:1px solid var(--line); border-radius:14px; margin-bottom:16px; }
+      .panel h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:0.9rem; }
+      .panel p { margin:0 0 10px; font-size:0.82rem; color:var(--muted); line-height:1.5; }
+      label { display:block; font-size:0.72rem; font-weight:700; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.05em; }
+      input[type=text], input[type=email] {
+        width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px;
+        font-family:inherit; font-size:0.9rem; margin-bottom:12px;
+      }
+      textarea {
+        width:100%; min-height:420px; padding:16px;
+        border:1px solid var(--line); border-radius:10px;
+        font-family:"DM Sans",monospace; font-size:0.84rem; line-height:1.6;
+        resize:vertical; color:var(--ink);
+      }
+      .sections { display:grid; gap:8px; margin-bottom:16px; }
+      .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:8px; background:#e8f6fd; font-size:0.72rem; font-weight:600; color:var(--blue); }
+      .actions { position:fixed; bottom:0; left:0; right:0; display:flex; gap:10px; padding:12px 16px; background:rgba(255,255,255,0.95); border-top:1px solid var(--line); backdrop-filter:blur(12px); }
+      .actions button, .actions a { flex:1; padding:12px; border-radius:10px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-align:center; text-decoration:none; border:none; cursor:pointer; }
+      .actions a { background:#fff; border:1px solid var(--line); color:var(--ink); flex:0.5; }
+      .actions button { background:var(--blue); color:#fff; }
+      .actions button.secondary { background:#fff; border:1px solid var(--line); color:var(--ink); }
+      .toast { position:fixed; top:20px; right:20px; padding:12px 18px; background:var(--ink); color:#fff; border-radius:8px; font-size:0.82rem; font-weight:600; opacity:0; transition:opacity 0.3s; pointer-events:none; }
+      .toast.show { opacity:1; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Follow-up email template</h1>
+      <p>Same-day thank-you · aligned to workshop site sections · send within 24 hours</p>
+    </header>
+    <div class="wrap">
+      <div class="meta">
+        <span>Subject line editable</span>
+        <span>Placeholders in [brackets]</span>
+        <span>Copy → paste into Outlook</span>
+      </div>
+
+      <div class="panel">
+        <h2>Email fields</h2>
+        <label for="to">To</label>
+        <input type="email" id="to" placeholder="TheraBreath team emails" value="[TheraBreath R&amp;D + Procurement contacts]" />
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" value="Thank you — Breath of Innovation workshop · July 8 follow-up" />
+        <label for="body">Message</label>
+        <textarea id="body"></textarea>
+        <div class="sections">
+          <span class="chip">01 Partnership</span>
+          <span class="chip">02 Agenda recap</span>
+          <span class="chip">03 Four pillars</span>
+          <span class="chip">04 Tasting results</span>
+          <span class="chip">05 Co-creation outcomes</span>
+          <span class="chip">06 Next steps</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a href="/toolkit">Toolkit</a>
+      <button type="button" class="secondary" onclick="resetTemplate()">Reset template</button>
+      <button type="button" onclick="copyEmail()">Copy full email</button>
+      <button type="button" onclick="copyBody()">Copy body only</button>
+    </div>
+    <div class="toast" id="toast">Copied to clipboard</div>
+
+    <script>
+      var template = "Dear [Name] and TheraBreath team,\n\n" +
+        "Thank you for spending the morning with us in Norco on July 8. \"Breath of Innovation: Scaling Fresh Together\" was built around the four areas your team asked to see — and we appreciated the candor in every conversation.\n\n" +
+        "—— 01 · PARTNERSHIP ——\n" +
+        "We are grateful for the chance to show how The Flavor Factory operates as a single-site partner — development, production, and quality under one roof. Your questions around scalability and long-term alignment helped us shape a clearer shared roadmap.\n\n" +
+        "—— 02 · AGENDA RECAP ——\n" +
+        "• 8:00 AM — Facility tour: mixing, QC, TheraBreath production, raw storage, R&D lab\n" +
+        "• 8:30 AM — Pillars 1 & 3: Resiliency + Operations\n" +
+        "• 9:00 AM — Pillars 2 & 4: Innovation + Partnership\n" +
+        "• 9:30 AM — Three-station tasting · ten chlorite-stable prototypes\n" +
+        "• 10:30 AM — Co-creation workshop · live bench iteration\n" +
+        "• 12:00 PM — Action plan and depart\n\n" +
+        "—— 03 · FOUR PILLARS ——\n" +
+        "Resiliency: [1–2 sentences on what resonated — capacity, redundancy, recovery]\n" +
+        "Innovation: [Chlorite-stable flavor directions discussed — herbal, green, functional]\n" +
+        "Operations: [Traceability, lead times, documentation highlights from the tour]\n" +
+        "Partnership: [Growth vision themes — formats, seasonal, co-created priorities]\n\n" +
+        "—— 04 · TASTING RESULTS ——\n" +
+        "Top-scored concepts from the room:\n" +
+        "1. [Concept name + score]\n" +
+        "2. [Concept name + score]\n" +
+        "3. [Concept name + score]\n\n" +
+        "Full sensory summary attached / linked: [therabreath-visit-site.vercel.app/score]\n\n" +
+        "—— 05 · CO-CREATION OUTCOMES ——\n" +
+        "From the 10:30 lab session:\n" +
+        "• [Iteration notes — cooling, sweetness, finish adjustments]\n" +
+        "• [Concept(s) approved for pilot batch]\n" +
+        "• [Format or line-extension ideas captured]\n\n" +
+        "—— 06 · NEXT STEPS ——\n" +
+        "Within the next two weeks:\n" +
+        "• Pilot batches on: [list concepts]\n" +
+        "• Formal sensory panel scheduling: [date TBD]\n" +
+        "• Summary deck delivery: [attach link]\n" +
+        "• Innovation roadmap draft: [timeline]\n\n" +
+        "The live workshop site remains available for your team: https://therabreath-visit-site.vercel.app\n" +
+        "Full toolkit (slides, passport, worksheets): https://therabreath-visit-site.vercel.app/toolkit\n\n" +
+        "We are excited about what we can build together. Please don't hesitate to reach out with questions or to schedule the next working session.\n\n" +
+        "Warm regards,\n\n" +
+        "Dan [Last name]\n" +
+        "The Flavor Factory\n" +
+        "2058 Second Street · Norco, CA 92860\n" +
+        "(951) 273-9877 · www.flavorfactory.net";
+
+      document.getElementById('body').value = template;
+
+      function showToast() {
+        var t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(function () { t.classList.remove('show'); }, 2000);
+      }
+
+      function copyEmail() {
+        var text = 'To: ' + document.getElementById('to').value + '\n' +
+          'Subject: ' + document.getElementById('subject').value + '\n\n' +
+          document.getElementById('body').value;
+        navigator.clipboard.writeText(text).then(showToast);
+      }
+
+      function copyBody() {
+        navigator.clipboard.writeText(document.getElementById('body').value).then(showToast);
+      }
+
+      function resetTemplate() {
+        document.getElementById('body').value = template;
+        document.getElementById('subject').value = 'Thank you — Breath of Innovation workshop · July 8 follow-up';
+      }
+    </script>
+  </body>
+</html>

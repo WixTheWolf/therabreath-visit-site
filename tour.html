@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Facility Tour Map | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#d8e2ec; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#e8edf2; color:var(--ink); }
+      .toolbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
+      .toolbar button, .toolbar a { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.8rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .sheet {
+        width:10in; min-height:7.5in;
+        margin:24px auto;
+        padding:0.4in;
+        background:#fff;
+        border:1px solid var(--line);
+        box-shadow:0 16px 48px rgba(10,22,40,0.1);
+        page-break-after:always;
+      }
+      .head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+      .head h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.5rem; font-weight:800; letter-spacing:-0.03em; }
+      .head p { margin:4px 0 0; font-size:0.78rem; color:var(--muted); }
+      .head-meta { text-align:right; font-size:0.68rem; color:var(--muted); line-height:1.5; }
+      .head-meta b { display:block; color:var(--blue); font-family:"Sora",sans-serif; font-size:0.82rem; }
+      .layout { display:grid; grid-template-columns:1.4fr 1fr; gap:20px; }
+      .map-wrap { position:relative; background:#f4f9fc; border:2px solid var(--line); border-radius:16px; padding:16px; min-height:4.8in; }
+      .map-svg { width:100%; height:auto; display:block; }
+      .stops { display:grid; gap:8px; }
+      .stop { display:grid; grid-template-columns:32px 1fr; gap:10px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:#fafcfe; font-size:0.72rem; line-height:1.4; }
+      .stop-num { width:32px; height:32px; display:grid; place-items:center; border-radius:8px; background:var(--ink); color:#fff; font-family:"Sora",sans-serif; font-weight:800; font-size:0.82rem; }
+      .stop.highlight .stop-num { background:linear-gradient(135deg,var(--blue),var(--green)); }
+      .stop b { display:block; font-family:"Sora",sans-serif; font-size:0.76rem; margin-bottom:2px; }
+      .stop span { color:var(--muted); font-size:0.66rem; }
+      .tips { margin-top:14px; padding:12px 14px; border-left:3px solid var(--orange); background:#fff8f0; border-radius:0 8px 8px 0; font-size:0.68rem; line-height:1.5; color:#344054; }
+      .tips b { color:var(--orange); }
+      .foot { margin-top:14px; display:flex; justify-content:space-between; font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; }
+      @media print { body{background:#fff} .toolbar{display:none} .sheet{margin:0;border:none;box-shadow:none;width:100%} }
+      @page { size:letter landscape; margin:0.35in; }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Facility tour map</strong> · 8:00 AM walk-through · Letter landscape</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <button onclick="window.print()">Print map</button>
+      </div>
+    </div>
+
+    <article class="sheet">
+      <header class="head">
+        <div>
+          <h1>Norco Facility Tour</h1>
+          <p>2058 Second Street · The Flavor Factory · July 8, 2026</p>
+        </div>
+        <div class="head-meta">
+          <b>8:00 – 8:30 AM</b>
+          Lead: Dan + Operations<br />
+          30 minutes · 7 stops
+        </div>
+      </header>
+
+      <div class="layout">
+        <div class="map-wrap">
+          <svg class="map-svg" viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg" aria-label="Facility floor plan tour route">
+            <rect x="10" y="10" width="500" height="320" rx="12" fill="#eef4f8" stroke="#d8e2ec" stroke-width="2"/>
+            <text x="260" y="32" text-anchor="middle" font-family="Sora,sans-serif" font-size="11" font-weight="700" fill="#5c6678">THE FLAVOR FACTORY · NORCO</text>
+
+            <rect x="30" y="50" width="120" height="70" rx="8" fill="#fff" stroke="#008fd3" stroke-width="2"/>
+            <text x="90" y="82" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">Entrance</text>
+            <text x="90" y="98" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#5c6678">Stop 1</text>
+
+            <rect x="180" y="50" width="140" height="90" rx="8" fill="#fff" stroke="#008fd3" stroke-width="2"/>
+            <text x="250" y="88" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">Mixing &amp;</text>
+            <text x="250" y="102" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">Blending</text>
+            <text x="250" y="118" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#5c6678">Stop 2</text>
+
+            <rect x="350" y="50" width="140" height="70" rx="8" fill="#fff" stroke="#008fd3" stroke-width="2"/>
+            <text x="420" y="82" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">QC &amp; Docs</text>
+            <text x="420" y="98" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#5c6678">Stop 3</text>
+
+            <rect x="180" y="170" width="200" height="100" rx="10" fill="#e8f6fd" stroke="#008fd3" stroke-width="3"/>
+            <text x="280" y="210" text-anchor="middle" font-family="Sora,sans-serif" font-size="12" font-weight="800" fill="#008fd3">TheraBreath</text>
+            <text x="280" y="228" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">Production Area</text>
+            <text x="280" y="248" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#5c6678">Stop 4 · Highlight</text>
+
+            <rect x="30" y="170" width="120" height="80" rx="8" fill="#fff" stroke="#f58220" stroke-width="2"/>
+            <text x="90" y="205" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">Raw Material</text>
+            <text x="90" y="220" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">Storage</text>
+            <text x="90" y="236" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#5c6678">Stop 5</text>
+
+            <rect x="400" y="160" width="100" height="110" rx="8" fill="#fff" stroke="#5fb832" stroke-width="2"/>
+            <text x="450" y="205" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">R&amp;D</text>
+            <text x="450" y="220" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" font-weight="600" fill="#0a1628">Flavor Lab</text>
+            <text x="450" y="248" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#5c6678">Stop 6</text>
+
+            <rect x="30" y="280" width="460" height="40" rx="8" fill="#edf8e8" stroke="#5fb832" stroke-width="2"/>
+            <text x="260" y="305" text-anchor="middle" font-family="Sora,sans-serif" font-size="11" font-weight="700" fill="#2d6a3f">Workshop Room · Stop 7 · Pillars + Tasting + Co-creation</text>
+
+            <path d="M90 120 L90 150 L250 150 L250 140" fill="none" stroke="#008fd3" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+            <path d="M150 95 L180 95" fill="none" stroke="#008fd3" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M320 95 L350 95" fill="none" stroke="#008fd3" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M420 120 L420 150 L280 170" fill="none" stroke="#008fd3" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+            <path d="M150 210 L180 210" fill="none" stroke="#f58220" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M380 220 L400 215" fill="none" stroke="#5fb832" stroke-width="2" marker-end="url(#arrow)"/>
+            <path d="M450 270 L450 290 L260 290" fill="none" stroke="#5fb832" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#008fd3"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <div>
+          <div class="stops">
+            <div class="stop"><span class="stop-num">1</span><div><b>Welcome at entrance</b><span>Greet guests · distribute passports · safety briefing · recent investment overview</span></div></div>
+            <div class="stop"><span class="stop-num">2</span><div><b>Mixing &amp; blending</b><span>Batch prep · scale-up from bench to production · segregation for oral care</span></div></div>
+            <div class="stop"><span class="stop-num">3</span><div><b>QC &amp; documentation</b><span>Release procedures · COAs · allergen statements · cert wall (SQF, GMP, FDA)</span></div></div>
+            <div class="stop highlight"><span class="stop-num">4</span><div><b>TheraBreath production area</b><span>Dedicated oral care volume · what changed on the floor · traceability story</span></div></div>
+            <div class="stop"><span class="stop-num">5</span><div><b>Raw material storage</b><span>Approved suppliers · qualified alternates · lot traceability from receipt</span></div></div>
+            <div class="stop"><span class="stop-num">6</span><div><b>R&amp;D flavor lab</b><span>Where workshop prototypes were built · chlorite stability discussion preview</span></div></div>
+            <div class="stop"><span class="stop-num">7</span><div><b>Workshop room</b><span>Seat guests · open live site on display · begin pillar sessions at 8:30</span></div></div>
+          </div>
+          <div class="tips">
+            <b>Host cue:</b> End the tour with — "Now we sit down and walk through the four pillars — starting with resiliency and operations." Tie every stop back to what TheraBreath asked to see: capacity, innovation, operations, partnership.
+          </div>
+        </div>
+      </div>
+
+      <footer class="foot"><span>Confidential · TFF × TheraBreath</span><span>Hand one per guest · July 8, 2026</span></footer>
+    </article>
+  </body>
+</html>

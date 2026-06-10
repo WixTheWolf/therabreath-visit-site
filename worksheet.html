@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Co-Creation Worksheet | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#d8e2ec; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#e8edf2; color:var(--ink); }
+      .toolbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
+      .toolbar button, .toolbar a { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.8rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .book { display:grid; gap:24px; padding:24px; justify-items:center; }
+      .page {
+        width:8.5in; min-height:11in;
+        padding:0.45in 0.5in;
+        background:#fff;
+        border:1px solid var(--line);
+        box-shadow:0 16px 48px rgba(10,22,40,0.1);
+        page-break-after:always;
+        position:relative;
+      }
+      .page::before { content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--green),var(--blue)); }
+      .kicker { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); }
+      h1 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:1.2rem; font-weight:800; }
+      .sub { margin:0 0 14px; font-size:0.72rem; color:var(--muted); }
+      .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+      .field label { display:block; font-size:0.62rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+      .field .line { border-bottom:1px solid var(--ink); height:22px; }
+      table { width:100%; border-collapse:collapse; font-size:0.68rem; margin-bottom:12px; }
+      th, td { padding:7px 8px; border:1px solid var(--line); text-align:left; }
+      th { background:#edf8e8; color:#2d6a3f; font-size:0.58rem; text-transform:uppercase; letter-spacing:0.05em; }
+      .box-cell { width:28px; height:20px; }
+      .slider-row { display:grid; grid-template-columns:1.2fr repeat(5,1fr); gap:4px; align-items:center; font-size:0.64rem; padding:6px 0; border-bottom:1px solid var(--line); }
+      .slider-row span:first-child { font-weight:600; }
+      .tick { height:18px; border:1px solid var(--line); border-radius:3px; }
+      .notes { width:100%; min-height:0.9in; border:1px solid var(--line); border-radius:8px; margin-top:6px; }
+      .decision { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0; }
+      .decision label { display:flex; align-items:center; gap:6px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; font-size:0.68rem; font-weight:600; }
+      .decision input { width:14px; height:14px; }
+      .cue { padding:10px 12px; border-left:3px solid var(--orange); background:#fff8f0; font-size:0.68rem; line-height:1.45; margin-top:10px; }
+      .cue b { color:var(--orange); }
+      .foot { position:absolute; bottom:0.35in; left:0.5in; right:0.5in; display:flex; justify-content:space-between; font-size:0.58rem; color:var(--muted); text-transform:uppercase; }
+      @media print { body{background:#fff} .toolbar{display:none} .book{gap:0;padding:0} .page{border:none;box-shadow:none;width:100%} }
+      @page { size:letter portrait; margin:0.4in; }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Co-creation worksheet</strong> · 10:30 AM lab block · Print one per table</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <button onclick="window.print()">Print worksheets</button>
+      </div>
+    </div>
+
+    <div class="book">
+      <section class="page">
+        <p class="kicker">10:30 AM · Co-creation workshop</p>
+        <h1>Flavor Lab Worksheet</h1>
+        <p class="sub">Document what earns a pilot batch · Lead: Alex + R&amp;D · 90 minutes</p>
+
+        <div class="row2">
+          <div class="field"><label>Table / team</label><div class="line"></div></div>
+          <div class="field"><label>Date · July 8, 2026</label><div class="line"></div></div>
+        </div>
+
+        <p class="kicker">Top concepts from tasting (check up to 3)</p>
+        <table>
+          <thead><tr><th></th><th>#</th><th>Concept</th><th>Tasting score</th><th>Priority</th></tr></thead>
+          <tbody>
+            <tr><td class="box-cell"></td><td>01</td><td>Spearmint Garden</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>02</td><td>Green Tea Fresh</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>03</td><td>Crisp Cucumber Mint</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>04</td><td>Warm Ginger Mint</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>05</td><td>Vanilla Mint Silk</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>06</td><td>Overnight Calm Mint</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>07</td><td>Crystal Whitening Mint</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>08</td><td>Icy Peak Refresh</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>09</td><td>Winter Frost</td><td></td><td></td></tr>
+            <tr><td class="box-cell"></td><td>10</td><td>Healthy Gums Herbal</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+
+        <p class="kicker">Live iteration · mark target on each scale</p>
+        <div class="slider-row"><span>Attribute</span><span>Less</span><span></span><span>Current</span><span></span><span>More</span></div>
+        <div class="slider-row"><span>Cooling intensity</span><span></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span></span></div>
+        <div class="slider-row"><span>Sweetness</span><span></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span></span></div>
+        <div class="slider-row"><span>Mint character</span><span></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span></span></div>
+        <div class="slider-row"><span>Finish length</span><span></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span></span></div>
+        <div class="slider-row"><span>Herbal / botanical note</span><span></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span></span></div>
+
+        <p class="kicker" style="margin-top:12px">Pilot batch decision</p>
+        <div class="decision">
+          <label><input type="checkbox" disabled /> Pilot now</label>
+          <label><input type="checkbox" disabled /> Revise &amp; re-taste</label>
+          <label><input type="checkbox" disabled /> Park for later</label>
+        </div>
+
+        <div class="cue"><b>Host cue:</b> Photograph each iteration and label with concept number. These notes feed the follow-up deck within 24 hours.</div>
+        <footer class="foot"><span>TFF × TheraBreath</span><span>Page 1</span></footer>
+      </section>
+
+      <section class="page">
+        <p class="kicker">Iteration log</p>
+        <h1>Bench Notes</h1>
+        <p class="sub">Record each adjustment · cooling, sweetness, finish length — real-time iteration</p>
+
+        <div class="field" style="margin-bottom:14px"><label>Primary concept being iterated</label><div class="line"></div></div>
+
+        <table>
+          <thead><tr><th>Round</th><th>Change made</th><th>TheraBreath reaction</th><th>Keep / adjust</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td style="height:28px"></td><td></td><td></td></tr>
+            <tr><td>2</td><td style="height:28px"></td><td></td><td></td></tr>
+            <tr><td>3</td><td style="height:28px"></td><td></td><td></td></tr>
+            <tr><td>4</td><td style="height:28px"></td><td></td><td></td></tr>
+            <tr><td>5</td><td style="height:28px"></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+
+        <p class="kicker">Claims &amp; positioning notes</p>
+        <div class="notes"></div>
+
+        <p class="kicker" style="margin-top:14px">Format / line extension ideas</p>
+        <div class="notes"></div>
+
+        <p class="kicker" style="margin-top:14px">Action items for follow-up</p>
+        <table>
+          <thead><tr><th>Action</th><th>Owner</th><th>Target date</th></tr></thead>
+          <tbody>
+            <tr><td style="height:26px"></td><td></td><td></td></tr>
+            <tr><td style="height:26px"></td><td></td><td></td></tr>
+            <tr><td style="height:26px"></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+
+        <div class="cue"><b>Handoff cue:</b> "Let's close with a clear action plan — who does what by when."</div>
+        <footer class="foot"><span>Confidential</span><span>Page 2</span></footer>
+      </section>
+    </div>
+  </body>
+</html>

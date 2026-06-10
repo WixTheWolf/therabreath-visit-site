@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Executive One-Pager | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#d8e2ec; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#e8edf2; color:var(--ink); }
+      .toolbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
+      .toolbar button, .toolbar a { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.8rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .sheet {
+        width:8.5in; min-height:11in;
+        margin:24px auto;
+        padding:0.45in 0.5in;
+        background:#fff;
+        border:1px solid var(--line);
+        box-shadow:0 16px 48px rgba(10,22,40,0.1);
+        position:relative;
+        overflow:hidden;
+      }
+      .sheet::before { content:""; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--blue),var(--green),var(--orange)); }
+      .head { display:grid; grid-template-columns:1fr auto; gap:16px; align-items:start; margin-bottom:14px; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+      .badge { width:44px; height:44px; display:grid; place-items:center; border-radius:12px; background:linear-gradient(135deg,var(--ink),var(--blue)); color:#fff; font-family:"Sora",sans-serif; font-weight:800; font-size:0.7rem; }
+      .head h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.35rem; font-weight:800; letter-spacing:-0.02em; line-height:1.15; }
+      .head p { margin:4px 0 0; font-size:0.72rem; color:var(--muted); line-height:1.4; }
+      .meta { text-align:right; font-size:0.62rem; color:var(--muted); line-height:1.5; }
+      .meta b { display:block; color:var(--ink); font-size:0.68rem; }
+      .kicker { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.58rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); }
+      .cols { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:12px; }
+      .box { padding:10px 12px; border:1px solid var(--line); border-radius:8px; }
+      .box h2 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; }
+      .box p, .box li { margin:0; font-size:0.66rem; line-height:1.45; color:#344054; }
+      .box ul { margin:4px 0 0; padding-left:16px; }
+      .pillars { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px; }
+      .pillar { padding:8px; border-radius:6px; font-size:0.62rem; line-height:1.35; background:#fafcfe; border:1px solid var(--line); }
+      .pillar b { display:block; font-family:"Sora",sans-serif; font-size:0.66rem; margin-bottom:3px; }
+      .pillar:nth-child(1){border-top:3px solid var(--blue)}
+      .pillar:nth-child(2){border-top:3px solid var(--green)}
+      .pillar:nth-child(3){border-top:3px solid var(--orange)}
+      .pillar:nth-child(4){border-top:3px solid #5b6b8a}
+      .proof { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px; }
+      .stat { text-align:center; padding:8px 6px; border-radius:8px; background:linear-gradient(135deg,#f0f9fd,#edf8e8); }
+      .stat strong { display:block; font-family:"Sora",sans-serif; font-size:0.95rem; color:var(--blue); }
+      .stat span { font-size:0.58rem; color:var(--muted); line-height:1.3; }
+      .footer-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-top:10px; border-top:1px solid var(--line); }
+      .cta { padding:10px 12px; border-radius:8px; background:var(--ink); color:#fff; }
+      .cta h3 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.72rem; }
+      .cta p { margin:0; font-size:0.62rem; line-height:1.45; opacity:0.85; }
+      .contact { font-size:0.62rem; line-height:1.55; color:var(--muted); }
+      .contact strong { color:var(--ink); }
+      .conf { position:absolute; bottom:0.35in; left:0.5in; right:0.5in; display:flex; justify-content:space-between; font-size:0.55rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; }
+      @media print { body{background:#fff} .toolbar{display:none} .sheet{margin:0;border:none;box-shadow:none;width:100%;min-height:auto} }
+      @page { size:letter portrait; margin:0.4in; }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Executive one-pager</strong> · Single page · Procurement leave-behind</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <button onclick="window.print()">Print one-pager</button>
+      </div>
+    </div>
+    <article class="sheet">
+      <header class="head">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <span class="badge">TFF</span>
+          <div>
+            <h1>Breath of Innovation<br />Scaling Fresh Together</h1>
+            <p>The Flavor Factory × TheraBreath · July 8, 2026 · Norco, CA</p>
+          </div>
+        </div>
+        <div class="meta">
+          <b>Confidential · Executive summary</b>
+          Prepared for Church &amp; Dwight<br />
+          R&amp;D + Procurement · Half-day visit
+        </div>
+      </header>
+
+      <p class="kicker">Why this partnership</p>
+      <div class="cols">
+        <div class="box">
+          <h2>Strategic fit</h2>
+          <p>TheraBreath is scaling across rinses, toothpastes, and new formats. The Flavor Factory is a family-owned flavor manufacturer — development, production, and quality under one Norco roof. No broker hand-offs on your formulas.</p>
+        </div>
+        <div class="box">
+          <h2>What we prove July 8</h2>
+          <ul>
+            <li>Resiliency and capacity to grow with your volume</li>
+            <li>Innovation inside sodium chlorite chemistry</li>
+            <li>Operations visibility from sample to repeat order</li>
+            <li>A long-term partnership roadmap, co-created with your team</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="kicker">Four pillars · one facility</p>
+      <div class="pillars">
+        <div class="pillar"><b>1 Resiliency</b>Capacity planning, redundancy, recovery — built for oral care scale-up</div>
+        <div class="pillar"><b>2 Innovation</b>Chlorite-stable flavor creation, trend fluency, format flexibility</div>
+        <div class="pillar"><b>3 Operations</b>Single-site traceability, lead-time discipline, COA &amp; label support</div>
+        <div class="pillar"><b>4 Partnership</b>Aligned investment, proactive ideas, co-created innovation priorities</div>
+      </div>
+
+      <p class="kicker">Capabilities at a glance</p>
+      <div class="proof">
+        <div class="stat"><strong>1 site</strong><span>Development through production · Norco, CA</span></div>
+        <div class="stat"><strong>SQF · GMP</strong><span>FDA registered · Kosher/Halal/Organic per formula</span></div>
+        <div class="stat"><strong>10 concepts</strong><span>Workshop prototypes · chlorite-stable · tasted live</span></div>
+      </div>
+
+      <div class="cols">
+        <div class="box">
+          <h2>Chlorite-stable innovation</h2>
+          <p>We develop inside your base chemistry — not around it. Workshop prototypes avoid citrus and berry profiles that won't hold on shelf. Directions: herbal, green tea, cucumber, ginger, vanilla, functional cooling, gum-health herbal.</p>
+        </div>
+        <div class="box">
+          <h2>July 8 outcomes</h2>
+          <ul>
+            <li>Facility tour + pillar deep-dives with documentation</li>
+            <li>Three-station tasting · ten scored prototypes</li>
+            <li>90-minute co-creation lab on top favorites</li>
+            <li>Prioritized pilot list + follow-up within 24 hours</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-row">
+        <div class="cta">
+          <h3>Next steps after the visit</h3>
+          <p>Pilot batches on selected concepts · formal sensory panels · co-created innovation roadmap · seasonal and format exploration aligned to TheraBreath growth.</p>
+        </div>
+        <div class="contact">
+          <strong>The Flavor Factory</strong><br />
+          2058 Second Street · Norco, CA 92860<br />
+          (951) 273-9877 · <strong>www.flavorfactory.net</strong><br /><br />
+          <strong>Workshop site:</strong> therabreath-visit-site.vercel.app<br />
+          Dan · Ryan · Alex · Matt
+        </div>
+      </div>
+
+      <footer class="conf"><span>Confidential</span><span>July 8, 2026</span></footer>
+    </article>
+  </body>
+</html>
