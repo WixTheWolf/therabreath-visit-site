@@ -37,6 +37,18 @@
         scroll-behavior: smooth;
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
       body {
         margin: 0;
         color: var(--ink);
@@ -117,6 +129,246 @@
           radial-gradient(circle at 48% 16%, rgba(0, 143, 211, 0.18), transparent 30rem),
           radial-gradient(circle at 88% 8%, rgba(245, 130, 32, 0.10), transparent 22rem),
           linear-gradient(#fff, #f7fbfd 62%, #fff);
+      }
+
+      .hero-glow {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .hero-glow span {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.45;
+        animation: drift 18s ease-in-out infinite alternate;
+      }
+
+      .hero-glow span:nth-child(1) {
+        top: 10%;
+        left: 20%;
+        width: 280px;
+        height: 280px;
+        background: rgba(0, 143, 211, 0.25);
+      }
+
+      .hero-glow span:nth-child(2) {
+        right: 15%;
+        bottom: 20%;
+        width: 220px;
+        height: 220px;
+        background: rgba(95, 184, 50, 0.2);
+        animation-delay: -6s;
+      }
+
+      .hero-glow span:nth-child(3) {
+        top: 40%;
+        right: 35%;
+        width: 160px;
+        height: 160px;
+        background: rgba(245, 130, 32, 0.18);
+        animation-delay: -12s;
+      }
+
+      @keyframes drift {
+        from { transform: translate(0, 0) scale(1); }
+        to { transform: translate(30px, -20px) scale(1.08); }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-content > * {
+        animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .hero-content .eyebrow { animation-delay: 0.05s; }
+      .hero-content h1 { animation-delay: 0.15s; }
+      .hero-content .hero-subhead { animation-delay: 0.25s; }
+      .hero-content .hero-meta { animation-delay: 0.35s; }
+      .hero-card { animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both; }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(28px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .nav.scrolled {
+        min-height: 64px;
+        box-shadow: 0 8px 32px rgba(13, 27, 42, 0.06);
+      }
+
+      .bottle {
+        animation: bottleFloat 5s ease-in-out infinite;
+      }
+
+      @keyframes bottleFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .flavor-orbs span {
+        animation: orbPulse 4s ease-in-out infinite;
+      }
+
+      .flavor-orbs span:nth-child(2) { animation-delay: 0.5s; }
+      .flavor-orbs span:nth-child(3) { animation-delay: 1s; }
+      .flavor-orbs span:nth-child(4) { animation-delay: 1.5s; }
+      .flavor-orbs span:nth-child(5) { animation-delay: 2s; }
+
+      @keyframes orbPulse {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-8px) scale(1.06); }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+      .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
+      .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.19s; }
+      .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.26s; }
+      .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.33s; }
+      .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.4s; }
+      .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.47s; }
+      .reveal-stagger.visible > *:nth-child(8) { transition-delay: 0.54s; }
+      .reveal-stagger.visible > *:nth-child(9) { transition-delay: 0.61s; }
+      .reveal-stagger.visible > *:nth-child(10) { transition-delay: 0.68s; }
+
+      .reveal-stagger.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .metric-card,
+      .pillar-card,
+      .trend-card,
+      .concept-card,
+      .step-card,
+      .data-card,
+      .station-card,
+      .hosp-card,
+      .agenda-item {
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+      }
+
+      .metric-card:hover,
+      .pillar-card:hover,
+      .trend-card:hover,
+      .concept-card:hover,
+      .data-card:hover,
+      .station-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 48px rgba(13, 27, 42, 0.1);
+      }
+
+      .pillar-index {
+        animation: indexGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes indexGlow {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(0, 143, 211, 0); }
+        50% { box-shadow: 0 0 0 8px rgba(0, 143, 211, 0.12); }
+      }
+
+      .agenda-item {
+        position: relative;
+      }
+
+      .agenda-item::before {
+        content: "";
+        position: absolute;
+        left: 54px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, var(--bottle-blue), var(--copy-green));
+        opacity: 0.2;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .agenda-timeline.visible .agenda-item::before {
+        transform: scaleY(1);
+      }
+
+      .concept-art {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .concept-art::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+        transform: translateX(-120%);
+        animation: shimmer 6s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%, 80%, 100% { transform: translateX(-120%); }
+        40% { transform: translateX(120%); }
+      }
+
+      .stress-btn {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .stress-btn:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 28px rgba(245, 130, 32, 0.28);
+      }
+
+      .map-zone {
+        transition: transform 0.4s ease, background 0.4s ease;
+      }
+
+      .facility-map.visible .map-zone {
+        animation: zonePop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+
+      .facility-map.visible .map-zone:nth-child(1) { animation-delay: 0.1s; }
+      .facility-map.visible .map-zone:nth-child(2) { animation-delay: 0.2s; }
+      .facility-map.visible .map-zone:nth-child(3) { animation-delay: 0.3s; }
+      .facility-map.visible .map-zone:nth-child(4) { animation-delay: 0.4s; }
+      .facility-map.visible .map-zone:nth-child(5) { animation-delay: 0.5s; }
+
+      @keyframes zonePop {
+        from { opacity: 0; transform: scale(0.92); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      .proof-label {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(--soft-blue);
+        color: var(--bottle-blue);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
       }
 
       .eyebrow {
@@ -962,8 +1214,14 @@
 
       .bar-fill {
         height: 100%;
+        width: 0;
         border-radius: 999px;
         background: linear-gradient(90deg, var(--bottle-blue), var(--copy-green));
+        transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .bar-fill.animated {
+        width: var(--w);
       }
 
       .redundancy-grid {
@@ -1359,13 +1617,16 @@
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow">The Flavor Factory X Therabreath</p>
+        <div class="hero-glow" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="hero-content">
+        <p class="eyebrow">The Flavor Factory X TheraBreath</p>
         <h1 id="hero-title">Breath of Innovation</h1>
-        <p class="hero-subhead">A July 8 working session built around the questions Therabreath asked us to answer: how we protect the business, how we scale, and how we keep fresh moving forward.</p>
+        <p class="hero-subhead">A July 8 capabilities workshop at our Norco facility — built around the four areas TheraBreath asked us to address: resiliency, innovation, operations, and long-term partnership.</p>
         <div class="hero-meta" aria-label="Workshop details">
           <span class="pill">July 8 Facility Visit</span>
           <span class="pill">Norco, California</span>
           <span class="pill">R&amp;D + Procurement working session</span>
+        </div>
         </div>
         <div class="hero-card" aria-hidden="true">
           <div class="bottle-stage">
@@ -1384,26 +1645,26 @@
       </section>
 
       <section id="partnership">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Our partnership</p>
-          <h2 class="section-title">A strong partnership, ready for scale.</h2>
-          <p class="section-copy">Therabreath asked for a capabilities review because the brand is growing. This visit is our chance to show the full system behind the work: the room, the people, the planning, the quality discipline, and the flavor thinking that keep the business moving.</p>
+          <h2 class="section-title">Flavor partner to a growing brand.</h2>
+          <p class="section-copy">TheraBreath is scaling across rinses, toothpastes, and new formats. This visit is our chance to walk your team through how we develop, produce, and support the flavors behind that growth — from our Norco facility, with the same team from first sample to repeat order.</p>
           <div class="partnership-board">
             <div class="statement">
-              <p>The goal is simple: make it obvious that The Flavor Factory is prepared for the next stage of Therabreath growth.</p>
+              <p>We make flavors that work inside real products — alcohol-free, process-ready, and built to repeat in production.</p>
             </div>
-            <div class="metrics" aria-label="Partnership highlights">
+            <div class="metrics reveal-stagger" aria-label="Partnership highlights">
               <article class="metric-card">
-                <div class="metric-number">99%+</div>
-                <p>Reliable supply and consistent execution — the stuff that only gets noticed when it is missing.</p>
+                <div class="metric-number">One team</div>
+                <p>Development, production, and quality all happen at our Norco facility. No hand-offs to third parties on your formulas.</p>
               </article>
               <article class="metric-card">
-                <div class="metric-number">Dedicated</div>
-                <p>A dedicated Therabreath production space so the important things stay controlled and repeatable.</p>
+                <div class="metric-number">Oral care</div>
+                <p>We understand rinse and paste formats — cooling profiles, sweetener systems, and the compliance documentation your procurement team needs.</p>
               </article>
               <article class="metric-card">
-                <div class="metric-number">Growth</div>
-                <p>A multi-year relationship with momentum, trust, and more room to build.</p>
+                <div class="metric-number">Built to scale</div>
+                <p>A long-running partnership with room to grow. Today we focus on showing you the systems behind that — not just telling you.</p>
               </article>
             </div>
           </div>
@@ -1412,23 +1673,23 @@
 
 
       <section id="visit-brief" class="soft">
-        <div class="container">
-          <p class="section-kicker">What they asked us to cover</p>
+        <div class="container reveal">
+          <p class="section-kicker">What this visit is about</p>
           <h2 class="section-title">Show the system, not just the samples.</h2>
-          <p class="section-copy">Their note was clear: they value the partnership, and they want to make sure both teams are positioned for success as Therabreath continues to scale.</p>
+          <p class="section-copy">Church &amp; Dwight's R&amp;D and Procurement teams are coming to evaluate whether The Flavor Factory can support TheraBreath's next stage of growth. We structured the day around their four-pillar framework.</p>
           <div class="visit-brief">
             <article class="brief-card accent">
-              <h3>The visit is a capabilities review.</h3>
-              <p>R&amp;D and Procurement will be in the room. They want an open, workshop-style discussion around resiliency, innovation, operations, and how TFF sees itself supporting Therabreath over the next 3-5 years.</p>
-              <p>This is not just a tasting. The tasting matters, but the bigger job is to build confidence.</p>
+              <h3>A capabilities review, not a sales pitch.</h3>
+              <p>Open discussion around resiliency, innovation, supply chain, and partnership vision — with real facility walk-throughs, documentation, and working sessions.</p>
+              <p>The tasting is part of the day. The bigger goal is mutual confidence: your team leaves knowing how we work, and our team leaves knowing where to invest next.</p>
             </article>
             <article class="brief-card">
-              <h3>What we need to make obvious.</h3>
+              <h3>Four pillars, one conversation.</h3>
               <ul class="brief-list">
-                <li><b>Scale</b><span>Capacity planning, redundancy, and room to grow with the brand.</span></li>
-                <li><b>Control</b><span>Quality systems, compliance, sourcing, and business continuity.</span></li>
-                <li><b>Ideas</b><span>Flavor creation, sensory science, trends, and co-creation capacity.</span></li>
-                <li><b>Trust</b><span>Clear communication, transparency, and long-term investment.</span></li>
+                <li><b>Resiliency</b><span>Can we protect supply as volumes grow? Quality systems, redundancy, continuity planning.</span></li>
+                <li><b>Innovation</b><span>Can we bring ideas proactively? Flavor creation, trends, formats, co-development.</span></li>
+                <li><b>Operations</b><span>Can we scale cleanly? Footprint, lead times, sourcing, traceability.</span></li>
+                <li><b>Partnership</b><span>Are we aligned long-term? Communication, investment, shared growth vision.</span></li>
               </ul>
             </article>
           </div>
@@ -1436,16 +1697,16 @@
       </section>
 
       <section id="agenda" class="soft">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">July 8 agenda</p>
           <h2 class="section-title">One full day. Four pillars. Real co-creation.</h2>
           <p class="section-copy">A structured working session built for R&amp;D and Procurement — facility tour, pillar presentations, themed tasting, and a collaborative workshop to close with clear next steps.</p>
-          <div class="agenda-timeline" aria-label="Visit schedule">
+          <div class="agenda-timeline reveal-stagger" aria-label="Visit schedule">
             <article class="agenda-item">
               <div class="agenda-time">8:00 AM</div>
               <div>
                 <h3>Welcome &amp; Facility Tour</h3>
-                <p>Dedicated TheraBreath production room, recent investments, segregation and traceability walk-through. Dan Wixted leads with R&amp;D and operations leads.</p>
+                <p>Walk the Norco facility — production areas, QC, warehousing, and the space set aside for TheraBreath work. See segregation, traceability, and recent investments firsthand.</p>
               </div>
             </article>
             <article class="agenda-item">
@@ -1466,7 +1727,7 @@
               <div class="agenda-time">11:30 AM</div>
               <div>
                 <h3>Pillar 3: Supply Chain &amp; Operations</h3>
-                <p>Facility footprint, OTIF performance, sourcing strategy, and scalability for Church &amp; Dwight growth.</p>
+                <p>Single-facility footprint, lead time discipline, raw material sourcing, and how we scale repeat production.</p>
               </div>
             </article>
             <article class="agenda-item">
@@ -1502,12 +1763,12 @@
       </section>
 
       <section id="capabilities">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Capabilities</p>
-          <h2 class="section-title">The four areas they care about most.</h2>
-          <p class="section-copy">Their framework is the right one. If we answer these four areas well, the visit will feel thoughtful, thorough, and useful.</p>
+          <h2 class="section-title">Four pillars. Honest answers.</h2>
+          <p class="section-copy">Each section below addresses what TheraBreath's team asked to see — with real documentation, facility walk-throughs, and working sessions. Nothing here is a promise we cannot back up in the room.</p>
 
-          <div class="pillars">
+          <div class="pillars reveal-stagger">
             <article class="pillar-card">
               <span class="pillar-index">1</span>
               <h3>Resiliency &amp; Business Continuity</h3>
@@ -1540,12 +1801,12 @@
               <h3>Supply Chain &amp; Operations</h3>
               <p class="sub">Keep the work clean, repeatable, and visible.</p>
               <ul class="clean-list">
-                <li>Manufacturing footprint and recent facility investments</li>
-                <li>Lead times, OTIF performance, and contract manufacturer scalability</li>
-                <li>Raw material sourcing strategy and supply security</li>
-                <li>Multi-site and geographic coverage</li>
+                <li>Single Norco facility — development through production under one roof</li>
+                <li>Lead time discipline and organized sample-to-order handoff</li>
+                <li>Raw material sourcing with approved alternates where needed</li>
+                <li>Batch traceability from raw material receipt to finished flavor release</li>
               </ul>
-              <div class="answer">Built to answer: footprint, sourcing, OTIF</div>
+              <div class="answer">Built to answer: footprint, lead times, traceability</div>
               <a class="pillar-link" href="#pillar-3">View deep dive</a>
             </article>
             <article class="pillar-card">
@@ -1563,131 +1824,134 @@
             </article>
           </div>
 
-          <div class="pillar-deep" id="pillar-1">
+          <div class="pillar-deep reveal" id="pillar-1">
             <div class="pillar-deep-header">
               <span class="pillar-index">1</span>
               <h3>Resiliency &amp; Business Continuity</h3>
             </div>
-            <p class="section-copy">Build trust with proof — capacity ready for 2–3x growth, redundancy at every critical point, and systems that keep TheraBreath supply uninterrupted.</p>
+            <p class="section-copy">TheraBreath needs a flavor partner who can keep pace without surprises. We will walk through our capacity planning, quality framework, and the contingency thinking behind your supply — with documentation your procurement team can take back.</p>
             <div class="data-grid">
               <article class="data-card">
-                <h4>Capacity scenarios</h4>
-                <div class="bar-chart">
-                  <div class="bar-row"><span>Current</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div><span>55%</span></div>
-                  <div class="bar-row"><span>2x growth</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span>78%</span></div>
-                  <div class="bar-row"><span>3x growth</span><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><span>92%</span></div>
+                <h4>Capacity planning</h4>
+                <p style="color:#475467;line-height:1.55;text-align:left;margin:0 0 18px">We will review current production load against TheraBreath's growth scenarios together in the room — not as a slide with invented numbers, but as a working conversation with our operations team.</p>
+                <div class="bar-chart" id="capacity-chart">
+                  <div class="bar-row"><span>Today</span><div class="bar-track"><div class="bar-fill" style="--w:45%"></div></div><span>Room</span></div>
+                  <div class="bar-row"><span>Growth</span><div class="bar-track"><div class="bar-fill" style="--w:70%"></div></div><span>Plan</span></div>
+                  <div class="bar-row"><span>Contingency</span><div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div><span>Buffer</span></div>
                 </div>
-                <p class="section-note" style="margin-top:16px;text-align:left">Headroom built into dedicated TheraBreath production with phased scale-up plan.</p>
+                <span class="proof-label">Detailed figures shared in session</span>
               </article>
               <article class="data-card">
-                <h4>Quality certifications</h4>
+                <h4>Quality &amp; compliance</h4>
                 <div class="cert-timeline">
-                  <div class="cert-item"><b>SQF Level 2</b><span>Active</span></div>
-                  <div class="cert-item"><b>FDA registered</b><span>Active</span></div>
-                  <div class="cert-item"><b>Kosher certified</b><span>Active</span></div>
-                  <div class="cert-item"><b>Organic handling</b><span>Capable</span></div>
+                  <div class="cert-item"><b>SQF program</b><span>Auditable</span></div>
+                  <div class="cert-item"><b>GMP</b><span>Active</span></div>
+                  <div class="cert-item"><b>FDA registered facility</b><span>Active</span></div>
+                  <div class="cert-item"><b>Kosher / Halal / Organic</b><span>Per formula</span></div>
                 </div>
+                <p style="color:var(--muted);font-size:0.88rem;line-height:1.45;text-align:left;margin:16px 0 0">Certification needs are reviewed as part of every development brief — not after scale-up. Documentation available for supplier qualification files.</p>
               </article>
               <article class="data-card" style="grid-column:1/-1">
-                <h4>Redundancy map</h4>
+                <h4>Continuity framework</h4>
                 <div class="stress-demo" id="stress-demo">
                   <div class="redundancy-grid">
-                    <div class="redundancy-item" data-primary>Primary mint suppliers (3)</div>
-                    <div class="redundancy-item" data-alt>Alt sourcing: EU + domestic</div>
-                    <div class="redundancy-item" data-primary>Production line A</div>
-                    <div class="redundancy-item" data-alt>Backup line B</div>
-                    <div class="redundancy-item">Cross-trained QC leads</div>
-                    <div class="redundancy-item" data-alt>48hr disaster recovery</div>
+                    <div class="redundancy-item" data-primary>Approved raw material suppliers</div>
+                    <div class="redundancy-item" data-alt>Qualified alternate sources</div>
+                    <div class="redundancy-item" data-primary>Primary production scheduling</div>
+                    <div class="redundancy-item" data-alt>Overflow &amp; backup capacity</div>
+                    <div class="redundancy-item">Cross-trained production &amp; QC staff</div>
+                    <div class="redundancy-item" data-alt>Documented recovery procedures</div>
                   </div>
-                  <button class="stress-btn" type="button" id="stress-btn">Run stress test: simulate supply disruption</button>
-                  <div class="stress-status" id="stress-status">Disruption detected on primary supplier. Alternative sourcing activated in 4 hours. Production continuity maintained.</div>
+                  <button class="stress-btn" type="button" id="stress-btn">Simulate: primary supplier disruption</button>
+                  <div class="stress-status" id="stress-status">Alternate supplier pathway activated. Existing safety stock and qualified backup sources maintain production continuity. Full traceability on every lot.</div>
                 </div>
               </article>
             </div>
           </div>
 
-          <div class="pillar-deep" id="pillar-2">
+          <div class="pillar-deep reveal" id="pillar-2">
             <div class="pillar-deep-header">
               <span class="pillar-index">2</span>
               <h3>Innovation &amp; Technical Capabilities</h3>
             </div>
-            <p class="section-copy">Proactive partners who bring ideas before you ask — oral care flavor science, trend intelligence, and a pipeline built for Icy Mint, Dazzling Mint, Healthy Gums, and what comes next.</p>
+            <p class="section-copy">TheraBreath built its reputation on dentist-formulated, alcohol-free freshness. We develop flavors inside that reality — rinse bases, sweetener systems, cooling agents, and the compliance constraints that come with oral care. The afternoon session puts your team at the bench with ours.</p>
             <div class="data-grid">
               <article class="data-card">
-                <h4>Oral care flavor library</h4>
+                <h4>What we bring to oral care</h4>
                 <ul class="clean-list">
-                  <li>200+ mint and cooling profiles calibrated for rinse and paste</li>
-                  <li>Alcohol-free, zero-sugar, and functional carrier expertise</li>
-                  <li>Whitening enhancer and calming botanical blends</li>
-                  <li>Seasonal and limited-edition rapid prototyping</li>
+                  <li>Mint, cooling, and botanical profiles built for rinse and paste formats</li>
+                  <li>Formulation inside real products — sweeteners, acids, actives, not just sample cups</li>
+                  <li>Controlled iteration: tight development loops with clear version tracking</li>
+                  <li>From bench sample to repeat production at the same Norco facility</li>
                 </ul>
               </article>
               <article class="data-card">
-                <h4>Trend intelligence 2027–2030</h4>
+                <h4>Trends to discuss at the workshop</h4>
                 <ul class="clean-list">
-                  <li>Calming chamomile-mint for evening routines</li>
-                  <li>Zero-sugar cooling agents with longer freshness</li>
-                  <li>Global and ethnic adjacencies for brand stretch</li>
-                  <li>Functional flavors: gums health, whitening, hydration</li>
+                  <li>Functional freshness — calming botanicals, gum-health cues, whitening brightness</li>
+                  <li>Profiles beyond classic mint — tropical, dessert, herbal, without losing clean finish</li>
+                  <li>Seasonal and limited-edition concepts for trial and repeat purchase</li>
+                  <li>Format stretch — rinses, toothpastes, and adjacencies TheraBreath is exploring</li>
                 </ul>
               </article>
               <article class="data-card" style="grid-column:1/-1;background:var(--soft-green)">
                 <h4>Live flavor creation session</h4>
-                <p style="color:#475467;line-height:1.55;text-align:left;margin:0">During the afternoon workshop, your team blends and tweaks samples in our flavor lab. Pipettes, beakers, and mint compounds on the bench — you shape the profile, we scale it.</p>
+                <p style="color:#475467;line-height:1.55;text-align:left;margin:0">Your R&amp;D team works alongside ours in the flavor lab — adjusting cooling intensity, sweetness balance, and finish length on prototype concepts. You react in real time; we document what is worth taking to pilot batch.</p>
               </article>
             </div>
           </div>
 
-          <div class="pillar-deep" id="pillar-3">
+          <div class="pillar-deep reveal" id="pillar-3">
             <div class="pillar-deep-header">
               <span class="pillar-index">3</span>
               <h3>Supply Chain &amp; Operations</h3>
             </div>
-            <p class="section-copy">Scalable, visible, and efficient — a Norco facility built for oral care with recent upgrades, strong OTIF, and geographic sourcing diversity.</p>
+            <p class="section-copy">We are a family-owned flavor manufacturer in Norco, CA — not a broker or contract manufacturer. Development, production, and quality happen under one roof, which is what gives TheraBreath direct visibility into how your flavors are made and released.</p>
             <div class="data-grid">
               <article class="data-card">
-                <h4>Facility footprint</h4>
-                <div class="facility-map">
-                  <div class="map-zone highlight wide">Dedicated TheraBreath production room</div>
+                <h4>What you will see on the tour</h4>
+                <div class="facility-map" id="facility-map">
+                  <div class="map-zone highlight wide">TheraBreath production area</div>
                   <div class="map-zone">Mixing &amp; blending</div>
-                  <div class="map-zone">QC laboratory</div>
-                  <div class="map-zone">Warehousing</div>
-                  <div class="map-zone wide">R&amp;D flavor lab</div>
+                  <div class="map-zone">QC &amp; documentation</div>
+                  <div class="map-zone">Raw material storage</div>
+                  <div class="map-zone wide">R&amp;D flavor development lab</div>
                 </div>
               </article>
               <article class="data-card">
-                <h4>Performance &amp; sourcing</h4>
-                <div class="otif-display"><strong>98.7%</strong><span>OTIF trailing 12 months</span></div>
-                <p style="color:var(--muted);font-size:0.92rem;line-height:1.45;text-align:left;margin:0 0 12px">Lead times held steady through volume increases. Full traceability from raw material lot to finished flavor batch.</p>
+                <h4>How we run production</h4>
+                <ul class="clean-list">
+                  <li>Consistent batch quality with documented release procedures</li>
+                  <li>Lead times discussed openly — current performance shared in session</li>
+                  <li>Approved suppliers with qualified alternates for critical raw materials</li>
+                  <li>COAs, allergen statements, and label support through Ryan's quality team</li>
+                </ul>
                 <div class="sourcing-tags">
-                  <span>North America</span><span>Europe</span><span>Asia-Pacific</span><span>Multi-supplier</span>
+                  <span>Domestic sourcing</span><span>Global suppliers</span><span>Lot traceability</span><span>COA on request</span>
                 </div>
               </article>
               <article class="data-card" style="grid-column:1/-1">
-                <h4>Recent investments</h4>
-                <div class="visit-brief" style="margin-top:16px">
-                  <article class="brief-card" style="padding:20px"><h3 style="font-size:1.2rem">Before</h3><p style="font-size:0.92rem">Shared production lines, manual batch logging</p></article>
-                  <article class="brief-card accent" style="padding:20px"><h3 style="font-size:1.2rem">After</h3><p style="font-size:0.92rem">Dedicated TB room, automated filling, digital lot tracking, expanded cold storage</p></article>
-                </div>
+                <h4>Recent facility investments</h4>
+                <p style="color:#475467;line-height:1.55;text-align:left;margin:0">We will show you what has changed on the floor — the areas we have invested in to support oral care volume, improve segregation, and tighten batch documentation. Specifics are easier to show than to list on a slide.</p>
+                <span class="proof-label">Walk-through during morning tour</span>
               </article>
             </div>
           </div>
 
-          <div class="pillar-deep" id="pillar-4">
+          <div class="pillar-deep reveal" id="pillar-4">
             <div class="pillar-deep-header">
               <span class="pillar-index">4</span>
               <h3>Partnership &amp; Growth Vision</h3>
             </div>
-            <p class="section-copy">Aligned emotionally and operationally — a 3–5 year roadmap growing with TheraBreath as Church &amp; Dwight scales oral care.</p>
+            <p class="section-copy">This pillar is a working conversation, not a contract. We want to understand where TheraBreath is headed — new formats, seasonal lines, functional claims — and share honestly where we plan to invest alongside you.</p>
             <div class="charter-box">
-              <p>We commit to investing in dedicated capacity, proactive innovation, and transparent communication — so TheraBreath never has to wonder if its flavor partner can keep pace.</p>
+              <p>Our intent: stay close on communication, bring ideas before you have to ask for them, and invest in the capacity and R&amp;D that your growth requires. The afternoon workshop is where we draft this together.</p>
             </div>
-            <div class="vision-timeline">
-              <article class="vision-milestone"><div class="vision-year">2026</div><div><h4>Capabilities proven</h4><p>July visit, co-created innovation roadmap, pilot batches for top concepts.</p></div></article>
-              <article class="vision-milestone"><div class="vision-year">2027</div><div><h4>Pipeline acceleration</h4><p>Seasonal limited editions, format expansions (rinse, paste, adjacencies), joint sensory panels.</p></div></article>
-              <article class="vision-milestone"><div class="vision-year">2028</div><div><h4>Scale partnership</h4><p>Capacity expansion aligned to TheraBreath volume forecasts. Co-branded innovation sprints.</p></div></article>
-              <article class="vision-milestone"><div class="vision-year">2029</div><div><h4>Category leadership</h4><p>Functional flavor platform — calming, whitening, kids, adult indulgence — built together.</p></div></article>
-              <article class="vision-milestone"><div class="vision-year">2030</div><div><h4>Strategic anchor</h4><p>TFF as long-term flavor innovation partner for TheraBreath's full oral care portfolio.</p></div></article>
+            <div class="vision-timeline reveal-stagger">
+              <article class="vision-milestone"><div class="vision-year">Now</div><div><h4>Prove the partnership</h4><p>July visit, open capabilities review, co-created innovation priorities from the tasting and workshop.</p></div></article>
+              <article class="vision-milestone"><div class="vision-year">Near-term</div><div><h4>Pilot the winners</h4><p>Larger batches and formal sensory on concepts your team selects. Claims and packaging direction shaped together.</p></div></article>
+              <article class="vision-milestone"><div class="vision-year">Medium-term</div><div><h4>Scale what works</h4><p>Repeat production aligned to TheraBreath volume forecasts. Seasonal and limited-edition support as the brand expands.</p></div></article>
+              <article class="vision-milestone"><div class="vision-year">Long-term</div><div><h4>Grow the pipeline</h4><p>Ongoing co-development for new formats, functional lines, and adjacencies — with a flavor partner who knows your base systems.</p></div></article>
             </div>
             <p class="section-note" style="margin-top:28px">Your hosts: Dan Wixted (President), Ryan Wixted, Alex Wixted, Matt Wixted — plus R&amp;D and operations leads.</p>
           </div>
@@ -1695,11 +1959,11 @@
       </section>
 
       <section id="tasting" class="soft">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Tasting experience</p>
           <h2 class="section-title">Three stations. One memorable lunch.</h2>
-          <p class="section-copy">A themed sensory journey — current favorites, bold prototypes, and functional directions. Neutral crackers, water, and professional scoring sheets at every station.</p>
-          <div class="tasting-stations">
+          <p class="section-copy">A themed sensory journey — benchmarks from the current line, workshop prototypes for discussion, and functional directions to react to. Neutral crackers, water, and scoring sheets at every station.</p>
+          <div class="tasting-stations reveal-stagger">
             <article class="station-card">
               <div class="station-num">1</div>
               <h3>Classic Freshness</h3>
@@ -1714,7 +1978,7 @@
             <article class="station-card">
               <div class="station-num">2</div>
               <h3>Innovation Lab</h3>
-              <p>Eight to ten new concepts to taste and react to.</p>
+              <p>Ten workshop prototypes to taste and react to.</p>
               <ul>
                 <li>Berry Bliss, Tropical Oasis</li>
                 <li>Overnight Calm Mint</li>
@@ -1739,11 +2003,11 @@
       </section>
 
       <section id="trends" class="soft">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Flavor trends</p>
           <h2 class="section-title">Fresh can stretch further.</h2>
           <p class="section-copy">Mint is still the anchor. The opportunity is to bring in more reasons to use the product: comfort, brightness, hydration, a little fun, and the occasional seasonal idea.</p>
-          <div class="trends-grid">
+          <div class="trends-grid reveal-stagger">
             <article class="trend-card"><span>01</span><h3>Functional + sensory pleasure</h3><p>Fresh works harder when people enjoy using the product.</p></article>
             <article class="trend-card"><span>02</span><h3>Beyond mint</h3><p>Dessert, tropical, and calming profiles can open new doors without walking away from fresh.</p></article>
             <article class="trend-card"><span>03</span><h3>Natural-forward profiles</h3><p>Cleaner cues need flavors that feel clear, bright, and intentional.</p></article>
@@ -1754,13 +2018,13 @@
       </section>
 
       <section id="concepts">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Prototype concepts</p>
           <h2 class="section-title">Ten ideas to taste and talk through.</h2>
-          <p class="section-copy">Current TheraBreath benchmarks plus eight to ten new concepts — each meant to stretch the brand while finishing clean, fresh, and alcohol-free.</p>
-          <p class="section-note">None of these are precious. The point is to taste, react, edit, and decide what is worth building.</p>
+          <p class="section-copy">Workshop prototypes for discussion — not finished products or launch commitments. Each is built to explore a direction while staying true to TheraBreath's alcohol-free, clean-finish positioning.</p>
+          <p class="section-note">None of these are precious. Taste, react, edit, and tell us what is worth a pilot batch.</p>
 
-          <div class="concepts">
+          <div class="concepts reveal-stagger">
             <article class="concept-card" style="--accent: #ed3d70">
               <div class="concept-art"></div>
               <div class="concept-body">
@@ -1871,7 +2135,7 @@
       </section>
 
       <section id="evaluation">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Sensory evaluation</p>
           <h2 class="section-title">Taste it like we might make it.</h2>
           <p class="section-copy">We are not only looking for favorites. We are looking for what feels right for the brand, what can scale, and what needs another pass.</p>
@@ -1885,11 +2149,11 @@
       </section>
 
       <section id="hospitality">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Hospitality</p>
-          <h2 class="section-title">Warm welcome. Premium details.</h2>
-          <p class="section-copy">Every touchpoint says we are prepared, invested, and easy to work with.</p>
-          <div class="hospitality-grid">
+          <h2 class="section-title">Warm welcome. Thoughtful details.</h2>
+          <p class="section-copy">A visit like this should feel organized, personal, and worth your team's time.</p>
+          <div class="hospitality-grid reveal-stagger">
             <article class="hosp-card">
               <h3>California-inspired lunch</h3>
               <p>Fresh, light menu designed around tasting — neutral palate cleansers, seasonal produce, and plenty of water between stations.</p>
@@ -1911,7 +2175,7 @@
       </section>
 
       <section id="feedback" class="soft">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Your feedback</p>
           <h2 class="section-title">Tell us what is worth chasing.</h2>
           <p class="section-copy">Use this section for the honest notes: winners, concerns, watch-outs, and anything that should come back for another round.</p>
@@ -1943,7 +2207,7 @@
       </section>
 
       <section id="next" class="closing">
-        <div class="container">
+        <div class="container reveal">
           <p class="section-kicker">Co-creation &amp; next steps</p>
           <h2 class="section-title">After the workshop.</h2>
           <p class="section-copy">If we show the system clearly and use the tasting to create real discussion, they should leave Norco confident in the partnership and excited about what we can build next.</p>
@@ -1969,14 +2233,47 @@
 
     <footer class="footer">Confidential – Prepared for Flavor Factory X Therabreath | July 8, 2026</footer>
     <script>
-      document.getElementById("stress-btn")?.addEventListener("click", function () {
-        var demo = document.getElementById("stress-demo");
-        var status = document.getElementById("stress-status");
-        demo.classList.toggle("active");
-        this.textContent = demo.classList.contains("active")
-          ? "Reset simulation"
-          : "Run stress test: simulate supply disruption";
-      });
+      (function () {
+        var nav = document.querySelector(".nav");
+        window.addEventListener("scroll", function () {
+          nav.classList.toggle("scrolled", window.scrollY > 40);
+        }, { passive: true });
+
+        var revealEls = document.querySelectorAll(".reveal, .reveal-stagger, .agenda-timeline");
+        if ("IntersectionObserver" in window) {
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                if (entry.target.id === "capacity-chart") {
+                  entry.target.querySelectorAll(".bar-fill").forEach(function (bar) {
+                    bar.classList.add("animated");
+                  });
+                }
+                if (entry.target.id === "facility-map") {
+                  entry.target.classList.add("visible");
+                }
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+          revealEls.forEach(function (el) { observer.observe(el); });
+          var capChart = document.getElementById("capacity-chart");
+          if (capChart) observer.observe(capChart);
+          var facMap = document.getElementById("facility-map");
+          if (facMap) observer.observe(facMap);
+        } else {
+          revealEls.forEach(function (el) { el.classList.add("visible"); });
+        }
+
+        document.getElementById("stress-btn")?.addEventListener("click", function () {
+          var demo = document.getElementById("stress-demo");
+          demo.classList.toggle("active");
+          this.textContent = demo.classList.contains("active")
+            ? "Reset simulation"
+            : "Simulate: primary supplier disruption";
+        });
+      })();
     </script>
   </body>
 </html>
