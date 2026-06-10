@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Workshop Toolkit | TFF × TheraBreath</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --blue: #008fd3;
+        --green: #5fb832;
+        --orange: #f58220;
+        --ink: #0a1628;
+        --muted: #5c6678;
+        --line: #e2e9ec;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "DM Sans", system-ui, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 10% 0%, rgba(0,143,211,0.08), transparent 40%),
+          radial-gradient(circle at 90% 20%, rgba(95,184,50,0.06), transparent 35%),
+          #f6fafc;
+        min-height: 100vh;
+      }
+      .wrap { width: min(960px, calc(100vw - 40px)); margin: 0 auto; padding: 48px 0 80px; }
+      .top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: inherit;
+        font-family: "Sora", sans-serif;
+        font-weight: 800;
+      }
+      .mark {
+        width: 40px; height: 40px; display: grid; place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--ink), var(--blue));
+        color: #fff; font-size: 0.75rem;
+      }
+      .back {
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        text-decoration: none;
+        font-size: 0.84rem;
+        font-weight: 600;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-family: "Sora", sans-serif;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      .lead {
+        margin: 0 0 36px;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.55;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+      .card {
+        display: grid;
+        gap: 12px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 16px 40px rgba(10,22,40,0.06);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 56px rgba(10,22,40,0.1);
+      }
+      .card-tag {
+        display: inline-flex;
+        width: fit-content;
+        padding: 5px 10px;
+        border-radius: 999px;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .card-tag.live { background: #e8f6fd; color: var(--blue); }
+      .card-tag.print { background: #edf8e8; color: #2d6a3f; }
+      .card-tag.room { background: #fff4e8; color: #c45c26; }
+      .card-tag.team { background: #f0f2f8; color: #5b6b8a; }
+      .card h2 {
+        margin: 0;
+        font-family: "Sora", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .card p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      .card-cta {
+        font-family: "Sora", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--blue);
+      }
+      .ideas {
+        margin-top: 48px;
+        padding: 32px;
+        border: 1px dashed rgba(0,143,211,0.25);
+        border-radius: 20px;
+        background: rgba(255,255,255,0.7);
+      }
+      .ideas h3 {
+        margin: 0 0 16px;
+        font-family: "Sora", sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .ideas ul {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="brand" href="/"><span class="mark">TFF</span> Workshop Toolkit</a>
+        <a class="back" href="/">← Live workshop site</a>
+      </div>
+      <h1>Everything for July 8</h1>
+      <p class="lead">One ecosystem for the visit — live digital guide, print materials for the room, and host tools for your team. Pick what you need; each piece matches the same six-step story.</p>
+
+      <div class="grid">
+        <a class="card" href="/">
+          <span class="card-tag live">Live · Screen share</span>
+          <h2>Workshop site</h2>
+          <p>Full interactive experience for the room display or visitor laptops — pillars, concepts, feedback table.</p>
+          <span class="card-cta">Open site →</span>
+        </a>
+        <a class="card" href="/slides">
+          <span class="card-tag print">Print · Landscape</span>
+          <h2>Slide deck</h2>
+          <p>20 slides, one per page. Agenda, pillars, all ten concepts, and a fill-in scoring sheet.</p>
+          <span class="card-cta">Open slides →</span>
+        </a>
+        <a class="card" href="/passport">
+          <span class="card-tag print">Print · Booklet</span>
+          <h2>Visitor passport</h2>
+          <p>Pocket follow-along for each guest — agenda, pillar map, concept checklist, and tasting notes.</p>
+          <span class="card-cta">Open passport →</span>
+        </a>
+        <a class="card" href="/stations">
+          <span class="card-tag room">Print · Room signage</span>
+          <h2>Tasting station signs</h2>
+          <p>Large-format station headers for Classic Freshness, Innovation Lab, and Functional Benefits.</p>
+          <span class="card-cta">Open signage →</span>
+        </a>
+        <a class="card" href="/host">
+          <span class="card-tag team">Internal · Hosts only</span>
+          <h2>Run-of-show</h2>
+          <p>Minute-by-minute host checklist, talking prompts, and handoff cues for Dan, Ryan, Alex, and Matt.</p>
+          <span class="card-cta">Open run-of-show →</span>
+        </a>
+        <a class="card" href="/score">
+          <span class="card-tag live">Live · Phones</span>
+          <h2>Live concept scorer</h2>
+          <p>Mobile-friendly 1–9 rating for all ten prototypes — tallies in the room, no app install.</p>
+          <span class="card-cta">Open scorer →</span>
+        </a>
+      </div>
+
+      <div class="ideas">
+        <h3>Next builds worth doing (tell us which to ship)</h3>
+        <ul>
+          <li><strong>Executive one-pager</strong> — single-page PDF leave-behind for procurement</li>
+          <li><strong>Sample kit labels</strong> — numbered stickers matching concepts 01–10</li>
+          <li><strong>Facility tour map</strong> — illustrated walk-through sheet for the 8:00 AM tour</li>
+          <li><strong>Co-creation worksheet</strong> — structured lab session form for the 10:30 block</li>
+          <li><strong>Follow-up email template</strong> — same-day thank-you aligned to site sections</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

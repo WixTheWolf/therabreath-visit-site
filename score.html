@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Concept Scorer | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f6fafc; color:var(--ink); padding-bottom:80px; }
+      header { padding:20px; background:linear-gradient(135deg,var(--ink),#005f9e); color:#fff; text-align:center; }
+      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.2rem; }
+      header p { margin:6px 0 0; font-size:0.8rem; opacity:0.8; }
+      .wrap { padding:16px; max-width:520px; margin:0 auto; }
+      .card {
+        margin-bottom:14px; padding:16px; background:#fff;
+        border:1px solid var(--line); border-radius:14px;
+        box-shadow:0 8px 24px rgba(10,22,40,0.05);
+      }
+      .card-head { display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+      .num { width:36px; height:36px; display:grid; place-items:center; border-radius:10px; background:var(--ink); color:#fff; font-family:"Sora",sans-serif; font-weight:800; font-size:0.8rem; flex-shrink:0; }
+      .card h2 { margin:0; font-family:"Sora",sans-serif; font-size:1rem; }
+      .card .sub { margin:2px 0 0; font-size:0.72rem; color:var(--muted); }
+      .sliders { display:grid; gap:10px; }
+      .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; align-items:center; font-size:0.75rem; font-weight:600; }
+      .row input[type=range] { width:100%; accent-color:var(--blue); }
+      .row output { text-align:right; color:var(--blue); font-family:"Sora",sans-serif; font-weight:800; }
+      .leaderboard { margin-top:24px; padding:18px; background:#fff; border-radius:14px; border:1px solid var(--line); }
+      .leaderboard h3 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:0.9rem; }
+      .lb-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line); font-size:0.82rem; }
+      .lb-row b { color:var(--blue); }
+      .bar { height:6px; background:#eef4f8; border-radius:999px; margin-top:4px; overflow:hidden; }
+      .bar i { display:block; height:100%; background:linear-gradient(90deg,var(--blue),var(--green)); border-radius:999px; }
+      .actions { position:fixed; bottom:0; left:0; right:0; display:flex; gap:10px; padding:12px 16px; background:rgba(255,255,255,0.95); border-top:1px solid var(--line); backdrop-filter:blur(12px); }
+      .actions button, .actions a { flex:1; padding:12px; border-radius:10px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-align:center; text-decoration:none; border:none; cursor:pointer; }
+      .actions a { background:#fff; border:1px solid var(--line); color:var(--ink); }
+      .actions button { background:var(--blue); color:#fff; }
+      .actions button.danger { background:#fff; border:1px solid var(--line); color:#b54708; flex:0.6; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Live concept scorer</h1>
+      <p>Rate 1–9 · Liking · Uniqueness · Intent · Updates leaderboard live</p>
+    </header>
+    <div class="wrap" id="cards"></div>
+    <div class="wrap">
+      <div class="leaderboard" id="board">
+        <h3>Leaderboard · avg liking</h3>
+        <div id="board-rows"></div>
+      </div>
+    </div>
+    <div class="actions">
+      <a href="/toolkit">Toolkit</a>
+      <button type="button" onclick="exportScores()">Copy results</button>
+      <button type="button" class="danger" onclick="clearScores()">Reset</button>
+    </div>
+    <script>
+      var concepts = [
+        { id:1, name:"Spearmint Garden", sub:"Sweet spearmint + green herb" },
+        { id:2, name:"Green Tea Fresh", sub:"Green tea + spearmint" },
+        { id:3, name:"Crisp Cucumber Mint", sub:"Cucumber + cooling mint" },
+        { id:4, name:"Warm Ginger Mint", sub:"Ginger + peppermint" },
+        { id:5, name:"Vanilla Mint Silk", sub:"Vanilla + peppermint" },
+        { id:6, name:"Overnight Calm Mint", sub:"Chamomile + lavender" },
+        { id:7, name:"Crystal Whitening Mint", sub:"Bright peppermint + icy cool" },
+        { id:8, name:"Icy Peak Refresh", sub:"Extra-cooling signature mint" },
+        { id:9, name:"Winter Frost", sub:"Peppermint + vanilla · LE" },
+        { id:10, name:"Healthy Gums Herbal", sub:"Eucalyptus + tea tree" }
+      ];
+
+      function load() {
+        try { return JSON.parse(localStorage.getItem('tff-scores') || '{}'); }
+        catch (e) { return {}; }
+      }
+      function save(data) { localStorage.setItem('tff-scores', JSON.stringify(data)); }
+
+      function renderCards() {
+        var data = load();
+        var html = concepts.map(function (c) {
+          var s = data[c.id] || { liking:5, unique:5, intent:5 };
+          return '<article class="card" data-id="' + c.id + '">' +
+            '<div class="card-head"><span class="num">' + String(c.id).padStart(2,'0') + '</span><div><h2>' + c.name + '</h2><p class="sub">' + c.sub + '</p></div></div>' +
+            '<div class="sliders">' +
+            slider('liking', 'Liking', s.liking, c.id) +
+            slider('unique', 'Uniqueness', s.unique, c.id) +
+            slider('intent', 'Purchase intent', s.intent, c.id) +
+            '</div></article>';
+        }).join('');
+        document.getElementById('cards').innerHTML = html;
+        document.querySelectorAll('input[type=range]').forEach(function (inp) {
+          inp.addEventListener('input', onSlide);
+        });
+        renderBoard();
+      }
+
+      function slider(key, label, val, id) {
+        return '<label class="row"><span>' + label + '</span><output id="o-' + id + '-' + key + '">' + val + '</output></label>' +
+          '<input type="range" min="1" max="9" step="1" value="' + val + '" data-id="' + id + '" data-key="' + key + '">';
+      }
+
+      function onSlide(e) {
+        var id = e.target.dataset.id;
+        var key = e.target.dataset.key;
+        var val = +e.target.value;
+        document.getElementById('o-' + id + '-' + key).textContent = val;
+        var data = load();
+        if (!data[id]) data[id] = { liking:5, unique:5, intent:5 };
+        data[id][key] = val;
+        save(data);
+        renderBoard();
+      }
+
+      function renderBoard() {
+        var data = load();
+        var rows = concepts.map(function (c) {
+          var s = data[c.id] || { liking:0, unique:0, intent:0 };
+          var avg = ((s.liking + s.unique + s.intent) / 3) || 0;
+          return { name: c.name, id: c.id, liking: s.liking || 0, avg: avg };
+        }).sort(function (a, b) { return b.liking - a.liking || b.avg - a.avg; });
+
+        document.getElementById('board-rows').innerHTML = rows.map(function (r, i) {
+          var pct = (r.liking / 9) * 100;
+          return '<div class="lb-row"><span><b>#' + (i+1) + '</b> ' + r.name + '</span><span>' + (r.liking || '—') + '/9</span></div>' +
+            (r.liking ? '<div class="bar"><i style="width:' + pct + '%"></i></div>' : '');
+        }).join('');
+      }
+
+      function exportScores() {
+        var data = load();
+        var text = concepts.map(function (c) {
+          var s = data[c.id] || {};
+          return c.id + '. ' + c.name + ' — L:' + (s.liking||'-') + ' U:' + (s.unique||'-') + ' I:' + (s.intent||'-');
+        }).join('\n');
+        navigator.clipboard.writeText(text).then(function () { alert('Scores copied to clipboard'); });
+      }
+
+      function clearScores() {
+        if (confirm('Clear all scores?')) { localStorage.removeItem('tff-scores'); renderCards(); }
+      }
+
+      renderCards();
+    </script>
+  </body>
+</html>
