@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lakewood Site Parity Plan | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --pass:#edf8e8; --warn:#fff4e8; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; }
+      .toolbar { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .toolbar a, .toolbar button { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .hero { padding:48px 24px 40px; background:linear-gradient(135deg,var(--ink) 0%,#004f87 55%,#006aa6); color:#fff; }
+      .hero-in { width:min(960px,calc(100vw - 40px)); margin:0 auto; }
+      .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.65); }
+      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.8rem,4.5vw,2.6rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; }
+      .hero p { margin:0; max-width:680px; font-size:1rem; line-height:1.6; color:rgba(255,255,255,0.82); }
+      .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+      .hero-meta span { padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); font-size:0.78rem; font-weight:600; }
+      .wrap { width:min(960px,calc(100vw - 40px)); margin:0 auto; padding:40px 0 80px; }
+      h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.35rem; font-weight:800; letter-spacing:-0.02em; }
+      .section { margin-bottom:40px; }
+      .section > p { margin:0 0 20px; color:var(--muted); line-height:1.55; max-width:720px; }
+      .ladder { display:grid; gap:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; }
+      .step { display:grid; grid-template-columns:56px 1fr auto; gap:16px; align-items:center; padding:18px 20px; border-bottom:1px solid var(--line); }
+      .step:last-child { border-bottom:none; }
+      .step-num { width:44px; height:44px; display:grid; place-items:center; border-radius:12px; background:var(--ink); color:#fff; font-family:"Sora",sans-serif; font-weight:800; }
+      .step h3 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:1rem; }
+      .step p { margin:0; font-size:0.84rem; color:var(--muted); line-height:1.45; }
+      .step a { font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; color:var(--blue); text-decoration:none; white-space:nowrap; }
+      .step.s1 .step-num { background:linear-gradient(135deg,#5b6b8a,var(--ink)); }
+      .step.s2 .step-num { background:linear-gradient(135deg,var(--blue),#006aa6); }
+      .step.s3 .step-num { background:linear-gradient(135deg,var(--green),#3d9e2a); }
+      .step.s4 .step-num { background:linear-gradient(135deg,var(--orange),#d96e10); }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+      .card { padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .card h3 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.95rem; }
+      .card p, .card li { font-size:0.84rem; color:var(--muted); line-height:1.5; }
+      .card ul { margin:8px 0 0; padding-left:18px; }
+      table { width:100%; border-collapse:collapse; font-size:0.8rem; background:#fff; border-radius:14px; overflow:hidden; border:1px solid var(--line); }
+      th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; }
+      th { background:#f0f9fd; color:var(--blue); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; }
+      tr:last-child td { border-bottom:none; }
+      .tier-a { color:#b42318; font-weight:700; }
+      .tier-b { color:var(--orange); font-weight:600; }
+      .tools { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+      .tool { display:grid; gap:8px; padding:22px; border:1px solid var(--line); border-radius:16px; background:#fff; text-decoration:none; color:inherit; transition:transform 0.25s, box-shadow 0.25s; }
+      .tool:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(10,22,40,0.08); }
+      .tool-tag { display:inline-flex; width:fit-content; padding:4px 9px; border-radius:999px; font-size:0.64rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; background:#e8f6fd; color:var(--blue); }
+      .tool h3 { margin:0; font-family:"Sora",sans-serif; font-size:1.05rem; }
+      .tool p { margin:0; font-size:0.84rem; color:var(--muted); line-height:1.45; }
+      .tool-cta { font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; color:var(--blue); }
+      .quote { padding:20px 22px; border-left:4px solid var(--blue); background:#fff; border-radius:0 12px 12px 0; font-size:0.88rem; line-height:1.55; color:#344054; margin-bottom:20px; }
+      .quote cite { display:block; margin-top:10px; font-size:0.76rem; color:var(--muted); font-style:normal; }
+      .fingerprint { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:center; padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .radar { width:100%; max-width:280px; margin:0 auto; }
+      .attrs { display:grid; gap:8px; font-size:0.78rem; }
+      .attr { display:grid; grid-template-columns:100px 1fr 1fr; gap:8px; align-items:center; }
+      .attr span:first-child { font-weight:600; }
+      .bar { height:8px; background:#eef4f8; border-radius:999px; overflow:hidden; }
+      .bar i { display:block; height:100%; border-radius:999px; }
+      .bar.ref i { background:var(--blue); width:85%; }
+      .bar.lw i { background:var(--green); width:82%; }
+      .legend { display:flex; gap:16px; font-size:0.72rem; font-weight:600; margin-bottom:10px; }
+      .legend span::before { content:""; display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+      .legend .ref::before { background:var(--blue); }
+      .legend .lw::before { background:var(--green); }
+      @media (max-width:720px) { .grid2, .tools, .fingerprint { grid-template-columns:1fr; } .step { grid-template-columns:44px 1fr; } .step a { grid-column:2; } }
+      @media print { .toolbar { display:none; } .hero { background:var(--ink); -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Lakewood site parity</strong> · Proposal for Ross Conroy · R&amp;D validation</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <a href="/lakewood-reply">Reply to Ross</a>
+        <button onclick="window.print()">Print proposal</button>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-in">
+        <p class="kicker">Response to Lakewood mouthrinse implementation · June 2026</p>
+        <h1>Site Parity Validation Program</h1>
+        <p>A phased sensory science plan to confirm TheraBreath mouthrinse taste is not impacted by Lakewood NJ manufacturing — same formulations, same TFF flavors, robust data on whether a difference exists and what it is.</p>
+        <div class="hero-meta">
+          <span>8 variants · phased through Sep 2026</span>
+          <span>Triangle + blind paired methods</span>
+          <span>Expert → analytical → consumer escalation</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section class="section">
+        <blockquote class="quote">
+          "We need to generate a robust data set that informs us if there is or is not a difference in the taste, and if there is a difference, what the difference is."
+          <cite>— Ross Conroy, Church &amp; Dwight R&amp;D · Lakewood implementation request</cite>
+        </blockquote>
+        <p>TFF proposes a <strong>four-rung escalation ladder</strong> — each rung answers a sharper question. Most variants stop at Rung 2 with a clear pass/fail. Flagged variants climb to descriptive and, for tier-A SKUs, consumer confirmation. Every step uses blind coding, randomized presentation order, and documented statistical thresholds.</p>
+      </section>
+
+      <section class="section">
+        <h2>Escalation ladder</h2>
+        <div class="ladder">
+          <div class="step s1">
+            <span class="step-num">1</span>
+            <div>
+              <h3>Expert screening (TheraBreath R&amp;D)</h3>
+              <p>Same as NPD — your team tastes Lakewood vs reference site samples side-by-side. Same/different decision + informal attribute notes. Go/no-go for formal panel. <em>Already in your workflow; we align on coding and protocol.</em></p>
+            </div>
+            <a href="/blind#expert">Expert SOP →</a>
+          </div>
+          <div class="step s2">
+            <span class="step-num">2</span>
+            <div>
+              <h3>Triangle test — "Is there a difference?"</h3>
+              <p>ISO 4120 triangle test. Panelists receive three coded samples (two reference site, one Lakewood — or balanced design). Forced choice: which is the odd sample? α = 0.05, powered for pd = 30–40%. <strong>Primary gate for site parity.</strong></p>
+            </div>
+            <a href="/triangle">Triangle kit →</a>
+          </div>
+          <div class="step s3">
+            <span class="step-num">3</span>
+            <div>
+              <h3>Blind paired comparison — "What is the difference?"</h3>
+              <p>Only if triangle is significant. Duo-trio (match-to-reference) plus 15-point attribute scales: mint intensity, sweetness, cooling, mouthfeel, aftertaste, chlorite character. Builds the <strong>flavor fingerprint</strong> delta report.</p>
+            </div>
+            <a href="/blind">Blind test kit →</a>
+          </div>
+          <div class="step s4">
+            <span class="step-num">4</span>
+            <div>
+              <h3>Consumer validation — "Does it matter in market?"</h3>
+              <p>Tier-A variants only (Icy Mint, Sparkle Mint). 100+ blind CLT or HUT respondents. Overall liking + purchase intent. Confirms business significance of any analytical difference found.</p>
+            </div>
+            <a href="/lakewood-tracker">Timeline →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Variant schedule &amp; test intensity</h2>
+        <p>Samples expected ~1–2 weeks after trial dates below. TFF prepares reference-site retain samples for each variant; Lakewood sends trial production pulls coded blind.</p>
+        <table>
+          <thead>
+            <tr><th>Variant</th><th>Trial timing</th><th>Est. sample arrival</th><th>Tier</th><th>Minimum protocol</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Invigorating Icy Mint</td><td>3rd week / ~end Jun</td><td>~early Jul</td><td class="tier-a">A · flagship</td><td>Triangle + blind + consumer</td></tr>
+            <tr><td>Mild Mint</td><td>~end Jun</td><td>~early Jul</td><td class="tier-b">B</td><td>Triangle + blind if flagged</td></tr>
+            <tr><td>Rainforest Mint</td><td>~end Jun</td><td>~early Jul</td><td class="tier-b">B</td><td>Triangle + blind if flagged</td></tr>
+            <tr><td>Whitening Dazzling Mint</td><td>~early Jul</td><td>~mid Jul</td><td class="tier-a">A · high visibility</td><td>Triangle + blind + consumer</td></tr>
+            <tr><td>Overnight Chamomile Mint</td><td>~mid Jul</td><td>~late Jul</td><td class="tier-b">B</td><td>Triangle + blind if flagged</td></tr>
+            <tr><td>Complete Revitalizing Mint</td><td>~end Jul</td><td>~early Aug</td><td class="tier-b">B</td><td>Triangle + blind if flagged</td></tr>
+            <tr><td>Healthy Gums Clean Mint</td><td>~early Sep</td><td>~mid Sep</td><td class="tier-b">B</td><td>Triangle + blind if flagged</td></tr>
+            <tr><td>AntiCavity Sparkle Mint</td><td>~mid Sep</td><td>~late Sep</td><td class="tier-a">A · flagship</td><td>Triangle + blind + consumer</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Flavor fingerprint · when a difference is found</h2>
+        <p>Blind paired testing produces a side-by-side attribute profile — not just "different," but <em>how</em> Lakewood reads vs reference. This is what R&amp;D needs to direct reformulation or process adjustments.</p>
+        <div class="fingerprint">
+          <svg class="radar" viewBox="0 0 200 200" aria-hidden="true">
+            <polygon points="100,30 155,65 155,135 100,170 45,135 45,65" fill="none" stroke="#e2e9ec" stroke-width="1"/>
+            <polygon points="100,50 140,72 132,128 100,148 68,128 60,72" fill="rgba(0,143,211,0.15)" stroke="#008fd3" stroke-width="2"/>
+            <polygon points="100,55 136,74 130,126 100,142 70,126 64,74" fill="rgba(95,184,50,0.12)" stroke="#5fb832" stroke-width="2" stroke-dasharray="4 3"/>
+            <text x="100" y="22" text-anchor="middle" font-size="8" fill="#5c6678">Mint</text>
+            <text x="168" y="72" text-anchor="middle" font-size="8" fill="#5c6678">Cooling</text>
+            <text x="168" y="138" text-anchor="middle" font-size="8" fill="#5c6678">Sweet</text>
+            <text x="100" y="188" text-anchor="middle" font-size="8" fill="#5c6678">Aftertaste</text>
+            <text x="32" y="138" text-anchor="middle" font-size="8" fill="#5c6678">Body</text>
+            <text x="32" y="72" text-anchor="middle" font-size="8" fill="#5c6678">Herbal</text>
+          </svg>
+          <div>
+            <div class="legend"><span class="ref">Reference site</span><span class="lw">Lakewood trial</span></div>
+            <div class="attrs">
+              <div class="attr"><span>Mint intensity</span><div class="bar ref"><i></i></div><div class="bar lw"><i style="width:78%"></i></div></div>
+              <div class="attr"><span>Cooling</span><div class="bar ref"><i></i></div><div class="bar lw"><i style="width:80%"></i></div></div>
+              <div class="attr"><span>Sweetness</span><div class="bar ref"><i style="width:70%"></i></div><div class="bar lw"><i style="width:74%"></i></div></div>
+              <div class="attr"><span>Aftertaste</span><div class="bar ref"><i style="width:75%"></i></div><div class="bar lw"><i style="width:68%"></i></div></div>
+            </div>
+            <p style="margin:12px 0 0;font-size:0.78rem;color:var(--muted)">Example output — actual bars populated from blind paired panel data per variant.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What TFF brings</h2>
+        <div class="grid2">
+          <div class="card">
+            <h3>Flavor-side expertise</h3>
+            <ul>
+              <li>We supplied every flavor in the trial matrix — we know the intended sensory target</li>
+              <li>Retain library of reference-site production samples for true A/B</li>
+              <li>Chlorite-stability context: what shifts are process vs flavor vs base</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Execution support</h3>
+            <ul>
+              <li>Blind sample coding SOP + random 3-digit code generator</li>
+              <li>Print-ready triangle and paired ballots (in toolkit)</li>
+              <li>Significance calculator + results report template</li>
+              <li>Variant tracker shared with Ross's timeline</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Panel design</h3>
+            <ul>
+              <li>Triangle: min 24 panelists (30 preferred), α=0.05, β=0.20</li>
+              <li>Blind paired: min 20 panelists per variant</li>
+              <li>Consumer: 100+ for tier-A; partner with C&amp;D or third-party CLT</li>
+              <li>Wash protocol: water + unsalted crackers between samples</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Decision rules</h3>
+            <ul>
+              <li><strong>Pass:</strong> Triangle not significant (p ≥ 0.05) → site parity confirmed</li>
+              <li><strong>Flag:</strong> Triangle significant → blind paired + fingerprint report within 5 business days</li>
+              <li><strong>Escalate:</strong> Attribute delta &gt; 1.0 scale point on any key driver → joint R&amp;D working session</li>
+              <li><strong>Consumer:</strong> Tier-A only if analytical difference confirmed</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Toolkit · run the program</h2>
+        <div class="tools">
+          <a class="tool" href="/triangle">
+            <span class="tool-tag">ISO 4120</span>
+            <h3>Triangle test kit</h3>
+            <p>Protocol, printable ballots, sample coding guide, and live significance calculator.</p>
+            <span class="tool-cta">Open triangle kit →</span>
+          </a>
+          <a class="tool" href="/blind">
+            <span class="tool-tag">Duo-trio + paired</span>
+            <h3>Blind comparison kit</h3>
+            <p>Attribute scales, expert screening form, and fingerprint data capture sheets.</p>
+            <span class="tool-cta">Open blind kit →</span>
+          </a>
+          <a class="tool" href="/lakewood-tracker">
+            <span class="tool-tag">8 variants</span>
+            <h3>Variant tracker</h3>
+            <p>Ross's trial timeline with sample ETA, test status, and pass/fail scorecard per SKU.</p>
+            <span class="tool-cta">Open tracker →</span>
+          </a>
+          <a class="tool" href="/lakewood-reply">
+            <span class="tool-tag">Email</span>
+            <h3>Proposal reply to Ross</h3>
+            <p>Copy-ready email summarizing the plan — edit and send for alignment before July visit.</p>
+            <span class="tool-cta">Open reply draft →</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Proposed next steps</h2>
+        <div class="card">
+          <ol style="margin:0;padding-left:20px;font-size:0.88rem;line-height:1.7;color:#344054">
+            <li><strong>This week:</strong> Review this proposal with Ross + Neonila — align on tier assignments and panel location (Norco vs Lakewood vs third party)</li>
+            <li><strong>Before first samples (~early July):</strong> Pull reference retain for Icy Mint, Mild Mint, Rainforest Mint; confirm blind coding logistics</li>
+            <li><strong>Per variant:</strong> Expert screen → triangle → results report within 48 hours of panel</li>
+            <li><strong>July 8 visit:</strong> Walk Ross through live tracker + discuss any early-wave results at workshop</li>
+            <li><strong>September close-out:</strong> Consolidated parity report across all 8 variants for procurement + R&amp;D sign-off</li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

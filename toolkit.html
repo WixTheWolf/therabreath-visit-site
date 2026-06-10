@@ -112,6 +112,55 @@
       .card-tag.team { background: #f0f2f8; color: #5b6b8a; }
       .card-tag.procure { background: #f5f0ff; color: #6b4fa0; }
       .card-tag.email { background: #fef3f2; color: #b42318; }
+      .card-tag.sensory { background: #e8f6fd; color: #005f9e; }
+      .featured {
+        display: grid;
+        gap: 14px;
+        padding: 28px 30px;
+        margin-bottom: 36px;
+        border: 2px solid rgba(0,143,211,0.25);
+        border-radius: 22px;
+        background: linear-gradient(135deg, #fff 0%, #f0f9fd 100%);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .featured:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 48px rgba(0,143,211,0.12);
+      }
+      .featured-tag {
+        display: inline-flex;
+        width: fit-content;
+        padding: 5px 11px;
+        border-radius: 999px;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: var(--ink);
+        color: #fff;
+      }
+      .featured h2 {
+        margin: 0;
+        font-family: "Sora", sans-serif;
+        font-size: 1.45rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      .featured p {
+        margin: 0;
+        max-width: 640px;
+        font-size: 0.94rem;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+      .featured-cta {
+        font-family: "Sora", sans-serif;
+        font-size: 0.84rem;
+        font-weight: 700;
+        color: var(--blue);
+      }
       .section-label {
         margin: 48px 0 18px;
         font-family: "Sora", sans-serif;
@@ -169,8 +218,50 @@
         <a class="back" href="/">← Live workshop site</a>
       </div>
       <h1>Everything for July 8</h1>
-      <p class="lead">One ecosystem for the visit — live digital guide, print materials for the room, host tools, and follow-through assets. Eleven pieces, one story from tour to thank-you email.</p>
+      <p class="lead">One ecosystem for the visit — workshop materials, host tools, follow-through assets, and a full Lakewood site-parity sensory program for Ross Conroy's R&amp;D request.</p>
 
+      <a class="featured" href="/lakewood">
+        <span class="featured-tag">New · Ross Conroy request</span>
+        <h2>Lakewood site parity validation</h2>
+        <p>Blind triangle testing + attribute fingerprinting for 8 TheraBreath mouthrinse variants moving to Lakewood NJ — phased Jun–Sep 2026. Full proposal, ballots, significance calculator, and live variant tracker.</p>
+        <span class="featured-cta">Open validation program →</span>
+      </a>
+
+      <p class="section-label">Lakewood mouthrinse · sensory science</p>
+      <div class="grid">
+        <a class="card" href="/lakewood">
+          <span class="card-tag sensory">Proposal · Print</span>
+          <h2>Site parity plan</h2>
+          <p>Four-rung escalation ladder responding to Ross's email — expert screen → triangle → blind paired → consumer.</p>
+          <span class="card-cta">Open plan →</span>
+        </a>
+        <a class="card" href="/triangle">
+          <span class="card-tag sensory">ISO 4120</span>
+          <h2>Triangle test kit</h2>
+          <p>Protocol, printable ballots (AAB/ABB sets), blind code generator, and live significance calculator.</p>
+          <span class="card-cta">Open triangle kit →</span>
+        </a>
+        <a class="card" href="/blind">
+          <span class="card-tag sensory">Duo-trio + paired</span>
+          <h2>Blind comparison kit</h2>
+          <p>Expert screening form, duo-trio ballots, and 7-point flavor fingerprint attribute sheets.</p>
+          <span class="card-cta">Open blind kit →</span>
+        </a>
+        <a class="card" href="/lakewood-tracker">
+          <span class="card-tag live">Live · Tracker</span>
+          <h2>Variant scorecard</h2>
+          <p>All 8 SKUs on Ross's trial timeline — tap to track expert, triangle, blind, and parity status per variant.</p>
+          <span class="card-cta">Open tracker →</span>
+        </a>
+        <a class="card" href="/lakewood-reply">
+          <span class="card-tag email">Email · Ross</span>
+          <h2>Proposal reply draft</h2>
+          <p>Copy-ready email to Ross Conroy summarizing the plan — edit placeholders and send for alignment.</p>
+          <span class="card-cta">Open reply →</span>
+        </a>
+      </div>
+
+      <p class="section-label">July 8 workshop · day-of</p>
       <div class="grid">
         <a class="card" href="/">
           <span class="card-tag live">Live · Screen share</span>

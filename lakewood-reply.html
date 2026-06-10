@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reply to Ross | Lakewood Validation Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f6fafc; color:var(--ink); padding-bottom:72px; }
+      header { padding:20px 24px; background:var(--ink); color:#fff; }
+      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.15rem; }
+      header p { margin:6px 0 0; font-size:0.8rem; opacity:0.75; }
+      .wrap { width:min(720px,calc(100vw - 32px)); margin:0 auto; padding:24px 0; }
+      .panel { padding:20px; background:#fff; border:1px solid var(--line); border-radius:14px; }
+      label { display:block; font-size:0.72rem; font-weight:700; color:var(--muted); margin-bottom:6px; text-transform:uppercase; }
+      input, textarea { width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; margin-bottom:14px; }
+      textarea { min-height:480px; line-height:1.6; font-size:0.84rem; }
+      .links { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+      .links a { padding:6px 12px; border-radius:8px; background:#e8f6fd; color:var(--blue); font-size:0.74rem; font-weight:700; text-decoration:none; }
+      .actions { position:fixed; bottom:0; left:0; right:0; display:flex; gap:10px; padding:12px 16px; background:rgba(255,255,255,0.95); border-top:1px solid var(--line); }
+      .actions button, .actions a { flex:1; padding:12px; border-radius:10px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-align:center; border:none; cursor:pointer; text-decoration:none; }
+      .actions a { background:#fff; border:1px solid var(--line); color:var(--ink); flex:0.4; }
+      .actions button { background:var(--blue); color:#fff; }
+      .actions button.secondary { background:#fff; border:1px solid var(--line); color:var(--ink); }
+      .toast { position:fixed; top:20px; right:20px; padding:12px 18px; background:var(--ink); color:#fff; border-radius:8px; font-size:0.82rem; opacity:0; transition:opacity 0.3s; }
+      .toast.show { opacity:1; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Proposal reply · Ross Conroy</h1>
+      <p>Re: Lakewood mouthrinse implementation · sensory validation plan</p>
+    </header>
+    <div class="wrap">
+      <div class="links">
+        <a href="/lakewood">Full proposal</a>
+        <a href="/triangle">Triangle kit</a>
+        <a href="/blind">Blind kit</a>
+        <a href="/lakewood-tracker">Variant tracker</a>
+      </div>
+      <div class="panel">
+        <label for="to">To</label>
+        <input type="text" id="to" value="Ross.Conroy@churchdwight.com" />
+        <label for="cc">Cc</label>
+        <input type="text" id="cc" value="Neonila.Levitsky@churchdwight.com" />
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" value="RE: Lakewood mouthrinse implementation — TFF sensory validation proposal" />
+        <label for="body">Message</label>
+        <textarea id="body"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <a href="/toolkit">Toolkit</a>
+      <button type="button" class="secondary" onclick="resetBody()">Reset</button>
+      <button type="button" onclick="copyFull()">Copy email</button>
+      <button type="button" onclick="copyBody()">Copy body</button>
+    </div>
+    <div class="toast" id="toast">Copied</div>
+    <script>
+      var body = "Hi Ross,\n\n" +
+        "Thank you for the detailed variant schedule — that is very helpful for planning. We have put together a formal sensory validation proposal for the Lakewood mouthrinse implementation, and I am sharing it here for your review with Neonila and the R&D team.\n\n" +
+        "OUR UNDERSTANDING\n" +
+        "TheraBreath is bringing mouthrinse production to Lakewood NJ using the same formulations and materials — including flavors supplied by The Flavor Factory. The goal is to confirm that taste is not impacted by the new manufacturing site, and if a difference exists, to characterize what it is. We fully agree this warrants a robust, documented approach — not just informal tasting.\n\n" +
+        "PROPOSED VALIDATION PLAN (4-RUNG ESCALATION)\n\n" +
+        "1. Expert screening (your team)\n" +
+        "   Same workflow you use in NPD — side-by-side tasting of Lakewood trial vs reference site. We provide a simple same/different screen form and align on blind coding. This is your go/no-go before formal panels.\n\n" +
+        "2. Triangle test — \"Is there a difference?\" (ISO 4120)\n" +
+        "   Primary statistical gate. Minimum 24–30 trained/semi-trained panelists. Two reference-site samples + one Lakewood sample, blind-coded. Forced choice: which is the odd sample? α = 0.05.\n" +
+        "   · Not significant → site parity confirmed for that variant\n" +
+        "   · Significant → escalate to Rung 3\n\n" +
+        "3. Blind paired comparison — \"What is the difference?\"\n" +
+        "   Duo-trio (match-to-reference) plus attribute evaluation on 7-point scales: mint intensity, cooling, sweetness, mouthfeel, aftertaste, herbal notes, chlorite character. Produces a flavor fingerprint delta report — not just \"different,\" but how Lakewood reads vs reference.\n\n" +
+        "4. Consumer validation (tier-A variants only)\n" +
+        "   For flagship SKUs where analytical difference is confirmed: Icy Mint, Dazzling Mint, Sparkle Mint. 100+ blind respondents — overall liking and purchase intent. Confirms business significance.\n\n" +
+        "VARIANT SCHEDULE (ALIGNED TO YOUR TIMELINE)\n" +
+        "We have built a live tracker matching your trial dates, with sample arrival estimated 1–2 weeks after each trial:\n\n" +
+        "· Invigorating Icy Mint — end Jun trial → ~early Jul samples [Tier A]\n" +
+        "· Mild Mint — end Jun [Tier B]\n" +
+        "· Rainforest Mint — end Jun [Tier B]\n" +
+        "· Whitening Dazzling Mint — early Jul [Tier A]\n" +
+        "· Overnight Chamomile Mint — mid Jul [Tier B]\n" +
+        "· Complete Revitalizing Mint — end Jul [Tier B]\n" +
+        "· Healthy Gums Clean Mint — early Sep [Tier B]\n" +
+        "· AntiCavity Sparkle Mint — mid Sep [Tier A]\n\n" +
+        "WHAT TFF PROVIDES\n" +
+        "· Reference-site retain samples for true A/B comparison (we supplied every flavor in the matrix)\n" +
+        "· Blind coding SOP + sample code generator\n" +
+        "· Print-ready triangle and blind comparison ballots\n" +
+        "· Significance calculator and results report template\n" +
+        "· Shared variant tracker with pass/fail scorecard per SKU\n" +
+        "· Chlorite-stability context to separate process shifts from flavor shifts\n\n" +
+        "Everything is in a shareable toolkit we built for this project:\n" +
+        "https://therabreath-visit-site.vercel.app/lakewood\n\n" +
+        "PROPOSED NEXT STEPS\n" +
+        "1. Review the proposal together — align on tier assignments and where panels run (Norco, Lakewood, or third party)\n" +
+        "2. Before first samples (~early July): confirm blind coding logistics and pull reference retain for wave 1 variants\n" +
+        "3. Per variant: expert screen → triangle → results within 48 hours of panel\n" +
+        "4. We can walk through the tracker and any early results during our July 8 visit\n" +
+        "5. September close-out: consolidated parity report across all 8 variants\n\n" +
+        "Happy to jump on a call before the visit to align. We want this to give R&D and Procurement the confidence the data supports.\n\n" +
+        "Best regards,\n\n" +
+        "Dan Wixted\n" +
+        "The Flavor Factory\n" +
+        "(951) 273-9877 · dan@flavorfactory.net";
+
+      document.getElementById('body').value = body;
+
+      function toast() {
+        var t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(function(){ t.classList.remove('show'); }, 2000);
+      }
+      function copyFull() {
+        var t = 'To: ' + document.getElementById('to').value + '\nCc: ' + document.getElementById('cc').value +
+          '\nSubject: ' + document.getElementById('subject').value + '\n\n' + document.getElementById('body').value;
+        navigator.clipboard.writeText(t).then(toast);
+      }
+      function copyBody() { navigator.clipboard.writeText(document.getElementById('body').value).then(toast); }
+      function resetBody() { document.getElementById('body').value = body; }
+    </script>
+  </body>
+</html>

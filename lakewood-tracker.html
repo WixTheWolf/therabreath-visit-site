@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Variant Tracker | Lakewood Site Parity</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f6fafc; color:var(--ink); padding-bottom:72px; }
+      header { padding:20px 24px; background:linear-gradient(135deg,var(--ink),#005f9e); color:#fff; }
+      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.2rem; }
+      header p { margin:6px 0 0; font-size:0.8rem; opacity:0.8; }
+      .toolbar { display:flex; flex-wrap:wrap; gap:8px; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
+      .toolbar a, .toolbar button { padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; }
+      .wrap { width:min(960px,calc(100vw - 32px)); margin:0 auto; padding:20px 0; }
+      .summary { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+      .stat { padding:16px; background:#fff; border:1px solid var(--line); border-radius:12px; text-align:center; }
+      .stat strong { display:block; font-family:"Sora",sans-serif; font-size:1.6rem; color:var(--blue); }
+      .stat span { font-size:0.72rem; color:var(--muted); }
+      .timeline { position:relative; padding-left:28px; }
+      .timeline::before { content:""; position:absolute; left:10px; top:8px; bottom:8px; width:2px; background:var(--line); }
+      .variant {
+        position:relative; margin-bottom:16px; padding:18px 20px;
+        background:#fff; border:1px solid var(--line); border-radius:14px;
+        box-shadow:0 8px 24px rgba(10,22,40,0.04);
+      }
+      .variant::before { content:""; position:absolute; left:-22px; top:22px; width:12px; height:12px; border-radius:50%; background:var(--line); border:2px solid #fff; box-shadow:0 0 0 2px var(--line); }
+      .variant.pass::before { background:var(--green); box-shadow:0 0 0 2px var(--green); }
+      .variant.flag::before { background:var(--orange); box-shadow:0 0 0 2px var(--orange); }
+      .variant.active::before { background:var(--blue); box-shadow:0 0 0 2px var(--blue); }
+      .v-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:12px; }
+      .v-head h2 { margin:0; font-family:"Sora",sans-serif; font-size:1rem; }
+      .tier { padding:4px 10px; border-radius:999px; font-size:0.64rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; }
+      .tier.a { background:#fef3f2; color:#b42318; }
+      .tier.b { background:#fff4e8; color:#c45c26; }
+      .dates { display:flex; flex-wrap:wrap; gap:8px; font-size:0.74rem; color:var(--muted); margin-bottom:12px; }
+      .dates b { color:var(--ink); }
+      .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+      .step { padding:8px 10px; border-radius:8px; background:#fafcfe; border:1px solid var(--line); font-size:0.68rem; text-align:center; cursor:pointer; transition:background 0.2s; }
+      .step.done { background:var(--green); color:#fff; border-color:var(--green); font-weight:700; }
+      .step.current { background:#e8f6fd; border-color:var(--blue); font-weight:700; color:var(--blue); }
+      .step.warn { background:#fff4e8; border-color:var(--orange); font-weight:700; color:#c45c26; }
+      .step-label { display:block; font-size:0.58rem; opacity:0.8; margin-bottom:2px; }
+      .status-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+      .status-row select { padding:6px 10px; border:1px solid var(--line); border-radius:8px; font-size:0.76rem; font-weight:600; }
+      .gantt { overflow-x:auto; margin-bottom:24px; padding:16px; background:#fff; border:1px solid var(--line); border-radius:14px; }
+      .gantt-row { display:grid; grid-template-columns:160px repeat(8,1fr); gap:4px; align-items:center; margin-bottom:6px; font-size:0.68rem; }
+      .gantt-row span:first-child { font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .bar-cell { height:18px; border-radius:4px; background:#eef4f8; }
+      .bar-cell.on { background:linear-gradient(90deg,var(--blue),var(--green)); }
+      .gantt-hdr { font-size:0.58rem; color:var(--muted); text-align:center; }
+      @media (max-width:700px) { .summary { grid-template-columns:repeat(2,1fr); } .steps { grid-template-columns:repeat(2,1fr); } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Lakewood variant tracker</h1>
+      <p>8 SKUs · trial timing from Ross Conroy · tap steps to update status</p>
+    </header>
+    <div class="toolbar">
+      <a href="/lakewood">Full plan</a>
+      <a href="/triangle">Triangle kit</a>
+      <a href="/blind">Blind kit</a>
+      <a href="/toolkit">Toolkit</a>
+      <button type="button" onclick="resetTracker()">Reset all</button>
+      <button type="button" onclick="exportTracker()">Copy status</button>
+    </div>
+    <div class="wrap">
+      <div class="summary" id="summary"></div>
+
+      <div class="gantt">
+        <div class="gantt-row"><span></span><span class="gantt-hdr">Jun</span><span class="gantt-hdr">Jul</span><span class="gantt-hdr"></span><span class="gantt-hdr"></span><span class="gantt-hdr"></span><span class="gantt-hdr"></span><span class="gantt-hdr">Aug</span><span class="gantt-hdr">Sep</span></div>
+        <div id="gantt"></div>
+      </div>
+
+      <div class="timeline" id="variants"></div>
+    </div>
+
+    <script>
+      var variants = [
+        { id:"icy", name:"Invigorating Icy Mint", trial:"End Jun (wk 3)", sample:"~early Jul", tier:"a", month:0, protocol:"Triangle + blind + consumer" },
+        { id:"mild", name:"Mild Mint", trial:"~end Jun", sample:"~early Jul", tier:"b", month:0, protocol:"Triangle + blind if flagged" },
+        { id:"rain", name:"Rainforest Mint", trial:"~end Jun", sample:"~early Jul", tier:"b", month:0, protocol:"Triangle + blind if flagged" },
+        { id:"dazz", name:"Whitening Dazzling Mint", trial:"~early Jul", sample:"~mid Jul", tier:"a", month:1, protocol:"Triangle + blind + consumer" },
+        { id:"cham", name:"Overnight Chamomile Mint", trial:"~mid Jul", sample:"~late Jul", tier:"b", month:1, protocol:"Triangle + blind if flagged" },
+        { id:"revit", name:"Complete Revitalizing Mint", trial:"~end Jul", sample:"~early Aug", tier:"b", month:2, protocol:"Triangle + blind if flagged" },
+        { id:"gums", name:"Healthy Gums Clean Mint", trial:"~early Sep", sample:"~mid Sep", tier:"b", month:3, protocol:"Triangle + blind if flagged" },
+        { id:"spark", name:"AntiCavity Sparkle Mint", trial:"~mid Sep", sample:"~late Sep", tier:"a", month:3, protocol:"Triangle + blind + consumer" }
+      ];
+
+      var steps = ["expert","triangle","blind","parity"];
+
+      function load() {
+        try { return JSON.parse(localStorage.getItem('tff-lakewood') || '{}'); }
+        catch (e) { return {}; }
+      }
+      function save(d) { localStorage.setItem('tff-lakewood', JSON.stringify(d)); }
+
+      function getStatus(id) {
+        var d = load();
+        return d[id] || { steps:{}, result:'pending' };
+      }
+
+      function toggleStep(vid, step) {
+        var d = load();
+        if (!d[vid]) d[vid] = { steps:{}, result:'pending' };
+        d[vid].steps[step] = !d[vid].steps[step];
+        save(d);
+        render();
+      }
+
+      function setResult(vid, val) {
+        var d = load();
+        if (!d[vid]) d[vid] = { steps:{}, result:'pending' };
+        d[vid].result = val;
+        save(d);
+        render();
+      }
+
+      function render() {
+        var pass = 0, flag = 0, active = 0, pending = 0;
+        variants.forEach(function(v) {
+          var s = getStatus(v.id);
+          if (s.result === 'pass') pass++;
+          else if (s.result === 'flag') flag++;
+          else if (s.steps.expert || s.steps.triangle) active++;
+          else pending++;
+        });
+
+        document.getElementById('summary').innerHTML =
+          '<div class="stat"><strong>' + variants.length + '</strong><span>Total variants</span></div>' +
+          '<div class="stat"><strong>' + pass + '</strong><span>Parity confirmed</span></div>' +
+          '<div class="stat"><strong>' + flag + '</strong><span>Flagged</span></div>' +
+          '<div class="stat"><strong>' + (active + pending) + '</strong><span>In pipeline</span></div>';
+
+        document.getElementById('gantt').innerHTML = variants.map(function(v) {
+          var cells = '';
+          for (var m = 0; m < 8; m++) {
+            cells += '<div class="bar-cell' + (m === v.month || m === v.month + 1 ? ' on' : '') + '"></div>';
+          }
+          return '<div class="gantt-row"><span>' + v.name.replace(' Mint','') + '</span>' + cells + '</div>';
+        }).join('');
+
+        document.getElementById('variants').innerHTML = variants.map(function(v) {
+          var s = getStatus(v.id);
+          var cls = s.result === 'pass' ? 'pass' : s.result === 'flag' ? 'flag' : (s.steps.expert ? 'active' : '');
+          var stepHtml = steps.map(function(st) {
+            var done = s.steps[st];
+            var cur = !done && steps.slice(0, steps.indexOf(st)).every(function(x){ return s.steps[x]; });
+            return '<div class="step' + (done ? ' done' : cur ? ' current' : '') + '" onclick="toggleStep(\'' + v.id + '\',\'' + st + '\')">' +
+              '<span class="step-label">' + st + '</span>' + (done ? '✓' : st === 'expert' ? 'Screen' : st === 'triangle' ? '△' : st === 'blind' ? 'Blind' : 'Done') + '</div>';
+          }).join('');
+
+          return '<article class="variant ' + cls + '">' +
+            '<div class="v-head"><h2>' + v.name + '</h2><span class="tier ' + v.tier + '">Tier ' + v.tier.toUpperCase() + '</span></div>' +
+            '<div class="dates"><span><b>Trial:</b> ' + v.trial + '</span><span><b>Samples ~:</b> ' + v.sample + '</span><span><b>Protocol:</b> ' + v.protocol + '</span></div>' +
+            '<div class="steps">' + stepHtml + '</div>' +
+            '<div class="status-row"><label>Parity result:</label>' +
+            '<select onchange="setResult(\'' + v.id + '\',this.value)">' +
+            '<option value="pending"' + (s.result==='pending'?' selected':'') + '>Pending</option>' +
+            '<option value="pass"' + (s.result==='pass'?' selected':'') + '>Pass — parity confirmed</option>' +
+            '<option value="flag"' + (s.result==='flag'?' selected':'') + '>Flag — difference found</option>' +
+            '</select></div></article>';
+        }).join('');
+      }
+
+      function resetTracker() {
+        if (confirm('Reset all variant status?')) { localStorage.removeItem('tff-lakewood'); render(); }
+      }
+
+      function exportTracker() {
+        var text = variants.map(function(v) {
+          var s = getStatus(v.id);
+          var done = steps.filter(function(st){ return s.steps[st]; }).join(', ');
+          return v.name + ' | ' + s.result + ' | steps: ' + (done || 'none');
+        }).join('\n');
+        navigator.clipboard.writeText(text).then(function(){ alert('Status copied'); });
+      }
+
+      render();
+    </script>
+  </body>
+</html>

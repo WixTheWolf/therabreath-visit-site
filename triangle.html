@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Triangle Test Kit | Lakewood Site Parity</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --pass:#edf8e8; --fail:#fef3f2; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f6fafc; color:var(--ink); padding-bottom:72px; }
+      .toolbar { position:sticky; top:0; z-index:10; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
+      .toolbar a, .toolbar button { padding:9px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .wrap { width:min(900px,calc(100vw - 32px)); margin:0 auto; padding:24px 0; }
+      h1 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:1.4rem; }
+      .sub { margin:0 0 20px; font-size:0.86rem; color:var(--muted); }
+      .tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+      .tab { padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:#fff; font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; cursor:pointer; }
+      .tab.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+      .panel { display:none; }
+      .panel.on { display:block; }
+      .card { padding:18px; background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:16px; }
+      .card h2 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:0.95rem; }
+      .card p, .card li { font-size:0.84rem; line-height:1.55; color:#344054; }
+      .card ul, .card ol { margin:8px 0 0; padding-left:20px; }
+      .calc { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+      label { display:block; font-size:0.72rem; font-weight:700; color:var(--muted); margin-bottom:4px; text-transform:uppercase; }
+      input, select { width:100%; padding:10px; border:1px solid var(--line); border-radius:8px; font:inherit; margin-bottom:10px; }
+      .result { padding:16px; border-radius:10px; font-size:0.9rem; font-weight:600; text-align:center; }
+      .result.pass { background:var(--pass); color:#2d6a3f; }
+      .result.fail { background:var(--fail); color:#b42318; }
+      .result.pending { background:#f0f9fd; color:var(--blue); }
+      .codes { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+      .code { padding:10px 16px; background:var(--ink); color:#fff; border-radius:8px; font-family:"Sora",sans-serif; font-weight:800; font-size:1.1rem; letter-spacing:0.08em; }
+      .ballot-sheet { display:grid; gap:20px; padding:20px; justify-items:center; }
+      .ballot {
+        width:8.5in; padding:0.4in;
+        background:#fff; border:1px solid var(--line);
+        box-shadow:0 12px 40px rgba(10,22,40,0.08);
+        page-break-after:always;
+      }
+      .ballot h2 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:1rem; }
+      .ballot .meta { font-size:0.68rem; color:var(--muted); margin-bottom:16px; }
+      .samples { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:16px 0; }
+      .sample { text-align:center; padding:14px 8px; border:2px solid var(--line); border-radius:10px; }
+      .sample b { display:block; font-family:"Sora",sans-serif; font-size:1.4rem; margin-bottom:6px; }
+      .sample span { font-size:0.68rem; color:var(--muted); }
+      .choice { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0; }
+      .choice label { display:flex; align-items:center; justify-content:center; gap:6px; padding:10px; border:1px solid var(--ink); border-radius:8px; font-size:0.82rem; font-weight:600; text-transform:none; }
+      .field-line { border-bottom:1px solid var(--ink); height:24px; margin:8px 0 14px; }
+      @media print { body{background:#fff;padding:0} .toolbar,.tabs,.no-print{display:none!important} .panel{display:block!important} .panel:not(#print-panel){display:none!important} .ballot-sheet{padding:0;gap:0} .ballot{border:none;box-shadow:none} }
+      @page { size:letter portrait; margin:0.35in; }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Triangle test</strong> · ISO 4120 · Lakewood site parity</span>
+      <div>
+        <a href="/lakewood">Plan</a>
+        <a href="/toolkit">Toolkit</a>
+        <button class="no-print" onclick="window.print()">Print ballots</button>
+      </div>
+    </div>
+    <div class="wrap">
+      <h1>Triangle test kit</h1>
+      <p class="sub">Determine whether Lakewood production tastes different from reference site — blind, forced choice, statistically powered.</p>
+
+      <div class="tabs no-print">
+        <button class="tab on" data-tab="protocol">Protocol</button>
+        <button class="tab" data-tab="calculator">Calculator</button>
+        <button class="tab" data-tab="codes">Code generator</button>
+        <button class="tab" data-tab="ballots">Ballots</button>
+      </div>
+
+      <div id="protocol" class="panel on">
+        <div class="card">
+          <h2>When to use</h2>
+          <p>Primary gate after expert screening. Two samples from reference manufacturing site (A) + one from Lakewood trial (B), presented as three coded cups. Panelist identifies the odd sample. Balanced design: 50% of panelists get AAB, 50% get ABB.</p>
+        </div>
+        <div class="card">
+          <h2>Panel requirements</h2>
+          <ul>
+            <li>Minimum 24 panelists (30 recommended) — trained or semi-trained</li>
+            <li>α = 0.05 · target power 80% to detect pd = 30%</li>
+            <li>Same rinse volume (10 mL), 15-second swish, expectorate</li>
+            <li>Wash: water rinse + unsalted cracker · 2 min between sets</li>
+            <li>Room: neutral lighting, no fragrance, 20–22 °C</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Sample prep &amp; blinding</h2>
+          <ol>
+            <li>Pull reference-site retain + Lakewood trial pull at same age (±3 days if possible)</li>
+            <li>Code with random 3-digit numbers — never reuse codes across variants</li>
+            <li>Prepare in separate area; only the pour technician knows the key</li>
+            <li>Present in random order per panelist (use ballot set A or B)</li>
+            <li>Record: variant, panelist ID, ballot set, selected odd sample, correct/incorrect</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h2>Decision rule</h2>
+          <p><strong>Not significant (≥ pass):</strong> Correct count ≤ critical value at α=0.05 → no detectable difference; site parity confirmed for this variant.</p>
+          <p><strong>Significant (flag):</strong> Correct count &gt; critical value → escalate to <a href="/blind">blind paired comparison</a> within 5 business days. Do not release to consumer testing until fingerprint is understood.</p>
+        </div>
+      </div>
+
+      <div id="calculator" class="panel no-print">
+        <div class="card">
+          <h2>Significance calculator</h2>
+          <p>Enter panel results to determine if the triangle test is significant at α = 0.05.</p>
+          <div class="calc">
+            <div>
+              <label>Panelists (n)</label>
+              <input type="number" id="n" value="30" min="12" max="100" />
+              <label>Correct identifications</label>
+              <input type="number" id="correct" value="0" min="0" />
+            </div>
+            <div>
+              <label>Expected by chance (approx.)</label>
+              <input type="text" id="expected" readonly />
+              <label>Critical value (α=0.05)</label>
+              <input type="text" id="critical" readonly />
+            </div>
+          </div>
+          <div class="result pending" id="verdict">Enter correct count to evaluate</div>
+          <p style="font-size:0.72rem;color:var(--muted);margin:10px 0 0">Critical values from ISO 4120 / ASTM E1885. For n=24 critical=14, n=30 critical=16, n=36 critical=18.</p>
+        </div>
+      </div>
+
+      <div id="codes" class="panel no-print">
+        <div class="card">
+          <h2>Blind sample code generator</h2>
+          <p>Generate unique 3-digit codes for this session. Write codes on cups — keep key sheet separate.</p>
+          <label>How many codes?</label>
+          <input type="number" id="codeCount" value="6" min="3" max="20" />
+          <button onclick="genCodes()" style="padding:10px 18px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-family:Sora,sans-serif;font-weight:700;cursor:pointer">Generate codes</button>
+          <div class="codes" id="codeOut"></div>
+        </div>
+      </div>
+
+      <div id="ballots" class="panel">
+        <p class="sub no-print">Print one ballot per panelist. Set A = AAB configuration; Set B = ABB configuration.</p>
+        <div class="ballot-sheet" id="print-panel">
+          <!-- generated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var criticalTable = {12:8,15:9,18:11,21:12,24:14,27:15,30:16,33:17,36:18,39:19,42:20,45:21,48:22};
+
+      function getCritical(n) {
+        if (criticalTable[n]) return criticalTable[n];
+        var keys = Object.keys(criticalTable).map(Number).sort(function(a,b){return a-b});
+        for (var i = 0; i < keys.length; i++) {
+          if (n <= keys[i]) return criticalTable[keys[i]];
+        }
+        return Math.ceil(n * 0.44);
+      }
+
+      function updateCalc() {
+        var n = +document.getElementById('n').value || 30;
+        var c = +document.getElementById('correct').value || 0;
+        var exp = (n / 3).toFixed(1);
+        var crit = getCritical(n);
+        document.getElementById('expected').value = exp + ' (33% chance)';
+        document.getElementById('critical').value = crit + ' correct needed to call significant';
+        var v = document.getElementById('verdict');
+        if (c === 0 && document.activeElement !== document.getElementById('correct')) {
+          v.className = 'result pending';
+          v.textContent = 'Enter correct count to evaluate';
+        } else if (c > crit) {
+          v.className = 'result fail';
+          v.textContent = 'SIGNIFICANT — difference detected (p < 0.05). Escalate to blind paired test.';
+        } else {
+          v.className = 'result pass';
+          v.textContent = 'NOT SIGNIFICANT — site parity confirmed for this variant.';
+        }
+      }
+
+      document.getElementById('n').addEventListener('input', updateCalc);
+      document.getElementById('correct').addEventListener('input', updateCalc);
+      updateCalc();
+
+      function genCodes() {
+        var n = +document.getElementById('codeCount').value || 6;
+        var used = {}, out = [];
+        while (out.length < n) {
+          var c = String(100 + Math.floor(Math.random() * 900));
+          if (!used[c]) { used[c] = 1; out.push(c); }
+        }
+        document.getElementById('codeOut').innerHTML = out.map(function(c){ return '<span class="code">' + c + '</span>'; }).join('');
+      }
+
+      document.querySelectorAll('.tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
+          document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+          tab.classList.add('on');
+          document.getElementById(tab.dataset.tab).classList.add('on');
+        });
+      });
+
+      function ballot(set, num) {
+        var codes = ['___', '___', '___'];
+        return '<section class="ballot">' +
+          '<h2>Triangle test ballot · Set ' + set + '</h2>' +
+          '<p class="meta">Variant: _______________ · Panelist #: ' + String(num).padStart(2,'0') + ' · Date: _______</p>' +
+          '<p style="font-size:0.78rem;margin:0 0 8px">Taste all three samples. Two are the same, one is different. Circle the sample that is <strong>different</strong>.</p>' +
+          '<div class="samples">' +
+          codes.map(function(c,i){ return '<div class="sample"><b>' + c + '</b><span>Sample ' + (i+1) + '</span></div>'; }).join('') +
+          '</div>' +
+          '<p style="font-size:0.76rem;font-weight:600">The odd sample is:</p>' +
+          '<div class="choice">' +
+          ['Sample 1','Sample 2','Sample 3'].map(function(s){ return '<label><input type="radio" disabled /> ' + s + '</label>'; }).join('') +
+          '</div>' +
+          '<p style="font-size:0.72rem">Optional note (different in what way?):</p>' +
+          '<div class="field-line"></div>' +
+          '<p style="font-size:0.62rem;color:#888;margin:0">TFF × TheraBreath · Lakewood site parity · Confidential</p>' +
+          '</section>';
+      }
+
+      var html = '';
+      for (var i = 1; i <= 6; i++) html += ballot('A (AAB)', i);
+      for (var j = 1; j <= 6; j++) html += ballot('B (ABB)', j);
+      document.getElementById('print-panel').innerHTML = html;
+    </script>
+  </body>
+</html>
