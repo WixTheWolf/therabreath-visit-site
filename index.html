@@ -629,18 +629,8 @@
         line-height: 1.45;
       }
 
-      .concepts {
-        display: grid;
-        grid-template-columns: repeat(5, minmax(280px, 1fr));
-        gap: 18px;
-        margin-top: 58px;
-        overflow-x: auto;
-        padding-bottom: 12px;
-      }
-
       .concept-card {
         overflow: hidden;
-        min-height: 590px;
       }
 
       .concept-art {
@@ -862,6 +852,448 @@
         font-size: 0.84rem;
       }
 
+      .agenda-timeline {
+        display: grid;
+        gap: 0;
+        margin-top: 52px;
+        max-width: 820px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .agenda-item {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 24px;
+        padding: 28px 0;
+        border-bottom: 1px solid var(--line);
+        align-items: start;
+      }
+
+      .agenda-item:last-child {
+        border-bottom: 0;
+      }
+
+      .agenda-time {
+        color: var(--blue);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .agenda-item h3 {
+        margin-bottom: 8px;
+        font-size: 1.35rem;
+        font-weight: 760;
+        letter-spacing: -0.016em;
+      }
+
+      .agenda-item p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      .pillar-deep {
+        margin-top: 72px;
+        padding-top: 72px;
+        border-top: 1px solid var(--line);
+      }
+
+      .pillar-deep-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 36px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .pillar-deep-header h3 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 780;
+        letter-spacing: -0.028em;
+      }
+
+      .data-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+      }
+
+      .data-card {
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #fff;
+      }
+
+      .data-card h4 {
+        margin: 0 0 18px;
+        font-size: 1.1rem;
+        font-weight: 760;
+        letter-spacing: -0.012em;
+      }
+
+      .bar-chart {
+        display: grid;
+        gap: 14px;
+      }
+
+      .bar-row {
+        display: grid;
+        grid-template-columns: 100px 1fr 48px;
+        gap: 12px;
+        align-items: center;
+        font-size: 0.88rem;
+        color: #475467;
+      }
+
+      .bar-track {
+        height: 12px;
+        border-radius: 999px;
+        background: #eef4f8;
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--bottle-blue), var(--copy-green));
+      }
+
+      .redundancy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .redundancy-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--soft-blue);
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 650;
+        color: #344054;
+      }
+
+      .redundancy-item.active-alt {
+        background: var(--soft-green);
+        border-color: rgba(95, 184, 50, 0.3);
+      }
+
+      .cert-timeline {
+        display: grid;
+        gap: 10px;
+      }
+
+      .cert-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: #f8fbfd;
+        font-size: 0.9rem;
+      }
+
+      .cert-item span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .stress-demo {
+        margin-top: 24px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #fff;
+        text-align: center;
+      }
+
+      .stress-btn {
+        margin-top: 16px;
+        padding: 12px 24px;
+        border: 0;
+        border-radius: 999px;
+        color: #fff;
+        background: var(--lid-orange);
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(245, 130, 32, 0.2);
+      }
+
+      .stress-status {
+        margin-top: 16px;
+        padding: 14px;
+        border-radius: 12px;
+        background: #fff5eb;
+        color: #b54708;
+        font-size: 0.9rem;
+        font-weight: 650;
+        display: none;
+      }
+
+      .stress-demo.active .stress-status {
+        display: block;
+      }
+
+      .stress-demo.active .redundancy-item[data-primary] {
+        opacity: 0.4;
+      }
+
+      .stress-demo.active .redundancy-item[data-alt] {
+        background: var(--soft-green);
+        border-color: rgba(95, 184, 50, 0.4);
+        box-shadow: 0 0 0 2px rgba(95, 184, 50, 0.2);
+      }
+
+      .facility-map {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 120px);
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .map-zone {
+        display: grid;
+        place-items: center;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-align: center;
+        color: #344054;
+      }
+
+      .map-zone.highlight {
+        background: linear-gradient(135deg, rgba(0, 143, 211, 0.12), rgba(95, 184, 50, 0.1));
+        border-color: rgba(0, 143, 211, 0.3);
+        color: var(--bottle-blue);
+      }
+
+      .map-zone.wide {
+        grid-column: span 2;
+      }
+
+      .otif-display {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .otif-display strong {
+        font-size: 3rem;
+        font-weight: 850;
+        letter-spacing: -0.04em;
+        color: var(--bottle-blue);
+      }
+
+      .sourcing-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .sourcing-tags span {
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(--soft-blue);
+        color: var(--bottle-blue);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .vision-timeline {
+        display: grid;
+        gap: 0;
+        margin-top: 32px;
+      }
+
+      .vision-milestone {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 20px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .vision-milestone:last-child {
+        border-bottom: 0;
+      }
+
+      .vision-year {
+        color: var(--orange);
+        font-size: 1.1rem;
+        font-weight: 850;
+      }
+
+      .vision-milestone h4 {
+        margin: 0 0 6px;
+        font-size: 1.15rem;
+        font-weight: 760;
+      }
+
+      .vision-milestone p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.45;
+        text-align: left;
+      }
+
+      .charter-box {
+        margin-top: 32px;
+        padding: clamp(28px, 4vw, 44px);
+        border: 1px solid rgba(0, 143, 211, 0.2);
+        border-radius: var(--radius-lg);
+        background:
+          radial-gradient(circle at 0% 0%, rgba(245, 130, 32, 0.1), transparent 14rem),
+          #fff;
+        text-align: center;
+      }
+
+      .charter-box p {
+        margin: 0;
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.35;
+        color: #2d3748;
+      }
+
+      .tasting-stations {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 52px;
+      }
+
+      .station-card {
+        padding: 32px 28px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: #fff;
+        text-align: center;
+        box-shadow: 0 14px 36px rgba(13, 27, 42, 0.05);
+      }
+
+      .station-card .station-num {
+        display: inline-flex;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--bottle-blue);
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+
+      .station-card h3 {
+        margin-bottom: 12px;
+        font-size: 1.5rem;
+        font-weight: 760;
+      }
+
+      .station-card p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .station-card ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: left;
+      }
+
+      .station-card li {
+        padding: 8px 0;
+        border-top: 1px solid var(--line);
+        color: #475467;
+        font-size: 0.92rem;
+      }
+
+      .hospitality-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+        margin-top: 52px;
+      }
+
+      .hosp-card {
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #fff;
+      }
+
+      .hosp-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.25rem;
+        font-weight: 760;
+      }
+
+      .hosp-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      .pillar-link {
+        display: inline-block;
+        margin-top: 16px;
+        color: var(--bottle-blue);
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .concepts {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 18px;
+        margin-top: 58px;
+      }
+
+      .concept-card {
+        min-height: auto;
+      }
+
+      .concept-tag {
+        display: inline-block;
+        margin-bottom: 8px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--soft-orange);
+        color: var(--orange);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
       @media (max-width: 980px) {
         .nav {
           padding: 0 20px;
@@ -884,8 +1316,22 @@
         .metrics,
         .pillars,
         .steps,
-        .visit-brief {
+        .visit-brief,
+        .data-grid,
+        .hospitality-grid,
+        .tasting-stations,
+        .redundancy-grid,
+        .facility-map {
           grid-template-columns: 1fr;
+        }
+
+        .agenda-item {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .map-zone.wide {
+          grid-column: span 1;
         }
 
         .hero-card {
@@ -902,8 +1348,9 @@
         <span>The Flavor Factory</span>
       </a>
       <nav class="nav-links" aria-label="Workshop sections">
-        <a href="#partnership">Partnership</a>
-        <a href="#capabilities">Capabilities</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#capabilities">Pillars</a>
+        <a href="#tasting">Tasting</a>
         <a href="#concepts">Concepts</a>
         <a href="#feedback">Feedback</a>
         <a class="nav-cta" href="#next">Next steps</a>
@@ -988,6 +1435,72 @@
         </div>
       </section>
 
+      <section id="agenda" class="soft">
+        <div class="container">
+          <p class="section-kicker">July 8 agenda</p>
+          <h2 class="section-title">One full day. Four pillars. Real co-creation.</h2>
+          <p class="section-copy">A structured working session built for R&amp;D and Procurement — facility tour, pillar presentations, themed tasting, and a collaborative workshop to close with clear next steps.</p>
+          <div class="agenda-timeline" aria-label="Visit schedule">
+            <article class="agenda-item">
+              <div class="agenda-time">8:00 AM</div>
+              <div>
+                <h3>Welcome &amp; Facility Tour</h3>
+                <p>Dedicated TheraBreath production room, recent investments, segregation and traceability walk-through. Dan Wixted leads with R&amp;D and operations leads.</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">9:30 AM</div>
+              <div>
+                <h3>Pillar 1: Resiliency &amp; Business Continuity</h3>
+                <p>Capacity planning, redundancy maps, quality certifications, and a live stress-test demo. 30–45 minutes + Q&amp;A.</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">10:30 AM</div>
+              <div>
+                <h3>Pillar 2: Innovation &amp; Technical Capabilities</h3>
+                <p>Oral care flavor library, trend insights, and proactive NPD roadmap. Interactive flavor creation preview.</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">11:30 AM</div>
+              <div>
+                <h3>Pillar 3: Supply Chain &amp; Operations</h3>
+                <p>Facility footprint, OTIF performance, sourcing strategy, and scalability for Church &amp; Dwight growth.</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">12:30 PM</div>
+              <div>
+                <h3>Lunch: Themed Tasting Experience</h3>
+                <p>Three stations — Classic Freshness, Innovation Lab, Functional Benefits. California-inspired menu, neutral crackers, professional sensory sheets.</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">2:00 PM</div>
+              <div>
+                <h3>Pillar 4: Partnership &amp; Growth Vision</h3>
+                <p>3–5 year roadmap, investment commitments, and a partnership charter discussion. Alignment on how TFF grows with TheraBreath.</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">3:00 PM</div>
+              <div>
+                <h3>Interactive Co-Creation Workshop</h3>
+                <p>Live flavor blending session. Your team tweaks samples, scores concepts, and shapes the innovation pipeline together.</p>
+              </div>
+            </article>
+            <article class="agenda-item">
+              <div class="agenda-time">4:00 PM</div>
+              <div>
+                <h3>Action Plan &amp; Next Steps</h3>
+                <p>Prioritized winners, pilot batch timeline, and follow-up deliverables. Same-day thank-you and summary deck.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="capabilities">
         <div class="container">
           <p class="section-kicker">Capabilities</p>
@@ -1006,6 +1519,7 @@
                 <li>Disaster recovery and contingency planning</li>
               </ul>
               <div class="answer">Built to answer: capacity, redundancy, recovery</div>
+              <a class="pillar-link" href="#pillar-1">View deep dive</a>
             </article>
             <article class="pillar-card">
               <span class="pillar-index">2</span>
@@ -1019,6 +1533,7 @@
                 <li>Seasonal flavors, new formats, and adjacencies</li>
               </ul>
               <div class="answer">Built to answer: creation, insights, formats</div>
+              <a class="pillar-link" href="#pillar-2">View deep dive</a>
             </article>
             <article class="pillar-card">
               <span class="pillar-index">3</span>
@@ -1031,6 +1546,7 @@
                 <li>Multi-site and geographic coverage</li>
               </ul>
               <div class="answer">Built to answer: footprint, sourcing, OTIF</div>
+              <a class="pillar-link" href="#pillar-3">View deep dive</a>
             </article>
             <article class="pillar-card">
               <span class="pillar-index">4</span>
@@ -1043,8 +1559,182 @@
                 <li>Vision for supporting Therabreath growth over the next 3–5 years</li>
               </ul>
               <div class="answer">Built to answer: alignment, transparency, investment</div>
+              <a class="pillar-link" href="#pillar-4">View deep dive</a>
             </article>
           </div>
+
+          <div class="pillar-deep" id="pillar-1">
+            <div class="pillar-deep-header">
+              <span class="pillar-index">1</span>
+              <h3>Resiliency &amp; Business Continuity</h3>
+            </div>
+            <p class="section-copy">Build trust with proof — capacity ready for 2–3x growth, redundancy at every critical point, and systems that keep TheraBreath supply uninterrupted.</p>
+            <div class="data-grid">
+              <article class="data-card">
+                <h4>Capacity scenarios</h4>
+                <div class="bar-chart">
+                  <div class="bar-row"><span>Current</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div><span>55%</span></div>
+                  <div class="bar-row"><span>2x growth</span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span>78%</span></div>
+                  <div class="bar-row"><span>3x growth</span><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div><span>92%</span></div>
+                </div>
+                <p class="section-note" style="margin-top:16px;text-align:left">Headroom built into dedicated TheraBreath production with phased scale-up plan.</p>
+              </article>
+              <article class="data-card">
+                <h4>Quality certifications</h4>
+                <div class="cert-timeline">
+                  <div class="cert-item"><b>SQF Level 2</b><span>Active</span></div>
+                  <div class="cert-item"><b>FDA registered</b><span>Active</span></div>
+                  <div class="cert-item"><b>Kosher certified</b><span>Active</span></div>
+                  <div class="cert-item"><b>Organic handling</b><span>Capable</span></div>
+                </div>
+              </article>
+              <article class="data-card" style="grid-column:1/-1">
+                <h4>Redundancy map</h4>
+                <div class="stress-demo" id="stress-demo">
+                  <div class="redundancy-grid">
+                    <div class="redundancy-item" data-primary>Primary mint suppliers (3)</div>
+                    <div class="redundancy-item" data-alt>Alt sourcing: EU + domestic</div>
+                    <div class="redundancy-item" data-primary>Production line A</div>
+                    <div class="redundancy-item" data-alt>Backup line B</div>
+                    <div class="redundancy-item">Cross-trained QC leads</div>
+                    <div class="redundancy-item" data-alt>48hr disaster recovery</div>
+                  </div>
+                  <button class="stress-btn" type="button" id="stress-btn">Run stress test: simulate supply disruption</button>
+                  <div class="stress-status" id="stress-status">Disruption detected on primary supplier. Alternative sourcing activated in 4 hours. Production continuity maintained.</div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="pillar-deep" id="pillar-2">
+            <div class="pillar-deep-header">
+              <span class="pillar-index">2</span>
+              <h3>Innovation &amp; Technical Capabilities</h3>
+            </div>
+            <p class="section-copy">Proactive partners who bring ideas before you ask — oral care flavor science, trend intelligence, and a pipeline built for Icy Mint, Dazzling Mint, Healthy Gums, and what comes next.</p>
+            <div class="data-grid">
+              <article class="data-card">
+                <h4>Oral care flavor library</h4>
+                <ul class="clean-list">
+                  <li>200+ mint and cooling profiles calibrated for rinse and paste</li>
+                  <li>Alcohol-free, zero-sugar, and functional carrier expertise</li>
+                  <li>Whitening enhancer and calming botanical blends</li>
+                  <li>Seasonal and limited-edition rapid prototyping</li>
+                </ul>
+              </article>
+              <article class="data-card">
+                <h4>Trend intelligence 2027–2030</h4>
+                <ul class="clean-list">
+                  <li>Calming chamomile-mint for evening routines</li>
+                  <li>Zero-sugar cooling agents with longer freshness</li>
+                  <li>Global and ethnic adjacencies for brand stretch</li>
+                  <li>Functional flavors: gums health, whitening, hydration</li>
+                </ul>
+              </article>
+              <article class="data-card" style="grid-column:1/-1;background:var(--soft-green)">
+                <h4>Live flavor creation session</h4>
+                <p style="color:#475467;line-height:1.55;text-align:left;margin:0">During the afternoon workshop, your team blends and tweaks samples in our flavor lab. Pipettes, beakers, and mint compounds on the bench — you shape the profile, we scale it.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="pillar-deep" id="pillar-3">
+            <div class="pillar-deep-header">
+              <span class="pillar-index">3</span>
+              <h3>Supply Chain &amp; Operations</h3>
+            </div>
+            <p class="section-copy">Scalable, visible, and efficient — a Norco facility built for oral care with recent upgrades, strong OTIF, and geographic sourcing diversity.</p>
+            <div class="data-grid">
+              <article class="data-card">
+                <h4>Facility footprint</h4>
+                <div class="facility-map">
+                  <div class="map-zone highlight wide">Dedicated TheraBreath production room</div>
+                  <div class="map-zone">Mixing &amp; blending</div>
+                  <div class="map-zone">QC laboratory</div>
+                  <div class="map-zone">Warehousing</div>
+                  <div class="map-zone wide">R&amp;D flavor lab</div>
+                </div>
+              </article>
+              <article class="data-card">
+                <h4>Performance &amp; sourcing</h4>
+                <div class="otif-display"><strong>98.7%</strong><span>OTIF trailing 12 months</span></div>
+                <p style="color:var(--muted);font-size:0.92rem;line-height:1.45;text-align:left;margin:0 0 12px">Lead times held steady through volume increases. Full traceability from raw material lot to finished flavor batch.</p>
+                <div class="sourcing-tags">
+                  <span>North America</span><span>Europe</span><span>Asia-Pacific</span><span>Multi-supplier</span>
+                </div>
+              </article>
+              <article class="data-card" style="grid-column:1/-1">
+                <h4>Recent investments</h4>
+                <div class="visit-brief" style="margin-top:16px">
+                  <article class="brief-card" style="padding:20px"><h3 style="font-size:1.2rem">Before</h3><p style="font-size:0.92rem">Shared production lines, manual batch logging</p></article>
+                  <article class="brief-card accent" style="padding:20px"><h3 style="font-size:1.2rem">After</h3><p style="font-size:0.92rem">Dedicated TB room, automated filling, digital lot tracking, expanded cold storage</p></article>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="pillar-deep" id="pillar-4">
+            <div class="pillar-deep-header">
+              <span class="pillar-index">4</span>
+              <h3>Partnership &amp; Growth Vision</h3>
+            </div>
+            <p class="section-copy">Aligned emotionally and operationally — a 3–5 year roadmap growing with TheraBreath as Church &amp; Dwight scales oral care.</p>
+            <div class="charter-box">
+              <p>We commit to investing in dedicated capacity, proactive innovation, and transparent communication — so TheraBreath never has to wonder if its flavor partner can keep pace.</p>
+            </div>
+            <div class="vision-timeline">
+              <article class="vision-milestone"><div class="vision-year">2026</div><div><h4>Capabilities proven</h4><p>July visit, co-created innovation roadmap, pilot batches for top concepts.</p></div></article>
+              <article class="vision-milestone"><div class="vision-year">2027</div><div><h4>Pipeline acceleration</h4><p>Seasonal limited editions, format expansions (rinse, paste, adjacencies), joint sensory panels.</p></div></article>
+              <article class="vision-milestone"><div class="vision-year">2028</div><div><h4>Scale partnership</h4><p>Capacity expansion aligned to TheraBreath volume forecasts. Co-branded innovation sprints.</p></div></article>
+              <article class="vision-milestone"><div class="vision-year">2029</div><div><h4>Category leadership</h4><p>Functional flavor platform — calming, whitening, kids, adult indulgence — built together.</p></div></article>
+              <article class="vision-milestone"><div class="vision-year">2030</div><div><h4>Strategic anchor</h4><p>TFF as long-term flavor innovation partner for TheraBreath's full oral care portfolio.</p></div></article>
+            </div>
+            <p class="section-note" style="margin-top:28px">Your hosts: Dan Wixted (President), Ryan Wixted, Alex Wixted, Matt Wixted — plus R&amp;D and operations leads.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tasting" class="soft">
+        <div class="container">
+          <p class="section-kicker">Tasting experience</p>
+          <h2 class="section-title">Three stations. One memorable lunch.</h2>
+          <p class="section-copy">A themed sensory journey — current favorites, bold prototypes, and functional directions. Neutral crackers, water, and professional scoring sheets at every station.</p>
+          <div class="tasting-stations">
+            <article class="station-card">
+              <div class="station-num">1</div>
+              <h3>Classic Freshness</h3>
+              <p>Anchor the conversation in what TheraBreath does best.</p>
+              <ul>
+                <li>Icy Mint — signature cooling</li>
+                <li>Dazzling Mint — bright freshness</li>
+                <li>Healthy Gums — herbal functional</li>
+                <li>Current line benchmarks</li>
+              </ul>
+            </article>
+            <article class="station-card">
+              <div class="station-num">2</div>
+              <h3>Innovation Lab</h3>
+              <p>Eight to ten new concepts to taste and react to.</p>
+              <ul>
+                <li>Berry Bliss, Tropical Oasis</li>
+                <li>Overnight Calm Mint</li>
+                <li>Tropical Whitening Burst</li>
+                <li>All prototype cards below</li>
+              </ul>
+            </article>
+            <article class="station-card">
+              <div class="station-num">3</div>
+              <h3>Functional Benefits</h3>
+              <p>Freshness with a reason beyond mint.</p>
+              <ul>
+                <li>Calming evening profiles</li>
+                <li>Whitening-enhanced cooling</li>
+                <li>Winter Frost seasonal LE</li>
+                <li>Healthy Gums Herbal</li>
+              </ul>
+            </article>
+          </div>
+          <p class="section-note" style="margin-top:32px">Photo op: group tasting with branded backdrop. Branded notebooks with trend insights at each seat.</p>
         </div>
       </section>
 
@@ -1066,8 +1756,8 @@
       <section id="concepts">
         <div class="container">
           <p class="section-kicker">Prototype concepts</p>
-          <h2 class="section-title">Five ideas to taste and talk through.</h2>
-          <p class="section-copy">These are starting points. Each one is meant to stretch the Therabreath world a little while still finishing clean and fresh.</p>
+          <h2 class="section-title">Ten ideas to taste and talk through.</h2>
+          <p class="section-copy">Current TheraBreath benchmarks plus eight to ten new concepts — each meant to stretch the brand while finishing clean, fresh, and alcohol-free.</p>
           <p class="section-note">None of these are precious. The point is to taste, react, edit, and decide what is worth building.</p>
 
           <div class="concepts">
@@ -1121,6 +1811,61 @@
                 <p class="claim">“Sweet Escape, Clean Finish”</p>
               </div>
             </article>
+            <article class="concept-card" style="--accent: #9b8ec4">
+              <div class="concept-art"></div>
+              <div class="concept-body">
+                <span class="concept-tag">Functional</span>
+                <h3>Overnight Calm Mint</h3>
+                <p class="sub">Chamomile + Lavender + Soft Mint Finish</p>
+                <div class="profile"><div class="profile-row"><b>Top</b><span>Gentle chamomile florals</span></div><div class="profile-row"><b>Heart</b><span>Lavender calm, low intensity</span></div><div class="profile-row"><b>Finish</b><span>Whisper-light cooling mint</span></div></div>
+                <p>Evening routine positioning — soothing without sacrificing the fresh finish.</p>
+                <p class="claim">“Wind Down, Wake Up Fresh”</p>
+              </div>
+            </article>
+            <article class="concept-card" style="--accent: #00c9a7">
+              <div class="concept-art"></div>
+              <div class="concept-body">
+                <span class="concept-tag">Whitening</span>
+                <h3>Tropical Whitening Burst</h3>
+                <p class="sub">Pineapple + Coconut + Bright Cooling Mint</p>
+                <div class="profile"><div class="profile-row"><b>Top</b><span>Bright pineapple sparkle</span></div><div class="profile-row"><b>Heart</b><span>Creamy coconut roundness</span></div><div class="profile-row"><b>Finish</b><span>Extra-bright cooling cue</span></div></div>
+                <p>Vacation energy with a whitening brightness signal in the finish.</p>
+                <p class="claim">“Bright Smile, Tropical Fresh”</p>
+              </div>
+            </article>
+            <article class="concept-card" style="--accent: #00b4d8">
+              <div class="concept-art"></div>
+              <div class="concept-body">
+                <span class="concept-tag">Core line</span>
+                <h3>Icy Peak Refresh</h3>
+                <p class="sub">Extra-Cooling Signature Mint</p>
+                <div class="profile"><div class="profile-row"><b>Top</b><span>Immediate icy hit</span></div><div class="profile-row"><b>Heart</b><span>Classic TheraBreath mint body</span></div><div class="profile-row"><b>Finish</b><span>Extended cooling duration</span></div></div>
+                <p>A line extension for the Icy Mint loyalist — more peak, same clean DNA.</p>
+                <p class="claim">“Peak Fresh, Zero Compromise”</p>
+              </div>
+            </article>
+            <article class="concept-card" style="--accent: #a8d8ea">
+              <div class="concept-art"></div>
+              <div class="concept-body">
+                <span class="concept-tag">Seasonal LE</span>
+                <h3>Winter Frost</h3>
+                <p class="sub">Peppermint + Subtle Vanilla + Deep Cool</p>
+                <div class="profile"><div class="profile-row"><b>Top</b><span>Sharp peppermint lift</span></div><div class="profile-row"><b>Heart</b><span>Soft vanilla warmth</span></div><div class="profile-row"><b>Finish</b><span>Long icy freshness</span></div></div>
+                <p>Limited-edition winter run — festive without reading as candy.</p>
+                <p class="claim">“Limited Frost, Unlimited Fresh”</p>
+              </div>
+            </article>
+            <article class="concept-card" style="--accent: #2d6a4f">
+              <div class="concept-art"></div>
+              <div class="concept-body">
+                <span class="concept-tag">Functional</span>
+                <h3>Healthy Gums Herbal</h3>
+                <p class="sub">Tea Tree + Eucalyptus + Gentle Mint</p>
+                <div class="profile"><div class="profile-row"><b>Top</b><span>Clean herbal eucalyptus</span></div><div class="profile-row"><b>Heart</b><span>Tea tree clarity</span></div><div class="profile-row"><b>Finish</b><span>Soft mint, gum-health cue</span></div></div>
+                <p>Extends the Healthy Gums territory with a more clinical-fresh herbal profile.</p>
+                <p class="claim">“Healthy Gums, Herbal Fresh”</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1139,6 +1884,32 @@
         </div>
       </section>
 
+      <section id="hospitality">
+        <div class="container">
+          <p class="section-kicker">Hospitality</p>
+          <h2 class="section-title">Warm welcome. Premium details.</h2>
+          <p class="section-copy">Every touchpoint says we are prepared, invested, and easy to work with.</p>
+          <div class="hospitality-grid">
+            <article class="hosp-card">
+              <h3>California-inspired lunch</h3>
+              <p>Fresh, light menu designed around tasting — neutral palate cleansers, seasonal produce, and plenty of water between stations.</p>
+            </article>
+            <article class="hosp-card">
+              <h3>Custom sample kits</h3>
+              <p>Take-home TheraBreath-inspired flavor samples in elegant packaging, plus branded notebooks pre-filled with trend insights.</p>
+            </article>
+            <article class="hosp-card">
+              <h3>Dedicated host team</h3>
+              <p>Dan, Ryan, Alex, and Matt Wixted plus R&amp;D leads. Dedicated tech support for presentations and live demos.</p>
+            </article>
+            <article class="hosp-card">
+              <h3>Follow-up within 24 hours</h3>
+              <p>Same-day thank-you email, summary deck, sensory scores compiled, and a co-created innovation roadmap document.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="feedback" class="soft">
         <div class="container">
           <p class="section-kicker">Your feedback</p>
@@ -1153,6 +1924,11 @@
                 <tr><td>Crisp Cucumber Mint</td><td></td><td></td><td></td><td></td></tr>
                 <tr><td>Citrus Ginger Spark</td><td></td><td></td><td></td><td></td></tr>
                 <tr><td>Dessert Mint Dream</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Overnight Calm Mint</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Tropical Whitening Burst</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Icy Peak Refresh</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Winter Frost</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>Healthy Gums Herbal</td><td></td><td></td><td></td><td></td></tr>
               </tbody>
             </table>
             <aside class="qr-card">
@@ -1191,7 +1967,17 @@
       </section>
     </main>
 
-    <footer class="footer">Confidential – Prepared for Flavor Factory X Therabreath | July 2026</footer>
+    <footer class="footer">Confidential – Prepared for Flavor Factory X Therabreath | July 8, 2026</footer>
+    <script>
+      document.getElementById("stress-btn")?.addEventListener("click", function () {
+        var demo = document.getElementById("stress-demo");
+        var status = document.getElementById("stress-status");
+        demo.classList.toggle("active");
+        this.textContent = demo.classList.contains("active")
+          ? "Reset simulation"
+          : "Run stress test: simulate supply disruption";
+      });
+    </script>
   </body>
 </html>
 
