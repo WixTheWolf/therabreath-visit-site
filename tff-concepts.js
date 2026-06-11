@@ -1,11 +1,11 @@
 /**
- * Workshop prototype concepts — stability tiers + mystery game metadata.
+ * Workshop prototype concepts — stability tiers + Blind Flavor Mapping metadata.
  * Bump setMeta.version when cup lineup or codes change before the visit.
  */
 (function (global) {
   var SET_META = {
     version: 3,
-    label: "July 8 workshop · cipher v3",
+    label: "July 8 workshop · blind mapping v3",
     updated: "2026-06-11"
   };
 

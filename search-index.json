@@ -67,7 +67,7 @@
     "type": "answer",
     "category": "Pillar 1 · Resiliency",
     "q": "What quality certifications and audits do you maintain?",
-    "snippet": "SQF program (auditable), GMP , FDA registered facility . Kosher, Halal, and Organic certifications are evaluated per formula as part of the development brief — not bolted on after scale-up. Documentat",
+    "snippet": "SQF (GFSI-recognized program), GMP (documented practices), FDA-registered Norco facility. Kosher, Halal, and Organic status evaluated per formula as part of the development brief — not bolted on after scale-up. Documentat",
     "href": "/answers",
     "badge": "ready"
   },
@@ -219,7 +219,7 @@
     "type": "answer",
     "category": "Pillar 4 · Partnership",
     "q": "What deliverables do we receive after July 8?",
-    "snippet": "Thank-you + summary within 24 hours (follow-up email template) Sensory scores compiled from live scorer + ballots Co-created innovation roadmap document Pilot batch plan on selected concepts Lakewood ",
+    "snippet": "Thank-you + summary within 24 hours (follow-up email template) Sensory scores compiled from Prototype Scorecard + ballots Co-created innovation roadmap document Pilot batch plan on selected concepts Lakewood ",
     "href": "/answers",
     "badge": "ready"
   },
@@ -674,7 +674,7 @@
   {
     "type": "answer",
     "category": "Day-of",
-    "q": "Where does Matt see live concept scores from all phones?",
+    "q": "Where does Matt see the live sensory summary from all phones?",
     "snippet": "Team password → /score-live — live sensory summary, room aggregate, per-rater detail, CSV export. Guests on /score sync automatically; aggregate also shows on their phones.",
     "href": "/score-live",
     "badge": "ready"

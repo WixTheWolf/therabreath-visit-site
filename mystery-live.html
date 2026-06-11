@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Blind Mapping Live · Admin | TFF</title>
+    <title>Blind Flavor Mapping · Live Summary · Admin | TFF</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
     <script src="/tff-auth.js"></script>
@@ -54,7 +54,7 @@
   </head>
   <body>
     <div class="bar">
-      <strong style="font-family:Sora,sans-serif">Blind tasting · live summary</strong>
+      <strong style="font-family:Sora,sans-serif">Blind Flavor Mapping · live summary</strong>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <a href="/toolkit">Toolkit</a>
         <a href="/mystery">Guest mapping</a>
@@ -76,7 +76,7 @@
         <div class="stat"><b id="s-set">v1</b><span>Concept set</span></div>
       </div>
       <div class="panel">
-        <h2>Live sensory summary · blind tasting matches</h2>
+        <h2>Live sensory summary · Blind Flavor Mapping matches</h2>
         <div style="overflow-x:auto">
           <table id="board">
             <thead>
@@ -145,7 +145,7 @@
 
         if (latest.length > lastCount) {
           beep();
-          document.title = "(" + latest.length + ") Blind tasting live";
+          document.title = "(" + latest.length + ") Blind Flavor Mapping live";
         }
         lastCount = latest.length;
 

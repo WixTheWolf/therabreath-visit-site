@@ -39,7 +39,7 @@
     { label: "Visitor passport", path: "/passport" },
     { label: "Tasting station signs", path: "/stations" },
     { label: "Blind flavor mapping", path: "/mystery" },
-    { label: "Blind mapping live (admin)", path: "/mystery-live" },
+    { label: "Blind Flavor Mapping live (admin)", path: "/mystery-live" },
     { label: "Prototype scorecard", path: "/score" },
     { label: "Live sensory summary (admin)", path: "/score-live" },
     { label: "Executive one-pager", path: "/onepager" },

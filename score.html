@@ -100,7 +100,7 @@
   </head>
   <body>
     <header class="page-hero tff-enter">
-      <h1>Prototype scorecard</h1>
+      <h1>Prototype Scorecard</h1>
       <p>Rate 1–9 on workshop prototypes · Liking · Uniqueness · Intent</p>
       <div class="header-qr">
         <img src="/assets/qr/score-sm.png" alt="QR code — share this scorecard with the room" width="88" height="88" />
@@ -116,7 +116,7 @@
       <span class="sync-pill wait" id="sync-pill">Set rater name to sync</span>
     </div>
     <div class="wrap">
-      <p class="proto-banner">Ten coded workshop prototypes for directional sensory feedback. QC status and stability considerations are reviewed after reveal. Complete <a href="/mystery">blind tasting</a> first if you haven't — then score what you taste.</p>
+      <p class="proto-banner">Ten coded workshop prototypes for directional sensory feedback. QC status and stability considerations are reviewed after reveal. Complete <a href="/mystery">Blind Flavor Mapping</a> first if you haven't — then score what you taste.</p>
     </div>
     <div class="wrap tff-stagger" id="cards"></div>
     <div class="wrap">
@@ -133,7 +133,7 @@
     </div>
     <div id="print-summary"></div>
     <div class="actions">
-      <a href="/mystery">Blind tasting</a>
+      <a href="/mystery">Blind Flavor Mapping</a>
       <button type="button" onclick="exportScores()">Copy results</button>
       <button type="button" onclick="window.print()">Print</button>
       <button type="button" class="danger" onclick="clearScores()">Reset</button>
@@ -339,7 +339,7 @@
           return '<tr><td>' + c.id + '</td><td>' + c.name + '</td><td>' + (s.count ? s.liking.toFixed(1) : '—') + '</td><td>' + (s.count ? s.unique.toFixed(1) : '—') + '</td><td>' + (s.count ? s.intent.toFixed(1) : '—') + '</td></tr>';
         }).join('');
         document.getElementById('print-summary').innerHTML =
-          '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Concept scorer · aggregated results</h2>' +
+          '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Prototype Scorecard · aggregated results</h2>' +
           '<p style="font-size:0.82rem;margin:0 0 16px">Raters (' + names.length + '): ' + (names.join(', ') || 'none') + ' · Printed ' + new Date().toLocaleDateString() + '</p>' +
           '<table style="width:100%;border-collapse:collapse;font-size:0.8rem"><tr><th style="border:1px solid #ccc;padding:6px">#</th><th style="border:1px solid #ccc;padding:6px">Concept</th><th style="border:1px solid #ccc;padding:6px">Avg liking</th><th style="border:1px solid #ccc;padding:6px">Avg unique</th><th style="border:1px solid #ccc;padding:6px">Avg intent</th></tr>' + rows + '</table>';
       }
@@ -383,7 +383,7 @@
       setInterval(pollRoom, 3000);
     </script>
     <nav class="taste-foot" aria-label="Workshop navigation">
-      <a href="/mystery">← Blind tasting</a>
+      <a href="/mystery">← Blind Flavor Mapping</a>
       <a href="/workshop">Workshop hub →</a>
     </nav>
     <p style="text-align:center;font-size:0.68rem;color:var(--muted);margin:0;padding:0 16px 12px">Team live board: <a href="/gate?return=/score-live">/score-live</a> (password required)</p>

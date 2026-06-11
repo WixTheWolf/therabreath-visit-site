@@ -6,8 +6,8 @@
     { href: "/", label: "Home", match: ["/", "/index.html"] },
     { href: "/workshop", label: "Workshop", match: ["/workshop"] },
     { href: "/lakewood", label: "Lakewood", match: ["/lakewood"] },
-    { href: "/mystery", label: "Blind tasting", match: ["/mystery"] },
-    { href: "/score", label: "Prototype scorecard", cta: true, match: ["/score"] }
+    { href: "/mystery", label: "Blind Flavor Mapping", match: ["/mystery"] },
+    { href: "/score", label: "Prototype Scorecard", cta: true, match: ["/score"] }
   ];
 
   var MORE = [
@@ -21,7 +21,7 @@
     { href: "/companies", label: "Companies", match: ["/companies", "/flavor-factory", "/therabreath-brand"] },
     { href: "/qr", label: "QR print sheet" },
     { href: "/stations", label: "Station signs" },
-    { href: "/mystery-live", label: "Blind tasting live · admin", team: true },
+    { href: "/mystery-live", label: "Blind Flavor Mapping live · admin", team: true },
     { href: "/score-live", label: "Sensory summary live · admin", team: true },
     { href: "/gate", label: "Team portal", team: true }
   ];
@@ -110,8 +110,8 @@
       '<nav class="tff-chrome-links" aria-label="Quick links">' +
       '<a href="/workshop">Workshop</a>' +
       '<a href="/lakewood">Lakewood</a>' +
-      '<a href="/mystery">Blind tasting</a>' +
-      '<a href="/score" class="tff-chrome-cta">Prototype scorecard</a>' +
+      '<a href="/mystery">Blind Flavor Mapping</a>' +
+      '<a href="/score" class="tff-chrome-cta">Prototype Scorecard</a>' +
       '</nav></header>'
     );
   }
