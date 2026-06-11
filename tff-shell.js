@@ -310,14 +310,32 @@
     initPageEnter();
   }
 
+  function refreshTeamMenu() {
+    var nav = document.getElementById("tff-shell-nav");
+    if (!nav) return;
+    var dropdown = nav.querySelector(".tff-shell-dropdown");
+    if (!dropdown) return;
+    dropdown.innerHTML = moreMenuItems()
+      .map(function (item) {
+        var active = isActive(item) ? " is-active" : "";
+        return '<a href="' + item.href + '" class="' + active + '">' + item.label + "</a>";
+      })
+      .join("");
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", inject);
   } else {
     inject();
   }
 
+  global.addEventListener("pageshow", function () {
+    refreshTeamMenu();
+  });
+
   global.TFFShell = {
     celebrate: celebrate,
-    refresh: inject
+    refresh: inject,
+    refreshTeamMenu: refreshTeamMenu
   };
 })(typeof window !== "undefined" ? window : global);
