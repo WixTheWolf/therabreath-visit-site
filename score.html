@@ -43,6 +43,12 @@
       .bar { height:6px; background:#eef4f8; border-radius:999px; margin-top:4px; overflow:hidden; }
       .bar i { display:block; height:100%; background:linear-gradient(90deg,var(--blue),var(--green)); border-radius:999px; }
       .rater-list { margin-top:12px; font-size:0.72rem; color:var(--muted); }
+      .proto-banner {
+        margin:0 auto 16px; max-width:520px; padding:14px 16px;
+        border-radius:12px; background:#fff4e8; border:1px solid rgba(245,130,32,0.3);
+        font-size:0.78rem; line-height:1.5; color:#344054;
+      }
+      .proto-banner a { color:var(--blue); font-weight:700; }
       .actions { position:fixed; bottom:0; left:0; right:0; display:flex; gap:10px; padding:12px 16px; background:rgba(255,255,255,0.95); border-top:1px solid var(--line); backdrop-filter:blur(12px); }
       .actions button, .actions a { flex:1; padding:12px; border-radius:10px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-align:center; text-decoration:none; border:none; cursor:pointer; }
       .actions a { background:#fff; border:1px solid var(--line); color:var(--ink); }
@@ -61,7 +67,7 @@
   <body>
     <header>
       <h1>Live concept scorer</h1>
-      <p>Rate 1–9 · Liking · Uniqueness · Intent · Aggregates across raters on this device</p>
+      <p>Rate 1–9 on workshop prototypes · Liking · Uniqueness · Intent</p>
       <div class="header-qr">
         <img src="/assets/qr/score-sm.png" alt="QR code — share this scorer with the room" width="88" height="88" />
         <span>Scan to open · each phone saves locally under rater name</span>
@@ -73,6 +79,9 @@
       <button type="button" id="rater-save" style="padding:8px 14px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-family:Sora,sans-serif;font-weight:700;cursor:pointer">Set rater</button>
       <select id="rater-pick"></select>
       <span class="hint">Scores save on this device only. Copy results to combine phones.</span>
+    </div>
+    <div class="wrap">
+      <p class="proto-banner">These are <strong>prototypes</strong>, not finished products. QC has concerns about several profiles in sodium chlorite — score what you taste today, then try the <a href="/mystery">flavor mystery game</a> if you haven't already.</p>
     </div>
     <div class="wrap" id="cards"></div>
     <div class="wrap">
@@ -89,21 +98,13 @@
       <button type="button" onclick="window.print()">Print</button>
       <button type="button" class="danger" onclick="clearScores()">Reset</button>
     </div>
+    <script src="/tff-concepts.js"></script>
     <script src="/tff-storage.js"></script>
     <script>
       var STORAGE_KEY = "tff-scores";
-      var concepts = [
-        { id:1, name:"Spearmint Garden", sub:"Sweet spearmint + green herb" },
-        { id:2, name:"Green Tea Fresh", sub:"Green tea + spearmint" },
-        { id:3, name:"Crisp Cucumber Mint", sub:"Cucumber + cooling mint" },
-        { id:4, name:"Warm Ginger Mint", sub:"Ginger + peppermint" },
-        { id:5, name:"Vanilla Mint Silk", sub:"Vanilla + peppermint" },
-        { id:6, name:"Overnight Calm Mint", sub:"Chamomile + lavender" },
-        { id:7, name:"Crystal Whitening Mint", sub:"Bright peppermint + icy cool" },
-        { id:8, name:"Icy Peak Refresh", sub:"Extra-cooling signature mint" },
-        { id:9, name:"Winter Frost", sub:"Peppermint + vanilla · LE" },
-        { id:10, name:"Healthy Gums Herbal", sub:"Eucalyptus + tea tree" }
-      ];
+      var concepts = TFFConcepts.list.map(function (c) {
+        return { id: c.id, name: c.name, sub: c.sub, stability: c.stability };
+      });
 
       function migrate(raw) {
         if (!raw || raw.version === 2) return raw || { version:2, activeRater:"", raters:{} };

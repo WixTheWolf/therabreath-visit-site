@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flavor Mystery Challenge | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f0f5f9; color:var(--ink); padding-bottom:80px; }
+      header {
+        padding:24px 20px; text-align:center;
+        background:linear-gradient(135deg,var(--ink),#004f87); color:#fff;
+      }
+      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.35rem; }
+      header p { margin:8px auto 0; max-width:520px; font-size:0.84rem; opacity:0.85; line-height:1.5; }
+      .toolbar {
+        display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+        padding:12px 16px; background:#fff; border-bottom:1px solid var(--line);
+      }
+      .toolbar a, .toolbar button {
+        padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif;
+        font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); background:#fff; cursor:pointer;
+      }
+      .toolbar button.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
+      .wrap { width:min(560px,calc(100vw - 24px)); margin:0 auto; padding:20px 0; }
+      .intro {
+        padding:18px; border-radius:14px; background:#fff; border:1px solid var(--line);
+        margin-bottom:16px; font-size:0.84rem; line-height:1.55; color:#344054;
+      }
+      .intro b { color:var(--ink); }
+      .player { display:flex; gap:8px; margin-bottom:16px; }
+      .player input {
+        flex:1; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font:inherit;
+      }
+      .card {
+        padding:18px; margin-bottom:12px; background:#fff;
+        border:1px solid var(--line); border-radius:14px;
+        box-shadow:0 8px 24px rgba(10,22,40,0.04);
+      }
+      .card.done { border-color:rgba(95,184,50,0.4); background:linear-gradient(135deg,#fff,#f8fdf6); }
+      .card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+      .code {
+        font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; color:var(--blue);
+      }
+      .hints { margin:0 0 12px; padding-left:18px; font-size:0.78rem; color:var(--muted); line-height:1.5; }
+      label { display:block; font-size:0.68rem; font-weight:700; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+      select {
+        width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:10px; font:inherit; margin-bottom:10px;
+      }
+      .result {
+        display:none; padding:10px 12px; border-radius:10px; font-size:0.82rem; font-weight:600;
+      }
+      .result.show { display:block; }
+      .result.ok { background:#edf8e8; color:#2d6a3f; }
+      .result.miss { background:#fff4e8; color:#c45c26; }
+      .scoreboard {
+        margin-top:20px; padding:18px; border-radius:14px; background:var(--ink); color:#fff; text-align:center;
+      }
+      .scoreboard b { font-family:"Sora",sans-serif; font-size:2rem; display:block; }
+      .host-panel {
+        display:none; margin-top:20px; padding:18px; background:#fff; border:1px solid var(--line); border-radius:14px;
+      }
+      .host-panel.show { display:block; }
+      .host-panel table { width:100%; border-collapse:collapse; font-size:0.76rem; }
+      .host-panel th, .host-panel td { padding:8px; border:1px solid var(--line); text-align:left; }
+      .host-panel th { background:#f0f9fd; font-size:0.62rem; text-transform:uppercase; }
+      .tag { font-size:0.58rem; font-weight:800; text-transform:uppercase; padding:3px 8px; border-radius:999px; }
+      .tag.stable { background:#e8f6fd; color:var(--blue); }
+      .tag.watch { background:#fff4e8; color:#c45c26; }
+      .tag.flagged { background:#fef3f2; color:#b42318; }
+      .print-sheet { display:none; }
+      @media print {
+        body { background:#fff; padding:0; }
+        header, .toolbar, .intro, .player, .card select, .scoreboard, .host-panel, .no-print { display:none !important; }
+        .wrap { width:100%; max-width:none; }
+        .print-sheet { display:block !important; }
+        .print-ballot { page-break-after:always; padding:0.4in; }
+        .print-ballot table { width:100%; border-collapse:collapse; font-size:0.8rem; }
+        .print-ballot th, .print-ballot td { border:1px solid #333; padding:10px 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Flavor mystery challenge</h1>
+      <p>Cups are coded — no names on the table. Taste, read the hints, and guess which prototype direction you're in. Prototypes only; QC has not cleared every profile for chlorite shelf life.</p>
+    </header>
+    <div class="toolbar no-print">
+      <a href="/workshop#tasting">Workshop</a>
+      <a href="/score">Live scorer</a>
+      <button type="button" class="primary" onclick="window.print()">Print ballots</button>
+      <button type="button" onclick="toggleHost()">Host answer key</button>
+      <button type="button" onclick="resetGame()">Reset</button>
+    </div>
+    <div class="wrap">
+      <div class="intro no-print">
+        <b>How to play:</b> Find the code on your cup (M1–M10). Pick that code below, read the sensory hints — <em>not</em> the concept name — and choose your best guess. One point per correct ID. Compare scores after everyone finishes, or run it as a light competition during Station 2.
+      </div>
+      <div class="player no-print">
+        <input type="text" id="player" placeholder="Your name" />
+      </div>
+      <div id="cards"></div>
+      <div class="scoreboard no-print" id="board" style="display:none">
+        <span>Your score</span>
+        <b id="score-num">0</b>
+        <span id="score-of">/ 10 correct</span>
+      </div>
+      <div class="host-panel no-print" id="host">
+        <h2 style="margin:0 0 12px;font-family:Sora,sans-serif;font-size:0.95rem">Host answer key · cup code → concept</h2>
+        <table id="host-table"></table>
+        <p style="font-size:0.72rem;color:var(--muted);margin:12px 0 0">Do not show guests until after guesses are in. QC flagged items are discussion-only — not launch candidates.</p>
+      </div>
+    </div>
+    <div class="print-sheet" id="print-sheet"></div>
+    <script src="/tff-concepts.js"></script>
+    <script src="/tff-storage.js"></script>
+    <script>
+      var STORAGE_KEY = "tff-mystery";
+
+      function loadState() {
+        return TFFStorage.get(STORAGE_KEY, { player: "", guesses: {} }) || { player: "", guesses: {} };
+      }
+
+      function saveState(data) {
+        TFFStorage.set(STORAGE_KEY, data);
+      }
+
+      function renderCards() {
+        var state = loadState();
+        if (state.player) document.getElementById("player").value = state.player;
+        var html = TFFConcepts.list.map(function (c) {
+          var g = state.guesses[c.code];
+          var done = g && g.guess;
+          return '<article class="card' + (done ? " done" : "") + '" data-code="' + c.code + '">' +
+            '<div class="card-head"><span class="code">Cup ' + c.code + '</span>' +
+            (done ? '<span style="font-size:0.72rem;font-weight:700;color:var(--green)">Guessed</span>' : '') + '</div>' +
+            '<ul class="hints">' + c.mysteryHints.map(function (h) { return '<li>' + h + '</li>'; }).join("") + '</ul>' +
+            '<label>Your guess</label>' +
+            '<select data-code="' + c.code + '"' + (done ? ' disabled' : '') + '>' +
+            '<option value="">— choose prototype —</option>' +
+            TFFConcepts.list.map(function (o) {
+              return '<option value="' + o.id + '"' + (g && g.guess === o.id ? ' selected' : '') + '>' +
+                String(o.id).padStart(2, "0") + " " + o.name + '</option>';
+            }).join("") + '</select>' +
+            '<div class="result' + (g && g.revealed ? ' show ' + (g.correct ? 'ok' : 'miss') : '') + '" id="res-' + c.code + '">' +
+            (g && g.revealed ? (g.correct ? '✓ Correct — ' + c.name : '✗ It was ' + c.name) : '') +
+            '</div></article>';
+        }).join("");
+        document.getElementById("cards").innerHTML = html;
+        document.querySelectorAll("select[data-code]").forEach(function (sel) {
+          sel.addEventListener("change", onGuess);
+        });
+        updateScore();
+        renderHost();
+        renderPrint();
+      }
+
+      function onGuess(e) {
+        var code = e.target.dataset.code;
+        var guess = +e.target.value;
+        if (!guess) return;
+        var concept = TFFConcepts.list.filter(function (c) { return c.code === code; })[0];
+        var state = loadState();
+        state.player = document.getElementById("player").value.trim() || "Guest";
+        state.guesses[code] = {
+          guess: guess,
+          correct: guess === concept.id,
+          revealed: true
+        };
+        saveState(state);
+        renderCards();
+      }
+
+      function updateScore() {
+        var state = loadState();
+        var n = 0, total = 0;
+        Object.keys(state.guesses || {}).forEach(function (k) {
+          if (state.guesses[k].revealed) {
+            total++;
+            if (state.guesses[k].correct) n++;
+          }
+        });
+        var board = document.getElementById("board");
+        if (total > 0) {
+          board.style.display = "block";
+          document.getElementById("score-num").textContent = n;
+          document.getElementById("score-of").textContent = "/ " + total + " guessed";
+        }
+      }
+
+      function renderHost() {
+        document.getElementById("host-table").innerHTML =
+          "<tr><th>Code</th><th>Concept</th><th>QC</th><th>Note</th></tr>" +
+          TFFConcepts.list.map(function (c) {
+            var m = TFFConcepts.stabilityMeta(c.stability);
+            return "<tr><td><b>" + c.code + "</b></td><td>" + String(c.id).padStart(2, "0") + " " + c.name +
+              "</td><td><span class=\"tag " + m.class + "\">" + m.short + "</span></td><td style=\"font-size:0.72rem;color:var(--muted)\">" + c.qcNote + "</td></tr>";
+          }).join("");
+      }
+
+      function renderPrint() {
+        var rows = TFFConcepts.list.map(function (c) {
+          return "<tr><td><b>" + c.code + "</b></td><td style=\"height:28px\"></td><td style=\"height:28px\"></td></tr>";
+        }).join("");
+        document.getElementById("print-sheet").innerHTML =
+          '<section class="print-ballot">' +
+          '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Flavor mystery ballot</h2>' +
+          '<p style="font-size:0.82rem;margin:0 0 16px">Name: _______________ · Date: _______ · Do not peek at concept cards — guess from taste + hints only.</p>' +
+          '<table><tr><th>Code on cup</th><th>My guess (01–10 name)</th><th>Notes</th></tr>' + rows + '</table>' +
+          '<p style="font-size:0.72rem;margin-top:16px">Hint card at station · reveal answers on /mystery after tasting</p></section>' +
+          '<section class="print-ballot">' +
+          '<h2 style="font-family:Sora,sans-serif;margin:0 0 12px">Sensory hint card · station 2</h2>' +
+          TFFConcepts.list.map(function (c) {
+            return '<p style="font-size:0.8rem;margin:0 0 10px"><b>' + c.code + '</b> — ' + c.mysteryHints.join(" · ") + '</p>';
+          }).join("") +
+          '</section>';
+      }
+
+      function toggleHost() {
+        if (!confirm("Show answer key? Only for hosts — guests should guess first.")) return;
+        document.getElementById("host").classList.toggle("show");
+      }
+
+      function resetGame() {
+        if (confirm("Clear all mystery guesses on this device?")) {
+          TFFStorage.remove(STORAGE_KEY);
+          renderCards();
+        }
+      }
+
+      document.getElementById("player").addEventListener("input", function () {
+        var state = loadState();
+        state.player = this.value;
+        saveState(state);
+      });
+
+      renderCards();
+    </script>
+  </body>
+</html>

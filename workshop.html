@@ -2779,6 +2779,91 @@
         color: var(--bottle-blue);
       }
 
+      .concept-tag.watch {
+        background: var(--soft-orange);
+        color: #c45c26;
+      }
+
+      .concept-tag.flagged {
+        background: #fef3f2;
+        color: #b42318;
+      }
+
+      .qc-callout {
+        max-width: 960px;
+        margin: 0 auto 28px;
+        padding: 20px 24px;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(180, 35, 24, 0.2);
+        background: linear-gradient(135deg, #fff 0%, #fff8f7 100%);
+        font-size: 0.9rem;
+        line-height: 1.58;
+        color: #344054;
+      }
+
+      .qc-callout h3 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        color: #9a3412;
+      }
+
+      .mystery-banner {
+        max-width: 960px;
+        margin: 28px auto 0;
+        padding: 24px 28px;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, var(--navy) 0%, #003d6b 100%);
+        color: #fff;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .mystery-banner h3 {
+        margin: 0 0 6px;
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+      }
+
+      .mystery-banner p {
+        margin: 0;
+        font-size: 0.86rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .mystery-banner a {
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: var(--lid-orange);
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .concept-qc-note {
+        margin: 10px 0 0;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: #fafcfe;
+        border-left: 3px solid var(--line);
+        font-size: 0.78rem;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+
+      .concept-card[data-stability="flagged"] .concept-qc-note { border-left-color: #b42318; background: #fffbfb; }
+      .concept-card[data-stability="watch"] .concept-qc-note { border-left-color: var(--lid-orange); }
+
+      @media (max-width: 700px) {
+        .mystery-banner { grid-template-columns: 1fr; text-align: center; }
+      }
+
       .formulation-note {
         max-width: 960px;
         margin: 0 auto 36px;
@@ -3651,12 +3736,12 @@
             <article class="station-card">
               <div class="station-num">2</div>
               <h3>Innovation Lab</h3>
-              <p>Ten workshop prototypes to taste and react to.</p>
+              <p>Ten <strong>prototypes</strong> — coded cups, no names on the table. Run the flavor mystery challenge, then reveal and discuss.</p>
               <ul>
-                <li>Spearmint Garden, Green Tea Fresh</li>
-                <li>Overnight Calm Mint</li>
-                <li>Crystal Whitening Mint</li>
-                <li>All prototype cards below</li>
+                <li>Mystery game · guess the direction</li>
+                <li>QC-flagged profiles flagged honestly</li>
+                <li>Score on /score after reveals</li>
+                <li>See prototype cards below for context</li>
               </ul>
             </article>
             <article class="station-card">
@@ -3670,6 +3755,13 @@
                 <li>Healthy Gums Herbal</li>
               </ul>
             </article>
+          </div>
+          <div class="mystery-banner">
+            <div>
+              <h3>Flavor mystery challenge</h3>
+              <p>Cups labeled M1–M10 only. Taste blind, use sensory hints, and guess which prototype you're in — then compare with QC's stability readout. Not every pour is a product candidate.</p>
+            </div>
+            <a href="/mystery">Play mystery game →</a>
           </div>
           <p class="section-note" style="margin-top:32px">Runs 9:30–10:30 AM as part of the half-day agenda. Branded notebooks with trend insights at each station.</p>
         </div>
@@ -3698,12 +3790,16 @@
           <div class="section-head">
             <span class="section-step">05</span>
             <p class="section-kicker">Prototype concepts</p>
-            <h2 class="section-title">Ten ideas built for your base.</h2>
-            <p class="section-copy">Workshop prototypes for discussion — not finished products or launch commitments. Each is screened for stability in TheraBreath's sodium chlorite rinse base, where many citrus and fruity profiles can break down and develop off-notes over a few days.</p>
+            <h2 class="section-title">Ten prototypes — not a finished line.</h2>
+            <p class="section-copy">Workshop pours for direction-finding only. QC has not signed off on every profile for sodium chlorite shelf life — some directions are here because they are worth tasting, not because they are ready to scale. Honest reactions help us prioritize stability work and co-creation time.</p>
+          </div>
+          <div class="qc-callout">
+            <h3>QC perspective · sodium chlorite reality</h3>
+            <p>Our quality team is clear: mint-forward and proven herbal lanes are the safest bets in your base. Vanilla, florals, cucumber-water notes, and some green-tea characters are <strong>prototype-only</strong> until retain data proves otherwise. Tags on each card: <strong>QC cleared</strong> · <strong>Stability TBD</strong> · <strong>QC concern</strong>.</p>
           </div>
           <div class="formulation-note">
-            <h3>Formulated for sodium chlorite stability</h3>
-            <p>We develop inside your base chemistry — not around it. What you taste in Norco should be close to what holds up on shelf.</p>
+            <h3>Why we avoid citrus &amp; berry — and flag the rest honestly</h3>
+            <p>We develop inside your base chemistry. What tastes bright on day one can oxidize in chlorite within days — QC watches that gap closely.</p>
             <div class="formulation-split">
               <div class="formulation-panel avoid">
                 <h4><i>×</i> Avoid in your base</h4>
@@ -3717,75 +3813,80 @@
                 <div class="formulation-tags">
                   <span>Mint</span><span>Spearmint</span><span>Herbal</span><span>Green tea</span><span>Vanilla</span><span>Ginger</span><span>Eucalyptus</span>
                 </div>
-                <p style="margin:14px 0 0;font-size:0.84rem;color:#2d6a3f;line-height:1.5">Every prototype below uses these building blocks — screened for shelf life, not just first impression.</p>
+                <p style="margin:14px 0 0;font-size:0.84rem;color:#2d6a3f;line-height:1.5">Preferred building blocks — but even these need retain proof per concept. See QC tag on each card.</p>
               </div>
             </div>
           </div>
-          <p class="section-note">None of these are precious. Taste, react, edit, and tell us what is worth a stability-validated pilot batch.</p>
+          <p class="section-note">None of these are precious. Taste, react, guess blind on <a href="/mystery" style="color:var(--bottle-blue);font-weight:700">/mystery</a>, and tell us what is worth investing stability work into — not what sounds good on a slide.</p>
 
           <div class="concepts-block">
             <div class="concepts-row-head">
-              <h3>Row A — Chlorite-stable fresh directions</h3>
-              <p>Approachable profiles beyond classic mint — built from raw materials selected to survive sodium chlorite, not just taste good on day one.</p>
+              <h3>Row A — Fresh directions</h3>
+              <p>Approachable profiles beyond classic mint — several still under QC retain review.</p>
             </div>
             <div class="concepts reveal-stagger">
-            <article class="concept-card" style="--accent: #5fb832">
+            <article class="concept-card" style="--accent: #5fb832" data-stability="stable">
               <div class="concept-art" data-initials="SG"></div>
               <div class="concept-body">
                 <span class="concept-num">01</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag stable">QC cleared</span>
                 <h3>Spearmint Garden</h3>
                 <p class="sub">Sweet Spearmint + Soft Green Herb</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Clean sweet spearmint lift</span></div><div class="profile-row"><b>Heart</b><span>Soft leafy green roundness</span></div><div class="profile-row"><b>Finish</b><span>Cool peppermint close</span></div></div>
                 <p>Playful and approachable without berry or citrus notes that can degrade in sodium chlorite.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Spearmint + soft herbal — closest to proven mint lanes in chlorite.</p>
                 <p class="claim">“Garden Fresh, Built to Last”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #2d6a4f">
+            <article class="concept-card" style="--accent: #2d6a4f" data-stability="watch">
               <div class="concept-art" data-initials="GT"></div>
               <div class="concept-body">
                 <span class="concept-num">02</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag watch">Stability TBD</span>
                 <h3>Green Tea Fresh</h3>
                 <p class="sub">Green Tea + Spearmint + Clean Cool</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Light steamed green tea</span></div><div class="profile-row"><b>Heart</b><span>Natural, clean botanical body</span></div><div class="profile-row"><b>Finish</b><span>Refreshing spearmint cool</span></div></div>
                 <p>A natural-forward direction that reads fresh without the tropical or citrus instability risk.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Green tea character can oxidize — retain study in progress.</p>
                 <p class="claim">“Clean Botanical Fresh”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #7ed321">
+            <article class="concept-card" style="--accent: #7ed321" data-stability="flagged">
               <div class="concept-art" data-initials="CM"></div>
               <div class="concept-body">
                 <span class="concept-num">03</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag flagged">QC concern</span>
                 <h3>Crisp Cucumber Mint</h3>
                 <p class="sub">Green Cucumber + Cooling Mint Finish</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Crisp watery cucumber</span></div><div class="profile-row"><b>Heart</b><span>Light green herbal freshness</span></div><div class="profile-row"><b>Finish</b><span>Long cooling mint</span></div></div>
-                <p>Spa-like hydration cue using green notes that stay clean in chlorite — not fruity or citrus brightness.</p>
+                <p>Spa-like hydration cue — QC questions whether cucumber-water notes survive chlorite shelf.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Watery/cucumber profile may not hold — prototype for sensory direction only.</p>
                 <p class="claim">“Hydrating Freshness”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #c45c26">
+            <article class="concept-card" style="--accent: #c45c26" data-stability="watch">
               <div class="concept-art" data-initials="GM"></div>
               <div class="concept-body">
                 <span class="concept-num">04</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag watch">Stability TBD</span>
                 <h3>Warm Ginger Mint</h3>
                 <p class="sub">Ginger Root + Peppermint + Soft Sweetness</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Warm earthy ginger root</span></div><div class="profile-row"><b>Heart</b><span>Gentle spice without citrus</span></div><div class="profile-row"><b>Finish</b><span>Clean peppermint cool</span></div></div>
                 <p>Energy and warmth from spice — deliberately no lemon-lime layer that can turn in sodium chlorite.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Spice warmth without citrus — monitoring fade in retain.</p>
                 <p class="claim">“Warm Spice, Cool Finish”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #4e2f25">
+            <article class="concept-card" style="--accent: #4e2f25" data-stability="flagged">
               <div class="concept-art" data-initials="VM"></div>
               <div class="concept-body">
                 <span class="concept-num">05</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag flagged">QC concern</span>
                 <h3>Vanilla Mint Silk</h3>
                 <p class="sub">Vanilla Bean + Peppermint + Cooling Finish</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Warm vanilla bean</span></div><div class="profile-row"><b>Heart</b><span>Smooth creamy roundness</span></div><div class="profile-row"><b>Finish</b><span>Clean peppermint cooling</span></div></div>
-                <p>A softer indulgent direction — vanilla and mint pair well in your base without the fruit instability.</p>
+                <p>A softer indulgent direction — vanilla architecture still challenged by chlorite oxidation.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Does not believe vanilla will hold as formulated — taste for direction, not release.</p>
                 <p class="claim">“Smooth Fresh, Zero Compromise”</p>
               </div>
             </article>
@@ -3793,71 +3894,76 @@
 
             <div class="concepts-row-head">
               <h3>Row B — Functional &amp; line extensions</h3>
-              <p>Evening routines, whitening cues, seasonal LE, and core-line stretch — all using chlorite-compatible building blocks.</p>
+              <p>Evening routines, whitening cues, seasonal LE, and core-line stretch — stability varies by profile.</p>
             </div>
             <div class="concepts reveal-stagger">
-            <article class="concept-card" style="--accent: #9b8ec4">
+            <article class="concept-card" style="--accent: #9b8ec4" data-stability="flagged">
               <div class="concept-art" data-initials="OC"></div>
               <div class="concept-body">
                 <span class="concept-num">06</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag flagged">QC concern</span>
                 <span class="concept-tag">Functional</span>
                 <h3>Overnight Calm Mint</h3>
                 <p class="sub">Chamomile + Lavender + Soft Mint Finish</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Gentle chamomile florals</span></div><div class="profile-row"><b>Heart</b><span>Lavender calm, low intensity</span></div><div class="profile-row"><b>Finish</b><span>Whisper-light cooling mint</span></div></div>
-                <p>Evening routine positioning — soothing without sacrificing the fresh finish.</p>
+                <p>Evening routine positioning — florals may not survive chlorite over shelf.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Chamomile/lavender flagged — exploratory evening positioning only.</p>
                 <p class="claim">“Wind Down, Wake Up Fresh”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #00b4d8">
+            <article class="concept-card" style="--accent: #00b4d8" data-stability="stable">
               <div class="concept-art" data-initials="CW"></div>
               <div class="concept-body">
                 <span class="concept-num">07</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag stable">QC cleared</span>
                 <span class="concept-tag">Whitening</span>
                 <h3>Crystal Whitening Mint</h3>
                 <p class="sub">Extra-Bright Peppermint + Icy Cooling Cue</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Immediate bright peppermint</span></div><div class="profile-row"><b>Heart</b><span>Clean icy freshness</span></div><div class="profile-row"><b>Finish</b><span>Long whitening-bright cooling</span></div></div>
-                <p>Whitening brightness from cooling intensity and mint clarity — not tropical fruit that won't hold in chlorite.</p>
+                <p>Whitening brightness from cooling intensity and mint clarity — mint-dominant architecture.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Mint-forward whitening cue — comfortable for retain testing.</p>
                 <p class="claim">“Bright Smile, Lasting Fresh”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #008fd3">
+            <article class="concept-card" style="--accent: #008fd3" data-stability="stable">
               <div class="concept-art" data-initials="IP"></div>
               <div class="concept-body">
                 <span class="concept-num">08</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag stable">QC cleared</span>
                 <span class="concept-tag">Core line</span>
                 <h3>Icy Peak Refresh</h3>
                 <p class="sub">Extra-Cooling Signature Mint</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Immediate icy hit</span></div><div class="profile-row"><b>Heart</b><span>Classic TheraBreath mint body</span></div><div class="profile-row"><b>Finish</b><span>Extended cooling duration</span></div></div>
                 <p>A line extension for the Icy Mint loyalist — more peak, same clean DNA.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Classic cooling + mint oils in known-stable range.</p>
                 <p class="claim">“Peak Fresh, Zero Compromise”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #a8d8ea">
+            <article class="concept-card" style="--accent: #a8d8ea" data-stability="watch">
               <div class="concept-art" data-initials="WF"></div>
               <div class="concept-body">
                 <span class="concept-num">09</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag watch">Stability TBD</span>
                 <span class="concept-tag">Seasonal LE</span>
                 <h3>Winter Frost</h3>
                 <p class="sub">Peppermint + Subtle Vanilla + Deep Cool</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Sharp peppermint lift</span></div><div class="profile-row"><b>Heart</b><span>Soft vanilla warmth</span></div><div class="profile-row"><b>Finish</b><span>Long icy freshness</span></div></div>
-                <p>Limited-edition winter run — festive without reading as candy.</p>
+                <p>Limited-edition winter run — vanilla component under retain watch.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Seasonal LE — mint shell likely stable; vanilla note needs proof.</p>
                 <p class="claim">“Limited Frost, Unlimited Fresh”</p>
               </div>
             </article>
-            <article class="concept-card" style="--accent: #3d6b5a">
+            <article class="concept-card" style="--accent: #3d6b5a" data-stability="watch">
               <div class="concept-art" data-initials="HG"></div>
               <div class="concept-body">
                 <span class="concept-num">10</span>
-                <span class="concept-tag stable">Chlorite-stable</span>
+                <span class="concept-tag watch">Stability TBD</span>
                 <span class="concept-tag">Functional</span>
                 <h3>Healthy Gums Herbal</h3>
                 <p class="sub">Tea Tree + Eucalyptus + Gentle Mint</p>
                 <div class="profile"><div class="profile-row"><b>Top</b><span>Clean herbal eucalyptus</span></div><div class="profile-row"><b>Heart</b><span>Tea tree clarity</span></div><div class="profile-row"><b>Finish</b><span>Soft mint, gum-health cue</span></div></div>
                 <p>Extends the Healthy Gums territory with a more clinical-fresh herbal profile.</p>
+                <p class="concept-qc-note"><strong>QC:</strong> Herbal actives intensity vs. chlorite — needs retain proof.</p>
                 <p class="claim">“Healthy Gums, Herbal Fresh”</p>
               </div>
             </article>
@@ -3870,14 +3976,14 @@
         <div class="container reveal">
           <div class="section-head">
             <p class="section-kicker">Sensory evaluation</p>
-            <h2 class="section-title">Taste it like we might make it.</h2>
-            <p class="section-copy">We are not only looking for favorites. We are looking for what feels right for the brand, what holds up in sodium chlorite over shelf life, and what needs another pass.</p>
+            <h2 class="section-title">Taste prototypes — guess, rate, react honestly.</h2>
+            <p class="section-copy">Try the mystery challenge first (coded cups M1–M10). Then score on the live scorer. Favorites matter — but so does calling out profiles QC already doubts will hold in chlorite.</p>
           </div>
           <div class="steps">
-            <article class="step-card"><b>01</b><h3>Swish</h3><p>Swish 10–15 ml for 10 seconds.</p></article>
-            <article class="step-card"><b>02</b><h3>Notice</h3><p>Note aroma, flavor intensity, and cooling effect.</p></article>
-            <article class="step-card"><b>03</b><h3>Evaluate</h3><p>Assess aftertaste and duration of freshness.</p></article>
-            <article class="step-card"><b>04</b><h3>Rate</h3><p>Score overall liking and purchase intent.</p></article>
+            <article class="step-card"><b>01</b><h3>Mystery</h3><p>Taste blind · guess the direction on <a href="/mystery">/mystery</a>.</p></article>
+            <article class="step-card"><b>02</b><h3>Swish</h3><p>10–15 ml · 10 seconds · note cooling and aftertaste.</p></article>
+            <article class="step-card"><b>03</b><h3>QC lens</h3><p>Would this still taste right at day 30? Flag watch-outs.</p></article>
+            <article class="step-card"><b>04</b><h3>Rate</h3><p>Score liking + intent on <a href="/score">/score</a> after reveals.</p></article>
           </div>
         </div>
       </section>
@@ -3998,6 +4104,7 @@
             <a href="/gate">Team portal</a>
             <a href="/slides">Slides</a>
             <a href="/passport">Passport</a>
+            <a href="/mystery">Mystery game</a>
             <a href="/score">Live scorer</a>
             <a href="/qr">QR codes</a>
           </div>

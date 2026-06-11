@@ -37,6 +37,7 @@
     { label: "Slide deck + scoring sheet", path: "/slides" },
     { label: "Visitor passport", path: "/passport" },
     { label: "Tasting station signs", path: "/stations" },
+    { label: "Flavor mystery game", path: "/mystery" },
     { label: "Live concept scorer", path: "/score" },
     { label: "Executive one-pager", path: "/onepager" },
     { label: "QR code print sheet", path: "/qr" },
