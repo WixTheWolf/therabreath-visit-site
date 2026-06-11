@@ -69,18 +69,51 @@
         grid-column:1;
       }
       .top-nav { grid-column:2; }
-      .top-meta { grid-column:3; }
       .mark {
         width:36px; height:36px; display:grid; place-items:center;
         border-radius:10px; background:linear-gradient(135deg,var(--ink),var(--blue));
         color:#fff; font-size:0.65rem; font-weight:800;
       }
+      .top-end {
+        grid-column:3;
+        justify-self:end;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-end;
+        gap:5px;
+      }
+      .top-team {
+        display:inline-flex;
+        align-items:center;
+        padding:7px 12px;
+        border-radius:999px;
+        border:1px solid var(--line);
+        background:#f6fafc;
+        font-family:"Sora",sans-serif;
+        font-size:0.66rem;
+        font-weight:700;
+        text-decoration:none;
+        color:var(--muted);
+        white-space:nowrap;
+        transition:background 0.2s, border-color 0.2s, color 0.2s;
+      }
+      .top-team:hover {
+        color:var(--ink);
+        border-color:rgba(0,143,211,0.28);
+        background:#fff;
+      }
+      .top-team.is-on {
+        color:#fff;
+        background:var(--ink);
+        border-color:var(--ink);
+      }
       .top-meta {
         font-size:0.68rem; color:var(--muted); font-weight:600;
-        justify-self:end; text-align:right; white-space:nowrap;
+        text-align:right; white-space:nowrap;
       }
       @media (max-width:980px) {
-        .top { display:flex; flex-wrap:wrap; }
+        .top { display:flex; flex-wrap:wrap; align-items:center; }
+        .top-end { margin-left:auto; order:2; }
         .top-nav { order:3; width:100%; justify-content:center; flex-wrap:wrap; }
         .top-meta { display:none; }
       }
@@ -223,8 +256,26 @@
         border-top:1px solid var(--line);
       }
       .foot a { color:var(--blue); font-weight:600; text-decoration:none; }
-      .team-foot { margin:10px 0 0; font-size:0.64rem; color:#8a94a6; }
-      .team-foot a { color:#6b7a90; font-weight:600; }
+      .team-bar {
+        display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 14px;
+        margin:0 auto 14px; padding:12px 18px; max-width:520px;
+        border-radius:14px; border:1px solid var(--line); background:#fff;
+        font-size:0.72rem; color:var(--muted);
+      }
+      .team-bar > span {
+        font-family:"Sora",sans-serif; font-size:0.62rem; font-weight:800;
+        letter-spacing:0.08em; text-transform:uppercase; color:#8a94a6;
+      }
+      .team-bar a {
+        padding:7px 13px; border-radius:999px; font-family:"Sora",sans-serif;
+        font-size:0.68rem; font-weight:700; text-decoration:none; color:var(--ink);
+        border:1px solid var(--line); background:#f6fafc;
+        transition:background 0.2s, border-color 0.2s;
+      }
+      .team-bar a:hover { background:#fff; border-color:rgba(0,143,211,0.28); }
+      .team-bar a.primary { background:var(--ink); color:#fff; border-color:var(--ink); }
+      .team-bar a.primary:hover { background:#003d6b; }
+      .team-foot { margin:0; font-size:0.62rem; color:#8a94a6; }
       @media (max-width:820px) {
         .fork { grid-template-columns:1fr; }
         .grid { grid-template-columns:1fr 1fr; }
@@ -356,7 +407,10 @@
         <a href="/mystery" class="fun" title="Blind Flavor Mapping">Mapping</a>
         <a href="/score" class="cta" title="Prototype Scorecard">Scorecard</a>
       </nav>
-      <span class="top-meta">July 8, 2026 · Norco, CA</span>
+      <div class="top-end">
+        <a class="top-team" href="/gate" id="top-team-link">Team sign-in</a>
+        <span class="top-meta">July 8, 2026 · Norco, CA</span>
+      </div>
     </header>
 
     <section class="intro tff-enter">
@@ -461,9 +515,14 @@
     </div>
 
     <footer class="foot">
+      <div class="team-bar" aria-label="TFF team access">
+        <span>TFF hosts</span>
+        <a href="/gate" id="foot-team-link">Team sign-in</a>
+        <a href="/toolkit" id="foot-cmd-link" class="primary">Command center</a>
+      </div>
       <p>The Flavor Factory × TheraBreath · Breath of Innovation · July 8, 2026<br />
       Guests: <a href="/visit">visit guide</a> · <a href="/workshop">workshop</a> · <a href="/concepts">ten directions</a> · <a href="/?welcome=1" id="replay-welcome">Replay welcome</a></p>
-      <p class="team-foot">TFF hosts: <a href="/gate">team sign-in</a> · password-protected command center</p>
+      <p class="team-foot">Password required · internal tools, live boards, and host prep</p>
     </footer>
     <script src="/tff-team.js"></script>
     <script src="/tff-guest-search.js"></script>
@@ -477,6 +536,21 @@
           el.innerHTML = TFFTeam.members.map(function (m) {
             return '<div><b>' + m.name + '</b><small>' + m.title + ' · ' + m.visitRole + "</small></div>";
           }).join("");
+        }
+
+        if (window.TFF && TFF.isAuthed()) {
+          var topTeam = document.getElementById("top-team-link");
+          var footTeam = document.getElementById("foot-team-link");
+          if (topTeam) {
+            topTeam.href = "/toolkit";
+            topTeam.textContent = "Command center";
+            topTeam.classList.add("is-on");
+          }
+          if (footTeam) {
+            footTeam.href = "/toolkit";
+            footTeam.textContent = "Command center";
+            footTeam.classList.add("primary");
+          }
         }
 
         var replay = document.getElementById("replay-welcome");
