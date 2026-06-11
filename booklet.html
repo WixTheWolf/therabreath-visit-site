@@ -6,6 +6,7 @@
     <meta name="description" content="TheraBreath × TFF welcome booklet — numbered index, chapters, and every document for the July 8 visit." />
     <title>Welcome Booklet | TFF × TheraBreath · July 8</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
     <style>
       :root {
         --blue: #008fd3;
@@ -59,7 +60,7 @@
       .book {
         display: grid;
         gap: 28px;
-        padding: 28px 20px 100px;
+        padding: 28px 20px 32px;
         justify-items: center;
       }
 
@@ -420,7 +421,7 @@
       .digital {
         width: min(920px, calc(100vw - 32px));
         margin: 0 auto;
-        padding-bottom: 80px;
+        padding-bottom: 32px;
       }
       .digital-hero {
         text-align: center;
@@ -504,9 +505,60 @@
         color: var(--blue);
       }
 
+      /* Booklet + shell integration */
+      html[data-tff-shell="native"] .toolbar {
+        z-index: 900;
+      }
+
+      @media (max-width: 768px) {
+        .book {
+          gap: 20px;
+          padding: 16px 12px 0;
+        }
+        .page {
+          width: calc(100vw - 24px);
+          min-height: auto;
+          padding: 0.42in 0.38in 0.58in;
+        }
+        .toolbar {
+          padding: 10px 14px;
+          gap: 8px;
+        }
+        .toolbar span {
+          width: 100%;
+          font-size: 0.72rem;
+          line-height: 1.35;
+        }
+        .toolbar div { width: 100%; justify-content: flex-start; }
+        .toolbar a, .toolbar button {
+          padding: 8px 12px;
+          font-size: 0.7rem;
+        }
+        .cover-title { font-size: 1.65rem; }
+        .cover-bottom { grid-template-columns: 1fr; gap: 16px; }
+        .how-grid, .hosts { grid-template-columns: 1fr; }
+        .qr-grid { grid-template-columns: repeat(2, 1fr); }
+        .idx-row {
+          grid-template-columns: 28px 1fr auto;
+          gap: 6px;
+        }
+        .idx-ch { display: none; }
+        .chapter-page { min-height: auto; padding: 0.1in 0; }
+        .chapter-page .ch-big { font-size: 3.5rem; }
+        .jump-bar {
+          position: sticky;
+          top: 52px;
+          z-index: 20;
+          padding: 10px 0;
+          background: linear-gradient(180deg, var(--paper) 70%, transparent);
+        }
+        .digital-hero { border-radius: 16px; padding: 24px 16px 20px; }
+        .digital-hero h1 { font-size: 1.25rem; }
+      }
+
       @media print {
         body { background: #fff; }
-        .toolbar, .digital, .tff-site-nav, .tff-mobile-dock { display: none !important; }
+        .toolbar, .digital, .tff-shell-nav, .tff-shell-dock { display: none !important; }
         .book { gap: 0; padding: 0; }
         .page {
           width: 100%;
@@ -526,11 +578,12 @@
   </head>
   <body>
     <div class="toolbar">
-      <span><strong>Welcome booklet</strong> · 35 numbered entries · 7 chapters</span>
+      <span><strong>Welcome booklet</strong> · 35 items · 7 chapters · scroll or jump below</span>
       <div>
+        <a href="#digital-view">Quick jump</a>
         <a href="/workshop">Workshop</a>
-        <a href="/passport">Passport</a>
-        <button type="button" class="primary" onclick="window.print()">Print full booklet</button>
+        <a href="/mystery">Mystery</a>
+        <button type="button" class="primary" onclick="window.print()">Print</button>
       </div>
     </div>
 
