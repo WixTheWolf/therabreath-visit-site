@@ -53,7 +53,16 @@
       .bar-cell { height:18px; border-radius:4px; background:#eef4f8; }
       .bar-cell.on { background:linear-gradient(90deg,var(--blue),var(--green)); }
       .gantt-hdr { font-size:0.58rem; color:var(--muted); text-align:center; }
+      .notes { width:100%; min-height:56px; margin-top:10px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:0.76rem; resize:vertical; }
       @media (max-width:700px) { .summary { grid-template-columns:repeat(2,1fr); } .steps { grid-template-columns:repeat(2,1fr); } }
+      @media print {
+        body { background:#fff; padding:0; }
+        header, .toolbar { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .toolbar button { display:none; }
+        .notes { border:none; padding:0; min-height:auto; }
+        .steps, .status-row select { pointer-events:none; }
+        .gantt { break-inside:avoid; }
+      }
     </style>
   </head>
   <body>
@@ -66,6 +75,7 @@
       <a href="/triangle">Triangle kit</a>
       <a href="/blind">Blind kit</a>
       <a href="/toolkit">Toolkit</a>
+      <button type="button" onclick="window.print()">Print</button>
       <button type="button" onclick="resetTracker()">Reset all</button>
       <button type="button" onclick="exportTracker()">Copy status</button>
     </div>
@@ -102,7 +112,14 @@
 
       function getStatus(id) {
         var d = load();
-        return d[id] || { steps:{}, result:'pending' };
+        return d[id] || { steps:{}, result:'pending', notes:'' };
+      }
+
+      function setNotes(vid, text) {
+        var d = load();
+        if (!d[vid]) d[vid] = { steps:{}, result:'pending', notes:'' };
+        d[vid].notes = text;
+        save(d);
       }
 
       function toggleStep(vid, step) {
@@ -164,7 +181,10 @@
             '<option value="pending"' + (s.result==='pending'?' selected':'') + '>Pending</option>' +
             '<option value="pass"' + (s.result==='pass'?' selected':'') + '>Pass — parity confirmed</option>' +
             '<option value="flag"' + (s.result==='flag'?' selected':'') + '>Flag — difference found</option>' +
-            '</select></div></article>';
+            '</select></div>' +
+            '<label style="display:block;font-size:0.68rem;font-weight:700;color:var(--muted);margin-top:10px;text-transform:uppercase">Session notes</label>' +
+            '<textarea class="notes" placeholder="Triangle date, panel n, key findings…" oninput="setNotes(\'' + v.id + '\',this.value)">' + (s.notes || '') + '</textarea>' +
+            '</article>';
         }).join('');
       }
 
@@ -176,7 +196,8 @@
         var text = variants.map(function(v) {
           var s = getStatus(v.id);
           var done = steps.filter(function(st){ return s.steps[st]; }).join(', ');
-          return v.name + ' | ' + s.result + ' | steps: ' + (done || 'none');
+          var note = s.notes ? ' | notes: ' + s.notes.replace(/\n/g, ' ') : '';
+          return v.name + ' | ' + s.result + ' | steps: ' + (done || 'none') + note;
         }).join('\n');
         navigator.clipboard.writeText(text).then(function(){ alert('Status copied'); });
       }

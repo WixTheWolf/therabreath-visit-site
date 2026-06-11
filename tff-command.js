@@ -37,7 +37,9 @@
     { label: "Visitor passport", path: "/passport" },
     { label: "Tasting station signs", path: "/stations" },
     { label: "Live concept scorer", path: "/score" },
-    { label: "Executive one-pager", path: "/onepager" }
+    { label: "Executive one-pager", path: "/onepager" },
+    { label: "QR code print sheet", path: "/qr" },
+    { label: "Co-creation worksheet", path: "/worksheet" }
   ];
 
   function loadJson(key) {

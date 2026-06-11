@@ -15,6 +15,13 @@
       .header-qr { margin-top:14px; display:flex; flex-direction:column; align-items:center; gap:6px; }
       .header-qr img { width:88px; height:88px; border-radius:8px; background:#fff; padding:4px; }
       .header-qr span { font-size:0.68rem; opacity:0.75; }
+      .rater-bar {
+        display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
+        padding:12px 16px; background:#fff; border-bottom:1px solid var(--line);
+      }
+      .rater-bar label { font-size:0.72rem; font-weight:700; color:var(--muted); text-transform:uppercase; }
+      .rater-bar input, .rater-bar select { padding:8px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:0.84rem; }
+      .rater-bar .hint { font-size:0.68rem; color:var(--muted); width:100%; text-align:center; }
       .wrap { padding:16px; max-width:520px; margin:0 auto; }
       .card {
         margin-bottom:14px; padding:16px; background:#fff;
@@ -35,35 +42,56 @@
       .lb-row b { color:var(--blue); }
       .bar { height:6px; background:#eef4f8; border-radius:999px; margin-top:4px; overflow:hidden; }
       .bar i { display:block; height:100%; background:linear-gradient(90deg,var(--blue),var(--green)); border-radius:999px; }
+      .rater-list { margin-top:12px; font-size:0.72rem; color:var(--muted); }
       .actions { position:fixed; bottom:0; left:0; right:0; display:flex; gap:10px; padding:12px 16px; background:rgba(255,255,255,0.95); border-top:1px solid var(--line); backdrop-filter:blur(12px); }
       .actions button, .actions a { flex:1; padding:12px; border-radius:10px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-align:center; text-decoration:none; border:none; cursor:pointer; }
       .actions a { background:#fff; border:1px solid var(--line); color:var(--ink); }
       .actions button { background:var(--blue); color:#fff; }
       .actions button.danger { background:#fff; border:1px solid var(--line); color:#b54708; flex:0.6; }
+      #print-summary { display:none; }
+      @media print {
+        header .header-qr, .rater-bar, .actions, .hint { display:none !important; }
+        body { background:#fff; padding:0; }
+        .wrap { max-width:none; }
+        #print-summary { display:block !important; page-break-after:always; padding:0.4in; }
+        .card { break-inside:avoid; box-shadow:none; }
+      }
     </style>
   </head>
   <body>
     <header>
       <h1>Live concept scorer</h1>
-      <p>Rate 1–9 · Liking · Uniqueness · Intent · Updates leaderboard live</p>
+      <p>Rate 1–9 · Liking · Uniqueness · Intent · Aggregates across raters on this device</p>
       <div class="header-qr">
         <img src="/assets/qr/score-sm.png" alt="QR code — share this scorer with the room" width="88" height="88" />
-        <span>Scan to open · show on station signs</span>
+        <span>Scan to open · each phone saves locally under rater name</span>
       </div>
     </header>
+    <div class="rater-bar no-print">
+      <label for="rater-name">Rater</label>
+      <input type="text" id="rater-name" placeholder="Your name" />
+      <button type="button" id="rater-save" style="padding:8px 14px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-family:Sora,sans-serif;font-weight:700;cursor:pointer">Set rater</button>
+      <select id="rater-pick"></select>
+      <span class="hint">Scores save on this device only. Copy results to combine phones.</span>
+    </div>
     <div class="wrap" id="cards"></div>
     <div class="wrap">
       <div class="leaderboard" id="board">
-        <h3>Leaderboard · avg liking</h3>
+        <h3>Leaderboard · avg liking (all raters)</h3>
         <div id="board-rows"></div>
+        <p class="rater-list" id="rater-summary"></p>
       </div>
     </div>
+    <div id="print-summary"></div>
     <div class="actions">
       <a href="/toolkit">Toolkit</a>
       <button type="button" onclick="exportScores()">Copy results</button>
+      <button type="button" onclick="window.print()">Print</button>
       <button type="button" class="danger" onclick="clearScores()">Reset</button>
     </div>
+    <script src="/tff-storage.js"></script>
     <script>
+      var STORAGE_KEY = "tff-scores";
       var concepts = [
         { id:1, name:"Spearmint Garden", sub:"Sweet spearmint + green herb" },
         { id:2, name:"Green Tea Fresh", sub:"Green tea + spearmint" },
@@ -77,16 +105,55 @@
         { id:10, name:"Healthy Gums Herbal", sub:"Eucalyptus + tea tree" }
       ];
 
-      function load() {
-        try { return JSON.parse(localStorage.getItem('tff-scores') || '{}'); }
-        catch (e) { return {}; }
+      function migrate(raw) {
+        if (!raw || raw.version === 2) return raw || { version:2, activeRater:"", raters:{} };
+        if (raw.raters) return raw;
+        return { version:2, activeRater:"Rater 1", raters:{ "Rater 1": raw } };
       }
-      function save(data) { localStorage.setItem('tff-scores', JSON.stringify(data)); }
+
+      function load() {
+        return migrate(TFFStorage.get(STORAGE_KEY, { version:2, activeRater:"", raters:{} }));
+      }
+
+      function save(data) {
+        TFFStorage.set(STORAGE_KEY, data);
+      }
+
+      function activeScores(data) {
+        var name = data.activeRater;
+        if (!name) return {};
+        if (!data.raters[name]) data.raters[name] = {};
+        return data.raters[name];
+      }
+
+      function setRater(name) {
+        name = (name || "").trim();
+        if (!name) return;
+        var data = load();
+        data.activeRater = name;
+        if (!data.raters[name]) data.raters[name] = {};
+        save(data);
+        updateRaterUI();
+        renderCards();
+      }
+
+      function updateRaterUI() {
+        var data = load();
+        var pick = document.getElementById("rater-pick");
+        var names = Object.keys(data.raters).sort();
+        pick.innerHTML = names.map(function(n) {
+          return '<option value="' + n + '"' + (n === data.activeRater ? ' selected' : '') + '>' + n + '</option>';
+        }).join("");
+        document.getElementById("rater-name").value = data.activeRater || "";
+        document.getElementById("rater-summary").textContent =
+          names.length ? names.length + " rater(s) on this device: " + names.join(", ") : "No raters yet — enter your name.";
+      }
 
       function renderCards() {
         var data = load();
+        var scores = activeScores(data);
         var html = concepts.map(function (c) {
-          var s = data[c.id] || { liking:5, unique:5, intent:5 };
+          var s = scores[c.id] || { liking:5, unique:5, intent:5 };
           return '<article class="card" data-id="' + c.id + '">' +
             '<div class="card-head"><span class="num">' + String(c.id).padStart(2,'0') + '</span><div><h2>' + c.name + '</h2><p class="sub">' + c.sub + '</p></div></div>' +
             '<div class="sliders">' +
@@ -100,6 +167,7 @@
           inp.addEventListener('input', onSlide);
         });
         renderBoard();
+        renderPrintSummary();
       }
 
       function slider(key, label, val, id) {
@@ -113,39 +181,101 @@
         var val = +e.target.value;
         document.getElementById('o-' + id + '-' + key).textContent = val;
         var data = load();
-        if (!data[id]) data[id] = { liking:5, unique:5, intent:5 };
-        data[id][key] = val;
+        var scores = activeScores(data);
+        if (!scores[id]) scores[id] = { liking:5, unique:5, intent:5 };
+        scores[id][key] = val;
         save(data);
         renderBoard();
+        renderPrintSummary();
+      }
+
+      function aggregateScores(data) {
+        var names = Object.keys(data.raters);
+        var agg = {};
+        concepts.forEach(function(c) {
+          var liking = 0, unique = 0, intent = 0, count = 0;
+          names.forEach(function(n) {
+            var s = (data.raters[n] || {})[c.id];
+            if (!s) return;
+            liking += s.liking || 0;
+            unique += s.unique || 0;
+            intent += s.intent || 0;
+            count++;
+          });
+          agg[c.id] = {
+            liking: count ? liking / count : 0,
+            unique: count ? unique / count : 0,
+            intent: count ? intent / count : 0,
+            count: count
+          };
+        });
+        return agg;
       }
 
       function renderBoard() {
         var data = load();
+        var agg = aggregateScores(data);
         var rows = concepts.map(function (c) {
-          var s = data[c.id] || { liking:0, unique:0, intent:0 };
-          var avg = ((s.liking + s.unique + s.intent) / 3) || 0;
-          return { name: c.name, id: c.id, liking: s.liking || 0, avg: avg };
+          var s = agg[c.id];
+          return { name: c.name, id: c.id, liking: s.liking, avg: (s.liking + s.unique + s.intent) / 3, count: s.count };
         }).sort(function (a, b) { return b.liking - a.liking || b.avg - a.avg; });
 
         document.getElementById('board-rows').innerHTML = rows.map(function (r, i) {
           var pct = (r.liking / 9) * 100;
-          return '<div class="lb-row"><span><b>#' + (i+1) + '</b> ' + r.name + '</span><span>' + (r.liking || '—') + '/9</span></div>' +
-            (r.liking ? '<div class="bar"><i style="width:' + pct + '%"></i></div>' : '');
+          var val = r.count ? r.liking.toFixed(1) : '—';
+          return '<div class="lb-row"><span><b>#' + (i+1) + '</b> ' + r.name + '</span><span>' + val + '/9</span></div>' +
+            (r.count ? '<div class="bar"><i style="width:' + pct + '%"></i></div>' : '');
         }).join('');
+        updateRaterUI();
+      }
+
+      function renderPrintSummary() {
+        var data = load();
+        var agg = aggregateScores(data);
+        var names = Object.keys(data.raters).sort();
+        var rows = concepts.map(function(c) {
+          var s = agg[c.id];
+          return '<tr><td>' + c.id + '</td><td>' + c.name + '</td><td>' + (s.count ? s.liking.toFixed(1) : '—') + '</td><td>' + (s.count ? s.unique.toFixed(1) : '—') + '</td><td>' + (s.count ? s.intent.toFixed(1) : '—') + '</td></tr>';
+        }).join('');
+        document.getElementById('print-summary').innerHTML =
+          '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Concept scorer · aggregated results</h2>' +
+          '<p style="font-size:0.82rem;margin:0 0 16px">Raters (' + names.length + '): ' + (names.join(', ') || 'none') + ' · Printed ' + new Date().toLocaleDateString() + '</p>' +
+          '<table style="width:100%;border-collapse:collapse;font-size:0.8rem"><tr><th style="border:1px solid #ccc;padding:6px">#</th><th style="border:1px solid #ccc;padding:6px">Concept</th><th style="border:1px solid #ccc;padding:6px">Avg liking</th><th style="border:1px solid #ccc;padding:6px">Avg unique</th><th style="border:1px solid #ccc;padding:6px">Avg intent</th></tr>' + rows + '</table>';
       }
 
       function exportScores() {
         var data = load();
-        var text = concepts.map(function (c) {
-          var s = data[c.id] || {};
-          return c.id + '. ' + c.name + ' — L:' + (s.liking||'-') + ' U:' + (s.unique||'-') + ' I:' + (s.intent||'-');
-        }).join('\n');
-        navigator.clipboard.writeText(text).then(function () { alert('Scores copied to clipboard'); });
+        var lines = ['TFF × TheraBreath concept scores · ' + new Date().toLocaleDateString(), ''];
+        Object.keys(data.raters).sort().forEach(function(name) {
+          lines.push('=== ' + name + ' ===');
+          concepts.forEach(function(c) {
+            var s = (data.raters[name] || {})[c.id] || {};
+            lines.push(c.id + '. ' + c.name + ' — L:' + (s.liking||'-') + ' U:' + (s.unique||'-') + ' I:' + (s.intent||'-'));
+          });
+          lines.push('');
+        });
+        lines.push('=== AGGREGATE (avg liking) ===');
+        var agg = aggregateScores(data);
+        concepts.forEach(function(c) {
+          var s = agg[c.id];
+          lines.push(c.id + '. ' + c.name + ' — L:' + (s.count ? s.liking.toFixed(1) : '-'));
+        });
+        navigator.clipboard.writeText(lines.join('\n')).then(function () { alert('All rater scores copied'); });
       }
 
       function clearScores() {
-        if (confirm('Clear all scores?')) { localStorage.removeItem('tff-scores'); renderCards(); }
+        if (confirm('Clear all scores for all raters on this device?')) {
+          TFFStorage.remove(STORAGE_KEY);
+          renderCards();
+        }
       }
+
+      document.getElementById('rater-save').addEventListener('click', function() {
+        setRater(document.getElementById('rater-name').value);
+      });
+      document.getElementById('rater-pick').addEventListener('change', function() {
+        setRater(this.value);
+      });
 
       renderCards();
     </script>

@@ -13,6 +13,8 @@
       .toolbar a, .toolbar button { padding:9px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
       .toolbar a { border:1px solid var(--line); color:var(--ink); }
       .toolbar button { background:var(--blue); color:#fff; }
+      .toolbar .saved { font-size:0.72rem; color:var(--green); font-weight:600; opacity:0; transition:opacity 0.3s; }
+      .toolbar .saved.show { opacity:1; }
       .wrap { width:min(900px,calc(100vw - 32px)); margin:0 auto; padding:24px 0 48px; }
       h1 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:1.3rem; }
       .sub { margin:0 0 20px; font-size:0.84rem; color:var(--muted); }
@@ -44,24 +46,47 @@
       .foot { position:absolute; bottom:0.3in; left:0.45in; right:0.45in; display:flex; justify-content:space-between; font-size:0.58rem; color:var(--muted); text-transform:uppercase; }
       .card { padding:16px; background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:14px; font-size:0.84rem; line-height:1.55; }
       .card h3 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.9rem; }
-      @media print { body{background:#fff} .toolbar,.tabs{display:none} .book{gap:0;padding:0} .page{border:none;box-shadow:none} }
+      .setup { padding:16px; background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:16px; }
+      .setup label { display:block; font-size:0.72rem; font-weight:700; color:var(--muted); margin-bottom:4px; text-transform:uppercase; }
+      .setup input { width:100%; max-width:200px; padding:10px; border:1px solid var(--line); border-radius:8px; font:inherit; }
+      .radio-print { display:inline-block; width:14px; height:14px; border:1px solid var(--ink); border-radius:50%; vertical-align:middle; margin-right:4px; }
+      @media print {
+        body { background:#fff; }
+        .toolbar, .tabs, .no-print, .setup { display:none !important; }
+        .wrap { width:100%; max-width:none; padding:0; margin:0; }
+        .wrap > h1, .wrap > .sub { display:none; }
+        .panel { display:block !important; }
+        #report { display:none !important; }
+        #settings { display:none !important; }
+        .book { gap:0; padding:0; }
+        .page { border:none; box-shadow:none; width:100%; min-height:auto; }
+      }
       @page { size:letter portrait; margin:0.35in; }
     </style>
   </head>
   <body>
     <div class="toolbar">
       <span><strong>Blind comparison</strong> · Duo-trio + attribute fingerprint</span>
-      <div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="saved" id="tff-saved">Saved</span>
         <a href="/lakewood">Plan</a>
         <a href="/triangle">Triangle kit</a>
-        <button onclick="window.print()">Print forms</button>
+        <button type="button" onclick="window.print()">Print all forms</button>
       </div>
     </div>
     <div class="wrap">
       <h1>Blind comparison kit</h1>
       <p class="sub">Run after a significant triangle test — characterize <em>what</em> differs between reference site and Lakewood.</p>
 
-      <div class="tabs">
+      <div id="settings" class="setup no-print">
+        <label>Variant under test</label>
+        <input type="text" id="variant" placeholder="e.g. Invigorating Icy Mint" style="max-width:100%;margin-bottom:12px" />
+        <label>Panelist forms to print (duo-trio + fingerprint sets)</label>
+        <input type="number" id="panelN" value="12" min="1" max="30" />
+        <p style="font-size:0.72rem;color:var(--muted);margin:8px 0 0">Each panelist gets 1 duo-trio ballot + 2 fingerprint pages. Expert screen prints once.</p>
+      </div>
+
+      <div class="tabs no-print">
         <button class="tab on" data-tab="expert">Expert screen</button>
         <button class="tab" data-tab="duotrio">Duo-trio</button>
         <button class="tab" data-tab="fingerprint">Fingerprint</button>
@@ -69,94 +94,18 @@
       </div>
 
       <div id="expert" class="panel on">
-        <div class="book">
-          <section class="page" id="expert-screen">
-            <p class="kicker">Rung 1 · Expert screening</p>
-            <h2>Same / different screen · TheraBreath R&amp;D</h2>
-            <div class="field"><label>Variant</label><div class="line"></div></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div class="field"><label>Evaluator</label><div class="line"></div></div>
-              <div class="field"><label>Date</label><div class="line"></div></div>
-            </div>
-            <p style="font-size:0.72rem;color:var(--muted)">Two coded samples side-by-side (reference site vs Lakewood). 10 mL each, 15-sec swish.</p>
-            <table style="margin:14px 0">
-              <tr><th>Sample code A</th><th>Sample code B</th><th>Same?</th><th>Different?</th><th>Notes</th></tr>
-              <tr><td style="height:28px"></td><td></td><td></td><td></td><td></td></tr>
-              <tr><td style="height:28px"></td><td></td><td></td><td></td><td></td></tr>
-              <tr><td style="height:28px"></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-            <p class="kicker">If 2+ of 3 experts say different → proceed to triangle test</p>
-            <div class="field"><label>Consensus decision</label><div class="line"></div></div>
-            <footer class="foot"><span>Expert screen · confidential</span><span>TFF × TheraBreath</span></footer>
-          </section>
-        </div>
+        <div class="book" id="expert-book"></div>
       </div>
 
       <div id="duotrio" class="panel">
-        <div class="book">
-          <section class="page">
-            <p class="kicker">Rung 3a · Duo-trio test</p>
-            <h2>Match to reference</h2>
-            <div class="field"><label>Variant · Panelist # · Date</label><div class="line"></div></div>
-            <p style="font-size:0.72rem">Reference sample (R) is marked. Taste R first, then indicate which of A or B matches R.</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;text-align:center">
-              <div style="padding:14px;border:2px solid var(--blue);border-radius:10px"><b style="font-family:Sora,sans-serif;font-size:1.2rem">R</b><br><span style="font-size:0.68rem;color:var(--muted)">Reference</span></div>
-              <div style="padding:14px;border:2px solid var(--line);border-radius:10px"><b style="font-family:Sora,sans-serif;font-size:1.2rem">___</b><br><span style="font-size:0.68rem;color:var(--muted)">A</span></div>
-              <div style="padding:14px;border:2px solid var(--line);border-radius:10px"><b style="font-family:Sora,sans-serif;font-size:1.2rem">___</b><br><span style="font-size:0.68rem;color:var(--muted)">B</span></div>
-            </div>
-            <p style="font-size:0.76rem;font-weight:600">Which matches the reference?</p>
-            <div style="display:flex;gap:20px;font-size:0.82rem;margin:8px 0 16px"><label><input type="radio" disabled /> A matches</label><label><input type="radio" disabled /> B matches</label></div>
-            <p style="font-size:0.72rem">Quick direction: Lakewood is ___ (more mint / sweeter / cooler / longer finish / other)</p>
-            <div class="line"></div>
-            <footer class="foot"><span>Duo-trio ballot</span><span>Page 1</span></footer>
-          </section>
-        </div>
+        <div class="book" id="duotrio-book"></div>
       </div>
 
       <div id="fingerprint" class="panel">
-        <div class="book">
-          <section class="page">
-            <p class="kicker">Rung 3b · Flavor fingerprint</p>
-            <h2>Blind paired attribute evaluation</h2>
-            <div class="field"><label>Variant</label><div class="line"></div></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-              <div class="field"><label>Sample X (code)</label><div class="line"></div></div>
-              <div class="field"><label>Sample Y (code)</label><div class="line"></div></div>
-            </div>
-            <p style="font-size:0.7rem;color:var(--muted)">Taste X then Y. Rate each attribute 1 (low) – 7 (high). Do not discuss until complete.</p>
-            <div class="scale-hdr"><span>Attribute</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
-            <div class="scale-row"><span>Overall liking</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Mint intensity</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Cooling / freshness</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Sweetness</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Mouthfeel / body</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Aftertaste length</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Herbal / botanical</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Chlorite character</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <p style="font-size:0.68rem;margin-top:10px"><strong>Which sample do you prefer?</strong> X ___ &nbsp; Y ___ &nbsp; No preference ___</p>
-            <footer class="foot"><span>Fingerprint · Sample X</span><span>Repeat for Sample Y</span></footer>
-          </section>
-          <section class="page">
-            <p class="kicker">Fingerprint · Sample Y</p>
-            <h2>Same attributes — second sample</h2>
-            <p style="font-size:0.7rem;color:var(--muted)">Complete for sample Y using same 1–7 scale.</p>
-            <div class="scale-hdr"><span>Attribute</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
-            <div class="scale-row"><span>Overall liking</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Mint intensity</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Cooling / freshness</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Sweetness</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Mouthfeel / body</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Aftertaste length</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Herbal / botanical</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <div class="scale-row"><span>Chlorite character</span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
-            <p class="kicker" style="margin-top:16px">Open description</p>
-            <div style="min-height:1.2in;border:1px solid var(--line);border-radius:8px;margin-top:6px"></div>
-            <footer class="foot"><span>Panelist #</span><span>Page 2</span></footer>
-          </section>
-        </div>
+        <div class="book" id="fingerprint-book"></div>
       </div>
 
-      <div id="report" class="panel">
+      <div id="report" class="panel no-print">
         <div class="card">
           <h3>Results report template (per variant)</h3>
           <p><strong>Variant:</strong> [name] · <strong>Test date:</strong> [date] · <strong>Panel n:</strong> [count]</p>
@@ -171,17 +120,157 @@
           <p><strong>Recommendation:</strong> [ ] Site parity confirmed · [ ] Flavor adjustment needed · [ ] Process review with C&amp;D · [ ] Escalate to consumer test</p>
           <p><strong>Next action owner:</strong> TFF / TheraBreath R&amp;D · <strong>Due:</strong> ___</p>
         </div>
+        <div class="card">
+          <h3>Printable report sheet</h3>
+          <p>Use <strong>Print all forms</strong> — a fill-in report page is included at the end of the print bundle.</p>
+        </div>
+      </div>
+
+      <div id="print-report" class="panel">
+        <div class="book" id="report-book"></div>
       </div>
     </div>
+    <script src="/tff-storage.js"></script>
     <script>
-      document.querySelectorAll('.tab').forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
-          document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
-          tab.classList.add('on');
-          document.getElementById(tab.dataset.tab).classList.add('on');
+      var STORAGE_KEY = "tff-blind";
+      var attrs = ["Overall liking","Mint intensity","Cooling / freshness","Sweetness","Mouthfeel / body","Aftertaste length","Herbal / botanical","Chlorite character"];
+
+      function loadState() {
+        return TFFStorage.get(STORAGE_KEY, {}) || {};
+      }
+
+      function saveState(patch) {
+        var data = loadState();
+        Object.keys(patch).forEach(function(k) { data[k] = patch[k]; });
+        TFFStorage.set(STORAGE_KEY, data);
+        TFFStorage.showSaved();
+      }
+
+      function scaleRows() {
+        return attrs.map(function(a) {
+          return '<div class="scale-row"><span>' + a + '</span>' +
+            Array(7).fill(0).map(function(){ return '<span class="tick"></span>'; }).join("") + '</div>';
+        }).join("");
+      }
+
+      function expertPage() {
+        return '<section class="page">' +
+          '<p class="kicker">Rung 1 · Expert screening</p>' +
+          '<h2>Same / different screen · TheraBreath R&amp;D</h2>' +
+          '<div class="field"><label>Variant</label><div class="line"></div></div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">' +
+          '<div class="field"><label>Evaluator</label><div class="line"></div></div>' +
+          '<div class="field"><label>Date</label><div class="line"></div></div></div>' +
+          '<p style="font-size:0.72rem;color:var(--muted)">Two coded samples side-by-side (reference site vs Lakewood). 10 mL each, 15-sec swish.</p>' +
+          '<table style="margin:14px 0"><tr><th>Sample code A</th><th>Sample code B</th><th>Same?</th><th>Different?</th><th>Notes</th></tr>' +
+          Array(3).fill(0).map(function(){ return '<tr><td style="height:28px"></td><td></td><td></td><td></td><td></td></tr>'; }).join("") +
+          '</table>' +
+          '<p class="kicker">If 2+ of 3 experts say different → proceed to triangle test</p>' +
+          '<div class="field"><label>Consensus decision</label><div class="line"></div></div>' +
+          '<footer class="foot"><span>Expert screen · confidential</span><span>TFF × TheraBreath</span></footer></section>';
+      }
+
+      function duoTrioPage(num) {
+        return '<section class="page">' +
+          '<p class="kicker">Rung 3a · Duo-trio test</p>' +
+          '<h2>Match to reference · Panelist #' + String(num).padStart(2,"0") + '</h2>' +
+          '<div class="field"><label>Variant · Date</label><div class="line"></div></div>' +
+          '<p style="font-size:0.72rem">Reference sample (R) is marked. Taste R first, then indicate which of A or B matches R.</p>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;text-align:center">' +
+          '<div style="padding:14px;border:2px solid var(--blue);border-radius:10px"><b style="font-family:Sora,sans-serif;font-size:1.2rem">R</b><br><span style="font-size:0.68rem;color:var(--muted)">Reference</span></div>' +
+          '<div style="padding:14px;border:2px solid var(--line);border-radius:10px"><b style="font-family:Sora,sans-serif;font-size:1.2rem">___</b><br><span style="font-size:0.68rem;color:var(--muted)">A</span></div>' +
+          '<div style="padding:14px;border:2px solid var(--line);border-radius:10px"><b style="font-family:Sora,sans-serif;font-size:1.2rem">___</b><br><span style="font-size:0.68rem;color:var(--muted)">B</span></div></div>' +
+          '<p style="font-size:0.76rem;font-weight:600">Which matches the reference?</p>' +
+          '<div style="display:flex;gap:20px;font-size:0.82rem;margin:8px 0 16px">' +
+          '<span><span class="radio-print"></span> A matches</span>' +
+          '<span><span class="radio-print"></span> B matches</span></div>' +
+          '<p style="font-size:0.72rem">Quick direction: Lakewood is ___ (more mint / sweeter / cooler / longer finish / other)</p>' +
+          '<div class="line"></div>' +
+          '<footer class="foot"><span>Duo-trio ballot</span><span>Panelist ' + String(num).padStart(2,"0") + '</span></footer></section>';
+      }
+
+      function fingerprintPageX(num) {
+        return '<section class="page">' +
+          '<p class="kicker">Rung 3b · Flavor fingerprint · Panelist #' + String(num).padStart(2,"0") + '</p>' +
+          '<h2>Blind paired attribute evaluation · Sample X</h2>' +
+          '<div class="field"><label>Variant</label><div class="line"></div></div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">' +
+          '<div class="field"><label>Sample X (code)</label><div class="line"></div></div>' +
+          '<div class="field"><label>Sample Y (code)</label><div class="line"></div></div></div>' +
+          '<p style="font-size:0.7rem;color:var(--muted)">Taste X then Y. Rate each attribute 1 (low) – 7 (high). Do not discuss until complete.</p>' +
+          '<div class="scale-hdr"><span>Attribute</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>' +
+          scaleRows() +
+          '<p style="font-size:0.68rem;margin-top:10px"><strong>Which sample do you prefer?</strong> X ___ &nbsp; Y ___ &nbsp; No preference ___</p>' +
+          '<footer class="foot"><span>Fingerprint · Sample X</span><span>Panelist ' + String(num).padStart(2,"0") + '</span></footer></section>';
+      }
+
+      function fingerprintPageY(num) {
+        return '<section class="page">' +
+          '<p class="kicker">Fingerprint · Sample Y · Panelist #' + String(num).padStart(2,"0") + '</p>' +
+          '<h2>Same attributes — second sample</h2>' +
+          '<p style="font-size:0.7rem;color:var(--muted)">Complete for sample Y using same 1–7 scale.</p>' +
+          '<div class="scale-hdr"><span>Attribute</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>' +
+          scaleRows() +
+          '<p class="kicker" style="margin-top:16px">Open description</p>' +
+          '<div style="min-height:1.2in;border:1px solid var(--line);border-radius:8px;margin-top:6px"></div>' +
+          '<footer class="foot"><span>Panelist #' + String(num).padStart(2,"0") + '</span><span>Page 2 of 2</span></footer></section>';
+      }
+
+      function reportPage(variant) {
+        return '<section class="page">' +
+          '<p class="kicker">Session report · fill in by hand</p>' +
+          '<h2>Blind comparison results</h2>' +
+          '<div class="field"><label>Variant</label><div class="line">' + (variant ? '' : '') + '</div></div>' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">' +
+          '<div class="field"><label>Test date</label><div class="line"></div></div>' +
+          '<div class="field"><label>Panel n</label><div class="line"></div></div></div>' +
+          '<p style="font-size:0.78rem"><strong>Triangle result:</strong> ☐ Pass (not significant) &nbsp; ☐ Flag (p&lt;0.05) &nbsp; Correct: ___ / ___</p>' +
+          '<p style="font-size:0.78rem;margin-top:12px"><strong>Mean attribute deltas (Lakewood − reference):</strong></p>' +
+          '<table><tr><th>Attribute</th><th>Delta</th><th>Direction</th></tr>' +
+          ["Mint intensity","Cooling","Sweetness","Aftertaste","Mouthfeel","Herbal","Chlorite"].map(function(a) {
+            return '<tr><td>' + a + '</td><td></td><td></td></tr>';
+          }).join("") +
+          '</table>' +
+          '<p style="font-size:0.78rem;margin-top:14px"><strong>Recommendation:</strong> ☐ Site parity confirmed &nbsp; ☐ Flavor adjustment &nbsp; ☐ Process review &nbsp; ☐ Consumer test</p>' +
+          '<div class="field"><label>Next action / owner / due</label><div class="line"></div></div>' +
+          '<footer class="foot"><span>Internal · TFF × TheraBreath</span><span>Lakewood parity</span></footer></section>';
+      }
+
+      function buildForms() {
+        var n = +document.getElementById("panelN").value || 12;
+        n = Math.max(1, Math.min(30, n));
+        var variant = document.getElementById("variant").value || "";
+        saveState({ panelN: n, variant: variant });
+
+        document.getElementById("expert-book").innerHTML = expertPage();
+        var duo = "";
+        for (var i = 1; i <= n; i++) duo += duoTrioPage(i);
+        document.getElementById("duotrio-book").innerHTML = duo;
+
+        var fp = "";
+        for (var j = 1; j <= n; j++) {
+          fp += fingerprintPageX(j) + fingerprintPageY(j);
+        }
+        document.getElementById("fingerprint-book").innerHTML = fp;
+        document.getElementById("report-book").innerHTML = reportPage(variant);
+      }
+
+      document.querySelectorAll(".tab").forEach(function(tab) {
+        tab.addEventListener("click", function() {
+          document.querySelectorAll(".tab").forEach(function(t){ t.classList.remove("on"); });
+          document.querySelectorAll(".panel").forEach(function(p){ p.classList.remove("on"); });
+          tab.classList.add("on");
+          document.getElementById(tab.dataset.tab).classList.add("on");
         });
       });
+
+      var state = loadState();
+      if (state.variant) document.getElementById("variant").value = state.variant;
+      if (state.panelN) document.getElementById("panelN").value = state.panelN;
+
+      document.getElementById("variant").addEventListener("input", buildForms);
+      document.getElementById("panelN").addEventListener("input", buildForms);
+      buildForms();
     </script>
   </body>
 </html>

@@ -33,12 +33,22 @@
       .links { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
       .links a { padding:8px 12px; border-radius:8px; background:#fff; border:1px solid var(--line); font-size:0.78rem; font-weight:700; color:var(--blue); text-decoration:none; }
       .reset { margin-top:24px; padding:10px 16px; border-radius:8px; border:1px solid var(--line); background:#fff; cursor:pointer; font-weight:600; }
+      @media print {
+        body { background:#fff; }
+        header { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+        .links, .reset, .now a { display:none; }
+        .block-body { display:block !important; }
+        .block { break-inside:avoid; page-break-inside:avoid; }
+      }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Run-of-show · July 8</h1>
-      <p>Internal host checklist · Tap a block to expand · Click header to mark done</p>
+    <header style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px">
+      <div>
+        <h1>Run-of-show · July 8</h1>
+        <p>Internal host checklist · Tap a block to expand · Click header to mark done</p>
+      </div>
+      <button type="button" onclick="window.print()" style="padding:9px 16px;border-radius:999px;border:none;background:var(--blue);color:#fff;font-family:Sora,sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;align-self:center">Print checklist</button>
     </header>
     <div class="wrap">
       <div class="now">

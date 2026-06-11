@@ -69,6 +69,7 @@
       .checklist { columns:2; column-gap:24px; font-size:0.78rem; color:#344054; line-height:1.55; }
       .checklist li { break-inside:avoid; margin-bottom:4px; }
       @media (max-width:720px) { .grid2, .grid3 { grid-template-columns:1fr; } .checklist { columns:1; } .folder-row, .tl { grid-template-columns:1fr; } }
+      @media print { body { background:#fff; padding:0; } .toolbar { display:none; } .hero { -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
     </style>
   </head>
   <body>
