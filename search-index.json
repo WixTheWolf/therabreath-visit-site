@@ -542,5 +542,37 @@
     "snippet": "Extends Ross thread into partnership model.",
     "href": "/questions",
     "id": "pt6"
+  },
+  {
+    "type": "answer",
+    "category": "Procurement & commercial",
+    "q": "What is TFF's relationship with Church & Dwight and TheraBreath?",
+    "snippet": "Approved flavor manufacturer at Norco for C&D — production COAs plus parallel innovation work.",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Partnership brief",
+    "q": "What flavors does TFF supply to Church & Dwight?",
+    "snippet": "MI mouthwash mint systems, PE peppermint oil, CH chamomile mint, TR terpene blends — commercial names only.",
+    "href": "/partnership",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Partnership brief",
+    "q": "What is TFF's C&D supplier qualification status?",
+    "snippet": "SQF, FDA registered Norco, allergen/HACCP/traceability — survey completed Sep 2025.",
+    "href": "/partnership",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Partnership brief",
+    "q": "What seasonal flavor concepts has TFF proposed to C&D?",
+    "snippet": "Top 8 oral-rinse concepts — spring/summer and fall/winter seasonal pipeline.",
+    "href": "/partnership",
+    "badge": "ready"
   }
 ]

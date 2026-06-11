@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <script src="/tff-auth.js"></script>
+    <script>TFF.requireAuth();</script>
+    <title>Partnership Brief | TFF × Church &amp; Dwight × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --warn:#fff4e8; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; padding-bottom:72px; }
+      .toolbar { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .toolbar a, .toolbar button { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .hero { padding:44px 24px 40px; background:linear-gradient(135deg,var(--ink) 0%,#003d6b 55%,#1e5c3a); color:#fff; }
+      .hero-in { width:min(960px,calc(100vw - 40px)); margin:0 auto; }
+      .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
+      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.7rem,4.5vw,2.4rem); font-weight:800; letter-spacing:-0.03em; }
+      .hero p { margin:0; max-width:720px; font-size:0.95rem; line-height:1.6; color:rgba(255,255,255,0.85); }
+      .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+      .hero-meta span { padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); font-size:0.74rem; font-weight:600; }
+      .guard { margin:20px auto 0; width:min(960px,calc(100vw - 40px)); padding:14px 18px; border-radius:12px; border:1px solid rgba(245,130,32,0.35); background:var(--warn); font-size:0.8rem; line-height:1.5; color:#344054; }
+      .guard b { color:var(--orange); }
+      .wrap { width:min(960px,calc(100vw - 40px)); margin:0 auto; padding:36px 0 80px; }
+      h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.25rem; font-weight:800; }
+      h3 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.9rem; }
+      .section { margin-bottom:36px; }
+      .lead { margin:0 0 16px; color:var(--muted); line-height:1.55; max-width:720px; font-size:0.88rem; }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+      .card { padding:18px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .card p, .card li { font-size:0.82rem; color:var(--muted); line-height:1.5; }
+      .card ul { margin:8px 0 0; padding-left:18px; }
+      .card.accent { border-color:rgba(0,143,211,0.3); background:linear-gradient(135deg,#fff,#f0f9fd); }
+      .card.green { border-color:rgba(95,184,50,0.35); background:linear-gradient(135deg,#fff,#f8fdf6); }
+      .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:16px; }
+      .stat { padding:14px; border-radius:12px; background:#fff; border:1px solid var(--line); text-align:center; }
+      .stat b { display:block; font-family:"Sora",sans-serif; font-size:1.2rem; font-weight:800; color:var(--blue); }
+      .stat span { font-size:0.68rem; color:var(--muted); }
+      table { width:100%; border-collapse:collapse; font-size:0.78rem; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+      th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+      th { background:#fafcfe; font-family:"Sora",sans-serif; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); }
+      tr:last-child td { border-bottom:none; }
+      .tag { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.62rem; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; }
+      .tag.mi { background:#e8f6fd; color:#006aa6; }
+      .tag.pe { background:#edf8e8; color:#2d6a3f; }
+      .tag.ch { background:#f5f0ff; color:#6b4fa0; }
+      .tag.tr { background:#fff4e8; color:#c45c26; }
+      .tag.rm { background:#f0f2f8; color:#5b6b8a; }
+      .tag.org { background:#edf8e8; color:#2d6a3f; }
+      .people { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+      .person { padding:16px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+      .person h3 { margin:0 0 4px; font-size:0.88rem; }
+      .person .title { font-size:0.76rem; color:var(--blue); font-weight:600; margin-bottom:6px; }
+      .person p { margin:0; font-size:0.76rem; color:var(--muted); line-height:1.45; }
+      .timeline { border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+      .tl { display:grid; grid-template-columns:100px 1fr; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); font-size:0.8rem; }
+      .tl:last-child { border-bottom:none; }
+      .tl time { font-family:"Sora",sans-serif; font-weight:800; color:var(--blue); font-size:0.74rem; }
+      .links { display:flex; flex-wrap:wrap; gap:8px; }
+      .links a { padding:8px 12px; border-radius:8px; background:#fff; border:1px solid var(--line); font-size:0.74rem; font-weight:700; color:var(--blue); text-decoration:none; }
+      .season { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+      .season h4 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.8rem; color:var(--orange); }
+      .season ul { margin:0; padding-left:18px; font-size:0.8rem; color:#344054; line-height:1.55; }
+      @media (max-width:720px) { .grid2, .grid3, .stat-row, .people, .season { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Partnership brief</strong> · Internal · password protected</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <a href="/gate">Portal</a>
+        <button onclick="window.print()">Print</button>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-in">
+        <p class="kicker">The Flavor Factory · Church &amp; Dwight · TheraBreath oral care</p>
+        <h1>How we work together.</h1>
+        <p>TFF is an approved flavor supplier to Church &amp; Dwight — manufacturing mouthwash and oral-care flavors at our Norco facility for the TheraBreath business. This brief summarizes the relationship for July 8 prep; it does not replace specs, COAs, or contracts on file with C&amp;D.</p>
+        <div class="hero-meta">
+          <span>Manufactured for Church &amp; Dwight</span>
+          <span>Norco · 2058 Second Street</span>
+          <span>SQF · FDA registered</span>
+          <span>Supplier survey · Sep 2025</span>
+        </div>
+      </div>
+    </header>
+
+    <p class="guard"><b>Proprietary guard:</b> No formula composition, lot numbers, C&amp;D item numbers, purchase order IDs, pricing, or spec ranges on this site. Full documentation lives in the customer file and qualification packet — share only through approved channels.</p>
+
+    <div class="wrap">
+      <section class="section">
+        <h2>Relationship at a glance</h2>
+        <p class="lead">Church &amp; Dwight owns TheraBreath. TFF develops and produces flavors under C&amp;D specifications, releases batches with Certificates of Analysis, and supports innovation beyond supply — competitive sensory work, seasonal concepts, and Lakewood site-transfer validation.</p>
+        <div class="stat-row">
+          <div class="stat"><b>8+</b><span>Active flavor codes in rotation</span></div>
+          <div class="stat"><b>SQF</b><span>Quality system (GFSI)</span></div>
+          <div class="stat"><b>13.7k</b><span>Norco facility sq ft</span></div>
+          <div class="stat"><b>2025</b><span>C&amp;D survey on file</span></div>
+        </div>
+        <div class="grid2">
+          <div class="card accent">
+            <h3>What TFF supplies</h3>
+            <ul>
+              <li>Natural mouthwash mint systems and supporting terpene blends</li>
+              <li>Peppermint oil and botanical mint profiles for oral-care lines</li>
+              <li>Organic NOP-certified flavors where formulas require organic claim support</li>
+              <li>Raw material statements (e.g. terpenes) with full regulatory documentation</li>
+            </ul>
+          </div>
+          <div class="card green">
+            <h3>How C&amp;D uses TFF</h3>
+            <ul>
+              <li>Production flavors with lot-level COAs signed by TFF Quality (Ryan Wixted)</li>
+              <li>Supplier qualification — Norco survey, cert copies, allergen &amp; traceability programs</li>
+              <li>Innovation partner — intensity-tier competitive reads, functional concepts, seasonal ideation</li>
+              <li>Lakewood manufacturing transfer — sensory parity validation across 8 mouthrinse SKUs</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>C&amp;D contacts · flavor &amp; innovation</h2>
+        <p class="lead">Primary threads on the July 8 visit and active email work. Titles from LinkedIn / working correspondence.</p>
+        <div class="people">
+          <div class="person">
+            <h3>Ross Conroy</h3>
+            <p class="title">Sr. Fragrance &amp; Flavor Development Specialist</p>
+            <p>R&amp;D lead on Lakewood site parity, competitive intensity tiers, and GA-22131 functional exploration. Drives expert/triangle/consumer validation asks.</p>
+          </div>
+          <div class="person">
+            <h3>Neonila (Nelly) Levitsky</h3>
+            <p class="title">Sr. Manager — Fragrance, Flavor Design &amp; Innovation</p>
+            <p>Consumer research and business-owner framing on competitive threats (Extra Mild vs Mild Mint). Voices strategic calibration, lexicon, and efficacy POV on innovation threads.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Active flavor portfolio</h2>
+        <p class="lead">Commercial names from approved COAs — codes identify families, not public formulas. Do not copy spec limits or item numbers into client materials.</p>
+        <table>
+          <thead>
+            <tr><th>Code</th><th>Commercial name</th><th>Role in oral care</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="tag mi">MI</span> MI-18727</td><td>Nat Mint Blend Mouthwash Flavor</td><td>Core mouthwash mint system — high-volume production blend</td></tr>
+            <tr><td><span class="tag mi">MI</span> MI-20300</td><td>Nat Mint Mouthwash Flavor Oil</td><td>Mint oil variant for rinse applications</td></tr>
+            <tr><td><span class="tag mi">MI</span> MI-21336</td><td>Nat Total Care Mint Flavor</td><td>Multi-benefit / Total Care line mint profile</td></tr>
+            <tr><td><span class="tag pe">PE</span> PE-05523</td><td>Nat Peppermint Oil</td><td>Peppermint oil supply for C&amp;D formulations</td></tr>
+            <tr><td><span class="tag ch">CH</span> CH-21205</td><td>Nat Chamomile Mint Flavor</td><td>Botanical mint — ties to mild / wellness positioning</td></tr>
+            <tr><td><span class="tag tr">TR</span> TR-19123</td><td>Nat Bergamot Terpenes Blend</td><td>Citrus topnote / terpene modifier</td></tr>
+            <tr><td><span class="tag tr">TR</span> TR-19125</td><td>Nat Citrus Terpenes Blend</td><td>Citrus terpene support in rinse systems</td></tr>
+            <tr><td><span class="tag rm">RM</span> RM-D3060</td><td>D-Limonene</td><td>Regulatory-documented raw material</td></tr>
+          </tbody>
+        </table>
+        <p class="lead" style="margin-top:14px"><span class="tag org">NOP</span> Organic-certified flavors on file for C&amp;D include watermelon (WA-20912) and strawberry (ST-20913) types among others on TFF's NOP certificate addendum — evaluated per formula, not blanket-applied.</p>
+      </section>
+
+      <section class="section">
+        <h2>Quality &amp; qualification posture</h2>
+        <p class="lead">From Church &amp; Dwight Supplier Quality System Assessment — Norco site, completed September 2025. Ryan Wixted, Quality Control Manager.</p>
+        <div class="grid3">
+          <div class="card">
+            <h3>Certifications &amp; registration</h3>
+            <ul>
+              <li>SQF (GFSI-recognized food safety program)</li>
+              <li>FDA-registered manufacturing facility</li>
+              <li>Kosher and Halal capability — per-formula evaluation</li>
+              <li>Organic NOP flavors on certificate addendum where applicable</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Programs C&amp;D verified</h3>
+            <ul>
+              <li>HACCP · allergen control · traceability from receipt to release</li>
+              <li>Documented customer spec review before saleable production</li>
+              <li>Approved supplier list for raw materials · CAPA · complaint tracking</li>
+              <li>Design &amp; development controls for new flavor work</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Norco facility snapshot</h3>
+            <ul>
+              <li>2058 Second Street, Norco, CA 92860</li>
+              <li>~13,750 sq ft · facility ~21 years on site</li>
+              <li>12 employees · quality staff 2 FTE with shift coverage</li>
+              <li>4 days/week · single shift standard schedule</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Documentation rhythm</h2>
+        <div class="timeline">
+          <div class="tl"><time>Spec</time><div><b>C&amp;D-approved specification required</b> before any saleable batch — no order processed without approved spec on file (per supplier survey).</div></div>
+          <div class="tl"><time>Batch</time><div><b>Certificate of Analysis per lot</b> — organoleptic summary, manufactured for Church &amp; Dwight, QC release by Ryan Wixted.</div></div>
+          <div class="tl"><time>Regulatory</time><div><b>Statements on request</b> — Kosher, Prop 65, BSE/TSE, nitrosamine, pesticides, USP residual solvents, heavy metals — matched to product code.</div></div>
+          <div class="tl"><time>Innovation</time><div><b>Concept samples &amp; pilots</b> — separate from production COA path; NDA-appropriate for workshop prototypes.</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Seasonal innovation pipeline</h2>
+        <p class="lead">TFF Top 8 seasonal oral-rinse concepts shared with C&amp;D (March 2025) — storytelling positioning only; not contracted SKUs. Useful for July 8 Innovation pillar and co-creation.</p>
+        <div class="season">
+          <div class="card">
+            <h4>Spring / Summer</h4>
+            <ul>
+              <li>Hibiscus Lemonade</li>
+              <li>Raspberry Mint Lemonade</li>
+              <li>Cherry Limeade</li>
+              <li>Berry Melon</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Fall / Winter</h4>
+            <ul>
+              <li>Cinnamon Mint (Cinnamint)</li>
+              <li>Wintergreen Spice</li>
+              <li>Honey-Ginger</li>
+              <li>Pomegranate Ginger</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Active workstreams</h2>
+        <p class="lead">Everything else on this site maps to a live thread with C&amp;D.</p>
+        <div class="timeline">
+          <div class="tl"><time>Jul 8</time><div><b>Norco capabilities visit</b> — half-day workshop; Ross &amp; Nelly; four pillars + tasting + co-creation. <a href="/kickoff">Kickoff prep</a> · <a href="/">Workshop site</a></div></div>
+          <div class="tl"><time>Jun 26</time><div><b>Lakewood site parity</b> — 8 mouthrinse variants; triangle + blind escalation; Ross-led validation program. <a href="/lakewood">Proposal</a> · <a href="/lakewood-tracker">Tracker</a></div></div>
+          <div class="tl"><time>Feb–Mar</time><div><b>Listerine intensity tiers + GA-22131</b> — competitive sensory + garlic functional hypothesis. <a href="/intensity-tiers">Thread archive</a></div></div>
+          <div class="tl"><time>Ongoing</time><div><b>Chlorite-stable flavor development</b> — vanilla, rosemary antioxidants, formulation protocol. <a href="/chlorite-flavor">Playbook</a></div></div>
+        </div>
+        <p class="links" style="margin-top:16px">
+          <a href="/toolkit">Command center</a>
+          <a href="/questions">Questions for C&amp;D</a>
+          <a href="/answers">Prepared answers</a>
+          <a href="/tour">Facility tour map</a>
+          <a href="/onepager">Executive one-pager</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

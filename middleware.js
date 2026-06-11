@@ -13,7 +13,8 @@ const PROTECTED = new Set([
   "/labels",
   "/tour",
   "/worksheet",
-  "/pocket"
+  "/pocket",
+  "/partnership"
 ]);
 
 // Matches api/auth.js default HMAC for password TFF4321#
@@ -63,6 +64,7 @@ export const config = {
     "/labels",
     "/tour",
     "/worksheet",
-    "/pocket"
+    "/pocket",
+    "/partnership"
   ]
 };
