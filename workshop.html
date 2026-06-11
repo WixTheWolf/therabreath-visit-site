@@ -3289,6 +3289,34 @@
           font-size: clamp(2.4rem, 10vw, 3.6rem);
         }
       }
+
+      .exec-panel { padding: clamp(48px,6vw,72px) 0; background:#fff; border-bottom:1px solid var(--line); }
+      .exec-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+      .exec-card { padding:22px 24px; border-radius:var(--radius-md); border:1px solid var(--line); background:var(--paper); }
+      .exec-card.wide { grid-column:1 / -1; }
+      .exec-card h3 { margin:0 0 10px; font-family:var(--font-display); font-size:1rem; }
+      .exec-card p, .exec-card li { margin:0; font-size:0.86rem; color:var(--muted); line-height:1.55; }
+      .exec-card ul { margin:10px 0 0; padding-left:18px; }
+      .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+      .proof-card { padding:14px; border-radius:12px; background:#fff; border:1px solid var(--line); }
+      .proof-card b { display:block; font-family:var(--font-display); font-size:0.78rem; margin-bottom:4px; }
+      .proof-card span { font-size:0.72rem; color:var(--muted); line-height:1.4; }
+      .host-exec-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:14px; }
+      .host-exec { padding:16px; border-radius:14px; background:#fff; border:1px solid var(--line); }
+      .host-exec b { display:block; font-family:var(--font-display); font-size:0.84rem; }
+      .host-exec .role { font-size:0.72rem; font-weight:700; color:var(--blue); margin:2px 0 6px; }
+      .host-exec p { margin:0; font-size:0.72rem; color:var(--muted); line-height:1.45; }
+      .decision-table { width:100%; border-collapse:collapse; font-size:0.78rem; margin-top:12px; }
+      .decision-table th, .decision-table td { padding:10px 12px; border:1px solid var(--line); text-align:left; }
+      .decision-table th { background:#f0f9fd; font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--blue); }
+      .concept-card { cursor:pointer; }
+      .concept-card:not(.expanded) .profile,
+      .concept-card:not(.expanded) .concept-qc-note,
+      .concept-card:not(.expanded) .claim,
+      .concept-card:not(.expanded) .concept-body > p:not(.sub) { display:none; }
+      .concept-expand-hint { margin:8px 0 0; font-size:0.68rem; font-weight:700; color:var(--blue); }
+      .concept-card.expanded .concept-expand-hint::after { content:" · tap to collapse"; }
+      @media (max-width:900px) { .exec-grid, .proof-grid { grid-template-columns:1fr; } }
     </style>
   </head>
   <body>
@@ -3299,19 +3327,15 @@
       </a>
       <nav class="nav-links" aria-label="Workshop sections">
         <a href="/">Hub</a>
-        <a href="/companies">Companies</a>
         <a href="#agenda">Agenda</a>
-        <a href="#capabilities">Pillars</a>
+        <a href="#capabilities">Capabilities</a>
         <a href="#tasting">Tasting</a>
-        <a href="/mystery">Mystery</a>
-        <a href="#concepts">Concepts</a>
-        <a href="#feedback">Feedback</a>
+        <a href="/lakewood">Lakewood</a>
         <a href="#next">Next steps</a>
       </nav>
       <div class="nav-cta-wrap">
-        <a class="nav-cta-secondary" href="/">All resources</a>
-        <a class="nav-cta-secondary" href="/mystery">Mystery game</a>
-        <a class="nav-cta" href="/score">Live scorer</a>
+        <a class="nav-cta-secondary" href="/mystery">Blind mapping</a>
+        <a class="nav-cta" href="/score">Scorecard</a>
       </div>
     </header>
 
@@ -3349,7 +3373,7 @@
           <article class="guide-card">
             <span class="guide-icon">05</span>
             <h3>Taste the ten prototypes</h3>
-            <p>Ten workshop prototypes — coded cups M1–M10, mystery game first, then reveal. QC has not cleared every profile for chlorite shelf.</p>
+            <p>Ten coded workshop prototypes for directional sensory feedback — blind flavor mapping first, then QC status reviewed after reveal.</p>
             <a href="#concepts">View concepts</a>
           </article>
           <article class="guide-card">
@@ -3361,7 +3385,7 @@
           <article class="guide-card">
             <span class="guide-icon">+</span>
             <h3>Print materials &amp; more</h3>
-            <p>Slides, passports, Lakewood proposal, station signs, mystery game, and live scorer — organized on the partnership hub.</p>
+            <p>Welcome packet, Lakewood validation plan, and scorecard tools — organized on the workshop hub.</p>
             <a href="/">Resource hub</a>
           </article>
         </div>
@@ -3375,7 +3399,7 @@
           <div class="hero-content">
             <p class="eyebrow">The Flavor Factory X TheraBreath</p>
             <h1 id="hero-title">Breath of Innovation</h1>
-            <p class="hero-subhead">A half-day capabilities workshop on July 8 at our Norco facility — built around the four areas TheraBreath asked us to address: resiliency, innovation, operations, and long-term partnership.</p>
+            <p class="hero-subhead">A focused half-day session to align on resiliency, innovation, operations, Lakewood site parity, and the next phase of partnership growth.</p>
             <div class="hero-meta" aria-label="Workshop details">
               <span class="pill">July 8 — Half-Day Visit</span>
               <span class="pill">8:00 AM – 12:30 PM</span>
@@ -3408,6 +3432,77 @@
           </div>
         </div>
         <div class="hero-scroll" aria-hidden="true">Scroll<span></span></div>
+      </section>
+
+      <section class="exec-panel" id="why-july" aria-labelledby="why-july-title">
+        <div class="container reveal">
+          <div class="exec-grid">
+            <article class="exec-card wide">
+              <h3 id="why-july-title">Why July 8 matters</h3>
+              <p>TheraBreath is growing across oral care formats and manufacturing sites. This visit is designed to answer one question clearly: can The Flavor Factory support that growth with technical discipline, supply reliability, responsive communication, and practical innovation?</p>
+            </article>
+            <article class="exec-card">
+              <h3>What you'll leave with</h3>
+              <ul>
+                <li>Clear view of facility, team, and production flow</li>
+                <li>Documented pillar answers and sensory summary</li>
+                <li>Shortlist worth stability work</li>
+                <li>Lakewood site parity validation path</li>
+                <li>24-hour follow-up with owners</li>
+              </ul>
+            </article>
+            <article class="exec-card">
+              <h3>Day-of logistics</h3>
+              <ul>
+                <li><strong>Arrival:</strong> 8:00 AM · 2058 Second Street, Norco, CA 92860</li>
+                <li><strong>Parking:</strong> Visitor spaces at front entrance</li>
+                <li><strong>Attire:</strong> Closed-toe shoes for facility tour</li>
+                <li><strong>Check-in:</strong> Kelly Ziegler · (951) 273-9877</li>
+                <li>Light refreshments on site · Wi-Fi available in workshop room</li>
+              </ul>
+            </article>
+            <article class="exec-card wide">
+              <h3>What we can show</h3>
+              <p>Specific metrics are shared in session — here is what we walk through on site:</p>
+              <div class="proof-grid">
+                <div class="proof-card"><b>Traceability</b><span>Lot-to-lot documentation flow from raw material through release</span></div>
+                <div class="proof-card"><b>Quality</b><span>COA, allergen, spec, and retain sample process</span></div>
+                <div class="proof-card"><b>Capacity</b><span>Current production structure and scale-up planning conversation</span></div>
+                <div class="proof-card"><b>Continuity</b><span>Supplier backup and critical raw material review</span></div>
+                <div class="proof-card"><b>Speed</b><span>Sample-to-production handoff — who owns each step</span></div>
+                <div class="proof-card"><b>Communication</b><span>Dedicated contacts by function — see host team below</span></div>
+              </div>
+            </article>
+            <article class="exec-card wide" id="hosts">
+              <h3>Your host team</h3>
+              <p>We are a family-owned flavor manufacturer in Norco, CA — not a broker or contract manufacturer. The people developing the flavor are the same people who scale it, release it, troubleshoot it, and answer the phone when something changes.</p>
+              <div class="host-exec-grid" id="workshop-hosts"></div>
+            </article>
+            <article class="exec-card">
+              <h3>Questions we're prepared to answer</h3>
+              <ul>
+                <li>What happens if TheraBreath volume increases?</li>
+                <li>What if a key raw material is constrained?</li>
+                <li>How are batches released and documented?</li>
+                <li>Which flavor directions are realistic in sodium chlorite?</li>
+                <li>How do we confirm Lakewood matches current production?</li>
+              </ul>
+            </article>
+            <article class="exec-card">
+              <h3>July 8 decision board</h3>
+              <table class="decision-table" aria-label="Closing session decisions">
+                <thead><tr><th>Decision</th><th>Owner</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Top 3 prototype directions</td><td>C&amp;D + TFF</td><td>Decide in room</td></tr>
+                  <tr><td>Concepts needing stability work</td><td>Ryan / R&amp;D</td><td>After scoring</td></tr>
+                  <tr><td>Lakewood validation next step</td><td>Ross + TFF</td><td>Confirm protocol</td></tr>
+                  <tr><td>Follow-up package</td><td>TFF</td><td>Within 24 hours</td></tr>
+                  <tr><td>Next working session</td><td>Both teams</td><td>Before departure</td></tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+        </div>
       </section>
 
       <section id="partnership">
@@ -3663,7 +3758,7 @@
               <div class="pillar-deep-title"><span class="pillar-index">3</span><h3>Supply Chain &amp; Operations</h3></div>
               <span class="pillar-line" aria-hidden="true"></span>
             </div>
-            <p class="section-copy">We are a family-owned flavor manufacturer in Norco, CA — not a broker or contract manufacturer. Development, production, and quality happen under one roof, which is what gives TheraBreath direct visibility into how your flavors are made and released.</p>
+            <p class="section-copy">We are a family-owned flavor manufacturer in Norco, CA — not a broker or contract manufacturer. Development, production, and quality happen under one roof. The people developing your flavor are the same people who scale it, release it, troubleshoot it, and answer the phone when something changes.</p>
             <div class="data-grid">
               <article class="data-card">
                 <h4>What you will see on the tour</h4>
@@ -3795,7 +3890,7 @@
             <span class="section-step">05</span>
             <p class="section-kicker">Prototype concepts</p>
             <h2 class="section-title">Ten prototypes — not a finished line.</h2>
-            <p class="section-copy">Workshop pours for direction-finding only. QC has not signed off on every profile for sodium chlorite shelf life — some directions are here because they are worth tasting, not because they are ready to scale. Honest reactions help us prioritize stability work and co-creation time.</p>
+            <p class="section-copy">The goal is not to pick ten launches — it is to identify which sensory territories are worth technical investment. Ten coded workshop prototypes for directional feedback; QC status and stability considerations are reviewed after reveal. Tap any card for profile detail.</p>
           </div>
           <div class="qc-callout">
             <h3>QC perspective — sodium chlorite reality</h3>
@@ -3821,7 +3916,7 @@
               </div>
             </div>
           </div>
-          <p class="section-note">None of these are precious. Taste, react, guess blind on <a href="/mystery" style="color:var(--bottle-blue);font-weight:700">/mystery</a>, and tell us what is worth investing stability work into — not what sounds good on a slide.</p>
+          <p class="section-note">Taste, react, map blind on <a href="/mystery" style="color:var(--bottle-blue);font-weight:700">blind flavor mapping</a>, then score on the <a href="/score" style="color:var(--bottle-blue);font-weight:700">prototype scorecard</a>. Tell us what is worth investing stability work into.</p>
 
           <div class="concepts-block">
             <div class="concepts-row-head">
@@ -4108,8 +4203,8 @@
             <a href="/gate">Team portal</a>
             <a href="/slides">Slides</a>
             <a href="/passport">Passport</a>
-            <a href="/mystery">Mystery game</a>
-            <a href="/score">Live scorer</a>
+            <a href="/mystery">Blind mapping</a>
+            <a href="/score">Prototype scorecard</a>
             <a href="/qr">QR codes</a>
           </div>
           <div class="footer-col">
@@ -4257,6 +4352,27 @@
             });
           });
         }
+        document.querySelectorAll(".concept-card").forEach(function (card) {
+          var body = card.querySelector(".concept-body");
+          if (!body || body.querySelector(".concept-expand-hint")) return;
+          var hint = document.createElement("p");
+          hint.className = "concept-expand-hint";
+          hint.textContent = "Tap for profile detail";
+          body.appendChild(hint);
+          card.addEventListener("click", function () {
+            card.classList.toggle("expanded");
+          });
+        });
+      })();
+    </script>
+    <script src="/tff-team.js"></script>
+    <script>
+      (function () {
+        var el = document.getElementById("workshop-hosts");
+        if (!el || !window.TFFTeam) return;
+        el.innerHTML = TFFTeam.members.map(function (m) {
+          return '<article class="host-exec"><b>' + m.name + '</b><div class="role">' + m.title + '</div><p><strong>Visit:</strong> ' + m.visitRole + '</p><p>' + m.desc + '</p></article>';
+        }).join("");
       })();
     </script>
       <script src="/tff-shell.js" defer></script>

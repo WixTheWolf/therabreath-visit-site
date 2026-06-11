@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Rate workshop prototypes 1–9 after reveals — liking, intensity, purchase intent. Room leaderboard syncs live." />
+    <meta name="description" content="Prototype scorecard — rate workshop prototypes 1–9 after reveals. Liking, uniqueness, and purchase intent sync to the live sensory summary." />
     <meta name="theme-color" content="#0a1628" />
-    <title>Live Concept Scorer | TFF × TheraBreath</title>
+    <title>Prototype Scorecard | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
     <style>
@@ -100,11 +100,11 @@
   </head>
   <body>
     <header class="page-hero tff-enter">
-      <h1>Live concept scorer</h1>
+      <h1>Prototype scorecard</h1>
       <p>Rate 1–9 on workshop prototypes · Liking · Uniqueness · Intent</p>
       <div class="header-qr">
-        <img src="/assets/qr/score-sm.png" alt="QR code — share this scorer with the room" width="88" height="88" />
-        <span>Scan to open · scores sync live to the room leaderboard</span>
+        <img src="/assets/qr/score-sm.png" alt="QR code — share this scorecard with the room" width="88" height="88" />
+        <span>Scan to open · scores sync to the live sensory summary</span>
       </div>
     </header>
     <div class="rater-bar no-print">
@@ -116,16 +116,16 @@
       <span class="sync-pill wait" id="sync-pill">Set rater name to sync</span>
     </div>
     <div class="wrap">
-      <p class="proto-banner">These are <strong>prototypes</strong>, not finished products. QC has concerns about several profiles in sodium chlorite. Run the <a href="/mystery">mystery game</a> first if you haven't — then score what you taste after names are revealed.</p>
+      <p class="proto-banner">Ten coded workshop prototypes for directional sensory feedback. QC status and stability considerations are reviewed after reveal. Complete <a href="/mystery">blind flavor mapping</a> first if you haven't — then score what you taste.</p>
     </div>
     <div class="wrap tff-stagger" id="cards"></div>
     <div class="wrap">
       <div class="leaderboard" id="board">
-        <h3>Leaderboard · this device</h3>
+        <h3>Your scores · this device</h3>
         <div id="board-rows"></div>
         <p class="rater-list" id="rater-summary"></p>
         <div class="room-board" id="room-board">
-          <h4>Room leaderboard · all phones</h4>
+          <h4>Live sensory summary · all phones</h4>
           <div id="room-rows"></div>
           <p class="room-meta" id="room-meta">Waiting for scores…</p>
         </div>
@@ -133,7 +133,7 @@
     </div>
     <div id="print-summary"></div>
     <div class="actions">
-      <a href="/mystery">Mystery</a>
+      <a href="/mystery">Blind mapping</a>
       <button type="button" onclick="exportScores()">Copy results</button>
       <button type="button" onclick="window.print()">Print</button>
       <button type="button" class="danger" onclick="clearScores()">Reset</button>

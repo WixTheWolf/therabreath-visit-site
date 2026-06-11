@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="TheraBreath × The Flavor Factory partnership hub — July 8 workshop, Lakewood validation, and team resources." />
+    <meta name="description" content="July 8 TheraBreath capabilities workshop — agenda, capabilities, blind tasting scorecard, Lakewood site parity validation, and follow-up materials." />
     <meta name="theme-color" content="#0a1628" />
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Breath of Innovation | TFF × TheraBreath" />
-    <meta property="og:description" content="July 8 capabilities workshop — interactive site, welcome booklet, mystery tasting, and live concept scoring." />
+    <meta property="og:description" content="July 8 capabilities workshop — resiliency, innovation, operations, Lakewood site parity, and blind sensory evaluation." />
     <meta property="og:image" content="https://therabreath-visit-site.vercel.app/assets/og-share.svg" />
     <meta property="og:url" content="https://therabreath-visit-site.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -213,6 +213,37 @@
         .grid { grid-template-columns:1fr; }
         .top-meta { display:none; }
       }
+      .primary-ctas {
+        width:min(880px,calc(100vw - 40px)); margin:0 auto 32px;
+        display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
+      }
+      .primary-cta {
+        display:grid; gap:6px; padding:20px 22px; border-radius:18px;
+        background:#fff; border:1px solid var(--line); text-decoration:none; color:inherit;
+        transition:transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .primary-cta:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(10,22,40,0.08); }
+      .primary-cta.featured {
+        border-color:rgba(0,143,211,0.35);
+        background:linear-gradient(135deg,#fff 0%,#f0f9fd 100%);
+      }
+      .primary-cta b { font-family:"Sora",sans-serif; font-size:0.95rem; }
+      .primary-cta span { font-size:0.76rem; color:var(--muted); line-height:1.45; }
+      .primary-cta em { font-style:normal; font-size:0.68rem; font-weight:700; color:var(--blue); }
+      .exec-block {
+        padding:22px 24px; border-radius:18px; background:#fff;
+        border:1px solid var(--line); margin-bottom:14px;
+      }
+      .exec-block h3 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:0.95rem; }
+      .exec-block p, .exec-block li { margin:0; font-size:0.82rem; color:var(--muted); line-height:1.55; }
+      .exec-block ul { margin:8px 0 0; padding-left:18px; }
+      .host-mini { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin-top:12px; }
+      .host-mini div { padding:12px; border-radius:12px; background:var(--paper); border:1px solid var(--line); font-size:0.74rem; }
+      .host-mini b { display:block; font-family:"Sora",sans-serif; font-size:0.78rem; margin-bottom:2px; }
+      .host-mini small { color:var(--muted); display:block; line-height:1.35; }
+      .secondary-note { font-size:0.76rem; color:var(--muted); margin-top:10px; }
+      .secondary-note a { color:var(--blue); font-weight:600; text-decoration:none; }
+      @media (max-width:600px) { .primary-ctas { grid-template-columns:1fr; } }
     </style>
   </head>
   <body>
@@ -221,33 +252,56 @@
       <nav class="top-nav" aria-label="Quick links">
         <a href="/" class="on">Home</a>
         <a href="/workshop">Workshop</a>
-        <a href="/mystery" class="fun">Mystery</a>
-        <a href="/score" class="cta">Score</a>
-        <a href="/companies">Companies</a>
+        <a href="/lakewood">Lakewood</a>
+        <a href="/mystery">Blind mapping</a>
+        <a href="/score" class="cta">Scorecard</a>
       </nav>
       <span class="top-meta">July 8, 2026 · Norco, CA</span>
     </header>
 
     <section class="intro tff-enter">
       <p class="kicker">The Flavor Factory × TheraBreath</p>
-      <h1>One hub. Two paths.</h1>
-      <p>Everything for the July 8 capabilities workshop and ongoing partnership — organized so guests see what they need, and our team keeps prep behind one password.</p>
+      <h1>July 8 Capabilities Workshop</h1>
+      <p>A focused workshop hub for the TheraBreath visit — agenda, capabilities, tasting tools, Lakewood site parity validation, and follow-up materials organized in one place.</p>
       <div class="pills">
-        <span class="pill">Half-day visit · 8:00–12:30</span>
-        <span class="pill">Four pillars + tasting</span>
-        <span class="pill">Lakewood site parity</span>
+        <span class="pill">Half-day · 8:00–12:30</span>
+        <span class="pill">Resiliency · innovation · operations · partnership</span>
+        <span class="pill">Norco, CA</span>
       </div>
     </section>
+
+    <nav class="primary-ctas tff-stagger" aria-label="Primary workshop paths">
+      <a class="primary-cta featured" href="/workshop">
+        <b>Workshop agenda</b>
+        <span>Half-day flow, four pillars, host team, and day-of logistics.</span>
+        <em>/workshop</em>
+      </a>
+      <a class="primary-cta" href="/workshop#capabilities">
+        <b>Capabilities</b>
+        <span>Resiliency, innovation, operations, and partnership — what we can show in session.</span>
+        <em>#capabilities</em>
+      </a>
+      <a class="primary-cta" href="/mystery">
+        <b>Tasting &amp; scorecard</b>
+        <span>Blind flavor mapping on coded cups, then prototype scorecard after reveal.</span>
+        <em>/mystery · /score</em>
+      </a>
+      <a class="primary-cta featured" href="/lakewood">
+        <b>Lakewood validation</b>
+        <span>Site parity confirmation program — phased sensory plan for multi-site production.</span>
+        <em>/lakewood</em>
+      </a>
+    </nav>
 
     <div class="fork tff-stagger">
       <a class="path path-guest" href="/workshop">
         <span class="path-tag">TheraBreath &amp; guests</span>
-        <h2>Enter the workshop experience</h2>
-        <p>Live agenda, four capability pillars, ten prototypes, and live scoring — built for screen-share in the room or review before July 8.</p>
+        <h2>Prepared, operational, easy to grow with</h2>
+        <p>Real facility tour, documented capabilities, blind sensory evaluation, and a prioritized close — not a pitch deck.</p>
         <ul class="path-list">
-          <li>Welcome booklet · 35 numbered documents</li>
-          <li>Three-station tasting · mystery + live scoring</li>
-          <li>Morning agenda · four capability pillars</li>
+          <li>Welcome packet · organized reference materials</li>
+          <li>Three-station tasting · blind mapping + scorecard</li>
+          <li>Lakewood site parity validation path</li>
         </ul>
         <span class="path-cta">Open workshop →</span>
       </a>
@@ -255,10 +309,10 @@
         <span class="lock-badge">🔒 Password required</span>
         <span class="path-tag">The Flavor Factory team</span>
         <h2>Command center</h2>
-        <p>Host run-of-show, talk tracks, email drafts, Lakewood tracker, competitive intel, and every print file — internal only.</p>
+        <p>Host run-of-show, talk tracks, live sensory boards, print files, and Lakewood tracker — internal only.</p>
         <ul class="path-list">
           <li>Searchable Q&amp;A · kickoff prep</li>
-          <li>Mystery live board · email drafts · variant tracker</li>
+          <li>Live sensory summary · email drafts · variant tracker</li>
           <li>Print kits · hospitality · R&amp;D playbooks</li>
         </ul>
         <span class="path-cta">Unlock team portal →</span>
@@ -266,125 +320,39 @@
     </div>
 
     <div class="wrap">
-      <section class="sec tff-reveal" aria-labelledby="guest-start">
+      <section class="sec tff-reveal" aria-labelledby="guest-outcomes">
         <div class="sec-head">
-          <span class="sec-num">01 · Start here</span>
-          <h2 id="guest-start">July 8 workshop</h2>
-          <p>What TheraBreath asked to see — in the order you'll experience it.</p>
+          <span class="sec-num">What you'll leave with</span>
+          <h2 id="guest-outcomes">Business outcomes, not theater</h2>
+          <p>The visit is designed to answer one question: can The Flavor Factory support TheraBreath growth without surprises?</p>
         </div>
-        <div class="grid tff-stagger">
-          <a class="card tff-card-lift featured" href="/workshop">
-            <span class="card-tag">Primary</span>
-            <h3>Workshop experience</h3>
-            <p>Interactive site for the room · pillars, agenda, concepts, feedback.</p>
-            <em>/workshop</em>
-          </a>
-          <a class="card tff-card-lift" href="/workshop#agenda">
-            <span class="card-tag">Schedule</span>
-            <h3>Morning agenda</h3>
-            <p>8:00 tour through 12:30 depart · minute-by-minute flow.</p>
-            <em>#agenda</em>
-          </a>
-          <a class="card tff-card-lift" href="/slides">
-            <span class="card-tag">Print</span>
-            <h3>Slide deck</h3>
-            <p>20 slides + paper scoring sheet for the room.</p>
-            <em>/slides</em>
-          </a>
-          <a class="card tff-card-lift featured" href="/booklet">
-            <span class="card-tag">Booklet</span>
-            <h3>Welcome booklet</h3>
-            <p>Partnership PDFs, formulas, COAs, sensory kits — print binder + phone.</p>
-            <em>/booklet</em>
-          </a>
-          <a class="card tff-card-lift" href="/passport">
-            <span class="card-tag">Print</span>
-            <h3>Visitor passport</h3>
-            <p>Pocket follow-along for each guest.</p>
-            <em>/passport</em>
-          </a>
-          <a class="card tff-card-lift" href="/mystery">
-            <span class="card-tag">Tasting</span>
-            <h3>Cipher challenge</h3>
-            <p>Coded cups M1–M10 · match your taste to a neutral cipher — no hints.</p>
-            <em>/mystery</em>
-          </a>
-          <a class="card tff-card-lift" href="/score">
-            <span class="card-tag">Live</span>
-            <h3>Concept scorer</h3>
-            <p>Rate prototypes 1–9 after reveals · not all QC-cleared.</p>
-            <em>/score</em>
-          </a>
-          <a class="card tff-card-lift" href="/qr">
-            <span class="card-tag">Print</span>
-            <h3>QR code sheet</h3>
-            <p>Scan codes for site, scorer, passport, and portal.</p>
-            <em>/qr</em>
-          </a>
+        <div class="exec-block">
+          <ul>
+            <li>Clear view of TFF's facility, team, and production flow</li>
+            <li>Documented answers on resiliency, innovation, operations, and partnership</li>
+            <li>Sensory feedback summary from prototype scorecard</li>
+            <li>Shortlist of concepts worth further stability work</li>
+            <li>Lakewood site parity validation path</li>
+            <li>24-hour follow-up summary with owners and next steps</li>
+          </ul>
         </div>
       </section>
 
-      <section class="sec tff-reveal" aria-labelledby="guest-know">
+      <section class="sec tff-reveal" aria-labelledby="guest-hosts">
         <div class="sec-head">
-          <span class="sec-num">02 · Context</span>
-          <h2 id="guest-know">Know both partners</h2>
-          <p>Public profiles pulled from live brand sites — no proprietary formulas.</p>
+          <span class="sec-num">Your hosts</span>
+          <h2 id="guest-hosts">The people behind the flavor</h2>
+          <p>Family-owned and under one roof — the same team from first sample to repeat order.</p>
         </div>
-        <div class="grid tff-stagger">
-          <a class="card tff-card-lift featured" href="/companies">
-            <span class="card-tag">Hub</span>
-            <h3>Company hub</h3>
-            <p>TFF + TheraBreath in one place · assets and quick links.</p>
-            <em>/companies</em>
-          </a>
-          <a class="card tff-card-lift" href="/flavor-factory">
-            <span class="card-tag">Supplier</span>
-            <h3>The Flavor Factory</h3>
-            <p>Norco facility · oral care · certifications.</p>
-            <em>/flavor-factory</em>
-          </a>
-          <a class="card tff-card-lift" href="/therabreath-brand">
-            <span class="card-tag">Brand</span>
-            <h3>TheraBreath</h3>
-            <p>OXYD-8 science · product lines · brand equities.</p>
-            <em>/therabreath-brand</em>
-          </a>
-        </div>
-      </section>
-
-      <section class="sec tff-reveal" aria-labelledby="guest-lakewood">
-        <div class="sec-head">
-          <span class="sec-num">03 · Active program</span>
-          <h2 id="guest-lakewood">Lakewood site parity</h2>
-          <p>Ross Conroy's phased validation plan — proposal and field tools for sensory testing.</p>
-        </div>
-        <div class="grid tff-stagger">
-          <a class="card tff-card-lift featured" href="/lakewood">
-            <span class="card-tag">Proposal</span>
-            <h3>Site parity plan</h3>
-            <p>Four-rung ladder · 8 variants · triangle + blind escalation.</p>
-            <em>/lakewood</em>
-          </a>
-          <a class="card tff-card-lift" href="/triangle">
-            <span class="card-tag">ISO 4120</span>
-            <h3>Triangle test kit</h3>
-            <p>Printable ballots · calculator · pour-tech key sheet.</p>
-            <em>/triangle</em>
-          </a>
-          <a class="card tff-card-lift" href="/blind">
-            <span class="card-tag">Fingerprint</span>
-            <h3>Blind comparison kit</h3>
-            <p>Duo-trio + attribute scales when triangle flags.</p>
-            <em>/blind</em>
-          </a>
-        </div>
+        <div class="host-mini" id="home-hosts"></div>
+        <p class="secondary-note">Full bios and visit roles on the <a href="/workshop#hosts">workshop host section</a>.</p>
       </section>
 
       <section class="sec tff-reveal" aria-labelledby="guest-leave">
         <div class="sec-head">
-          <span class="sec-num">04 · Take with you</span>
-          <h2 id="guest-leave">Leave-behinds &amp; room materials</h2>
-          <p>Print before the visit or share links after.</p>
+          <span class="sec-num">Leave-behinds</span>
+          <h2 id="guest-leave">Reference materials</h2>
+          <p>Print or share after the session — secondary to the live workshop.</p>
         </div>
         <div class="grid tff-stagger">
           <a class="card tff-card-lift" href="/onepager">
@@ -393,17 +361,17 @@
             <p>Four pillars summary · partnership snapshot.</p>
             <em>/onepager</em>
           </a>
-          <a class="card tff-card-lift" href="/stations">
-            <span class="card-tag">Room</span>
-            <h3>Station signs</h3>
-            <p>Three large-format tasting station signs.</p>
-            <em>/stations</em>
+          <a class="card tff-card-lift" href="/booklet">
+            <span class="card-tag">Packet</span>
+            <h3>Welcome packet</h3>
+            <p>Organized reference materials — partnership docs, COAs, sensory kits.</p>
+            <em>/booklet</em>
           </a>
-          <a class="card tff-card-lift" href="/workshop#feedback">
-            <span class="card-tag">Feedback</span>
-            <h3>Scoring &amp; feedback</h3>
-            <p>Paper table + live phone scorer during tasting.</p>
-            <em>#feedback</em>
+          <a class="card tff-card-lift" href="/passport">
+            <span class="card-tag">Print</span>
+            <h3>Visitor passport</h3>
+            <p>Pocket follow-along for each guest.</p>
+            <em>/passport</em>
           </a>
         </div>
       </section>
@@ -411,16 +379,25 @@
 
     <footer class="foot">
       <p>The Flavor Factory × TheraBreath · Breath of Innovation · July 8, 2026<br />
-      TFF team: <a href="/gate">command center</a> · Guests: <a href="/workshop">workshop</a> · <a href="/companies">companies</a> · <a href="/?welcome=1">Replay welcome</a></p>
+      TFF team: <a href="/gate">command center</a> · Guests: <a href="/workshop">workshop</a> · <a href="/lakewood">Lakewood validation</a></p>
     </footer>
+    <script src="/tff-team.js"></script>
     <script src="/tff-cinematic.js"></script>
     <script src="/tff-auth.js"></script>
     <script src="/tff-shell.js" defer></script>
     <script>
-      if (TFF.isAuthed()) {
-        var team = document.querySelector(".path-team .path-cta");
-        if (team) team.textContent = "Open command center →";
-      }
+      (function () {
+        var el = document.getElementById("home-hosts");
+        if (el && window.TFFTeam) {
+          el.innerHTML = TFFTeam.members.map(function (m) {
+            return '<div><b>' + m.name + '</b><small>' + m.title + ' · ' + m.visitRole + "</small></div>";
+          }).join("");
+        }
+        if (window.TFF && TFF.isAuthed && TFF.isAuthed()) {
+          var team = document.querySelector(".path-team .path-cta");
+          if (team) team.textContent = "Open command center →";
+        }
+      })();
     </script>
   </body>
 </html>

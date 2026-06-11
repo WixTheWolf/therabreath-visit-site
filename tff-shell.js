@@ -5,28 +5,32 @@
   var PRIMARY = [
     { href: "/", label: "Home", match: ["/", "/index.html"] },
     { href: "/workshop", label: "Workshop", match: ["/workshop"] },
-    { href: "/mystery", label: "Mystery", fun: true, match: ["/mystery"] },
-    { href: "/score", label: "Score", cta: true, match: ["/score"] }
+    { href: "/lakewood", label: "Lakewood", match: ["/lakewood"] },
+    { href: "/mystery", label: "Blind mapping", match: ["/mystery"] },
+    { href: "/score", label: "Scorecard", cta: true, match: ["/score"] }
   ];
 
   var MORE = [
-    { href: "/companies", label: "Companies", match: ["/companies", "/flavor-factory", "/therabreath-brand"] },
-    { href: "/lakewood", label: "Lakewood plan" },
-    { href: "/booklet", label: "Welcome booklet" },
+    { href: "/workshop#agenda", label: "Agenda" },
+    { href: "/workshop#capabilities", label: "Capabilities" },
+    { href: "/workshop#next", label: "Next steps" },
+    { href: "/onepager", label: "Executive one-pager" },
+    { href: "/booklet", label: "Welcome packet" },
     { href: "/passport", label: "Visitor passport" },
     { href: "/slides", label: "Slide deck" },
+    { href: "/companies", label: "Companies", match: ["/companies", "/flavor-factory", "/therabreath-brand"] },
     { href: "/qr", label: "QR print sheet" },
     { href: "/stations", label: "Station signs" },
-    { href: "/mystery-live", label: "Mystery live · admin", team: true },
-    { href: "/score-live", label: "Score live · admin", team: true },
+    { href: "/mystery-live", label: "Blind mapping live · admin", team: true },
+    { href: "/score-live", label: "Sensory summary live · admin", team: true },
     { href: "/gate", label: "Team portal", team: true }
   ];
 
   var DOCK = [
     { href: "/", label: "Home", icon: "home" },
     { href: "/workshop", label: "Workshop", icon: "workshop" },
-    { href: "/mystery", label: "Mystery", icon: "mystery", fun: true },
-    { href: "/score", label: "Score", icon: "score" }
+    { href: "/lakewood", label: "Lakewood", icon: "workshop" },
+    { href: "/score", label: "Scorecard", icon: "score" }
   ];
 
   var ICONS = {
@@ -105,9 +109,9 @@
       '<span class="tff-chrome-mark">TFF</span><span class="tff-chrome-title">Home</span></a>' +
       '<nav class="tff-chrome-links" aria-label="Quick links">' +
       '<a href="/workshop">Workshop</a>' +
-      '<a href="/booklet">Booklet</a>' +
-      '<a href="/mystery" class="tff-chrome-fun">Cipher</a>' +
-      '<a href="/score" class="tff-chrome-cta">Score</a>' +
+      '<a href="/lakewood">Lakewood</a>' +
+      '<a href="/mystery">Blind mapping</a>' +
+      '<a href="/score" class="tff-chrome-cta">Scorecard</a>' +
       '</nav></header>'
     );
   }
