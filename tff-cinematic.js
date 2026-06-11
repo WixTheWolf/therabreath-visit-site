@@ -49,7 +49,7 @@
       '<span class="tff-cine-line l1">July 8, 2026 · Norco, California</span>' +
       '<span class="tff-cine-line l2">Welcome</span>' +
       '<span class="tff-cine-line l3">TheraBreath Team</span>' +
-      '<span class="tff-cine-line l4">Breath of Innovation · capabilities workshop</span>' +
+      '<span class="tff-cine-line l4">Prepared, operational, easy to grow with</span>' +
       '<div class="tff-cine-bar"></div></div>' +
       '<div class="tff-cine-curtain"></div>' +
       '<button type="button" class="tff-cine-skip">Skip intro</button>';

@@ -461,6 +461,13 @@
         color: var(--muted);
       }
 
+      .concept-mini .qc {
+        display:inline-block; margin-top:4px; padding:2px 8px; border-radius:999px;
+        font-size:0.58rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase;
+      }
+      .concept-mini .qc.cleared { background:#edf8e8; color:#2d6a3f; }
+      .concept-mini .qc.watch { background:#fff4e8; color:#c45c26; }
+      .concept-mini .qc.flagged { background:#fef3f2; color:#b42318; }
       .concept-mini .claim {
         margin: 4px 0 0;
         font-size: 0.62rem;
@@ -1053,13 +1060,13 @@
         </header>
         <div class="slide-body">
           <div class="concept-grid">
-            <div class="concept-mini"><span class="num">01</span><div><h4>Spearmint Garden</h4><p class="sub">Sweet spearmint + soft green herb</p><p class="claim">"Garden Fresh, Built to Last"</p></div></div>
-            <div class="concept-mini"><span class="num">02</span><div><h4>Green Tea Fresh</h4><p class="sub">Green tea + spearmint + clean cool</p><p class="claim">"Clean Botanical Fresh"</p></div></div>
-            <div class="concept-mini"><span class="num">03</span><div><h4>Crisp Cucumber Mint</h4><p class="sub">Green cucumber + cooling mint</p><p class="claim">"Hydrating Freshness"</p></div></div>
-            <div class="concept-mini"><span class="num">04</span><div><h4>Warm Ginger Mint</h4><p class="sub">Ginger root + peppermint, no citrus</p><p class="claim">"Warm Spice, Cool Finish"</p></div></div>
-            <div class="concept-mini" style="grid-column:1/-1;max-width:50%"><span class="num">05</span><div><h4>Vanilla Mint Silk</h4><p class="sub">Vanilla bean + peppermint + cooling finish</p><p class="claim">"Smooth Fresh, Zero Compromise"</p></div></div>
+            <div class="concept-mini"><span class="num">01</span><div><h4>Spearmint Garden</h4><span class="qc cleared">QC cleared</span><p class="sub">M1 · mint-forward</p></div></div>
+            <div class="concept-mini"><span class="num">02</span><div><h4>Green Tea Fresh</h4><span class="qc watch">Stability TBD</span><p class="sub">M2 · botanical</p></div></div>
+            <div class="concept-mini"><span class="num">03</span><div><h4>Crisp Cucumber Mint</h4><span class="qc flagged">QC concern</span><p class="sub">M3 · directional only</p></div></div>
+            <div class="concept-mini"><span class="num">04</span><div><h4>Warm Ginger Mint</h4><span class="qc watch">Stability TBD</span><p class="sub">M4 · spice warmth</p></div></div>
+            <div class="concept-mini"><span class="num">05</span><div><h4>Vanilla Mint Silk</h4><span class="qc flagged">QC concern</span><p class="sub">M5 · directional only</p></div></div>
           </div>
-          <p style="font-size:0.72rem;margin-top:0.12in">Workshop prototypes for discussion — not launch commitments. QC cleared: 01 · flagged: 03, 05. Taste, guess blind, react.</p>
+          <p style="font-size:0.72rem;margin-top:0.12in">Directional workshop prototypes — identify sensory territories worth retain investment. Blind mapping first, QC status after reveal.</p>
         </div>
         <footer class="slide-foot"><span>Step 05 · Concepts</span><b>Slide 14 of 20</b></footer>
       </section>
@@ -1075,13 +1082,13 @@
         </header>
         <div class="slide-body">
           <div class="concept-grid">
-            <div class="concept-mini"><span class="num">06</span><div><h4>Overnight Calm Mint</h4><p class="sub">Chamomile + lavender + soft mint · Functional</p><p class="claim">"Wind Down, Wake Up Fresh"</p></div></div>
-            <div class="concept-mini"><span class="num">07</span><div><h4>Crystal Whitening Mint</h4><p class="sub">Extra-bright peppermint + icy cooling · Whitening</p><p class="claim">"Bright Smile, Lasting Fresh"</p></div></div>
-            <div class="concept-mini"><span class="num">08</span><div><h4>Icy Peak Refresh</h4><p class="sub">Extra-cooling signature mint · Core line</p><p class="claim">"Peak Fresh, Zero Compromise"</p></div></div>
-            <div class="concept-mini"><span class="num">09</span><div><h4>Winter Frost</h4><p class="sub">Peppermint + vanilla + deep cool · Seasonal LE</p><p class="claim">"Limited Frost, Unlimited Fresh"</p></div></div>
-            <div class="concept-mini" style="grid-column:1/-1;max-width:50%"><span class="num">10</span><div><h4>Healthy Gums Herbal</h4><p class="sub">Tea tree + eucalyptus + gentle mint · Functional</p><p class="claim">"Healthy Gums, Herbal Fresh"</p></div></div>
+            <div class="concept-mini"><span class="num">06</span><div><h4>Overnight Calm Mint</h4><span class="qc flagged">QC concern</span><p class="sub">M6 · evening functional</p></div></div>
+            <div class="concept-mini"><span class="num">07</span><div><h4>Crystal Whitening Mint</h4><span class="qc cleared">QC cleared</span><p class="sub">M7 · whitening cue</p></div></div>
+            <div class="concept-mini"><span class="num">08</span><div><h4>Icy Peak Refresh</h4><span class="qc cleared">QC cleared</span><p class="sub">M8 · core line stretch</p></div></div>
+            <div class="concept-mini"><span class="num">09</span><div><h4>Winter Frost</h4><span class="qc watch">Stability TBD</span><p class="sub">M9 · seasonal LE</p></div></div>
+            <div class="concept-mini"><span class="num">10</span><div><h4>Healthy Gums Herbal</h4><span class="qc watch">Stability TBD</span><p class="sub">M10 · gum-health functional</p></div></div>
           </div>
-          <p style="font-size:0.72rem;margin-top:0.12in">QC cleared: 07, 08 · flagged: 06 · stability TBD: 09, 10. Prototypes only — prioritize what is worth retain investment.</p>
+          <p style="font-size:0.72rem;margin-top:0.12in">Not a launch line — shortlist what earns stability work and pilot batches.</p>
         </div>
         <footer class="slide-foot"><span>Step 05 · Concepts</span><b>Slide 15 of 20</b></footer>
       </section>
@@ -1096,9 +1103,9 @@
           </div>
         </header>
         <div class="slide-body">
-          <p>Run the mystery challenge on coded cups first. Then reveal names and score — favorites matter, but so does flagging profiles QC already doubts will hold in chlorite.</p>
+          <p>Blind flavor mapping on coded cups first. Then reveal names and score — identify sensory territories worth retain investment, not ten launch candidates.</p>
           <div class="eval-steps">
-            <div class="eval-step"><b>01</b><h4>Mystery</h4><p>Guess direction on /mystery</p></div>
+            <div class="eval-step"><b>01</b><h4>Blind mapping</h4><p>Match taste on /mystery</p></div>
             <div class="eval-step"><b>02</b><h4>Swish</h4><p>10–15 ml for 10 seconds</p></div>
             <div class="eval-step"><b>03</b><h4>Notice</h4><p>Aroma, intensity, cooling</p></div>
             <div class="eval-step"><b>04</b><h4>Rate</h4><p>Liking &amp; intent on /score</p></div>
@@ -1136,13 +1143,13 @@
           </table>
           <div style="display:grid;gap:10px">
             <aside class="score-qr">
-              <img src="/assets/qr/mystery-sm.png" alt="QR code — flavor mystery game" width="96" height="96" />
-              <b>Mystery first · /mystery</b>
+              <img src="/assets/qr/mystery-sm.png" alt="QR code — blind flavor mapping" width="96" height="96" />
+              <b>Blind mapping first · /mystery</b>
               <span>Coded cups M1–M10</span>
             </aside>
             <aside class="score-qr">
-              <img src="/assets/qr/score-sm.png" alt="QR code — live concept scorer" width="96" height="96" />
-              <b>Then scan to score</b>
+              <img src="/assets/qr/score-sm.png" alt="QR code — prototype scorecard" width="96" height="96" />
+              <b>Then prototype scorecard</b>
               <span>therabreath-visit-site.vercel.app/score</span>
             </aside>
           </div>

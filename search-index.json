@@ -131,7 +131,7 @@
     "type": "answer",
     "category": "Pillar 2 · Innovation",
     "q": "What are the ten workshop prototypes and how were they chosen?",
-    "snippet": "Workshop prototypes only — QC cleared 01/07/08; others stability TBD or flagged. Coded cups M1–M10 mystery game at /mystery. 01 Spearmint Garden through 10 Healthy Gums Herbal.",
+    "snippet": "Workshop prototypes only — QC cleared 01/07/08; others stability TBD or flagged. Coded cups M1–M10 blind flavor mapping at /mystery. QC status reviewed after reveal.",
     "href": "/answers",
     "badge": "ready"
   },
@@ -675,7 +675,7 @@
     "type": "answer",
     "category": "Day-of",
     "q": "Where does Matt see live concept scores from all phones?",
-    "snippet": "Team password → /score-live — room aggregate leaderboard, per-rater detail, CSV export. Guests on /score sync automatically; public aggregate also shows on their phones.",
+    "snippet": "Team password → /score-live — live sensory summary, room aggregate, per-rater detail, CSV export. Guests on /score sync automatically; aggregate also shows on their phones.",
     "href": "/score-live",
     "badge": "ready"
   },
