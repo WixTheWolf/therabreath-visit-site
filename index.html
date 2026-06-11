@@ -154,6 +154,30 @@
         background: var(--lid-orange);
         font-weight: 700;
         box-shadow: 0 10px 24px rgba(245, 130, 32, 0.18);
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .nav-cta:hover {
+        filter: brightness(1.05);
+      }
+
+      .nav-cta-secondary {
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        font-weight: 700;
+        font-size: 0.84rem;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .nav-cta-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .hero {
@@ -967,7 +991,7 @@
 
       .guide-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 18px;
         max-width: 960px;
         margin: 0 auto;
@@ -1024,6 +1048,185 @@
         text-decoration: none;
         letter-spacing: 0.04em;
         text-transform: uppercase;
+      }
+
+      .toolkit-hub {
+        padding: clamp(48px, 6vw, 72px) 24px;
+        background: linear-gradient(180deg, #f0f9fd 0%, #fff 40%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .toolkit-hub .section-head {
+        margin-bottom: 32px;
+      }
+
+      .toolkit-featured {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        max-width: 720px;
+        margin: 0 auto 36px;
+        padding: 24px 28px;
+        border: 2px solid rgba(0, 143, 211, 0.2);
+        border-radius: var(--radius-lg);
+        background: #fff;
+        box-shadow: var(--shadow-soft);
+        text-align: center;
+      }
+
+      .toolkit-featured p {
+        margin: 0;
+        flex: 1 1 100%;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .toolkit-featured .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--navy), var(--bottle-blue));
+        color: #fff;
+        font-family: var(--font-display);
+        font-size: 0.92rem;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 12px 32px rgba(0, 143, 211, 0.25);
+        transition: transform 0.25s var(--ease-out);
+      }
+
+      .toolkit-featured .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .toolkit-groups {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .toolkit-group {
+        padding: 22px 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #fff;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .toolkit-group h3 {
+        margin: 0 0 14px;
+        font-family: var(--font-display);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--bottle-blue);
+      }
+
+      .toolkit-links {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .toolkit-links a {
+        display: block;
+        padding: 8px 10px;
+        border-radius: 8px;
+        color: #344054;
+        font-size: 0.84rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .toolkit-links a:hover {
+        background: var(--soft-blue);
+        color: var(--bottle-blue);
+      }
+
+      .toolkit-links a small {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.68rem;
+        font-weight: 500;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        gap: 24px;
+      }
+
+      .footer-top {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .footer-brand {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .footer-cta {
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: var(--lid-orange);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.82rem;
+        text-decoration: none;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .footer-col h4 {
+        margin: 0 0 10px;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .footer-col a {
+        display: block;
+        margin-bottom: 6px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.82rem;
+        text-decoration: none;
+      }
+
+      .footer-col a:hover {
+        color: #fff;
+      }
+
+      .footer-copy {
+        margin: 0;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.45);
       }
 
       .pillar-hub-wrap {
@@ -2719,6 +2922,14 @@
           max-width: 420px;
         }
 
+        .toolkit-groups {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
         .flow-strip {
           grid-template-columns: repeat(3, 1fr);
         }
@@ -2744,6 +2955,15 @@
 
         .nav-cta-wrap {
           justify-self: end;
+        }
+
+        .nav-cta-secondary {
+          display: none;
+        }
+
+        .toolkit-groups,
+        .footer-grid {
+          grid-template-columns: 1fr;
         }
 
         .flow-strip {
@@ -2854,14 +3074,17 @@
         <span>The Flavor Factory</span>
       </a>
       <nav class="nav-links" aria-label="Workshop sections">
+        <a href="#toolkit-hub">Toolkit</a>
         <a href="#agenda">Agenda</a>
         <a href="#capabilities">Pillars</a>
         <a href="#tasting">Tasting</a>
         <a href="#concepts">Concepts</a>
         <a href="#feedback">Feedback</a>
+        <a href="#next">Next steps</a>
       </nav>
       <div class="nav-cta-wrap">
-        <a class="nav-cta" href="#next">Next steps</a>
+        <a class="nav-cta-secondary" href="#toolkit-hub">All resources</a>
+        <a class="nav-cta" href="/toolkit">Open toolkit</a>
       </div>
     </header>
 
@@ -2907,6 +3130,12 @@
             <p>Use the feedback table or QR code during tasting to capture liking, uniqueness, and purchase intent.</p>
             <a href="#feedback">Open feedback</a>
           </article>
+          <article class="guide-card">
+            <span class="guide-icon">+</span>
+            <h3>Print materials &amp; host tools</h3>
+            <p>Slides, passports, Lakewood sensory program, Q&amp;A prep, hospitality guide — everything for July 8 lives in the toolkit.</p>
+            <a href="/toolkit">Open toolkit</a>
+          </article>
         </div>
       </div>
     </div>
@@ -2925,6 +3154,10 @@
               <span class="pill">Norco, California</span>
               <span class="pill">R&amp;D + Procurement</span>
             </div>
+            <p style="margin:20px 0 0;display:flex;flex-wrap:wrap;gap:12px">
+              <a href="/toolkit" style="display:inline-flex;align-items:center;padding:12px 22px;border-radius:999px;background:var(--lid-orange);color:#fff;font-weight:700;font-size:0.88rem;text-decoration:none;box-shadow:0 10px 24px rgba(245,130,32,0.2)">Open workshop toolkit</a>
+              <a href="#toolkit-hub" style="display:inline-flex;align-items:center;padding:12px 22px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700;font-size:0.88rem;text-decoration:none">Browse all resources</a>
+            </p>
           </div>
           <div class="hero-card" aria-hidden="true">
             <div class="bottle-stage">
@@ -2942,6 +3175,62 @@
           </div>
         </div>
         <div class="hero-scroll" aria-hidden="true">Scroll<span></span></div>
+      </section>
+
+      <section class="toolkit-hub" id="toolkit-hub" aria-labelledby="toolkit-hub-title">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-step">TFF</span>
+            <p class="section-kicker">Workshop toolkit</p>
+            <h2 class="section-title" id="toolkit-hub-title">Everything in one place.</h2>
+            <p class="section-copy">This page is the live workshop experience. The toolkit holds print files, host checklists, Ross's Lakewood validation program, conversation prep, and hospitality ideas — linked below.</p>
+          </div>
+          <div class="toolkit-featured">
+            <p><strong>20+ resources</strong> for July 8 and beyond — start at the hub or jump directly to what you need.</p>
+            <a class="btn-primary" href="/toolkit">Open full toolkit hub →</a>
+          </div>
+          <div class="toolkit-groups">
+            <div class="toolkit-group">
+              <h3>Live workshop</h3>
+              <ul class="toolkit-links">
+                <li><a href="/">Workshop site<small>Interactive pillars &amp; concepts</small></a></li>
+                <li><a href="/score">Live concept scorer<small>Phones · 1–9 ratings</small></a></li>
+                <li><a href="/slides">Slide deck<small>20 slides · print</small></a></li>
+                <li><a href="/passport">Visitor passport<small>Pocket follow-along</small></a></li>
+              </ul>
+            </div>
+            <div class="toolkit-group">
+              <h3>Room &amp; hosts</h3>
+              <ul class="toolkit-links">
+                <li><a href="/stations">Tasting station signs<small>3 large-format signs</small></a></li>
+                <li><a href="/tour">Facility tour map<small>8:00 AM walk-through</small></a></li>
+                <li><a href="/host">Run-of-show<small>Internal host checklist</small></a></li>
+                <li><a href="/labels">Sample kit labels<small>Concepts 01–10</small></a></li>
+                <li><a href="/worksheet">Co-creation worksheet<small>10:30 lab block</small></a></li>
+              </ul>
+            </div>
+            <div class="toolkit-group">
+              <h3>Lakewood · Ross email</h3>
+              <ul class="toolkit-links">
+                <li><a href="/lakewood">Site parity plan<small>Full validation proposal</small></a></li>
+                <li><a href="/triangle">Triangle test kit<small>ISO 4120 · ballots</small></a></li>
+                <li><a href="/blind">Blind comparison kit<small>Flavor fingerprint</small></a></li>
+                <li><a href="/lakewood-tracker">Variant tracker<small>8 SKUs · live status</small></a></li>
+                <li><a href="/lakewood-reply">Reply to Ross<small>Email draft</small></a></li>
+              </ul>
+            </div>
+            <div class="toolkit-group">
+              <h3>Prep &amp; follow-through</h3>
+              <ul class="toolkit-links">
+                <li><a href="/questions">Questions for TheraBreath<small>What we ask them</small></a></li>
+                <li><a href="/answers">Prepared answers<small>What they ask us</small></a></li>
+                <li><a href="/hospitality">Hospitality guide<small>Banners · gift baskets</small></a></li>
+                <li><a href="/onepager">Executive one-pager<small>Procurement leave-behind</small></a></li>
+                <li><a href="/followup">Follow-up email<small>Within 24 hours</small></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="partnership">
@@ -3600,7 +3889,49 @@
       </section>
     </main>
 
-    <footer class="footer">Confidential – Prepared for Flavor Factory X Therabreath | July 8, 2026 · <a href="/toolkit" style="color:inherit">Workshop toolkit</a> · <a href="/lakewood" style="color:inherit">Lakewood validation</a> · <a href="/slides" style="color:inherit">Slides</a></footer>
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <span class="footer-brand">The Flavor Factory × TheraBreath</span>
+          <a class="footer-cta" href="/toolkit">Open toolkit hub</a>
+        </div>
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Workshop</h4>
+            <a href="/">Live site</a>
+            <a href="/toolkit">Toolkit hub</a>
+            <a href="/slides">Slides</a>
+            <a href="/passport">Passport</a>
+            <a href="/score">Live scorer</a>
+          </div>
+          <div class="footer-col">
+            <h4>Day-of</h4>
+            <a href="/stations">Station signs</a>
+            <a href="/tour">Tour map</a>
+            <a href="/host">Run-of-show</a>
+            <a href="/labels">Sample labels</a>
+            <a href="/worksheet">Co-creation sheet</a>
+          </div>
+          <div class="footer-col">
+            <h4>Lakewood</h4>
+            <a href="/lakewood">Parity plan</a>
+            <a href="/triangle">Triangle kit</a>
+            <a href="/blind">Blind kit</a>
+            <a href="/lakewood-tracker">Variant tracker</a>
+            <a href="/lakewood-reply">Reply to Ross</a>
+          </div>
+          <div class="footer-col">
+            <h4>Prep</h4>
+            <a href="/questions">Our questions</a>
+            <a href="/answers">Prepared answers</a>
+            <a href="/hospitality">Hospitality guide</a>
+            <a href="/onepager">One-pager</a>
+            <a href="/followup">Follow-up email</a>
+          </div>
+        </div>
+        <p class="footer-copy">Confidential · Prepared for Church &amp; Dwight / TheraBreath · July 8, 2026 · Norco, CA</p>
+      </div>
+    </footer>
     <script>
       (function () {
         var nav = document.querySelector(".nav");
