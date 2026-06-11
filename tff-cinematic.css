@@ -1,168 +1,185 @@
-/* TheraBreath cinematic welcome — quick intro, flavor drip reveal */
+/* Minimal welcome — modern, clean, site-matched */
 .tff-cine {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: #000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
   overflow: hidden;
   isolation: isolate;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tff-cine.is-in {
+  opacity: 1;
+}
+
+.tff-cine.is-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .tff-cine.is-done {
-  opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.45s ease, visibility 0.45s;
 }
 
-.tff-cine-grain {
+.tff-cine-backdrop {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  opacity: 0.1;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-  z-index: 4;
+  background: #f6fafc;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(0, 143, 211, 0.14), transparent 55%),
+    radial-gradient(circle at 88% 92%, rgba(95, 184, 50, 0.1), transparent 42%);
 }
 
-.tff-cine-letterbox {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 5vh;
-  background: #000;
-  z-index: 5;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-.tff-cine-letterbox-top { top: 0; }
-.tff-cine-letterbox-bottom { bottom: 0; }
-
-.tff-cine.is-dripping .tff-cine-letterbox {
-  opacity: 0;
-}
-
-/* —— TheraBreath intro card —— */
-.tff-cine-intro {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: grid;
-  place-items: center;
+.tff-cine-panel {
+  position: relative;
+  z-index: 1;
+  width: min(520px, calc(100vw - 48px));
+  padding: clamp(36px, 6vw, 52px) clamp(28px, 5vw, 44px);
   text-align: center;
-  padding: 24px;
-  background: radial-gradient(ellipse 90% 80% at 50% 42%, #0d2844 0%, #0a1628 55%, #000 100%);
-  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.tff-cine-intro.is-out {
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 233, 236, 0.95);
+  box-shadow:
+    0 24px 64px rgba(10, 22, 40, 0.07),
+    0 2px 8px rgba(10, 22, 40, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   opacity: 0;
-  transform: scale(1.04);
-  pointer-events: none;
+  transform: translateY(18px) scale(0.98);
+  filter: blur(6px);
 }
 
-.tff-cine-intro-kicker {
-  margin: 0 0 18px;
-  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(0.62rem, 2vw, 0.76rem);
-  font-weight: 700;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  opacity: 0;
-  animation: tff-cine-line-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+.tff-cine.is-in .tff-cine-panel {
+  animation: tff-cine-panel-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
 }
 
-.tff-cine-intro-brand {
-  margin: 0;
-  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(3rem, 12vw, 6.5rem);
-  font-weight: 800;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
-  color: #fff;
-  text-shadow: 0 20px 60px rgba(0, 143, 211, 0.25);
-  opacity: 0;
-  transform: translateY(24px);
-  filter: blur(8px);
-  animation: tff-cine-line-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+.tff-cine.is-out .tff-cine-panel {
+  animation: tff-cine-panel-out 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.tff-cine-intro-event {
-  margin: 14px 0 0;
-  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(1rem, 3.5vw, 1.45rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #90e0ef;
-  opacity: 0;
-  animation: tff-cine-line-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
-}
-
-.tff-cine-intro-meta {
-  margin: 20px 0 0;
-  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: clamp(0.82rem, 2.4vw, 0.98rem);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  opacity: 0;
-  animation: tff-cine-line-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
-}
-
-@keyframes tff-cine-line-in {
+@keyframes tff-cine-panel-in {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     filter: blur(0);
   }
 }
 
-/* —— Drip reveal canvas —— */
-.tff-cine-drip-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
+@keyframes tff-cine-panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.99);
+    filter: blur(4px);
+  }
 }
 
-.tff-cine.is-dripping .tff-cine-drip-canvas {
-  opacity: 1;
+.tff-cine-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0a1628, #008fd3);
+  color: #fff;
+  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 24px rgba(0, 143, 211, 0.22);
+}
+
+.tff-cine-from {
+  margin: 0 0 10px;
+  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(0.68rem, 2vw, 0.76rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #008fd3;
+}
+
+.tff-cine-welcome {
+  margin: 0;
+  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(1.65rem, 5.5vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  color: #0a1628;
+}
+
+.tff-cine-sub {
+  margin: 14px 0 0;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(0.82rem, 2.2vw, 0.92rem);
+  font-weight: 500;
+  color: #5c6678;
+}
+
+.tff-cine-bar {
+  height: 2px;
+  margin: 28px auto 0;
+  max-width: 200px;
+  border-radius: 999px;
+  background: rgba(226, 233, 236, 0.9);
+  overflow: hidden;
+}
+
+.tff-cine-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #008fd3, #5fb832);
+}
+
+.tff-cine.is-in .tff-cine-bar span {
+  animation: tff-cine-progress 2.1s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+@keyframes tff-cine-progress {
+  to { width: 100%; }
 }
 
 .tff-cine-skip {
   position: absolute;
-  bottom: calc(28px + env(safe-area-inset-bottom, 0));
+  bottom: calc(24px + env(safe-area-inset-bottom, 0));
   right: 24px;
-  z-index: 6;
-  padding: 10px 20px;
+  z-index: 2;
+  padding: 8px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(0, 0, 0, 0.35);
-  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(226, 233, 236, 0.95);
+  background: rgba(255, 255, 255, 0.82);
+  color: #5c6678;
   font-family: "Sora", -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   cursor: pointer;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  animation: tff-cine-skip-in 0.5s ease 0.5s both;
+  opacity: 0;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.tff-cine.is-in .tff-cine-skip {
+  animation: tff-cine-skip-in 0.4s ease 0.4s forwards;
 }
 
 @keyframes tff-cine-skip-in {
-  from { opacity: 0; }
   to { opacity: 1; }
 }
 
 .tff-cine-skip:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  color: #0a1628;
+  border-color: rgba(0, 143, 211, 0.25);
+  background: #fff;
 }
 
 html.tff-cine-active {
@@ -179,10 +196,10 @@ body.tff-cine-pending > *:not(.tff-cine) {
 }
 
 body.tff-cine-revealed > *:not(.tff-cine) {
+  opacity: 1;
   pointer-events: auto;
 }
 
-/* Home visible underneath drips — gentle polish once canvas clears */
 body.tff-cine-revealed > .intro,
 body.tff-cine-revealed > .primary-ctas,
 body.tff-cine-revealed > .trust-line,
@@ -192,27 +209,20 @@ body.tff-cine-revealed > .fork,
 body.tff-cine-revealed > .wrap,
 body.tff-cine-revealed > .top,
 body.tff-cine-revealed > .foot {
-  opacity: 1;
-  animation: tff-home-unveil 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: tff-home-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-body.tff-cine-revealed > .top { animation-delay: 0s; }
-body.tff-cine-revealed > .intro { animation-delay: 0.04s; }
+body.tff-cine-revealed > .top { animation-delay: 0.02s; }
+body.tff-cine-revealed > .intro { animation-delay: 0.05s; }
 body.tff-cine-revealed > .primary-ctas { animation-delay: 0.08s; }
-body.tff-cine-revealed > .trust-line { animation-delay: 0.1s; }
-body.tff-cine-revealed > .pillar-strip { animation-delay: 0.12s; }
-body.tff-cine-revealed > .lakewood-spot { animation-delay: 0.14s; }
-body.tff-cine-revealed > .fork { animation-delay: 0.16s; }
-body.tff-cine-revealed > .wrap { animation-delay: 0.18s; }
-body.tff-cine-revealed > .foot { animation-delay: 0.2s; }
 
-@keyframes tff-home-unveil {
+@keyframes tff-home-in {
   from {
-    filter: blur(4px);
-    transform: translateY(6px);
+    opacity: 0;
+    transform: translateY(8px);
   }
   to {
-    filter: blur(0);
+    opacity: 1;
     transform: translateY(0);
   }
 }
