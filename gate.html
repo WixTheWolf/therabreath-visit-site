@@ -10,17 +10,23 @@
       :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
       * { box-sizing:border-box; }
       body {
-        margin:0; min-height:100vh; display:grid; place-items:center; padding:24px;
+        margin:0; min-height:100vh; padding:24px;
         font-family:"DM Sans",sans-serif; color:var(--ink);
         background:
           radial-gradient(ellipse 80% 60% at 20% 0%, rgba(0,143,211,0.15), transparent),
           radial-gradient(ellipse 60% 50% at 90% 100%, rgba(95,184,50,0.1), transparent),
           linear-gradient(160deg, #0a1628 0%, #0d2840 40%, #0a1628 100%);
+        display:grid; place-items:center;
       }
+      .shell { width:min(440px,100%); }
+      .back-hub {
+        display:inline-flex; align-items:center; gap:6px; margin-bottom:16px;
+        font-size:0.8rem; font-weight:600; color:rgba(255,255,255,0.65); text-decoration:none;
+      }
+      .back-hub:hover { color:#fff; }
       .panel {
-        width:min(420px,100%); padding:40px 36px 36px;
-        border-radius:24px; background:rgba(255,255,255,0.98);
-        box-shadow:0 32px 80px rgba(0,0,0,0.35);
+        padding:40px 36px 36px; border-radius:24px;
+        background:rgba(255,255,255,0.98); box-shadow:0 32px 80px rgba(0,0,0,0.35);
       }
       .mark {
         width:48px; height:48px; display:grid; place-items:center;
@@ -29,7 +35,8 @@
         margin-bottom:20px;
       }
       h1 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:1.5rem; font-weight:800; letter-spacing:-0.03em; }
-      .sub { margin:0 0 28px; font-size:0.88rem; line-height:1.55; color:var(--muted); }
+      .sub { margin:0 0 24px; font-size:0.88rem; line-height:1.55; color:var(--muted); }
+      .sub a { color:var(--blue); font-weight:600; text-decoration:none; }
       label { display:block; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px; }
       input {
         width:100%; padding:14px 16px; border:1px solid var(--line); border-radius:12px;
@@ -45,24 +52,34 @@
       button:hover { filter:brightness(1.05); }
       .err { display:none; margin-bottom:14px; padding:10px 12px; border-radius:10px; background:#fef2f2; color:#b42318; font-size:0.82rem; }
       .err.show { display:block; }
-      .back { display:block; margin-top:20px; text-align:center; font-size:0.82rem; color:var(--muted); text-decoration:none; }
-      .back:hover { color:var(--blue); }
-      .lock { font-size:0.72rem; color:var(--muted); margin-top:24px; padding-top:20px; border-top:1px solid var(--line); line-height:1.5; }
+      .lock {
+        font-size:0.72rem; color:var(--muted); margin-top:24px; padding-top:20px;
+        border-top:1px solid var(--line); line-height:1.5;
+      }
+      .includes { margin:0 0 20px; padding:0; list-style:none; font-size:0.78rem; color:#475467; line-height:1.55; }
+      .includes li::before { content:"→ "; color:var(--green); font-weight:700; }
     </style>
   </head>
   <body>
-    <div class="panel">
-      <div class="mark">TFF</div>
-      <h1>Team portal</h1>
-      <p class="sub">Internal prep, email drafts, host tools, competitive intel, and formulation playbooks — not visible to TheraBreath without this password. Public workshop at <a href="/" style="color:var(--blue);font-weight:600">/</a> · company profiles at <a href="/companies" style="color:var(--blue);font-weight:600">/companies</a>.</p>
-      <p class="err" id="err">Incorrect password. Try again.</p>
-      <form id="form">
-        <label for="pw">Team password</label>
-        <input type="password" id="pw" name="pw" autocomplete="current-password" placeholder="Enter password" autofocus />
-        <button type="submit">Unlock command center →</button>
-      </form>
-      <a class="back" href="/">← Back to workshop site</a>
-      <p class="lock">Confidential · The Flavor Factory internal use · Church &amp; Dwight / TheraBreath partnership prep</p>
+    <div class="shell">
+      <a class="back-hub" href="/">← Partnership hub</a>
+      <div class="panel">
+        <div class="mark">TFF</div>
+        <h1>Team command center</h1>
+        <p class="sub">Internal only — email drafts, host tools, talk tracks, and Lakewood tracker. TheraBreath guests use the <a href="/workshop">workshop experience</a> or <a href="/">resource hub</a>.</p>
+        <ul class="includes">
+          <li>Searchable Q&amp;A and kickoff prep</li>
+          <li>Run-of-show, hospitality, follow-up drafts</li>
+          <li>Lakewood tracker and competitive intel</li>
+        </ul>
+        <p class="err" id="err">Incorrect password. Try again.</p>
+        <form id="form">
+          <label for="pw">Team password</label>
+          <input type="password" id="pw" name="pw" autocomplete="current-password" placeholder="Enter password" autofocus />
+          <button type="submit">Unlock command center →</button>
+        </form>
+        <p class="lock">Confidential · The Flavor Factory internal use · Church &amp; Dwight / TheraBreath partnership prep</p>
+      </div>
     </div>
     <script src="/tff-auth.js"></script>
     <script>

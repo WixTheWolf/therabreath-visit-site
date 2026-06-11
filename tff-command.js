@@ -29,7 +29,8 @@
   ];
 
   var sharePack = [
-    { label: "Workshop site (room display)", path: "/" },
+    { label: "Partnership hub", path: "/" },
+    { label: "Workshop experience (room display)", path: "/workshop" },
     { label: "Lakewood site parity proposal", path: "/lakewood" },
     { label: "Triangle test kit (ISO 4120)", path: "/triangle" },
     { label: "Blind comparison kit", path: "/blind" },

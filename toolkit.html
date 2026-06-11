@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
     <title>Command Center | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <script src="/tff-auth.js"></script>
@@ -21,59 +22,62 @@
         padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif;
         font-size:0.74rem; font-weight:700; text-decoration:none; cursor:pointer; border:none;
       }
-      .topbar .brand { display:flex; align-items:center; gap:10px; font-family:"Sora",sans-serif; font-weight:800; font-size:0.9rem; }
+      .topbar .brand { display:flex; align-items:center; gap:10px; font-family:"Sora",sans-serif; font-weight:800; font-size:0.9rem; text-decoration:none; color:#fff; }
       .topbar .mark { width:32px; height:32px; display:grid; place-items:center; border-radius:8px; background:var(--blue); font-size:0.65rem; }
       .topbar .actions { display:flex; gap:8px; }
       .topbar .actions a { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.15); }
       .topbar .actions button { background:transparent; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.2); }
       .hero {
-        padding:48px 24px 40px;
+        padding:40px 24px 36px;
         background:linear-gradient(135deg,var(--ink) 0%,#003d6b 50%,#004f87);
         color:#fff;
       }
       .hero-in { width:min(1100px,calc(100vw - 48px)); margin:0 auto; }
       .hero-kicker { margin:0 0 10px; font-size:0.68rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
-      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(2rem,5vw,2.8rem); font-weight:800; letter-spacing:-0.04em; }
-      .hero p { margin:0; max-width:640px; font-size:1rem; line-height:1.6; color:rgba(255,255,255,0.82); }
-      .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:28px; }
-      .stat { padding:16px 18px; border-radius:14px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); }
-      .stat b { display:block; font-family:"Sora",sans-serif; font-size:1.5rem; font-weight:800; }
-      .stat span { font-size:0.72rem; color:rgba(255,255,255,0.65); }
-      .wrap { width:min(1100px,calc(100vw - 48px)); margin:0 auto; padding:40px 0 80px; }
-      .threads { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:40px; }
-      .thread {
-        display:grid; gap:8px; padding:20px; border-radius:16px; background:#fff;
-        border:1px solid var(--line); text-decoration:none; color:inherit;
-        transition:transform 0.25s, box-shadow 0.25s;
+      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.8rem,4.5vw,2.5rem); font-weight:800; letter-spacing:-0.04em; }
+      .hero p { margin:0; max-width:640px; font-size:0.95rem; line-height:1.6; color:rgba(255,255,255,0.82); }
+      .lanes {
+        display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+        margin-top:24px;
       }
-      .thread:hover { transform:translateY(-3px); box-shadow:0 20px 48px rgba(10,22,40,0.1); }
-      .thread.hot { border-color:rgba(245,130,32,0.4); background:linear-gradient(135deg,#fff,#fffaf5); }
-      .thread-tag { font-size:0.62rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--orange); }
-      .thread h3 { margin:0; font-family:"Sora",sans-serif; font-size:0.95rem; }
-      .thread p { margin:0; font-size:0.78rem; color:var(--muted); line-height:1.45; }
-      .thread-cta { font-family:"Sora",sans-serif; font-size:0.72rem; font-weight:700; color:var(--blue); }
-      h2 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:1.15rem; font-weight:800; }
-      .sec-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; }
+      .lane {
+        padding:16px 18px; border-radius:14px;
+        background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+        text-decoration:none; color:#fff;
+        transition:background 0.2s, transform 0.2s;
+      }
+      .lane:hover { background:rgba(255,255,255,0.14); transform:translateY(-2px); }
+      .lane b { display:block; font-family:"Sora",sans-serif; font-size:0.88rem; margin-bottom:4px; }
+      .lane span { font-size:0.72rem; color:rgba(255,255,255,0.65); line-height:1.4; }
+      .wrap { width:min(1100px,calc(100vw - 48px)); margin:0 auto; padding:32px 0 80px; }
+      h2 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; }
+      .sec-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; gap:12px; }
       .sec-head span { font-size:0.76rem; color:var(--muted); }
-      .sec { margin-bottom:36px; }
-      .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+      .sec { margin-bottom:32px; }
+      .pri {
+        display:inline-block; margin-bottom:8px;
+        font-family:"Sora",sans-serif; font-size:0.6rem; font-weight:800;
+        letter-spacing:0.08em; text-transform:uppercase; color:var(--orange);
+      }
+      .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
       .card {
-        display:grid; gap:8px; padding:22px; border:1px solid var(--line); border-radius:16px;
+        display:grid; gap:6px; padding:18px 20px; border:1px solid var(--line); border-radius:14px;
         background:#fff; text-decoration:none; color:inherit;
         transition:transform 0.2s, box-shadow 0.2s;
       }
-      .card:hover { transform:translateY(-2px); box-shadow:0 16px 40px rgba(10,22,40,0.08); }
+      .card:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(10,22,40,0.08); }
       .card.lock { border-left:3px solid var(--ink); }
       .card.pub { border-left:3px solid var(--green); }
-      .card-tag { font-size:0.62rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
-      .card h3 { margin:0; font-family:"Sora",sans-serif; font-size:1rem; }
-      .card p { margin:0; font-size:0.8rem; color:var(--muted); line-height:1.45; }
-      .card em { font-style:normal; font-family:"Sora",sans-serif; font-size:0.72rem; font-weight:700; color:var(--blue); }
-      .legend { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:32px; font-size:0.74rem; color:var(--muted); }
+      .card.hot { border-color:rgba(245,130,32,0.35); background:linear-gradient(135deg,#fff,#fffaf5); }
+      .card-tag { font-size:0.6rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
+      .card h3 { margin:0; font-family:"Sora",sans-serif; font-size:0.92rem; }
+      .card p { margin:0; font-size:0.78rem; color:var(--muted); line-height:1.45; }
+      .card em { font-style:normal; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:700; color:var(--blue); }
+      .legend { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:24px; font-size:0.74rem; color:var(--muted); }
       .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:6px; vertical-align:middle; }
       .legend .l-int { background:var(--ink); }
       .legend .l-pub { background:var(--green); }
-      .cmd-bar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:28px; }
+      .cmd-bar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:24px; }
       .cmd-bar button {
         padding:10px 16px; border-radius:999px; border:none; cursor:pointer;
         font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700;
@@ -102,25 +106,34 @@
       .cmd-search-hit strong { font-family:"Sora",sans-serif; font-size:0.82rem; line-height:1.35; }
       .cmd-search-snippet { font-size:0.74rem; color:var(--muted); line-height:1.4; }
       .cmd-search-empty { margin:0; padding:14px; font-size:0.8rem; color:var(--muted); }
-      .cmd-badge { margin-left:6px; padding:2px 6px; border-radius:999px; font-size:0.58rem; font-weight:800; text-transform:uppercase; }
-      .cmd-badge.warn { background:#fff4e8; color:#c45c26; }
-      .cmd-badge.email { background:#e8f6fd; color:var(--blue); }
-      .dash-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-      .dash-card { padding:20px; border-radius:16px; background:#fff; border:1px solid var(--line); }
+      .threads { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+      .thread {
+        display:grid; gap:6px; padding:16px 18px; border-radius:14px; background:#fff;
+        border:1px solid var(--line); text-decoration:none; color:inherit;
+        transition:transform 0.2s, box-shadow 0.2s;
+      }
+      .thread:hover { transform:translateY(-2px); box-shadow:0 16px 40px rgba(10,22,40,0.08); }
+      .thread.hot { border-color:rgba(245,130,32,0.4); background:linear-gradient(135deg,#fff,#fffaf5); }
+      .thread-tag { font-size:0.6rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--orange); }
+      .thread h3 { margin:0; font-family:"Sora",sans-serif; font-size:0.88rem; }
+      .thread p { margin:0; font-size:0.74rem; color:var(--muted); line-height:1.4; }
+      .thread-cta { font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:700; color:var(--blue); }
+      .dash-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+      .dash-card { padding:18px; border-radius:14px; background:#fff; border:1px solid var(--line); }
       .dash-head { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; }
-      .dash-head h3 { margin:0; font-family:"Sora",sans-serif; font-size:0.95rem; }
+      .dash-head h3 { margin:0; font-family:"Sora",sans-serif; font-size:0.9rem; }
       .dash-head a { font-size:0.72rem; font-weight:700; color:var(--blue); text-decoration:none; }
-      .dash-stat { margin:0 0 12px; font-size:0.8rem; color:var(--muted); }
+      .dash-stat { margin:0 0 12px; font-size:0.78rem; color:var(--muted); }
       .dash-stat strong { color:var(--ink); font-family:"Sora",sans-serif; }
       .dash-list { margin:0; padding:0; list-style:none; }
-      .dash-list li { padding:8px 0; border-top:1px solid var(--line); font-size:0.78rem; }
-      .dash-list li b { display:block; font-size:0.82rem; margin-bottom:2px; }
+      .dash-list li { padding:8px 0; border-top:1px solid var(--line); font-size:0.76rem; }
+      .dash-list li b { display:block; font-size:0.8rem; margin-bottom:2px; }
       .dash-list li span { color:var(--muted); }
       .dash-list li.more { color:var(--muted); font-style:italic; }
-      .dash-label { margin:8px 0 4px; font-size:0.68rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); }
+      .dash-label { margin:8px 0 4px; font-size:0.66rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); }
       .dash-label.warn { color:#c45c26; }
-      .dash-ok { margin:0; font-size:0.8rem; color:var(--green); font-weight:600; }
-      .dash-muted { margin:0; font-size:0.78rem; color:var(--muted); line-height:1.45; }
+      .dash-ok { margin:0; font-size:0.78rem; color:var(--green); font-weight:600; }
+      .dash-muted { margin:0; font-size:0.76rem; color:var(--muted); line-height:1.45; }
       #cmd-toast {
         position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px);
         padding:12px 20px; border-radius:999px; background:var(--ink); color:#fff;
@@ -128,15 +141,16 @@
         pointer-events:none; box-shadow:0 12px 32px rgba(0,0,0,0.2);
       }
       #cmd-toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
-      @media (max-width:900px) { .stats, .threads, .grid, .dash-grid { grid-template-columns:1fr 1fr; } }
-      @media (max-width:560px) { .stats, .threads, .grid, .dash-grid { grid-template-columns:1fr; } }
+      @media (max-width:900px) { .lanes, .threads, .grid, .dash-grid { grid-template-columns:1fr 1fr; } }
+      @media (max-width:560px) { .lanes, .threads, .grid, .dash-grid { grid-template-columns:1fr; } }
     </style>
   </head>
   <body>
     <div class="topbar">
-      <div class="brand"><span class="mark">TFF</span> Command center</div>
+      <a class="brand" href="/"><span class="mark">TFF</span> Command center</a>
       <div class="actions">
-        <a href="/">Workshop site</a>
+        <a href="/">Hub</a>
+        <a href="/workshop">Workshop</a>
         <a href="/pocket">Pocket ROS</a>
         <button type="button" onclick="TFF.logout()">Sign out</button>
       </div>
@@ -144,148 +158,145 @@
 
     <header class="hero">
       <div class="hero-in">
-        <p class="hero-kicker">The Flavor Factory × TheraBreath · Norco · July 8, 2026</p>
-        <h1>Everything in one command center.</h1>
-        <p>Four active workstreams — July 8 prep call (TBA), workshop, Lakewood validation, and innovation chemistry — plus every host tool, print file, and client-shareable asset.</p>
-        <div class="stats">
-          <div class="stat"><b>25+</b><span>Pages &amp; tools</span></div>
-          <div class="stat"><b>4</b><span>Active threads</span></div>
-          <div class="stat"><b>10</b><span>Workshop concepts</span></div>
-          <div class="stat"><b>8</b><span>Lakewood SKUs</span></div>
+        <p class="hero-kicker">Internal · The Flavor Factory team only</p>
+        <h1>Find anything. In priority order.</h1>
+        <p>Search talk tracks, open active threads, run July 8, or share Lakewood materials with Ross — without wading through the guest-facing hub.</p>
+        <div class="lanes">
+          <a class="lane" href="/answers">
+            <b>Answer a question</b>
+            <span>Searchable talk tracks · pillars · Lakewood · logistics</span>
+          </a>
+          <a class="lane" href="/host">
+            <b>Run July 8</b>
+            <span>Minute-by-minute ROS · pocket cheat sheet · tour map</span>
+          </a>
+          <a class="lane" href="/lakewood">
+            <b>Share with Ross</b>
+            <span>Site parity proposal · triangle + blind kits</span>
+          </a>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <p class="legend">
-        <span><i class="l-int"></i>Internal · team only (this portal)</span>
-        <span><i class="l-pub"></i>Shareable · screen-share or send to Ross / Nelly</span>
+        <span><i class="l-int"></i>Internal only</span>
+        <span><i class="l-pub"></i>Safe to screen-share or send to TheraBreath</span>
       </p>
 
       <div class="cmd-bar">
         <div class="cmd-search-wrap">
-          <input type="search" id="cmd-search" placeholder="Search answers &amp; questions — chlorite, Lakewood, capacity…" autocomplete="off" />
+          <input type="search" id="cmd-search" placeholder="Search — chlorite, Lakewood, capacity, garlic, visit logistics…" autocomplete="off" />
           <div class="cmd-search-results" id="cmd-search-results"></div>
         </div>
         <button type="button" class="cmd-share" id="cmd-share-pack">Copy share pack</button>
-        <button type="button" class="cmd-pocket" id="cmd-pocket-print">Pocket run-of-show</button>
+        <button type="button" class="cmd-pocket" id="cmd-pocket-print">Pocket ROS</button>
       </div>
 
       <section class="sec">
-        <div class="sec-head"><h2>Thread status</h2><span>Open items across active workstreams</span></div>
+        <div class="sec-head"><h2>Live status</h2><span>Open items across threads</span></div>
         <div id="cmd-dashboard"></div>
       </section>
 
       <section class="sec">
-        <div class="sec-head"><h2>Active threads</h2><span>Jump to what matters now</span></div>
+        <span class="pri">Priority 1</span>
+        <div class="sec-head"><h2>Active threads</h2><span>What needs attention now</span></div>
         <div class="threads">
           <a class="thread hot" href="/kickoff">
-            <span class="thread-tag">TBA · Reschedule</span>
-            <h3>July 8 visit prep call</h3>
-            <p>Ross looping in Nelly · ~30 min · agenda, logistics, light Lakewood touch</p>
-            <span class="thread-cta">Open kickoff →</span>
+            <span class="thread-tag">TBA</span>
+            <h3>July 8 prep call</h3>
+            <p>Ross + Nelly · agenda · logistics · light Lakewood</p>
+            <span class="thread-cta">Kickoff →</span>
+          </a>
+          <a class="thread hot" href="/host">
+            <span class="thread-tag">Jul 8</span>
+            <h3>Workshop day-of</h3>
+            <p>Run-of-show · tasting · co-creation · depart 12:30</p>
+            <span class="thread-cta">Host ROS →</span>
           </a>
           <a class="thread" href="/lakewood">
-            <span class="thread-tag">Ross · Jun 2026</span>
-            <h3>Lakewood site parity</h3>
-            <p>8 variants · triangle + blind · phased validation program</p>
-            <span class="thread-cta">Open proposal →</span>
+            <span class="thread-tag">Ross · Jun</span>
+            <h3>Lakewood parity</h3>
+            <p>8 variants · triangle + blind program</p>
+            <span class="thread-cta">Proposal →</span>
           </a>
           <a class="thread" href="/intensity-tiers">
-            <span class="thread-tag">Feb–Mar 2026</span>
+            <span class="thread-tag">Feb–Mar</span>
             <h3>Listerine + GA-22131</h3>
-            <p>Competitive tiers · garlic functional · email thread archive</p>
-            <span class="thread-cta">Open thread →</span>
-          </a>
-          <a class="thread" href="/chlorite-flavor">
-            <span class="thread-tag">TFF playbook</span>
-            <h3>Chlorite flavor solutions</h3>
-            <p>Vanilla stability · rosemary antioxidants · formulation science</p>
-            <span class="thread-cta">Open guide →</span>
+            <p>Competitive tiers · garlic functional</p>
+            <span class="thread-cta">Archive →</span>
           </a>
         </div>
       </section>
 
       <section class="sec">
-        <div class="sec-head"><h2>Company profiles</h2><span>Public · from live websites</span></div>
+        <span class="pri">Priority 2 · Conversation</span>
+        <div class="sec-head"><h2>Prep &amp; talk tracks</h2><span>Before and during the visit</span></div>
         <div class="grid">
-          <a class="card pub" href="/companies"><span class="card-tag">Hub</span><h3>Company hub</h3><p>TFF + TheraBreath profiles, assets, and quick links to workshop + portal.</p><em>/companies</em></a>
-          <a class="card pub" href="/flavor-factory"><span class="card-tag">Supplier</span><h3>The Flavor Factory</h3><p>Capabilities, oral care expertise, certifications, Norco facility.</p><em>/flavor-factory</em></a>
-          <a class="card pub" href="/therabreath-brand"><span class="card-tag">Brand</span><h3>TheraBreath</h3><p>OXYD-8 science, product lines, brand equities, certifications.</p><em>/therabreath-brand</em></a>
+          <a class="card lock hot" href="/answers"><span class="card-tag">Most used</span><h3>Prepared answers</h3><p>Searchable responses by pillar, chlorite, Lakewood, capacity.</p><em>/answers</em></a>
+          <a class="card lock" href="/questions"><span class="card-tag">Ask them</span><h3>Questions checklist</h3><p>What to ask TheraBreath — by category, check off as you go.</p><em>/questions</em></a>
+          <a class="card lock" href="/kickoff"><span class="card-tag">Call prep</span><h3>Kickoff page</h3><p>Screen-share links · desired outcomes · logistics.</p><em>/kickoff</em></a>
+          <a class="card lock" href="/partnership"><span class="card-tag">Relationship</span><h3>Partnership brief</h3><p>Portfolio · contacts · seasonal pipeline.</p><em>/partnership</em></a>
+          <a class="card lock" href="/therabreath"><span class="card-tag">Customer file</span><h3>TheraBreath index</h3><p>Flavor codes · qualification map from share drive.</p><em>/therabreath</em></a>
         </div>
       </section>
 
       <section class="sec">
-        <div class="sec-head"><h2>Partnership &amp; conversation prep</h2><span>Internal</span></div>
+        <span class="pri">Priority 3 · July 8</span>
+        <div class="sec-head"><h2>Workshop execution</h2><span>Room display · print · live tools</span></div>
         <div class="grid">
-          <a class="card lock" href="/partnership"><span class="card-tag">Relationship</span><h3>C&amp;D partnership brief</h3><p>Portfolio · qualification · contacts · seasonal pipeline — no proprietary specs.</p><em>/partnership</em></a>
-          <a class="card lock" href="/therabreath"><span class="card-tag">Customer file</span><h3>TheraBreath file index</h3><p>Rinse programs · flavor codes · qualification map — organized from Therabreath Docs share.</p><em>/therabreath</em></a>
-          <a class="card lock" href="/questions"><span class="card-tag">Ask them</span><h3>Questions for TheraBreath</h3><p>Checklist by category — Lakewood, visit, procurement, growth.</p><em>/questions</em></a>
-          <a class="card lock" href="/answers"><span class="card-tag">Answer them</span><h3>Prepared answers</h3><p>Searchable talk tracks — pillars, chlorite, Lakewood, logistics.</p><em>/answers</em></a>
-          <a class="card lock" href="/kickoff"><span class="card-tag">TBA</span><h3>Kickoff call page</h3><p>Run of show, screen-share links, desired outcomes.</p><em>/kickoff</em></a>
+          <a class="card pub hot" href="/workshop"><span class="card-tag">Screen share</span><h3>Workshop experience</h3><p>Guest-facing live site · pillars · concepts · feedback.</p><em>/workshop</em></a>
+          <a class="card lock" href="/host"><span class="card-tag">Hosts</span><h3>Full run-of-show</h3><p>Minute-by-minute · expandable blocks · printable.</p><em>/host</em></a>
+          <a class="card lock" href="/pocket"><span class="card-tag">Dan</span><h3>Pocket ROS</h3><p>Foldable one-page cheat sheet.</p><em>/pocket</em></a>
+          <a class="card pub" href="/slides"><span class="card-tag">Print</span><h3>Slide deck</h3><p>20 slides + scoring sheet.</p><em>/slides</em></a>
+          <a class="card pub" href="/score"><span class="card-tag">Live</span><h3>Concept scorer</h3><p>Phones · multi-rater · aggregate leaderboard.</p><em>/score</em></a>
+          <a class="card lock" href="/tour"><span class="card-tag">8:00 AM</span><h3>Facility tour map</h3><p>Walk-through route and talking points.</p><em>/tour</em></a>
+          <a class="card lock" href="/worksheet"><span class="card-tag">10:30</span><h3>Co-creation worksheet</h3><p>Lab block form · photograph iterations.</p><em>/worksheet</em></a>
+          <a class="card lock" href="/hospitality"><span class="card-tag">Swag</span><h3>Hospitality guide</h3><p>Banners · gift baskets · catering cues.</p><em>/hospitality</em></a>
+          <a class="card lock" href="/followup"><span class="card-tag">Email</span><h3>24h follow-up draft</h3><p>Thank-you template · copy-ready.</p><em>/followup</em></a>
         </div>
       </section>
 
       <section class="sec">
-        <div class="sec-head"><h2>Lakewood validation</h2><span>Mixed · proposal shareable</span></div>
+        <span class="pri">Priority 4 · Lakewood</span>
+        <div class="sec-head"><h2>Site parity program</h2><span>Shareable proposal + internal tracking</span></div>
         <div class="grid">
-          <a class="card pub" href="/lakewood"><span class="card-tag">Share with Ross</span><h3>Site parity plan</h3><p>Four-rung escalation ladder · full proposal.</p><em>/lakewood</em></a>
-          <a class="card pub" href="/triangle"><span class="card-tag">ISO 4120</span><h3>Triangle test kit</h3><p>Ballots · significance calculator.</p><em>/triangle</em></a>
-          <a class="card pub" href="/blind"><span class="card-tag">Fingerprint</span><h3>Blind comparison kit</h3><p>Expert screen · duo-trio · attribute sheets.</p><em>/blind</em></a>
-          <a class="card lock" href="/lakewood-tracker"><span class="card-tag">Internal</span><h3>Variant tracker</h3><p>8 SKUs · live status per variant.</p><em>/lakewood-tracker</em></a>
-          <a class="card lock" href="/lakewood-reply"><span class="card-tag">Internal</span><h3>Reply to Ross</h3><p>Copy-ready email draft.</p><em>/lakewood-reply</em></a>
+          <a class="card pub" href="/lakewood"><span class="card-tag">Send to Ross</span><h3>Parity proposal</h3><p>Four-rung ladder · full validation plan.</p><em>/lakewood</em></a>
+          <a class="card pub" href="/triangle"><span class="card-tag">ISO 4120</span><h3>Triangle test kit</h3><p>30 ballots · key sheet · tally · calculator.</p><em>/triangle</em></a>
+          <a class="card pub" href="/blind"><span class="card-tag">Escalation</span><h3>Blind comparison kit</h3><p>Duo-trio · fingerprint · report page.</p><em>/blind</em></a>
+          <a class="card lock" href="/lakewood-tracker"><span class="card-tag">Internal</span><h3>Variant tracker</h3><p>8 SKUs · steps · notes · pass/flag.</p><em>/lakewood-tracker</em></a>
+          <a class="card lock" href="/lakewood-reply"><span class="card-tag">Email draft</span><h3>Reply to Ross</h3><p>Copy-ready alignment email.</p><em>/lakewood-reply</em></a>
         </div>
       </section>
 
       <section class="sec">
-        <div class="sec-head"><h2>Print materials</h2><span>Handouts · ballots · room signage</span></div>
+        <span class="pri">Priority 5 · Print &amp; room</span>
+        <div class="sec-head"><h2>Print materials</h2><span>Handouts before the visit</span></div>
         <div class="grid">
-          <a class="card pub" href="/triangle"><span class="card-tag">Lakewood</span><h3>Triangle test kit</h3><p>30 ballots + instructions + key sheet + tally · ISO 4120.</p><em>/triangle</em></a>
-          <a class="card pub" href="/blind"><span class="card-tag">Lakewood</span><h3>Blind comparison forms</h3><p>Expert screen · duo-trio · fingerprint · report page.</p><em>/blind</em></a>
-          <a class="card pub" href="/slides"><span class="card-tag">Workshop</span><h3>Slide deck</h3><p>20 slides + scoring sheet.</p><em>/slides</em></a>
-          <a class="card pub" href="/passport"><span class="card-tag">Workshop</span><h3>Visitor passport</h3><p>Pocket follow-along for guests.</p><em>/passport</em></a>
-          <a class="card pub" href="/stations"><span class="card-tag">Workshop</span><h3>Station signs</h3><p>Three tasting stations.</p><em>/stations</em></a>
+          <a class="card pub" href="/passport"><span class="card-tag">Guests</span><h3>Visitor passport</h3><p>Pocket follow-along.</p><em>/passport</em></a>
+          <a class="card pub" href="/stations"><span class="card-tag">Room</span><h3>Station signs</h3><p>Three tasting stations.</p><em>/stations</em></a>
           <a class="card pub" href="/labels"><span class="card-tag">Lab</span><h3>Sample labels</h3><p>Concepts 01–10 stickers.</p><em>/labels</em></a>
-          <a class="card pub" href="/qr"><span class="card-tag">Room</span><h3>QR code sheet</h3><p>Site · scorer · passport · portal.</p><em>/qr</em></a>
+          <a class="card pub" href="/qr"><span class="card-tag">Room</span><h3>QR code sheet</h3><p>Hub · workshop · scorer · passport.</p><em>/qr</em></a>
           <a class="card pub" href="/onepager"><span class="card-tag">Leave-behind</span><h3>Executive one-pager</h3><p>Procurement summary.</p><em>/onepager</em></a>
-          <a class="card lock" href="/worksheet"><span class="card-tag">Lab</span><h3>Co-creation worksheet</h3><p>10:30 block form.</p><em>/worksheet</em></a>
-          <a class="card lock" href="/pocket"><span class="card-tag">Hosts</span><h3>Pocket run-of-show</h3><p>Foldable host cheat sheet.</p><em>/pocket</em></a>
-          <a class="card lock" href="/host"><span class="card-tag">Hosts</span><h3>Full run-of-show</h3><p>Minute-by-minute · printable checklist.</p><em>/host</em></a>
-          <a class="card lock" href="/score"><span class="card-tag">Results</span><h3>Scorer printout</h3><p>Aggregate leaderboard summary from live ratings.</p><em>/score</em></a>
         </div>
       </section>
 
       <section class="sec">
-        <div class="sec-head"><h2>July 8 · day-of</h2><span>Room + hosts</span></div>
+        <span class="pri">Priority 6 · R&amp;D</span>
+        <div class="sec-head"><h2>Innovation &amp; chemistry</h2><span>Internal formulation playbooks</span></div>
         <div class="grid">
-          <a class="card pub" href="/"><span class="card-tag">Screen share</span><h3>Workshop site</h3><p>Live pillars · concepts · feedback.</p><em>/</em></a>
-          <a class="card pub" href="/slides"><span class="card-tag">Print</span><h3>Slide deck</h3><p>20 slides · scoring sheet.</p><em>/slides</em></a>
-          <a class="card pub" href="/passport"><span class="card-tag">Print</span><h3>Visitor passport</h3><p>Pocket follow-along.</p><em>/passport</em></a>
-          <a class="card pub" href="/stations"><span class="card-tag">Print</span><h3>Station signs</h3><p>Three tasting stations.</p><em>/stations</em></a>
-          <a class="card pub" href="/score"><span class="card-tag">Live</span><h3>Concept scorer</h3><p>Phones · 1–9 ratings.</p><em>/score</em></a>
-          <a class="card pub" href="/qr"><span class="card-tag">Print</span><h3>QR code sheet</h3><p>Site · scorer · passport · portal — station signs &amp; postcards.</p><em>/qr</em></a>
-          <a class="card lock" href="/host"><span class="card-tag">Hosts only</span><h3>Run-of-show</h3><p>Minute-by-minute · handoff cues.</p><em>/host</em></a>
-          <a class="card lock" href="/pocket"><span class="card-tag">Print</span><h3>Pocket run-of-show</h3><p>One-page foldable · Dan's July 8 cheat sheet.</p><em>/pocket</em></a>
-          <a class="card lock" href="/tour"><span class="card-tag">Hosts only</span><h3>Facility tour map</h3><p>8:00 AM walk-through.</p><em>/tour</em></a>
-          <a class="card lock" href="/worksheet"><span class="card-tag">Lab</span><h3>Co-creation worksheet</h3><p>10:30 block form.</p><em>/worksheet</em></a>
-          <a class="card lock" href="/labels"><span class="card-tag">Print</span><h3>Sample labels</h3><p>Concepts 01–10 stickers.</p><em>/labels</em></a>
+          <a class="card lock" href="/chlorite-flavor"><span class="card-tag">Formulation</span><h3>Chlorite flavor solutions</h3><p>Vanilla stability · antioxidants · protocol.</p><em>/chlorite-flavor</em></a>
+          <a class="card lock" href="/intensity-tiers"><span class="card-tag">Competitive</span><h3>Listerine + GA-22131</h3><p>Intensity matrix · garlic hypothesis · email archive.</p><em>/intensity-tiers</em></a>
         </div>
       </section>
 
       <section class="sec">
-        <div class="sec-head"><h2>Innovation &amp; chemistry</h2><span>Internal R&amp;D</span></div>
+        <span class="pri">Reference</span>
+        <div class="sec-head"><h2>Company profiles</h2><span>Public · also on guest hub</span></div>
         <div class="grid">
-          <a class="card lock" href="/chlorite-flavor"><span class="card-tag">Formulation</span><h3>Chlorite flavor solutions</h3><p>Vanilla · antioxidants · stability protocol.</p><em>/chlorite-flavor</em></a>
-          <a class="card lock" href="/intensity-tiers"><span class="card-tag">Email archive</span><h3>Listerine + GA-22131</h3><p>Competitive matrix · garlic hypothesis.</p><em>/intensity-tiers</em></a>
-        </div>
-      </section>
-
-      <section class="sec">
-        <div class="sec-head"><h2>Hospitality &amp; follow-through</h2><span>Internal</span></div>
-        <div class="grid">
-          <a class="card lock" href="/hospitality"><span class="card-tag">Swag</span><h3>Hospitality guide</h3><p>Gift baskets · banners · catering.</p><em>/hospitality</em></a>
-          <a class="card pub" href="/onepager"><span class="card-tag">Leave-behind</span><h3>Executive one-pager</h3><p>Procurement summary · four pillars.</p><em>/onepager</em></a>
-          <a class="card lock" href="/followup"><span class="card-tag">Email</span><h3>Follow-up template</h3><p>24-hour thank-you draft.</p><em>/followup</em></a>
+          <a class="card pub" href="/companies"><span class="card-tag">Hub</span><h3>Company hub</h3><p>TFF + TheraBreath profiles and assets.</p><em>/companies</em></a>
+          <a class="card pub" href="/flavor-factory"><span class="card-tag">Supplier</span><h3>The Flavor Factory</h3><p>Capabilities · certifications · Norco.</p><em>/flavor-factory</em></a>
+          <a class="card pub" href="/therabreath-brand"><span class="card-tag">Brand</span><h3>TheraBreath</h3><p>OXYD-8 · product lines · equities.</p><em>/therabreath-brand</em></a>
         </div>
       </section>
     </div>
