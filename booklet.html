@@ -3,210 +3,745 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="July 8 welcome booklet — partnership documents, formulas, sensory kits, and print companions for the TheraBreath visit." />
+    <meta name="description" content="TheraBreath × TFF welcome booklet — numbered index, chapters, and every document for the July 8 visit." />
     <title>Welcome Booklet | TFF × TheraBreath · July 8</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/tff-shell.css" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
-      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
-      * { box-sizing:border-box; }
-      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f4f8fb; }
+      :root {
+        --blue: #008fd3;
+        --green: #5fb832;
+        --orange: #f58220;
+        --ink: #0a1628;
+        --muted: #5c6678;
+        --line: #d8e2ec;
+        --paper: #f6fafc;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "DM Sans", system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3, .ch-num, .idx-n, .cover-title { font-family: "Sora", sans-serif; }
+
       .toolbar {
-        position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;
-        padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        background: rgba(255, 255, 255, 0.96);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
       }
+      .toolbar span { font-size: 0.84rem; }
+      .toolbar div { display: flex; gap: 8px; flex-wrap: wrap; }
       .toolbar a, .toolbar button {
-        padding:9px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700;
-        text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer;
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.76rem;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
       }
-      .toolbar button { background:var(--blue); color:#fff; border:none; }
-      .hero {
-        padding:48px 24px 40px; text-align:center;
-        background:linear-gradient(160deg,#0a1628 0%,#0d4a7a 45%,#008fd3 100%); color:#fff;
+      .toolbar button.primary { background: var(--blue); color: #fff; border: none; }
+
+      .book {
+        display: grid;
+        gap: 28px;
+        padding: 28px 20px 100px;
+        justify-items: center;
       }
-      .hero .mark {
-        width:56px; height:56px; margin:0 auto 16px; display:grid; place-items:center;
-        border-radius:16px; background:rgba(255,255,255,0.12); font-family:"Sora",sans-serif; font-weight:800;
+
+      .page {
+        width: 8.5in;
+        min-height: 11in;
+        padding: 0.55in 0.6in 0.65in;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        box-shadow: 0 20px 60px rgba(10, 22, 40, 0.1);
+        position: relative;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
       }
-      .hero h1 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:800; letter-spacing:-0.03em; }
-      .hero p { margin:0 auto; max-width:560px; font-size:0.92rem; line-height:1.6; opacity:0.88; }
-      .hero .chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:20px; }
-      .hero .chip {
-        padding:6px 12px; border-radius:999px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18);
-        font-size:0.68rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+      .page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--blue), var(--green), var(--orange));
       }
-      .wrap { width:min(920px,calc(100vw - 32px)); margin:0 auto; padding:32px 0 100px; }
-      .note {
-        padding:16px 18px; margin-bottom:28px; border-radius:14px;
-        background:linear-gradient(135deg,#fff,#f0f9fd); border:1px solid rgba(0,143,211,0.2);
-        font-size:0.84rem; line-height:1.55; color:#344054;
+      .page-foot {
+        position: absolute;
+        bottom: 0.42in;
+        left: 0.6in;
+        right: 0.6in;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.58rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 600;
       }
-      .note b { color:var(--ink); }
-      .sec { margin-bottom:36px; }
-      .sec-head { display:flex; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
-      .sec-head h2 { margin:0; font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; }
-      .sec-head span { font-size:0.72rem; color:var(--muted); font-weight:600; }
-      .grid { display:grid; gap:12px; }
-      .doc {
-        display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center;
-        padding:16px 18px; background:#fff; border:1px solid var(--line); border-radius:14px;
-        text-decoration:none; color:inherit; transition:transform 0.2s ease, box-shadow 0.2s ease;
+      .page-foot .pg { font-family: "Sora", sans-serif; color: var(--blue); }
+
+      /* Cover */
+      .cover {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        min-height: 9.2in;
+        padding-top: 0.2in;
       }
-      .doc:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(10,22,40,0.08); }
-      .doc h3 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.92rem; font-weight:700; }
-      .doc p { margin:0; font-size:0.78rem; color:var(--muted); line-height:1.45; }
-      .doc .tag {
-        display:inline-block; margin-bottom:6px; padding:3px 8px; border-radius:999px;
-        font-size:0.58rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase;
+      .cover-top { display: grid; align-content: center; justify-items: center; text-align: center; }
+      .cover-mark {
+        width: 72px;
+        height: 72px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background: linear-gradient(145deg, var(--ink), var(--blue));
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+        margin-bottom: 28px;
+        box-shadow: 0 16px 40px rgba(0, 143, 211, 0.28);
       }
-      .tag.pdf { background:#eef6fc; color:var(--blue); }
-      .tag.site { background:#edf8e8; color:#2d6a3f; }
-      .tag.print { background:#fff4e8; color:#c45c26; }
-      .open {
-        padding:10px 16px; border-radius:999px; background:var(--blue); color:#fff;
-        font-family:"Sora",sans-serif; font-size:0.72rem; font-weight:700; white-space:nowrap;
+      .cover-kicker {
+        margin: 0 0 12px;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--blue);
       }
-      .open.html { background:var(--green); }
-      .cols-2 { grid-template-columns:1fr 1fr; }
-      @media (max-width:720px) { .cols-2 { grid-template-columns:1fr; } .doc { grid-template-columns:1fr; } .open { justify-self:start; } }
-      .print-cover {
-        display:none; padding:0.6in; page-break-after:always;
+      .cover-title {
+        margin: 0 0 14px;
+        font-size: 2.15rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 1.08;
+        max-width: 5.5in;
       }
-      .print-cover h1 { font-family:"Sora",sans-serif; font-size:22pt; margin:0 0 12px; }
-      .print-cover p { font-size:11pt; color:#444; line-height:1.5; }
-      .print-toc { display:none; }
+      .cover-sub {
+        margin: 0 auto;
+        max-width: 4.8in;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .cover-partners {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 32px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+      .cover-partners i {
+        display: block;
+        width: 28px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--blue), var(--green));
+        font-style: normal;
+      }
+      .cover-bottom {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 20px;
+        align-items: end;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+      .cover-fields label {
+        display: block;
+        font-size: 0.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+      .cover-fields .line {
+        border-bottom: 1.5px solid var(--ink);
+        height: 26px;
+        margin-bottom: 14px;
+      }
+      .cover-qr { text-align: center; }
+      .cover-qr img {
+        width: 96px;
+        height: 96px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        padding: 4px;
+        background: #fff;
+      }
+      .cover-qr b {
+        display: block;
+        margin-top: 6px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.62rem;
+      }
+      .cover-qr span { font-size: 0.55rem; color: var(--muted); }
+
+      /* Welcome */
+      .kicker {
+        margin: 0 0 8px;
+        font-size: 0.62rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      .page h2 {
+        margin: 0 0 16px;
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      .lead { margin: 0 0 18px; font-size: 0.84rem; line-height: 1.65; color: #344054; }
+      .how-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .how-card {
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: linear-gradient(160deg, #fff, #f8fcfe);
+      }
+      .how-card b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.78rem;
+        margin-bottom: 6px;
+        color: var(--ink);
+      }
+      .how-card p { margin: 0; font-size: 0.72rem; line-height: 1.5; color: var(--muted); }
+
+      /* Index */
+      .index-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--ink);
+      }
+      .index-head h2 { margin: 0; }
+      .index-head span { font-size: 0.72rem; color: var(--muted); }
+      .ch-block { margin-bottom: 18px; }
+      .ch-label {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--line);
+      }
+      .ch-label .ch-num {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--blue);
+        min-width: 28px;
+      }
+      .ch-label b { font-size: 0.82rem; }
+      .ch-label span { font-size: 0.68rem; color: var(--muted); margin-left: auto; }
+      .idx-row {
+        display: grid;
+        grid-template-columns: 32px 1fr auto auto;
+        gap: 8px;
+        align-items: baseline;
+        padding: 5px 0;
+        font-size: 0.74rem;
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px dotted rgba(92, 102, 120, 0.25);
+      }
+      a.idx-row:hover .idx-title { color: var(--blue); }
+      .idx-n {
+        font-weight: 800;
+        color: var(--blue);
+        font-size: 0.7rem;
+      }
+      .idx-title { font-weight: 600; }
+      .idx-type {
+        font-size: 0.58rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .idx-ch {
+        font-size: 0.58rem;
+        font-weight: 700;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      /* Chapter divider */
+      .chapter-page {
+        display: grid;
+        align-content: center;
+        min-height: 9in;
+        padding-left: 0.15in;
+      }
+      .chapter-page .ch-big {
+        font-size: 5.5rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.05em;
+        color: var(--ch-accent, var(--blue));
+        opacity: 0.14;
+        margin-bottom: -0.15in;
+      }
+      .chapter-page h2 {
+        font-size: 1.75rem;
+        margin: 0 0 10px;
+        max-width: 5in;
+      }
+      .chapter-page p {
+        margin: 0 0 24px;
+        font-size: 0.88rem;
+        color: var(--muted);
+        max-width: 4.5in;
+        line-height: 1.55;
+      }
+      .chapter-items { list-style: none; margin: 0; padding: 0; }
+      .chapter-items li {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 10px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 0.76rem;
+      }
+      .chapter-items .n {
+        font-family: "Sora", sans-serif;
+        font-weight: 800;
+        color: var(--blue);
+      }
+      .chapter-items a {
+        color: var(--ink);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .chapter-items a:hover { color: var(--blue); }
+      .chapter-items small {
+        display: block;
+        margin-top: 2px;
+        font-weight: 400;
+        color: var(--muted);
+        font-size: 0.66rem;
+      }
+
+      /* Agenda + hosts */
+      .agenda { width: 100%; border-collapse: collapse; font-size: 0.76rem; margin-bottom: 20px; }
+      .agenda th, .agenda td {
+        padding: 9px 10px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+      .agenda th {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        background: #f8fbfd;
+      }
+      .agenda td:first-child {
+        font-family: "Sora", sans-serif;
+        font-weight: 800;
+        color: var(--blue);
+        width: 58px;
+        white-space: nowrap;
+      }
+      .hosts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .host {
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: #fafcfe;
+      }
+      .host b { display: block; font-family: "Sora", sans-serif; font-size: 0.8rem; }
+      .host span { font-size: 0.68rem; color: var(--muted); }
+
+      /* QR reference */
+      .qr-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .qr-cell { text-align: center; }
+      .qr-cell img {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        padding: 3px;
+      }
+      .qr-cell b {
+        display: block;
+        margin-top: 6px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.68rem;
+      }
+      .qr-cell code {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.55rem;
+        color: var(--muted);
+      }
+
+      /* Digital browse (screen only) */
+      .digital {
+        width: min(920px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding-bottom: 80px;
+      }
+      .digital-hero {
+        text-align: center;
+        padding: 32px 20px 24px;
+        background: linear-gradient(160deg, var(--ink), #0d4a7a 50%, var(--blue));
+        color: #fff;
+        border-radius: 20px;
+        margin-bottom: 24px;
+      }
+      .digital-hero h1 {
+        margin: 0 0 8px;
+        font-size: 1.5rem;
+        font-weight: 800;
+      }
+      .digital-hero p { margin: 0; font-size: 0.86rem; opacity: 0.88; }
+      .jump-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+      .jump-bar a {
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--line);
+        font-family: "Sora", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--ink);
+      }
+      .jump-bar a:hover { border-color: var(--blue); color: var(--blue); }
+      .dig-sec { margin-bottom: 28px; }
+      .dig-sec h3 {
+        margin: 0 0 12px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.95rem;
+      }
+      .dig-card {
+        display: block;
+        padding: 14px 16px;
+        margin-bottom: 10px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .dig-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(10, 22, 40, 0.08);
+      }
+      .dig-card .top {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 4px;
+      }
+      .dig-card .num {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--ink);
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .dig-card h4 { margin: 0; font-family: "Sora", sans-serif; font-size: 0.88rem; }
+      .dig-card p { margin: 0; font-size: 0.76rem; color: var(--muted); line-height: 1.45; }
+      .dig-card .tag {
+        margin-left: auto;
+        font-size: 0.58rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+
       @media print {
-        .toolbar, .hero, .note, .tff-site-nav, .tff-mobile-dock { display:none !important; }
-        body { background:#fff; }
-        .wrap { width:100%; padding:0; }
-        .print-cover, .print-toc { display:block; }
-        .sec { page-break-inside:avoid; }
-        .doc { break-inside:avoid; box-shadow:none; }
-        .open { background:#eee; color:#000; border:1px solid #999; }
+        body { background: #fff; }
+        .toolbar, .digital, .tff-site-nav, .tff-mobile-dock { display: none !important; }
+        .book { gap: 0; padding: 0; }
+        .page {
+          width: 100%;
+          min-height: auto;
+          border: none;
+          border-radius: 0;
+          box-shadow: none;
+          margin: 0;
+        }
       }
-      @page { size:letter portrait; margin:0.55in; }
+      @media screen {
+        .book { display: grid; }
+        .page { border-radius: 12px; }
+      }
+      @page { size: letter portrait; margin: 0.45in; }
     </style>
   </head>
   <body>
-    <div class="toolbar no-print">
-      <span><strong>Welcome booklet</strong> · July 8, 2026 · Norco</span>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <div class="toolbar">
+      <span><strong>Welcome booklet</strong> · 35 numbered entries · 7 chapters</span>
+      <div>
         <a href="/workshop">Workshop</a>
         <a href="/passport">Passport</a>
-        <a href="/toolkit">Team toolkit</a>
-        <button type="button" onclick="window.print()">Print table of contents</button>
+        <button type="button" class="primary" onclick="window.print()">Print full booklet</button>
       </div>
     </div>
 
-    <div class="print-cover">
-      <p style="font-size:9pt;letter-spacing:0.12em;text-transform:uppercase;color:#008fd3;font-weight:700">Confidential · July 8, 2026</p>
-      <h1>Welcome Booklet<br />TheraBreath × The Flavor Factory</h1>
-      <p><strong>Breath of Innovation</strong> — capabilities workshop at our Norco facility.<br />
-      Reference documents for procurement, R&amp;D, and quality during your visit.<br />
-      Digital index: therabreath-visit-site.vercel.app/booklet</p>
-      <p style="margin-top:24px;font-size:10pt"><b>Guest name:</b> _________________________ &nbsp; <b>Role:</b> _________________________</p>
+    <div class="book" id="print-book"></div>
+
+    <div class="digital" id="digital-view">
+      <div class="digital-hero">
+        <p style="margin:0 0 8px;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;opacity:0.75">July 8, 2026 · Norco</p>
+        <h1>Quick jump · numbered index</h1>
+        <p>Scroll the booklet pages above, or tap any item below by number.</p>
+      </div>
+      <nav class="jump-bar" id="jump-bar"></nav>
+      <div id="digital-sections"></div>
     </div>
 
-    <header class="hero no-print">
-      <div class="mark">TFF</div>
-      <p style="margin:0 0 8px;font-size:0.68rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;opacity:0.7">July 8, 2026 · Norco, CA</p>
-      <h1>Welcome booklet</h1>
-      <p>Everything in one place for your visit — partnership story, facility docs, seasonal innovation, sensory protocols, sample COAs, and print companions from the workshop site.</p>
-      <div class="chips">
-        <span class="chip">20 PDFs</span>
-        <span class="chip">Print + phone</span>
-        <span class="chip">Guest + team</span>
-      </div>
-    </header>
-
-    <div class="wrap">
-      <p class="note no-print">
-        <b>How to use this.</b> Tap any document to open on your phone or laptop during the session.
-        For the printed binder, use <b>Print table of contents</b> above and slip the tabbed PDFs behind each section.
-        The <b>Professional formula portfolio</b> is web-optimized here; ask Matt for the full print-resolution file (82 MB master) for production printing.
-      </p>
-
-      <div class="print-toc">
-        <h2 style="font-family:Sora,sans-serif;font-size:14pt;margin:0 0 16px">Table of contents</h2>
-      </div>
-
-      <section class="sec" id="sec-welcome">
-        <div class="sec-head"><h2>01 · Welcome &amp; partnership</h2><span>Start here</span></div>
-        <div class="grid cols-2" data-section="welcome"></div>
-      </section>
-
-      <section class="sec" id="sec-operations">
-        <div class="sec-head"><h2>02 · Operations &amp; facility</h2><span>Tour + qualifications</span></div>
-        <div class="grid cols-2" data-section="operations"></div>
-      </section>
-
-      <section class="sec" id="sec-innovation">
-        <div class="sec-head"><h2>03 · Innovation &amp; formulas</h2><span>Seasonal + chlorite context</span></div>
-        <div class="grid cols-2" data-section="innovation"></div>
-      </section>
-
-      <section class="sec" id="sec-sensory">
-        <div class="sec-head"><h2>04 · Sensory &amp; validation</h2><span>Lakewood + panels</span></div>
-        <div class="grid cols-2" data-section="sensory"></div>
-      </section>
-
-      <section class="sec" id="sec-quality">
-        <div class="sec-head"><h2>05 · Quality · COAs &amp; specs</h2><span>Documentation examples</span></div>
-        <div class="grid cols-2" data-section="quality"></div>
-      </section>
-
-      <section class="sec" id="sec-samples">
-        <div class="sec-head"><h2>06 · Sample references</h2><span>Representative lots</span></div>
-        <div class="grid cols-2" data-section="samples"></div>
-      </section>
-
-      <section class="sec" id="sec-print">
-        <div class="sec-head"><h2>07 · Print companions</h2><span>From the workshop site</span></div>
-        <div class="grid cols-2" id="companions"></div>
-      </section>
-    </div>
-
+    <script src="/tff-booklet-data.js"></script>
     <script>
-      var COMPANIONS = [
-        { title: "Workshop experience", desc: "Room display · pillars · concepts · live agenda.", href: "/workshop", kind: "site" },
-        { title: "Visitor passport", desc: "Pocket follow-along — print double-sided for each guest.", href: "/passport", kind: "print" },
-        { title: "Executive one-pager", desc: "Leave-behind summary for procurement leads.", href: "/onepager", kind: "print" },
-        { title: "Slide deck + score sheet", desc: "20 slides and paper scoring table.", href: "/slides", kind: "print" },
-        { title: "Facility tour map", desc: "8:00 AM walk-through route and talking points.", href: "/tour", kind: "print" },
-        { title: "Station signs", desc: "Three tasting stations — includes mystery QR.", href: "/stations", kind: "print" },
-        { title: "QR print sheet", desc: "Postcards for mystery, score, workshop, passport.", href: "/qr", kind: "print" },
-        { title: "Sample kit labels", desc: "M1–M10 cup codes for bottles before tasting.", href: "/labels", kind: "print" },
-        { title: "Chlorite flavor guide", desc: "Internal R&D playbook — stability architecture.", href: "/chlorite-flavor", kind: "site" },
-        { title: "Lakewood parity plan", desc: "Site transfer sensory program for eight variants.", href: "/lakewood", kind: "site" },
-        { title: "Triangle test kit", desc: "ISO 4120 protocol — print for pilot panels.", href: "/triangle", kind: "print" },
-        { title: "Blind comparison kit", desc: "Blind protocol forms for formula changes.", href: "/blind", kind: "print" }
-      ];
+      var B = window.TFFBooklet;
+      var pageNum = 0;
 
-      function docCard(item) {
-        var href = "/booklet/documents/" + item.file;
-        var tag = item.file.indexOf(".") > -1 ? "pdf" : "pdf";
-        return '<a class="doc" href="' + href + '" target="_blank" rel="noopener">' +
-          '<div><span class="tag ' + tag + '">PDF</span><h3>' + item.title + '</h3><p>' + item.desc + '</p></div>' +
-          '<span class="open">Open PDF</span></a>';
+      function nextPage() {
+        pageNum++;
+        return pageNum;
       }
 
-      function companionCard(c) {
-        return '<a class="doc" href="' + c.href + '">' +
-          '<div><span class="tag ' + c.kind + '">' + (c.kind === "print" ? "Print" : "Site") + '</span>' +
-          '<h3>' + c.title + '</h3><p>' + c.desc + '</p></div>' +
-          '<span class="open html">Open</span></a>';
+      function foot(label) {
+        return '<footer class="page-foot"><span>TFF × TheraBreath · Confidential</span><span class="pg">' + label + '</span></footer>';
       }
 
-      fetch("/booklet/manifest.json")
-        .then(function (r) { return r.json(); })
-        .then(function (items) {
-          items.forEach(function (item) {
-            var host = document.querySelector('[data-section="' + item.section + '"]');
-            if (host) host.insertAdjacentHTML("beforeend", docCard(item));
-          });
+      function buildCover() {
+        return (
+          '<section class="page">' +
+          '<div class="cover">' +
+          '<div class="cover-top">' +
+          '<div class="cover-mark">TFF</div>' +
+          '<p class="cover-kicker">July 8, 2026 · Norco, California</p>' +
+          '<h1 class="cover-title">Welcome Booklet</h1>' +
+          '<p class="cover-sub"><strong>Breath of Innovation</strong> — a capabilities workshop for TheraBreath R&amp;D and procurement. Everything you need is indexed by number in the following pages.</p>' +
+          '<div class="cover-partners"><span>The Flavor Factory</span><i></i><span>TheraBreath</span></div>' +
+          '</div>' +
+          '<div class="cover-bottom">' +
+          '<div class="cover-fields">' +
+          '<label>Guest name</label><div class="line"></div>' +
+          '<label>Title / department</label><div class="line"></div>' +
+          '<label>Company</label><div class="line"></div>' +
+          '</div>' +
+          '<div class="cover-qr">' +
+          '<img src="/assets/qr/booklet-sm.png" alt="QR — digital booklet index" width="96" height="96" />' +
+          '<b>Scan for digital index</b>' +
+          '<span>therabreath-visit-site.vercel.app/booklet</span>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          foot("Cover") +
+          '</section>'
+        );
+      }
+
+      function buildWelcome() {
+        var hosts = B.hosts.map(function (h) {
+          return '<div class="host"><b>' + h.name + '</b><span>' + h.role + '</span></div>';
+        }).join("");
+        return (
+          '<section class="page">' +
+          '<p class="kicker">How to use this booklet</p>' +
+          '<h2>Welcome to Norco</h2>' +
+          '<p class="lead">Thank you for making the trip to The Flavor Factory. This is a <strong>working session</strong> — real tour, honest prototype tasting, and bench co-creation — not a pitch deck. Use the <strong>numbered index</strong> on the next pages to find any document in seconds. PDFs are in your binder pockets; live tools are on your phone via QR codes.</p>' +
+          '<div class="how-grid">' +
+          '<div class="how-card"><b>Find by number</b><p>Every item is numbered <strong>01–35</strong>. Reference the number in meetings — e.g. “see item 11, formula portfolio.”</p></div>' +
+          '<div class="how-card"><b>Seven chapters</b><p>Grouped by topic: partnership, today’s visit, operations, innovation, sensory, quality, and live tools.</p></div>' +
+          '<div class="how-card"><b>Phone + binder</b><p>Scan the cover QR for the digital index. Printed PDFs sit behind each chapter tab.</p></div>' +
+          '<div class="how-card"><b>Questions anytime</b><p>Dan, Ryan, Alex, and Matt are your hosts — see below. No question is off limits for a capabilities review.</p></div>' +
+          '</div>' +
+          '<p class="kicker" style="margin-top:8px">Your hosts</p>' +
+          '<div class="hosts">' + hosts + '</div>' +
+          foot("Welcome · " + nextPage()) +
+          '</section>'
+        );
+      }
+
+      function buildAgendaPage() {
+        var rows = B.agenda.map(function (a) {
+          return '<tr><td>' + a.time + '</td><td><strong>' + a.label + '</strong><br><span style="color:var(--muted);font-size:0.68rem">' + a.note + '</span></td></tr>';
+        }).join("");
+        return (
+          '<section class="page">' +
+          '<p class="kicker">Chapter 2 preview</p>' +
+          '<h2>Your morning at a glance</h2>' +
+          '<table class="agenda"><thead><tr><th>Time</th><th>Block</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+          '<p class="lead" style="margin-top:16px;font-size:0.78rem">Half day · depart by <strong>12:30 PM</strong>. Interactive workshop site on the room display: <strong>therabreath-visit-site.vercel.app</strong></p>' +
+          foot("Agenda · " + nextPage()) +
+          '</section>'
+        );
+      }
+
+      function chapterBlock(ch) {
+        var items = B.items.filter(function (it) { return it.ch === ch.num; });
+        var block =
+          '<div class="ch-block">' +
+          '<div class="ch-label"><span class="ch-num">' + String(ch.num).padStart(2, "0") + '</span>' +
+          '<b>' + ch.title + '</b><span>' + ch.subtitle + '</span></div>';
+        items.forEach(function (it) {
+          block +=
+            '<a class="idx-row" href="' + B.href(it) + '" target="' + (it.type === "pdf" ? "_blank" : "_self") + '">' +
+            '<span class="idx-n">' + String(it.n).padStart(2, "0") + '</span>' +
+            '<span class="idx-title">' + it.title + '</span>' +
+            '<span class="idx-type">' + B.typeLabel(it) + '</span>' +
+            '<span class="idx-ch">Ch.' + ch.num + '</span></a>';
         });
+        return block + "</div>";
+      }
 
-      document.getElementById("companions").innerHTML = COMPANIONS.map(companionCard).join("");
+      function buildIndexPages() {
+        var splitAt = 4;
+        var parts = [
+          B.chapters.slice(0, splitAt).map(chapterBlock).join(""),
+          B.chapters.slice(splitAt).map(chapterBlock).join("")
+        ];
+        return parts.map(function (part, i) {
+          return (
+            '<section class="page">' +
+            '<div class="index-head">' +
+            '<h2>Index · ' + (i + 1) + " of " + parts.length + '</h2>' +
+            '<span>Items 01–35 · find by number</span></div>' +
+            part +
+            foot("Index · " + nextPage()) +
+            '</section>'
+          );
+        }).join("");
+      }
+
+      function buildChapterPages() {
+        return B.chapters.map(function (ch) {
+          var items = B.items.filter(function (it) { return it.ch === ch.num; });
+          var lis = items.map(function (it) {
+            return '<li><span class="n">' + String(it.n).padStart(2, "0") + '</span><div>' +
+              '<a href="' + B.href(it) + '" target="' + (it.type === "pdf" ? "_blank" : "_self") + '">' + it.title + '</a>' +
+              '<small>' + it.desc + '</small></div></li>';
+          }).join("");
+          return (
+            '<section class="page" style="--ch-accent:' + ch.accent + '">' +
+            '<div class="chapter-page">' +
+            '<div class="ch-big">' + String(ch.num).padStart(2, "0") + '</div>' +
+            '<p class="kicker">Chapter ' + ch.num + '</p>' +
+            '<h2>' + ch.title + '</h2>' +
+            '<p>' + ch.subtitle + '</p>' +
+            '<ul class="chapter-items">' + lis + '</ul>' +
+            '</div>' +
+            foot("Chapter " + ch.num + " · " + nextPage()) +
+            '</section>'
+          );
+        }).join("");
+      }
+
+      function buildQrPage() {
+        return (
+          '<section class="page">' +
+          '<p class="kicker">Quick reference</p>' +
+          '<h2>Scan on your phone</h2>' +
+          '<p class="lead">Use these during the tasting block and co-creation lab. Mystery first, then score after reveals.</p>' +
+          '<div class="qr-grid">' +
+          '<div class="qr-cell"><img src="/assets/qr/booklet-sm.png" alt="" width="80" height="80" /><b>01 Booklet</b><code>/booklet</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/site-sm.png" alt="" width="80" height="80" /><b>03 Workshop</b><code>/workshop</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/mystery-sm.png" alt="" width="80" height="80" /><b>31 Mystery</b><code>/mystery</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/score-sm.png" alt="" width="80" height="80" /><b>32 Score</b><code>/score</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/passport-sm.png" alt="" width="80" height="80" /><b>05 Passport</b><code>/passport</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/companies-sm.png" alt="" width="80" height="80" /><b>Companies</b><code>/companies</code></div>' +
+          '</div>' +
+          '<p style="margin-top:24px;font-size:0.72rem;color:var(--muted);line-height:1.55">' +
+          '<strong>The Flavor Factory</strong> · 2058 Second Street, Norco, CA 92860 · (951) 273-9877<br />' +
+          'Prepared for Church &amp; Dwight / TheraBreath · July 8, 2026 · Confidential</p>' +
+          foot("QR reference · " + nextPage()) +
+          '</section>'
+        );
+      }
+
+      function buildDigital() {
+        var jumps = B.chapters.map(function (ch) {
+          return '<a href="#ch-' + ch.num + '">Ch. ' + ch.num + ' · ' + ch.title.split(" ")[0] + '</a>';
+        }).join("");
+        document.getElementById("jump-bar").innerHTML = jumps;
+
+        var secs = B.chapters.map(function (ch) {
+          var items = B.items.filter(function (it) { return it.ch === ch.num; });
+          var cards = items.map(function (it) {
+            return (
+              '<a class="dig-card" href="' + B.href(it) + '" target="' + (it.type === "pdf" ? "_blank" : "_self") + '">' +
+              '<div class="top"><span class="num">' + String(it.n).padStart(2, "0") + '</span>' +
+              '<h4>' + it.title + '</h4><span class="tag">' + B.typeLabel(it) + '</span></div>' +
+              '<p>' + it.desc + '</p></a>'
+            );
+          }).join("");
+          return (
+            '<section class="dig-sec" id="ch-' + ch.num + '">' +
+            '<h3>Chapter ' + ch.num + ' · ' + ch.title + '</h3>' + cards +
+            '</section>'
+          );
+        }).join("");
+        document.getElementById("digital-sections").innerHTML = secs;
+      }
+
+      pageNum = 0;
+      document.getElementById("print-book").innerHTML =
+        buildCover() +
+        buildWelcome() +
+        buildAgendaPage() +
+        buildIndexPages() +
+        buildChapterPages() +
+        buildQrPage();
+
+      buildDigital();
     </script>
     <script src="/tff-shell.js" defer></script>
   </body>
