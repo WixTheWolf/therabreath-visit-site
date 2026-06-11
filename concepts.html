@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-tff-shell="inject">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ten directional workshop prototypes for July 8 — stability tiers, station map, and QC status. Preview before Blind Flavor Mapping; cups stay coded until reveal." />
+    <meta name="theme-color" content="#0a1628" />
+    <title>Ten Workshop Directions | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
+    <script src="/tff-concepts.js"></script>
+    <style>
+      :root {
+        --blue:#008fd3; --green:#5fb832; --orange:#f58220;
+        --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --paper:#f6fafc;
+      }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:var(--paper); }
+      .hero {
+        padding:40px 24px 32px;
+        background:linear-gradient(160deg,var(--ink) 0%,#004f87 100%); color:#fff;
+      }
+      .hero-in { width:min(1040px,calc(100vw - 40px)); margin:0 auto; }
+      .kicker {
+        margin:0 0 8px; font-family:"Sora",sans-serif;
+        font-size:0.66rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase;
+        color:rgba(255,255,255,0.55);
+      }
+      .hero h1 {
+        margin:0 0 10px; font-family:"Sora",sans-serif;
+        font-size:clamp(1.6rem,4vw,2.2rem); font-weight:800; letter-spacing:-0.03em;
+      }
+      .hero p { margin:0; max-width:640px; font-size:0.92rem; line-height:1.6; color:rgba(255,255,255,0.82); }
+      .hero-note {
+        margin-top:16px; padding:12px 16px; border-radius:12px;
+        background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+        font-size:0.78rem; line-height:1.5; color:rgba(255,255,255,0.88);
+      }
+      .legend {
+        display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;
+      }
+      .legend span {
+        display:inline-flex; align-items:center; gap:6px;
+        padding:6px 12px; border-radius:999px; font-size:0.68rem; font-weight:700;
+        background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15);
+      }
+      .legend i { width:8px; height:8px; border-radius:50%; font-style:normal; }
+      .legend .stable i { background:var(--green); }
+      .legend .watch i { background:var(--orange); }
+      .legend .flagged i { background:#e85d5d; }
+
+      .wrap { width:min(1040px,calc(100vw - 40px)); margin:0 auto; padding:32px 0 72px; }
+      .station-block { margin-bottom:36px; }
+      .station-head {
+        display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between;
+        gap:10px; margin-bottom:14px;
+      }
+      .station-head h2 { margin:0; font-family:"Sora",sans-serif; font-size:1.1rem; }
+      .station-head p { margin:0; font-size:0.8rem; color:var(--muted); max-width:48ch; }
+
+      .grid {
+        display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px;
+      }
+      .card {
+        position:relative; padding:20px 20px 18px; border-radius:18px;
+        background:#fff; border:1px solid var(--line);
+        box-shadow:0 10px 32px rgba(10,22,40,0.04);
+        overflow:hidden;
+      }
+      .card::before {
+        content:""; position:absolute; top:0; left:0; right:0; height:4px;
+        background:var(--accent, var(--blue));
+      }
+      .card.stable { --accent:var(--green); }
+      .card.watch { --accent:var(--orange); }
+      .card.flagged { --accent:#e85d5d; }
+      .card-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:8px; }
+      .card-code {
+        font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800;
+        letter-spacing:0.08em; color:var(--muted);
+      }
+      .qc {
+        padding:4px 9px; border-radius:999px; font-size:0.6rem; font-weight:800;
+        letter-spacing:0.04em; text-transform:uppercase; white-space:nowrap;
+      }
+      .card.stable .qc { background:#edf8e8; color:#2d6a1e; }
+      .card.watch .qc { background:#fff4e8; color:#9a4e0a; }
+      .card.flagged .qc { background:#fef2f2; color:#b42318; }
+      .card h3 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:1rem; }
+      .card .sub { margin:0 0 10px; font-size:0.78rem; color:var(--muted); }
+      .card .note { margin:0; font-size:0.74rem; color:#475467; line-height:1.45; }
+      .card-foot {
+        margin-top:12px; padding-top:10px; border-top:1px solid var(--line);
+        font-size:0.68rem; color:var(--muted);
+      }
+
+      .cta-row {
+        display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; padding:22px;
+        border-radius:18px; background:#fff; border:1px solid var(--line);
+      }
+      .cta-row a {
+        padding:11px 18px; border-radius:999px; font-family:"Sora",sans-serif;
+        font-size:0.76rem; font-weight:700; text-decoration:none;
+      }
+      .cta-row .primary { background:var(--green); color:#fff; }
+      .cta-row .ghost { border:1px solid var(--line); color:var(--ink); }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-in">
+        <p class="kicker">July 8 workshop · directional prototypes</p>
+        <h1>Ten directions worth discussing</h1>
+        <p>Not a launch line — a sensory map to identify territories worth retain investment. Cup codes (M1–M10) stay blind until the host reveals; this page shows names and QC posture only.</p>
+        <p class="hero-note"><strong>During tasting:</strong> use <a href="/mystery" style="color:#c8f5a8;font-weight:700">Blind Flavor Mapping</a> on coded cups first, then <a href="/score" style="color:#c8f5a8;font-weight:700">Prototype Scorecard</a> after reveal.</p>
+        <div class="legend" aria-label="QC legend">
+          <span class="stable"><i></i> QC cleared</span>
+          <span class="watch"><i></i> Stability TBD</span>
+          <span class="flagged"><i></i> QC concern · prototype only</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap" id="concept-root"></div>
+
+    <script src="/tff-shell.js" defer></script>
+    <script>
+      (function () {
+        var root = document.getElementById("concept-root");
+        if (!root || !window.TFFConcepts) return;
+
+        var stationNames = {
+          1: { title: "Station 1 · Core freshness", desc: "Mint-forward and line-extension directions." },
+          2: { title: "Station 2 · Innovation lab", desc: "Botanical, spice, and stretch profiles — blind mapping hub." },
+          3: { title: "Station 3 · Functional benefits", desc: "Evening calm, whitening cue, seasonal LE, gum-health herbal." }
+        };
+
+        var byStation = {};
+        TFFConcepts.activeList().forEach(function (c) {
+          var s = c.station || 2;
+          if (!byStation[s]) byStation[s] = [];
+          byStation[s].push(c);
+        });
+
+        [1, 2, 3].forEach(function (sid) {
+          var list = byStation[sid];
+          if (!list || !list.length) return;
+          var meta = stationNames[sid];
+          var section = document.createElement("section");
+          section.className = "station-block tff-reveal";
+          section.innerHTML =
+            '<div class="station-head"><div><h2>' + meta.title + '</h2><p>' + meta.desc + '</p></div></div>' +
+            '<div class="grid" id="station-' + sid + '"></div>';
+          root.appendChild(section);
+
+          var grid = section.querySelector(".grid");
+          list.forEach(function (c) {
+            var stab = TFFConcepts.stabilityMeta(c.stability);
+            var card = document.createElement("article");
+            card.className = "card " + stab.class;
+            card.innerHTML =
+              '<div class="card-top"><span class="card-code">' + c.code + '</span>' +
+              '<span class="qc">' + stab.label + '</span></div>' +
+              '<h3>' + c.name + '</h3>' +
+              '<p class="sub">' + c.sub + '</p>' +
+              '<p class="note">' + c.qcNote + '</p>' +
+              '<p class="card-foot">Directional workshop pour · not a shelf-life claim</p>';
+            grid.appendChild(card);
+          });
+        });
+
+        var cta = document.createElement("div");
+        cta.className = "cta-row tff-reveal";
+        cta.innerHTML =
+          '<a class="primary" href="/mystery">Open Blind Flavor Mapping</a>' +
+          '<a class="ghost" href="/visit">Your visit guide</a>' +
+          '<a class="ghost" href="/workshop#concepts">Workshop concept cards</a>' +
+          '<a class="ghost" href="/chlorite-flavor">Why chlorite matters</a>';
+        root.appendChild(cta);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "Breath of Innovation · TFF × TheraBreath",
+  "short_name": "TFF Visit",
+  "description": "July 8, 2026 capabilities workshop — visit guide, Blind Flavor Mapping, and Prototype Scorecard.",
+  "start_url": "/visit",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0a1628",
+  "background_color": "#f6fafc",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

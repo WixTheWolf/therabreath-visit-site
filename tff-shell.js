@@ -4,13 +4,15 @@
 (function (global) {
   var PRIMARY = [
     { href: "/", label: "Home", match: ["/", "/index.html"] },
+    { href: "/visit", label: "Visit guide", match: ["/visit"] },
     { href: "/workshop", label: "Workshop", match: ["/workshop"] },
-    { href: "/lakewood", label: "Lakewood", match: ["/lakewood"] },
     { href: "/mystery", label: "Blind Flavor Mapping", match: ["/mystery"] },
     { href: "/score", label: "Prototype Scorecard", cta: true, match: ["/score"] }
   ];
 
   var MORE = [
+    { href: "/lakewood", label: "Lakewood parity", match: ["/lakewood"] },
+    { href: "/concepts", label: "Ten directions", match: ["/concepts"] },
     { href: "/workshop#agenda", label: "Agenda" },
     { href: "/workshop#capabilities", label: "Capabilities" },
     { href: "/workshop#next", label: "Next steps" },
@@ -28,8 +30,8 @@
 
   var DOCK = [
     { href: "/", label: "Home", icon: "home" },
-    { href: "/workshop", label: "Workshop", icon: "workshop" },
-    { href: "/lakewood", label: "Lakewood", icon: "workshop" },
+    { href: "/visit", label: "Visit", icon: "workshop" },
+    { href: "/mystery", label: "Mapping", icon: "mystery" },
     { href: "/score", label: "Scorecard", icon: "score" }
   ];
 
@@ -108,8 +110,8 @@
       '<a class="tff-chrome-home" href="/" aria-label="Breath of Innovation home">' +
       '<span class="tff-chrome-mark">TFF</span><span class="tff-chrome-title">Home</span></a>' +
       '<nav class="tff-chrome-links" aria-label="Quick links">' +
+      '<a href="/visit">Visit guide</a>' +
       '<a href="/workshop">Workshop</a>' +
-      '<a href="/lakewood">Lakewood</a>' +
       '<a href="/mystery">Blind Flavor Mapping</a>' +
       '<a href="/score" class="tff-chrome-cta">Prototype Scorecard</a>' +
       '</nav></header>'

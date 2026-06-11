@@ -694,5 +694,21 @@
     "snippet": "Real-time concept scores from all raters — avg liking aggregate, per-rater sliders, CSV export. Password required.",
     "href": "/score-live",
     "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Guest path",
+    "q": "Your visit guide — day-of morning flow",
+    "snippet": "Block-by-block July 8 guide — arrive 8:00, tour, four pillars, sensory block, co-creation, depart 12:30. Capabilities first · Tasting second · Partnership outcome third.",
+    "href": "/visit",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Tasting",
+    "q": "Ten workshop directions — concept preview",
+    "snippet": "Directional prototypes M1–M10 with QC cleared, stability TBD, and QC concern tiers. Station map — cup codes stay blind until reveal.",
+    "href": "/concepts",
+    "badge": "ready"
   }
 ]
