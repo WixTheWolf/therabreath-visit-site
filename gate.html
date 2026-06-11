@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Team Portal | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body {
+        margin:0; min-height:100vh; display:grid; place-items:center; padding:24px;
+        font-family:"DM Sans",sans-serif; color:var(--ink);
+        background:
+          radial-gradient(ellipse 80% 60% at 20% 0%, rgba(0,143,211,0.15), transparent),
+          radial-gradient(ellipse 60% 50% at 90% 100%, rgba(95,184,50,0.1), transparent),
+          linear-gradient(160deg, #0a1628 0%, #0d2840 40%, #0a1628 100%);
+      }
+      .panel {
+        width:min(420px,100%); padding:40px 36px 36px;
+        border-radius:24px; background:rgba(255,255,255,0.98);
+        box-shadow:0 32px 80px rgba(0,0,0,0.35);
+      }
+      .mark {
+        width:48px; height:48px; display:grid; place-items:center;
+        border-radius:14px; background:linear-gradient(135deg,var(--ink),var(--blue));
+        color:#fff; font-family:"Sora",sans-serif; font-weight:800; font-size:0.85rem;
+        margin-bottom:20px;
+      }
+      h1 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:1.5rem; font-weight:800; letter-spacing:-0.03em; }
+      .sub { margin:0 0 28px; font-size:0.88rem; line-height:1.55; color:var(--muted); }
+      label { display:block; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:8px; }
+      input {
+        width:100%; padding:14px 16px; border:1px solid var(--line); border-radius:12px;
+        font:inherit; font-size:1rem; margin-bottom:16px;
+      }
+      input:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,143,211,0.15); }
+      button {
+        width:100%; padding:14px; border:none; border-radius:12px;
+        background:linear-gradient(135deg,var(--blue),#006aa6);
+        color:#fff; font-family:"Sora",sans-serif; font-size:0.9rem; font-weight:700;
+        cursor:pointer;
+      }
+      button:hover { filter:brightness(1.05); }
+      .err { display:none; margin-bottom:14px; padding:10px 12px; border-radius:10px; background:#fef2f2; color:#b42318; font-size:0.82rem; }
+      .err.show { display:block; }
+      .back { display:block; margin-top:20px; text-align:center; font-size:0.82rem; color:var(--muted); text-decoration:none; }
+      .back:hover { color:var(--blue); }
+      .lock { font-size:0.72rem; color:var(--muted); margin-top:24px; padding-top:20px; border-top:1px solid var(--line); line-height:1.5; }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <div class="mark">TFF</div>
+      <h1>Team portal</h1>
+      <p class="sub">Internal prep, host tools, competitive intel, and formulation playbooks. The public workshop experience is at <a href="/" style="color:var(--blue);font-weight:600">/</a>.</p>
+      <p class="err" id="err">Incorrect password. Try again.</p>
+      <form id="form">
+        <label for="pw">Team password</label>
+        <input type="password" id="pw" name="pw" autocomplete="current-password" placeholder="Enter password" autofocus />
+        <button type="submit">Unlock command center →</button>
+      </form>
+      <a class="back" href="/">← Back to workshop site</a>
+      <p class="lock">Confidential · The Flavor Factory internal use · Church &amp; Dwight / TheraBreath partnership prep</p>
+    </div>
+    <script src="/tff-auth.js"></script>
+    <script>
+      if (TFF.isAuthed()) {
+        location.replace(TFF.getReturnUrl());
+      }
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var pw = document.getElementById("pw").value;
+        if (TFF.login(pw)) {
+          location.replace(TFF.getReturnUrl());
+        } else {
+          document.getElementById("err").classList.add("show");
+          document.getElementById("pw").value = "";
+          document.getElementById("pw").focus();
+        }
+      });
+    </script>
+  </body>
+</html>
