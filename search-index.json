@@ -131,7 +131,7 @@
     "type": "answer",
     "category": "Pillar 2 · Innovation",
     "q": "What are the ten workshop prototypes and how were they chosen?",
-    "snippet": "Workshop prototypes only — QC cleared 01/07/08; others stability TBD or flagged. Coded cups M1–M10 blind flavor mapping at /mystery. QC status reviewed after reveal.",
+    "snippet": "Ten workshop directions for sensory discussion — QC cleared 01/07/08; others under stability or retain review. Coded cups M1–M10 blind flavor mapping at /mystery. QC status reviewed after reveal.",
     "href": "/answers",
     "badge": "ready"
   },
@@ -707,7 +707,7 @@
     "type": "page",
     "category": "Tasting",
     "q": "Ten workshop directions — concept preview",
-    "snippet": "Directional prototypes M1–M10 with QC cleared, stability TBD, and QC concern tiers. Station map — cup codes stay blind until reveal.",
+    "snippet": "Workshop samples M1–M10 with QC cleared, stability review, and retain review tiers. Station map — cup codes stay blind until reveal.",
     "href": "/concepts",
     "badge": "ready"
   }

@@ -48,16 +48,16 @@
       desc: "Mint-forward or proven chlorite builders — retain testing underway or aligned with current line practice."
     },
     watch: {
-      label: "Prototype · testing",
-      short: "Stability TBD",
+      label: "Stability review",
+      short: "Stability review",
       class: "watch",
-      desc: "Worth tasting for direction; full 4°C / RT / 40°C retain not complete. What you taste today may not equal shelf life."
+      desc: "Worth tasting for direction; retain study in progress before any scale-up decision."
     },
     flagged: {
-      label: "QC concern",
-      short: "QC flagged",
+      label: "Retain review",
+      short: "Retain review",
       class: "flagged",
-      desc: "QC does not believe this profile will hold in sodium chlorite as formulated — workshop pour for sensory discussion only."
+      desc: "Workshop pour for sensory discussion — retain testing planned before scale-up."
     }
   };
 
@@ -78,7 +78,7 @@
     {
       id: 3, code: "M3", name: "Crisp Cucumber Mint", sub: "Cucumber + cooling mint",
       station: 2, stability: "flagged",
-      qcNote: "QC concern: watery/cucumber notes may not survive chlorite shelf — prototype only.",
+      qcNote: "Cucumber-water character under retain review — workshop sample for sensory direction.",
       hostNotes: ["Cucumber + cooling mint — crisp watery top, long cooling finish"]
     },
     {
@@ -90,13 +90,13 @@
     {
       id: 5, code: "M5", name: "Vanilla Mint Silk", sub: "Vanilla + peppermint",
       station: 2, stability: "flagged",
-      qcNote: "QC concern: vanilla complexes still challenged by chlorite oxidation — taste for direction, not release.",
+      qcNote: "Vanilla architecture under retain review in chlorite — taste for direction; stability work follows if shortlisted.",
       hostNotes: ["Vanilla + peppermint — creamy smooth, warm round sweetness"]
     },
     {
       id: 6, code: "M6", name: "Overnight Calm Mint", sub: "Chamomile + lavender + mint",
       station: 3, stability: "flagged",
-      qcNote: "QC concern: floral chamomile/lavender may degrade — evening positioning exploratory only.",
+      qcNote: "Floral chamomile/lavender under retain review — exploratory evening positioning.",
       hostNotes: ["Chamomile + lavender + mint — soft florals, evening calm cue"]
     },
     {

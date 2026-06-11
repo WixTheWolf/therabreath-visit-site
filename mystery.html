@@ -373,7 +373,7 @@
 
       <div class="panel host-gate no-print" id="host-gate" style="display:none">
         <h2>Host answer key</h2>
-        <p class="sub">Team password required — same credential as the <a href="/gate">team portal</a>. Answers stay hidden from guests until you unlock.</p>
+        <p class="sub">TFF host credential required. Answers stay hidden from guests until you unlock.</p>
         <form id="host-form">
           <label class="pick-label" for="host-pw">Team password</label>
           <input type="password" id="host-pw" autocomplete="current-password" placeholder="Enter team password" />
@@ -389,9 +389,8 @@
         </div>
         <p class="sub">Confidential — reveal to guests only after tasting block.</p>
         <table id="host-table"></table>
-        <p style="font-size:0.7rem;color:var(--muted);margin:12px 0 0">
-          Live guesses: <a href="/mystery-live">/mystery-live</a> ·
-          <a href="/gate?return=/mystery-live">open via team portal</a>
+        <p style="font-size:0.7rem;color:var(--muted);margin:12px 0 0" id="host-live-hint" hidden>
+          TFF hosts: live summary available after team sign-in.
         </p>
       </div>
     </div>
@@ -592,12 +591,18 @@
         document.getElementById("host-err").classList.remove("show");
         document.getElementById("host-pw").value = "";
         document.getElementById("host-btn").textContent = "Host key · unlocked";
+        var liveHint = document.getElementById("host-live-hint");
+        if (liveHint && typeof TFF !== "undefined" && TFF.isAuthed && TFF.isAuthed()) {
+          liveHint.hidden = false;
+        }
       }
 
       function hideHostKey() {
         document.getElementById("host").classList.remove("show");
         document.getElementById("host-gate").style.display = "none";
         document.getElementById("host-btn").textContent = "Host key";
+        var liveHint = document.getElementById("host-live-hint");
+        if (liveHint) liveHint.hidden = true;
       }
 
       function requestHostKey() {

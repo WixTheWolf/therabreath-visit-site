@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Prototype scorecard — rate workshop prototypes 1–9 after reveals. Liking, uniqueness, and purchase intent sync to the live sensory summary." />
+    <meta name="description" content="Prototype scorecard — rate workshop prototypes 1–9 after reveals. Liking, uniqueness, and purchase intent compile into the workshop sensory summary." />
     <meta name="theme-color" content="#0a1628" />
     <title>Prototype Scorecard | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -104,7 +104,7 @@
       <p>Rate 1–9 on workshop prototypes · Liking · Uniqueness · Intent</p>
       <div class="header-qr">
         <img src="/assets/qr/score-sm.png" alt="QR code — share this scorecard with the room" width="88" height="88" />
-        <span>Scan to open · scores sync to the live sensory summary</span>
+        <span>Scan to open · your ratings join the room sensory summary</span>
       </div>
     </header>
     <div class="rater-bar no-print">
@@ -112,7 +112,7 @@
       <input type="text" id="rater-name" placeholder="Your name" />
       <button type="button" id="rater-save" style="padding:8px 14px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-family:Sora,sans-serif;font-weight:700;cursor:pointer">Set rater</button>
       <select id="rater-pick"></select>
-      <span class="hint">Enter your name first — scores sync live for the team board. Local backup stays on this phone.</span>
+      <span class="hint">Enter your name first — your scores contribute to the room summary. A local backup stays on this phone.</span>
       <span class="sync-pill wait" id="sync-pill">Set rater name to sync</span>
     </div>
     <div class="wrap">
@@ -125,7 +125,7 @@
         <div id="board-rows"></div>
         <p class="rater-list" id="rater-summary"></p>
         <div class="room-board" id="room-board">
-          <h4>Live sensory summary · all phones</h4>
+          <h4>Room sensory summary · all raters</h4>
           <div id="room-rows"></div>
           <p class="room-meta" id="room-meta">Waiting for scores…</p>
         </div>
@@ -386,7 +386,7 @@
       <a href="/mystery">← Blind Flavor Mapping</a>
       <a href="/workshop">Workshop hub →</a>
     </nav>
-    <p style="text-align:center;font-size:0.68rem;color:var(--muted);margin:0;padding:0 16px 12px">Team live board: <a href="/gate?return=/score-live">/score-live</a> (password required)</p>
+    <p style="text-align:center;font-size:0.68rem;color:var(--muted);margin:0;padding:0 16px 12px">Room aggregate above updates as guests submit scores.</p>
     <script src="/tff-shell.js" defer></script>
   </body>
 </html>
