@@ -127,8 +127,8 @@
         return concepts.map(function (c) {
           var g = (guesses || {})[c.code];
           if (!g || !g.guess) return '<span style="color:var(--muted)">' + c.code + ': —</span>';
-          var guessName = TFFConcepts.byId(g.guess);
-          var label = guessName ? String(g.guess).padStart(2, "0") : "?";
+          var cipher = TFFConcepts.cipherById(g.guess);
+          var label = cipher ? cipher.name : "?";
           var cls = g.correct ? "ok" : "miss";
           return '<span class="' + cls + '">' + c.code + '→' + label + '</span>';
         }).join(" · ");
@@ -163,9 +163,11 @@
             concepts.map(function (c) {
               var g = (s.guesses || {})[c.code];
               if (!g || !g.guess) return "<td>—</td>";
-              var gn = TFFConcepts.byId(g.guess);
-              var txt = gn ? gn.name : "?";
-              return "<td class=\"" + (g.correct ? "ok" : "miss") + "\">" + txt + "</td>";
+              var cipher = TFFConcepts.cipherById(g.guess);
+              var actual = TFFConcepts.cipherById(c.id);
+              var txt = cipher ? cipher.name : "?";
+              var title = actual ? ("Answer: " + actual.name + " · " + c.name) : c.name;
+              return "<td class=\"" + (g.correct ? "ok" : "miss") + "\" title=\"" + title + "\">" + txt + "</td>";
             }).join("") + "</tr>";
         }).join("");
         document.getElementById("detail").innerHTML = head + rows + "</tbody></table>";

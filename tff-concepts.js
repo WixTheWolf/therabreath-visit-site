@@ -4,10 +4,29 @@
  */
 (function (global) {
   var SET_META = {
-    version: 1,
-    label: "July 8 workshop · v1",
+    version: 2,
+    label: "July 8 workshop · cipher v2",
     updated: "2026-06-11"
   };
+
+  /* Neutral codenames — no flavor cues. Guests map cup codes (M1–M10) to ciphers by taste alone. */
+  var CIPHERS = [
+    { id: 1, code: "01", name: "ATLAS", hue: "#008fd3", glyph: "◆" },
+    { id: 2, code: "02", name: "BIRCH", hue: "#5fb832", glyph: "◇" },
+    { id: 3, code: "03", name: "CORAL", hue: "#f58220", glyph: "○" },
+    { id: 4, code: "04", name: "DRIFT", hue: "#2a9d8f", glyph: "△" },
+    { id: 5, code: "05", name: "EMBER", hue: "#c45c26", glyph: "□" },
+    { id: 6, code: "06", name: "HAZE", hue: "#7b6ba8", glyph: "◈" },
+    { id: 7, code: "07", name: "PRISM", hue: "#00b4d8", glyph: "✦" },
+    { id: 8, code: "08", name: "RIDGE", hue: "#0077b6", glyph: "▲" },
+    { id: 9, code: "09", name: "FROST", hue: "#90e0ef", glyph: "❄" },
+    { id: 10, code: "10", name: "MERIDIAN", hue: "#1e6b3a", glyph: "◎" }
+  ];
+
+  var SENSORY_TAGS = [
+    "Mint-forward", "Sweet", "Icy / cooling", "Herbal", "Floral",
+    "Spicy / warm", "Crisp / green", "Creamy / smooth", "Clinical fresh", "Light / delicate"
+  ];
 
   var STABILITY = {
     stable: {
@@ -36,66 +55,70 @@
       id: 1, code: "M1", name: "Spearmint Garden", sub: "Sweet spearmint + green herb",
       station: 2, stability: "stable",
       qcNote: "Spearmint + soft herbal — closest to proven mint lanes in chlorite.",
-      mysteryHints: ["Garden-fresh, not fruity", "Sweet spearmint lift first", "Soft leafy green in the middle", "Clean peppermint close"]
+      hostNotes: ["Spearmint + soft herbal — garden-fresh lift, clean peppermint close"]
     },
     {
       id: 2, code: "M2", name: "Green Tea Fresh", sub: "Green tea + spearmint",
       station: 2, stability: "watch",
       qcNote: "Green tea character can oxidize — retain study in progress.",
-      mysteryHints: ["Steamed leaf, not citrus", "Light botanical body", "Natural and clean", "Spearmint cool finish"]
+      hostNotes: ["Green tea + spearmint — steamed leaf, light botanical body"]
     },
     {
       id: 3, code: "M3", name: "Crisp Cucumber Mint", sub: "Cucumber + cooling mint",
       station: 2, stability: "flagged",
       qcNote: "QC concern: watery/cucumber notes may not survive chlorite shelf — prototype only.",
-      mysteryHints: ["Spa-like and green", "Crisp, watery top", "Not sweet fruit", "Long cooling mint"]
+      hostNotes: ["Cucumber + cooling mint — crisp watery top, long cooling finish"]
     },
     {
       id: 4, code: "M4", name: "Warm Ginger Mint", sub: "Ginger + peppermint",
       station: 2, stability: "watch",
       qcNote: "Spice warmth without citrus — monitoring spice note fade in retain.",
-      mysteryHints: ["Warm root spice", "Earthy, not lemon", "Gentle sweetness", "Peppermint cool out"]
+      hostNotes: ["Ginger + peppermint — warm root spice, gentle sweetness"]
     },
     {
       id: 5, code: "M5", name: "Vanilla Mint Silk", sub: "Vanilla + peppermint",
       station: 2, stability: "flagged",
       qcNote: "QC concern: vanilla complexes still challenged by chlorite oxidation — taste for direction, not release.",
-      mysteryHints: ["Creamy and smooth", "Warm round sweetness", "Not candy fruit", "Peppermint cooling finish"]
+      hostNotes: ["Vanilla + peppermint — creamy smooth, warm round sweetness"]
     },
     {
       id: 6, code: "M6", name: "Overnight Calm Mint", sub: "Chamomile + lavender + mint",
       station: 3, stability: "flagged",
       qcNote: "QC concern: floral chamomile/lavender may degrade — evening positioning exploratory only.",
-      mysteryHints: ["Evening wind-down cue", "Soft florals, low intensity", "Calm, not perfumey sweet", "Whisper-light mint"]
+      hostNotes: ["Chamomile + lavender + mint — soft florals, evening calm cue"]
     },
     {
       id: 7, code: "M7", name: "Crystal Whitening Mint", sub: "Bright peppermint + icy cool",
       station: 3, stability: "stable",
       qcNote: "Mint-dominant whitening cue — QC comfortable with chlorite architecture.",
-      mysteryHints: ["Immediate bright hit", "Icy clean freshness", "Whitening brightness", "Long cooling length"]
+      hostNotes: ["Bright peppermint + icy cool — immediate hit, whitening brightness"]
     },
     {
       id: 8, code: "M8", name: "Icy Peak Refresh", sub: "Extra-cooling signature mint",
       station: 3, stability: "stable",
       qcNote: "Classic line extension — cooling actives + mint oils in known-stable range.",
-      mysteryHints: ["Peak icy hit up front", "Classic mint body", "Extra duration", "Signature TB cooling"]
+      hostNotes: ["Extra-cooling signature mint — peak icy hit, classic TB cooling length"]
     },
     {
       id: 9, code: "M9", name: "Winter Frost", sub: "Peppermint + vanilla · LE",
       station: 3, stability: "watch",
       qcNote: "Seasonal LE — vanilla component under retain watch; mint shell likely stable.",
-      mysteryHints: ["Winter limited-edition feel", "Sharp peppermint", "Subtle creamy warmth", "Deep icy finish"]
+      hostNotes: ["Peppermint + vanilla LE — sharp mint, subtle creamy warmth"]
     },
     {
       id: 10, code: "M10", name: "Healthy Gums Herbal", sub: "Eucalyptus + tea tree",
       station: 3, stability: "watch",
       qcNote: "Herbal actives intensity vs. chlorite — clinical-fresh direction needs retain proof.",
-      mysteryHints: ["Clinical herbal fresh", "Eucalyptus clarity", "Tea tree clean note", "Soft mint gum-health cue"]
+      hostNotes: ["Eucalyptus + tea tree — clinical herbal fresh, gum-health cue"]
     }
   ];
 
   function byId(id) {
     return concepts.filter(function (c) { return c.id === +id; })[0];
+  }
+
+  function cipherById(id) {
+    return CIPHERS.filter(function (c) { return c.id === +id; })[0];
   }
 
   function shuffledCodes(seed) {
@@ -111,14 +134,20 @@
 
   global.TFFConcepts = {
     list: concepts,
+    ciphers: CIPHERS,
+    sensoryTags: SENSORY_TAGS,
     SET_META: SET_META,
     STABILITY: STABILITY,
     byId: byId,
+    cipherById: cipherById,
     setMeta: function () { return SET_META; },
     stabilityMeta: function (key) { return STABILITY[key] || STABILITY.watch; },
     shuffledCodes: shuffledCodes,
     activeList: function () {
       return concepts.filter(function (c) { return c.active !== false; });
+    },
+    cipherList: function () {
+      return CIPHERS.slice();
     }
   };
 })(typeof window !== "undefined" ? window : global);
