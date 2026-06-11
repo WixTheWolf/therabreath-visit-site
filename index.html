@@ -43,6 +43,7 @@
 
       html {
         scroll-behavior: smooth;
+        scroll-padding-top: 88px;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -987,6 +988,14 @@
         color: var(--muted);
         font-size: 1rem;
         line-height: 1.55;
+      }
+
+      .guide-mobile-hint {
+        display: none;
+        max-width: none !important;
+        font-size: 0.78rem !important;
+        color: var(--bottle-blue) !important;
+        font-weight: 600;
       }
 
       .guide-grid {
@@ -2971,14 +2980,28 @@
         }
 
         .flow-strip {
-          grid-template-columns: repeat(3, 1fr);
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x proximity;
+          scrollbar-width: none;
         }
 
-        .flow-item:nth-child(3) {
-          border-right: 0;
+        .flow-strip::-webkit-scrollbar {
+          display: none;
         }
 
-        .flow-item:nth-child(3)::after {
+        .flow-item {
+          flex: 0 0 auto;
+          min-width: 100px;
+          padding: 10px 14px 9px;
+          gap: 5px;
+          scroll-snap-align: start;
+        }
+
+        .flow-item::after {
           display: none;
         }
       }
@@ -3006,12 +3029,79 @@
           grid-template-columns: 1fr;
         }
 
+        html {
+          scroll-padding-top: 118px;
+        }
+
         .flow-strip {
           top: 64px;
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x proximity;
+          scrollbar-width: none;
+        }
+
+        .flow-strip::-webkit-scrollbar {
+          display: none;
+        }
+
+        .flow-item {
+          flex: 0 0 auto;
+          min-width: 92px;
+          padding: 8px 12px 7px;
+          gap: 4px;
+          border-right: 1px solid var(--line);
+          border-bottom: none;
+          scroll-snap-align: start;
+        }
+
+        .flow-num {
+          width: 26px;
+          height: 26px;
+          font-size: 0.6rem;
+        }
+
+        .flow-item span:last-child {
+          font-size: 0.64rem;
+          white-space: nowrap;
         }
 
         .flow-item::after {
           display: none;
+        }
+
+        .guide-panel {
+          padding: 20px 16px 24px;
+        }
+
+        .guide-panel .guide-head p:not(.guide-mobile-hint) {
+          display: none;
+        }
+
+        .guide-mobile-hint {
+          display: block;
+          margin-top: 6px !important;
+        }
+
+        .guide-panel .guide-head h2 {
+          font-size: 1.05rem;
+        }
+
+        .journey-rail,
+        .guide-grid {
+          display: none;
+        }
+
+        .guide-panel .container {
+          gap: 0;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 36px 20px 40px;
         }
 
         .steps::before {
@@ -3037,14 +3127,8 @@
         .tasting-stations,
         .redundancy-grid,
         .facility-map,
-        .pillar-nav,
-        .flow-strip {
+        .pillar-nav {
           grid-template-columns: 1fr;
-        }
-
-        .flow-item {
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
         }
 
         .agenda-timeline::before {
@@ -3072,8 +3156,7 @@
         }
 
         .hero-card {
-          min-height: 320px;
-          border-radius: 34px;
+          display: none;
         }
 
         .pillar-deep {
@@ -3093,12 +3176,26 @@
           display: none;
         }
 
-        .journey-rail {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
         .hero-scroll {
           display: none;
+        }
+
+        .hero-qr img {
+          width: 96px;
+          height: 96px;
+        }
+
+        .nav .brand span:last-child {
+          font-size: 0.82rem;
+        }
+
+        .nav {
+          min-height: 56px;
+          padding: 0 16px;
+        }
+
+        .flow-strip {
+          top: 56px;
         }
 
         h1 {
@@ -3143,6 +3240,7 @@
         <div class="guide-head">
           <h2>Your guide to the July 8 workshop</h2>
           <p>Follow the six steps above — each section answers what TheraBreath asked to see. This is a focused half-day session: partnership context, a tight morning agenda, then capabilities, tasting, and prototypes.</p>
+          <p class="guide-mobile-hint">Swipe the step bar above · tap <strong>01–06</strong> to jump · workshop starts below</p>
         </div>
         <div class="journey-rail" aria-hidden="true">
           <div class="journey-stop"><b>01</b><span>Partnership</span></div>
