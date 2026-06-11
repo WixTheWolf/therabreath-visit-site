@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-tff-shell="inject">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,6 +8,7 @@
     <script>TFF.requireAuth();</script>
     <title>Reply to Ross | Lakewood Validation Proposal</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
     <style>
       :root { --blue:#008fd3; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
       * { box-sizing:border-box; }
@@ -123,5 +124,6 @@
       function copyBody() { navigator.clipboard.writeText(document.getElementById('body').value).then(toast); }
       function resetBody() { document.getElementById('body').value = body; }
     </script>
+      <script src="/tff-shell.js" defer></script>
   </body>
 </html>

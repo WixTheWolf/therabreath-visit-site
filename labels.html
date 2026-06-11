@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-tff-shell="off">
   <head>
     <meta charset="utf-8" />
     <script src="/tff-auth.js"></script>
     <script>TFF.requireAuth();</script>
     <title>Sample Kit Labels | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
     <style>
       :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#d8e2ec; }
       * { box-sizing: border-box; }
@@ -96,5 +97,6 @@
       document.getElementById('labels-p1').innerHTML = TFFConcepts.list.slice(0,5).map(label).join('');
       document.getElementById('labels-p2').innerHTML = TFFConcepts.list.slice(5,10).map(label).join('');
     </script>
+      <script src="/tff-shell.js" defer></script>
   </body>
 </html>

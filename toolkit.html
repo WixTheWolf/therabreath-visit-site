@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-tff-shell="native">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>Command Center | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
     <script src="/tff-auth.js"></script>
     <script>TFF.requireAuth();</script>
     <style>
@@ -63,9 +64,7 @@
       .card {
         display:grid; gap:6px; padding:18px 20px; border:1px solid var(--line); border-radius:14px;
         background:#fff; text-decoration:none; color:inherit;
-        transition:transform 0.2s, box-shadow 0.2s;
       }
-      .card:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(10,22,40,0.08); }
       .card.lock { border-left:3px solid var(--ink); }
       .card.pub { border-left:3px solid var(--green); }
       .card.hot { border-color:rgba(245,130,32,0.35); background:linear-gradient(135deg,#fff,#fffaf5); }
@@ -151,6 +150,8 @@
       <div class="actions">
         <a href="/">Hub</a>
         <a href="/workshop">Workshop</a>
+        <a href="/mystery">Mystery</a>
+        <a href="/score">Score</a>
         <a href="/pocket">Pocket ROS</a>
         <button type="button" onclick="TFF.logout()">Sign out</button>
       </div>
@@ -303,5 +304,6 @@
     </div>
     <div id="cmd-toast" role="status" aria-live="polite"></div>
     <script src="/tff-command.js"></script>
+      <script src="/tff-shell.js" defer></script>
   </body>
 </html>

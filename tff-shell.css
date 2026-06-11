@@ -1,0 +1,531 @@
+/* TFF × TheraBreath — shared shell: nav, dock, motion */
+:root {
+  --tff-blue: #008fd3;
+  --tff-green: #5fb832;
+  --tff-orange: #f58220;
+  --tff-ink: #0a1628;
+  --tff-muted: #5c6678;
+  --tff-line: #e2e9ec;
+  --tff-nav-h: 60px;
+  --tff-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.tff-has-shell {
+  scroll-behavior: smooth;
+}
+
+html.tff-has-shell body {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+html.tff-has-dock body {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.tff-has-shell {
+    scroll-behavior: auto;
+  }
+
+  .tff-enter,
+  .tff-reveal,
+  .tff-stagger > *,
+  .tff-shell-nav,
+  .tff-shell-dock,
+  .tff-shell-dock a,
+  .tff-pop {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* —— Top navigation —— */
+.tff-shell-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--tff-nav-h);
+  padding: 0 clamp(14px, 3vw, 28px);
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(226, 233, 236, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  animation: tff-nav-in 0.45s var(--tff-ease) both;
+}
+
+.tff-shell-nav.tff-team {
+  background: rgba(10, 22, 40, 0.96);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+@keyframes tff-nav-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tff-shell-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.tff-shell-brand:hover {
+  opacity: 0.88;
+}
+
+.tff-shell-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--tff-ink), var(--tff-blue));
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgba(0, 143, 211, 0.25);
+}
+
+.tff-team .tff-shell-mark {
+  background: var(--tff-blue);
+  box-shadow: none;
+}
+
+.tff-shell-brand small {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.tff-shell-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--tff-line);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tff-team .tff-shell-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.tff-shell-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 4px auto;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s var(--tff-ease), opacity 0.2s;
+}
+
+.tff-shell-nav.is-open .tff-shell-toggle span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.tff-shell-nav.is-open .tff-shell-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.tff-shell-nav.is-open .tff-shell-toggle span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.tff-shell-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.tff-shell-links a,
+.tff-shell-more-btn {
+  position: relative;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--tff-ink);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s var(--tff-ease), box-shadow 0.2s;
+}
+
+.tff-team .tff-shell-links a,
+.tff-team .tff-shell-more-btn {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.tff-shell-links a:hover,
+.tff-shell-more-btn:hover {
+  background: rgba(0, 143, 211, 0.08);
+  transform: translateY(-1px);
+}
+
+.tff-team .tff-shell-links a:hover,
+.tff-team .tff-shell-more-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tff-shell-links a.is-active {
+  background: var(--tff-ink);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(10, 22, 40, 0.15);
+}
+
+.tff-team .tff-shell-links a.is-active {
+  background: var(--tff-blue);
+  box-shadow: 0 8px 20px rgba(0, 143, 211, 0.35);
+}
+
+.tff-shell-links a.tff-shell-cta {
+  background: linear-gradient(135deg, var(--tff-orange), #e06f12);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(245, 130, 32, 0.28);
+}
+
+.tff-shell-links a.tff-shell-cta:hover {
+  background: linear-gradient(135deg, #ff9224, var(--tff-orange));
+  transform: translateY(-2px);
+}
+
+.tff-shell-links a.tff-shell-fun {
+  background: linear-gradient(135deg, rgba(95, 184, 50, 0.15), rgba(0, 143, 211, 0.12));
+  border-color: rgba(95, 184, 50, 0.35);
+}
+
+.tff-shell-links a.tff-shell-fun.is-active {
+  background: linear-gradient(135deg, var(--tff-green), #3d9e2a);
+  border-color: transparent;
+}
+
+.tff-shell-more {
+  position: relative;
+}
+
+.tff-shell-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  padding: 8px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--tff-line);
+  box-shadow: 0 20px 48px rgba(10, 22, 40, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.25s var(--tff-ease), visibility 0.2s;
+  z-index: 10;
+}
+
+.tff-shell-more.is-open .tff-shell-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tff-shell-dropdown a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-family: "Sora", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--tff-ink);
+  transition: background 0.15s;
+}
+
+.tff-shell-dropdown a:hover {
+  background: #f0f9fd;
+}
+
+.tff-shell-dropdown a.is-active {
+  background: #e8f6fd;
+  color: var(--tff-blue);
+}
+
+.tff-shell-meta {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--tff-muted);
+  white-space: nowrap;
+}
+
+.tff-team .tff-shell-meta {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 900px) {
+  .tff-shell-meta { display: none; }
+
+  .tff-shell-toggle {
+    display: grid;
+    place-items: center;
+  }
+
+  .tff-shell-links {
+    position: absolute;
+    top: var(--tff-nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px 16px 16px;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--tff-line);
+    box-shadow: 0 16px 40px rgba(10, 22, 40, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s, transform 0.3s var(--tff-ease), visibility 0.25s;
+  }
+
+  .tff-team .tff-shell-links {
+    background: rgba(10, 22, 40, 0.98);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .tff-shell-nav.is-open .tff-shell-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .tff-shell-links a,
+  .tff-shell-more-btn {
+    text-align: center;
+    padding: 12px 16px;
+  }
+
+  .tff-shell-more { width: 100%; }
+
+  .tff-shell-dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 0 8px;
+    display: none;
+    background: transparent;
+  }
+
+  .tff-shell-more.is-open .tff-shell-dropdown {
+    display: block;
+  }
+}
+
+/* —— Mobile quick dock —— */
+.tff-shell-dock {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0));
+  z-index: 999;
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 8px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(226, 233, 236, 0.95);
+  box-shadow: 0 16px 48px rgba(10, 22, 40, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: tff-dock-in 0.5s var(--tff-ease) 0.2s both;
+}
+
+@keyframes tff-dock-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tff-shell-dock a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  border-radius: 14px;
+  font-family: "Sora", sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--tff-muted);
+  transition: background 0.2s, color 0.2s, transform 0.2s var(--tff-ease);
+}
+
+.tff-shell-dock a svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tff-shell-dock a:hover,
+.tff-shell-dock a.is-active {
+  color: var(--tff-blue);
+  background: rgba(0, 143, 211, 0.08);
+  transform: translateY(-2px);
+}
+
+.tff-shell-dock a.tff-dock-fun.is-active {
+  color: var(--tff-green);
+  background: rgba(95, 184, 50, 0.12);
+}
+
+@media (max-width: 768px) {
+  html.tff-has-dock .tff-shell-dock {
+    display: grid;
+  }
+}
+
+@media print {
+  .tff-shell-nav,
+  .tff-shell-dock {
+    display: none !important;
+  }
+}
+
+/* —— Page enter & scroll reveal —— */
+@keyframes tff-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tff-enter {
+  animation: tff-fade-up 0.55s var(--tff-ease) both;
+}
+
+.tff-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s var(--tff-ease), transform 0.55s var(--tff-ease);
+}
+
+.tff-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tff-stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s var(--tff-ease), transform 0.45s var(--tff-ease);
+}
+
+.tff-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tff-stagger.is-visible > *:nth-child(1) { transition-delay: 0.04s; }
+.tff-stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
+.tff-stagger.is-visible > *:nth-child(3) { transition-delay: 0.12s; }
+.tff-stagger.is-visible > *:nth-child(4) { transition-delay: 0.16s; }
+.tff-stagger.is-visible > *:nth-child(5) { transition-delay: 0.2s; }
+.tff-stagger.is-visible > *:nth-child(6) { transition-delay: 0.24s; }
+.tff-stagger.is-visible > *:nth-child(7) { transition-delay: 0.28s; }
+.tff-stagger.is-visible > *:nth-child(8) { transition-delay: 0.32s; }
+.tff-stagger.is-visible > *:nth-child(9) { transition-delay: 0.36s; }
+
+/* —— Interactive polish —— */
+.tff-card-lift {
+  transition: transform 0.25s var(--tff-ease), box-shadow 0.25s var(--tff-ease);
+}
+
+.tff-card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(10, 22, 40, 0.1);
+}
+
+.tff-pop {
+  animation: tff-pop 0.45s var(--tff-ease);
+}
+
+@keyframes tff-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.tff-celebrate {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.tff-confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: tff-confetti-fall 0.9s var(--tff-ease) forwards;
+}
+
+@keyframes tff-confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(120px) rotate(280deg) scale(0.4);
+  }
+}
+
+/* Native-nav pages: elevate existing headers */
+html[data-tff-shell="native"] .top,
+html[data-tff-shell="native"] .nav,
+html[data-tff-shell="native"] .topnav,
+html[data-tff-shell="native"] .topbar {
+  z-index: 900;
+}
+
+/* Inject pages: page toolbars sit below global nav */
+html[data-tff-shell="inject"] .toolbar,
+html[data-tff-shell="inject"] .topnav {
+  top: var(--tff-nav-h);
+}

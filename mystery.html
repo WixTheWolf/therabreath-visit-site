@@ -5,24 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Flavor Mystery Challenge | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
     <style>
       :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
       * { box-sizing:border-box; }
-      body { margin:0; font-family:"DM Sans",sans-serif; background:#f0f5f9; color:var(--ink); padding-bottom:80px; }
-      header {
-        padding:24px 20px; text-align:center;
-        background:linear-gradient(135deg,var(--ink),#004f87); color:#fff;
+      body {
+        margin:0; font-family:"DM Sans",sans-serif; color:var(--ink);
+        background:#f0f5f9;
+        background-image:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(95,184,50,0.12), transparent),
+          radial-gradient(circle at 100% 100%, rgba(0,143,211,0.08), transparent 45%);
       }
-      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.35rem; }
-      header p { margin:8px auto 0; max-width:520px; font-size:0.84rem; opacity:0.85; line-height:1.5; }
+      .page-hero {
+        padding:28px 20px 24px; text-align:center;
+        background:linear-gradient(135deg,var(--ink),#004f87 55%,#1e6b3a); color:#fff;
+      }
+      .page-hero h1 { margin:0; font-family:"Sora",sans-serif; font-size:clamp(1.25rem,4vw,1.55rem); }
+      .page-hero p { margin:10px auto 0; max-width:520px; font-size:0.86rem; opacity:0.88; line-height:1.55; }
+      .page-hero .badge {
+        display:inline-block; margin-bottom:10px; padding:6px 12px; border-radius:999px;
+        background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
+        font-family:"Sora",sans-serif; font-size:0.62rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase;
+      }
       .toolbar {
         display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
         padding:12px 16px; background:#fff; border-bottom:1px solid var(--line);
       }
-      .toolbar a, .toolbar button {
+      .toolbar button {
         padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif;
-        font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); background:#fff; cursor:pointer;
+        font-size:0.74rem; font-weight:700; border:1px solid var(--line); background:#fff; cursor:pointer;
+        transition:transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s;
       }
+      .toolbar button:hover { transform:translateY(-1px); box-shadow:0 8px 20px rgba(10,22,40,0.08); }
       .toolbar button.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
       .wrap { width:min(560px,calc(100vw - 24px)); margin:0 auto; padding:20px 0; }
       .intro {
@@ -38,8 +51,11 @@
         padding:18px; margin-bottom:12px; background:#fff;
         border:1px solid var(--line); border-radius:14px;
         box-shadow:0 8px 24px rgba(10,22,40,0.04);
+        transition:transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s, border-color 0.3s;
       }
-      .card.done { border-color:rgba(95,184,50,0.4); background:linear-gradient(135deg,#fff,#f8fdf6); }
+      .card:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(10,22,40,0.08); }
+      .card.done { border-color:rgba(95,184,50,0.45); background:linear-gradient(135deg,#fff,#f8fdf6); }
+      .card.correct-flash { animation:tff-pop 0.45s cubic-bezier(0.22,1,0.36,1); }
       .card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
       .code {
         font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; color:var(--blue);
@@ -83,16 +99,15 @@
     </style>
   </head>
   <body>
-    <header>
+    <header class="page-hero tff-enter">
+      <span class="badge">Station 2 · blind tasting</span>
       <h1>Flavor mystery challenge</h1>
       <p>Cups are coded — no names on the table. Taste, read the hints, and guess which prototype direction you're in. Prototypes only; QC has not cleared every profile for chlorite shelf life.</p>
     </header>
     <div class="toolbar no-print">
-      <a href="/workshop#tasting">Workshop</a>
-      <a href="/score">Live scorer</a>
       <button type="button" class="primary" onclick="window.print()">Print ballots</button>
       <button type="button" onclick="toggleHost()">Host answer key</button>
-      <button type="button" onclick="resetGame()">Reset</button>
+      <button type="button" onclick="resetGame()">Reset game</button>
     </div>
     <div class="wrap">
       <div class="intro no-print">
@@ -101,7 +116,7 @@
       <div class="player no-print">
         <input type="text" id="player" placeholder="Your name" />
       </div>
-      <div id="cards"></div>
+      <div id="cards" class="tff-stagger"></div>
       <div class="scoreboard no-print" id="board" style="display:none">
         <span>Your score</span>
         <b id="score-num">0</b>
@@ -155,6 +170,11 @@
         updateScore();
         renderHost();
         renderPrint();
+        var cardsWrap = document.getElementById("cards");
+        cardsWrap.classList.remove("is-visible");
+        requestAnimationFrame(function () {
+          cardsWrap.classList.add("is-visible");
+        });
       }
 
       function onGuess(e) {
@@ -171,6 +191,14 @@
         };
         saveState(state);
         renderCards();
+        if (guess === concept.id && window.TFFShell) {
+          var card = document.querySelector('[data-code="' + code + '"]');
+          if (card) {
+            card.classList.add("correct-flash");
+            var rect = card.getBoundingClientRect();
+            TFFShell.celebrate(rect.left + rect.width / 2, rect.top + 40);
+          }
+        }
       }
 
       function updateScore() {
@@ -238,5 +266,6 @@
 
       renderCards();
     </script>
+    <script src="/tff-shell.js" defer></script>
   </body>
 </html>
