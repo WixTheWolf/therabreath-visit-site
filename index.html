@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
+    <link rel="stylesheet" href="/tff-typography.css" />
     <style>
       :root {
         --blue:#008fd3; --green:#5fb832; --orange:#f58220;
@@ -429,7 +430,7 @@
 
     <footer class="foot">
       <p>The Flavor Factory × TheraBreath · Breath of Innovation · July 8, 2026<br />
-      TFF team: <a href="/gate">command center</a> · Guests: <a href="/workshop">workshop</a> · <a href="/lakewood">Lakewood validation</a></p>
+      TFF team: <a href="/gate">command center</a> · Guests: <a href="/workshop">workshop</a> · <a href="/lakewood">Lakewood validation</a> · <a href="/?welcome=1" id="replay-welcome">Replay welcome</a></p>
     </footer>
     <script src="/tff-team.js"></script>
     <script src="/tff-cinematic.js"></script>
@@ -446,6 +447,15 @@
         if (window.TFF && TFF.isAuthed && TFF.isAuthed()) {
           var team = document.querySelector(".path-team .path-cta");
           if (team) team.textContent = "Open command center →";
+        }
+        var replay = document.getElementById("replay-welcome");
+        if (replay) {
+          replay.addEventListener("click", function (e) {
+            if (window.TFFCinematic && TFFCinematic.replay) {
+              e.preventDefault();
+              TFFCinematic.replay();
+            }
+          });
         }
       })();
     </script>

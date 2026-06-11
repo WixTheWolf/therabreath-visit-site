@@ -1,0 +1,104 @@
+/* Apple-inspired display typography — shared across TFF site */
+:root {
+  --tff-display: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --tff-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --tff-tracking-tight: -0.045em;
+  --tff-tracking-display: -0.055em;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.tff-display,
+.tff-shell-brand,
+.tff-shell-brand span,
+.tff-chrome-home,
+.tff-chrome-title,
+.top .brand,
+.intro h1,
+.sec-head h2,
+.path h2,
+.lakewood-spot h2,
+.primary-cta b,
+.trust-line strong,
+.workshop .section-title,
+.workshop h1#hero-title,
+.workshop .nav .brand span:last-child,
+.workshop .eyebrow {
+  font-family: var(--tff-display);
+  font-weight: 800;
+  letter-spacing: var(--tff-tracking-tight);
+}
+
+.intro h1,
+.workshop h1#hero-title {
+  letter-spacing: var(--tff-tracking-display);
+  font-weight: 800;
+}
+
+.kicker,
+.sec-num,
+.top-nav a,
+.tff-shell-link,
+.tff-shell-more-btn {
+  font-family: var(--tff-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.top .brand {
+  font-size: 1rem;
+  letter-spacing: -0.035em;
+}
+
+.intro h1 {
+  font-size: clamp(2.35rem, 6.5vw, 3.75rem);
+  line-height: 1.04;
+}
+
+.sec-head h2 {
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  letter-spacing: -0.04em;
+}
+
+.path h2 {
+  font-size: clamp(1.3rem, 2.8vw, 1.65rem);
+  letter-spacing: -0.038em;
+}
+
+.lakewood-spot h2 {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  letter-spacing: -0.03em;
+}
+
+.tff-shell-brand {
+  font-size: 0.92rem;
+  letter-spacing: -0.035em;
+}
+
+.tff-shell-brand > span {
+  line-height: 1.15;
+}
+
+.tff-chrome-home {
+  font-size: 0.82rem;
+  letter-spacing: -0.03em;
+}
+
+.tff-chrome-title {
+  font-size: 0.78rem;
+  letter-spacing: -0.035em;
+}
+
+.workshop .section-title {
+  letter-spacing: var(--tff-tracking-display);
+  line-height: 1.04;
+}
+
+.workshop h1#hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  line-height: 1.02;
+}

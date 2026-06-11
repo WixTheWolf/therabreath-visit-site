@@ -1,4 +1,6 @@
 /* TFF × TheraBreath — shared shell: nav, dock, motion */
+@import url("/tff-typography.css");
+
 :root {
   --tff-blue: #008fd3;
   --tff-green: #5fb832;

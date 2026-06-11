@@ -1,8 +1,41 @@
 /**
- * Cinematic welcome — plays on home page first visit / QR scan.
+ * Flavor-driven cinematic welcome — wipes across taste territories, then reveals home.
  */
 (function (global) {
-  var SESSION_KEY = "tff-cine-seen-v1";
+  var SESSION_KEY = "tff-cine-seen-v2";
+
+  var FLAVORS = [
+    {
+      name: "Spearmint",
+      note: "Cool · Garden · Green",
+      bg: "linear-gradient(135deg, #0d2818 0%, #2d6a3f 35%, #5fb832 100%)",
+      accent: "#b8f5a0"
+    },
+    {
+      name: "Icy Peak",
+      note: "Bright · Arctic · Clean",
+      bg: "linear-gradient(135deg, #001a33 0%, #006aa6 40%, #00b4d8 100%)",
+      accent: "#caf0f8"
+    },
+    {
+      name: "Warm Ginger",
+      note: "Spice · Earth · Finish",
+      bg: "linear-gradient(135deg, #2a1208 0%, #c45c26 45%, #f58220 100%)",
+      accent: "#ffd6a5"
+    },
+    {
+      name: "Green Tea",
+      note: "Botanical · Steamed · Soft",
+      bg: "linear-gradient(135deg, #0a1f14 0%, #2d6a4f 50%, #7cb87a 100%)",
+      accent: "#d8f3dc"
+    },
+    {
+      name: "Crystal Mint",
+      note: "Whitening · Icy · Bold",
+      bg: "linear-gradient(135deg, #0a1628 0%, #008fd3 50%, #90e0ef 100%)",
+      accent: "#ffffff"
+    }
+  ];
 
   function prefersReducedMotion() {
     return global.matchMedia && global.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -29,6 +62,19 @@
     } catch (e) {}
   }
 
+  function flavorPanelsHtml() {
+    return FLAVORS.map(function (f, i) {
+      return (
+        '<div class="tff-cine-flavor" style="--flavor-bg:' + f.bg + ";--flavor-accent:" + f.accent + '" data-i="' + i + '">' +
+        '<div class="tff-cine-flavor-inner">' +
+        '<span class="tff-cine-flavor-idx">0' + (i + 1) + "</span>" +
+        '<h2 class="tff-cine-flavor-name">' + f.name + "</h2>" +
+        '<p class="tff-cine-flavor-note">' + f.note + "</p>" +
+        "</div></div>"
+      );
+    }).join("");
+  }
+
   function buildOverlay() {
     var el = document.createElement("div");
     el.className = "tff-cine";
@@ -36,37 +82,38 @@
     el.setAttribute("aria-hidden", "true");
     el.innerHTML =
       '<canvas class="tff-cine-canvas" aria-hidden="true"></canvas>' +
-      '<div class="tff-cine-sweep" aria-hidden="true"></div>' +
-      '<div class="tff-cine-streaks" aria-hidden="true">' +
-      '<span class="tff-cine-streak"></span><span class="tff-cine-streak"></span>' +
-      '<span class="tff-cine-streak"></span><span class="tff-cine-streak"></span></div>' +
-      '<div class="tff-cine-flash burst-1"></div>' +
-      '<div class="tff-cine-flash burst-2"></div>' +
-      '<div class="tff-cine-flash burst-3"></div>' +
-      '<div class="tff-cine-vignette"></div>' +
-      '<div class="tff-cine-core">' +
-      '<div class="tff-cine-mark">TFF</div>' +
-      '<span class="tff-cine-line l1">July 8, 2026 · Norco, California</span>' +
-      '<span class="tff-cine-line l2">Welcome</span>' +
-      '<span class="tff-cine-line l3">TheraBreath Team</span>' +
-      '<span class="tff-cine-line l4">Prepared, operational, easy to grow with</span>' +
-      '<div class="tff-cine-bar"></div></div>' +
-      '<div class="tff-cine-curtain"></div>' +
-      '<button type="button" class="tff-cine-skip">Skip intro</button>';
+      '<div class="tff-cine-grain" aria-hidden="true"></div>' +
+      '<div class="tff-cine-letterbox tff-cine-letterbox-top" aria-hidden="true"></div>' +
+      '<div class="tff-cine-letterbox tff-cine-letterbox-bottom" aria-hidden="true"></div>' +
+      '<div class="tff-cine-flavors">' + flavorPanelsHtml() + "</div>" +
+      '<div class="tff-cine-finale">' +
+      '<p class="tff-cine-finale-kicker">The Flavor Factory × TheraBreath</p>' +
+      '<h1 class="tff-cine-finale-title">Breath of Innovation</h1>' +
+      '<p class="tff-cine-finale-sub">July 8 · Norco, California</p>' +
+      "</div>" +
+      '<div class="tff-cine-exit-wipe" aria-hidden="true"></div>' +
+      '<button type="button" class="tff-cine-skip">Skip</button>';
     return el;
   }
 
-  function startParticles(canvas) {
+  function startBokeh(canvas) {
     var ctx = canvas.getContext("2d");
     if (!ctx) return null;
 
     var dpr = Math.min(global.devicePixelRatio || 1, 2);
     var w = 0;
     var h = 0;
-    var parts = [];
-    var colors = ["#008fd3", "#5fb832", "#f58220", "#ffffff", "#90e0ef"];
+    var blobs = [];
+    var palette = [
+      { c: "#5fb832", a: 0.35 },
+      { c: "#008fd3", a: 0.4 },
+      { c: "#f58220", a: 0.28 },
+      { c: "#90e0ef", a: 0.25 },
+      { c: "#2d6a4f", a: 0.3 }
+    ];
     var raf = 0;
     var running = true;
+    var t = 0;
 
     function resize() {
       w = canvas.clientWidth;
@@ -76,35 +123,42 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    function seed(n) {
-      parts = [];
-      for (var i = 0; i < n; i++) {
-        parts.push({
+    function seed() {
+      blobs = [];
+      for (var i = 0; i < 14; i++) {
+        var pal = palette[i % palette.length];
+        blobs.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 1.2,
-          vy: (Math.random() - 0.5) * 1.2,
-          r: Math.random() * 2.2 + 0.5,
-          c: colors[i % colors.length],
-          a: Math.random() * 0.5 + 0.2
+          r: Math.random() * 120 + 80,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.25,
+          c: pal.c,
+          a: pal.a,
+          phase: Math.random() * Math.PI * 2
         });
       }
     }
 
     function draw() {
       if (!running) return;
+      t += 0.016;
       ctx.clearRect(0, 0, w, h);
-      parts.forEach(function (p) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0) p.x = w;
-        if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h;
-        if (p.y > h) p.y = 0;
+      blobs.forEach(function (b) {
+        b.x += b.vx;
+        b.y += b.vy;
+        if (b.x < -b.r) b.x = w + b.r;
+        if (b.x > w + b.r) b.x = -b.r;
+        if (b.y < -b.r) b.y = h + b.r;
+        if (b.y > h + b.r) b.y = -b.r;
+        var pulse = 0.85 + Math.sin(t * 1.2 + b.phase) * 0.15;
+        var grad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r * pulse);
+        grad.addColorStop(0, b.c);
+        grad.addColorStop(1, "transparent");
+        ctx.globalAlpha = b.a;
+        ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.c;
-        ctx.globalAlpha = p.a;
+        ctx.arc(b.x, b.y, b.r * pulse, 0, Math.PI * 2);
         ctx.fill();
       });
       ctx.globalAlpha = 1;
@@ -112,26 +166,44 @@
     }
 
     resize();
-    seed(90);
+    seed();
     draw();
-    global.addEventListener("resize", resize);
+    global.addEventListener("resize", function () {
+      resize();
+      seed();
+    });
 
     return function stop() {
       running = false;
       global.cancelAnimationFrame(raf);
-      global.removeEventListener("resize", resize);
     };
   }
 
-  function dismiss(overlay, stopParticles) {
+  function revealHome() {
+    document.body.classList.remove("tff-cine-pending");
+    document.body.classList.add("tff-cine-revealed");
+  }
+
+  function dismiss(overlay, stopBokeh, fast) {
     if (!overlay || overlay.classList.contains("is-done")) return;
-    overlay.classList.add("is-done");
-    document.documentElement.classList.remove("tff-cine-active");
     markSeen();
-    if (stopParticles) stopParticles();
-    setTimeout(function () {
+    if (stopBokeh) stopBokeh();
+    revealHome();
+
+    if (fast) {
+      document.documentElement.classList.remove("tff-cine-active");
       overlay.remove();
-    }, 1000);
+      return;
+    }
+
+    overlay.classList.add("is-exiting");
+    document.documentElement.classList.remove("tff-cine-active");
+    setTimeout(function () {
+      overlay.classList.add("is-done");
+      setTimeout(function () {
+        overlay.remove();
+      }, 700);
+    }, 1100);
   }
 
   function play() {
@@ -143,20 +215,26 @@
     document.head.appendChild(link);
 
     document.documentElement.classList.add("tff-cine-active");
+    document.body.classList.add("tff-cine-pending");
+
     var overlay = buildOverlay();
     document.body.appendChild(overlay);
 
     var canvas = overlay.querySelector(".tff-cine-canvas");
-    var stopParticles = startParticles(canvas);
+    var stopBokeh = startBokeh(canvas);
 
     var skip = overlay.querySelector(".tff-cine-skip");
     skip.addEventListener("click", function () {
-      dismiss(overlay, stopParticles);
+      dismiss(overlay, stopBokeh, true);
     });
 
     setTimeout(function () {
-      dismiss(overlay, stopParticles);
-    }, 5600);
+      overlay.classList.add("is-finale");
+    }, 4200);
+
+    setTimeout(function () {
+      dismiss(overlay, stopBokeh);
+    }, 7200);
   }
 
   if (document.readyState === "loading") {
@@ -165,8 +243,13 @@
     play();
   }
 
-  global.TFFCinematic = { replay: function () {
-    try { sessionStorage.removeItem(SESSION_KEY); } catch (e) {}
-    global.location.href = "/?welcome=1";
-  }};
+  global.TFFCinematic = {
+    replay: function () {
+      try {
+        sessionStorage.removeItem(SESSION_KEY);
+        sessionStorage.removeItem("tff-cine-seen-v1");
+      } catch (e) {}
+      global.location.href = "/?welcome=1";
+    }
+  };
 })(typeof window !== "undefined" ? window : global);
