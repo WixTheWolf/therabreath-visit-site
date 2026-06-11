@@ -42,6 +42,13 @@
         font-family:"Sora",sans-serif; font-weight:800; font-size:1rem;
       }
       .tag { font-size:0.58rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
+      .tag.stable { color:var(--blue); }
+      .tag.watch { color:#c45c26; }
+      .tag.flagged { color:#b42318; }
+      .code {
+        font-family:"Sora",sans-serif; font-size:1.35rem; font-weight:800;
+        letter-spacing:-0.02em; color:var(--ink); margin:4px 0 2px;
+      }
       .label h2 { margin:6px 0 2px; font-family:"Sora",sans-serif; font-size:1rem; font-weight:800; color:var(--ink); letter-spacing:-0.02em; }
       .label p { margin:0; font-size:0.68rem; color:var(--muted); line-height:1.35; }
       .label-foot { display:flex; justify-content:space-between; align-items:center; font-size:0.55rem; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.05em; }
@@ -63,7 +70,7 @@
         <button onclick="window.print()">Print labels</button>
       </div>
     </div>
-    <p class="hint">Apply to rinse sample bottles before the 9:30 tasting block. Numbers match passport, slides, and live scorer.</p>
+    <p class="hint">Apply to rinse sample bottles before the 9:30 tasting block. <strong>Cup codes only</strong> (M1–M10) — no concept names until after the mystery game. Host answer key on /mystery.</p>
 
     <section class="sheet">
       <div class="grid" id="labels-p1"></div>
@@ -72,31 +79,22 @@
       <div class="grid" id="labels-p2"></div>
     </section>
 
+    <script src="/tff-concepts.js"></script>
     <script>
-      var concepts = [
-        { id:1, name:"Spearmint Garden", sub:"Sweet spearmint + green herb", type:"fresh" },
-        { id:2, name:"Green Tea Fresh", sub:"Green tea + spearmint", type:"fresh" },
-        { id:3, name:"Crisp Cucumber Mint", sub:"Cucumber + cooling mint", type:"fresh" },
-        { id:4, name:"Warm Ginger Mint", sub:"Ginger + peppermint", type:"fresh" },
-        { id:5, name:"Vanilla Mint Silk", sub:"Vanilla + peppermint", type:"fresh" },
-        { id:6, name:"Overnight Calm Mint", sub:"Chamomile + lavender", type:"func" },
-        { id:7, name:"Crystal Whitening Mint", sub:"Bright peppermint + icy cool", type:"func" },
-        { id:8, name:"Icy Peak Refresh", sub:"Extra-cooling signature mint", type:"func" },
-        { id:9, name:"Winter Frost", sub:"Peppermint + vanilla · LE", type:"func" },
-        { id:10, name:"Healthy Gums Herbal", sub:"Eucalyptus + tea tree", type:"func" }
-      ];
-
       function label(c) {
-        var station = c.id <= 5 ? "Station 2 · Fresh" : "Station 3 · Functional";
-        return '<article class="label ' + c.type + '">' +
-          '<div class="label-top"><span class="num">' + String(c.id).padStart(2,'0') + '</span><span class="tag">Chlorite-stable</span></div>' +
-          '<div><h2>' + c.name + '</h2><p>' + c.sub + '</p></div>' +
+        var meta = TFFConcepts.stabilityMeta(c.stability);
+        var type = c.station === 2 ? "fresh" : "func";
+        var station = c.station === 2 ? "Station 2 · Mystery" : "Station 3 · Mystery";
+        return '<article class="label ' + type + '">' +
+          '<div class="label-top"><span class="num">' + String(c.id).padStart(2,'0') + '</span>' +
+          '<span class="tag ' + meta.class + '">' + meta.short + '</span></div>' +
+          '<div><p class="code">Cup ' + c.code + '</p><p>Workshop prototype · taste &amp; guess</p></div>' +
           '<footer class="label-foot"><span>TFF × TheraBreath</span><span>' + station + '</span></footer>' +
           '</article>';
       }
 
-      document.getElementById('labels-p1').innerHTML = concepts.slice(0,5).map(label).join('');
-      document.getElementById('labels-p2').innerHTML = concepts.slice(5,10).map(label).join('');
+      document.getElementById('labels-p1').innerHTML = TFFConcepts.list.slice(0,5).map(label).join('');
+      document.getElementById('labels-p2').innerHTML = TFFConcepts.list.slice(5,10).map(label).join('');
     </script>
   </body>
 </html>
