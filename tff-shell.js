@@ -4,14 +4,14 @@
 (function (global) {
   var PRIMARY = [
     { href: "/", label: "Home", match: ["/", "/index.html"] },
-    { href: "/visit", label: "Visit guide", match: ["/visit"] },
+    { href: "/visit", label: "Visit", title: "Visit guide", match: ["/visit"] },
     { href: "/workshop", label: "Workshop", match: ["/workshop"] },
-    { href: "/mystery", label: "Blind Flavor Mapping", match: ["/mystery"] },
-    { href: "/score", label: "Prototype Scorecard", cta: true, match: ["/score"] }
+    { href: "/lakewood", label: "Lakewood", title: "Lakewood site parity", match: ["/lakewood"] },
+    { href: "/mystery", label: "Mapping", title: "Blind Flavor Mapping", fun: true, match: ["/mystery"] },
+    { href: "/score", label: "Scorecard", title: "Prototype Scorecard", cta: true, match: ["/score"] }
   ];
 
   var MORE = [
-    { href: "/lakewood", label: "Lakewood parity", match: ["/lakewood"] },
     { href: "/concepts", label: "Ten directions", match: ["/concepts"] },
     { href: "/workshop#agenda", label: "Agenda" },
     { href: "/workshop#capabilities", label: "Capabilities" },
@@ -71,7 +71,8 @@
       if (isActive(item)) cls += " is-active";
       if (item.fun) cls += " tff-shell-fun";
       if (item.cta) cls += " tff-shell-cta";
-      return '<a class="' + cls + '" href="' + item.href + '">' + item.label + "</a>";
+      var title = item.title ? ' title="' + item.title + '"' : "";
+      return '<a class="' + cls + '" href="' + item.href + '"' + title + ">" + item.label + "</a>";
     }).join("");
 
     var moreItems = MORE.filter(function (item) {
@@ -81,11 +82,16 @@
       return '<a href="' + item.href + '" class="' + active + '">' + item.label + "</a>";
     }).join("");
 
+    var hideBack = p === "/" || p === "/index.html";
     return (
       '<header class="tff-shell-nav' + (team ? " tff-team" : "") + '" id="tff-shell-nav" role="banner">' +
+      '<div class="tff-shell-start">' +
+      '<button type="button" class="tff-shell-back"' + (hideBack ? ' hidden' : '') + ' aria-label="Go back">' +
+      '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      "</button>" +
       '<a class="tff-shell-brand" href="/" aria-label="Breath of Innovation hub home">' +
       '<span class="tff-shell-mark">TFF</span>' +
-      "<span>Breath of Innovation<small>TFF × TheraBreath</small></span></a>" +
+      "<span>Breath of Innovation<small>TFF × TheraBreath</small></span></a></div>" +
       '<button type="button" class="tff-shell-toggle" aria-label="Open menu" aria-expanded="false">' +
       "<span></span><span></span><span></span></button>" +
       '<nav class="tff-shell-links" aria-label="Site navigation">' +
@@ -99,54 +105,18 @@
     );
   }
 
-  function chromeHtml() {
-    var p = path();
-    var hideBack = p === "/" || p === "/index.html";
-    return (
-      '<header class="tff-chrome" id="tff-chrome" role="banner">' +
-      '<button type="button" class="tff-chrome-back"' + (hideBack ? ' hidden' : '') + ' aria-label="Go back">' +
-      '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-      '<span>Back</span></button>' +
-      '<a class="tff-chrome-home" href="/" aria-label="Breath of Innovation home">' +
-      '<span class="tff-chrome-mark">TFF</span><span class="tff-chrome-title">Home</span></a>' +
-      '<nav class="tff-chrome-links" aria-label="Quick links">' +
-      '<a href="/visit">Visit guide</a>' +
-      '<a href="/workshop">Workshop</a>' +
-      '<a href="/mystery">Blind Flavor Mapping</a>' +
-      '<a href="/score" class="tff-chrome-cta">Prototype Scorecard</a>' +
-      '</nav></header>'
-    );
-  }
-
-  function bindChrome(chrome) {
-    var back = chrome.querySelector(".tff-chrome-back");
-    if (back) {
-      back.addEventListener("click", function () {
-        var ref = document.referrer || "";
-        var sameHost = ref.indexOf(global.location.origin) === 0;
-        if (sameHost && global.history.length > 1) {
-          global.history.back();
-        } else {
-          global.location.href = "/";
-        }
-      });
-    }
-    chrome.querySelectorAll(".tff-chrome-links a").forEach(function (a) {
-      var href = a.getAttribute("href").replace(/\/$/, "") || "/";
-      if (href === path() || (href !== "/" && path().indexOf(href) === 0)) {
-        a.classList.add("is-active");
+  function bindShellBack(nav) {
+    var back = nav.querySelector(".tff-shell-back");
+    if (!back) return;
+    back.addEventListener("click", function () {
+      var ref = document.referrer || "";
+      var sameHost = ref.indexOf(global.location.origin) === 0;
+      if (sameHost && global.history.length > 1) {
+        global.history.back();
+      } else {
+        global.location.href = "/";
       }
     });
-  }
-
-  function injectChrome() {
-    if (document.getElementById("tff-chrome")) return;
-    var wrap = document.createElement("div");
-    wrap.innerHTML = chromeHtml();
-    var chrome = wrap.firstChild;
-    document.body.insertBefore(chrome, document.body.firstChild);
-    document.documentElement.classList.add("tff-has-chrome");
-    bindChrome(chrome);
   }
 
   function dockHtml() {
@@ -166,6 +136,7 @@
   }
 
   function bindNav(nav) {
+    bindShellBack(nav);
     var toggle = nav.querySelector(".tff-shell-toggle");
     var more = nav.querySelector(".tff-shell-more");
     var moreBtn = nav.querySelector(".tff-shell-more-btn");
@@ -302,7 +273,6 @@
 
   function inject() {
     injectHeadMeta();
-    injectChrome();
     var m = mode();
     if (m === "off") return;
 

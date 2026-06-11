@@ -45,7 +45,7 @@
 
       html {
         scroll-behavior: smooth;
-        scroll-padding-top: 88px;
+        scroll-padding-top: 136px;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -92,26 +92,33 @@
         top: 0;
         z-index: 20;
         display: grid;
-        grid-template-columns: 1fr auto 1fr;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
         align-items: center;
-        gap: 24px;
-        min-height: 72px;
+        gap: 16px;
+        min-height: 64px;
         padding: 0 clamp(20px, 4vw, 48px);
         border-bottom: 1px solid rgba(231, 237, 242, 0.82);
-        background: rgba(255, 255, 255, 0.92);
+        background: rgba(255, 255, 255, 0.94);
         backdrop-filter: blur(24px);
       }
 
       .nav .brand {
         justify-self: start;
+        min-width: 0;
       }
 
-      .nav-links {
+      .nav-meta {
         justify-self: center;
+        font-size: 0.74rem;
+        font-weight: 600;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
       }
 
       .nav-cta-wrap {
         justify-self: end;
+        flex-shrink: 0;
       }
 
       .brand {
@@ -138,20 +145,8 @@
         box-shadow: 0 8px 20px rgba(0, 143, 211, 0.25);
       }
 
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-        color: #333;
-        font-size: 0.86rem;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-      }
-
       .nav-cta {
-        padding: 10px 16px;
+        padding: 9px 14px;
         border-radius: 999px;
         color: #fff;
         background: var(--lid-orange);
@@ -166,13 +161,13 @@
       }
 
       .nav-cta-secondary {
-        padding: 10px 16px;
+        padding: 9px 13px;
         border-radius: 999px;
         border: 1px solid var(--line);
         background: #fff;
         color: var(--ink);
         font-weight: 700;
-        font-size: 0.84rem;
+        font-size: 0.72rem;
         text-decoration: none;
         white-space: nowrap;
       }
@@ -180,7 +175,8 @@
       .nav-cta-wrap {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
+        flex-wrap: nowrap;
       }
 
       .hero {
@@ -820,16 +816,16 @@
 
       .flow-strip {
         position: sticky;
-        top: 72px;
+        top: 64px;
         z-index: 15;
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 0;
         margin-top: 0;
         padding: 0;
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.96);
+        background: rgba(255, 255, 255, 0.97);
         backdrop-filter: blur(16px);
         box-shadow: 0 4px 24px rgba(13, 27, 42, 0.04);
       }
@@ -838,13 +834,16 @@
         position: relative;
         display: grid;
         justify-items: center;
-        gap: 8px;
-        padding: 20px 10px 18px;
+        align-content: center;
+        gap: 6px;
+        min-height: 72px;
+        padding: 14px 8px 12px;
         text-align: center;
         text-decoration: none;
         color: inherit;
         border-right: 1px solid var(--line);
         transition: background 0.25s ease, color 0.25s ease;
+        min-width: 0;
       }
 
       .flow-item:last-child {
@@ -898,11 +897,14 @@
       }
 
       .flow-item span:last-child {
-        font-size: 0.76rem;
+        font-size: clamp(0.66rem, 0.9vw, 0.76rem);
         font-weight: 700;
         color: #344054;
         line-height: 1.25;
         transition: color 0.25s ease;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .guide-panel {
@@ -3099,7 +3101,7 @@
           padding: 0 20px;
         }
 
-        .nav-links {
+        .nav-meta {
           display: none;
         }
 
@@ -3127,7 +3129,7 @@
         }
 
         html {
-          scroll-padding-top: 118px;
+          scroll-padding-top: 128px;
         }
 
         .flow-strip {
@@ -3333,16 +3335,9 @@
     <header class="nav" aria-label="Primary navigation">
       <a class="brand" href="/" aria-label="Partnership hub home">
         <span class="mark">TFF</span>
-        <span>The Flavor Factory</span>
+        <span>Breath of Innovation</span>
       </a>
-      <nav class="nav-links" aria-label="Workshop sections">
-        <a href="/">Hub</a>
-        <a href="#agenda">Agenda</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#tasting">Tasting</a>
-        <a href="/lakewood">Lakewood</a>
-        <a href="#next">Next steps</a>
-      </nav>
+      <span class="nav-meta">July 8 · Norco · Capabilities workshop</span>
       <div class="nav-cta-wrap">
         <a class="nav-cta-secondary" href="/visit">Visit guide</a>
         <a class="nav-cta-secondary" href="/mystery">Blind Flavor Mapping</a>
@@ -3350,12 +3345,11 @@
       </div>
     </header>
 
-    <nav class="flow-strip" aria-label="Site guide" id="flow-strip">
+    <nav class="flow-strip" aria-label="Workshop steps 01–06" id="flow-strip">
       <a class="flow-item" href="#partnership" data-section="partnership"><span class="flow-num">01</span><span>Partnership</span></a>
       <a class="flow-item" href="#agenda" data-section="agenda"><span class="flow-num">02</span><span>Agenda</span></a>
       <a class="flow-item" href="#capabilities" data-section="capabilities"><span class="flow-num">03</span><span>Four pillars</span></a>
       <a class="flow-item" href="#tasting" data-section="tasting"><span class="flow-num">04</span><span>Tasting</span></a>
-      <a class="flow-item" href="/lakewood"><span class="flow-num">★</span><span>Lakewood</span></a>
       <a class="flow-item" href="#concepts" data-section="concepts"><span class="flow-num">05</span><span>Concepts</span></a>
       <a class="flow-item" href="#next" data-section="next"><span class="flow-num">06</span><span>Next steps</span></a>
     </nav>
