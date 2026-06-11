@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kickoff Call | Ross · Nelly · TFF</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --done:#edf8e8; --live:#fff4e8; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f4f7fa; color:var(--ink); padding-bottom:80px; }
+      .toolbar { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .toolbar a, .toolbar button { padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; }
+      .toolbar button { background:var(--blue); color:#fff; border:none; }
+      .hero { padding:36px 24px 32px; background:linear-gradient(135deg,var(--ink) 0%,#004f87 55%,#006aa6); color:#fff; }
+      .hero-in { width:min(900px,calc(100vw - 40px)); margin:0 auto; }
+      .live-pill { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:rgba(245,130,32,0.25); border:1px solid rgba(245,130,32,0.45); font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px; }
+      .live-pill::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--orange); animation:pulse 1.5s ease infinite; }
+      @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+      .hero h1 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:800; letter-spacing:-0.03em; }
+      .hero p { margin:0; max-width:640px; font-size:0.92rem; line-height:1.55; color:rgba(255,255,255,0.82); }
+      .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+      .hero-meta span { padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); font-size:0.76rem; font-weight:600; }
+      .wrap { width:min(900px,calc(100vw - 40px)); margin:0 auto; padding:28px 0 64px; }
+      .note { padding:16px 18px; margin-bottom:24px; border:1px solid rgba(0,143,211,0.25); border-radius:12px; background:#f0f9fd; font-size:0.84rem; line-height:1.55; color:#344054; }
+      .note b { color:var(--blue); }
+      .people { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:28px; }
+      .person { padding:16px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+      .person h3 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.9rem; }
+      .person p { margin:0; font-size:0.76rem; color:var(--muted); line-height:1.4; }
+      .person .role { margin-top:6px; font-size:0.68rem; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.04em; }
+      .person.tbd { border-style:dashed; background:#fafcfe; }
+      h2 { margin:0 0 14px; font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; }
+      .section { margin-bottom:32px; }
+      .block { margin-bottom:12px; border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+      .block-head { display:grid; grid-template-columns:64px 1fr auto; gap:12px; align-items:center; padding:14px 18px; background:#fafcfe; border-bottom:1px solid var(--line); cursor:pointer; }
+      .block.open .block-head { border-bottom:1px solid var(--line); }
+      .block-head time { font-family:"Sora",sans-serif; font-weight:800; color:var(--blue); font-size:0.82rem; }
+      .block-head h3 { margin:0; font-family:"Sora",sans-serif; font-size:0.95rem; }
+      .block-head .dur { font-size:0.7rem; font-weight:700; color:var(--muted); }
+      .block-body { padding:16px 18px; font-size:0.84rem; line-height:1.55; color:#344054; display:none; }
+      .block.open .block-body { display:block; }
+      .block.done .block-head { background:var(--done); }
+      .block.done .block-head h3 { text-decoration:line-through; opacity:0.6; }
+      .block ul { margin:8px 0 0; padding-left:18px; }
+      .cue { margin-top:10px; padding:10px 12px; border-left:3px solid var(--orange); background:var(--live); font-size:0.8rem; }
+      .cue b { color:var(--orange); }
+      .share { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+      .share a { display:grid; gap:4px; padding:14px 16px; border:1px solid var(--line); border-radius:12px; background:#fff; text-decoration:none; color:inherit; transition:transform 0.2s, box-shadow 0.2s; }
+      .share a:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(10,22,40,0.08); }
+      .share a b { font-family:"Sora",sans-serif; font-size:0.86rem; color:var(--ink); }
+      .share a span { font-size:0.72rem; color:var(--muted); }
+      .share a em { font-family:"Sora",sans-serif; font-size:0.72rem; font-weight:700; color:var(--blue); font-style:normal; }
+      .checklist { display:grid; gap:8px; }
+      .check {
+        display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
+        padding:12px 14px; background:#fff; border:1px solid var(--line); border-radius:10px;
+        font-size:0.84rem; transition:opacity 0.2s;
+      }
+      .check.done { opacity:0.55; }
+      .check input { width:18px; height:18px; margin-top:2px; accent-color:var(--blue); cursor:pointer; }
+      .outcomes { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+      .outcome { padding:16px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+      .outcome h4 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.82rem; color:var(--green); }
+      .outcome p { margin:0; font-size:0.8rem; color:var(--muted); line-height:1.45; }
+      .email-quote { padding:16px 18px; border-left:4px solid var(--blue); background:#fff; border-radius:0 12px 12px 0; font-size:0.84rem; line-height:1.55; color:#344054; font-style:italic; }
+      .email-quote cite { display:block; margin-top:8px; font-size:0.72rem; color:var(--muted); font-style:normal; font-weight:600; }
+      .progress { font-size:0.78rem; color:var(--muted); margin-bottom:12px; }
+      .progress strong { color:var(--blue); }
+      @media (max-width:720px) { .people, .share, .outcomes { grid-template-columns:1fr; } .block-head { grid-template-columns:56px 1fr; } .block-head .dur { grid-column:2; } }
+      @media print { .toolbar { display:none; } .block-body { display:block !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Kickoff call</strong> · Lakewood + July 8 alignment</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <a href="/questions">Questions</a>
+        <a href="/answers">Answers</a>
+        <button type="button" onclick="window.print()">Print</button>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-in">
+        <div class="live-pill">Today · Zoom kickoff</div>
+        <h1>Lakewood validation &amp; July 8 kickoff</h1>
+        <p>30-minute alignment with Ross Conroy (R&amp;D), Neonila Levitsky (procurement), and any procurement colleagues Ross invites. Walk through the sensory plan, confirm July 8 logistics, and tee up the virtual procurement session.</p>
+        <div class="hero-meta">
+          <span>Wed Jun 10, 2026 · 8:30–9:00 AM PT</span>
+          <span>11:30 AM–12:00 PM ET</span>
+          <span>30 min · screen share toolkit</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <p class="note">
+        <b>Ross scheduling note:</b> Ross offered <b>Thursday Jun 11, 11:30 AM–noon ET</b> as an alternate (Nelly is out Fridays). If today's slot holds, use this page as-is. If the invite moves to Thursday, same agenda — update the time mentally; Ross said he'll send the calendar invite and will confirm whether Nelly can make it.
+      </p>
+
+      <div class="people">
+        <div class="person">
+          <h3>Ross Conroy</h3>
+          <p>R&amp;D · Lakewood mouthrinse implementation · sensory validation request</p>
+          <span class="role">Primary · R&amp;D</span>
+        </div>
+        <div class="person">
+          <h3>Neonila (Nelly) Levitsky</h3>
+          <p>Procurement · Cc'd on Ross emails · approval workflow for site parity</p>
+          <span class="role">Procurement · TBD attendance</span>
+        </div>
+        <div class="person tbd">
+          <h3>Procurement team</h3>
+          <p>Possibly joining per Ross — virtual session before July 8 visit</p>
+          <span class="role">Optional attendees</span>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2>Pre-call checklist</h2>
+        <p class="progress" id="prep-progress"></p>
+        <div class="checklist" id="prep-list"></div>
+      </section>
+
+      <section class="section">
+        <h2>Run of show · 30 minutes</h2>
+        <p style="margin:0 0 16px;font-size:0.84rem;color:var(--muted)">Tap a block to expand · click header to mark done</p>
+
+        <div class="block open" data-id="1">
+          <div class="block-head" onclick="toggleBlock(this.parentElement)">
+            <time>0:00</time><h3>Welcome &amp; why we're here</h3><span class="dur">3 min</span>
+          </div>
+          <div class="block-body">
+            <strong>Lead:</strong> Dan · <strong>Goal:</strong> Frame two threads in one short call — Lakewood site parity validation and July 8 Norco workshop prep.
+            <ul>
+              <li>Thank Ross for the trial timeline and 8-variant list</li>
+              <li>Confirm who's on the line and whether procurement colleagues are joining today or a separate session</li>
+              <li>Set expectation: we'll share a live toolkit they can bookmark — not a slide deck dump</li>
+            </ul>
+            <div class="cue"><b>Opener:</b> "We built a sensory validation program around your Lakewood email and want to align on method, ownership, and how it connects to the July 8 visit."</div>
+          </div>
+        </div>
+
+        <div class="block" data-id="2">
+          <div class="block-head" onclick="toggleBlock(this.parentElement)">
+            <time>0:03</time><h3>Lakewood plan recap</h3><span class="dur">10 min</span>
+          </div>
+          <div class="block-body">
+            <strong>Screen share:</strong> <a href="/lakewood">/lakewood</a> → <a href="/lakewood-tracker">/lakewood-tracker</a>
+            <ul>
+              <li>Four-rung ladder: expert screen → ISO triangle → blind paired fingerprint → consumer (Tier-A only if needed)</li>
+              <li>8 variants on Ross's trial table — phased Jun–Sep as samples ship (~1–2 weeks post-trial)</li>
+              <li>Decision rules before data: who holds ship if triangle fails at α=0.05?</li>
+              <li>Reference site per SKU for triangle "A" sample — must match what consumers know today</li>
+            </ul>
+            <div class="cue"><b>Ask:</b> "Does this escalation ladder match what R&amp;D needs, and does Procurement sign off on sensory parity or is that R&amp;D-only?"</div>
+          </div>
+        </div>
+
+        <div class="block" data-id="3">
+          <div class="block-head" onclick="toggleBlock(this.parentElement)">
+            <time>0:13</time><h3>Alignment questions</h3><span class="dur">8 min</span>
+          </div>
+          <div class="block-body">
+            <strong>Screen share:</strong> <a href="/questions">/questions</a> (filter: Lakewood + Procurement)
+            <ul>
+              <li>Where do panels run — Norco, Lakewood, C&amp;D site, or third-party lab?</li>
+              <li>Panelist recruitment: trained internal panel on their side vs ours?</li>
+              <li>Identical TFF flavor lots vs reissued lots — lot numbers for fingerprint reports</li>
+              <li>Tier-A SKUs (Icy Mint, Dazzling Mint, Sparkle Mint): consumer CLT budget if analytical difference found?</li>
+            </ul>
+            <div class="cue"><b>Park for follow-up:</b> Anything we can't answer in 30 min → capture owner + date in chat</div>
+          </div>
+        </div>
+
+        <div class="block" data-id="4">
+          <div class="block-head" onclick="toggleBlock(this.parentElement)">
+            <time>0:21</time><h3>July 8 visit &amp; virtual procurement</h3><span class="dur">7 min</span>
+          </div>
+          <div class="block-body">
+            <strong>Screen share:</strong> <a href="/">Workshop site</a> · <a href="/host">/host</a> run-of-show
+            <ul>
+              <li>Half day Jul 8 — tour, four pillars, tasting, co-creation close by 12:30 PM</li>
+              <li>Who attends in person — Ross, Nelly, names/titles, dietary/access needs</li>
+              <li>Virtual procurement session before visit: preferred date, topics, scorecard metrics</li>
+              <li>Share toolkit URLs so they can prep async</li>
+            </ul>
+            <div class="cue"><b>Close ask:</b> "What does success look like for R&amp;D vs Procurement in one sentence each?"</div>
+          </div>
+        </div>
+
+        <div class="block" data-id="5">
+          <div class="block-head" onclick="toggleBlock(this.parentElement)">
+            <time>0:28</time><h3>Next steps &amp; close</h3><span class="dur">2 min</span>
+          </div>
+          <div class="block-body">
+            <ul>
+              <li>Send <a href="/lakewood-reply">proposal reply email</a> if Ross wants it in writing today</li>
+              <li>Confirm variant 1 sample ship date → lock triangle scheduling</li>
+              <li>Calendar hold for virtual procurement if not covered today</li>
+              <li>July 8 attendee list + gift basket dietary notes → <a href="/hospitality">/hospitality</a></li>
+            </ul>
+            <div class="cue"><b>Thank Nelly</b> if on the line — procurement thread is explicit in the toolkit</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Screen-share links</h2>
+        <p style="margin:0 0 14px;font-size:0.84rem;color:var(--muted)">Base URL: <b>therabreath-visit-site.vercel.app</b> — open tabs before the call</p>
+        <div class="share">
+          <a href="/lakewood"><b>Site parity plan</b><span>Full validation proposal for Ross</span><em>/lakewood</em></a>
+          <a href="/lakewood-tracker"><b>Variant tracker</b><span>8 SKUs · trial timeline · status</span><em>/lakewood-tracker</em></a>
+          <a href="/triangle"><b>Triangle test kit</b><span>ISO 4120 · ballots · significance</span><em>/triangle</em></a>
+          <a href="/questions"><b>Our questions</b><span>What we need from TheraBreath</span><em>/questions</em></a>
+          <a href="/answers"><b>Prepared answers</b><span>If they ask about pillars, ops, Lakewood</span><em>/answers</em></a>
+          <a href="/"><b>Workshop site</b><span>July 8 live experience · four pillars</span><em>/</em></a>
+          <a href="/host"><b>Run-of-show</b><span>July 8 internal host checklist</span><em>/host</em></a>
+          <a href="/toolkit"><b>Toolkit hub</b><span>All 20+ resources in one place</span><em>/toolkit</em></a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Desired outcomes</h2>
+        <div class="outcomes">
+          <div class="outcome">
+            <h4>Lakewood</h4>
+            <p>Agreed escalation ladder, panel location, reference-site rule, and approval path (R&amp;D vs Procurement) for each variant.</p>
+          </div>
+          <div class="outcome">
+            <h4>July 8</h4>
+            <p>Confirmed attendee list, success criteria per function, and date for virtual procurement if not today.</p>
+          </div>
+          <div class="outcome">
+            <h4>Toolkit</h4>
+            <p>Ross (and Nelly if present) have bookmarked the hub — async prep without another meeting.</p>
+          </div>
+          <div class="outcome">
+            <h4>Follow-up</h4>
+            <p>Written recap or <a href="/lakewood-reply">reply email</a> sent within 24 hours with open items owned.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Context · Ross email</h2>
+        <blockquote class="email-quote">
+          "I am looking for time this week if possible and not on Friday as Nelly is out — would you be available Thursday 6/11 at 11:30a–noon EST? If so, I'll send the invite for a call — I think she will be able to make it at this time but is sometimes tough to catch so will let you know."
+          <cite>— Ross Conroy · scheduling note (Jun 2026)</cite>
+        </blockquote>
+      </section>
+    </div>
+
+    <script>
+      var prepItems = [
+        { id: "p1", text: "Zoom link open · mic/camera tested · screen share ready" },
+        { id: "p2", text: "Tabs open: /lakewood, /lakewood-tracker, /questions, /answers, /toolkit" },
+        { id: "p3", text: "Review top Lakewood questions (lw1–lw8) on /questions" },
+        { id: "p4", text: "Review prepared answers for Ross Lakewood + procurement threads" },
+        { id: "p5", text: "Confirm who from TFF is on the call (Dan + sensory lead if needed)" },
+        { id: "p6", text: "Variant tracker statuses updated for any samples already in hand" },
+        { id: "p7", text: "Hospitality/dietary note ready if attendees for July 8 come up" }
+      ];
+      var prepKey = "kickoff-prep-v1";
+      var blockKey = "kickoff-blocks-v1";
+
+      function loadPrep() {
+        try { return JSON.parse(localStorage.getItem(prepKey)) || {}; } catch (e) { return {}; }
+      }
+      function savePrep(state) { localStorage.setItem(prepKey, JSON.stringify(state)); }
+
+      function renderPrep() {
+        var state = loadPrep();
+        var list = document.getElementById("prep-list");
+        var done = 0;
+        list.innerHTML = prepItems.map(function (item) {
+          var checked = !!state[item.id];
+          if (checked) done++;
+          return '<label class="check' + (checked ? " done" : "") + '">' +
+            '<input type="checkbox" data-id="' + item.id + '"' + (checked ? " checked" : "") + ' />' +
+            '<span>' + item.text + '</span></label>';
+        }).join("");
+        document.getElementById("prep-progress").innerHTML =
+          "<strong>" + done + "</strong> of <strong>" + prepItems.length + "</strong> prep items complete";
+        list.querySelectorAll("input").forEach(function (el) {
+          el.addEventListener("change", function () {
+            var s = loadPrep();
+            s[el.dataset.id] = el.checked;
+            savePrep(s);
+            renderPrep();
+          });
+        });
+      }
+
+      function loadBlocks() {
+        try { return JSON.parse(localStorage.getItem(blockKey)) || {}; } catch (e) { return {}; }
+      }
+      function saveBlocks(state) { localStorage.setItem(blockKey, JSON.stringify(state)); }
+
+      function toggleBlock(el) {
+        var id = el.dataset.id;
+        var blocks = loadBlocks();
+        if (el.classList.contains("open") && !el.classList.contains("done")) {
+          el.classList.remove("open");
+        } else if (!el.classList.contains("done")) {
+          document.querySelectorAll(".block.open").forEach(function (b) { if (b !== el) b.classList.remove("open"); });
+          el.classList.add("open");
+        }
+        blocks[id] = blocks[id] || {};
+        blocks[id].done = !el.classList.contains("done");
+        if (blocks[id].done) { el.classList.add("done"); el.classList.remove("open"); }
+        else { el.classList.remove("done"); }
+        saveBlocks(blocks);
+      }
+
+      document.querySelectorAll(".block").forEach(function (block) {
+        var blocks = loadBlocks();
+        var id = block.dataset.id;
+        if (blocks[id] && blocks[id].done) block.classList.add("done");
+      });
+
+      renderPrep();
+    </script>
+  </body>
+</html>
