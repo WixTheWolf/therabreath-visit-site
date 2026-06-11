@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visit Hospitality &amp; Swag Guide | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --wow:#f5f0ff; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; }
+      .toolbar { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .toolbar a, .toolbar button { padding:9px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; }
+      .toolbar button { background:var(--blue); color:#fff; border:none; }
+      .hero { padding:40px 24px; background:linear-gradient(135deg,#0a1628,#1a4d6e 50%,#008fd3); color:#fff; }
+      .hero-in { width:min(960px,calc(100vw - 40px)); margin:0 auto; }
+      .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.66rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; opacity:0.7; }
+      .hero h1 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:clamp(1.7rem,4vw,2.4rem); font-weight:800; letter-spacing:-0.03em; }
+      .hero p { margin:0; max-width:640px; line-height:1.6; opacity:0.88; font-size:0.95rem; }
+      .wrap { width:min(960px,calc(100vw - 40px)); margin:0 auto; padding:36px 0 80px; }
+      .timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:36px; }
+      .when { padding:14px; background:#fff; border:1px solid var(--line); border-radius:12px; font-size:0.76rem; }
+      .when b { display:block; font-family:"Sora",sans-serif; color:var(--blue); margin-bottom:4px; }
+      .section { margin-bottom:40px; }
+      .section h2 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:1.25rem; font-weight:800; }
+      .section > p.desc { margin:0 0 18px; color:var(--muted); font-size:0.9rem; line-height:1.5; max-width:700px; }
+      .items { display:grid; gap:14px; }
+      .item {
+        display:grid; grid-template-columns:1fr auto; gap:12px; align-items:start;
+        padding:18px 20px; background:#fff; border:1px solid var(--line); border-radius:14px;
+        transition:box-shadow 0.2s;
+      }
+      .item:hover { box-shadow:0 12px 32px rgba(10,22,40,0.06); }
+      .item.wow { border-color:rgba(95,184,50,0.35); background:linear-gradient(135deg,#fff,var(--wow)); }
+      .item-head { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:6px; }
+      .item h3 { margin:0; font-family:"Sora",sans-serif; font-size:1rem; }
+      .tag { padding:3px 8px; border-radius:999px; font-size:0.6rem; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; }
+      .tag.must { background:#fef3f2; color:#b42318; }
+      .tag.nice { background:#e8f6fd; color:var(--blue); }
+      .tag.wow { background:#edf8e8; color:#2d6a3f; }
+      .tag.diy { background:#fff4e8; color:#c45c26; }
+      .tag.buy { background:#f0f2f8; color:#5b6b8a; }
+      .item p { margin:0 0 8px; font-size:0.84rem; color:var(--muted); line-height:1.5; }
+      .item ul { margin:0; padding-left:18px; font-size:0.8rem; color:#344054; line-height:1.55; }
+      .links { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+      .links a { padding:6px 11px; border-radius:8px; background:#f0f9fd; color:var(--blue); font-size:0.72rem; font-weight:700; text-decoration:none; }
+      .links a:hover { background:var(--blue); color:#fff; }
+      .links a.int { background:#edf8e8; color:#2d6a3f; }
+      .check { display:flex; align-items:flex-start; gap:10px; }
+      .check input { width:18px; height:18px; margin-top:3px; accent-color:var(--blue); cursor:pointer; flex-shrink:0; }
+      .cost { font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; color:var(--ink); white-space:nowrap; text-align:right; }
+      .cost span { display:block; font-size:0.62rem; font-weight:600; color:var(--muted); }
+      .basket { padding:24px; border:2px dashed rgba(0,143,211,0.3); border-radius:18px; background:rgba(255,255,255,0.8); margin-bottom:14px; }
+      .basket h3 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.05rem; }
+      .basket-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+      .basket-item { padding:12px; background:#fff; border:1px solid var(--line); border-radius:10px; font-size:0.78rem; line-height:1.45; }
+      .basket-item b { display:block; font-family:"Sora",sans-serif; font-size:0.82rem; margin-bottom:4px; }
+      .budget { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:20px; }
+      .budget div { padding:16px; background:#fff; border:1px solid var(--line); border-radius:12px; text-align:center; }
+      .budget strong { display:block; font-family:"Sora",sans-serif; font-size:1.3rem; color:var(--blue); }
+      .budget span { font-size:0.72rem; color:var(--muted); }
+      @media (max-width:720px) { .timeline, .basket-grid, .budget { grid-template-columns:1fr; } .item { grid-template-columns:1fr; } }
+      @media print { .toolbar button { display:none; } }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>Hospitality guide</strong> · July 8 · order checklist</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <button type="button" onclick="resetChecks()">Reset checklist</button>
+        <button type="button" onclick="window.print()">Print guide</button>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-in">
+        <p class="kicker">Physical experience · procurement &amp; creative</p>
+        <h1>Make July 8 feel unforgettable</h1>
+        <p>Custom products, gift baskets, signage, and room details that signal premium partnership — without overshadowing the sensory work. Check items off as you order; links open vendors and our own print-ready toolkit pages.</p>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="timeline">
+        <div class="when"><b>By June 14</b>Order banners, mailer boxes, name tents — longest lead times</div>
+        <div class="when"><b>By June 21</b>Gift basket contents, catering deposit, mint plants</div>
+        <div class="when"><b>By June 28</b>Print passports, labels, signage · assemble baskets</div>
+        <div class="when"><b>July 7</b>Room setup, banner deploy, fridge samples, final walk-through</div>
+      </div>
+
+      <section class="section">
+        <h2>Arrival &amp; first impression</h2>
+        <p class="desc">They should know they are somewhere special before they reach the workshop room. Church &amp; Dwight notices polish at the door.</p>
+        <div class="items">
+          <article class="item wow" data-id="banner">
+            <div class="check">
+              <input type="checkbox" data-check="banner" />
+              <div>
+                <div class="item-head">
+                  <h3>Pair of retractable welcome banners</h3>
+                  <span class="tag must">Must-have</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>Two 33×80" roll-ups flanking the entrance or workshop door: <strong>"Breath of Innovation"</strong> and <strong>"Welcome, TheraBreath"</strong> with TFF × TheraBreath co-brand lockup in bottle blue, mint green, lid orange.</p>
+                <ul>
+                  <li>Banner 1: Hero headline + July 8, 2026 + Norco</li>
+                  <li>Banner 2: Six-step journey icons (partnership → next steps)</li>
+                  <li>Reuse hardware; swap graphics yearly</li>
+                </ul>
+                <div class="links">
+                  <a href="https://www.vistaprint.com/signs-posters/retractable-banners" target="_blank" rel="noopener">Vistaprint retractable banners</a>
+                  <a href="https://www.amazon.com/s?k=retractable+banner+stand+33x80" target="_blank" rel="noopener">Amazon stand hardware</a>
+                  <a href="https://display-wholesale.com/products/banner-for-pwb33-33-x-80-replacement-graphic" target="_blank" rel="noopener">Replacement graphics only</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$180–350<span>pair, printed</span></div>
+          </article>
+
+          <article class="item" data-id="aframe">
+            <div class="check">
+              <input type="checkbox" data-check="aframe" />
+              <div>
+                <div class="item-head">
+                  <h3>A-frame sidewalk sign</h3>
+                  <span class="tag nice">Nice</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>Parking lot → entrance: "TheraBreath Workshop · Check in at front desk · 8:00 AM." Weather-resistant insert you can swap.</p>
+                <div class="links">
+                  <a href="https://www.amazon.com/s?k=sandwich+board+a-frame+sign+outdoor" target="_blank" rel="noopener">Amazon A-frame signs</a>
+                  <a href="https://www.staples.com/buy/a-frame-signs-0agz00a" target="_blank" rel="noopener">Staples A-frames</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$60–120</div>
+          </article>
+
+          <article class="item" data-id="reserved">
+            <div class="check">
+              <input type="checkbox" data-check="reserved" />
+              <div>
+                <div class="item-head">
+                  <h3>Reserved parking + door cling</h3>
+                  <span class="tag nice">Nice</span><span class="tag diy">DIY print</span>
+                </div>
+                <p>2–3 visitor spots near the entrance. Frosted vinyl on workshop door: "Today's session: sensory evaluation in progress — thank you for skipping fragrance."</p>
+                <div class="links">
+                  <a href="https://www.vistaprint.com/signs-posters/window-clings" target="_blank" rel="noopener">Vistaprint window clings</a>
+                  <a href="https://www.amazon.com/s?k=reserved+parking+sign+guest" target="_blank" rel="noopener">Reserved parking signs</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$40</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Welcome gift baskets (one per guest)</h2>
+        <p class="desc">Place on their chair before 8:00 AM. Procurement and R&amp;D both take something home — the basket is the physical version of the digital toolkit.</p>
+
+        <div class="basket">
+          <h3>Suggested basket build · 8–12 guests</h3>
+          <div class="basket-grid">
+            <div class="basket-item"><b>Custom mailer box</b>TFF gradient exterior, "Breath of Innovation" inside lid quote. Fits passport + small gifts.</div>
+            <div class="basket-item"><b>Printed passport</b>Our <a href="/passport">visitor passport</a> — double-sided, folded, stapled. Already in toolkit.</div>
+            <div class="basket-item"><b>QR welcome card</b>Moo postcard linking to site, scorer, toolkit. "Scan to follow along."</div>
+            <div class="basket-item"><b>Live mint plant</b>4" spearmint or peppermint in white pot — "fresh starts here." Home Depot / local nursery.</div>
+            <div class="basket-item"><b>Tasting notebook</b>Small kraft notebook + TFF pen. "Notes from Norco."</div>
+            <div class="basket-item"><b>Local California touch</b>See's candies, Ivanhoe olive oil mini, or Riley's Farm honey stick — Inland Empire pride.</div>
+            <div class="basket-item"><b>Cooling eye mask</b>Spa-style gel mask — playful nod to "fresh breath, calm morning." Bulk on Amazon.</div>
+            <div class="basket-item"><b>Executive one-pager</b>Folded <a href="/onepager">procurement leave-behind</a> in pocket folder for leads.</div>
+            <div class="basket-item"><b>Sample vial insert</b>Foam insert at depart — take-home pilots labeled with <a href="/labels">01–10 stickers</a>.</div>
+          </div>
+        </div>
+
+        <div class="items">
+          <article class="item wow" data-id="mailer">
+            <div class="check">
+              <input type="checkbox" data-check="mailer" />
+              <div>
+                <div class="item-head">
+                  <h3>Custom printed mailer boxes</h3>
+                  <span class="tag must">Must-have</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>9×6×3" mailer with full-bleed TFF blue→green gradient and white logo. Order 15–20 units (guests + extras).</p>
+                <div class="links">
+                  <a href="https://packlane.com/products/mailer-box" target="_blank" rel="noopener">Packlane mailer boxes</a>
+                  <a href="https://www.vistaprint.com/packaging/mailer-boxes/full-print-mailer-boxes" target="_blank" rel="noopener">Vistaprint mailer boxes</a>
+                  <a href="https://www.packola.com/products/mailer-box" target="_blank" rel="noopener">Packola (alt)</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$8–14 ea<span>MOQ ~10</span></div>
+          </article>
+
+          <article class="item" data-id="qr-card">
+            <div class="check">
+              <input type="checkbox" data-check="qr-card" />
+              <div>
+                <div class="item-head">
+                  <h3>QR welcome postcards</h3>
+                  <span class="tag must">Must-have</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>Thick postcard: QR to therabreath-visit-site.vercel.app, /score, and /toolkit. Back: morning agenda at a glance.</p>
+                <div class="links">
+                  <a href="https://www.moo.com/us/postcards.html" target="_blank" rel="noopener">Moo postcards</a>
+                  <a href="https://www.vistaprint.com/marketing-materials/postcards" target="_blank" rel="noopener">Vistaprint postcards</a>
+                  <a href="https://www.qr-code-generator.com/" target="_blank" rel="noopener">QR code generator</a>
+                  <a class="int" href="/">Workshop site QR target</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$25–50</div>
+          </article>
+
+          <article class="item" data-id="mint-plant">
+            <div class="check">
+              <input type="checkbox" data-check="mint-plant" />
+              <div>
+                <div class="item-head">
+                  <h3>Potted mint plants</h3>
+                  <span class="tag wow">Wow factor</span><span class="tag buy">Local</span>
+                </div>
+                <p>Spearmint or peppermint in 4" white ceramic pots. Stick a small flag: "Grown in California · Like your flavors, built to last."</p>
+                <div class="links">
+                  <a href="https://www.homedepot.com/s/mint%20plant" target="_blank" rel="noopener">Home Depot mint plants</a>
+                  <a href="https://www.amazon.com/s?k=small+white+ceramic+plant+pots+bulk" target="_blank" rel="noopener">Bulk white pots</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$6–10 ea</div>
+          </article>
+
+          <article class="item" data-id="folder">
+            <div class="check">
+              <input type="checkbox" data-check="folder" />
+              <div>
+                <div class="item-head">
+                  <h3>Pocket folders for procurement leads</h3>
+                  <span class="tag nice">Nice</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>Letter-size pocket folder, TFF logo foil or print. Holds <a href="/onepager">executive one-pager</a>, business card, and Lakewood <a href="/lakewood">parity plan</a> summary.</p>
+                <div class="links">
+                  <a href="https://www.vistaprint.com/stationery/folders" target="_blank" rel="noopener">Vistaprint folders</a>
+                  <a class="int" href="/onepager">One-pager PDF</a>
+                  <a class="int" href="/lakewood">Lakewood plan</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$4–8 ea</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Workshop room &amp; sensory environment</h2>
+        <p class="desc">The room should support serious tasting — neutral, fragrance-free, clearly labeled. Sensory science credibility starts with the physical setup.</p>
+        <div class="items">
+          <article class="item wow" data-id="no-scent">
+            <div class="check">
+              <input type="checkbox" data-check="no-scent" />
+              <div>
+                <div class="item-head">
+                  <h3>"Fragrance-free session" signage</h3>
+                  <span class="tag must">Must-have</span><span class="tag diy">Print</span>
+                </div>
+                <p>Table tents + door signs: no perfume/cologne today. Critical for triangle and blind testing integrity. Include on host checklist.</p>
+                <div class="links">
+                  <a href="https://www.vistaprint.com/marketing-materials/table-tents" target="_blank" rel="noopener">Vistaprint table tents</a>
+                  <a class="int" href="/stations">Station signs (toolkit)</a>
+                  <a class="int" href="/host">Run-of-show</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$20</div>
+          </article>
+
+          <article class="item" data-id="name-tents">
+            <div class="check">
+              <input type="checkbox" data-check="name-tents" />
+              <div>
+                <div class="item-head">
+                  <h3>Host name tents + guest place cards</h3>
+                  <span class="tag must">Must-have</span><span class="tag diy">Print</span>
+                </div>
+                <p>Dan, Ryan, Alex, Matt — role subtitles (Operations, Quality, R&amp;D, Partnership). Blank place cards for guests to fill in.</p>
+                <div class="links">
+                  <a href="https://www.vistaprint.com/stationery/name-tags" target="_blank" rel="noopener">Vistaprint name tents</a>
+                  <a href="https://www.avery.com/templates/5305" target="_blank" rel="noopener">Avery tent template</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$15</div>
+          </article>
+
+          <article class="item" data-id="table-runner">
+            <div class="check">
+              <input type="checkbox" data-check="table-runner" />
+              <div>
+                <div class="item-head">
+                  <h3>Brand-color table runners</h3>
+                  <span class="tag nice">Nice</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>Blue or mint runners on tasting tables — instant visual cohesion with the site and slides. Avoid white that stains easily.</p>
+                <div class="links">
+                  <a href="https://www.amazon.com/s?k=table+runner+teal+blue+12+ft" target="_blank" rel="noopener">Amazon table runners</a>
+                  <a href="https://www.tableclothsfactory.com/" target="_blank" rel="noopener">TableclothsFactory</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$25–40</div>
+          </article>
+
+          <article class="item" data-id="display">
+            <div class="check">
+              <input type="checkbox" data-check="display" />
+              <div>
+                <div class="item-head">
+                  <h3>Large display / TV stand for live site</h3>
+                  <span class="tag must">Must-have</span><span class="tag buy">Rent or own</span>
+                </div>
+                <p>55"+ on a rolling stand showing therabreath-visit-site.vercel.app — pillars, continuity demo, live scorer QR on screen.</p>
+                <div class="links">
+                  <a href="https://www.amazon.com/s?k=rolling+tv+stand+55+inch" target="_blank" rel="noopener">Rolling TV stand</a>
+                  <a class="int" href="/">Live workshop site</a>
+                  <a class="int" href="/score">Live scorer</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$80–200</div>
+          </article>
+
+          <article class="item" data-id="rinse-cups">
+            <div class="check">
+              <input type="checkbox" data-check="rinse-cups" />
+              <div>
+                <div class="item-head">
+                  <h3>Branded rinse cups + spit cups</h3>
+                  <span class="tag nice">Nice</span><span class="tag buy">Custom</span>
+                </div>
+                <p>2 oz portion cups with TFF sticker for sensory protocol. Discrete black cups for expectorate. Professional, not clinical.</p>
+                <div class="links">
+                  <a href="https://www.webstaurantstore.com/search/2-oz-portion-cups.html" target="_blank" rel="noopener">Webstaurant portion cups</a>
+                  <a class="int" href="/labels">Label design reference</a>
+                  <a href="https://www.vistaprint.com/labels-stickers/sheet-stickers" target="_blank" rel="noopener">Vistaprint stickers</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$30</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Tasting block · stations &amp; samples</h2>
+        <p class="desc">Make the 9:30 three-station walk feel intentional — like a trade show booth built for one client.</p>
+        <div class="items">
+          <article class="item" data-id="station-signs">
+            <div class="check">
+              <input type="checkbox" data-check="station-signs" />
+              <div>
+                <div class="item-head">
+                  <h3>Station signage (already built)</h3>
+                  <span class="tag must">Must-have</span><span class="tag diy">Print</span>
+                </div>
+                <p>Three 10×7.5" landscape signs: Classic Freshness, Innovation Lab, Functional Benefits. Print on foam board or card stock easels.</p>
+                <div class="links">
+                  <a class="int" href="/stations">Print station signs</a>
+                  <a href="https://www.staples.com/services/printing/category/2499459" target="_blank" rel="noopener">Staples print services</a>
+                  <a href="https://www.fedex.com/en-us/printing/posters.html" target="_blank" rel="noopener">FedEx Office foam board</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$45</div>
+          </article>
+
+          <article class="item wow" data-id="sample-crate">
+            <div class="check">
+              <input type="checkbox" data-check="sample-crate" />
+              <div>
+                <div class="item-head">
+                  <h3>Wooden sample display crate</h3>
+                  <span class="tag wow">Wow factor</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>Rustic crate with dividers holding 10 labeled sample bottles — "Flavor library, live." Reuse for future client visits.</p>
+                <div class="links">
+                  <a href="https://www.amazon.com/s?k=wooden+crate+divided+bottle+display" target="_blank" rel="noopener">Amazon display crates</a>
+                  <a class="int" href="/labels">Sample kit labels</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$40–80</div>
+          </article>
+
+          <article class="item" data-id="palate">
+            <div class="check">
+              <input type="checkbox" data-check="palate" />
+              <div>
+                <div class="item-head">
+                  <h3>Palate cleanser station</h3>
+                  <span class="tag must">Must-have</span><span class="tag buy">Grocery</span>
+                </div>
+                <p>Unsalted crackers, room-temp distilled water, unsweetened tea. Label: "Reset between prototypes." Matches sensory SOP in Lakewood kits.</p>
+                <div class="links">
+                  <a href="https://www.webstaurantstore.com/search/unsalted-crackers-bulk.html" target="_blank" rel="noopener">Bulk crackers</a>
+                  <a class="int" href="/triangle">Triangle test SOP</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$25</div>
+          </article>
+
+          <article class="item" data-id="nfc">
+            <div class="check">
+              <input type="checkbox" data-check="nfc" />
+              <div>
+                <div class="item-head">
+                  <h3>NFC tap cards for live scorer</h3>
+                  <span class="tag wow">Wow factor</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>Tap phone to open /score — no typing URLs during tasting. One card per station table.</p>
+                <div class="links">
+                  <a href="https://www.amazon.com/s?k=nfc+cards+writable+ntag215" target="_blank" rel="noopener">Amazon NFC cards</a>
+                  <a href="https://www.nfctagify.com/" target="_blank" rel="noopener">NFC Tagify (programming)</a>
+                  <a class="int" href="/score">Live scorer URL</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$15–30</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Food, coffee &amp; comfort</h2>
+        <p class="desc">Half-day schedule means no full lunch — but arrival coffee and tasting refreshments keep energy up without wrecking palates.</p>
+        <div class="items">
+          <article class="item" data-id="coffee">
+            <div class="check">
+              <input type="checkbox" data-check="coffee" />
+              <div>
+                <div class="item-head">
+                  <h3>Morning coffee &amp; light breakfast</h3>
+                  <span class="tag must">Must-have</span><span class="tag buy">Cater or DIY</span>
+                </div>
+                <p>8:00 AM arrival: coffee, tea, water, pastries, fruit. No onion/garlic heavy items. Disposable cups with TFF logo sleeve optional.</p>
+                <div class="links">
+                  <a href="https://www.panerabread.com/en-us/catering/menu/categories/breakfast.html" target="_blank" rel="noopener">Panera catering</a>
+                  <a href="https://www.starbucks.com/menu/catering" target="_blank" rel="noopener">Starbucks catering</a>
+                  <a href="https://www.coronaca.gov/Business-Directory" target="_blank" rel="noopener">Corona local caterers</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$120–250</div>
+          </article>
+
+          <article class="item" data-id="tasting-bites">
+            <div class="check">
+              <input type="checkbox" data-check="tasting-bites" />
+              <div>
+                <div class="item-head">
+                  <h3>Tasting-block refreshments</h3>
+                  <span class="tag nice">Nice</span><span class="tag buy">Cater</span>
+                </div>
+                <p>9:30–10:30: sparkling water, mild cheese cubes, green apple slices, plain pita — palate-friendly per site copy.</p>
+                <div class="links">
+                  <a href="https://www.traderjoes.com/home" target="_blank" rel="noopener">Trader Joe's platters</a>
+                  <a href="https://www.costcobusinessdelivery.com/" target="_blank" rel="noopener">Costco Business Delivery</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$60–100</div>
+          </article>
+
+          <article class="item" data-id="water-bottles">
+            <div class="check">
+              <input type="checkbox" data-check="water-bottles" />
+              <div>
+                <div class="item-head">
+                  <h3>Custom label water bottles</h3>
+                  <span class="tag nice">Nice</span><span class="tag buy">Custom</span>
+                </div>
+                <p>16 oz bottles with TFF × TheraBreath label: "Stay fresh · July 8, 2026." Hand out at tour start.</p>
+                <div class="links">
+                  <a href="https://www.vistaprint.com/promotional-products/water-bottles" target="_blank" rel="noopener">Vistaprint water bottles</a>
+                  <a href="https://www.customwater.com/" target="_blank" rel="noopener">CustomWater.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$2–4 ea</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Depart &amp; follow-through moments</h2>
+        <p class="desc">Last impressions matter — especially for Procurement evaluating long-term partnership.</p>
+        <div class="items">
+          <article class="item" data-id="photo">
+            <div class="check">
+              <input type="checkbox" data-check="photo" />
+              <div>
+                <div class="item-head">
+                  <h3>Group photo at Station 1</h3>
+                  <span class="tag nice">Nice</span><span class="tag diy">DIY</span>
+                </div>
+                <p>12:00 PM: banner backdrop + sample crate. Instant print optional. Send with <a href="/followup">follow-up email</a> within 24 hours.</p>
+                <div class="links">
+                  <a href="https://www.amazon.com/s?k=polaroid+instant+printer" target="_blank" rel="noopener">Instant photo printer</a>
+                  <a class="int" href="/followup">Follow-up email template</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$0–150</div>
+          </article>
+
+          <article class="item wow" data-id="thankyou">
+            <div class="check">
+              <input type="checkbox" data-check="thankyou" />
+              <div>
+                <div class="item-head">
+                  <h3>Handwritten thank-you card in each box</h3>
+                  <span class="tag wow">Wow factor</span><span class="tag diy">DIY</span>
+                </div>
+                <p>Dan signs small cards: "Thank you for breathing innovation with us." Drops in mailer before chair setup.</p>
+                <div class="links">
+                  <a href="https://www.moo.com/us/note-cards.html" target="_blank" rel="noopener">Moo note cards</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$20</div>
+          </article>
+
+          <article class="item" data-id="takehome">
+            <div class="check">
+              <input type="checkbox" data-check="takehome" />
+              <div>
+                <div class="item-head">
+                  <h3>Take-home sample kit box</h3>
+                  <span class="tag must">Must-have</span><span class="tag diy">Assemble</span>
+                </div>
+                <p>Separate small box or mailer insert: 3–5 pilot samples from top-scored concepts. Include <a href="/labels">numbered labels</a> and tasting notes card.</p>
+                <div class="links">
+                  <a href="https://www.uline.com/Grp_8/Corrugated-Boxes" target="_blank" rel="noopener">Uline shipping boxes</a>
+                  <a class="int" href="/labels">Sample labels</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$5 ea</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Host team · look the part</h2>
+        <div class="items">
+          <article class="item" data-id="apron">
+            <div class="check">
+              <input type="checkbox" data-check="apron" />
+              <div>
+                <div class="item-head">
+                  <h3>Branded lab aprons for co-creation block</h3>
+                  <span class="tag wow">Wow factor</span><span class="tag buy">Custom</span>
+                </div>
+                <p>Navy apron with TFF logo — R&amp;D hosts wear during 10:30 lab session. Signals "we work here, we make flavor here."</p>
+                <div class="links">
+                  <a href="https://www.customink.com/custom-aprons" target="_blank" rel="noopener">Custom Ink aprons</a>
+                  <a href="https://www.vistaprint.com/clothing-bags/aprons" target="_blank" rel="noopener">Vistaprint aprons</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$18–25 ea</div>
+          </article>
+
+          <article class="item" data-id="badge">
+            <div class="check">
+              <input type="checkbox" data-check="badge" />
+              <div>
+                <div class="item-head">
+                  <h3>Visitor badge lanyards</h3>
+                  <span class="tag nice">Nice</span><span class="tag buy">Purchase</span>
+                </div>
+                <p>"TheraBreath Guest · July 8" on blue lanyards — facility security + photo-ready.</p>
+                <div class="links">
+                  <a href="https://www.vistaprint.com/stationery/lanyards" target="_blank" rel="noopener">Vistaprint lanyards</a>
+                  <a href="https://www.amazon.com/s?k=custom+lanyards+logo" target="_blank" rel="noopener">Amazon custom lanyards</a>
+                </div>
+              </div>
+            </div>
+            <div class="cost">~$3–6 ea</div>
+          </article>
+        </div>
+      </section>
+
+      <div class="budget">
+        <div><strong>~$800</strong><span>Lean kit · banners + baskets + print</span></div>
+        <div><strong>~$1,500</strong><span>Recommended · above + catering + wow items</span></div>
+        <div><strong>~$2,500</strong><span>Premium · custom everything + instant photo</span></div>
+      </div>
+    </div>
+
+    <script>
+      function load() {
+        try { return JSON.parse(localStorage.getItem('tff-hospitality') || '{}'); }
+        catch (e) { return {}; }
+      }
+      function save(d) { localStorage.setItem('tff-hospitality', JSON.stringify(d)); }
+
+      document.querySelectorAll('input[data-check]').forEach(function(inp) {
+        var key = inp.dataset.check;
+        var d = load();
+        if (d[key]) { inp.checked = true; inp.closest('.item').style.opacity = '0.72'; }
+        inp.addEventListener('change', function() {
+          var data = load();
+          data[key] = inp.checked;
+          save(data);
+          inp.closest('.item').style.opacity = inp.checked ? '0.72' : '1';
+        });
+      });
+
+      function resetChecks() {
+        if (confirm('Reset hospitality checklist?')) {
+          localStorage.removeItem('tff-hospitality');
+          document.querySelectorAll('input[data-check]').forEach(function(inp) {
+            inp.checked = false;
+            inp.closest('.item').style.opacity = '1';
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
