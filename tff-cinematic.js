@@ -51,7 +51,7 @@
       '<span class="tff-cine-headline-line">The Flavor Factory</span>' +
       '<span class="tff-cine-headline-line tff-cine-headline-accent">Welcomes the TheraBreath Team</span>' +
       "</h1>" +
-      '<p class="tff-cine-tag">Breath of Innovation · July 8, 2026</p>' +
+      '<p class="tff-cine-tag">Breath of Innovation · Capabilities Workshop · July 8, 2026 · Norco, CA</p>' +
       "</div>" +
       '<div class="tff-cine-dissolve" aria-hidden="true"></div>' +
       '<button type="button" class="tff-cine-skip">Skip</button>';
