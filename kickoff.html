@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kickoff Call | Ross · Nelly · TFF</title>
+    <title>Today's Call · Jun 11 | July 8 Visit Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <style>
       :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --done:#edf8e8; --live:#fff4e8; }
@@ -18,11 +18,13 @@
       .live-pill::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--orange); animation:pulse 1.5s ease infinite; }
       @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
       .hero h1 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:clamp(1.6rem,4vw,2.2rem); font-weight:800; letter-spacing:-0.03em; }
-      .hero p { margin:0; max-width:640px; font-size:0.92rem; line-height:1.55; color:rgba(255,255,255,0.82); }
+      .hero p { margin:0; max-width:680px; font-size:0.92rem; line-height:1.55; color:rgba(255,255,255,0.82); }
       .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
       .hero-meta span { padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); font-size:0.76rem; font-weight:600; }
       .wrap { width:min(900px,calc(100vw - 40px)); margin:0 auto; padding:28px 0 64px; }
-      .note { padding:16px 18px; margin-bottom:24px; border:1px solid rgba(0,143,211,0.25); border-radius:12px; background:#f0f9fd; font-size:0.84rem; line-height:1.55; color:#344054; }
+      .note { padding:16px 18px; margin-bottom:24px; border-radius:12px; font-size:0.84rem; line-height:1.55; color:#344054; }
+      .note.prev { border:1px solid var(--line); background:#fff; }
+      .note.today { border:1px solid rgba(0,143,211,0.25); background:#f0f9fd; }
       .note b { color:var(--blue); }
       .people { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:28px; }
       .person { padding:16px; border:1px solid var(--line); border-radius:12px; background:#fff; }
@@ -32,6 +34,21 @@
       .person.tbd { border-style:dashed; background:#fafcfe; }
       h2 { margin:0 0 14px; font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; }
       .section { margin-bottom:32px; }
+      .subjects { display:grid; gap:10px; }
+      .subject { padding:14px 16px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+      .subject h4 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.88rem; display:flex; align-items:center; gap:8px; }
+      .subject h4 .tag { padding:3px 8px; border-radius:999px; font-size:0.58rem; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; }
+      .tag.main { background:#fff4e8; color:#c45c26; }
+      .tag.light { background:#f0f2f8; color:#5b6b8a; }
+      .tag.proc { background:#f5f0ff; color:#6b4fa0; }
+      .subject p { margin:0; font-size:0.82rem; color:var(--muted); line-height:1.5; }
+      .subject ul { margin:8px 0 0; padding-left:18px; font-size:0.8rem; color:#344054; line-height:1.5; }
+      .timeline { border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+      .tl-row { display:grid; grid-template-columns:72px 1fr; gap:14px; padding:12px 18px; border-bottom:1px solid var(--line); font-size:0.82rem; align-items:baseline; }
+      .tl-row:last-child { border-bottom:none; }
+      .tl-row time { font-family:"Sora",sans-serif; font-weight:800; color:var(--blue); font-size:0.8rem; }
+      .tl-row b { display:block; font-family:"Sora",sans-serif; font-size:0.86rem; margin-bottom:2px; }
+      .tl-row span { color:var(--muted); line-height:1.4; }
       .block { margin-bottom:12px; border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
       .block-head { display:grid; grid-template-columns:64px 1fr auto; gap:12px; align-items:center; padding:14px 18px; background:#fafcfe; border-bottom:1px solid var(--line); cursor:pointer; }
       .block.open .block-head { border-bottom:1px solid var(--line); }
@@ -43,11 +60,13 @@
       .block.done .block-head { background:var(--done); }
       .block.done .block-head h3 { text-decoration:line-through; opacity:0.6; }
       .block ul { margin:8px 0 0; padding-left:18px; }
+      .block a { color:var(--blue); font-weight:600; }
       .cue { margin-top:10px; padding:10px 12px; border-left:3px solid var(--orange); background:var(--live); font-size:0.8rem; }
       .cue b { color:var(--orange); }
       .share { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
       .share a { display:grid; gap:4px; padding:14px 16px; border:1px solid var(--line); border-radius:12px; background:#fff; text-decoration:none; color:inherit; transition:transform 0.2s, box-shadow 0.2s; }
       .share a:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(10,22,40,0.08); }
+      .share a.primary { border-color:rgba(0,143,211,0.35); background:#f8fcfe; }
       .share a b { font-family:"Sora",sans-serif; font-size:0.86rem; color:var(--ink); }
       .share a span { font-size:0.72rem; color:var(--muted); }
       .share a em { font-family:"Sora",sans-serif; font-size:0.72rem; font-weight:700; color:var(--blue); font-style:normal; }
@@ -63,60 +82,146 @@
       .outcome { padding:16px; border:1px solid var(--line); border-radius:12px; background:#fff; }
       .outcome h4 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.82rem; color:var(--green); }
       .outcome p { margin:0; font-size:0.8rem; color:var(--muted); line-height:1.45; }
-      .email-quote { padding:16px 18px; border-left:4px solid var(--blue); background:#fff; border-radius:0 12px 12px 0; font-size:0.84rem; line-height:1.55; color:#344054; font-style:italic; }
-      .email-quote cite { display:block; margin-top:8px; font-size:0.72rem; color:var(--muted); font-style:normal; font-weight:600; }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+      .mini { padding:16px; border:1px solid var(--line); border-radius:12px; background:#fff; font-size:0.82rem; line-height:1.5; color:#344054; }
+      .mini h4 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.82rem; color:var(--ink); }
+      .mini ul { margin:0; padding-left:18px; }
       .progress { font-size:0.78rem; color:var(--muted); margin-bottom:12px; }
       .progress strong { color:var(--blue); }
-      @media (max-width:720px) { .people, .share, .outcomes { grid-template-columns:1fr; } .block-head { grid-template-columns:56px 1fr; } .block-head .dur { grid-column:2; } }
+      @media (max-width:720px) { .people, .share, .outcomes, .grid2 { grid-template-columns:1fr; } .block-head { grid-template-columns:56px 1fr; } .block-head .dur { grid-column:2; } }
       @media print { .toolbar { display:none; } .block-body { display:block !important; } }
     </style>
   </head>
   <body>
     <div class="toolbar">
-      <span><strong>Kickoff call</strong> · Lakewood + July 8 alignment</span>
+      <span><strong>Today · Thu Jun 11</strong> · July 8 visit prep with Ross &amp; Nelly</span>
       <div>
         <a href="/toolkit">Toolkit</a>
-        <a href="/questions">Questions</a>
         <a href="/answers">Answers</a>
+        <a href="/host">July 8 run-of-show</a>
         <button type="button" onclick="window.print()">Print</button>
       </div>
     </div>
 
     <header class="hero">
       <div class="hero-in">
-        <div class="live-pill">Today · Zoom kickoff</div>
-        <h1>Lakewood validation &amp; July 8 kickoff</h1>
-        <p>30-minute alignment with Ross Conroy (R&amp;D), Neonila Levitsky (procurement), and any procurement colleagues Ross invites. Walk through the sensory plan, confirm July 8 logistics, and tee up the virtual procurement session.</p>
+        <div class="live-pill">Today · Thursday Jun 11</div>
+        <h1>What to expect on July 8</h1>
+        <p>Follow-up call with Ross Conroy (R&amp;D) and Neonila Levitsky (procurement). Last time we walked through the Lakewood sensory validation plan — today is mostly about the Norco half-day visit: agenda, experience, logistics, and what each side needs before July 8.</p>
         <div class="hero-meta">
-          <span>Wed Jun 10, 2026 · 8:30–9:00 AM PT</span>
-          <span>11:30 AM–12:00 PM ET</span>
-          <span>30 min · screen share toolkit</span>
+          <span>Thu Jun 11, 2026 · 11:30 AM–12:00 PM ET</span>
+          <span>8:30–9:00 AM PT</span>
+          <span>30 min · screen share workshop site</span>
         </div>
       </div>
     </header>
 
     <div class="wrap">
-      <p class="note">
-        <b>Ross scheduling note:</b> Ross offered <b>Thursday Jun 11, 11:30 AM–noon ET</b> as an alternate (Nelly is out Fridays). If today's slot holds, use this page as-is. If the invite moves to Thursday, same agenda — update the time mentally; Ross said he'll send the calendar invite and will confirm whether Nelly can make it.
+      <p class="note prev">
+        <b>Previous call covered:</b> Lakewood site parity validation — four-rung ladder (expert → triangle → blind fingerprint → consumer), 8 variants on Ross's trial timeline, toolkit at <a href="/lakewood">/lakewood</a>. Today: quick status only unless they want to reopen.
+      </p>
+      <p class="note today">
+        <b>Ross's invite:</b> Thursday 6/11, 11:30a–noon EST — Nelly is sometimes tough to catch but should be able to make this slot (she's out Fridays). Confirm who's on the line at open.
       </p>
 
       <div class="people">
         <div class="person">
           <h3>Ross Conroy</h3>
-          <p>R&amp;D · Lakewood mouthrinse implementation · sensory validation request</p>
+          <p>R&amp;D · Lakewood implementation · July 8 R&amp;D attendance</p>
           <span class="role">Primary · R&amp;D</span>
         </div>
         <div class="person">
           <h3>Neonila (Nelly) Levitsky</h3>
-          <p>Procurement · Cc'd on Ross emails · approval workflow for site parity</p>
-          <span class="role">Procurement · TBD attendance</span>
+          <p>Procurement · supplier qualification · scorecard metrics</p>
+          <span class="role">Procurement · target attendee</span>
         </div>
         <div class="person tbd">
-          <h3>Procurement team</h3>
-          <p>Possibly joining per Ross — virtual session before July 8 visit</p>
-          <span class="role">Optional attendees</span>
+          <h3>Procurement colleagues</h3>
+          <p>May join today or a separate virtual session before the visit</p>
+          <span class="role">Optional</span>
         </div>
       </div>
+
+      <section class="section">
+        <h2>Subjects &amp; talking points for today</h2>
+        <div class="subjects">
+          <div class="subject">
+            <h4><span class="tag main">Main</span> What July 8 is — and isn't</h4>
+            <p>A <strong>capabilities review and working session</strong>, not a sales pitch. Half day at our Norco facility: real tour, four pillars with documentation, live tasting of ten prototypes, bench co-creation, and a prioritized action close by 12:30 PM.</p>
+            <ul>
+              <li>Interactive workshop site on the room display — they can follow on phones too</li>
+              <li>Visitor passports + live concept scorer during tasting</li>
+              <li>Deliverables within 24 hours: summary, scores, pilot priorities, Lakewood reports as trials complete</li>
+            </ul>
+          </div>
+          <div class="subject">
+            <h4><span class="tag main">Main</span> Walk through the morning · block by block</h4>
+            <p>Screen-share the workshop site and <a href="/passport">passport</a> so they see the flow before they land.</p>
+            <ul>
+              <li><strong>8:00</strong> — Welcome + facility tour (mixing, QC, TheraBreath production, R&amp;D lab)</li>
+              <li><strong>8:30</strong> — Pillars 1 &amp; 3: Resiliency + Operations (capacity conversation, certs, continuity)</li>
+              <li><strong>9:00</strong> — Pillars 2 &amp; 4: Innovation + Partnership (chlorite story, trends, charter)</li>
+              <li><strong>9:30</strong> — Three-station tasting · ten prototypes · phones on /score</li>
+              <li><strong>10:30</strong> — Co-creation lab · top concepts to the bench · worksheets</li>
+              <li><strong>12:00</strong> — Action plan · sample kits · depart by 12:30</li>
+            </ul>
+          </div>
+          <div class="subject">
+            <h4><span class="tag main">Main</span> Who they'll meet at TFF</h4>
+            <p><strong>Dan</strong> — partnership + facility · <strong>Ryan</strong> — quality, SQF/GMP, supplier files · <strong>Alex</strong> — R&amp;D, innovation, co-creation · <strong>Matt</strong> — facilitation + digital tools.</p>
+          </div>
+          <div class="subject">
+            <h4><span class="tag main">Main</span> What we need from them before July 8</h4>
+            <ul>
+              <li>Attendee names, titles, dietary restrictions, accessibility needs</li>
+              <li>One-sentence success criteria each for R&amp;D vs Procurement</li>
+              <li>Growth scenario for capacity working session (conservative / plan / stretch)</li>
+              <li>Any topics off-limits inside C&amp;D we should avoid</li>
+              <li>NDA/confidentiality reconfirm if prototypes and roadmap are sensitive</li>
+            </ul>
+          </div>
+          <div class="subject">
+            <h4><span class="tag proc">If Nelly joins</span> Procurement angle on the visit</h4>
+            <ul>
+              <li>Supplier qualification file gaps — what docs to add after the visit</li>
+              <li>Scorecard metrics that matter: lead time, OTIF, audit score, innovation</li>
+              <li>Single-site vs dual-source — resiliency pillar + continuity demo addresses this</li>
+              <li>Leave-behind: <a href="/onepager">executive one-pager</a> for procurement</li>
+              <li>Pricing/commercial: discuss in session — no public rate card on the site</li>
+            </ul>
+          </div>
+          <div class="subject">
+            <h4><span class="tag light">Light touch</span> Lakewood validation · status since last call</h4>
+            <p>Only if they raise it — confirm plan still stands, any open items from last call, first variant sample ship date for triangle scheduling. Point to <a href="/lakewood-tracker">tracker</a> if needed; don't re-present the full ladder unless asked.</p>
+            <ul>
+              <li>Open: panel location, reference site per SKU, procurement sign-off on parity</li>
+              <li>Send <a href="/lakewood-reply">written reply</a> if they want email confirmation today</li>
+            </ul>
+          </div>
+          <div class="subject">
+            <h4><span class="tag light">They may ask</span> Quick answers ready</h4>
+            <ul>
+              <li><em>"Is this a pitch?"</em> — Working session; real tour, real tasting, real iteration</li>
+              <li><em>"What do we bring?"</em> — Comfortable shoes for tour; phones for scoring; R&amp;D curiosity</li>
+              <li><em>"What do we leave with?"</em> — Passport, sample kits, 24h follow-up, pilot list</li>
+              <li><em>"Where is Norco?"</em> — Send address/parking with calendar hold after this call</li>
+              <li>Full talk tracks on <a href="/answers">/answers</a> — filter Visit + Procurement</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>July 8 at a glance</h2>
+        <div class="timeline">
+          <div class="tl-row"><time>8:00</time><div><b>Arrival · tour</b><span>Passports + tour maps · mixing, QC, production, R&amp;D lab · <a href="/tour">/tour</a></span></div></div>
+          <div class="tl-row"><time>8:30</time><div><b>Resiliency + Operations</b><span>Capacity, redundancy, certifications, traceability · Ryan leads · 30 min</span></div></div>
+          <div class="tl-row"><time>9:00</time><div><b>Innovation + Partnership</b><span>Chlorite stability, trends, partnership charter · Alex + Dan · 30 min</span></div></div>
+          <div class="tl-row"><time>9:30</time><div><b>Tasting · 3 stations</b><span>Ten prototypes · station signs · live /score · 60 min · <a href="/stations">/stations</a></span></div></div>
+          <div class="tl-row"><time>10:30</time><div><b>Co-creation lab</b><span>Top scorers to the bench · worksheets · pilot priorities · 90 min · <a href="/worksheet">/worksheet</a></span></div></div>
+          <div class="tl-row"><time>12:00</time><div><b>Action plan · depart</b><span>Recap, sample kits, photo · out by 12:30 · <a href="/followup">/followup</a></span></div></div>
+        </div>
+      </section>
 
       <section class="section">
         <h2>Pre-call checklist</h2>
@@ -130,141 +235,180 @@
 
         <div class="block open" data-id="1">
           <div class="block-head" onclick="toggleBlock(this.parentElement)">
-            <time>0:00</time><h3>Welcome &amp; why we're here</h3><span class="dur">3 min</span>
+            <time>0:00</time><h3>Welcome · bridge from last call</h3><span class="dur">3 min</span>
           </div>
           <div class="block-body">
-            <strong>Lead:</strong> Dan · <strong>Goal:</strong> Frame two threads in one short call — Lakewood site parity validation and July 8 Norco workshop prep.
+            <strong>Lead:</strong> Dan · <strong>Goal:</strong> Set today's focus — July 8 experience, not a Lakewood re-read.
             <ul>
-              <li>Thank Ross for the trial timeline and 8-variant list</li>
-              <li>Confirm who's on the line and whether procurement colleagues are joining today or a separate session</li>
-              <li>Set expectation: we'll share a live toolkit they can bookmark — not a slide deck dump</li>
+              <li>Confirm Ross + Nelly (and anyone else) on the line</li>
+              <li>Acknowledge last call: sensory validation plan is documented in the toolkit</li>
+              <li>Today: walk through what their day looks like on July 8 and lock logistics</li>
             </ul>
-            <div class="cue"><b>Opener:</b> "We built a sensory validation program around your Lakewood email and want to align on method, ownership, and how it connects to the July 8 visit."</div>
+            <div class="cue"><b>Opener:</b> "Last time we aligned on Lakewood validation — today we want you to know exactly what to expect when you're here July 8, and get what we need from you to make it a great half day."</div>
           </div>
         </div>
 
         <div class="block" data-id="2">
           <div class="block-head" onclick="toggleBlock(this.parentElement)">
-            <time>0:03</time><h3>Lakewood plan recap</h3><span class="dur">10 min</span>
+            <time>0:03</time><h3>Framing · capabilities review</h3><span class="dur">4 min</span>
           </div>
           <div class="block-body">
-            <strong>Screen share:</strong> <a href="/lakewood">/lakewood</a> → <a href="/lakewood-tracker">/lakewood-tracker</a>
+            <strong>Screen share:</strong> <a href="/">Workshop site</a> (scroll partnership + visit brief)
             <ul>
-              <li>Four-rung ladder: expert screen → ISO triangle → blind paired fingerprint → consumer (Tier-A only if needed)</li>
-              <li>8 variants on Ross's trial table — phased Jun–Sep as samples ship (~1–2 weeks post-trial)</li>
-              <li>Decision rules before data: who holds ship if triangle fails at α=0.05?</li>
-              <li>Reference site per SKU for triangle "A" sample — must match what consumers know today</li>
+              <li>Four pillars — resiliency, innovation, operations, partnership — one conversation</li>
+              <li>Not invented stats: capacity and pricing are working discussions in the room</li>
+              <li>They'll use passports, live scorer, and co-creation worksheets — show the hub</li>
+              <li>Share toolkit URL for async prep: <b>therabreath-visit-site.vercel.app/toolkit</b></li>
             </ul>
-            <div class="cue"><b>Ask:</b> "Does this escalation ladder match what R&amp;D needs, and does Procurement sign off on sensory parity or is that R&amp;D-only?"</div>
+            <div class="cue"><b>Key line:</b> "Your team leaves knowing how we work — and we leave knowing where to invest next."</div>
           </div>
         </div>
 
         <div class="block" data-id="3">
           <div class="block-head" onclick="toggleBlock(this.parentElement)">
-            <time>0:13</time><h3>Alignment questions</h3><span class="dur">8 min</span>
+            <time>0:07</time><h3>July 8 agenda walk-through</h3><span class="dur">12 min</span>
           </div>
           <div class="block-body">
-            <strong>Screen share:</strong> <a href="/questions">/questions</a> (filter: Lakewood + Procurement)
+            <strong>Screen share:</strong> <a href="/">/</a> agenda section · <a href="/passport">/passport</a> · <a href="/slides">/slides</a> (slide 17 scoring)
             <ul>
-              <li>Where do panels run — Norco, Lakewood, C&amp;D site, or third-party lab?</li>
-              <li>Panelist recruitment: trained internal panel on their side vs ours?</li>
-              <li>Identical TFF flavor lots vs reissued lots — lot numbers for fingerprint reports</li>
-              <li>Tier-A SKUs (Icy Mint, Dazzling Mint, Sparkle Mint): consumer CLT budget if analytical difference found?</li>
+              <li>Tour first — grounds everything in the real facility</li>
+              <li>Pillar sessions on the live site — stress-test demo if display available</li>
+              <li>Tasting: Classic · Innovation Lab · Functional — ten concepts, honest reactions</li>
+              <li>Co-creation: top 3 from scoring go to the bench with Alex</li>
+              <li>Close: pilot batch list, owners, 24-hour follow-up commitment</li>
             </ul>
-            <div class="cue"><b>Park for follow-up:</b> Anything we can't answer in 30 min → capture owner + date in chat</div>
+            <div class="cue"><b>Ask Ross:</b> "Does this flow match what R&amp;D needs from the day?" · <b>Ask Nelly:</b> "Does the ops/procurement content hit what you need, or should we weight a pillar differently?"</div>
           </div>
         </div>
 
         <div class="block" data-id="4">
           <div class="block-head" onclick="toggleBlock(this.parentElement)">
-            <time>0:21</time><h3>July 8 visit &amp; virtual procurement</h3><span class="dur">7 min</span>
+            <time>0:19</time><h3>Logistics &amp; attendee list</h3><span class="dur">6 min</span>
           </div>
           <div class="block-body">
-            <strong>Screen share:</strong> <a href="/">Workshop site</a> · <a href="/host">/host</a> run-of-show
+            <strong>Screen share:</strong> <a href="/hospitality">/hospitality</a> if gift baskets / dietary come up
             <ul>
-              <li>Half day Jul 8 — tour, four pillars, tasting, co-creation close by 12:30 PM</li>
-              <li>Who attends in person — Ross, Nelly, names/titles, dietary/access needs</li>
-              <li>Virtual procurement session before visit: preferred date, topics, scorecard metrics</li>
-              <li>Share toolkit URLs so they can prep async</li>
+              <li>Who attends in person — names, titles, dietary, accessibility</li>
+              <li>Will Ross and/or Nelly travel, or send delegates?</li>
+              <li>Arrival 8:00 AM · depart by 12:30 PM · Norco address + parking in calendar invite</li>
+              <li>Room setup: banners, station signs, refreshments — we're handling</li>
             </ul>
-            <div class="cue"><b>Close ask:</b> "What does success look like for R&amp;D vs Procurement in one sentence each?"</div>
+            <div class="cue"><b>Capture in chat:</b> attendee list + dietary notes before you hang up</div>
           </div>
         </div>
 
         <div class="block" data-id="5">
           <div class="block-head" onclick="toggleBlock(this.parentElement)">
+            <time>0:25</time><h3>Lakewood · quick status (if time)</h3><span class="dur">3 min</span>
+          </div>
+          <div class="block-body">
+            <strong>Only if raised</strong> — <a href="/lakewood-tracker">/lakewood-tracker</a>
+            <ul>
+              <li>Plan unchanged since last call — any feedback from their side?</li>
+              <li>First sample ship date → triangle panel scheduling</li>
+              <li>Procurement approval path for sensory parity — Nelly if on the line</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="block" data-id="6">
+          <div class="block-head" onclick="toggleBlock(this.parentElement)">
             <time>0:28</time><h3>Next steps &amp; close</h3><span class="dur">2 min</span>
           </div>
           <div class="block-body">
             <ul>
-              <li>Send <a href="/lakewood-reply">proposal reply email</a> if Ross wants it in writing today</li>
-              <li>Confirm variant 1 sample ship date → lock triangle scheduling</li>
-              <li>Calendar hold for virtual procurement if not covered today</li>
-              <li>July 8 attendee list + gift basket dietary notes → <a href="/hospitality">/hospitality</a></li>
+              <li>Send calendar hold + Norco address/parking + toolkit link</li>
+              <li>Request attendee list + dietary by [date — suggest ~1 week before]</li>
+              <li>Offer <a href="/onepager">one-pager</a> to Nelly for procurement pre-read</li>
+              <li>Lakewood written recap via <a href="/lakewood-reply">/lakewood-reply</a> only if they ask</li>
             </ul>
-            <div class="cue"><b>Thank Nelly</b> if on the line — procurement thread is explicit in the toolkit</div>
+            <div class="cue"><b>Close ask:</b> "What does success look like for R&amp;D vs Procurement in one sentence each?"</div>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2>Screen-share links</h2>
-        <p style="margin:0 0 14px;font-size:0.84rem;color:var(--muted)">Base URL: <b>therabreath-visit-site.vercel.app</b> — open tabs before the call</p>
+        <h2>Questions to ask them today</h2>
+        <div class="grid2">
+          <div class="mini">
+            <h4>July 8 · visit</h4>
+            <ul>
+              <li>Who is attending — names, titles?</li>
+              <li>Dietary restrictions or accessibility needs?</li>
+              <li>Success in one sentence — R&amp;D vs Procurement?</li>
+              <li>Growth scenario for capacity session?</li>
+              <li>Any off-limits topics inside C&amp;D?</li>
+              <li>NDA reconfirm for prototypes?</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h4>Procurement · if Nelly joins</h4>
+            <ul>
+              <li>What docs missing from our qualification file?</li>
+              <li>Top scorecard metrics for flavor suppliers?</li>
+              <li>Virtual procurement session still needed, or July 8 enough?</li>
+              <li>Dual-source requirement or single-site OK with continuity plan?</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin:14px 0 0;font-size:0.8rem;color:var(--muted)">Full checklist with check-offs on <a href="/questions">/questions</a> — filters: July 8 visit · Procurement</p>
+      </section>
+
+      <section class="section">
+        <h2>Screen-share links · open before the call</h2>
+        <p style="margin:0 0 14px;font-size:0.84rem;color:var(--muted)">Lead with July 8 assets · Lakewood tabs in the background if needed</p>
         <div class="share">
-          <a href="/lakewood"><b>Site parity plan</b><span>Full validation proposal for Ross</span><em>/lakewood</em></a>
-          <a href="/lakewood-tracker"><b>Variant tracker</b><span>8 SKUs · trial timeline · status</span><em>/lakewood-tracker</em></a>
-          <a href="/triangle"><b>Triangle test kit</b><span>ISO 4120 · ballots · significance</span><em>/triangle</em></a>
-          <a href="/questions"><b>Our questions</b><span>What we need from TheraBreath</span><em>/questions</em></a>
-          <a href="/answers"><b>Prepared answers</b><span>If they ask about pillars, ops, Lakewood</span><em>/answers</em></a>
-          <a href="/"><b>Workshop site</b><span>July 8 live experience · four pillars</span><em>/</em></a>
-          <a href="/host"><b>Run-of-show</b><span>July 8 internal host checklist</span><em>/host</em></a>
-          <a href="/toolkit"><b>Toolkit hub</b><span>All 20+ resources in one place</span><em>/toolkit</em></a>
+          <a class="primary" href="/"><b>Workshop site</b><span>Live July 8 experience · four pillars · agenda</span><em>/</em></a>
+          <a class="primary" href="/passport"><b>Visitor passport</b><span>What guests follow along with on the day</span><em>/passport</em></a>
+          <a class="primary" href="/slides"><b>Slide deck</b><span>20 slides · pillar backup · scoring sheet</span><em>/slides</em></a>
+          <a href="/host"><b>Run-of-show</b><span>Internal timing · your cheat sheet</span><em>/host</em></a>
+          <a href="/tour"><b>Facility tour map</b><span>8:00 AM walk-through stops</span><em>/tour</em></a>
+          <a href="/stations"><b>Tasting station signs</b><span>Three stations · ten concepts</span><em>/stations</em></a>
+          <a href="/answers"><b>Prepared answers</b><span>Visit logistics · pillars · procurement</span><em>/answers</em></a>
+          <a href="/onepager"><b>Executive one-pager</b><span>Procurement leave-behind</span><em>/onepager</em></a>
+          <a href="/hospitality"><b>Hospitality guide</b><span>Gift baskets · banners · dietary</span><em>/hospitality</em></a>
+          <a href="/toolkit"><b>Toolkit hub</b><span>Send this link for async prep</span><em>/toolkit</em></a>
+          <a href="/lakewood-tracker"><b>Lakewood tracker</b><span>Only if Lakewood comes up</span><em>/lakewood-tracker</em></a>
+          <a href="/questions"><b>Our questions</b><span>Check off as you ask</span><em>/questions</em></a>
         </div>
       </section>
 
       <section class="section">
-        <h2>Desired outcomes</h2>
+        <h2>Desired outcomes · today</h2>
         <div class="outcomes">
           <div class="outcome">
-            <h4>Lakewood</h4>
-            <p>Agreed escalation ladder, panel location, reference-site rule, and approval path (R&amp;D vs Procurement) for each variant.</p>
+            <h4>July 8 clarity</h4>
+            <p>They understand the half-day flow, who they'll meet, and that it's a working capabilities review — not a pitch.</p>
           </div>
           <div class="outcome">
-            <h4>July 8</h4>
-            <p>Confirmed attendee list, success criteria per function, and date for virtual procurement if not today.</p>
+            <h4>Attendee list</h4>
+            <p>Names, titles, dietary/access needs captured — hospitality and seating can be finalized.</p>
           </div>
           <div class="outcome">
-            <h4>Toolkit</h4>
-            <p>Ross (and Nelly if present) have bookmarked the hub — async prep without another meeting.</p>
+            <h4>Success criteria</h4>
+            <p>One sentence each from R&amp;D and Procurement so we weight pillars and close correctly.</p>
           </div>
           <div class="outcome">
-            <h4>Follow-up</h4>
-            <p>Written recap or <a href="/lakewood-reply">reply email</a> sent within 24 hours with open items owned.</p>
+            <h4>Toolkit bookmarked</h4>
+            <p>They have the hub for passports, slides, and prep before they fly/drive.</p>
           </div>
         </div>
-      </section>
-
-      <section class="section">
-        <h2>Context · Ross email</h2>
-        <blockquote class="email-quote">
-          "I am looking for time this week if possible and not on Friday as Nelly is out — would you be available Thursday 6/11 at 11:30a–noon EST? If so, I'll send the invite for a call — I think she will be able to make it at this time but is sometimes tough to catch so will let you know."
-          <cite>— Ross Conroy · scheduling note (Jun 2026)</cite>
-        </blockquote>
       </section>
     </div>
 
     <script>
       var prepItems = [
-        { id: "p1", text: "Zoom link open · mic/camera tested · screen share ready" },
-        { id: "p2", text: "Tabs open: /lakewood, /lakewood-tracker, /questions, /answers, /toolkit" },
-        { id: "p3", text: "Review top Lakewood questions (lw1–lw8) on /questions" },
-        { id: "p4", text: "Review prepared answers for Ross Lakewood + procurement threads" },
-        { id: "p5", text: "Confirm who from TFF is on the call (Dan + sensory lead if needed)" },
-        { id: "p6", text: "Variant tracker statuses updated for any samples already in hand" },
-        { id: "p7", text: "Hospitality/dietary note ready if attendees for July 8 come up" }
+        { id: "p1", text: "Zoom open · mic/camera · screen share tested" },
+        { id: "p2", text: "Tabs ready: / (workshop site), /passport, /slides, /answers, /toolkit" },
+        { id: "p3", text: "Skim /answers — Visit logistics + Procurement filters" },
+        { id: "p4", text: "Skim /questions — July 8 visit + Procurement items" },
+        { id: "p5", text: "Norco address + parking ready to paste in chat or follow-up email" },
+        { id: "p6", text: "Hospitality/dietary template ready if attendees discussed" },
+        { id: "p7", text: "Lakewood tracker open in background — only if they raise it" },
+        { id: "p8", text: "Confirm TFF on call: Dan + Alex or Ryan if procurement-heavy" }
       ];
-      var prepKey = "kickoff-prep-v1";
-      var blockKey = "kickoff-blocks-v1";
+      var prepKey = "kickoff-prep-v2";
+      var blockKey = "kickoff-blocks-v2";
 
       function loadPrep() {
         try { return JSON.parse(localStorage.getItem(prepKey)) || {}; } catch (e) { return {}; }
