@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Functional Actives · Intensity Tiers | TFF × TheraBreath</title>
+    <title>Listerine Intensity Tiers + GA-22131 | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <style>
-      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --pass:#edf8e8; --warn:#fff4e8; --archived:#f0f2f8; }
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --pass:#edf8e8; --warn:#fff4e8; --threat:#fef2f2; }
       * { box-sizing:border-box; }
       body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; padding-bottom:72px; }
       .toolbar { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
@@ -18,36 +18,55 @@
       .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.6); }
       .status-pill { display:inline-flex; padding:6px 12px; border-radius:999px; background:rgba(95,184,50,0.22); border:1px solid rgba(95,184,50,0.4); font-size:0.68rem; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; }
       .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.7rem,4.5vw,2.5rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; }
-      .hero p { margin:0; max-width:700px; font-size:0.98rem; line-height:1.6; color:rgba(255,255,255,0.85); }
+      .hero p { margin:0; max-width:720px; font-size:0.98rem; line-height:1.6; color:rgba(255,255,255,0.85); }
       .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
       .hero-meta span { padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); font-size:0.76rem; font-weight:600; }
       .wrap { width:min(960px,calc(100vw - 40px)); margin:0 auto; padding:40px 0 80px; }
       h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.3rem; font-weight:800; letter-spacing:-0.02em; }
+      h3 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.95rem; }
       .section { margin-bottom:40px; }
       .section > p.lead { margin:0 0 20px; color:var(--muted); line-height:1.55; max-width:720px; }
       .quote { padding:20px 22px; border-left:4px solid var(--green); background:#fff; border-radius:0 12px 12px 0; font-size:0.88rem; line-height:1.6; color:#344054; margin-bottom:16px; }
+      .quote.threat { border-color:#f04438; background:var(--threat); }
+      .quote.blue { border-color:var(--blue); }
       .quote cite { display:block; margin-top:10px; font-size:0.74rem; color:var(--muted); font-style:normal; font-weight:600; }
       .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+      .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
       .card { padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; }
-      .card h3 { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.95rem; }
       .card p, .card li { font-size:0.84rem; color:var(--muted); line-height:1.5; }
       .card ul { margin:8px 0 0; padding-left:18px; }
       .card.accent { border-color:rgba(95,184,50,0.35); background:linear-gradient(135deg,#fff,#f8fdf6); }
       .card.warn { border-color:rgba(245,130,32,0.35); background:var(--warn); }
+      .voice h4 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.82rem; color:var(--blue); }
+      .chain { border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+      .chain-item { display:grid; grid-template-columns:100px 1fr; gap:14px; padding:14px 18px; border-bottom:1px solid var(--line); font-size:0.82rem; }
+      .chain-item:last-child { border-bottom:none; }
+      .chain-item time { font-family:"Sora",sans-serif; font-weight:800; color:var(--blue); font-size:0.76rem; }
+      .chain-item b { display:block; margin-bottom:2px; font-size:0.86rem; }
+      .chain-item span { color:var(--muted); line-height:1.45; }
       .hypo { display:grid; gap:12px; }
       .hypo-item { display:grid; grid-template-columns:44px 1fr; gap:14px; padding:16px 18px; border:1px solid var(--line); border-radius:12px; background:#fff; }
       .hypo-num { width:40px; height:40px; display:grid; place-items:center; border-radius:10px; background:var(--ink); color:#fff; font-family:"Sora",sans-serif; font-weight:800; font-size:0.9rem; }
       .hypo-item h4 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.9rem; }
       .hypo-item p { margin:0; font-size:0.82rem; color:var(--muted); line-height:1.45; }
-      table { width:100%; border-collapse:collapse; font-size:0.8rem; background:#fff; border-radius:14px; overflow:hidden; border:1px solid var(--line); }
-      th, td { padding:11px 14px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
-      th { background:#f0f9fd; color:var(--blue); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; }
+      .dose-box { margin-top:10px; padding:12px 14px; border-radius:8px; background:#f0f9fd; font-size:0.8rem; line-height:1.5; color:#344054; }
+      .ref { display:inline-flex; align-items:center; gap:6px; margin-top:8px; padding:8px 12px; border-radius:8px; background:#e8f6fd; color:var(--blue); font-size:0.78rem; font-weight:700; text-decoration:none; }
+      .ref:hover { text-decoration:underline; }
+      table { width:100%; border-collapse:collapse; font-size:0.78rem; background:#fff; border-radius:14px; overflow:hidden; border:1px solid var(--line); }
+      th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+      th { background:#f0f9fd; color:var(--blue); font-size:0.64rem; text-transform:uppercase; letter-spacing:0.05em; }
       tr:last-child td { border-bottom:none; }
+      td.neg { color:#b42318; }
+      td.mid { color:var(--orange); }
+      td.ok { color:#2d6a3f; }
+      .position { padding:18px 20px; border:2px solid rgba(245,130,32,0.4); border-radius:14px; background:var(--warn); font-size:0.88rem; line-height:1.55; color:#344054; }
+      .position b { color:#c45c26; }
+      .lexicon { display:grid; gap:8px; }
+      .lex-step { padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#fff; font-size:0.82rem; }
+      .lex-step b { font-family:"Sora",sans-serif; color:var(--ink); }
+      .lex-step span { color:var(--muted); }
       .open { display:grid; gap:8px; }
-      .open-item {
-        display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
-        padding:12px 14px; background:#fff; border:1px solid var(--line); border-radius:10px; font-size:0.84rem;
-      }
+      .open-item { display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; padding:12px 14px; background:#fff; border:1px solid var(--line); border-radius:10px; font-size:0.84rem; }
       .open-item.done { opacity:0.55; background:var(--pass); }
       .open-item input { width:18px; height:18px; margin-top:2px; accent-color:var(--blue); cursor:pointer; }
       .open-item b { display:block; margin-bottom:2px; }
@@ -66,21 +85,19 @@
       .sense.taste { border-left:4px solid var(--green); }
       .sense h4 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em; }
       .sense p { margin:0; font-size:0.82rem; color:#344054; line-height:1.5; }
-      .tools { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:8px; }
-      .tool { padding:16px 18px; border:1px solid var(--line); border-radius:12px; background:#fff; text-decoration:none; color:inherit; transition:transform 0.2s; }
-      .tool:hover { transform:translateY(-2px); box-shadow:0 12px 28px rgba(10,22,40,0.08); }
+      .tools { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+      .tool { padding:16px 18px; border:1px solid var(--line); border-radius:12px; background:#fff; text-decoration:none; color:inherit; }
       .tool b { font-family:"Sora",sans-serif; font-size:0.86rem; display:block; margin-bottom:4px; }
       .tool span { font-size:0.74rem; color:var(--muted); }
-      .email-panel { padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .email-panel textarea { width:100%; min-height:220px; padding:12px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:0.82rem; line-height:1.55; resize:vertical; }
       .email-panel label { display:block; font-size:0.68rem; font-weight:700; color:var(--muted); text-transform:uppercase; margin-bottom:6px; }
-      .email-panel textarea { width:100%; min-height:200px; padding:12px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:0.82rem; line-height:1.55; resize:vertical; }
-      @media (max-width:720px) { .grid2, .sensory, .tools { grid-template-columns:1fr; } }
+      @media (max-width:720px) { .grid2, .grid3, .sensory, .tools, .chain-item { grid-template-columns:1fr; } }
       @media print { .toolbar { display:none; } }
     </style>
   </head>
   <body>
     <div class="toolbar">
-      <span><strong>Working concept</strong> · Listerine intensity tiers + GA-22131 functional flavor</span>
+      <span><strong>Feb–Mar 2026 thread</strong> · Listerine tiers + GA-22131 garlic functional</span>
       <div>
         <a href="/toolkit">Toolkit</a>
         <a href="/kickoff">Today's call</a>
@@ -90,209 +107,233 @@
 
     <header class="hero">
       <div class="hero-in">
-        <p class="kicker">Ross Conroy email thread · Mar 2, 2026 · RE: Listerine new intensity tiers</p>
-        <div class="status-pill">Active working concept · not forgotten</div>
-        <h1>Functional actives in chlorite rinse</h1>
-        <p>Ryan's "mad scientist" exploration of GA-22131 — a garlic-derived functional flavor direction — plus competitive context on Listerine's new mild intensity tiers. Ross asked for references, stability input, and a path toward efficacious actives with more familiar, pleasant aromas.</p>
+        <p class="kicker">Email thread · Ross Conroy · Nelly Levitsky · Georgia Anderson · Feb 6 – Mar 2026</p>
+        <div class="status-pill">Active · two parallel workstreams</div>
+        <h1>Listerine intensity tiers &amp; functional garlic</h1>
+        <p>Competitive threat to TheraBreath Mild Mint meets exploratory GA-22131 innovation. This page captures how C&amp;D speaks, what they asked for, what TFF delivered, and what's still open — so nothing gets lost between March and July 8.</p>
         <div class="hero-meta">
-          <span>Sample GA-22131 · sodium chlorite base</span>
-          <span>Allicin + diallyl disulfide hypotheses</span>
-          <span>~1 g garlic clove dose framing</span>
-          <span>July 8 innovation tie-in</span>
+          <span>Listerine Extra Mild → TB Mild Mint</span>
+          <span>GA-22131 · allicin / DADS</span>
+          <span>Dan · Alex · Ryan on thread</span>
+          <span>NCT03105960 reference sent</span>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section class="section">
-        <h2>Why this page exists</h2>
-        <p class="lead">This thread predates the July 8 workshop and Lakewood work, but it is still part of the innovation story. Ross responded thoughtfully to an exploratory sample — we are documenting his feedback, open requests, and our path forward so the concept stays visible in every TheraBreath conversation.</p>
-        <blockquote class="quote">
-          "We very much appreciate this 'mad scientist' approach, it feels very TheraBreath 😊. Just don't go telling Dr. Katz we think he is 'mad'. It is clear that you have put some thought into your hypotheses, and also to estimate what dose of this 'functional' flavor might be efficacious in addressing oral microbes."
-          <cite>— Ross Conroy · Mar 2, 2026 · to Ryan Wixted</cite>
+        <h2>What they're looking for</h2>
+        <p class="lead">Ross and Nelly are direct, appreciative, and strategic. They want TFF as a sensory + innovation partner — not just flavor supply — with language they can use internally.</p>
+        <div class="grid3">
+          <div class="card voice">
+            <h4>Ross · R&amp;D</h4>
+            <ul>
+              <li>Expert competitive tasting across <strong>intensity tiers</strong> — flavor strength, character, overall rinse impact</li>
+              <li>Hypothesis-driven functional exploration (garlic actives) with references and stability honesty</li>
+              <li>Clear, relatable assessments — "what stands out, what lingers"</li>
+              <li>Partnership tone: "maintaining and growing our TheraBreath business"</li>
+            </ul>
+          </div>
+          <div class="card voice">
+            <h4>Nelly · Procurement</h4>
+            <ul>
+              <li>Dan's assessments "incredibly grounding" for strategic path forward</li>
+              <li><strong>Business-owner POV:</strong> opportunity, risks, how TB goes on the offensive</li>
+              <li>Garlic formula content + POV on whether garlic could <strong>meaningfully drive efficacy</strong></li>
+              <li>Holistic flavor lexicon / framework for internal calibration (Alex shared)</li>
+            </ul>
+          </div>
+          <div class="card voice">
+            <h4>How they reward good work</h4>
+            <ul>
+              <li>Warm thanks — "feels very TheraBreath," "mad scientist" praise</li>
+              <li>They cross-shop (Walmart, Target, Giant) and share findings back</li>
+              <li>They loop in Georgia Anderson on innovation threads</li>
+              <li>They follow up on open items — references, stability, competitive synthesis</li>
+            </ul>
+          </div>
+        </div>
+        <blockquote class="quote threat">
+          "This is being seen as a competitive threat, specifically directed towards our core FRESH BREATH - MILD MINT variant… The new Extra Mild appears to be a clear formula and is an entirely new tier from them."
+          <cite>— Ross Conroy · Feb 6, 2026 · opening ask</cite>
         </blockquote>
       </section>
 
       <section class="section">
-        <h2>Two threads in one email</h2>
-        <div class="grid2">
-          <div class="card accent">
-            <h3>1 · GA-22131 functional sample</h3>
-            <p>Ryan sent a chlorite-stable prototype exploring garlic-derived actives (GA-22131) with documented hypotheses on oral-microbe efficacy dosing — framed around ~1 gram of garlic clove equivalence, not raw-burning garlic character.</p>
-            <ul>
-              <li>Compounds of interest: <strong>allicin</strong>, <strong>diallyl disulfide</strong></li>
-              <li>Base: TheraBreath sodium chlorite rinse system</li>
-              <li>Status: working concept — sensory evaluated by Ross; stability reassessment in progress</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>2 · Listerine intensity tier landscape</h3>
-            <p>Parallel competitive work TFF shared on new Listerine mild/extra-mild launches. Ross confirmed at Walmart: extra-mild Freshburst (green), plus Cool Mint and Total Care mild variants.</p>
-            <ul>
-              <li>Informs TheraBreath intensity tier strategy</li>
-              <li>Ross evaluating locally · promised share-back of thoughts</li>
-              <li>Connects to July 8 Classic Freshness station benchmarking</li>
-            </ul>
-          </div>
+        <h2>Thread timeline</h2>
+        <div class="chain">
+          <div class="chain-item"><time>Feb 6</time><div><b>Ross opens</b><span>Listerine intensity tiering on Total Care purple — wants TFF evaluation ASAP. Extra Mild likely spreads to Cool Mint, Freshburst, Original.</span></div></div>
+          <div class="chain-item"><time>Feb 9–10</time><div><b>Dan updates</b><span>Listerine products en route; Extra Mild still elusive. Garlic-Mint samples shipping. Ross hunting Extra Mild (Giant/Target); wants 3 sample sets for Nelly, Georgia, Ross.</span></div></div>
+          <div class="chain-item"><time>Feb 18</time><div><b>Dan · first competitive read</b><span>Intense + Mild Cool Mint &amp; Total Care tested. Cool Mint Intense "least bad." Extra Mild still not found.</span></div></div>
+          <div class="chain-item"><time>Feb 24</time><div><b>Dan · Extra Mild found</b><span>Full tier comparison. Nelly praises depth; asks business-owner framing + lexicon. Alex sends oral-care assessment framework.</span></div></div>
+          <div class="chain-item"><time>Feb 25</time><div><b>Garlic thread splits</b><span>Nelly asks garlic content + efficacy POV. Ryan sends "mad scientist" GA-22131 hypothesis. Alex confirms Walmart Extra Mild locate.</span></div></div>
+          <div class="chain-item"><time>Mar 2</time><div><b>Ross on GA-22131</b><span>Praises approach; wants references + stability read. Confirms Extra Mild Freshburst + Cool Mint + Total Care at Walmart.</span></div></div>
+          <div class="chain-item"><time>Post-Mar</time><div><b>Ryan follow-up</b><span>Sent clinicaltrials.gov/NCT03105960. Committed to chlorite stability check. Allicin/DADS refs + stability report still open.</span></div></div>
         </div>
       </section>
 
       <section class="section">
-        <h2>Ross's sensory read · GA-22131</h2>
-        <p class="lead">Honest R&amp;D feedback — aroma drove surprise more than taste. Overall appropriate for TheraBreath despite unconventional mouthwash odor.</p>
-        <div class="sensory">
-          <div class="sense aroma">
-            <h4>Aroma · primary signal</h4>
-            <p>Smell more off-putting and unusual for a mouthwash than the taste. Garlic character plays more into aroma than flavor — the surprise was sensory, not necessarily objectionable on palate.</p>
-          </div>
-          <div class="sense taste">
-            <h4>Taste · pleasantly surprised</h4>
-            <p>Did <em>not</em> have the burning/heat of raw garlic — made it overall appropriate for TheraBreath. Ross was not sure what to expect but came away positive and curious about next steps.</p>
-          </div>
-        </div>
-        <blockquote class="quote" style="margin-top:16px;border-color:var(--blue)">
-          "Inspired to understand how we could leverage unique actives with perhaps more familiar, pleasant odor qualities while still delivering efficacy."
-          <cite>— Ross Conroy · direction for next-generation functional flavors</cite>
-        </blockquote>
-      </section>
+        <h2>Workstream A · Listerine competitive assessment</h2>
+        <p class="lead">Dan's evaluations across Intense (alcohol), Mild (alcohol-free), and Extra Mild (clear, new tier). Ross validated TFF's Extra Mild finds at Walmart including Freshburst green.</p>
 
-      <section class="section">
-        <h2>Scientific hypotheses · Ryan's framing</h2>
-        <p class="lead">Ross asked for the references behind these — particularly studies linking allicin and diallyl disulfide to functional benefits, and the "1 gram garlic clove" efficacy literature.</p>
-        <div class="hypo">
-          <div class="hypo-item">
-            <span class="hypo-num">A</span>
-            <div>
-              <h4>Allicin · antimicrobial activity</h4>
-              <p>Garlic thioester chemistry — allicin formation from alliin via alliinase — literature on broad-spectrum antimicrobial activity relevant to oral flora management at controlled dose.</p>
-            </div>
-          </div>
-          <div class="hypo-item">
-            <span class="hypo-num">B</span>
-            <div>
-              <h4>Diallyl disulfide · sustained sulfur actives</h4>
-              <p>Stable garlic organosulfur compound — Ross requested references tying DADS to functional benefits; supports rationale for GA-22131 dose design vs raw garlic volatility.</p>
-            </div>
-          </div>
-          <div class="hypo-item">
-            <span class="hypo-num">C</span>
-            <div>
-              <h4>~1 g garlic clove equivalence · dose framing</h4>
-              <p>Ross noted a standard clove is <strong>3–5 g</strong> — so 1 g per use/product is less alarming than it sounds. Many cuisines use far more raw garlic per serving. Good context for regulatory and consumer acceptability conversations.</p>
-            </div>
-          </div>
-          <div class="hypo-item">
-            <span class="hypo-num">D</span>
-            <div>
-              <h4>Chlorite base stability · open question from Ross</h4>
-              <p>"From your assessment of the sample now vs a few weeks back when you developed it — do you think this garlic character is stable in the sodium chlorite base? Is it fading, about the same?" Creator-side shelf observation is the answer Ross is waiting on.</p>
-            </div>
-          </div>
+        <div class="position" style="margin-bottom:20px">
+          <b>TFF positioning read (Dan, Feb 24):</b> Extra Mild is "clearly positioned to compete directly with TheraBreath Mild Mint — lower intensity, alcohol free, and colorless." From a flavor standpoint they're "not very layered or distinctive." Smooth, but still carries the Listerine trademark bad aftertaste.
         </div>
-      </section>
 
-      <section class="section">
-        <h2>Listerine mild launches · Ross confirmation</h2>
-        <p class="lead">Ross found the products at Walmart (late Feb 2026) and was evaluating. TFF's earlier competitive assessment validated.</p>
         <table>
           <thead>
-            <tr><th>Product</th><th>Variant</th><th>Notes</th></tr>
+            <tr><th>Line</th><th>Tier</th><th>TFF read · key descriptors</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>Listerine FRESHBURST</strong></td>
-              <td>Extra mild (green)</td>
-              <td>New intensity tier below standard Freshburst — mild segment expansion</td>
-            </tr>
-            <tr>
-              <td><strong>Listerine COOL MINT</strong></td>
-              <td>Mild / reduced intensity</td>
-              <td>Part of competitive set TFF flagged for TheraBreath benchmarking</td>
-            </tr>
-            <tr>
-              <td><strong>Listerine TOTAL CARE</strong></td>
-              <td>Mild offering</td>
-              <td>Multi-benefit line joining the mild intensity trend</td>
-            </tr>
+            <tr><td>Cool Mint</td><td>Intense (blue)</td><td class="neg">Strong burn, sharp peppermint, heavy medicinal. One-dimensional, drying. Alcohol drives experience.</td></tr>
+            <tr><td>Total Care</td><td>Intense (purple)</td><td class="neg">Slightly sweeter than Cool Mint intense but ethanol-forward. Still medicinal.</td></tr>
+            <tr><td>Cool Mint</td><td>Mild (AF)</td><td class="mid">Cleanest of first four. Fresh peppermint, less medicinal — still simple, no complexity. Feb 18: wintergreen/eucalyptol dominant, bitterness worst of four.</td></tr>
+            <tr><td>Total Care</td><td>Mild (AF)</td><td class="mid">Smooth, no burn, softer mint, flatter. Strong wintergreen, bitter aftertaste, sticky mouthfeel.</td></tr>
+            <tr><td>Cool Mint</td><td>Extra Mild</td><td class="neg">Light peppermint, very mild cooling — "almost watered down." Stronger eucalyptol vs Total Care EM. Chemical, bitter, film-like aftertaste.</td></tr>
+            <tr><td>Total Care</td><td>Extra Mild</td><td class="mid">More body/sweetness than CM EM. Soft, short finish. Sweeteners obvious. Wintergreen relaxed but still medicinal-dominant; bitter lingering aftertaste.</td></tr>
+            <tr><td>Freshburst</td><td>Extra Mild</td><td class="ok">Ross confirmed at Walmart (Mar 2) — TFF had flagged this expansion likelihood in Feb 6 response.</td></tr>
           </tbody>
         </table>
-        <p style="margin:14px 0 0;font-size:0.82rem;color:var(--muted)">Ross: "I will certainly share back our thoughts and next steps, once I pull that together." — awaiting C&amp;D competitive synthesis.</p>
+
+        <div class="grid2" style="margin-top:16px">
+          <div class="card">
+            <h3>Cross-tier patterns Dan called out</h3>
+            <ul>
+              <li>Extra Mild: sweeter, softer, mint dialed back — little bite, cooling, or burn</li>
+              <li>Recurring negatives: <strong>sticky/slimy mouthfeel</strong>, bitter medicinal aftertaste, linear/unlayered flavor</li>
+              <li>Eucalyptol/thymol and wintergreen/methyl salicylate dominate — overpower complexity</li>
+              <li>Emotional read (Alex framework): clinical, not premium; Listerine trademark lingers</li>
+            </ul>
+          </div>
+          <div class="card accent">
+            <h3>Opportunity for TheraBreath · Nelly's ask</h3>
+            <ul>
+              <li>TB Mild Mint is the explicit target — Extra Mild competes on same territory (mild, AF, clear)</li>
+              <li>Listerine trades intensity for sweetness but can't fix aftertaste/mouthfeel</li>
+              <li><strong>Offensive angle:</strong> layered chlorite-stable flavor, clean finish, dentist-credible gentle — not "watered down"</li>
+              <li>Dan's business-owner response to Nelly was pending Feb 25 — good July 8 Innovation pillar topic</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section class="section">
-        <h2>Open items · Ross requests</h2>
+        <h2>TFF oral-care assessment framework</h2>
+        <p class="lead">Alex shared this with Ross, Nelly &amp; Georgia (Feb 25) after Nelly asked for TFF's holistic lexicon. Full descriptor lists were in the email; this is the script they use for mouthwash.</p>
+        <div class="lexicon">
+          <div class="lex-step"><b>Flavor / aroma (before &amp; start)</b> <span>— What stands out first? Mint types? Medicinal notes? Sweetness?</span></div>
+          <div class="lex-step"><b>First impression (first few seconds)</b> <span>— Burn level? Cooling speed? Sweet vs bitter upfront?</span></div>
+          <div class="lex-step"><b>Mid experience</b> <span>— Layered or flat? Medicinal dominate? Balance?</span></div>
+          <div class="lex-step"><b>Finish / aftertaste</b> <span>— Clean or lingering? Bitter? Sweet? Film or residue?</span></div>
+          <div class="lex-step"><b>Mouthfeel</b> <span>— Watery, sticky, slimy, drying, coating?</span></div>
+          <div class="lex-step"><b>Emotional takeaway</b> <span>— Clinical? Gentle? Premium? Chemical? Fresh? Confident?</span></div>
+        </div>
+        <p style="margin:14px 0 0;font-size:0.8rem;color:var(--muted)">Dan's Listerine notes map cleanly to this framework — useful language for July 8 tasting and competitive benchmarking.</p>
+      </section>
+
+      <section class="section">
+        <h2>Workstream B · GA-22131 Garlic Mint functional flavor</h2>
+        <p class="lead">Parallel track on the same email chain. Ross shipped samples to Princeton (3 sets for Nelly, Georgia, Ross). Ryan answered Nelly's efficacy question with structured hypothesis.</p>
+
+        <blockquote class="quote">
+          "Bear with me while I take a mad scientist approach to this…"
+          <cite>— Ryan Wixted · Feb 25, 2026 · to Nelly</cite>
+        </blockquote>
+
+        <div class="hypo">
+          <div class="hypo-item">
+            <span class="hypo-num">1</span>
+            <div>
+              <h4>Source material</h4>
+              <p>GA-22131 garlic component from <strong>alcohol-free garlic extract</strong> — not crushed raw clove. Parallels trending homemade garlic rinses but formulated for commercial mouthwash.</p>
+            </div>
+          </div>
+          <div class="hypo-item">
+            <span class="hypo-num">2</span>
+            <div>
+              <h4>Active compounds</h4>
+              <p><strong>Allicin</strong> and <strong>diallyl disulfide (DADS)</strong> — main drivers of antifungal/antibacterial effects in garlic rinse literature.</p>
+              <div class="dose-box">
+                <strong>Dose math (Ryan):</strong> 1 g crushed garlic in 100 mL rinse ≈ <strong>0.0005–0.005%</strong> allicin + DADS in finished product.<br>
+                GA-22131 rinses shipped: <strong>0.0004–0.004%</strong> — comparable to 1 g clove equivalence.<br>
+                Ross context: average clove is <strong>3–5 g</strong>, so 1 g/use is less objectionable than it sounds.
+              </div>
+            </div>
+          </div>
+          <div class="hypo-item">
+            <span class="hypo-num">3</span>
+            <div>
+              <h4>Chlorite stability risk · Ryan flagged early</h4>
+              <p>Organosulfur compounds "could likely fall victim to oxidation by our old friend Sodium Chlorite" — unclear if efficacy or just garlic flavor strength fades. Ross asked for creator-side assessment Mar 2; Ryan committed to check.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin:24px 0 12px">Ross's sensory read · sample in hand</h3>
+        <div class="sensory">
+          <div class="sense aroma">
+            <h4>Aroma</h4>
+            <p>More off-putting and unusual for mouthwash than taste. Garlic plays into aroma more than flavor.</p>
+          </div>
+          <div class="sense taste">
+            <h4>Taste &amp; heat</h4>
+            <p>No raw-garlic burn/heat — appropriate for TheraBreath. Pleasantly surprised overall.</p>
+          </div>
+        </div>
+        <blockquote class="quote blue" style="margin-top:16px">
+          "Inspired to understand how we could leverage unique actives with perhaps more familiar, pleasant odor qualities while still delivering efficacy."
+          <cite>— Ross · next-gen functional direction</cite>
+        </blockquote>
+
+        <h3 style="margin:24px 0 12px">References · status</h3>
+        <div class="card accent">
+          <p style="margin:0 0 8px;color:#344054"><strong>Sent:</strong> Ryan shared one garlic-rinse reference study:</p>
+          <a class="ref" href="https://clinicaltrials.gov/study/NCT03105960" target="_blank" rel="noopener">clinicaltrials.gov/NCT03105960 →</a>
+          <p style="margin:12px 0 0"><strong>Still requested by Ross:</strong> allicin-specific refs, DADS-specific refs, and the 1 g garlic clove efficacy studies Ryan cited in the hypothesis email.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Open items</h2>
         <p class="progress" id="open-progress"></p>
         <div class="open" id="open-list"></div>
       </section>
 
       <section class="section">
-        <h2>Path forward · TFF position</h2>
+        <h2>Path forward</h2>
         <div class="path">
-          <div class="path-step">
-            <span class="n">1</span>
-            <div>
-              <h4>Close the reference loop</h4>
-              <p>Send allicin + DADS literature pack and 1 g garlic clove efficacy studies Ross requested — formatted for R&amp;D file, not a marketing summary.</p>
-            </div>
-          </div>
-          <div class="path-step">
-            <span class="n">2</span>
-            <div>
-              <h4>Report GA-22131 chlorite stability</h4>
-              <p>Side-by-side sensory on current retain vs development date — aroma vs taste fade, chlorite character interaction, recommended reformulation if sulfur notes are climbing.</p>
-            </div>
-          </div>
-          <div class="path-step">
-            <span class="n">3</span>
-            <div>
-              <h4>Next-gen functional directions</h4>
-              <p>Ross's ask: same efficacy ambition, more familiar pleasant odor — explore herbal/antimicrobial actives with better mouthwash orthogonality (tie to July 8 Functional Benefits station concepts 06–10).</p>
-            </div>
-          </div>
-          <div class="path-step">
-            <span class="n">4</span>
-            <div>
-              <h4>Intensity tier strategy</h4>
-              <p>Integrate Listerine mild landscape into TheraBreath tier conversation — extra-mild, standard, and bold cooling lanes without compromising chlorite stability.</p>
-            </div>
-          </div>
-          <div class="path-step">
-            <span class="n">5</span>
-            <div>
-              <h4>July 8 touchpoint</h4>
-              <p>Brief mention in Innovation pillar — shows continuity from March exploration to workshop prototypes. Not a launch commitment; a proof we track their threads.</p>
-            </div>
-          </div>
+          <div class="path-step"><span class="n">1</span><div><h4>Complete reference package</h4><p>Allicin + DADS literature beyond NCT03105960 — formatted for Ross R&amp;D file.</p></div></div>
+          <div class="path-step"><span class="n">2</span><div><h4>GA-22131 chlorite stability report</h4><p>Development date vs today — aroma fade, taste, efficacy-relevant actives vs flavor-only fade.</p></div></div>
+          <div class="path-step"><span class="n">3</span><div><h4>Dan → Nelly business-owner framing</h4><p>Opportunity/risks + how TB goes on the offensive vs Extra Mild — ideal for July 8 Innovation pillar or pre-read.</p></div></div>
+          <div class="path-step"><span class="n">4</span><div><h4>Ross competitive synthesis</h4><p>Integrate his Walmart Freshburst/CM/TC read-back with Dan's tier matrix.</p></div></div>
+          <div class="path-step"><span class="n">5</span><div><h4>Next functional prototypes</h4><p>Efficacious actives, familiar pleasant odor — July 8 Functional station concepts 06–10.</p></div></div>
         </div>
       </section>
 
       <section class="section">
-        <h2>Talking points · today's calls &amp; July 8</h2>
+        <h2>Talking points · calls &amp; July 8</h2>
         <div class="grid2">
           <div class="card">
-            <h3>If Ross raises GA-22131</h3>
+            <h3>Listerine / intensity tiers</h3>
             <ul>
-              <li>We documented his March feedback — this page is the living status</li>
-              <li>Reference package and stability read are the two open deliverables</li>
-              <li>July 8 Functional station has chlorite-stable directions beyond garlic — same innovation philosophy, broader sensory acceptance</li>
-              <li>Willing to revisit GA-22131 reformulation if aroma masking or alternate sulfur chemistry helps</li>
+              <li>We've tracked this since Feb 6 — Dan tested, Alex framed, Ross confirmed shelf finds</li>
+              <li>Extra Mild is a direct Mild Mint competitive move — TB wins on finish, layering, chlorite-native flavor</li>
+              <li>Use Alex's 6-step assessment script when benchmarking in room</li>
             </ul>
           </div>
-          <div class="card warn">
-            <h3>What not to over-promise</h3>
+          <div class="card">
+            <h3>GA-22131 / functional actives</h3>
             <ul>
-              <li>Not a finished product or claim-ready formula</li>
-              <li>Efficacy dose is hypothesis until C&amp;D R&amp;D + regulatory align</li>
-              <li>Garlic aroma in mouthwash is a positioning conversation, not just a flavor fix</li>
-              <li>Dr. Katz is not "mad" — Ross said so 😊</li>
+              <li>We didn't forget — NCT03105960 sent, stability check committed</li>
+              <li>Ross liked the science; aroma is the hurdle, not heat or taste</li>
+              <li>Dr. Katz is not "mad" — Ross said so</li>
             </ul>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2>Draft follow-up · references &amp; stability</h2>
-        <p class="lead">Copy-ready skeleton for Ryan to send Ross — fill in reference links and stability observations before sending.</p>
+        <h2>Draft follow-up · Ryan to Ross</h2>
         <div class="email-panel">
           <label for="draft">Email body</label>
           <textarea id="draft"></textarea>
@@ -302,42 +343,41 @@
       <section class="section">
         <h2>Related toolkit</h2>
         <div class="tools">
-          <a class="tool" href="/"><b>Workshop site · Innovation pillar</b><span>Chlorite-stable concepts · Functional station</span></a>
-          <a class="tool" href="/stations"><b>Tasting station signs</b><span>Functional Benefits station header</span></a>
-          <a class="tool" href="/answers"><b>Prepared answers</b><span>Chlorite development · prototype concepts</span></a>
-          <a class="tool" href="/kickoff"><b>Today's call page</b><span>July 8 prep · innovation talking points</span></a>
-          <a class="tool" href="/lakewood"><b>Lakewood validation</b><span>Separate active thread · site parity</span></a>
-          <a class="tool" href="/toolkit"><b>Full toolkit hub</b><span>All resources</span></a>
+          <a class="tool" href="/kickoff"><b>Today's call</b><span>July 8 prep · innovation continuity</span></a>
+          <a class="tool" href="/"><b>Workshop site</b><span>Mild mint · functional concepts</span></a>
+          <a class="tool" href="/answers"><b>Prepared answers</b><span>Chlorite · GA-22131 Q&amp;A</span></a>
+          <a class="tool" href="/toolkit"><b>Toolkit hub</b><span>All resources</span></a>
         </div>
       </section>
     </div>
 
     <script>
       var openItems = [
-        { id: "o1", title: "Send allicin literature references", detail: "Ross request — link compounds to functional/oral microbe benefits" },
-        { id: "o2", title: "Send diallyl disulfide (DADS) references", detail: "Same ask — peer-reviewed preferred" },
-        { id: "o3", title: "Send 1 g garlic clove efficacy studies", detail: "Studies Ryan cited in original hypothesis package" },
-        { id: "o4", title: "GA-22131 stability assessment vs development date", detail: "Aroma fade? Taste fade? Chlorite interaction? Creator-side observation" },
-        { id: "o5", title: "Ross competitive read-back on Listerine mild tiers", detail: "Awaiting his Walmart evaluation synthesis" },
-        { id: "o6", title: "Next-sample direction: efficacious + pleasant odor", detail: "Ross-inspired — familiar aroma actives, same functional ambition" },
-        { id: "o7", title: "Mention on July 8 Innovation pillar", detail: "Continuity proof — March thread → workshop prototypes" }
+        { id: "o1", title: "NCT03105960 reference sent", detail: "Ryan follow-up post-Mar 2 — done", done: true },
+        { id: "o2", title: "Allicin-specific literature", detail: "Ross Mar 2 request — still open" },
+        { id: "o3", title: "Diallyl disulfide (DADS) literature", detail: "Ross Mar 2 request — still open" },
+        { id: "o4", title: "1 g garlic clove efficacy studies", detail: "Studies behind Ryan's dose framing" },
+        { id: "o5", title: "GA-22131 chlorite stability report", detail: "Ryan committed; Ross waiting on fade vs development date" },
+        { id: "o6", title: "Dan business-owner POV for Nelly", detail: "Opportunity, risks, TB offensive — asked Feb 24" },
+        { id: "o7", title: "Ross Listerine synthesis", detail: "His Walmart eval + next steps — he promised share-back" },
+        { id: "o8", title: "Next functional sample direction", detail: "Efficacious actives + pleasant familiar odor per Ross" }
       ];
-      var openKey = "intensity-tiers-open-v1";
+      var openKey = "intensity-tiers-open-v2";
 
       var draftText = "Hi Ross,\n\n" +
-        "Thank you again for the thoughtful read on GA-22131 — we have kept this thread active and documented your March feedback here: therabreath-visit-site.vercel.app/intensity-tiers\n\n" +
-        "References you requested:\n" +
-        "• Allicin / antimicrobial activity: [INSERT REFERENCES]\n" +
-        "• Diallyl disulfide (DADS) functional literature: [INSERT REFERENCES]\n" +
+        "Following up on the Listerine intensity tier and GA-22131 threads — we have the full conversation documented here for the team: therabreath-visit-site.vercel.app/intensity-tiers\n\n" +
+        "References:\n" +
+        "• Garlic rinse study (previously shared): https://clinicaltrials.gov/study/NCT03105960\n" +
+        "• Allicin / antimicrobial activity: [INSERT ADDITIONAL REFERENCES]\n" +
+        "• Diallyl disulfide (DADS): [INSERT REFERENCES]\n" +
         "• 1 g garlic clove efficacy studies: [INSERT REFERENCES]\n\n" +
-        "On dose context — we agree standard clove weight (3–5 g) makes 1 g per use far more approachable than it sounds in isolation.\n\n" +
-        "GA-22131 stability in sodium chlorite base (your question on fade vs development date):\n" +
-        "• Aroma character at development: [INSERT]\n" +
-        "• Aroma character today: [INSERT]\n" +
-        "• Taste character: [INSERT]\n" +
-        "• Assessment: [stable / fading / reformulate recommendation]\n\n" +
-        "On next steps — we are aligned with your direction toward unique actives with more familiar, pleasant odor qualities while preserving efficacy ambition. The July 8 workshop includes chlorite-stable functional directions in that spirit; happy to revisit GA-22131 reformulation in parallel.\n\n" +
-        "When you have thoughts back on the Listerine mild launches, we would love to integrate them into our intensity tier conversation.\n\n" +
+        "GA-22131 stability in sodium chlorite (development vs today):\n" +
+        "• Aroma at development: [INSERT]\n" +
+        "• Aroma today: [INSERT]\n" +
+        "• Taste: [INSERT]\n" +
+        "• Assessment: [stable / fading / reformulate]\n\n" +
+        "On your direction toward actives with more familiar, pleasant odors while preserving efficacy — we are exploring that in parallel with the July 8 functional prototypes.\n\n" +
+        "When you have your Listerine mild-tier synthesis, we would love to fold it into our competitive framing for TheraBreath Mild Mint.\n\n" +
         "Best,\nRyan";
 
       document.getElementById("draft").value = draftText;
@@ -351,15 +391,15 @@
         var state = loadOpen();
         var done = 0;
         document.getElementById("open-list").innerHTML = openItems.map(function (item) {
-          var checked = !!state[item.id];
+          var checked = !!state[item.id] || item.done;
           if (checked) done++;
           return '<label class="open-item' + (checked ? ' done' : '') + '">' +
-            '<input type="checkbox" data-id="' + item.id + '"' + (checked ? ' checked' : '') + ' />' +
+            '<input type="checkbox" data-id="' + item.id + '"' + (checked ? ' checked' : '') + (item.done ? ' disabled' : '') + ' />' +
             '<div><b>' + item.title + '</b><span>' + item.detail + '</span></div></label>';
         }).join("");
         document.getElementById("open-progress").innerHTML =
-          '<strong>' + done + '</strong> of <strong>' + openItems.length + '</strong> open items complete';
-        document.querySelectorAll('#open-list input').forEach(function (el) {
+          '<strong>' + done + '</strong> of <strong>' + openItems.length + '</strong> items complete';
+        document.querySelectorAll('#open-list input:not([disabled])').forEach(function (el) {
           el.addEventListener('change', function () {
             var s = loadOpen();
             s[el.dataset.id] = el.checked;
