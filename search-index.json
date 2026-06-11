@@ -710,5 +710,69 @@
     "snippet": "Workshop samples M1–M10 with QC cleared, stability review, and retain review tiers. Station map — cup codes stay blind until reveal.",
     "href": "/concepts",
     "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Print",
+    "q": "Slide deck — Breath of Innovation",
+    "snippet": "Twenty printable slides for room display — welcome, agenda, four pillars, tasting block, concepts, Lakewood, next steps. Open /slides to print.",
+    "href": "/slides",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Print",
+    "q": "Tasting station signs",
+    "snippet": "Printable station tent cards for Fresh Mint, Herbal & Green, and Functional prototype groups.",
+    "href": "/stations",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Print",
+    "q": "Executive one-pager",
+    "snippet": "Procurement leave-behind — capabilities summary on one page.",
+    "href": "/onepager",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Print",
+    "q": "Visitor passport",
+    "snippet": "Pocket follow-along — agenda, checklist, and scoring notes.",
+    "href": "/passport",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Lakewood",
+    "q": "Triangle test kit — ISO 4120",
+    "snippet": "Blind triangle protocol, ballots, and significance calculator for Lakewood site parity.",
+    "href": "/triangle",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Lakewood",
+    "q": "Blind comparison kit",
+    "snippet": "Duo-trio and paired attribute scales when triangle flags a taste difference.",
+    "href": "/blind",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Visit",
+    "q": "Workshop experience — full agenda",
+    "snippet": "Half-day capabilities workshop — partnership, pillars, tasting, concepts, next steps.",
+    "href": "/workshop",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Technical",
+    "q": "Chlorite flavor stability guide",
+    "snippet": "How sodium chlorite changes flavor architecture for TheraBreath OXYD-8 systems.",
+    "href": "/chlorite-flavor",
+    "badge": "ready"
   }
 ]

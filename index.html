@@ -312,26 +312,35 @@
       .facility-band p { margin:0; font-size:0.84rem; color:var(--muted); line-height:1.55; max-width:42ch; }
       .facility-band em { font-style:normal; font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700; color:var(--blue); }
       .guest-search-wrap {
-        width:min(640px,calc(100vw - 40px)); margin:0 auto 32px; position:relative;
+        width:min(640px,calc(100vw - 40px)); margin:0 auto 32px;
+        position:relative; z-index:200;
+        isolation:isolate;
       }
+      .guest-search-wrap.is-open { z-index:1200; }
       .guest-search-wrap input {
         width:100%; padding:14px 18px; border-radius:999px;
         border:1px solid var(--line); background:#fff; font:inherit; font-size:0.88rem;
         box-shadow:0 8px 28px rgba(10,22,40,0.04);
+        position:relative; z-index:2;
       }
       .guest-search-wrap input:focus { outline:none; border-color:rgba(0,143,211,0.45); box-shadow:0 0 0 3px rgba(0,143,211,0.12); }
       .guest-search-results {
         display:none; position:absolute; left:0; right:0; top:calc(100% + 8px);
         background:#fff; border:1px solid var(--line); border-radius:16px;
-        box-shadow:0 20px 48px rgba(10,22,40,0.12); z-index:50; overflow:hidden;
+        box-shadow:0 24px 56px rgba(10,22,40,0.16);
+        z-index:3; max-height:min(400px,55vh); overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
       }
       .guest-search-results.open { display:block; }
       .guest-search-hit {
         display:grid; gap:4px; padding:14px 18px; text-decoration:none; color:inherit;
         border-bottom:1px solid var(--line);
+        transition:background 0.15s ease;
       }
       .guest-search-hit:last-child { border-bottom:none; }
-      .guest-search-hit:hover { background:#f6fafc; }
+      .guest-search-hit:hover,
+      .guest-search-hit.is-active { background:#f0f9fd; }
+      .guest-search-hit.is-active { outline:2px solid rgba(0,143,211,0.35); outline-offset:-2px; }
       .guest-search-meta { font-size:0.64rem; color:var(--muted); }
       .guest-search-meta b { color:var(--blue); }
       .guest-search-hit strong { font-family:"Sora",sans-serif; font-size:0.84rem; }
@@ -441,7 +450,7 @@
 
     <div class="guest-search-wrap tff-reveal" id="guest-search-wrap">
       <label for="guest-search" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Search the workshop site</label>
-      <input type="search" id="guest-search" placeholder="Search — visit guide, Lakewood, chlorite, scorecard…" autocomplete="off" />
+      <input type="search" id="guest-search" placeholder="Search — slides, visit guide, Lakewood, scorecard…" autocomplete="off" spellcheck="false" />
       <div class="guest-search-results" id="guest-search-results"></div>
     </div>
 

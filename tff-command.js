@@ -118,27 +118,36 @@
   function initSearch() {
     var input = document.getElementById("cmd-search");
     var results = document.getElementById("cmd-search-results");
+    var wrap = input ? input.closest(".cmd-search-wrap") : null;
     if (!input || !results) return;
 
     var index = [];
     var loaded = false;
 
+    function setOpen(open) {
+      if (wrap) wrap.classList.toggle("is-open", open);
+      input.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
     function render(query) {
       if (!loaded) {
         results.innerHTML = '<p class="cmd-search-empty">Loading index…</p>';
+        results.classList.add("open");
+        setOpen(true);
         return;
       }
       var q = (query || "").trim();
       if (!q) {
         results.innerHTML = "";
         results.classList.remove("open");
+        setOpen(false);
         return;
       }
       var matches = index
         .map(function (item) {
           return {
             item: item,
-            score: scoreMatch(item.q + " " + item.snippet + " " + item.category, q)
+            score: scoreMatch(item.q + " " + item.snippet + " " + item.category + " " + item.href, q)
           };
         })
         .filter(function (m) {
@@ -150,15 +159,23 @@
         .slice(0, 12);
 
       if (!matches.length) {
-        results.innerHTML = '<p class="cmd-search-empty">No matches for “' + q + "”</p>";
+        results.innerHTML = '<p class="cmd-search-empty">No matches for “' + q + "” — try slides, Lakewood, or chlorite.</p>";
         results.classList.add("open");
+        setOpen(true);
         return;
       }
 
       results.innerHTML = matches
         .map(function (m) {
           var it = m.item;
-          var tag = it.type === "answer" ? "Answer" : "Ask them";
+          var tag =
+            it.type === "answer"
+              ? "Answer"
+              : it.type === "page"
+                ? "Page"
+                : it.type === "tool"
+                  ? "Tool"
+                  : "Ask them";
           var badge =
             it.badge === "session"
               ? '<span class="cmd-badge warn">In session</span>'
@@ -187,7 +204,13 @@
         })
         .join("");
       results.classList.add("open");
+      setOpen(true);
     }
+
+    input.setAttribute("aria-expanded", "false");
+    results.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+    });
 
     fetch("/search-index.json")
       .then(function (r) {
@@ -208,9 +231,18 @@
     input.addEventListener("focus", function () {
       if (input.value.trim()) render(input.value);
     });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        results.classList.remove("open");
+        setOpen(false);
+        input.blur();
+      }
+    });
+
     document.addEventListener("click", function (e) {
       if (!e.target.closest(".cmd-search-wrap")) {
         results.classList.remove("open");
+        setOpen(false);
       }
     });
   }
