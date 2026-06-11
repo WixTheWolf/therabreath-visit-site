@@ -54,6 +54,11 @@
       .score-line span:first-child { font-weight:600; }
       .score-line i { display:block; height:16px; border:1px solid var(--line); border-radius:3px; font-style:normal; }
       .foot { position:absolute; bottom:0.35in; left:0.5in; right:0.5in; display:flex; justify-content:space-between; font-size:0.58rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; }
+      .cover-qr { display:flex; gap:14px; justify-content:center; margin-top:8px; }
+      .cover-qr div { text-align:center; }
+      .cover-qr img { width:72px; height:72px; display:block; border-radius:6px; border:1px solid var(--line); }
+      .cover-qr b { display:block; margin-top:4px; font-size:0.58rem; font-family:"Sora",sans-serif; }
+      .cover-qr span { font-size:0.52rem; color:var(--muted); }
       @media print {
         body { background:#fff; }
         .toolbar { display:none; }
@@ -80,6 +85,18 @@
         <div class="field"><label>Guest name</label><div class="line"></div></div>
         <div class="field"><label>Company / role</label><div class="line"></div></div>
         <p style="font-size:0.72rem;max-width:3.2in">Your pocket guide for the half-day visit. Check boxes, score prototypes, capture notes — take it home.</p>
+        <div class="cover-qr">
+          <div>
+            <img src="/assets/qr/site-sm.png" alt="QR — workshop site" width="72" height="72" />
+            <b>Workshop</b>
+            <span>Live site</span>
+          </div>
+          <div>
+            <img src="/assets/qr/score-sm.png" alt="QR — live scorer" width="72" height="72" />
+            <b>Score</b>
+            <span>9:30 tasting</span>
+          </div>
+        </div>
         <footer class="foot"><span>Confidential</span><span>Page 1</span></footer>
       </section>
 

@@ -496,6 +496,46 @@
         background: #fafcfe;
       }
 
+      .score-qr-wrap {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .score-qr {
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        text-align: center;
+        min-width: 1.4in;
+      }
+
+      .score-qr img {
+        width: 96px;
+        height: 96px;
+        display: block;
+        margin: 0 auto 8px;
+        border-radius: 6px;
+      }
+
+      .score-qr b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.62rem;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      .score-qr span {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.54rem;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
       .eval-steps {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -1074,7 +1114,7 @@
             <h1>Score what is worth a pilot batch.</h1>
           </div>
         </header>
-        <div class="slide-body">
+        <div class="slide-body score-qr-wrap">
           <table class="score-table">
             <thead>
               <tr><th>#</th><th>Flavor</th><th>Overall liking (1–9)</th><th>Uniqueness (1–9)</th><th>Purchase intent (1–9)</th><th>Comments</th></tr>
@@ -1092,6 +1132,11 @@
               <tr><td>10</td><td>Healthy Gums Herbal</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
             </tbody>
           </table>
+          <aside class="score-qr">
+            <img src="/assets/qr/score-sm.png" alt="QR code — live concept scorer" width="96" height="96" />
+            <b>Or scan to score</b>
+            <span>therabreath-visit-site.vercel.app/score</span>
+          </aside>
         </div>
         <footer class="slide-foot"><span>Print extra copies for tasting · Step 05</span><b>Slide 17 of 20</b></footer>
       </section>

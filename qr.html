@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QR Codes | TFF × TheraBreath Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#d8e2ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#e8edf2; color:var(--ink); }
+      .toolbar { position:sticky; top:0; z-index:10; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
+      .toolbar button, .toolbar a { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.8rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .sheet { width:8.5in; margin:24px auto; padding:0.4in; background:#fff; border:1px solid var(--line); box-shadow:0 16px 48px rgba(10,22,40,0.1); }
+      .head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:20px; padding-bottom:14px; border-bottom:2px solid var(--ink); }
+      .head h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.35rem; font-weight:800; }
+      .head p { margin:4px 0 0; font-size:0.72rem; color:var(--muted); line-height:1.45; }
+      .head-qr img { width:88px; height:88px; display:block; border-radius:8px; }
+      .head-qr span { display:block; margin-top:4px; font-size:0.58rem; font-weight:700; text-align:center; color:var(--muted); }
+      .grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+      .card { padding:16px; border:1px solid var(--line); border-radius:12px; text-align:center; page-break-inside:avoid; }
+      .card.primary { border-color:rgba(0,143,211,0.35); background:linear-gradient(135deg,#fff,#f0f9fd); }
+      .card img { width:140px; height:140px; display:block; margin:0 auto 10px; border-radius:8px; }
+      .card h2 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.88rem; }
+      .card p { margin:0 0 8px; font-size:0.68rem; color:var(--muted); line-height:1.4; }
+      .card code { display:block; font-size:0.62rem; color:var(--blue); font-weight:700; word-break:break-all; }
+      .card .tag { display:inline-block; margin-bottom:8px; padding:3px 8px; border-radius:999px; font-size:0.58rem; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; background:#edf8e8; color:#2d6a3f; }
+      .card .tag.lock { background:#f0f2f8; color:#5b6b8a; }
+      .note { margin-top:18px; padding:12px 14px; border-radius:10px; background:#fff4e8; border:1px solid rgba(245,130,32,0.3); font-size:0.68rem; line-height:1.5; color:#344054; }
+      .cuts { margin-top:20px; padding-top:14px; border-top:1px dashed var(--line); }
+      .cuts h3 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:0.78rem; }
+      .mini-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+      .mini { padding:10px; border:1px dashed var(--line); border-radius:10px; text-align:center; }
+      .mini img { width:96px; height:96px; display:block; margin:0 auto 6px; }
+      .mini b { display:block; font-size:0.62rem; font-family:"Sora",sans-serif; }
+      .mini span { font-size:0.56rem; color:var(--muted); }
+      @media print {
+        body { background:#fff; }
+        .toolbar { display:none; }
+        .sheet { width:100%; margin:0; border:none; box-shadow:none; }
+      }
+      @page { size:letter portrait; margin:0.35in; }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>QR print sheet</strong> · Post at stations · postcards · room display</span>
+      <div>
+        <a href="/toolkit">Toolkit</a>
+        <a href="/">Workshop</a>
+        <button type="button" onclick="window.print()">Print sheet</button>
+      </div>
+    </div>
+
+    <article class="sheet">
+      <header class="head">
+        <div>
+          <h1>Scan to follow along · July 8</h1>
+          <p>TFF × TheraBreath capabilities workshop · Norco, CA<br />All codes link to <strong>therabreath-visit-site.vercel.app</strong></p>
+        </div>
+        <div class="head-qr">
+          <img src="/assets/qr/site-sm.png" alt="QR code for workshop site home" width="88" height="88" />
+          <span>Workshop home</span>
+        </div>
+      </header>
+
+      <div class="grid">
+        <div class="card primary">
+          <span class="tag">Main · room display</span>
+          <img src="/assets/qr/site.png" alt="QR code — workshop site" width="140" height="140" />
+          <h2>Workshop site</h2>
+          <p>Live pillars, agenda, concepts, and feedback — open on the room display or guest phones.</p>
+          <code>therabreath-visit-site.vercel.app</code>
+        </div>
+        <div class="card primary">
+          <span class="tag">Tasting · 9:30 AM</span>
+          <img src="/assets/qr/score.png" alt="QR code — live concept scorer" width="140" height="140" />
+          <h2>Live concept scorer</h2>
+          <p>Rate all ten prototypes 1–9 on liking, uniqueness, and purchase intent. Updates leaderboard live.</p>
+          <code>therabreath-visit-site.vercel.app/score</code>
+        </div>
+        <div class="card">
+          <span class="tag">Print</span>
+          <img src="/assets/qr/passport.png" alt="QR code — visitor passport" width="140" height="140" />
+          <h2>Visitor passport</h2>
+          <p>Pocket follow-along — agenda, checklist, scoring notes.</p>
+          <code>therabreath-visit-site.vercel.app/passport</code>
+        </div>
+        <div class="card">
+          <span class="tag">Profiles</span>
+          <img src="/assets/qr/companies.png" alt="QR code — company hub" width="140" height="140" />
+          <h2>Company hub</h2>
+          <p>The Flavor Factory + TheraBreath brand context in one place.</p>
+          <code>therabreath-visit-site.vercel.app/companies</code>
+        </div>
+        <div class="card">
+          <span class="tag lock">Team only</span>
+          <img src="/assets/qr/gate.png" alt="QR code — team portal login" width="140" height="140" />
+          <h2>Team portal</h2>
+          <p>Host tools, partnership brief, file index — password required at gate.</p>
+          <code>therabreath-visit-site.vercel.app/gate</code>
+        </div>
+        <div class="card">
+          <span class="tag">Feedback section</span>
+          <img src="/assets/qr/score.png" alt="QR code — score during tasting" width="140" height="140" />
+          <h2>Same as scorer</h2>
+          <p>Use on tasting station signs and slide 17 — one URL for all phone scoring.</p>
+          <code>therabreath-visit-site.vercel.app/score</code>
+        </div>
+      </div>
+
+      <p class="note"><strong>Postcard tip:</strong> Print the cut-apart tiles below on the back of welcome cards, or tape the large scorer QR at each tasting station. NFC tap cards can point to the same /score URL.</p>
+
+      <section class="cuts">
+        <h3>Cut-apart · welcome cards &amp; table tents</h3>
+        <div class="mini-grid">
+          <div class="mini">
+            <img src="/assets/qr/site-sm.png" alt="" width="96" height="96" />
+            <b>Workshop</b>
+            <span>Home</span>
+          </div>
+          <div class="mini">
+            <img src="/assets/qr/score-sm.png" alt="" width="96" height="96" />
+            <b>Score</b>
+            <span>Tasting</span>
+          </div>
+          <div class="mini">
+            <img src="/assets/qr/passport-sm.png" alt="" width="96" height="96" />
+            <b>Passport</b>
+            <span>Print</span>
+          </div>
+        </div>
+      </section>
+    </article>
+  </body>
+</html>

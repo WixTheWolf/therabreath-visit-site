@@ -638,5 +638,21 @@
     "snippet": "Fresh breath, gum health, Total Care, overnight, kids, whitening — each with distinct mint and functional flavor needs.",
     "href": "/therabreath-brand",
     "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Day-of",
+    "q": "Where is the QR code for tasting feedback and the workshop site?",
+    "snippet": "Print sheet at /qr — scan /score for live 1–9 ratings; site home QR on workshop hero and feedback section.",
+    "href": "/qr",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Day-of",
+    "q": "How do guests score prototypes on their phones during tasting?",
+    "snippet": "Scan QR to therabreath-visit-site.vercel.app/score — on station signs, slide 17, passport cover, and feedback section.",
+    "href": "/score",
+    "badge": "ready"
   }
 ]

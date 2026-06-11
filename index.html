@@ -1892,26 +1892,66 @@
         text-align: center;
       }
 
-      .qr {
-        display: grid;
+      .qr-img {
+        display: block;
         width: 172px;
         height: 172px;
-        grid-template-columns: repeat(9, 1fr);
-        gap: 5px;
-        margin-bottom: 24px;
+        margin: 0 auto 16px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
       }
 
-      .qr i {
-        border-radius: 4px;
-        background: #111;
+      .qr-card h3 {
+        margin: 0 0 8px;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 800;
       }
 
-      .qr i:nth-child(3n) {
-        background: var(--blue);
+      .qr-card p {
+        margin: 0 0 10px;
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.45;
       }
 
-      .qr i:nth-child(5n) {
-        background: var(--mint);
+      .qr-card a {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--blue);
+        text-decoration: none;
+      }
+
+      .hero-qr {
+        display: grid;
+        gap: 8px;
+        justify-items: center;
+        padding: 16px;
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+        text-align: center;
+      }
+
+      .hero-qr img {
+        width: 120px;
+        height: 120px;
+        display: block;
+        border-radius: 8px;
+      }
+
+      .hero-qr b {
+        font-family: var(--font-display);
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: var(--ink);
+      }
+
+      .hero-qr span {
+        font-size: 0.62rem;
+        color: var(--muted);
+        line-height: 1.35;
       }
 
       .closing {
@@ -3155,10 +3195,15 @@
               <span class="pill">Norco, California</span>
               <span class="pill">R&amp;D + Procurement</span>
             </div>
-            <p style="margin:20px 0 0;display:flex;flex-wrap:wrap;gap:12px">
+            <p style="margin:20px 0 0;display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
               <a href="/gate" style="display:inline-flex;align-items:center;padding:12px 22px;border-radius:999px;background:var(--lid-orange);color:#fff;font-weight:700;font-size:0.88rem;text-decoration:none;box-shadow:0 10px 24px rgba(245,130,32,0.2)">Team command center</a>
               <a href="#toolkit-hub" style="display:inline-flex;align-items:center;padding:12px 22px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700;font-size:0.88rem;text-decoration:none">Browse all resources</a>
             </p>
+            <div class="hero-qr" style="margin-top:24px">
+              <img src="/assets/qr/site-sm.png" alt="QR code — open workshop site on your phone" width="120" height="120" />
+              <b>Scan to open this site</b>
+              <span>Share with guests · <a href="/qr" style="color:var(--blue);font-weight:700;text-decoration:none">Print all QR codes</a></span>
+            </div>
           </div>
           <div class="hero-card" aria-hidden="true">
             <div class="bottle-stage">
@@ -3206,6 +3251,7 @@
               <ul class="toolkit-links">
                 <li><a href="/">Workshop site<small>Interactive pillars &amp; concepts</small></a></li>
                 <li><a href="/score">Live concept scorer<small>Phones · 1–9 ratings</small></a></li>
+                <li><a href="/qr">QR print sheet<small>Site · scorer · passport · portal</small></a></li>
                 <li><a href="/slides">Slide deck<small>20 slides · print</small></a></li>
                 <li><a href="/passport">Visitor passport<small>Pocket follow-along</small></a></li>
               </ul>
@@ -3859,11 +3905,13 @@
               </tbody>
             </table>
             <aside class="qr-card">
-              <div class="qr" aria-hidden="true">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <h3>Scan to Provide Feedback</h3>
-              <p>QR placeholder for workshop scoring and comments.</p>
+              <a href="/score" aria-label="Open live concept scorer">
+                <img class="qr-img" src="/assets/qr/score.png" alt="QR code — scan to open live concept scorer" width="172" height="172" />
+              </a>
+              <h3>Scan to score on your phone</h3>
+              <p>Opens the live concept scorer — rate all ten prototypes 1–9 during tasting. Same URL on station signs and passports.</p>
+              <a href="/score">therabreath-visit-site.vercel.app/score</a>
+              <p style="margin-top:12px;font-size:0.72rem"><a href="/qr">Print QR sheet →</a></p>
             </aside>
           </div>
         </div>
@@ -3918,6 +3966,7 @@
             <a href="/slides">Slides</a>
             <a href="/passport">Passport</a>
             <a href="/score">Live scorer</a>
+            <a href="/qr">QR codes</a>
           </div>
           <div class="footer-col">
             <h4>Day-of</h4>

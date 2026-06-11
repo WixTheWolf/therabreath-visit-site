@@ -12,6 +12,9 @@
       header { padding:20px; background:linear-gradient(135deg,var(--ink),#005f9e); color:#fff; text-align:center; }
       header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.2rem; }
       header p { margin:6px 0 0; font-size:0.8rem; opacity:0.8; }
+      .header-qr { margin-top:14px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+      .header-qr img { width:88px; height:88px; border-radius:8px; background:#fff; padding:4px; }
+      .header-qr span { font-size:0.68rem; opacity:0.75; }
       .wrap { padding:16px; max-width:520px; margin:0 auto; }
       .card {
         margin-bottom:14px; padding:16px; background:#fff;
@@ -43,6 +46,10 @@
     <header>
       <h1>Live concept scorer</h1>
       <p>Rate 1–9 · Liking · Uniqueness · Intent · Updates leaderboard live</p>
+      <div class="header-qr">
+        <img src="/assets/qr/score-sm.png" alt="QR code — share this scorer with the room" width="88" height="88" />
+        <span>Scan to open · show on station signs</span>
+      </div>
     </header>
     <div class="wrap" id="cards"></div>
     <div class="wrap">

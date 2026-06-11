@@ -47,6 +47,10 @@
       .stat strong { display:block; font-family:"Sora",sans-serif; font-size:0.95rem; color:var(--blue); }
       .stat span { font-size:0.58rem; color:var(--muted); line-height:1.3; }
       .footer-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding-top:10px; border-top:1px solid var(--line); }
+      .qr-row { display:flex; gap:12px; align-items:center; margin-top:10px; }
+      .qr-row img { width:64px; height:64px; border-radius:6px; border:1px solid var(--line); }
+      .qr-row div { font-size:0.58rem; color:var(--muted); line-height:1.4; }
+      .qr-row b { display:block; font-family:"Sora",sans-serif; font-size:0.62rem; color:var(--ink); }
       .cta { padding:10px 12px; border-radius:8px; background:var(--ink); color:#fff; }
       .cta h3 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:0.72rem; }
       .cta p { margin:0; font-size:0.62rem; line-height:1.45; opacity:0.85; }
@@ -140,6 +144,14 @@
           (951) 273-9877 · <strong>www.flavorfactory.net</strong><br /><br />
           <strong>Workshop site:</strong> therabreath-visit-site.vercel.app<br />
           Dan · Ryan · Alex · Matt
+          <div class="qr-row">
+            <img src="/assets/qr/site-sm.png" alt="QR — workshop site" width="64" height="64" />
+            <img src="/assets/qr/score-sm.png" alt="QR — live scorer" width="64" height="64" />
+            <div>
+              <b>Scan workshop · scan to score</b>
+              Live site + tasting feedback on phones
+            </div>
+          </div>
         </div>
       </div>
 
