@@ -101,12 +101,17 @@
     { time: "12:00", label: "Action plan · depart", note: "Sample kits · out by 12:30" }
   ];
 
-  var HOSTS = [
-    { name: "Dan Wixted", role: "Partnership & facility" },
-    { name: "Ryan Wixted", role: "Quality · SQF/GMP · documentation" },
-    { name: "Alex Wixted", role: "R&D · innovation · co-creation" },
-    { name: "Matt Wixted", role: "Workshop facilitation · digital tools" }
-  ];
+  var HOSTS = (global.TFFTeam
+    ? global.TFFTeam.members.map(function (m) {
+        return { name: m.name, role: m.title, desc: m.desc };
+      })
+    : [
+        { name: "Dan Wixted", role: "President", desc: "" },
+        { name: "Alex Wixted", role: "Operations", desc: "" },
+        { name: "Kelly Ziegler", role: "Office Manager", desc: "" },
+        { name: "Ryan Wixted", role: "Quality and Regulatory", desc: "" },
+        { name: "Matt Wixted", role: "Production Manager", desc: "" }
+      ]);
 
   function href(item) {
     if (item.type === "pdf") return "/booklet/documents/" + item.file;

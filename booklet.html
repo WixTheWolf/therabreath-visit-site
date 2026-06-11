@@ -388,7 +388,8 @@
         background: #fafcfe;
       }
       .host b { display: block; font-family: "Sora", sans-serif; font-size: 0.8rem; }
-      .host span { font-size: 0.68rem; color: var(--muted); }
+      .host span { display: block; font-size: 0.68rem; color: var(--muted); font-weight: 600; }
+      .host-desc { font-size: 0.62rem; color: var(--muted); margin: 6px 0 0; line-height: 1.35; }
 
       /* QR reference */
       .qr-grid {
@@ -600,6 +601,7 @@
       <div id="digital-sections"></div>
     </div>
 
+    <script src="/tff-team.js"></script>
     <script src="/tff-booklet-data.js"></script>
     <script>
       var B = window.TFFBooklet;
@@ -645,7 +647,8 @@
 
       function buildWelcome() {
         var hosts = B.hosts.map(function (h) {
-          return '<div class="host"><b>' + h.name + '</b><span>' + h.role + '</span></div>';
+          var desc = h.desc ? '<p class="host-desc">' + h.desc + "</p>" : "";
+          return '<div class="host"><b>' + h.name + '</b><span>' + h.role + "</span>" + desc + "</div>";
         }).join("");
         return (
           '<section class="page">' +
@@ -656,7 +659,7 @@
           '<div class="how-card"><b>Find by number</b><p>Every item is numbered <strong>01–35</strong>. Reference the number in meetings — e.g. “see item 11, formula portfolio.”</p></div>' +
           '<div class="how-card"><b>Seven chapters</b><p>Grouped by topic: partnership, today’s visit, operations, innovation, sensory, quality, and live tools.</p></div>' +
           '<div class="how-card"><b>Phone + binder</b><p>Scan the cover QR for the digital index. Printed PDFs sit behind each chapter tab.</p></div>' +
-          '<div class="how-card"><b>Questions anytime</b><p>Dan, Ryan, Alex, and Matt are your hosts — see below. No question is off limits for a capabilities review.</p></div>' +
+          '<div class="how-card"><b>Questions anytime</b><p>Dan, Ryan, Alex, Kelly, and Matt are your hosts — see below. No question is off limits for a capabilities review.</p></div>' +
           '</div>' +
           '<p class="kicker" style="margin-top:8px">Your hosts</p>' +
           '<div class="hosts">' + hosts + '</div>' +
