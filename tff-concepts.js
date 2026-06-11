@@ -1,7 +1,14 @@
 /**
  * Workshop prototype concepts — stability tiers + mystery game metadata.
+ * Bump setMeta.version when cup lineup or codes change before the visit.
  */
 (function (global) {
+  var SET_META = {
+    version: 1,
+    label: "July 8 workshop · v1",
+    updated: "2026-06-11"
+  };
+
   var STABILITY = {
     stable: {
       label: "QC cleared",
@@ -23,6 +30,7 @@
     }
   };
 
+  /* To swap flavors: edit entries below, set active:false to hide, bump SET_META.version */
   var concepts = [
     {
       id: 1, code: "M1", name: "Spearmint Garden", sub: "Sweet spearmint + green herb",
@@ -103,9 +111,14 @@
 
   global.TFFConcepts = {
     list: concepts,
+    SET_META: SET_META,
     STABILITY: STABILITY,
     byId: byId,
+    setMeta: function () { return SET_META; },
     stabilityMeta: function (key) { return STABILITY[key] || STABILITY.watch; },
-    shuffledCodes: shuffledCodes
+    shuffledCodes: shuffledCodes,
+    activeList: function () {
+      return concepts.filter(function (c) { return c.active !== false; });
+    }
   };
 })(typeof window !== "undefined" ? window : global);

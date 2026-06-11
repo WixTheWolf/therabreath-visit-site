@@ -12,11 +12,11 @@
       body {
         margin:0; font-family:"DM Sans",sans-serif; color:var(--ink);
         background:#f0f5f9;
-        background-image:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(95,184,50,0.12), transparent),
-          radial-gradient(circle at 100% 100%, rgba(0,143,211,0.08), transparent 45%);
+        background-image:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(95,184,50,0.1), transparent),
+          radial-gradient(circle at 100% 100%, rgba(0,143,211,0.06), transparent 45%);
       }
       .page-hero {
-        padding:28px 20px 24px; text-align:center;
+        padding:24px 20px 20px; text-align:center;
         background:linear-gradient(135deg,var(--ink),#004f87 55%,#1e6b3a); color:#fff;
       }
       .page-hero h1 { margin:0; font-family:"Sora",sans-serif; font-size:clamp(1.25rem,4vw,1.55rem); }
@@ -26,6 +26,11 @@
         background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
         font-family:"Sora",sans-serif; font-size:0.62rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase;
       }
+      .hero-qr {
+        display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:16px;
+      }
+      .hero-qr img { width:100px; height:100px; border-radius:12px; background:#fff; padding:6px; }
+      .hero-qr span { font-size:0.68rem; opacity:0.8; }
       .toolbar {
         display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
         padding:12px 16px; background:#fff; border-bottom:1px solid var(--line);
@@ -33,41 +38,58 @@
       .toolbar button {
         padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif;
         font-size:0.74rem; font-weight:700; border:1px solid var(--line); background:#fff; cursor:pointer;
-        transition:transform 0.2s cubic-bezier(0.22,1,0.36,1), box-shadow 0.2s;
+        transition:transform 0.18s ease, box-shadow 0.18s;
       }
-      .toolbar button:hover { transform:translateY(-1px); box-shadow:0 8px 20px rgba(10,22,40,0.08); }
+      .toolbar button:hover { transform:translateY(-1px); box-shadow:0 6px 16px rgba(10,22,40,0.06); }
       .toolbar button.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
       .wrap { width:min(560px,calc(100vw - 24px)); margin:0 auto; padding:20px 0; }
       .intro {
         padding:18px; border-radius:14px; background:#fff; border:1px solid var(--line);
         margin-bottom:16px; font-size:0.84rem; line-height:1.55; color:#344054;
       }
-      .intro b { color:var(--ink); }
-      .player { display:flex; gap:8px; margin-bottom:16px; }
-      .player input {
-        flex:1; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font:inherit;
+      .name-card {
+        padding:18px; margin-bottom:16px; border-radius:14px; background:#fff;
+        border:2px solid rgba(0,143,211,0.25); box-shadow:0 8px 24px rgba(10,22,40,0.04);
+      }
+      .name-card.locked { border-color:rgba(95,184,50,0.4); background:linear-gradient(135deg,#fff,#f8fdf6); }
+      .name-card label { display:block; font-size:0.68rem; font-weight:800; text-transform:uppercase; color:var(--blue); margin-bottom:8px; letter-spacing:0.06em; }
+      .name-row { display:flex; gap:8px; }
+      .name-row input {
+        flex:1; padding:12px 14px; border:1px solid var(--line); border-radius:10px; font:inherit; font-size:1rem;
+      }
+      .name-row button {
+        padding:12px 18px; border:none; border-radius:10px; background:var(--green); color:#fff;
+        font-family:"Sora",sans-serif; font-weight:700; cursor:pointer; white-space:nowrap;
+      }
+      .sync-pill {
+        display:inline-flex; align-items:center; gap:6px; margin-top:10px; padding:6px 10px;
+        border-radius:999px; font-size:0.68rem; font-weight:700;
+      }
+      .sync-pill.pending { background:#fff4e8; color:#c45c26; }
+      .sync-pill.ok { background:#edf8e8; color:#2d6a3f; }
+      .sync-pill.err { background:#fef3f2; color:#b42318; }
+      .gate-msg {
+        padding:14px; margin-bottom:16px; border-radius:12px; background:#fff4e8;
+        border:1px solid rgba(245,130,32,0.3); font-size:0.82rem; color:#344054; text-align:center;
       }
       .card {
         padding:18px; margin-bottom:12px; background:#fff;
         border:1px solid var(--line); border-radius:14px;
-        box-shadow:0 8px 24px rgba(10,22,40,0.04);
-        transition:transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s, border-color 0.3s;
+        box-shadow:0 6px 20px rgba(10,22,40,0.03);
+        transition:transform 0.22s ease, box-shadow 0.22s, border-color 0.22s;
       }
-      .card:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(10,22,40,0.08); }
-      .card.done { border-color:rgba(95,184,50,0.45); background:linear-gradient(135deg,#fff,#f8fdf6); }
-      .card.correct-flash { animation:tff-pop 0.45s cubic-bezier(0.22,1,0.36,1); }
+      .card:hover { transform:translateY(-1px); box-shadow:0 10px 28px rgba(10,22,40,0.06); }
+      .card.done { border-color:rgba(95,184,50,0.4); background:linear-gradient(135deg,#fff,#f8fdf6); }
+      .card.locked { opacity:0.55; pointer-events:none; }
+      .card.correct-flash { animation:tff-pop 0.4s cubic-bezier(0.22,1,0.36,1); }
       .card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-      .code {
-        font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; color:var(--blue);
-      }
+      .code { font-family:"Sora",sans-serif; font-size:1.1rem; font-weight:800; color:var(--blue); }
       .hints { margin:0 0 12px; padding-left:18px; font-size:0.78rem; color:var(--muted); line-height:1.5; }
       label { display:block; font-size:0.68rem; font-weight:700; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
       select {
         width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:10px; font:inherit; margin-bottom:10px;
       }
-      .result {
-        display:none; padding:10px 12px; border-radius:10px; font-size:0.82rem; font-weight:600;
-      }
+      .result { display:none; padding:10px 12px; border-radius:10px; font-size:0.82rem; font-weight:600; }
       .result.show { display:block; }
       .result.ok { background:#edf8e8; color:#2d6a3f; }
       .result.miss { background:#fff4e8; color:#c45c26; }
@@ -88,13 +110,16 @@
       .tag.flagged { background:#fef3f2; color:#b42318; }
       .print-sheet { display:none; }
       @media print {
-        body { background:#fff; padding:0; }
-        header, .toolbar, .intro, .player, .card select, .scoreboard, .host-panel, .no-print { display:none !important; }
-        .wrap { width:100%; max-width:none; }
+        body { background:#fff !important; background-image:none !important; }
+        .tff-shell-nav, .tff-shell-dock, .page-hero, .toolbar, .intro, .name-card, .gate-msg,
+        .card select, .scoreboard, .host-panel, .no-print { display:none !important; }
+        .wrap { width:100%; max-width:none; padding:0; }
         .print-sheet { display:block !important; }
-        .print-ballot { page-break-after:always; padding:0.4in; }
+        .print-ballot { page-break-after:always; padding:0.35in; }
         .print-ballot table { width:100%; border-collapse:collapse; font-size:0.8rem; }
-        .print-ballot th, .print-ballot td { border:1px solid #333; padding:10px 8px; }
+        .print-ballot th, .print-ballot td { border:1px solid #333; padding:8px; }
+        .print-qr { text-align:center; margin-top:0.2in; }
+        .print-qr img { width:1.1in; height:1.1in; }
       }
     </style>
   </head>
@@ -102,20 +127,30 @@
     <header class="page-hero tff-enter">
       <span class="badge">Station 2 · blind tasting</span>
       <h1>Flavor mystery challenge</h1>
-      <p>Cups are coded — no names on the table. Taste, read the hints, and guess which prototype direction you're in. Prototypes only; QC has not cleared every profile for chlorite shelf life.</p>
+      <p>Taste the coded cup, read the hints, and guess the prototype direction. Enter your name first so the host can see who guessed what.</p>
+      <div class="hero-qr no-print">
+        <img src="/assets/qr/mystery.png" alt="QR code — open mystery game on your phone" width="100" height="100" />
+        <span>Scan to play · therabreath-visit-site.vercel.app/mystery</span>
+      </div>
     </header>
     <div class="toolbar no-print">
-      <button type="button" class="primary" onclick="window.print()">Print ballots</button>
+      <button type="button" class="primary" onclick="window.print()">Print ballots + QR</button>
       <button type="button" onclick="toggleHost()">Host answer key</button>
-      <button type="button" onclick="resetGame()">Reset game</button>
+      <button type="button" onclick="resetGame()">Reset device</button>
     </div>
     <div class="wrap">
       <div class="intro no-print">
-        <b>How to play:</b> Find the code on your cup (M1–M10). Pick that code below, read the sensory hints — <em>not</em> the concept name — and choose your best guess. One point per correct ID. Compare scores after everyone finishes, or run it as a light competition during Station 2.
+        <b>How to play:</b> Enter your name, then find the code on your cup (M1–M10). Pick that code below, read the sensory hints — <em>not</em> the concept name — and choose your best guess. One point per correct ID.
       </div>
-      <div class="player no-print">
-        <input type="text" id="player" placeholder="Your name" />
+      <div class="name-card no-print" id="name-card">
+        <label for="player">Your name · required for live results</label>
+        <div class="name-row">
+          <input type="text" id="player" placeholder="First + last" autocomplete="name" />
+          <button type="button" id="name-save">Start</button>
+        </div>
+        <span class="sync-pill pending" id="sync-pill">Enter name to begin</span>
       </div>
+      <div class="gate-msg no-print" id="gate-msg" style="display:none">Enter your name above to unlock the guess cards.</div>
       <div id="cards" class="tff-stagger"></div>
       <div class="scoreboard no-print" id="board" style="display:none">
         <span>Your score</span>
@@ -125,37 +160,79 @@
       <div class="host-panel no-print" id="host">
         <h2 style="margin:0 0 12px;font-family:Sora,sans-serif;font-size:0.95rem">Host answer key · cup code → concept</h2>
         <table id="host-table"></table>
-        <p style="font-size:0.72rem;color:var(--muted);margin:12px 0 0">Do not show guests until after guesses are in. QC flagged items are discussion-only — not launch candidates.</p>
+        <p style="font-size:0.72rem;color:var(--muted);margin:12px 0 0">Live results for admin: <a href="/gate?return=/mystery-live">/mystery-live</a> (team password). Do not show guests until guesses are in.</p>
       </div>
     </div>
     <div class="print-sheet" id="print-sheet"></div>
     <script src="/tff-concepts.js"></script>
     <script src="/tff-storage.js"></script>
+    <script src="/tff-mystery-sync.js"></script>
     <script>
       var STORAGE_KEY = "tff-mystery";
+      var concepts = TFFConcepts.activeList();
+      var nameOk = false;
 
       function loadState() {
-        return TFFStorage.get(STORAGE_KEY, { player: "", guesses: {} }) || { player: "", guesses: {} };
+        return TFFStorage.get(STORAGE_KEY, { player: "", nameLocked: false, guesses: {} }) || { player: "", nameLocked: false, guesses: {} };
       }
 
       function saveState(data) {
         TFFStorage.set(STORAGE_KEY, data);
       }
 
+      function setSyncStatus(kind, text) {
+        var pill = document.getElementById("sync-pill");
+        pill.className = "sync-pill " + kind;
+        pill.textContent = text;
+      }
+
+      function syncLive() {
+        var state = loadState();
+        if (!state.player || !state.nameLocked) return;
+        setSyncStatus("pending", "Syncing…");
+        TFFMysterySync.push(state, function (data, status) {
+          if (data && data.ok) {
+            setSyncStatus("ok", "Synced · host sees your guesses live");
+          } else if (status === 503) {
+            setSyncStatus("err", "Saved here only · live board needs Vercel KV");
+          } else if (data && data.error === "name_required") {
+            setSyncStatus("pending", "Name required");
+          } else {
+            setSyncStatus("err", "Offline · saved on this phone");
+          }
+        });
+      }
+
+      function applyNameLock() {
+        var state = loadState();
+        nameOk = !!(state.player && state.nameLocked);
+        var input = document.getElementById("player");
+        var card = document.getElementById("name-card");
+        var gate = document.getElementById("gate-msg");
+        input.value = state.player || "";
+        input.disabled = nameOk;
+        document.getElementById("name-save").textContent = nameOk ? "Locked" : "Start";
+        document.getElementById("name-save").disabled = nameOk;
+        card.classList.toggle("locked", nameOk);
+        gate.style.display = nameOk ? "none" : "block";
+        if (nameOk) syncLive();
+        else setSyncStatus("pending", "Enter name to begin");
+      }
+
       function renderCards() {
         var state = loadState();
-        if (state.player) document.getElementById("player").value = state.player;
-        var html = TFFConcepts.list.map(function (c) {
+        applyNameLock();
+        var html = concepts.map(function (c) {
           var g = state.guesses[c.code];
           var done = g && g.guess;
-          return '<article class="card' + (done ? " done" : "") + '" data-code="' + c.code + '">' +
+          return '<article class="card' + (done ? " done" : "") + (!nameOk ? " locked" : "") + '" data-code="' + c.code + '">' +
             '<div class="card-head"><span class="code">Cup ' + c.code + '</span>' +
             (done ? '<span style="font-size:0.72rem;font-weight:700;color:var(--green)">Guessed</span>' : '') + '</div>' +
             '<ul class="hints">' + c.mysteryHints.map(function (h) { return '<li>' + h + '</li>'; }).join("") + '</ul>' +
             '<label>Your guess</label>' +
-            '<select data-code="' + c.code + '"' + (done ? ' disabled' : '') + '>' +
+            '<select data-code="' + c.code + '"' + (done || !nameOk ? ' disabled' : '') + '>' +
             '<option value="">— choose prototype —</option>' +
-            TFFConcepts.list.map(function (o) {
+            concepts.map(function (o) {
               return '<option value="' + o.id + '"' + (g && g.guess === o.id ? ' selected' : '') + '>' +
                 String(o.id).padStart(2, "0") + " " + o.name + '</option>';
             }).join("") + '</select>' +
@@ -172,18 +249,16 @@
         renderPrint();
         var cardsWrap = document.getElementById("cards");
         cardsWrap.classList.remove("is-visible");
-        requestAnimationFrame(function () {
-          cardsWrap.classList.add("is-visible");
-        });
+        requestAnimationFrame(function () { cardsWrap.classList.add("is-visible"); });
       }
 
       function onGuess(e) {
+        if (!nameOk) return;
         var code = e.target.dataset.code;
         var guess = +e.target.value;
         if (!guess) return;
-        var concept = TFFConcepts.list.filter(function (c) { return c.code === code; })[0];
+        var concept = concepts.filter(function (c) { return c.code === code; })[0];
         var state = loadState();
-        state.player = document.getElementById("player").value.trim() || "Guest";
         state.guesses[code] = {
           guess: guess,
           correct: guess === concept.id,
@@ -191,6 +266,7 @@
         };
         saveState(state);
         renderCards();
+        syncLive();
         if (guess === concept.id && window.TFFShell) {
           var card = document.querySelector('[data-code="' + code + '"]');
           if (card) {
@@ -221,7 +297,7 @@
       function renderHost() {
         document.getElementById("host-table").innerHTML =
           "<tr><th>Code</th><th>Concept</th><th>QC</th><th>Note</th></tr>" +
-          TFFConcepts.list.map(function (c) {
+          concepts.map(function (c) {
             var m = TFFConcepts.stabilityMeta(c.stability);
             return "<tr><td><b>" + c.code + "</b></td><td>" + String(c.id).padStart(2, "0") + " " + c.name +
               "</td><td><span class=\"tag " + m.class + "\">" + m.short + "</span></td><td style=\"font-size:0.72rem;color:var(--muted)\">" + c.qcNote + "</td></tr>";
@@ -229,18 +305,19 @@
       }
 
       function renderPrint() {
-        var rows = TFFConcepts.list.map(function (c) {
+        var rows = concepts.map(function (c) {
           return "<tr><td><b>" + c.code + "</b></td><td style=\"height:28px\"></td><td style=\"height:28px\"></td></tr>";
         }).join("");
         document.getElementById("print-sheet").innerHTML =
           '<section class="print-ballot">' +
           '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Flavor mystery ballot</h2>' +
-          '<p style="font-size:0.82rem;margin:0 0 16px">Name: _______________ · Date: _______ · Do not peek at concept cards — guess from taste + hints only.</p>' +
-          '<table><tr><th>Code on cup</th><th>My guess (01–10 name)</th><th>Notes</th></tr>' + rows + '</table>' +
-          '<p style="font-size:0.72rem;margin-top:16px">Hint card at station · reveal answers on /mystery after tasting</p></section>' +
+          '<p style="font-size:0.82rem;margin:0 0 12px">Name: _______________ · Scan QR to submit guesses on your phone</p>' +
+          '<div class="print-qr"><img src="/assets/qr/mystery.png" alt="Mystery game QR" width="100" height="100" /><p style="font-size:0.7rem;margin:8px 0 0">/mystery</p></div>' +
+          '<table style="margin-top:0.2in"><tr><th>Code on cup</th><th>My guess (01–10)</th><th>Notes</th></tr>' + rows + '</table></section>' +
           '<section class="print-ballot">' +
           '<h2 style="font-family:Sora,sans-serif;margin:0 0 12px">Sensory hint card · station 2</h2>' +
-          TFFConcepts.list.map(function (c) {
+          '<p style="font-size:0.72rem;margin:0 0 12px">Concept set ' + TFFConcepts.setMeta().label + '</p>' +
+          concepts.map(function (c) {
             return '<p style="font-size:0.8rem;margin:0 0 10px"><b>' + c.code + '</b> — ' + c.mysteryHints.join(" · ") + '</p>';
           }).join("") +
           '</section>';
@@ -254,14 +331,26 @@
       function resetGame() {
         if (confirm("Clear all mystery guesses on this device?")) {
           TFFStorage.remove(STORAGE_KEY);
+          nameOk = false;
           renderCards();
         }
       }
 
-      document.getElementById("player").addEventListener("input", function () {
+      document.getElementById("name-save").addEventListener("click", function () {
+        var name = document.getElementById("player").value.trim();
+        if (!name) {
+          alert("Please enter your name so the host can track your guesses.");
+          return;
+        }
         var state = loadState();
-        state.player = this.value;
+        state.player = name;
+        state.nameLocked = true;
         saveState(state);
+        renderCards();
+      });
+
+      document.getElementById("player").addEventListener("keydown", function (e) {
+        if (e.key === "Enter") document.getElementById("name-save").click();
       });
 
       renderCards();

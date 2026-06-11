@@ -94,8 +94,9 @@
           '</article>';
       }
 
-      document.getElementById('labels-p1').innerHTML = TFFConcepts.list.slice(0,5).map(label).join('');
-      document.getElementById('labels-p2').innerHTML = TFFConcepts.list.slice(5,10).map(label).join('');
+      var active = TFFConcepts.activeList();
+      document.getElementById('labels-p1').innerHTML = active.slice(0, Math.ceil(active.length / 2)).map(label).join('');
+      document.getElementById('labels-p2').innerHTML = active.slice(Math.ceil(active.length / 2)).map(label).join('');
     </script>
       <script src="/tff-shell.js" defer></script>
   </body>

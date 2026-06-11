@@ -6,16 +6,17 @@
     { href: "/", label: "Home", match: ["/", "/index.html"] },
     { href: "/workshop", label: "Workshop", match: ["/workshop"] },
     { href: "/mystery", label: "Mystery", fun: true, match: ["/mystery"] },
-    { href: "/score", label: "Score", cta: true, match: ["/score"] },
-    { href: "/companies", label: "Companies", match: ["/companies", "/flavor-factory", "/therabreath-brand"] }
+    { href: "/score", label: "Score", cta: true, match: ["/score"] }
   ];
 
   var MORE = [
+    { href: "/companies", label: "Companies", match: ["/companies", "/flavor-factory", "/therabreath-brand"] },
     { href: "/lakewood", label: "Lakewood plan" },
     { href: "/passport", label: "Visitor passport" },
     { href: "/slides", label: "Slide deck" },
     { href: "/qr", label: "QR print sheet" },
     { href: "/stations", label: "Station signs" },
+    { href: "/mystery-live", label: "Mystery live · admin", team: true },
     { href: "/gate", label: "Team portal", team: true }
   ];
 
@@ -68,7 +69,7 @@
     var moreItems = MORE.filter(function (item) {
       return !item.team || (global.TFF && global.TFF.isAuthed && global.TFF.isAuthed());
     }).map(function (item) {
-      var active = path() === item.href ? " is-active" : "";
+      var active = isActive(item) ? " is-active" : "";
       return '<a href="' + item.href + '" class="' + active + '">' + item.label + "</a>";
     }).join("");
 

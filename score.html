@@ -117,7 +117,7 @@
     <script src="/tff-storage.js"></script>
     <script>
       var STORAGE_KEY = "tff-scores";
-      var concepts = TFFConcepts.list.map(function (c) {
+      var concepts = TFFConcepts.activeList().map(function (c) {
         return { id: c.id, name: c.name, sub: c.sub, stability: c.stability };
       });
 

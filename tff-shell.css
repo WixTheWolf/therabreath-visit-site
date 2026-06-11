@@ -418,13 +418,37 @@ html.tff-has-dock body {
   .tff-shell-dock {
     display: none !important;
   }
+
+  @page {
+    margin: 0.4in;
+  }
+
+  html.tff-has-shell body {
+    background: #fff !important;
+    background-image: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  html[data-tff-shell="off"] .toolbar,
+  html[data-tff-shell="off"] .topbar,
+  html[data-tff-shell="off"] .hint {
+    display: none !important;
+  }
+
+  html[data-tff-shell="off"] .sheet,
+  html[data-tff-shell="off"] .sign,
+  html[data-tff-shell="off"] .slide {
+    box-shadow: none !important;
+    margin: 0 !important;
+    border: none !important;
+  }
 }
 
 /* —— Page enter & scroll reveal —— */
 @keyframes tff-fade-up {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -433,13 +457,13 @@ html.tff-has-dock body {
 }
 
 .tff-enter {
-  animation: tff-fade-up 0.55s var(--tff-ease) both;
+  animation: tff-fade-up 0.38s var(--tff-ease) both;
 }
 
 .tff-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.55s var(--tff-ease), transform 0.55s var(--tff-ease);
+  transform: translateY(12px);
+  transition: opacity 0.38s var(--tff-ease), transform 0.38s var(--tff-ease);
 }
 
 .tff-reveal.is-visible {
@@ -449,8 +473,8 @@ html.tff-has-dock body {
 
 .tff-stagger > * {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.45s var(--tff-ease), transform 0.45s var(--tff-ease);
+  transform: translateY(8px);
+  transition: opacity 0.32s var(--tff-ease), transform 0.32s var(--tff-ease);
 }
 
 .tff-stagger.is-visible > * {
@@ -458,15 +482,15 @@ html.tff-has-dock body {
   transform: translateY(0);
 }
 
-.tff-stagger.is-visible > *:nth-child(1) { transition-delay: 0.04s; }
-.tff-stagger.is-visible > *:nth-child(2) { transition-delay: 0.08s; }
-.tff-stagger.is-visible > *:nth-child(3) { transition-delay: 0.12s; }
-.tff-stagger.is-visible > *:nth-child(4) { transition-delay: 0.16s; }
-.tff-stagger.is-visible > *:nth-child(5) { transition-delay: 0.2s; }
-.tff-stagger.is-visible > *:nth-child(6) { transition-delay: 0.24s; }
-.tff-stagger.is-visible > *:nth-child(7) { transition-delay: 0.28s; }
-.tff-stagger.is-visible > *:nth-child(8) { transition-delay: 0.32s; }
-.tff-stagger.is-visible > *:nth-child(9) { transition-delay: 0.36s; }
+.tff-stagger.is-visible > *:nth-child(1) { transition-delay: 0.03s; }
+.tff-stagger.is-visible > *:nth-child(2) { transition-delay: 0.05s; }
+.tff-stagger.is-visible > *:nth-child(3) { transition-delay: 0.07s; }
+.tff-stagger.is-visible > *:nth-child(4) { transition-delay: 0.09s; }
+.tff-stagger.is-visible > *:nth-child(5) { transition-delay: 0.11s; }
+.tff-stagger.is-visible > *:nth-child(6) { transition-delay: 0.13s; }
+.tff-stagger.is-visible > *:nth-child(7) { transition-delay: 0.15s; }
+.tff-stagger.is-visible > *:nth-child(8) { transition-delay: 0.17s; }
+.tff-stagger.is-visible > *:nth-child(9) { transition-delay: 0.19s; }
 
 /* —— Interactive polish —— */
 .tff-card-lift {
@@ -474,8 +498,8 @@ html.tff-has-dock body {
 }
 
 .tff-card-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(10, 22, 40, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(10, 22, 40, 0.08);
 }
 
 .tff-pop {

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" data-tff-shell="native">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Mystery Live · Admin | TFF</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
+    <script src="/tff-auth.js"></script>
+    <script>TFF.requireAuth();</script>
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f4f7fa; color:var(--ink); }
+      .bar {
+        display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;
+        padding:12px 20px; background:var(--ink); color:#fff;
+      }
+      .bar a, .bar button {
+        padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif;
+        font-size:0.72rem; font-weight:700; text-decoration:none; border:none; cursor:pointer;
+      }
+      .bar a { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.15); }
+      .bar button { background:var(--blue); color:#fff; }
+      .bar button.warn { background:transparent; border:1px solid rgba(255,255,255,0.25); color:rgba(255,255,255,0.8); }
+      .wrap { width:min(1100px,calc(100vw - 32px)); margin:0 auto; padding:24px 0 80px; }
+      .status {
+        display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:20px;
+        padding:14px 18px; border-radius:14px; background:#fff; border:1px solid var(--line);
+        font-size:0.82rem;
+      }
+      .pulse { width:8px; height:8px; border-radius:50%; background:var(--green); animation:live-pulse 2s ease infinite; }
+      @keyframes live-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+      @media (prefers-reduced-motion:reduce) { .pulse { animation:none; } }
+      .status.err { background:#fff4e8; border-color:rgba(245,130,32,0.35); }
+      .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
+      .stat { padding:16px; border-radius:14px; background:#fff; border:1px solid var(--line); text-align:center; }
+      .stat b { display:block; font-family:"Sora",sans-serif; font-size:1.6rem; color:var(--blue); }
+      .stat span { font-size:0.68rem; color:var(--muted); text-transform:uppercase; font-weight:700; letter-spacing:0.06em; }
+      .panel { background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:20px; }
+      .panel h2 { margin:0; padding:14px 18px; font-family:"Sora",sans-serif; font-size:0.92rem; border-bottom:1px solid var(--line); background:#fafcfd; }
+      table { width:100%; border-collapse:collapse; font-size:0.76rem; }
+      th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+      th { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); background:#f8fafc; }
+      tr:last-child td { border-bottom:none; }
+      .ok { color:#2d6a3f; font-weight:700; }
+      .miss { color:#c45c26; }
+      .name { font-family:"Sora",sans-serif; font-weight:700; }
+      .setup { padding:18px; border-radius:14px; background:linear-gradient(135deg,#fff,#f0f9fd); border:1px solid rgba(0,143,211,0.2); font-size:0.82rem; line-height:1.55; color:#344054; }
+      .setup code { font-size:0.74rem; background:#fff; padding:2px 6px; border-radius:4px; border:1px solid var(--line); }
+      @media (max-width:720px) { .stats { grid-template-columns:1fr 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <strong style="font-family:Sora,sans-serif">Mystery live · admin</strong>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="/toolkit">Toolkit</a>
+        <a href="/mystery">Guest game</a>
+        <button type="button" id="sound-btn" class="warn">Sound off</button>
+        <button type="button" id="export-btn">Export CSV</button>
+        <button type="button" id="clear-btn" class="warn">Clear all</button>
+        <button type="button" id="refresh-btn">Refresh</button>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="status" id="status">
+        <span class="pulse"></span>
+        <span id="status-text">Connecting…</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="s-players">0</b><span>Players</span></div>
+        <div class="stat"><b id="s-guesses">0</b><span>Guesses in</span></div>
+        <div class="stat"><b id="s-lead">—</b><span>Leader</span></div>
+        <div class="stat"><b id="s-set">v1</b><span>Concept set</span></div>
+      </div>
+      <div class="panel">
+        <h2>Leaderboard · who guessed what</h2>
+        <div style="overflow-x:auto">
+          <table id="board">
+            <thead>
+              <tr>
+                <th>#</th><th>Name</th><th>Score</th><th>Guesses</th><th>Updated</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Detail · cup by cup</h2>
+        <div style="overflow-x:auto" id="detail"></div>
+      </div>
+      <div class="setup" id="setup-note" style="display:none">
+        <b>Enable live sync on Vercel</b><br />
+        Vercel → Storage → add <code>Upstash Redis</code> (or set <code>UPSTASH_REDIS_REST_URL</code> + <code>UPSTASH_REDIS_REST_TOKEN</code>).<br />
+        Optional phone alerts: set env <code>TFF_NTFY_TOPIC</code> to a private topic, then subscribe at <a href="https://ntfy.sh" target="_blank" rel="noopener">ntfy.sh</a> on your phone.
+      </div>
+    </div>
+    <script src="/tff-concepts.js"></script>
+    <script>
+      var concepts = TFFConcepts.activeList();
+      var setMeta = TFFConcepts.setMeta();
+      var lastCount = 0;
+      var soundOn = false;
+      var pollMs = 2500;
+      var latest = [];
+
+      document.getElementById("s-set").textContent = "v" + setMeta.version;
+
+      function beep() {
+        if (!soundOn) return;
+        try {
+          var ctx = new (window.AudioContext || window.webkitAudioContext)();
+          var o = ctx.createOscillator();
+          var g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          o.frequency.value = 880;
+          g.gain.setValueAtTime(0.08, ctx.currentTime);
+          g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+          o.start(); o.stop(ctx.currentTime + 0.2);
+        } catch (e) {}
+      }
+
+      function guessSummary(guesses) {
+        return concepts.map(function (c) {
+          var g = (guesses || {})[c.code];
+          if (!g || !g.guess) return '<span style="color:var(--muted)">' + c.code + ': —</span>';
+          var guessName = TFFConcepts.byId(g.guess);
+          var label = guessName ? String(g.guess).padStart(2, "0") : "?";
+          var cls = g.correct ? "ok" : "miss";
+          return '<span class="' + cls + '">' + c.code + '→' + label + '</span>';
+        }).join(" · ");
+      }
+
+      function render(data) {
+        latest = data.submissions || [];
+        var totalGuesses = 0;
+        latest.forEach(function (s) { totalGuesses += s.total || 0; });
+
+        document.getElementById("s-players").textContent = latest.length;
+        document.getElementById("s-guesses").textContent = totalGuesses;
+        document.getElementById("s-lead").textContent = latest[0] ? latest[0].player.split(" ")[0] : "—";
+
+        if (latest.length > lastCount) {
+          beep();
+          document.title = "(" + latest.length + ") Mystery live";
+        }
+        lastCount = latest.length;
+
+        document.querySelector("#board tbody").innerHTML = latest.map(function (s, i) {
+          return "<tr><td>" + (i + 1) + "</td><td class=\"name\">" + escapeHtml(s.player) +
+            "</td><td><b>" + s.correct + "</b> / " + s.total +
+            "</td><td style=\"font-size:0.68rem;line-height:1.5\">" + guessSummary(s.guesses) +
+            "</td><td style=\"white-space:nowrap;color:var(--muted)\">" + timeAgo(s.updatedAt) + "</td></tr>";
+        }).join("") || "<tr><td colspan=\"5\" style=\"color:var(--muted);text-align:center\">No submissions yet — guests scan QR at /mystery</td></tr>";
+
+        var head = "<table><thead><tr><th>Name</th>" +
+          concepts.map(function (c) { return "<th>" + c.code + "</th>"; }).join("") + "</tr></thead><tbody>";
+        var rows = latest.map(function (s) {
+          return "<tr><td class=\"name\">" + escapeHtml(s.player) + "</td>" +
+            concepts.map(function (c) {
+              var g = (s.guesses || {})[c.code];
+              if (!g || !g.guess) return "<td>—</td>";
+              var gn = TFFConcepts.byId(g.guess);
+              var txt = gn ? gn.name : "?";
+              return "<td class=\"" + (g.correct ? "ok" : "miss") + "\">" + txt + "</td>";
+            }).join("") + "</tr>";
+        }).join("");
+        document.getElementById("detail").innerHTML = head + rows + "</tbody></table>";
+      }
+
+      function escapeHtml(s) {
+        return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+
+      function timeAgo(iso) {
+        if (!iso) return "—";
+        var sec = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+        if (sec < 60) return sec + "s ago";
+        if (sec < 3600) return Math.floor(sec / 60) + "m ago";
+        return new Date(iso).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+      }
+
+      function poll() {
+        fetch("/api/mystery/live", { credentials: "include" })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+          .then(function (res) {
+            var el = document.getElementById("status");
+            var txt = document.getElementById("status-text");
+            var setup = document.getElementById("setup-note");
+            if (!res.ok && res.data.error === "storage_unavailable") {
+              el.className = "status err";
+              txt.textContent = "Live storage not connected — see setup below.";
+              setup.style.display = "block";
+              return;
+            }
+            if (!res.ok) {
+              el.className = "status err";
+              txt.textContent = "Auth required — re-open from toolkit while signed in.";
+              return;
+            }
+            setup.style.display = "none";
+            el.className = "status";
+            txt.textContent = "Live · " + res.data.count + " player(s) · updated " + timeAgo(res.data.updatedAt) + " · polling every " + (pollMs / 1000) + "s";
+            render(res.data);
+          })
+          .catch(function () {
+            document.getElementById("status-text").textContent = "Connection error — retrying…";
+          });
+      }
+
+      document.getElementById("sound-btn").addEventListener("click", function () {
+        soundOn = !soundOn;
+        this.textContent = soundOn ? "Sound on" : "Sound off";
+      });
+      document.getElementById("refresh-btn").addEventListener("click", poll);
+      document.getElementById("export-btn").addEventListener("click", function () {
+        var lines = ["Player,Score,Total," + concepts.map(function (c) { return c.code; }).join(",")];
+        latest.forEach(function (s) {
+          var row = [s.player, s.correct, s.total].concat(concepts.map(function (c) {
+            var g = (s.guesses || {})[c.code];
+            if (!g || !g.guess) return "";
+            var gn = TFFConcepts.byId(g.guess);
+            return gn ? gn.name : "";
+          }));
+          lines.push(row.map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(","));
+        });
+        navigator.clipboard.writeText(lines.join("\n")).then(function () { alert("CSV copied"); });
+      });
+      document.getElementById("clear-btn").addEventListener("click", function () {
+        if (!confirm("Clear ALL live mystery submissions?")) return;
+        fetch("/api/mystery/live", { method: "DELETE", credentials: "include" })
+          .then(function () { lastCount = 0; poll(); });
+      });
+
+      poll();
+      setInterval(poll, pollMs);
+    </script>
+    <script src="/tff-shell.js" defer></script>
+  </body>
+</html>
