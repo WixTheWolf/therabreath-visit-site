@@ -1,3 +1,4 @@
+/** Server-side gate — same password as /gate (TFF4321#). */
 const PROTECTED = new Set([
   "/toolkit",
   "/kickoff",
@@ -15,7 +16,8 @@ const PROTECTED = new Set([
   "/worksheet",
   "/pocket",
   "/partnership",
-  "/therabreath"
+  "/therabreath",
+  "/search-index.json"
 ]);
 
 // Matches api/auth.js default HMAC for password TFF4321#
@@ -67,6 +69,7 @@ export const config = {
     "/worksheet",
     "/pocket",
     "/partnership",
-    "/therabreath"
+    "/therabreath",
+    "/search-index.json"
   ]
 };
