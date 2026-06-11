@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="The Flavor Factory and TheraBreath — company profiles, brand science, and workshop resources in one partnership hub." />
+    <title>Company Hub | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; }
+      .topnav { position:sticky; top:0; z-index:30; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .topnav .brand { display:flex; align-items:center; gap:10px; font-family:"Sora",sans-serif; font-weight:800; font-size:0.88rem; text-decoration:none; color:var(--ink); }
+      .topnav .mark { width:32px; height:32px; display:grid; place-items:center; border-radius:8px; background:var(--blue); color:#fff; font-size:0.65rem; }
+      .topnav .links { display:flex; flex-wrap:wrap; gap:6px; }
+      .topnav a { padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .topnav a.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+      .topnav a.cta { background:var(--orange); color:#fff; border-color:var(--orange); }
+      .hero { padding:52px 24px 48px; background:linear-gradient(135deg,var(--ink) 0%,#003d6b 45%,#1e5c3a); color:#fff; }
+      .hero-in { width:min(1040px,calc(100vw - 40px)); margin:0 auto; }
+      .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
+      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.8rem,4.5vw,2.6rem); font-weight:800; letter-spacing:-0.03em; }
+      .hero p { margin:0; max-width:720px; font-size:0.95rem; line-height:1.6; color:rgba(255,255,255,0.85); }
+      .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+      .hero-actions a { padding:11px 18px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-decoration:none; }
+      .hero-actions .primary { background:var(--green); color:#fff; }
+      .hero-actions .secondary { background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.22); }
+      .wrap { width:min(1040px,calc(100vw - 40px)); margin:0 auto; padding:40px 0 80px; }
+      h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.25rem; font-weight:800; }
+      .lead { margin:0 0 20px; color:var(--muted); line-height:1.55; max-width:720px; font-size:0.88rem; }
+      .partner-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:40px; }
+      .partner { display:grid; grid-template-rows:auto 1fr; border:1px solid var(--line); border-radius:18px; background:#fff; overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.2s, box-shadow 0.2s; }
+      .partner:hover { transform:translateY(-3px); box-shadow:0 20px 48px rgba(10,22,40,0.1); }
+      .partner img { width:100%; height:200px; object-fit:cover; display:block; background:#eef4f8; }
+      .partner-body { padding:20px; display:grid; gap:8px; }
+      .partner .tag { font-size:0.62rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); }
+      .partner h3 { margin:0; font-family:"Sora",sans-serif; font-size:1.1rem; }
+      .partner p { margin:0; font-size:0.82rem; color:var(--muted); line-height:1.5; }
+      .partner .go { font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700; color:var(--blue); margin-top:4px; }
+      .partner .ext { font-size:0.72rem; color:var(--muted); }
+      .quick { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:40px; }
+      .quick a { padding:18px; border-radius:14px; border:1px solid var(--line); background:#fff; text-decoration:none; color:inherit; }
+      .quick b { display:block; font-family:"Sora",sans-serif; font-size:0.88rem; margin-bottom:4px; }
+      .quick span { font-size:0.76rem; color:var(--muted); line-height:1.45; }
+      .quick .lock { border-left:3px solid var(--ink); }
+      .quick .pub { border-left:3px solid var(--green); }
+      .bridge { padding:22px; border-radius:16px; border:1px solid rgba(0,143,211,0.25); background:linear-gradient(135deg,#fff,#f0f9fd); }
+      .bridge p { margin:0 0 12px; font-size:0.84rem; color:#344054; line-height:1.55; }
+      .bridge .links { display:flex; flex-wrap:wrap; gap:8px; }
+      .bridge a { padding:8px 12px; border-radius:8px; background:#fff; border:1px solid var(--line); font-size:0.74rem; font-weight:700; color:var(--blue); text-decoration:none; }
+      @media (max-width:720px) { .partner-grid, .quick { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="topnav">
+      <a class="brand" href="/"><span class="mark">TFF</span> Partnership site</a>
+      <nav class="links" aria-label="Site navigation">
+        <a href="/">Workshop</a>
+        <a href="/companies" class="on">Companies</a>
+        <a href="/flavor-factory">The Flavor Factory</a>
+        <a href="/therabreath-brand">TheraBreath</a>
+        <a href="/gate" class="cta">Team portal</a>
+      </nav>
+    </header>
+
+    <header class="hero">
+      <div class="hero-in">
+        <p class="kicker">Two brands · one oral-care partnership</p>
+        <h1>Know both sides of the table.</h1>
+        <p>TFF develops and manufactures flavors at Norco for Church &amp; Dwight's TheraBreath business. This hub pulls public brand and capability content from both companies' websites — organized for the July 8 workshop and ongoing partnership work.</p>
+        <div class="hero-actions">
+          <a class="primary" href="/flavor-factory">The Flavor Factory profile →</a>
+          <a class="secondary" href="/therabreath-brand">TheraBreath brand profile →</a>
+          <a class="secondary" href="/">Back to workshop</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2>Company profiles</h2>
+        <p class="lead">Curated from <a href="https://www.flavorfactory.net/" target="_blank" rel="noopener">flavorfactory.net</a> and <a href="https://www.therabreath.com/" target="_blank" rel="noopener">therabreath.com</a> — with assets hosted here for fast reference during the visit.</p>
+        <div class="partner-grid">
+          <a class="partner" href="/flavor-factory">
+            <img src="/assets/companies/tff/oral-care.png" alt="Oral care flavor development at The Flavor Factory" width="600" height="200" />
+            <div class="partner-body">
+              <span class="tag">Supplier · Norco, CA</span>
+              <h3>The Flavor Factory</h3>
+              <p>Family-owned flavor house — liquid &amp; powder flavors built for the finished product. Oral-care expertise: mint impact, cooling balance, chlorite-stable systems, SQF manufacturing.</p>
+              <span class="go">Open TFF profile →</span>
+              <span class="ext">Also at flavorfactory.net</span>
+            </div>
+          </a>
+          <a class="partner" href="/therabreath-brand">
+            <img src="/assets/companies/therabreath/oxyd8-hero.jpg" alt="How TheraBreath OXYD-8 combats bad breath" width="600" height="200" />
+            <div class="partner-body">
+              <span class="tag">Brand · Church &amp; Dwight</span>
+              <h3>TheraBreath</h3>
+              <p>Clinically oriented oral care founded by Dr. Harold Katz — OXYD-8 stabilized sodium chlorite, alcohol-free rinses, non-burning equity, and expanding Total Care, gum health, and kids lines.</p>
+              <span class="go">Open TheraBreath profile →</span>
+              <span class="ext">Also at therabreath.com</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Get anywhere fast</h2>
+        <div class="quick">
+          <a class="pub" href="/">
+            <b>July 8 workshop</b>
+            <span>Live pillars, tasting, concepts, and feedback — the half-day experience.</span>
+          </a>
+          <a class="pub" href="/lakewood">
+            <b>Lakewood validation</b>
+            <span>Site parity proposal Ross requested — triangle + blind escalation.</span>
+          </a>
+          <a class="pub" href="/onepager">
+            <b>Executive one-pager</b>
+            <span>Procurement leave-behind — partnership at a glance.</span>
+          </a>
+          <a class="pub" href="/slides">
+            <b>Slide deck</b>
+            <span>20 slides for screen share or print.</span>
+          </a>
+          <a class="pub" href="/chlorite-flavor">
+            <b>Chlorite flavor science</b>
+            <span>Public playbook — stability context for oral-care bases.</span>
+          </a>
+          <a class="lock" href="/gate">
+            <b>Team portal</b>
+            <span>Password required — partnership brief, file index, host tools, Q&amp;A prep.</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="bridge">
+        <h2>Internal partnership files</h2>
+        <p>Customer qualification packets, flavor codes, FL briefs, and competitive intel stay behind the team portal. Password: team credential shared for July 8 prep.</p>
+        <div class="links">
+          <a href="/gate">Unlock portal</a>
+          <a href="/partnership">C&amp;D partnership brief</a>
+          <a href="/therabreath">TheraBreath file index</a>
+          <a href="/toolkit">Command center</a>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

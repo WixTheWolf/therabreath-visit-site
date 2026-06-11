@@ -606,5 +606,37 @@
     "snippet": "Seasonal oral rinse brief Jul 2025 — PE-22004 lead SKU, production early 2026, retail Fall/Winter 2026.",
     "href": "/therabreath",
     "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Company profiles",
+    "q": "Where are The Flavor Factory and TheraBreath company profiles on this site?",
+    "snippet": "Public company hub at /companies — TFF at /flavor-factory, TheraBreath brand at /therabreath-brand.",
+    "href": "/companies",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Company profiles",
+    "q": "What is The Flavor Factory's oral care capability?",
+    "snippet": "Mint impact, cooling balance, chlorite masking, aftertaste — developed and produced at Norco. SQF, FDA registered.",
+    "href": "/flavor-factory",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Company profiles",
+    "q": "What is TheraBreath OXYD-8 and how does it work?",
+    "snippet": "Stabilized sodium chlorite — oxygenating power against anaerobic bad-breath bacteria. Alcohol-free, clinically tested.",
+    "href": "/therabreath-brand",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Company profiles",
+    "q": "What TheraBreath product lines matter for flavor development?",
+    "snippet": "Fresh breath, gum health, Total Care, overnight, kids, whitening — each with distinct mint and functional flavor needs.",
+    "href": "/therabreath-brand",
+    "badge": "ready"
   }
 ]

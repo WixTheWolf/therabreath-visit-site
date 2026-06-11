@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="TheraBreath brand profile — OXYD-8 science, product lines, and oral-care positioning for the TFF partnership workshop." />
+    <title>TheraBreath | Brand Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --tb-mint:#5fb832; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; padding-bottom:64px; }
+      .topnav { position:sticky; top:0; z-index:30; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .topnav .brand { display:flex; align-items:center; gap:10px; font-family:"Sora",sans-serif; font-weight:800; font-size:0.88rem; text-decoration:none; color:var(--ink); }
+      .topnav .mark { width:32px; height:32px; display:grid; place-items:center; border-radius:8px; background:var(--tb-mint); color:#fff; font-size:0.65rem; }
+      .topnav .links { display:flex; flex-wrap:wrap; gap:6px; }
+      .topnav a { padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .topnav a.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+      .topnav a.cta { background:var(--orange); color:#fff; border-color:var(--orange); }
+      .hero { padding:44px 24px 40px; background:linear-gradient(135deg,#0a2840 0%,#1a5c3a 55%,#0a1628); color:#fff; }
+      .hero-in { width:min(1040px,calc(100vw - 40px)); margin:0 auto; }
+      .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
+      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.6rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.03em; }
+      .hero p { margin:0; max-width:720px; font-size:0.92rem; line-height:1.6; color:rgba(255,255,255,0.85); }
+      .hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+      .hero-meta span { padding:7px 12px; border-radius:999px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); font-size:0.72rem; font-weight:600; }
+      .ext-link { display:inline-block; margin-top:14px; font-size:0.78rem; font-weight:700; color:#a8e6a0; text-decoration:none; }
+      .wrap { width:min(1040px,calc(100vw - 40px)); margin:0 auto; padding:36px 0 60px; }
+      h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.2rem; font-weight:800; }
+      h3 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.9rem; }
+      .section { margin-bottom:36px; }
+      .lead { margin:0 0 16px; color:var(--muted); line-height:1.55; max-width:760px; font-size:0.88rem; }
+      .split { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; }
+      .split img { width:100%; border-radius:14px; border:1px solid var(--line); }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+      .grid6 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+      .card { padding:18px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .card p, .card li { font-size:0.82rem; color:var(--muted); line-height:1.5; }
+      .card ul { margin:8px 0 0; padding-left:18px; }
+      .card.accent { border-color:rgba(95,184,50,0.35); background:linear-gradient(135deg,#fff,#f8fdf6); }
+      .cat { text-align:center; padding:16px; border:1px solid var(--line); border-radius:14px; background:#fff; text-decoration:none; color:inherit; transition:transform 0.2s; }
+      .cat:hover { transform:translateY(-2px); }
+      .cat img { width:80px; height:80px; object-fit:contain; margin:0 auto 10px; display:block; }
+      .cat b { display:block; font-family:"Sora",sans-serif; font-size:0.82rem; }
+      .product { border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+      .product img { width:100%; height:160px; object-fit:contain; background:#fafcfe; padding:12px; }
+      .product-body { padding:14px; }
+      .product-body b { display:block; font-family:"Sora",sans-serif; font-size:0.82rem; margin-bottom:4px; }
+      .product-body span { font-size:0.74rem; color:var(--muted); }
+      .certs { display:flex; flex-wrap:wrap; gap:16px; align-items:center; padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .certs img { height:48px; width:auto; }
+      .founder { display:grid; grid-template-columns:140px 1fr; gap:18px; align-items:start; padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .founder img { width:100%; border-radius:12px; }
+      .links { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+      .links a { padding:8px 12px; border-radius:8px; background:#fff; border:1px solid var(--line); font-size:0.74rem; font-weight:700; color:var(--blue); text-decoration:none; }
+      @media (max-width:800px) { .split, .grid2, .grid3, .grid6 { grid-template-columns:1fr; } .founder { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="topnav">
+      <a class="brand" href="/companies"><span class="mark">TB</span> Company hub</a>
+      <nav class="links">
+        <a href="/">Workshop</a>
+        <a href="/companies">Companies</a>
+        <a href="/flavor-factory">The Flavor Factory</a>
+        <a href="/therabreath-brand" class="on">TheraBreath</a>
+        <a href="/gate" class="cta">Team portal</a>
+      </nav>
+    </header>
+
+    <header class="hero">
+      <div class="hero-in">
+        <p class="kicker">TheraBreath · Church &amp; Dwight</p>
+        <h1>Science-first oral care.</h1>
+        <p>Clinically tested bad-breath solutions built on OXYD-8® stabilized sodium chlorite — alcohol-free rinses, non-burning equity, and expanding lines in Total Care, gum health, whitening, kids, and overnight routines.</p>
+        <div class="hero-meta">
+          <span>Founded by Dr. Harold Katz</span>
+          <span>Alcohol-free</span>
+          <span>100% money-back guarantee</span>
+          <span>Gluten-free line</span>
+        </div>
+        <a class="ext-link" href="https://www.therabreath.com/" target="_blank" rel="noopener">Visit therabreath.com →</a>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section class="section split">
+        <img src="/assets/companies/therabreath/oxyd8-hero.jpg" alt="How TheraBreath OXYD-8 combats bad breath" width="480" height="320" />
+        <div>
+          <h2>OXYD-8® · how it works</h2>
+          <p class="lead">From <a href="https://www.therabreath.com/blogs/oral-health/how-therabreath-works" target="_blank" rel="noopener">How TheraBreath Works</a> — pH-balanced stabilized sodium chlorite that generates oxygenating power in the mouth.</p>
+          <div class="card accent">
+            <ul>
+              <li><b>Anaerobic bacteria</b> that cause bad breath cannot survive in an oxygen-rich environment — OXYD-8 begins working immediately on rinse.</li>
+              <li><b>Superior to unstable chlorine dioxide</b> competitors — stabilized through a proprietary method used safely in water purification for 100+ years.</li>
+              <li><b>Full system</b> — rinse, toothpaste, lozenges, spray, gum — attacking root cause throughout the day.</li>
+              <li><b>Clinically tested</b> — 100% money-back guaranteed efficacy positioning.</li>
+            </ul>
+          </div>
+          <p class="lead" style="margin-top:12px">Flavor development must mask chlorite character through rinsing and aftertaste without harsh or burning perception — core to every TFF brief for this brand.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Brand equities that shape flavor work</h2>
+        <div class="grid3">
+          <div class="card"><h3>Non-burning</h3><p>Overtly strong taste or sensation reads as harsh — out of scope for mainstream TheraBreath positioning.</p></div>
+          <div class="card"><h3>Alcohol-free</h3><p>Adult non-alcohol mouthrinse focus — Gen Z &amp; Millennial growth audience.</p></div>
+          <div class="card"><h3>No SLS in toothpaste</h3><p>Avoids canker-sore concerns and alters sweetness perception vs. typical pastes — flavor must account for surfactant environment in paste formats.</p></div>
+          <div class="card"><h3>Clean finish</h3><p>Freshness must linger with a clean aftertaste — not soapy, metallic, or cloying.</p></div>
+          <div class="card"><h3>Natural cooling</h3><p>Long-lasting cooling technologies where used must meet natural definitions per brief.</p></div>
+          <div class="card"><h3>Cruelty-free · conscious</h3><p>Vegan, gluten-free, kosher, halal, BPA-free — label claims verified across the line.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Shop by need</h2>
+        <p class="lead">Primary territories on therabreath.com — each maps to flavor territories TFF supports in production and innovation.</p>
+        <div class="grid6">
+          <a class="cat" href="https://www.therabreath.com/collections/bad-breath" target="_blank" rel="noopener"><img src="/assets/companies/therabreath/cat-bad-breath.png" alt="" width="80" height="80" /><b>Bad Breath</b></a>
+          <a class="cat" href="https://www.therabreath.com/collections/gum-health" target="_blank" rel="noopener"><img src="/assets/companies/therabreath/cat-gum-health.jpg" alt="" width="80" height="80" /><b>Gum Health</b></a>
+          <a class="cat" href="https://www.therabreath.com/collections/teeth-whitening" target="_blank" rel="noopener"><img src="/assets/companies/therabreath/cat-whitening.png" alt="" width="80" height="80" /><b>Whitening</b></a>
+          <a class="cat" href="https://www.therabreath.com/collections/dry-mouth" target="_blank" rel="noopener"><img src="/assets/companies/therabreath/cat-dry-mouth.png" alt="" width="80" height="80" /><b>Dry Mouth</b></a>
+          <a class="cat" href="https://www.therabreath.com/collections/anticavity" target="_blank" rel="noopener"><img src="/assets/companies/therabreath/cat-gum-health.jpg" alt="" width="80" height="80" /><b>Anticavity</b></a>
+          <a class="cat" href="https://www.therabreath.com/collections/oral-health-products-for-kids" target="_blank" rel="noopener"><img src="/assets/companies/therabreath/deep-clean-rinse.png" alt="" width="80" height="80" /><b>For Kids</b></a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Featured mouthrinses</h2>
+        <p class="lead">Hero SKUs from the current DTC lineup — useful context for Lakewood parity and July 8 tasting stations.</p>
+        <div class="grid3">
+          <div class="product">
+            <img src="/assets/companies/therabreath/deep-clean-rinse.png" alt="Deep Clean Oral Rinse Fresh Mint" width="300" height="160" />
+            <div class="product-body"><b>Deep Clean · Fresh Mint</b><span>Kills germs without the burn — core fresh-breath territory</span></div>
+          </div>
+          <div class="product">
+            <img src="/assets/companies/therabreath/healthy-gums-rinse.jpg" alt="Healthy Gums Oral Rinse Clean Mint" width="300" height="160" />
+            <div class="product-body"><b>Healthy Gums · Clean Mint</b><span>CPC-added gum health line</span></div>
+          </div>
+          <div class="product">
+            <img src="/assets/companies/therabreath/complete-rinse.jpg" alt="Complete Mouthwash Revitalizing Mint" width="300" height="160" />
+            <div class="product-body"><b>Complete · Revitalizing Mint</b><span>6-in-1 benefits · alcohol-free</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Certifications</h2>
+        <div class="certs">
+          <img src="/assets/companies/therabreath/cert-vegan.png" alt="Certified Vegan" height="48" />
+          <img src="/assets/companies/therabreath/cert-gluten-free.png" alt="Certified Gluten-Free" height="48" />
+          <img src="/assets/companies/therabreath/cert-kosher.png" alt="Certified Kosher" height="48" />
+          <img src="/assets/companies/therabreath/cert-halal.png" alt="Halal" height="48" />
+          <img src="/assets/companies/therabreath/cert-cruelty-free.png" alt="Not tested on animals" height="48" />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="founder">
+          <img src="/assets/companies/therabreath/dr-katz.png" alt="Dr. Harold Katz, founder of TheraBreath" width="140" height="140" />
+          <div>
+            <h2>Dr. Harold Katz</h2>
+            <p class="lead" style="margin-top:0">UCLA-trained dentist and bacteriologist — began breakthrough bad-breath research in the 1990s when he couldn't help his own daughter. The first TheraBreath formula became a safe, efficacious solution still at the core of the brand today.</p>
+            <p class="lead">Church &amp; Dwight acquired TheraBreath; Ross Conroy and Nelly Levitsky lead flavor &amp; innovation on the C&amp;D side for new rinse programs including Total Care and seasonal FL2025-11.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Partnership context on this site</h2>
+        <div class="grid2">
+          <div class="card accent">
+            <h3>Flavor programs in flight</h3>
+            <ul>
+              <li>Core mint &amp; Total Care production flavors</li>
+              <li>Seasonal FL2025-11 — Peppermint Vanilla Swirl lead</li>
+              <li>Lakewood 8-variant site parity validation</li>
+              <li>Chlorite-stable workshop concepts (July 8)</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Internal resources</h3>
+            <ul>
+              <li><a href="/gate">Team portal</a> — password required</li>
+              <li><a href="/partnership">C&amp;D partnership brief</a></li>
+              <li><a href="/therabreath">TheraBreath file index</a></li>
+              <li><a href="/flavor-factory">TFF company profile</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="links">
+          <a href="/companies">Company hub</a>
+          <a href="/">Workshop site</a>
+          <a href="https://www.therabreath.com/collections/mouthwash" target="_blank" rel="noopener">All mouthwash</a>
+          <a href="/chlorite-flavor">Chlorite flavor playbook</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

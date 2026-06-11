@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="The Flavor Factory — custom liquid and powder flavors, Norco CA manufacturing, oral care expertise for TheraBreath partnership." />
+    <title>The Flavor Factory | Company Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; padding-bottom:64px; }
+      .topnav { position:sticky; top:0; z-index:30; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .topnav .brand { display:flex; align-items:center; gap:10px; font-family:"Sora",sans-serif; font-weight:800; font-size:0.88rem; text-decoration:none; color:var(--ink); }
+      .topnav .mark { width:32px; height:32px; display:grid; place-items:center; border-radius:8px; background:var(--blue); color:#fff; font-size:0.65rem; }
+      .topnav .links { display:flex; flex-wrap:wrap; gap:6px; }
+      .topnav a { padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .topnav a.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+      .topnav a.cta { background:var(--orange); color:#fff; border-color:var(--orange); }
+      .hero { padding:44px 24px 40px; background:linear-gradient(135deg,var(--ink) 0%,#003d6b 60%,#004f87); color:#fff; }
+      .hero-in { width:min(1040px,calc(100vw - 40px)); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center; }
+      .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
+      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.6rem,4vw,2.3rem); font-weight:800; letter-spacing:-0.03em; }
+      .hero p { margin:0; font-size:0.92rem; line-height:1.6; color:rgba(255,255,255,0.85); }
+      .hero img { width:100%; border-radius:16px; box-shadow:0 24px 48px rgba(0,0,0,0.25); }
+      .hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+      .hero-meta span { padding:7px 12px; border-radius:999px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); font-size:0.72rem; font-weight:600; }
+      .ext-link { display:inline-block; margin-top:14px; font-size:0.78rem; font-weight:700; color:var(--green); text-decoration:none; }
+      .wrap { width:min(1040px,calc(100vw - 40px)); margin:0 auto; padding:36px 0 60px; }
+      h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.2rem; font-weight:800; }
+      h3 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.9rem; }
+      .section { margin-bottom:36px; }
+      .lead { margin:0 0 16px; color:var(--muted); line-height:1.55; max-width:760px; font-size:0.88rem; }
+      .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:28px; }
+      .stat { padding:16px; border-radius:12px; background:#fff; border:1px solid var(--line); text-align:center; }
+      .stat b { display:block; font-family:"Sora",sans-serif; font-size:1.15rem; font-weight:800; color:var(--blue); }
+      .stat span { font-size:0.68rem; color:var(--muted); }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+      .card { padding:18px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .card p, .card li { font-size:0.82rem; color:var(--muted); line-height:1.5; }
+      .card ul { margin:8px 0 0; padding-left:18px; }
+      .card.accent { border-color:rgba(0,143,211,0.3); background:linear-gradient(135deg,#fff,#f0f9fd); }
+      .split { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; }
+      .split img { width:100%; border-radius:14px; border:1px solid var(--line); }
+      .timeline { border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+      .tl { display:grid; grid-template-columns:36px 1fr; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); font-size:0.8rem; }
+      .tl:last-child { border-bottom:none; }
+      .tl .num { font-family:"Sora",sans-serif; font-weight:800; color:var(--blue); }
+      .cert-img { max-width:480px; width:100%; margin-top:12px; }
+      .links { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+      .links a { padding:8px 12px; border-radius:8px; background:#fff; border:1px solid var(--line); font-size:0.74rem; font-weight:700; color:var(--blue); text-decoration:none; }
+      @media (max-width:800px) { .hero-in, .grid2, .grid3, .stats, .split { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="topnav">
+      <a class="brand" href="/companies"><span class="mark">TFF</span> Company hub</a>
+      <nav class="links">
+        <a href="/">Workshop</a>
+        <a href="/companies">Companies</a>
+        <a href="/flavor-factory" class="on">The Flavor Factory</a>
+        <a href="/therabreath-brand">TheraBreath</a>
+        <a href="/gate" class="cta">Team portal</a>
+      </nav>
+    </header>
+
+    <header class="hero">
+      <div class="hero-in">
+        <div>
+          <p class="kicker">The Flavor Factory · Norco, California</p>
+          <h1>Good on the bench is not good enough.</h1>
+          <p>We develop liquid and powder flavors around how your product actually performs — in your base, at your processing temperature, on your label. For TheraBreath, that means mouthwash matrices with sodium chlorite, cooling balance, and a clean lasting finish.</p>
+          <div class="hero-meta">
+            <span>Family-owned</span>
+            <span>2058 Second Street, Norco</span>
+            <span>3–5 day first samples</span>
+            <span>SQF · FDA registered</span>
+          </div>
+          <a class="ext-link" href="https://www.flavorfactory.net/" target="_blank" rel="noopener">Visit flavorfactory.net →</a>
+        </div>
+        <img src="/assets/companies/tff/facility.jpg" alt="Production at The Flavor Factory Norco facility" width="520" height="360" />
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section class="section">
+        <div class="stats">
+          <div class="stat"><b>60+</b><span>Years combined flavor experience</span></div>
+          <div class="stat"><b>3–5</b><span>Business days to first sample</span></div>
+          <div class="stat"><b>200+</b><span>Profiles in library — or custom build</span></div>
+          <div class="stat"><b>1 roof</b><span>Development + production + QC</span></div>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <h2>Oral care is our application</h2>
+          <p class="lead">From <a href="https://www.flavorfactory.net/industries/oral-care" target="_blank" rel="noopener">flavorfactory.net/industries/oral-care</a> — impact and finish define the experience; there is no food matrix to hide behind.</p>
+          <div class="card accent">
+            <h3>What makes mouthwash hard</h3>
+            <ul>
+              <li>Full-concentration flavor on taste receptors — every note comes through</li>
+              <li>Cooling calibration — menthol and WS-series agents in a narrow window</li>
+              <li>Aftertaste duration — freshness must linger without turning soapy or metallic</li>
+              <li>Active compatibility — sodium chlorite and other actives need masking technology</li>
+            </ul>
+          </div>
+        </div>
+        <img src="/assets/companies/tff/oral-care.png" alt="Oral care flavor application" width="480" height="360" />
+      </section>
+
+      <section class="section">
+        <h2>Flavor problems we solve daily</h2>
+        <p class="lead">Constraints we build around for C&amp;D and TheraBreath programs.</p>
+        <div class="grid3">
+          <div class="card"><h3>Bench vs. base</h3><p>Profiles that disappear in the actual rinse base — we formulate in the finished system.</p></div>
+          <div class="card"><h3>Actives &amp; bitterness</h3><p>Masking and modulation when chlorite, botanicals, or functional ingredients overpower flavor.</p></div>
+          <div class="card"><h3>Heat &amp; process</h3><p>Top notes that survive production — evaluated after process exposure, not just at pipette.</p></div>
+          <div class="card"><h3>Supplier match</h3><p>Finished-product matching when a reference flavor is discontinued or underperforms.</p></div>
+          <div class="card"><h3>Label goals</h3><p>Natural, organic-compliant, kosher, halal — constraints in the brief from day one.</p></div>
+          <div class="card"><h3>Sample → production</h3><p>Approved samples move to manufacturing specs — same team, same facility, cleaner handoff.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Development loop</h2>
+        <p class="lead">Six stages from <a href="https://www.flavorfactory.net/capabilities" target="_blank" rel="noopener">capabilities</a> — each with a clear decision point.</p>
+        <div class="timeline">
+          <div class="tl"><span class="num">01</span><div><b>Concept</b> — application, base, processing, label goals, timeline → technical brief</div></div>
+          <div class="tl"><span class="num">02</span><div><b>Sample</b> — first direction built for the product, not a generic starting point</div></div>
+          <div class="tl"><span class="num">03</span><div><b>Adjustment</b> — documented revisions on sweetness, finish, masking, cooling</div></div>
+          <div class="tl"><span class="num">04</span><div><b>Scale-up</b> — manufacturing documentation for batch consistency</div></div>
+          <div class="tl"><span class="num">05</span><div><b>Production</b> — liquid &amp; powder from Norco with lot COAs</div></div>
+          <div class="tl"><span class="num">06</span><div><b>Follow-through</b> — reorders, reformulations, long-term account support</div></div>
+        </div>
+      </section>
+
+      <section class="section split">
+        <div>
+          <h2>Certifications &amp; documentation</h2>
+          <p class="lead">Programs from <a href="https://www.flavorfactory.net/certifications" target="_blank" rel="noopener">certifications</a> — reviewed per project and formula.</p>
+          <div class="grid2">
+            <div class="card"><h3>SQF · GMP</h3><p>GFSI-recognized food safety and documented manufacturing practices from receipt to release.</p></div>
+            <div class="card"><h3>FDA registered</h3><p>Food manufacturing facility — registration available for supplier qualification files.</p></div>
+            <div class="card"><h3>Kosher · Halal</h3><p>Per-formula status confirmed at project start.</p></div>
+            <div class="card"><h3>Organic-compliant</h3><p>NOP flavors where formulas require organic claim support.</p></div>
+          </div>
+          <p class="lead" style="margin-top:14px">COAs, allergen statements, GRAS, IFRA, VOC-HAP, and CHD Global Flavor Statements — organized per product code on the customer share. Index: <a href="/therabreath">team portal</a>.</p>
+        </div>
+        <img class="cert-img" src="/assets/companies/tff/certifications.png" alt="SQF, GMP, Kosher, Halal, Organic, FDA badges" width="480" height="280" />
+      </section>
+
+      <section class="section">
+        <h2>Relevant to this partnership</h2>
+        <div class="grid2">
+          <div class="card accent">
+            <h3>What we supply TheraBreath / C&amp;D</h3>
+            <ul>
+              <li>Production mouthwash mint systems (MI family)</li>
+              <li>Total Care, chamomile, peppermint oil, terpene modifiers</li>
+              <li>Seasonal innovation — FL2025-11 concepts</li>
+              <li>Lakewood site-transfer sensory validation</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Go deeper on this site</h3>
+            <ul>
+              <li><a href="/chlorite-flavor">Chlorite flavor playbook</a> — stability science</li>
+              <li><a href="/tour">Norco facility tour map</a> — July 8 walk-through</li>
+              <li><a href="/gate">Team portal</a> — partnership brief &amp; file index</li>
+              <li><a href="/therabreath-brand">TheraBreath brand profile</a> — consumer positioning</li>
+            </ul>
+          </div>
+        </div>
+        <p class="links">
+          <a href="/companies">Company hub</a>
+          <a href="/">Workshop site</a>
+          <a href="https://www.flavorfactory.net/industries/oral-care" target="_blank" rel="noopener">TFF oral care page</a>
+          <a href="tel:+19512739877">(951) 273-9877</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
