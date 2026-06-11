@@ -16,38 +16,32 @@ const PROTECTED = new Set([
   "/pocket"
 ]);
 
-async function authToken() {
-  if (process.env.TFF_AUTH_TOKEN) return process.env.TFF_AUTH_TOKEN;
-  const password = process.env.TFF_AUTH_PASSWORD || "TFF4321#";
-  const secret = process.env.TFF_AUTH_SECRET || "tff-visit-2026-norco";
-  const key = await crypto.subtle.importKey(
-    "raw",
-    new TextEncoder().encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false,
-    ["sign"]
-  );
-  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(password));
-  return Array.from(new Uint8Array(sig))
-    .map(function (b) {
-      return b.toString(16).padStart(2, "0");
-    })
-    .join("");
+// Matches api/auth.js default HMAC for password TFF4321#
+const DEFAULT_TOKEN = "8318d6e214f2f81cf9b808f102dd75d6c39e98530ed22d04ccc940377ba39a5f";
+
+function getCookie(request, name) {
+  var raw = request.headers.get("cookie") || "";
+  var parts = raw.split(";");
+  for (var i = 0; i < parts.length; i++) {
+    var pair = parts[i].trim().split("=");
+    if (pair[0] === name) return decodeURIComponent(pair.slice(1).join("="));
+  }
+  return null;
 }
 
-export default async function middleware(request) {
-  const url = new URL(request.url);
-  const path = url.pathname.replace(/\/$/, "") || "/";
+export default function middleware(request) {
+  var url = new URL(request.url);
+  var path = url.pathname.replace(/\/$/, "") || "/";
 
   if (!PROTECTED.has(path)) {
     return;
   }
 
-  const cookie = request.cookies.get("tff-auth");
-  const token = await authToken();
+  var token = process.env.TFF_AUTH_TOKEN || DEFAULT_TOKEN;
+  var cookie = getCookie(request, "tff-auth");
 
-  if (!cookie || cookie.value !== token) {
-    const gate = new URL("/gate", request.url);
+  if (!cookie || cookie !== token) {
+    var gate = new URL("/gate", request.url);
     gate.searchParams.set("return", path);
     return Response.redirect(gate);
   }
