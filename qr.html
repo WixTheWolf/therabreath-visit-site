@@ -33,6 +33,7 @@
       .cuts { margin-top:20px; padding-top:14px; border-top:1px dashed var(--line); }
       .cuts h3 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:0.78rem; }
       .mini-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+      @media print { .grid { grid-template-columns:1fr 1fr; } }
       .mini { padding:10px; border:1px dashed var(--line); border-radius:10px; text-align:center; }
       .mini img { width:96px; height:96px; display:block; margin:0 auto 6px; }
       .mini b { display:block; font-size:0.62rem; font-family:"Sora",sans-serif; }
@@ -75,6 +76,13 @@
           <h2>Workshop site</h2>
           <p>Live pillars, agenda, concepts, and feedback — open on the room display or guest phones.</p>
           <code>therabreath-visit-site.vercel.app</code>
+        </div>
+        <div class="card primary">
+          <span class="tag">Day-of · guest phones</span>
+          <img src="/assets/qr/visit.png" alt="QR code — your visit guide" width="140" height="140" />
+          <h2>Your visit guide</h2>
+          <p>Block-by-block morning flow — arrive, tour, pillars, tasting tools, depart. Tape on welcome postcards.</p>
+          <code>therabreath-visit-site.vercel.app/visit</code>
         </div>
         <div class="card primary">
           <span class="tag">Tasting · 9:30 AM</span>
@@ -127,11 +135,16 @@
         </div>
       </div>
 
-      <p class="note"><strong>Postcard tip:</strong> Tape the Blind Flavor Mapping QR at Station 2 before reveal; switch to Prototype Scorecard (/score) after names are shown. NFC tap cards can deep-link the same URLs.</p>
+      <p class="note"><strong>Postcard tip:</strong> Lead with the <strong>visit guide</strong> QR on welcome cards. Tape Blind Flavor Mapping at Station 2 before reveal; switch to Prototype Scorecard (/score) after names are shown.</p>
 
       <section class="cuts">
         <h3>Cut-apart · welcome cards &amp; table tents</h3>
         <div class="mini-grid">
+          <div class="mini">
+            <img src="/assets/qr/visit-sm.png" alt="" width="96" height="96" />
+            <b>Visit guide</b>
+            <span>Day-of</span>
+          </div>
           <div class="mini">
             <img src="/assets/qr/site-sm.png" alt="" width="96" height="96" />
             <b>Workshop</b>
