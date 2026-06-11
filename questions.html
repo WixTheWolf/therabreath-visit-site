@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Questions for TheraBreath | TFF Host Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --ask:#f0f9fd; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f6fafc; color:var(--ink); padding-bottom:72px; }
+      header { padding:22px 24px; background:var(--ink); color:#fff; }
+      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.2rem; }
+      header p { margin:6px 0 0; font-size:0.82rem; opacity:0.78; }
+      .toolbar { display:flex; flex-wrap:wrap; gap:8px; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:10; }
+      .toolbar a, .toolbar button { padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--ink); cursor:pointer; }
+      .toolbar button { background:var(--blue); color:#fff; border:none; }
+      .wrap { width:min(820px,calc(100vw - 32px)); margin:0 auto; padding:24px 0; }
+      .intro { padding:18px 20px; background:var(--ask); border:1px solid rgba(0,143,211,0.2); border-radius:12px; margin-bottom:24px; font-size:0.88rem; line-height:1.55; color:#344054; }
+      .intro a { color:var(--blue); font-weight:700; }
+      .filter { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+      .filter button { padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; font-family:"Sora",sans-serif; font-size:0.72rem; font-weight:700; cursor:pointer; }
+      .filter button.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+      .cat { margin-bottom:28px; }
+      .cat h2 { margin:0 0 4px; font-family:"Sora",sans-serif; font-size:1.05rem; }
+      .cat .src { margin:0 0 12px; font-size:0.72rem; color:var(--muted); }
+      .q {
+        display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
+        padding:14px 16px; margin-bottom:8px; background:#fff;
+        border:1px solid var(--line); border-radius:12px;
+        transition:opacity 0.2s;
+      }
+      .q.asked { opacity:0.55; }
+      .q input { width:18px; height:18px; margin-top:2px; accent-color:var(--blue); cursor:pointer; }
+      .q-body b { display:block; font-size:0.9rem; margin-bottom:4px; }
+      .q-body p { margin:0; font-size:0.8rem; color:var(--muted); line-height:1.45; }
+      .q-body .why { margin-top:6px; font-size:0.72rem; color:var(--blue); font-weight:600; }
+      .q-body .link { margin-top:6px; }
+      .q-body .link a { font-size:0.72rem; font-weight:700; color:var(--green); text-decoration:none; }
+      .progress { font-size:0.78rem; color:var(--muted); margin-bottom:16px; }
+      .progress strong { color:var(--blue); }
+      @media print { .toolbar, .filter { display:none; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Questions for TheraBreath</h1>
+      <p>Internal host prep · ask before or during July 8 · sourced from Ross emails + visit brief</p>
+    </header>
+    <div class="toolbar">
+      <a href="/toolkit">Toolkit</a>
+      <a href="/answers">Their Q&amp;A →</a>
+      <button type="button" onclick="resetAsked()">Reset</button>
+      <button type="button" onclick="copyUnasked()">Copy unanswered</button>
+    </div>
+    <div class="wrap">
+      <p class="intro">
+        These are questions <strong>we need TheraBreath to answer</strong> — not questions they asked us.
+        Use them in pre-visit calls, the virtual procurement session, and working blocks on July 8.
+        Paired answers to <em>their</em> questions live on <a href="/answers">/answers</a>.
+      </p>
+      <p class="progress" id="progress"></p>
+      <div class="filter" id="filters"></div>
+      <div id="list"></div>
+    </div>
+    <script>
+      var categories = [
+        {
+          id: "lakewood", label: "Lakewood validation",
+          source: "Ross Conroy emails · Jun 2026 · site transfer sensory",
+          items: [
+            { id: "lw1", q: "Where should formal triangle and blind panels run — Norco, Lakewood, your site, or a third-party sensory lab?", why: "Drives logistics, panelist pool, and who owns scheduling." },
+            { id: "lw2", q: "What is the reference manufacturing site for each variant's \"A\" sample in the triangle test?", why: "Must match what consumers know today — confirm per SKU." },
+            { id: "lw3", q: "Who recruits panelists on your side vs ours? Do you have a trained internal panel we should align with?", why: "ISO triangle needs consistent panel training and n≥24." },
+            { id: "lw4", q: "If a variant fails triangle at α=0.05, who approves hold-ship vs release while we characterize the difference?", why: "Decision rule before data exists avoids panic." },
+            { id: "lw5", q: "For Tier-A SKUs (Icy Mint, Dazzling Mint, Sparkle Mint) — is consumer CLT budget approved if analytical difference is found?", why: "Ross asked about consumer methods; confirm funding path." },
+            { id: "lw6", q: "Can you confirm sample ship timing (~1–2 weeks post-trial) and volume per variant for retain + panel?", why: "Matches Ross's trial table; we need enough for reference retain." },
+            { id: "lw7", q: "Does Procurement (Neonila) sign off on sensory parity, or is R&D-only?", why: "Cc'd on Ross emails — clarify approval workflow." },
+            { id: "lw8", q: "Are Lakewood trials using identical flavor lots from TFF, or reissued lots? Lot numbers help our fingerprint reports.", why: "Separates flavor drift from site/process effects." }
+          ]
+        },
+        {
+          id: "visit", label: "July 8 visit",
+          source: "Workshop planning · capabilities review",
+          items: [
+            { id: "v1", q: "Who is attending July 8 — names, titles, and any dietary restrictions or accessibility needs?", why: "Gift baskets, catering, seating, tour pacing." },
+            { id: "v2", q: "When is the virtual Procurement session before the visit, and what do they want covered?", why: "Ross mentioned meeting procurement virtually first." },
+            { id: "v3", q: "What does a successful July 8 look like for R&D vs Procurement — one sentence each?", why: "Lets us weight pillars and close correctly." },
+            { id: "v4", q: "Which growth scenario should we use in the capacity working session — conservative, plan, or stretch?", why: "Site shows bar chart as conversation, not invented OTIF." },
+            { id: "v5", q: "Any topics that are off-limits or politically sensitive inside C&D we should avoid?", why: "Half-day trust builder — no surprises." },
+            { id: "v6", q: "Will Ross or Neonila join July 8 in person, or only the Lakewood thread remote?", why: "Right people in co-creation and Lakewood discussion." },
+            { id: "v7", q: "Do you want NDA/confidentiality reconfirmed for prototypes and roadmap content?", why: "Ten new concepts + partnership charter." }
+          ]
+        },
+        {
+          id: "growth", label: "Growth & innovation",
+          source: "Visit brief · oral care expansion",
+          items: [
+            { id: "g1", q: "Which formats are highest priority in the next 12 months — rinse, paste, lozenge, spray, other?", why: "Innovation pillar + prototype relevance." },
+            { id: "g2", q: "What seasonal or limited-edition windows are on your 2026–2027 calendar?", why: "Winter Frost LE and pipeline planning." },
+            { id: "g3", q: "Are there claim constraints (whitening, gum health, overnight) we must design flavor profiles around?", why: "Functional station concepts map to claims." },
+            { id: "g4", q: "Which existing TheraBreath SKUs are most sacred — minimal drift tolerance vs open to refresh?", why: "Sets sensory equivalence bar with Lakewood work." },
+            { id: "g5", q: "What adjacencies is Church & Dwight exploring beyond current rinse lines?", why: "Partnership vision timeline." },
+            { id: "g6", q: "After tasting, how many pilot batches can your team absorb in Q3–Q4?", why: "Realistic co-creation close vs overpromising." },
+            { id: "g7", q: "Who is the decision-maker for new flavor approval — R&D, marketing, regulatory, or joint?", why: "Pilot list ownership at 12:00 PM close." }
+          ]
+        },
+        {
+          id: "procurement", label: "Procurement & operations",
+          source: "Four pillars · supplier qualification",
+          items: [
+            { id: "p1", q: "What supplier scorecard metrics matter most — lead time, OTIF, cost, audit score, innovation?", why: "Procurement attendance; weight the ops pillar." },
+            { id: "p2", q: "What documentation do you need added to our qualification file after the visit?", why: "SQF, FDA, COA, allergen — Ryan's team prepares." },
+            { id: "p3", q: "Are there corporate sustainability or sourcing mandates we should align to?", why: "Domestic vs global sourcing conversation." },
+            { id: "p4", q: "What is your standard flavor lead time expectation at current and 2× volume?", why: "Open conversation — site avoids fake stats." },
+            { id: "p5", q: "How do you prefer to handle raw material cost volatility — indexed pricing, forecasts, or periodic review?", why: "Long-term partnership transparency." },
+            { id: "p6", q: "Is dual-source flavor supply a corporate requirement, or is single-site TFF acceptable with continuity plan?", why: "Resiliency pillar + stress-test demo." }
+          ]
+        },
+        {
+          id: "partnership", label: "Partnership & ways of working",
+          source: "Pillar 4 · Ross follow-up alignment",
+          items: [
+            { id: "pt1", q: "What communication cadence do you want post-visit — monthly technical, quarterly business review?", why: "Partnership charter draft." },
+            { id: "pt2", q: "Should TFF draft the joint innovation roadmap first, or co-write in the 10:30 workshop?", why: "Manage expectations on deliverable timing." },
+            { id: "pt3", q: "Where do you want TFF to invest alongside you — capacity, R&D headcount, sensory, regulatory support?", why: "Pillar 4 investment conversation." },
+            { id: "pt4", q: "Who is our single point of contact at C&D for day-to-day flavor business after July 8?", why: "Avoid diffusion after the workshop glow." },
+            { id: "pt5", q: "How should we involve you in early ideation — proactive concepts vs brief-only?", why: "Sets proactive partner expectation." },
+            { id: "pt6", q: "For Lakewood + future site transfers, do you want TFF embedded in transfer protocols ongoing?", why: "Extends Ross thread into partnership model." }
+          ]
+        }
+      ];
+
+      function load() {
+        try { return JSON.parse(localStorage.getItem('tff-questions') || '{}'); }
+        catch (e) { return {}; }
+      }
+      function save(d) { localStorage.setItem('tff-questions', JSON.stringify(d)); }
+
+      var activeFilter = 'all';
+
+      function renderFilters() {
+        var html = '<button class="on" data-f="all">All</button>';
+        categories.forEach(function(c) {
+          html += '<button data-f="' + c.id + '">' + c.label + '</button>';
+        });
+        document.getElementById('filters').innerHTML = html;
+        document.querySelectorAll('.filter button').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            activeFilter = btn.dataset.f;
+            document.querySelectorAll('.filter button').forEach(function(b){ b.classList.remove('on'); });
+            btn.classList.add('on');
+            renderList();
+          });
+        });
+      }
+
+      function renderList() {
+        var asked = load();
+        var total = 0, done = 0;
+        var html = '';
+        categories.forEach(function(cat) {
+          if (activeFilter !== 'all' && activeFilter !== cat.id) return;
+          html += '<section class="cat" id="' + cat.id + '"><h2>' + cat.label + '</h2><p class="src">' + cat.source + '</p>';
+          cat.items.forEach(function(item) {
+            total++;
+            var isAsked = asked[item.id];
+            if (isAsked) done++;
+            html += '<label class="q' + (isAsked ? ' asked' : '') + '">' +
+              '<input type="checkbox" data-id="' + item.id + '"' + (isAsked ? ' checked' : '') + ' />' +
+              '<div class="q-body"><b>' + item.q + '</b>' +
+              (item.why ? '<span class="why">Why ask: ' + item.why + '</span>' : '') +
+              '<div class="link"><a href="/answers">See related answers →</a></div></div></label>';
+          });
+          html += '</section>';
+        });
+        document.getElementById('list').innerHTML = html;
+        document.getElementById('progress').innerHTML = '<strong>' + done + '</strong> of <strong>' + total + '</strong> questions asked or answered';
+
+        document.querySelectorAll('input[data-id]').forEach(function(inp) {
+          inp.addEventListener('change', function() {
+            var d = load();
+            d[inp.dataset.id] = inp.checked;
+            save(d);
+            inp.closest('.q').classList.toggle('asked', inp.checked);
+            renderList();
+          });
+        });
+      }
+
+      function resetAsked() {
+        if (confirm('Reset all checkmarks?')) { localStorage.removeItem('tff-questions'); renderList(); }
+      }
+
+      function copyUnasked() {
+        var asked = load(), lines = [];
+        categories.forEach(function(cat) {
+          cat.items.forEach(function(item) {
+            if (!asked[item.id]) lines.push('[' + cat.label + '] ' + item.q);
+          });
+        });
+        navigator.clipboard.writeText(lines.join('\n')).then(function(){ alert('Unanswered questions copied'); });
+      }
+
+      renderFilters();
+      renderList();
+    </script>
+  </body>
+</html>

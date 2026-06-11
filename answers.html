@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prepared Answers | TheraBreath Q&amp;A</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; background:#f6fafc; color:var(--ink); padding-bottom:48px; }
+      header { padding:22px 24px; background:linear-gradient(135deg,var(--ink),#004f87); color:#fff; }
+      header h1 { margin:0; font-family:"Sora",sans-serif; font-size:1.2rem; }
+      header p { margin:6px 0 0; font-size:0.82rem; opacity:0.82; }
+      .toolbar { display:flex; flex-wrap:wrap; gap:8px; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:10; }
+      .toolbar a { padding:8px 14px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700; text-decoration:none; border:1px solid var(--line); color:var(--ink); }
+      .search-wrap { flex:1; min-width:200px; }
+      .search-wrap input { width:100%; padding:9px 14px; border:1px solid var(--line); border-radius:999px; font:inherit; font-size:0.86rem; }
+      .wrap { width:min(860px,calc(100vw - 32px)); margin:0 auto; padding:24px 0; }
+      .intro { padding:18px 20px; background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:20px; font-size:0.86rem; line-height:1.55; color:#344054; }
+      .intro a { color:var(--blue); font-weight:700; }
+      .legend { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; font-size:0.72rem; }
+      .legend span { padding:5px 10px; border-radius:999px; font-weight:700; }
+      .legend .ready { background:#edf8e8; color:#2d6a3f; }
+      .legend .session { background:#fff4e8; color:#c45c26; }
+      .legend .tool { background:#e8f6fd; color:var(--blue); }
+      .filter { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+      .filter button { padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; font-family:"Sora",sans-serif; font-size:0.72rem; font-weight:700; cursor:pointer; }
+      .filter button.on { background:var(--ink); color:#fff; }
+      .cat { margin-bottom:32px; }
+      .cat h2 { margin:0 0 14px; font-family:"Sora",sans-serif; font-size:1.1rem; padding-bottom:8px; border-bottom:2px solid var(--line); }
+      .qa { margin-bottom:12px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+      .qa.hidden { display:none; }
+      .qa-q { padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+      .qa-q:hover { background:#fafcfe; }
+      .qa-q b { font-family:"Sora",sans-serif; font-size:0.92rem; line-height:1.35; }
+      .qa-q .badge { flex-shrink:0; padding:3px 8px; border-radius:999px; font-size:0.58rem; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; }
+      .badge.ready { background:#edf8e8; color:#2d6a3f; }
+      .badge.session { background:#fff4e8; color:#c45c26; }
+      .badge.email { background:#f0f9fd; color:var(--blue); }
+      .qa-a { display:none; padding:0 18px 16px; font-size:0.86rem; line-height:1.6; color:#344054; border-top:1px solid var(--line); }
+      .qa.open .qa-a { display:block; padding-top:14px; }
+      .qa-a p { margin:0 0 10px; }
+      .qa-a ul { margin:8px 0; padding-left:20px; }
+      .qa-a .tools { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+      .qa-a .tools a { padding:5px 10px; border-radius:8px; background:#e8f6fd; color:var(--blue); font-size:0.72rem; font-weight:700; text-decoration:none; }
+      .qa-q .chev { color:var(--muted); font-size:0.8rem; transition:transform 0.2s; }
+      .qa.open .chev { transform:rotate(180deg); }
+      .count { font-size:0.78rem; color:var(--muted); margin-bottom:12px; }
+      @media print { .toolbar, .filter, .search-wrap { display:none; } .qa-a { display:block !important; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Prepared answers for TheraBreath</h1>
+      <p>What they have asked · what they are likely to ask · July 8 + Lakewood threads</p>
+    </header>
+    <div class="toolbar">
+      <a href="/toolkit">Toolkit</a>
+      <a href="/questions">Our questions →</a>
+      <div class="search-wrap">
+        <input type="search" id="search" placeholder="Search answers… capacity, chlorite, triangle, lead time" />
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="intro">
+        Host team reference — expand any question for the talk track. Answers marked <strong>Discuss in session</strong> use real numbers or documents in the room, not invented stats on the site.
+        Questions we need <em>them</em> to answer are on <a href="/questions">/questions</a>.
+      </div>
+      <div class="legend">
+        <span class="ready">Ready now</span>
+        <span class="session">Discuss in session</span>
+        <span class="tool">Toolkit linked</span>
+      </div>
+      <p class="count" id="count"></p>
+      <div class="filter" id="filters"></div>
+      <div id="list"></div>
+    </div>
+    <script>
+      var data = [
+        {
+          id: "lakewood", label: "Lakewood site transfer",
+          source: "Ross Conroy · Jun 2 & follow-up emails",
+          items: [
+            {
+              q: "What validation plan do you propose for Lakewood mouthrinse production?",
+              badge: "email",
+              a: "<p>We propose a <strong>four-rung escalation ladder</strong> aligned to your phased trial schedule:</p><ul><li><strong>Rung 1 — Expert screen:</strong> Your R&D team, same as NPD, same/different on Lakewood vs reference.</li><li><strong>Rung 2 — Triangle test (ISO 4120):</strong> Statistical answer to \"is there a difference?\" n≥24, α=0.05.</li><li><strong>Rung 3 — Blind paired + flavor fingerprint:</strong> Only if triangle flags — characterizes mint, cooling, sweetness, aftertaste, chlorite note.</li><li><strong>Rung 4 — Consumer CLT:</strong> Tier-A SKUs only (Icy Mint, Dazzling Mint, Sparkle Mint) if analytical difference is confirmed.</li></ul><p>Full proposal, ballots, and variant tracker are built and shareable today.</p>",
+              tools: ["/lakewood", "/triangle", "/blind", "/lakewood-tracker", "/lakewood-reply"]
+            },
+            {
+              q: "How do we know if there is or is not a taste difference between sites?",
+              badge: "ready",
+              a: "<p><strong>Triangle test</strong> is the primary gate. Panelists receive three blind-coded samples (two from reference site, one from Lakewood). If correct identifications do not exceed the critical value at α=0.05, we conclude no detectable difference — site parity confirmed for that variant.</p><p>Same formulations and TFF flavors control the variable to manufacturing site and process. We retain reference-site production samples for true A/B comparison.</p>",
+              tools: ["/triangle"]
+            },
+            {
+              q: "If there is a difference, how do we understand what it is?",
+              badge: "ready",
+              a: "<p>Escalate to <strong>duo-trio</strong> (match-to-reference) plus <strong>7-point attribute scales</strong>: mint intensity, cooling, sweetness, mouthfeel, aftertaste length, herbal/botanical, chlorite character. Output is a flavor fingerprint delta report — Lakewood vs reference, per variant.</p><p>TFF adds flavor-side context: intended profile, lot history, and whether shift is likely process, base, or flavor — so R&D can act fast.</p>",
+              tools: ["/blind", "/lakewood"]
+            },
+            {
+              q: "What consumer validation methods would you recommend?",
+              badge: "ready",
+              a: "<p>Only for <strong>Tier-A variants</strong> where triangle/blind confirm a difference worth testing for business impact: Invigorating Icy Mint, Whitening Dazzling Mint, AntiCavity Sparkle Mint.</p><ul><li><strong>Central location test (CLT):</strong> 100+ respondents, blind paired preference, overall liking + purchase intent.</li><li><strong>Home use test (HUT):</strong> If protocol realism matters — 3–5 day use, overnight variants especially.</li></ul><p>We can partner with your consumer science team or a third-party vendor; TFF supports blind coding and attribute alignment.</p>",
+              tools: ["/lakewood"]
+            },
+            {
+              q: "Can you support all eight variants on our trial timeline?",
+              badge: "ready",
+              a: "<p>Yes. We mapped your schedule (Icy/Mild/Rainforest end Jun → Sparkle mid Sep) with sample ETA ~1–2 weeks post-trial. We pull reference retain per variant and run expert → triangle → report within 48 hours of each panel.</p><p>Live tracker shared for alignment: Ross's dates, tier (A/B), and pass/fail per SKU.</p>",
+              tools: ["/lakewood-tracker"]
+            },
+            {
+              q: "You supply the flavors — does that create bias in sensory testing?",
+              badge: "ready",
+              a: "<p>We blind-code and use third-party or joint panels where appropriate. Our role is <strong>flavor truth</strong>: we know the intended sensory target and retain library, which helps interpret <em>what</em> shifted — not to override a significant triangle result.</p><p>Panel administration can be run by C&D or an independent lab; we provide SOPs, ballots, and statistical analysis support.</p>",
+              tools: ["/triangle", "/blind"]
+            }
+          ]
+        },
+        {
+          id: "resiliency", label: "Pillar 1 · Resiliency",
+          source: "Capabilities review request",
+          items: [
+            {
+              q: "Can you scale flavor production if TheraBreath volume doubles or triples?",
+              badge: "session",
+              a: "<p><strong>Discuss in session</strong> with operations — we walk current load vs your growth scenarios on the capacity chart. We do not publish invented utilization percentages on the site.</p><p>Key messages: single Norco facility, recent floor investments for oral care volume, overflow scheduling, and qualified backup capacity. Contingency buffer is planned, not reactive.</p>",
+              tools: ["/#pillar-1", "/onepager"]
+            },
+            {
+              q: "What redundancy do you have if a supplier or equipment fails?",
+              badge: "ready",
+              a: "<p>Continuity framework covers: approved raw material suppliers + <strong>qualified alternates</strong>, primary and overflow production scheduling, cross-trained production and QC staff, documented recovery procedures, safety stock on critical materials.</p><p>Live site demo: \"Simulate primary supplier disruption\" shows alternate pathway activation with full lot traceability.</p>",
+              tools: ["/#capabilities"]
+            },
+            {
+              q: "What quality certifications and audits do you maintain?",
+              badge: "ready",
+              a: "<p><strong>SQF</strong> program (auditable), <strong>GMP</strong>, <strong>FDA registered facility</strong>. Kosher, Halal, and Organic certifications are evaluated <strong>per formula</strong> as part of the development brief — not bolted on after scale-up.</p><p>Documentation available for supplier qualification files; Ryan's quality team supports COAs, allergen statements, and label documentation.</p>",
+              tools: ["/#pillar-1", "/tour"]
+            },
+            {
+              q: "What is your disaster recovery and business continuity plan?",
+              badge: "session",
+              a: "<p><strong>Discuss in session</strong> — documented recovery procedures, cross-training, alternate suppliers, and production scheduling flexibility. We tie this to what you see on the tour: segregation, documentation investments, and TheraBreath-dedicated production areas.</p>",
+              tools: ["/tour", "/host"]
+            }
+          ]
+        },
+        {
+          id: "innovation", label: "Pillar 2 · Innovation",
+          source: "R&D · NPD · sensory science",
+          items: [
+            {
+              q: "How do you develop flavors for sodium chlorite rinse systems?",
+              badge: "ready",
+              a: "<p>We formulate <strong>inside your base chemistry</strong> — not around it. Sodium chlorite stability rules out many citrus and berry profiles that read great in a sample cup but fail by day 30 on shelf.</p><p>We lean into mint, herbal, green tea, cucumber, ginger, vanilla, and functional cooling directions — all represented in the ten workshop prototypes.</p>",
+              tools: ["/#concepts", "/slides"]
+            },
+            {
+              q: "Why avoid citrus and berry for TheraBreath prototypes?",
+              badge: "ready",
+              a: "<p>Chlorite systems degrade many ester-forward and citrus profiles over shelf life — it is chemistry, not preference. Showing stable alternatives demonstrates we understand your product constraints, not just flavor trends.</p><p>Workshop concepts are built for stability first, then optimized for liking in the co-creation block.</p>",
+              tools: ["/#concepts"]
+            },
+            {
+              q: "What sensory science support can TFF provide beyond Lakewood?",
+              badge: "ready",
+              a: "<p>Triangle and blind protocols for any site transfer or formula change; expert screening forms; attribute lexicon for oral care; pilot batch sensory design; collaboration with your consumer science team on CLT/HUT.</p><p>July 8 includes live scoring (/score), printed ballots, and formal panel scheduling for post-visit pilots.</p>",
+              tools: ["/triangle", "/blind", "/score"]
+            },
+            {
+              q: "What are the ten workshop prototypes and how were they chosen?",
+              badge: "ready",
+              a: "<p>Five fresh directions + five functional extensions, all chlorite-stable:</p><ul><li>01 Spearmint Garden · 02 Green Tea Fresh · 03 Crisp Cucumber Mint · 04 Warm Ginger Mint · 05 Vanilla Mint Silk</li><li>06 Overnight Calm Mint · 07 Crystal Whitening Mint · 08 Icy Peak Refresh · 09 Winter Frost (LE) · 10 Healthy Gums Herbal</li></ul><p>Chosen to map Classic Freshness, Innovation Lab, and Functional Benefits stations — aligned to Icy Mint, Healthy Gums, whitening, seasonal, and gum-health territories you are already in.</p>",
+              tools: ["/#concepts", "/stations", "/labels"]
+            },
+            {
+              q: "Can you support seasonal and limited-edition lines?",
+              badge: "ready",
+              a: "<p>Yes — Winter Frost in the concept set is explicitly LE/seasonal. We discuss 2026–2027 windows in the innovation pillar and capture priorities in the partnership roadmap during the co-creation close.</p>",
+              tools: ["/#concepts", "/worksheet"]
+            },
+            {
+              q: "Can you work across rinse, paste, and new formats?",
+              badge: "ready",
+              a: "<p>We develop for rinse and paste formats with awareness of sweetener systems, actives, and cooling delivery differences. Format stretch is a partnership pillar topic — we want your priority list for the next 12 months to sequence R&D investment.</p>",
+              tools: ["/#pillar-2", "/questions"]
+            }
+          ]
+        },
+        {
+          id: "operations", label: "Pillar 3 · Operations",
+          source: "Procurement · supply chain visibility",
+          items: [
+            {
+              q: "Are you a manufacturer or a broker?",
+              badge: "ready",
+              a: "<p><strong>Manufacturer.</strong> Family-owned flavor company in Norco, CA. Development, production, and quality under one roof — no third-party hand-off on your formulas. That is what the July 8 tour is designed to prove.</p>",
+              tools: ["/tour", "/#pillar-3"]
+            },
+            {
+              q: "What are your lead times and OTIF performance?",
+              badge: "session",
+              a: "<p><strong>Discuss in session</strong> — we share current lead time performance openly with procurement. We do not put unverified OTIF percentages on the public site.</p><p>Message: lead time discipline, organized sample-to-order handoff, and repeatable batch release procedures.</p>",
+              tools: ["/#pillar-3", "/onepager"]
+            },
+            {
+              q: "How does batch traceability work?",
+              badge: "ready",
+              a: "<p>Full traceability from raw material receipt through finished flavor release. Lot-level documentation, COAs on request, allergen statements, and label support via quality team. You see raw storage and QC on the morning tour.</p>",
+              tools: ["/tour"]
+            },
+            {
+              q: "Where do you source raw materials?",
+              badge: "ready",
+              a: "<p>Domestic and global approved suppliers with <strong>qualified alternates</strong> for critical materials. Sourcing tags: lot traceability, COA on request, per-formula cert review (Kosher/Halal/Organic as needed).</p>",
+              tools: ["/#pillar-3"]
+            },
+            {
+              q: "What facility investments have you made for oral care?",
+              badge: "session",
+              a: "<p><strong>Show on tour</strong> — segregation improvements, TheraBreath production area, batch documentation upgrades. Specifics land better on the floor than on a slide; recent investments support oral care volume and audit readiness.</p>",
+              tools: ["/tour", "/host"]
+            }
+          ]
+        },
+        {
+          id: "partnership", label: "Pillar 4 · Partnership",
+          source: "Growth vision · 3–5 year alignment",
+          items: [
+            {
+              q: "How do you see the partnership evolving over the next 3–5 years?",
+              badge: "ready",
+              a: "<p>Vision timeline on site: <strong>Now</strong> — prove partnership (July visit, co-created priorities). <strong>Near-term</strong> — pilot winners, formal sensory, claims shaped together. <strong>Medium</strong> — scale production, seasonal pipeline, format expansion. <strong>Long</strong> — embedded innovation partner as TheraBreath grows in oral care.</p><p>10:30 co-creation workshop drafts the charter; we do not present it as a finished contract.</p>",
+              tools: ["/#pillar-4", "/worksheet"]
+            },
+            {
+              q: "How will you invest in the relationship?",
+              badge: "session",
+              a: "<p><strong>Working conversation</strong> — capacity, R&D time, sensory support, proactive concept development, Lakewood transfer embedded support. We want your prioritized investment asks from procurement and R&D so we align spend to your growth.</p>",
+              tools: ["/#pillar-4", "/questions"]
+            },
+            {
+              q: "What happens in the co-creation workshop?",
+              badge: "ready",
+              a: "<p>10:30–12:00 · Alex + R&D lead. Top-scored concepts from tasting go to the bench — adjust cooling, sweetness, finish length in real time. Worksheets document iterations; photographs feed the 24-hour follow-up deck. Output: pilot batch priority list and action owners.</p>",
+              tools: ["/worksheet", "/host", "/score"]
+            },
+            {
+              q: "What deliverables do we receive after July 8?",
+              badge: "ready",
+              a: "<ul><li>Thank-you + summary within <strong>24 hours</strong> (follow-up email template)</li><li>Sensory scores compiled from live scorer + ballots</li><li>Co-created innovation roadmap document</li><li>Pilot batch plan on selected concepts</li><li>Lakewood parity reports per variant as trials complete through September</li></ul>",
+              tools: ["/followup", "/score", "/lakewood-tracker"]
+            }
+          ]
+        },
+        {
+          id: "visit", label: "July 8 logistics",
+          source: "Workshop day-of",
+          items: [
+            {
+              q: "What is the agenda for July 8?",
+              badge: "ready",
+              a: "<p>Half day · depart by 12:30 PM:</p><ul><li>8:00 — Welcome + facility tour</li><li>8:30 — Pillars 1 & 3 (Resiliency + Operations)</li><li>9:00 — Pillars 2 & 4 (Innovation + Partnership)</li><li>9:30 — Three-station tasting, ten prototypes</li><li>10:30 — Co-creation flavor lab</li><li>12:00 — Action plan + depart</li></ul>",
+              tools: ["/", "/passport", "/host", "/tour"]
+            },
+            {
+              q: "Who from TFF will we meet?",
+              badge: "ready",
+              a: "<p><strong>Dan</strong> — partnership + facility. <strong>Ryan</strong> — quality, certifications, documentation. <strong>Alex</strong> — R&D, innovation, co-creation. <strong>Matt</strong> — workshop facilitation and digital tools.</p><p>Name tents and run-of-show cues in host toolkit.</p>",
+              tools: ["/host"]
+            },
+            {
+              q: "Is this a sales pitch or a working session?",
+              badge: "ready",
+              a: "<p>A <strong>capabilities review and working session</strong> — four pillars with documentation, real tour, live tasting, bench iteration, and a prioritized close. Interactive site on the room display; passports and scorer on phones.</p>",
+              tools: ["/", "/toolkit"]
+            }
+          ]
+        },
+        {
+          id: "procurement", label: "Procurement & commercial",
+          source: "Likely procurement questions",
+          items: [
+            {
+              q: "What is your pricing model / cost structure?",
+              badge: "session",
+              a: "<p><strong>Discuss in session</strong> with procurement — formula-specific, volume-tiered, raw material pass-through mechanics. No public rate card on the workshop site.</p>",
+              tools: ["/onepager", "/questions"]
+            },
+            {
+              q: "Can you meet our supplier qualification requirements?",
+              badge: "ready",
+              a: "<p>Yes — SQF, GMP, FDA registration, COAs, allergen documentation, traceability, and per-formula cert support. Ryan's team aligns to Church & Dwight supplier files; we ask what additional documents you need post-visit.</p>",
+              tools: ["/#pillar-1", "/onepager"]
+            },
+            {
+              q: "Why single-site supply vs dual source?",
+              badge: "ready",
+              a: "<p>Single site gives <strong>visibility and speed</strong> from sample to production — no broker hand-off. Continuity risk is mitigated through alternate raw suppliers, cross-training, overflow capacity, and documented recovery — covered in resiliency pillar and stress demo.</p>",
+              tools: ["/#pillar-1"]
+            }
+          ]
+        }
+      ];
+
+      var activeFilter = 'all';
+
+      function renderFilters() {
+        var html = '<button class="on" data-f="all">All</button>';
+        data.forEach(function(c) { html += '<button data-f="' + c.id + '">' + c.label + '</button>'; });
+        document.getElementById('filters').innerHTML = html;
+        document.querySelectorAll('.filter button').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            activeFilter = btn.dataset.f;
+            document.querySelectorAll('.filter button').forEach(function(b){ b.classList.remove('on'); });
+            btn.classList.add('on');
+            renderList();
+          });
+        });
+      }
+
+      function renderList() {
+        var q = (document.getElementById('search').value || '').toLowerCase();
+        var visible = 0, html = '';
+        data.forEach(function(cat) {
+          if (activeFilter !== 'all' && activeFilter !== cat.id) return;
+          var catHtml = '';
+          cat.items.forEach(function(item, i) {
+            var text = (item.q + ' ' + item.a).toLowerCase();
+            if (q && text.indexOf(q) === -1) return;
+            visible++;
+            var id = cat.id + '-' + i;
+            var tools = (item.tools || []).map(function(t) {
+              return '<a href="' + t + '">' + t.replace('/','') + '</a>';
+            }).join('');
+            catHtml += '<article class="qa" data-id="' + id + '">' +
+              '<div class="qa-q" onclick="toggle(\'' + id + '\')">' +
+              '<b>' + item.q + '</b>' +
+              '<span class="badge ' + item.badge + '">' + (item.badge === 'session' ? 'In session' : item.badge === 'email' ? 'Ross email' : 'Ready') + '</span>' +
+              '<span class="chev">▼</span></div>' +
+              '<div class="qa-a">' + item.a + (tools ? '<div class="tools">' + tools + '</div>' : '') + '</div></article>';
+          });
+          if (catHtml) {
+            html += '<section class="cat"><h2>' + cat.label + '</h2><p style="font-size:0.72rem;color:var(--muted);margin:-8px 0 14px">' + cat.source + '</p>' + catHtml + '</section>';
+          }
+        });
+        document.getElementById('list').innerHTML = html || '<p style="color:var(--muted)">No matches.</p>';
+        document.getElementById('count').textContent = visible + ' answer' + (visible === 1 ? '' : 's') + (q ? ' matching "' + q + '"' : '');
+      }
+
+      function toggle(id) {
+        var el = document.querySelector('.qa[data-id="' + id + '"]');
+        if (el) el.classList.toggle('open');
+      }
+
+      document.getElementById('search').addEventListener('input', renderList);
+      renderFilters();
+      renderList();
+    </script>
+  </body>
+</html>
