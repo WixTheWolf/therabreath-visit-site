@@ -23,10 +23,23 @@
     { href: "/companies", label: "Companies", match: ["/companies", "/flavor-factory", "/therabreath-brand"] },
     { href: "/qr", label: "QR print sheet" },
     { href: "/stations", label: "Station signs" },
-    { href: "/mystery-live", label: "Blind Flavor Mapping live · admin", team: true },
-    { href: "/score-live", label: "Sensory summary live · admin", team: true },
-    { href: "/gate", label: "Team portal", team: true }
+    { href: "/gate", label: "Team sign-in", signin: true },
+    { href: "/toolkit", label: "Command center", authedOnly: true },
+    { href: "/mystery-live", label: "Blind Flavor Mapping live", authedOnly: true },
+    { href: "/score-live", label: "Sensory summary live", authedOnly: true }
   ];
+
+  function isTeamAuthed() {
+    return global.TFF && global.TFF.isAuthed && global.TFF.isAuthed();
+  }
+
+  function moreMenuItems() {
+    return MORE.filter(function (item) {
+      if (item.signin) return !isTeamAuthed();
+      if (item.authedOnly) return isTeamAuthed();
+      return true;
+    });
+  }
 
   var DOCK = [
     { href: "/", label: "Home", icon: "home" },
@@ -75,9 +88,7 @@
       return '<a class="' + cls + '" href="' + item.href + '"' + title + ">" + item.label + "</a>";
     }).join("");
 
-    var moreItems = MORE.filter(function (item) {
-      return !item.team || (global.TFF && global.TFF.isAuthed && global.TFF.isAuthed());
-    }).map(function (item) {
+    var moreItems = moreMenuItems().map(function (item) {
       var active = isActive(item) ? " is-active" : "";
       return '<a href="' + item.href + '" class="' + active + '">' + item.label + "</a>";
     }).join("");

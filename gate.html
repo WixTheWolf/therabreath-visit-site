@@ -81,7 +81,8 @@
           <input type="password" id="pw" name="pw" autocomplete="current-password" placeholder="Enter password" autofocus />
           <button type="submit">Unlock command center →</button>
         </form>
-        <p class="lock">Confidential · The Flavor Factory internal use · Church &amp; Dwight / TheraBreath partnership prep</p>
+        <p class="lock">Confidential · The Flavor Factory internal use · Church &amp; Dwight / TheraBreath partnership prep<br />
+        Direct: <code style="font-size:0.68rem;color:var(--ink)">therabreath-visit-site.vercel.app/gate</code> → <code style="font-size:0.68rem;color:var(--ink)">/toolkit</code> after unlock</p>
       </div>
     </div>
     <script src="/tff-auth.js"></script>
@@ -100,11 +101,16 @@
           btn.textContent = "Unlock command center →";
           if (ok) {
             location.replace(TFF.getReturnUrl());
-          } else {
-            document.getElementById("err").classList.add("show");
-            document.getElementById("pw").value = "";
-            document.getElementById("pw").focus();
+            return;
           }
+          document.getElementById("err").classList.add("show");
+          document.getElementById("pw").value = "";
+          document.getElementById("pw").focus();
+        }).catch(function () {
+          btn.disabled = false;
+          btn.textContent = "Unlock command center →";
+          document.getElementById("err").textContent = "Sign-in service unavailable — refresh and try again.";
+          document.getElementById("err").classList.add("show");
         });
       });
     </script>
