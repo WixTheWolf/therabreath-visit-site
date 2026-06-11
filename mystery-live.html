@@ -164,9 +164,9 @@
               var g = (s.guesses || {})[c.code];
               if (!g || !g.guess) return "<td>—</td>";
               var cipher = TFFConcepts.cipherById(g.guess);
-              var actual = TFFConcepts.cipherById(c.id);
+              var actual = TFFConcepts.cipherById(TFFConcepts.answerCipherFor(c.id));
               var txt = cipher ? cipher.name : "?";
-              var title = actual ? ("Answer: " + actual.name + " · " + c.name) : c.name;
+              var title = actual ? ("Answer: " + actual.code + " " + actual.name + " · " + c.name) : c.name;
               return "<td class=\"" + (g.correct ? "ok" : "miss") + "\" title=\"" + title + "\">" + txt + "</td>";
             }).join("") + "</tr>";
         }).join("");

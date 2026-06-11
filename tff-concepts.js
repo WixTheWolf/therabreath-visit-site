@@ -4,10 +4,22 @@
  */
 (function (global) {
   var SET_META = {
-    version: 2,
-    label: "July 8 workshop · cipher v2",
+    version: 3,
+    label: "July 8 workshop · cipher v3",
     updated: "2026-06-11"
   };
+
+  /*
+   * Answer key — cup concept id → correct cipher id (scrambled; NOT 1:1 with cup number).
+   * M1 is NOT cipher 01. Re-bump SET_META.version if you change this map.
+   */
+  var CIPHER_ANSWER = {
+    1: 8, 2: 5, 3: 1, 4: 10, 5: 4,
+    6: 2, 7: 9, 8: 3, 9: 6, 10: 7
+  };
+
+  /* Guest UI display order — ciphers shuffled so 01 is not first pick */
+  var CIPHER_DISPLAY_ORDER = [8, 3, 10, 1, 5, 7, 2, 9, 4, 6];
 
   /* Neutral codenames — no flavor cues. Guests map cup codes (M1–M10) to ciphers by taste alone. */
   var CIPHERS = [
@@ -121,6 +133,16 @@
     return CIPHERS.filter(function (c) { return c.id === +id; })[0];
   }
 
+  function answerCipherFor(conceptId) {
+    return CIPHER_ANSWER[+conceptId] || +conceptId;
+  }
+
+  function cipherDisplayList() {
+    return CIPHER_DISPLAY_ORDER.map(function (id) {
+      return cipherById(id);
+    }).filter(Boolean);
+  }
+
   function shuffledCodes(seed) {
     var arr = concepts.map(function (c) { return c.code; });
     var s = seed || Date.now();
@@ -140,6 +162,9 @@
     STABILITY: STABILITY,
     byId: byId,
     cipherById: cipherById,
+    answerCipherFor: answerCipherFor,
+    cipherDisplayList: cipherDisplayList,
+    CIPHER_ANSWER: CIPHER_ANSWER,
     setMeta: function () { return SET_META; },
     stabilityMeta: function (key) { return STABILITY[key] || STABILITY.watch; },
     shuffledCodes: shuffledCodes,

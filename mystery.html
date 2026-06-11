@@ -403,9 +403,9 @@
     <script src="/tff-storage.js"></script>
     <script src="/tff-mystery-sync.js"></script>
     <script>
-      var STORAGE_KEY = "tff-mystery-v2";
+      var STORAGE_KEY = "tff-mystery-v3";
       var concepts = TFFConcepts.activeList();
-      var ciphers = TFFConcepts.cipherList();
+      var ciphers = TFFConcepts.cipherDisplayList();
       var tags = TFFConcepts.sensoryTags;
       var nameOk = false;
       var pickCup = null;
@@ -554,7 +554,7 @@
         var state = loadState();
         state.guesses[pickCup] = {
           guess: pickCipher,
-          correct: pickCipher === concept.id,
+          correct: pickCipher === TFFConcepts.answerCipherFor(concept.id),
           revealed: true,
           tags: pickTags.slice()
         };
@@ -576,7 +576,7 @@
         document.getElementById("host-table").innerHTML =
           "<tr><th>Cup</th><th>Cipher</th><th>Concept</th><th>QC</th><th>Host note</th></tr>" +
           concepts.map(function (c) {
-            var cipher = TFFConcepts.cipherById(c.id);
+            var cipher = TFFConcepts.cipherById(TFFConcepts.answerCipherFor(c.id));
             var m = TFFConcepts.stabilityMeta(c.stability);
             var note = (c.hostNotes && c.hostNotes[0]) ? c.hostNotes[0] : c.qcNote;
             return "<tr><td><b>" + c.code + "</b></td><td>" + cipher.code + " " + cipher.name +
