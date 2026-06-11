@@ -654,5 +654,21 @@
     "snippet": "Mystery first at /mystery (Station 2 QR), then scan /score after reveals — station signs, slide 17, passport, feedback section.",
     "href": "/score",
     "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Day-of",
+    "q": "Where does Matt see mystery guesses live during the tasting?",
+    "snippet": "Team password → /mystery-live — polls every 2.5s, shows name and cup-by-cup guesses, CSV export, optional ntfy phone alerts on TFF_NTFY_TOPIC.",
+    "href": "/mystery-live",
+    "badge": "ready"
+  },
+  {
+    "type": "tool",
+    "category": "July 8",
+    "q": "Mystery live admin board",
+    "snippet": "Real-time mystery submissions — who guessed what on coded cups M1–M10. Password required.",
+    "href": "/mystery-live",
+    "badge": "ready"
   }
 ]

@@ -5,3 +5,5 @@ Thumbs.db
 *.log
 _cd_scan/
 _tb_scan/
+
+.env*.local

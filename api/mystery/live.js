@@ -27,9 +27,23 @@ function isAuthed(req) {
   return false;
 }
 
+function redisConfig() {
+  return {
+    url:
+      process.env.KV_REST_API_URL ||
+      process.env.UPSTASH_REDIS_REST_URL ||
+      null,
+    token:
+      process.env.KV_REST_API_TOKEN ||
+      process.env.UPSTASH_REDIS_REST_TOKEN ||
+      null
+  };
+}
+
 async function upstash(cmd) {
-  var base = process.env.UPSTASH_REDIS_REST_URL;
-  var token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  var cfg = redisConfig();
+  var base = cfg.url;
+  var token = cfg.token;
   if (!base || !token) return null;
   var res = await fetch(base, {
     method: "POST",
