@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <script src="/tff-auth.js"></script>
+    <script>TFF.requireAuth();</script>
+    <title>TheraBreath File Index | TFF × Church &amp; Dwight</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --warn:#fff4e8; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:"DM Sans",sans-serif; color:var(--ink); background:#f6fafc; padding-bottom:72px; }
+      .toolbar { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.96); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+      .toolbar a, .toolbar button { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
+      .toolbar a { border:1px solid var(--line); color:var(--ink); background:#fff; }
+      .toolbar button { background:var(--blue); color:#fff; }
+      .hero { padding:44px 24px 40px; background:linear-gradient(135deg,var(--ink) 0%,#003d6b 55%,#1e5c3a); color:#fff; }
+      .hero-in { width:min(1040px,calc(100vw - 40px)); margin:0 auto; }
+      .kicker { margin:0 0 8px; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
+      .hero h1 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:clamp(1.7rem,4.5vw,2.4rem); font-weight:800; letter-spacing:-0.03em; }
+      .hero p { margin:0; max-width:760px; font-size:0.95rem; line-height:1.6; color:rgba(255,255,255,0.85); }
+      .hero-meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+      .hero-meta span { padding:8px 14px; border-radius:999px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); font-size:0.74rem; font-weight:600; }
+      .guard { margin:20px auto 0; width:min(1040px,calc(100vw - 40px)); padding:14px 18px; border-radius:12px; border:1px solid rgba(245,130,32,0.35); background:var(--warn); font-size:0.8rem; line-height:1.5; color:#344054; }
+      .guard b { color:var(--orange); }
+      .wrap { width:min(1040px,calc(100vw - 40px)); margin:0 auto; padding:36px 0 80px; }
+      h2 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:1.25rem; font-weight:800; }
+      h3 { margin:0 0 6px; font-family:"Sora",sans-serif; font-size:0.9rem; }
+      .section { margin-bottom:36px; }
+      .lead { margin:0 0 16px; color:var(--muted); line-height:1.55; max-width:760px; font-size:0.88rem; }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+      .card { padding:18px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+      .card p, .card li { font-size:0.82rem; color:var(--muted); line-height:1.5; }
+      .card ul { margin:8px 0 0; padding-left:18px; }
+      .card.accent { border-color:rgba(0,143,211,0.3); background:linear-gradient(135deg,#fff,#f0f9fd); }
+      .card.season { border-color:rgba(245,130,32,0.35); background:linear-gradient(135deg,#fff,#fffaf5); }
+      table { width:100%; border-collapse:collapse; font-size:0.78rem; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+      th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+      th { background:#fafcfe; font-family:"Sora",sans-serif; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); }
+      tr:last-child td { border-bottom:none; }
+      .tag { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.62rem; font-weight:800; text-transform:uppercase; letter-spacing:0.04em; }
+      .tag.mi { background:#e8f6fd; color:#006aa6; }
+      .tag.pe { background:#edf8e8; color:#2d6a3f; }
+      .tag.ch { background:#f5f0ff; color:#6b4fa0; }
+      .tag.mo { background:#e8f6fd; color:#006aa6; }
+      .tag.bg { background:#fff0f5; color:#a04070; }
+      .tag.wa { background:#edf8e8; color:#2d6a3f; }
+      .tag.st { background:#fff4e8; color:#c45c26; }
+      .tag.fl { background:#f0f2f8; color:#5b6b8a; }
+      .tag.live { background:#edf8e8; color:#2d6a3f; }
+      .tag.dev { background:#fff4e8; color:#c45c26; }
+      .tag.pilot { background:#e8f6fd; color:#006aa6; }
+      .doc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px; }
+      .doc-chip { padding:8px 10px; border-radius:8px; background:#fff; border:1px solid var(--line); font-size:0.72rem; color:#344054; }
+      .doc-chip b { display:block; font-size:0.68rem; color:var(--blue); margin-bottom:2px; }
+      .folder-tree { border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; font-size:0.8rem; }
+      .folder-row { display:grid; grid-template-columns:140px 1fr; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); }
+      .folder-row:last-child { border-bottom:none; }
+      .folder-row .label { font-family:"Sora",sans-serif; font-weight:800; font-size:0.74rem; color:var(--blue); }
+      .timeline { border:1px solid var(--line); border-radius:14px; background:#fff; overflow:hidden; }
+      .tl { display:grid; grid-template-columns:110px 1fr; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line); font-size:0.8rem; }
+      .tl:last-child { border-bottom:none; }
+      .tl time { font-family:"Sora",sans-serif; font-weight:800; color:var(--blue); font-size:0.74rem; }
+      .links { display:flex; flex-wrap:wrap; gap:8px; }
+      .links a { padding:8px 12px; border-radius:8px; background:#fff; border:1px solid var(--line); font-size:0.74rem; font-weight:700; color:var(--blue); text-decoration:none; }
+      .checklist { columns:2; column-gap:24px; font-size:0.78rem; color:#344054; line-height:1.55; }
+      .checklist li { break-inside:avoid; margin-bottom:4px; }
+      @media (max-width:720px) { .grid2, .grid3 { grid-template-columns:1fr; } .checklist { columns:1; } .folder-row, .tl { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span><strong>TheraBreath file index</strong> · Internal · password protected</span>
+      <div>
+        <a href="/partnership">Partnership brief</a>
+        <a href="/toolkit">Toolkit</a>
+        <a href="/gate">Portal</a>
+        <button onclick="window.print()">Print</button>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-in">
+        <p class="kicker">\\Flavor\Customers\Therabreath Docs · organized index</p>
+        <h1>What lives in the customer file.</h1>
+        <p>Maps rinse programs, flavor codes, and qualification packets from the TheraBreath folder — for July 8 prep and day-to-day file navigation. This is an index, not a document dump. Full PDFs stay on the share; share only through approved C&amp;D channels.</p>
+        <div class="hero-meta">
+          <span>Source: Therabreath Docs share</span>
+          <span>Manufactured for Church &amp; Dwight</span>
+          <span>Norco · TFF codes</span>
+          <span>Password: team portal</span>
+        </div>
+      </div>
+    </header>
+
+    <p class="guard"><b>Proprietary guard:</b> No rinse formulas, usage percentages, spec limits, lot numbers, C&amp;D item numbers, purchase orders, pricing quotes, or ingredient breakdowns on this site. Files such as <em>Seasonal Rinse Formulas</em>, <em>Total Care Rinse Formula</em>, <em>Antiseptic Rinse Formulas</em>, <em>Flavor Usage Levels</em>, and price letters remain on the share only.</p>
+
+    <div class="wrap">
+      <section class="section">
+        <h2>How the folder is organized</h2>
+        <p class="lead">Top-level structure on the share — one subfolder per active TFF product code, plus shared regulatory buckets and FL briefs at root.</p>
+        <div class="folder-tree">
+          <div class="folder-row"><span class="label">Per-code folders</span><div>MI-18727, MI-21336, CH-21205, PE-22004, MI-22008, MO-22007, BG-21425, WA-20912, ST-20913, PE-21169, MI-21168, and related codes — each holds pds, SDS, allergens, regulatory statements, and COAs.</div></div>
+          <div class="folder-row"><span class="label">COAs</span><div>Production lot certificates — organized by product; signed by Ryan Wixted, QC.</div></div>
+          <div class="folder-row"><span class="label">Shared buckets</span><div>Allergens, EU Allergens, SDS, EU SDS, Kosher, GMOs, GRAS, IFRA 50th/51st, VOC-HAP, SB 312, Certificate of Naturalness, Spec Sheets, Church &amp; Dwight Documents.</div></div>
+          <div class="folder-row"><span class="label">FL briefs (root)</span><div>Confidential flavor briefs by program — FL2023-02 Antiseptic, FL2023-03 Overnight, FL2023-06 Total Care, FL2024-01 Kids Bubblegum, FL2022-08 Kids, FL2025-11 Seasonals. Briefs define objectives; formula PDFs are separate and not indexed here.</div></div>
+          <div class="folder-row"><span class="label">C&amp;D statements</span><div>CHD Global Flavor Statement templates (2018/2023/2025) — per-code signed copies inside each product folder.</div></div>
+          <div class="folder-row"><span class="label">Do not publish</span><div>Price quotes, full formula submissions, usage-level spreadsheets, EU SDS hazard ingredient workbooks, warehouse inventory, and consumer penalty analysis — internal only.</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Rinse programs ↔ flavor codes</h2>
+        <p class="lead">Which TFF codes tie to which TheraBreath rinse initiative. Status reflects files on share as of early 2026 — confirm with Ross/Nelly before external use.</p>
+        <table>
+          <thead>
+            <tr><th>Program</th><th>FL brief</th><th>TFF flavor code(s)</th><th>Commercial name</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fresh Breath · core mint</td>
+              <td><span class="tag fl">Benchmark</span></td>
+              <td><span class="tag mi">MI</span> MI-18727</td>
+              <td>Nat Mint Blend Mouthwash Flavor</td>
+              <td><span class="tag live">Production</span></td>
+            </tr>
+            <tr>
+              <td>Total Care mouthrinse</td>
+              <td><span class="tag fl">FL2023-06</span></td>
+              <td><span class="tag mi">MI</span> MI-21336</td>
+              <td>Nat Total Care Mint Flavor</td>
+              <td><span class="tag live">Production</span> · benchmark = Invigorating Icy Mint (MI-18727 family)</td>
+            </tr>
+            <tr>
+              <td>Chamomile / mild wellness</td>
+              <td>—</td>
+              <td><span class="tag ch">CH</span> CH-21205</td>
+              <td>Nat Chamomile Mint Flavor</td>
+              <td><span class="tag live">Production</span></td>
+            </tr>
+            <tr>
+              <td>Antiseptic rinse</td>
+              <td><span class="tag fl">FL2023-02</span></td>
+              <td><span class="tag pe">PE</span> PE-21169 · PE-21170<br /><span class="tag mi">MI</span> MI-21167 · MI-21168</td>
+              <td>Close-in peppermint + far-out mint splash directions</td>
+              <td><span class="tag pilot">Qualified folders</span> · formula files on share only</td>
+            </tr>
+            <tr>
+              <td>Overnight mouthrinse</td>
+              <td><span class="tag fl">FL2023-03</span></td>
+              <td>Per overnight FL brief</td>
+              <td>Calm / overnight positioning</td>
+              <td><span class="tag dev">Development</span> · panel docs on share</td>
+            </tr>
+            <tr>
+              <td>Kids · bubble gum</td>
+              <td><span class="tag fl">FL2024-01</span></td>
+              <td><span class="tag bg">BG</span> BG-21425</td>
+              <td>Bubble gum type (Kids oral rinse)</td>
+              <td><span class="tag pilot">Pilot COAs on file</span></td>
+            </tr>
+            <tr>
+              <td>Kids · organic fruit</td>
+              <td><span class="tag fl">FL2022-08</span></td>
+              <td><span class="tag wa">WA</span> WA-20912 · <span class="tag st">ST</span> ST-20913</td>
+              <td>Organic watermelon &amp; strawberry types</td>
+              <td><span class="tag live">NOP-certified</span> · on TFF organic addendum</td>
+            </tr>
+            <tr>
+              <td>Seasonal · Peppermint Vanilla Swirl</td>
+              <td><span class="tag fl">FL2025-11</span> Concept 1</td>
+              <td><span class="tag pe">PE</span> PE-22004</td>
+              <td>Nat Peppermint Vanilla Type FL</td>
+              <td><span class="tag dev">Preliminary C&amp;D spec</span> · target Fall/Winter 2026 launch</td>
+            </tr>
+            <tr>
+              <td>Seasonal · Frosted Delight</td>
+              <td><span class="tag fl">FL2025-11</span> Concept 2</td>
+              <td><span class="tag mi">MI</span> MI-22008</td>
+              <td>Nat Winter Spice Mint Type Flavor</td>
+              <td><span class="tag dev">Sample COA</span> · Sep 2025</td>
+            </tr>
+            <tr>
+              <td>Seasonal · Freshly Picked</td>
+              <td><span class="tag fl">FL2025-11</span> Concept 3</td>
+              <td><span class="tag mo">MO</span> MO-22007</td>
+              <td>Nat Mojito Type Flavor</td>
+              <td><span class="tag dev">Sample COA</span> · Sep 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>FL2025-11 · seasonal oral rinses</h2>
+        <p class="lead">Brief issued July 9, 2025 by Ross Conroy &amp; Nelly Levitsky. Three concepts for the core Fresh Breath base — mint-forward, not overly sweet, chlorite-stable. Peppermint Vanilla Swirl is the lead SKU; production target early 2026, retail Fall/Winter 2026.</p>
+        <div class="grid3">
+          <div class="card season">
+            <h3>Concept 1 · Peppermint Vanilla Swirl</h3>
+            <p>Top-tested name in C&amp;D concept research. Light vanilla with soft creamy mint — fresh, clean, mint-forward breath freshening.</p>
+            <p><span class="tag pe">PE-22004</span> Sample + preliminary qualification packet on share.</p>
+          </div>
+          <div class="card season">
+            <h3>Concept 2 · Frosted Delight (F/W)</h3>
+            <p>Crisp orchard fruits, warm citrus, cool berries, or spiced beverage cues — freshness must stay primary; heavy dessert profiles out of scope.</p>
+            <p><span class="tag mi">MI-22008</span> Winter spice mint type submission.</p>
+          </div>
+          <div class="card season">
+            <h3>Concept 3 · Freshly Picked (S/S)</h3>
+            <p>Spring/summer market fruits — bright berries, melon, sparkling citrus paired with mint. Iced/chilled beverage profiles in scope.</p>
+            <p><span class="tag mo">MO-22007</span> Mojito type submission.</p>
+          </div>
+        </div>
+        <div class="timeline" style="margin-top:14px">
+          <div class="tl"><time>Jul 2025</time><div><b>FL2025-11 issued</b> — three concept directions; global appeal considered alongside US launch.</div></div>
+          <div class="tl"><time>Sep 2025</time><div><b>Sample COAs</b> for PE-22004, MI-22008, MO-22007 — organoleptic release by Ryan Wixted.</div></div>
+          <div class="tl"><time>Early 2026</time><div><b>First production</b> target for Peppermint Vanilla Swirl lead SKU.</div></div>
+          <div class="tl"><time>F/W 2026</time><div><b>Retail launch window</b> (~September) for seasonal Peppermint Vanilla Swirl in Fresh Breath base.</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Qualification checklist · per submission</h2>
+        <p class="lead">From <em>DOCUMENTS CHECKLIST FOR THERABREATH ANTISEPTIC</em> — same rhythm applies across antiseptic, total care, seasonal, and new-code folders. Check off on share; do not email formula or pricing attachments from this index.</p>
+        <ul class="checklist">
+          <li>Product description (pds)</li>
+          <li>NA SDS · EU SDS</li>
+          <li>Certificate of Analysis (production or sample)</li>
+          <li>EU allergen statement · IFRA certificate</li>
+          <li>GMO status statement</li>
+          <li>FEMA GRAS statement</li>
+          <li>Food allergen statement</li>
+          <li>Kosher certification (where applicable)</li>
+          <li>CHD Global Flavor Statement (2025 template on seasonal codes)</li>
+          <li>Free-from statement (C&amp;D safety list)</li>
+          <li>Certificate of Naturalness (FDA natural flavor definition)</li>
+          <li>VOC-HAP submission (on share — values not repeated here)</li>
+          <li>SB 312 statement (usage-level docs on share only)</li>
+          <li>Expert or consumer data (when brief requires)</li>
+          <li>Pricing letter — <b>internal / not on workshop site</b></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Document index by product code</h2>
+        <p class="lead">What each code folder on the share typically contains. Open the matching subfolder for PDFs — this table is navigation only.</p>
+        <table>
+          <thead>
+            <tr><th>Code</th><th>Commercial name</th><th>Key docs on share</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag mi">MI-18727</span></td>
+              <td>Nat Mint Blend Mouthwash Flavor</td>
+              <td>pds · NA/EU SDS · allergens · Kosher 2025 · GRAS · GMO · IFRA 51st · VOC-HAP · SB 312 · Free From · Naturalness · CHD Global Statement · COAs</td>
+            </tr>
+            <tr>
+              <td><span class="tag mi">MI-21336</span></td>
+              <td>Nat Total Care Mint Flavor</td>
+              <td>Full qualification set · pilot COA · vegan statement · FL2023-06 brief at root</td>
+            </tr>
+            <tr>
+              <td><span class="tag ch">CH-21205</span></td>
+              <td>Nat Chamomile Mint Flavor</td>
+              <td>Full qualification set · sample &amp; pilot COAs · SB 312 at defined use levels (on share)</td>
+            </tr>
+            <tr>
+              <td><span class="tag pe">PE-22004</span></td>
+              <td>Nat Peppermint Vanilla Type FL</td>
+              <td>2025 CHD Global Statement · sample COA Sep 2025 · preliminary C&amp;D spec lifecycle · gluten &amp; vegan statements</td>
+            </tr>
+            <tr>
+              <td><span class="tag mi">MI-22008</span></td>
+              <td>Nat Winter Spice Mint Type</td>
+              <td>2025 CHD Global Statement · sample COA · full regulatory packet (IFRA 50th/51st)</td>
+            </tr>
+            <tr>
+              <td><span class="tag mo">MO-22007</span></td>
+              <td>Nat Mojito Type</td>
+              <td>2025 CHD Global Statement · sample COA · full regulatory packet</td>
+            </tr>
+            <tr>
+              <td><span class="tag bg">BG-21425</span></td>
+              <td>Kids bubble gum type</td>
+              <td>Qualification set · pilot COAs · FL2024-01 brief at root</td>
+            </tr>
+            <tr>
+              <td><span class="tag wa">WA</span> / <span class="tag st">ST</span></td>
+              <td>Organic watermelon &amp; strawberry types</td>
+              <td>NOP organic qualification · EU allergen · full formula workbooks on share only</td>
+            </tr>
+            <tr>
+              <td><span class="tag pe">PE-21169</span> · <span class="tag mi">MI-21168</span></td>
+              <td>Antiseptic close-in &amp; far-out mint</td>
+              <td>Qualification folders · production COAs · antiseptic FL2023-02 brief · rinse formula PDFs <b>not on site</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Supporting materials at folder root</h2>
+        <div class="doc-grid">
+          <div class="doc-chip"><b>Organic</b> NOP certificate + TFF organic addendum (watermelon, strawberry, etc.)</div>
+          <div class="doc-chip"><b>Facility</b> PFAS statement · Vegan statement · Yeast statement</div>
+          <div class="doc-chip"><b>Raw materials</b> PE-05523 peppermint oil · TR-19123/TR-19125 terpene blends · RM statements</div>
+          <div class="doc-chip"><b>CHD Global Flavor Statement</b> 2018/2023/2025 templates + per-code signed copies</div>
+          <div class="doc-chip"><b>Consumer data</b> Penalty analysis PDF — share only, not workshop site</div>
+          <div class="doc-chip"><b>Regulatory workbook</b> EU SDS hazards spreadsheet — share only</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Related on this site</h2>
+        <p class="lead">Relationship context and live workstreams — still no formulas or pricing.</p>
+        <div class="grid2">
+          <div class="card accent">
+            <h3>Partnership &amp; C&amp;D context</h3>
+            <ul>
+              <li><a href="/partnership">Partnership brief</a> — portfolio families, Ross/Nelly, supplier survey</li>
+              <li><a href="/chlorite-flavor">Chlorite flavor playbook</a> — stability for sodium chlorite bases</li>
+              <li><a href="/intensity-tiers">Intensity tiers thread</a> — competitive sensory archive</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>July 8 &amp; validation</h3>
+            <ul>
+              <li><a href="/kickoff">Kickoff prep</a> · <a href="/host">Run-of-show</a> · <a href="/tour">Facility tour</a></li>
+              <li><a href="/lakewood">Lakewood parity</a> · <a href="/lakewood-tracker">Variant tracker</a></li>
+              <li><a href="/answers">Prepared answers</a> · <a href="/questions">Questions for C&amp;D</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="links" style="margin-top:16px">
+          <a href="/toolkit">Command center</a>
+          <a href="/partnership">Partnership brief</a>
+          <a href="/onepager">Executive one-pager</a>
+          <a href="/gate">Portal login</a>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

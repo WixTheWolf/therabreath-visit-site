@@ -574,5 +574,37 @@
     "snippet": "Top 8 oral-rinse concepts — spring/summer and fall/winter seasonal pipeline.",
     "href": "/partnership",
     "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "TheraBreath file",
+    "q": "Where is the TheraBreath customer file organized on the share?",
+    "snippet": "Per-code folders, COAs, FL briefs, and qualification packets — indexed at /therabreath.",
+    "href": "/therabreath",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "TheraBreath file",
+    "q": "What flavor codes tie to TheraBreath rinse programs?",
+    "snippet": "MI-18727 core mint, MI-21336 Total Care, PE-22004 seasonal vanilla swirl, MI-22008 winter spice, MO-22007 mojito.",
+    "href": "/therabreath",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "TheraBreath file",
+    "q": "What documents are in a TheraBreath qualification packet?",
+    "snippet": "pds, SDS, COA, allergens, IFRA, GMO, GRAS, Kosher, CHD Global Statement, free-from, naturalness — no pricing on site.",
+    "href": "/therabreath",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "TheraBreath file",
+    "q": "What is FL2025-11 and when does Peppermint Vanilla Swirl launch?",
+    "snippet": "Seasonal oral rinse brief Jul 2025 — PE-22004 lead SKU, production early 2026, retail Fall/Winter 2026.",
+    "href": "/therabreath",
+    "badge": "ready"
   }
 ]
