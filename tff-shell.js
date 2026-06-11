@@ -17,6 +17,7 @@
     { href: "/qr", label: "QR print sheet" },
     { href: "/stations", label: "Station signs" },
     { href: "/mystery-live", label: "Mystery live · admin", team: true },
+    { href: "/score-live", label: "Score live · admin", team: true },
     { href: "/gate", label: "Team portal", team: true }
   ];
 

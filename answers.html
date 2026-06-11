@@ -178,8 +178,8 @@
             {
               q: "What sensory science support can TFF provide beyond Lakewood?",
               badge: "ready",
-              a: "<p>Triangle and blind protocols for any site transfer or formula change; expert screening forms; attribute lexicon for oral care; pilot batch sensory design; collaboration with your consumer science team on CLT/HUT.</p><p>July 8 includes a blind flavor mystery game (<a href=\"/mystery\">/mystery</a>), live scoring (<a href=\"/score\">/score</a>), printed ballots, and formal panel scheduling for post-visit pilots.</p>",
-              tools: ["/triangle", "/blind", "/mystery", "/score"]
+              a: "<p>Triangle and blind protocols for any site transfer or formula change; expert screening forms; attribute lexicon for oral care; pilot batch sensory design; collaboration with your consumer science team on CLT/HUT.</p><p>July 8 includes a blind flavor mystery game (<a href=\"/mystery\">/mystery</a>), live scoring (<a href=\"/score\">/score</a>) synced to <a href=\"/score-live\">/score-live</a>, printed ballots, and formal panel scheduling for post-visit pilots.</p>",
+              tools: ["/triangle", "/blind", "/mystery", "/score", "/score-live"]
             },
             {
               q: "What about the GA-22131 garlic functional sample Ryan sent?",
@@ -300,6 +300,12 @@
               badge: "ready",
               a: "<p>Team password → <a href=\"/mystery-live\">/mystery-live</a>. Polls every 2.5s, shows guest name and cup-by-cup guesses (M1–M10), CSV export, optional phone push on <code>TFF_NTFY_TOPIC</code>. Guests use <a href=\"/mystery\">/mystery</a> only — do not show the live board until guesses are in.</p>",
               tools: ["/mystery-live", "/mystery", "/gate"]
+            },
+            {
+              q: "Where does Matt see live concept scores from all phones?",
+              badge: "ready",
+              a: "<p>Team password → <a href=\"/score-live\">/score-live</a>. Room aggregate leaderboard, per-rater slider detail, CSV export, optional ntfy on <code>TFF_NTFY_TOPIC_SCORE</code> (falls back to mystery topic). Guests rate on <a href=\"/score\">/score</a> after reveal — scores sync automatically; they also see the room aggregate on their phones.</p>",
+              tools: ["/score-live", "/score", "/gate"]
             },
             {
               q: "Is this a sales pitch or a working session?",

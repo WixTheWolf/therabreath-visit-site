@@ -40,6 +40,7 @@
     { label: "Flavor mystery game", path: "/mystery" },
     { label: "Mystery live board (admin)", path: "/mystery-live" },
     { label: "Live concept scorer", path: "/score" },
+    { label: "Score live board (admin)", path: "/score-live" },
     { label: "Executive one-pager", path: "/onepager" },
     { label: "QR code print sheet", path: "/qr" },
     { label: "Co-creation worksheet", path: "/worksheet" }

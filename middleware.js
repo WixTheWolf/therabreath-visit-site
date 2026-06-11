@@ -18,7 +18,8 @@ const PROTECTED = new Set([
   "/partnership",
   "/therabreath",
   "/search-index.json",
-  "/mystery-live"
+  "/mystery-live",
+  "/score-live"
 ]);
 
 // Matches api/auth.js default HMAC for password TFF4321#
@@ -72,6 +73,7 @@ export const config = {
     "/partnership",
     "/therabreath",
     "/search-index.json",
-    "/mystery-live"
+    "/mystery-live",
+    "/score-live"
   ]
 };

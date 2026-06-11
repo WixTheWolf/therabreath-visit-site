@@ -670,5 +670,21 @@
     "snippet": "Real-time mystery submissions — who guessed what on coded cups M1–M10. Password required.",
     "href": "/mystery-live",
     "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Day-of",
+    "q": "Where does Matt see live concept scores from all phones?",
+    "snippet": "Team password → /score-live — room aggregate leaderboard, per-rater detail, CSV export. Guests on /score sync automatically; public aggregate also shows on their phones.",
+    "href": "/score-live",
+    "badge": "ready"
+  },
+  {
+    "type": "tool",
+    "category": "July 8",
+    "q": "Score live admin board",
+    "snippet": "Real-time concept scores from all raters — avg liking aggregate, per-rater sliders, CSV export. Password required.",
+    "href": "/score-live",
+    "badge": "ready"
   }
 ]
