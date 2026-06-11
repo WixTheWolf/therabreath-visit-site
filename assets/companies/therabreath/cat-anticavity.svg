@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Anticavity">
+  <rect width="80" height="80" rx="16" fill="#f0f9fd"/>
+  <path d="M40 14c-8 0-14 6-14 14v6c0 10 6 18 14 22 8-4 14-12 14-22v-6c0-8-6-14-14-14z" fill="#5fb832"/>
+  <path d="M34 30h12v4c0 6-3 11-6 13-3-2-6-7-6-13v-4z" fill="#fff" opacity="0.9"/>
+  <path d="M28 52h24" stroke="#008fd3" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="40" cy="52" r="10" fill="none" stroke="#008fd3" stroke-width="2.5"/>
+</svg>

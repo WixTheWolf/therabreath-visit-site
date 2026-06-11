@@ -78,10 +78,10 @@
           setAuthed();
           return true;
         }
-        return loginLocal(password);
+        return false;
       })
       .catch(function () {
-        return loginLocal(password);
+        return false;
       });
   }
 

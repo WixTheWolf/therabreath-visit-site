@@ -221,7 +221,31 @@
     }, 1000);
   }
 
+  function injectHeadMeta() {
+    var head = document.head;
+    if (!document.querySelector('link[rel="icon"]')) {
+      var icon = document.createElement("link");
+      icon.rel = "icon";
+      icon.type = "image/svg+xml";
+      icon.href = "/assets/favicon.svg";
+      head.appendChild(icon);
+    }
+    if (!document.querySelector('meta[name="theme-color"]')) {
+      var theme = document.createElement("meta");
+      theme.name = "theme-color";
+      theme.content = "#0a1628";
+      head.appendChild(theme);
+    }
+    if (!document.querySelector('meta[property="og:image"]')) {
+      var og = document.createElement("meta");
+      og.setAttribute("property", "og:image");
+      og.content = "https://therabreath-visit-site.vercel.app/assets/og-share.svg";
+      head.appendChild(og);
+    }
+  }
+
   function inject() {
+    injectHeadMeta();
     var m = mode();
     if (m === "off") return;
 

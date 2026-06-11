@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Breath of Innovation — TFF × TheraBreath">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="55%" stop-color="#004f87"/>
+      <stop offset="100%" stop-color="#1e6b3a"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#008fd3"/>
+      <stop offset="50%" stop-color="#5fb832"/>
+      <stop offset="100%" stop-color="#f58220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="8" fill="url(#bar)"/>
+  <circle cx="1040" cy="120" r="180" fill="rgba(0,143,211,0.12)"/>
+  <circle cx="180" cy="520" r="220" fill="rgba(95,184,50,0.1)"/>
+  <rect x="80" y="72" width="88" height="88" rx="22" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <text x="124" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="800" fill="#fff">TFF</text>
+  <text x="80" y="220" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,0.55)" letter-spacing="6">JULY 8, 2026 · NORCO</text>
+  <text x="80" y="310" font-family="system-ui,sans-serif" font-size="72" font-weight="800" fill="#fff">Breath of Innovation</text>
+  <text x="80" y="380" font-family="system-ui,sans-serif" font-size="34" font-weight="500" fill="rgba(255,255,255,0.82)">The Flavor Factory × TheraBreath capabilities workshop</text>
+  <text x="80" y="520" font-family="system-ui,sans-serif" font-size="26" font-weight="600" fill="rgba(255,255,255,0.65)">Workshop · Booklet · Mystery tasting · Live scoring</text>
+</svg>

@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-tff-shell="off">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Station 2 blind tasting — guess coded prototype directions M1–M10. Enter your name for live host tracking." />
+    <meta name="theme-color" content="#0a1628" />
     <title>Flavor Mystery Challenge | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
@@ -109,9 +111,19 @@
       .tag.watch { background:#fff4e8; color:#c45c26; }
       .tag.flagged { background:#fef3f2; color:#b42318; }
       .print-sheet { display:none; }
+      .taste-foot {
+        display:flex; justify-content:space-between; align-items:center; gap:12px;
+        padding:14px 20px calc(14px + env(safe-area-inset-bottom,0));
+        background:#fff; border-top:1px solid var(--line);
+      }
+      .taste-foot a {
+        font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700;
+        color:var(--blue); text-decoration:none;
+      }
+      .taste-foot a:hover { text-decoration:underline; }
       @media print {
         body { background:#fff !important; background-image:none !important; }
-        .tff-shell-nav, .tff-shell-dock, .page-hero, .toolbar, .intro, .name-card, .gate-msg,
+        .tff-shell-nav, .tff-shell-dock, .taste-foot, .page-hero, .toolbar, .intro, .name-card, .gate-msg,
         .card select, .scoreboard, .host-panel, .no-print { display:none !important; }
         .wrap { width:100%; max-width:none; padding:0; }
         .print-sheet { display:block !important; }
@@ -355,6 +367,10 @@
 
       renderCards();
     </script>
+    <nav class="taste-foot no-print" aria-label="Workshop navigation">
+      <a href="/workshop">← Workshop hub</a>
+      <a href="/score">Score concepts →</a>
+    </nav>
     <script src="/tff-shell.js" defer></script>
   </body>
 </html>
