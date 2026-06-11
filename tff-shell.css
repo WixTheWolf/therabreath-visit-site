@@ -6,6 +6,7 @@
   --tff-ink: #0a1628;
   --tff-muted: #5c6678;
   --tff-line: #e2e9ec;
+  --tff-chrome-h: 46px;
   --tff-nav-h: 60px;
   --tff-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -33,9 +34,165 @@ html.tff-has-dock body {
   .tff-shell-nav,
   .tff-shell-dock,
   .tff-shell-dock a,
+  .tff-chrome,
   .tff-pop {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* —— Universal chrome: back + home on every page —— */
+.tff-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tff-chrome-h);
+  padding: 0 clamp(10px, 2.5vw, 20px);
+  background: rgba(10, 22, 40, 0.97);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #fff;
+  animation: tff-chrome-in 0.4s var(--tff-ease) both;
+}
+
+@keyframes tff-chrome-in {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tff-chrome-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px 6px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tff-chrome-back:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.tff-chrome-back[hidden] {
+  display: none;
+}
+
+.tff-chrome-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.tff-chrome-home:hover {
+  opacity: 0.9;
+}
+
+.tff-chrome-mark {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--tff-blue), var(--tff-green));
+  font-size: 0.55rem;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(0, 143, 211, 0.35);
+}
+
+.tff-chrome-title {
+  letter-spacing: -0.02em;
+}
+
+.tff-chrome-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tff-chrome-links::-webkit-scrollbar {
+  display: none;
+}
+
+.tff-chrome-links a {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tff-chrome-links a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tff-chrome-links a.is-active {
+  color: #fff;
+  background: rgba(0, 143, 211, 0.25);
+  border-color: rgba(0, 143, 211, 0.35);
+}
+
+.tff-chrome-links a.tff-chrome-fun {
+  color: rgba(168, 230, 160, 0.95);
+}
+
+.tff-chrome-links a.tff-chrome-cta {
+  background: var(--tff-orange);
+  color: #fff;
+}
+
+.tff-chrome-links a.tff-chrome-cta.is-active {
+  background: var(--tff-orange);
+  border-color: transparent;
+}
+
+html.tff-has-chrome .tff-shell-nav {
+  top: var(--tff-chrome-h);
+}
+
+html.tff-has-chrome[data-tff-shell="native"] .top,
+html.tff-has-chrome[data-tff-shell="native"] .topnav,
+html.tff-has-chrome[data-tff-shell="native"] .topbar,
+html.tff-has-chrome[data-tff-shell="off"] .toolbar,
+html.tff-has-chrome[data-tff-shell="inject"] .toolbar {
+  top: var(--tff-chrome-h);
+}
+
+@media (max-width: 480px) {
+  .tff-chrome-back span {
+    display: none;
+  }
+  .tff-chrome-title {
+    display: none;
   }
 }
 
@@ -414,6 +571,7 @@ html.tff-has-dock body {
 }
 
 @media print {
+  .tff-chrome,
   .tff-shell-nav,
   .tff-shell-dock {
     display: none !important;

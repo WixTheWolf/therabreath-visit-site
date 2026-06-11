@@ -93,6 +93,56 @@
     );
   }
 
+  function chromeHtml() {
+    var p = path();
+    var hideBack = p === "/" || p === "/index.html";
+    return (
+      '<header class="tff-chrome" id="tff-chrome" role="banner">' +
+      '<button type="button" class="tff-chrome-back"' + (hideBack ? ' hidden' : '') + ' aria-label="Go back">' +
+      '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '<span>Back</span></button>' +
+      '<a class="tff-chrome-home" href="/" aria-label="Breath of Innovation home">' +
+      '<span class="tff-chrome-mark">TFF</span><span class="tff-chrome-title">Home</span></a>' +
+      '<nav class="tff-chrome-links" aria-label="Quick links">' +
+      '<a href="/workshop">Workshop</a>' +
+      '<a href="/booklet">Booklet</a>' +
+      '<a href="/mystery" class="tff-chrome-fun">Cipher</a>' +
+      '<a href="/score" class="tff-chrome-cta">Score</a>' +
+      '</nav></header>'
+    );
+  }
+
+  function bindChrome(chrome) {
+    var back = chrome.querySelector(".tff-chrome-back");
+    if (back) {
+      back.addEventListener("click", function () {
+        var ref = document.referrer || "";
+        var sameHost = ref.indexOf(global.location.origin) === 0;
+        if (sameHost && global.history.length > 1) {
+          global.history.back();
+        } else {
+          global.location.href = "/";
+        }
+      });
+    }
+    chrome.querySelectorAll(".tff-chrome-links a").forEach(function (a) {
+      var href = a.getAttribute("href").replace(/\/$/, "") || "/";
+      if (href === path() || (href !== "/" && path().indexOf(href) === 0)) {
+        a.classList.add("is-active");
+      }
+    });
+  }
+
+  function injectChrome() {
+    if (document.getElementById("tff-chrome")) return;
+    var wrap = document.createElement("div");
+    wrap.innerHTML = chromeHtml();
+    var chrome = wrap.firstChild;
+    document.body.insertBefore(chrome, document.body.firstChild);
+    document.documentElement.classList.add("tff-has-chrome");
+    bindChrome(chrome);
+  }
+
   function dockHtml() {
     return (
       '<nav class="tff-shell-dock" aria-label="Quick navigation">' +
@@ -246,6 +296,7 @@
 
   function inject() {
     injectHeadMeta();
+    injectChrome();
     var m = mode();
     if (m === "off") return;
 
