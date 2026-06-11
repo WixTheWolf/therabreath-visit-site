@@ -12,6 +12,7 @@
   var MORE = [
     { href: "/companies", label: "Companies", match: ["/companies", "/flavor-factory", "/therabreath-brand"] },
     { href: "/lakewood", label: "Lakewood plan" },
+    { href: "/booklet", label: "Welcome booklet" },
     { href: "/passport", label: "Visitor passport" },
     { href: "/slides", label: "Slide deck" },
     { href: "/qr", label: "QR print sheet" },

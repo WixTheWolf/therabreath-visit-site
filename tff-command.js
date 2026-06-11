@@ -35,6 +35,7 @@
     { label: "Triangle test kit (ISO 4120)", path: "/triangle" },
     { label: "Blind comparison kit", path: "/blind" },
     { label: "Slide deck + scoring sheet", path: "/slides" },
+    { label: "Welcome booklet (PDF index)", path: "/booklet" },
     { label: "Visitor passport", path: "/passport" },
     { label: "Tasting station signs", path: "/stations" },
     { label: "Flavor mystery game", path: "/mystery" },

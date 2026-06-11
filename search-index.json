@@ -682,6 +682,14 @@
   {
     "type": "tool",
     "category": "July 8",
+    "q": "Welcome booklet · visit documents",
+    "snippet": "All PDFs for the printed binder — partnership, professional formula portfolio, seasonal innovation, COAs, sensory validation, sample specs. Open at /booklet.",
+    "href": "/booklet",
+    "badge": "ready"
+  },
+  {
+    "type": "tool",
+    "category": "July 8",
     "q": "Score live admin board",
     "snippet": "Real-time concept scores from all raters — avg liking aggregate, per-rater sliders, CSV export. Password required.",
     "href": "/score-live",

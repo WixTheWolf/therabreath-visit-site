@@ -1,0 +1,176 @@
+[
+  {
+    "id": "together-we-win",
+    "title": "Together We Win \u00b7 Partnership booklet",
+    "section": "welcome",
+    "audience": "guest",
+    "name": "01-together-we-win-partnership.pdf",
+    "desc": "Partnership vision, pillars, and growth framing for TheraBreath.",
+    "file": "01-together-we-win-partnership.pdf"
+  },
+  {
+    "id": "professional-formula",
+    "title": "Professional formula portfolio",
+    "section": "innovation",
+    "audience": "guest",
+    "name": "02-professional-formula-portfolio.pdf",
+    "desc": "24-page formula and capability portfolio \u2014 print reference during tasting and R&D sessions.",
+    "file": "02-professional-formula-portfolio.pdf"
+  },
+  {
+    "id": "food-bev-brochure",
+    "title": "The Flavor Factory \u00b7 Industry brochure",
+    "section": "operations",
+    "audience": "guest",
+    "name": "03-flavor-factory-brochure.pdf",
+    "desc": "Company overview, capabilities, and oral-care positioning.",
+    "file": "03-flavor-factory-brochure.pdf"
+  },
+  {
+    "id": "norco-survey",
+    "title": "Norco facility survey",
+    "section": "operations",
+    "audience": "guest",
+    "name": "04-norco-facility-survey.pdf",
+    "desc": "Facility documentation shared with Church & Dwight qualification.",
+    "file": "04-norco-facility-survey.pdf"
+  },
+  {
+    "id": "seasonal-oral-care",
+    "title": "Seasonal flavors \u00b7 oral care directions",
+    "section": "innovation",
+    "audience": "guest",
+    "name": "05-seasonal-flavors-oral-care.pdf",
+    "desc": "Seasonal and limited-edition concepts for rinse and oral care.",
+    "file": "05-seasonal-flavors-oral-care.pdf"
+  },
+  {
+    "id": "seasonal-top8",
+    "title": "Top 8 seasonal flavor ideas",
+    "section": "innovation",
+    "audience": "guest",
+    "name": "06-seasonal-top-8-ideas.pdf",
+    "desc": "Curated seasonal directions for discussion and co-creation.",
+    "file": "06-seasonal-top-8-ideas.pdf"
+  },
+  {
+    "id": "seasonal-rinse",
+    "title": "Seasonal rinse formulas",
+    "section": "innovation",
+    "audience": "guest",
+    "name": "07-seasonal-rinse-formulas.pdf",
+    "desc": "Workshop-adjacent seasonal rinse prototypes and notes.",
+    "file": "07-seasonal-rinse-formulas.pdf"
+  },
+  {
+    "id": "seasonals-2025",
+    "title": "2025 seasonal concept sheet",
+    "section": "innovation",
+    "audience": "guest",
+    "name": "08-seasonals-2025.pdf",
+    "desc": "Latest seasonal line extensions under development.",
+    "file": "08-seasonals-2025.pdf"
+  },
+  {
+    "id": "sensory-validation",
+    "title": "Sensory validation framework",
+    "section": "sensory",
+    "audience": "guest",
+    "name": "09-sensory-validation-framework.pdf",
+    "desc": "How TFF runs triangle, blind, and panel work with brand teams.",
+    "file": "09-sensory-validation-framework.pdf"
+  },
+  {
+    "id": "lakewood-framework",
+    "title": "Lakewood sensory validation \u00b7 one-pager",
+    "section": "sensory",
+    "audience": "guest",
+    "name": "10-lakewood-sensory-validation.pdf",
+    "desc": "Site parity program summary for Lakewood transfer.",
+    "file": "10-lakewood-sensory-validation.pdf"
+  },
+  {
+    "id": "triangle-form",
+    "title": "Triangle test form \u00b7 TheraBreath",
+    "section": "sensory",
+    "audience": "guest",
+    "name": "11-triangle-test-form.pdf",
+    "desc": "ISO 4120 triangle protocol form for post-visit pilots.",
+    "file": "11-triangle-test-form.pdf"
+  },
+  {
+    "id": "nop-cert",
+    "title": "NOP certificate addendum \u00b7 product list",
+    "section": "quality",
+    "audience": "guest",
+    "name": "12-nop-cert-addendum.pdf",
+    "desc": "Organic certification product listing for procurement review.",
+    "file": "12-nop-cert-addendum.pdf"
+  },
+  {
+    "id": "spec-example",
+    "title": "Sample spec sheet \u00b7 MI-18727",
+    "section": "quality",
+    "audience": "guest",
+    "name": "13-spec-sheet-example.pdf",
+    "desc": "Representative flavor specification format and documentation.",
+    "file": "13-spec-sheet-example.pdf"
+  },
+  {
+    "id": "antiseptic-rinse",
+    "title": "Antiseptic rinse reference",
+    "section": "innovation",
+    "audience": "guest",
+    "name": "14-antiseptic-rinse-reference.pdf",
+    "desc": "Chlorite rinse context for formulation discussions.",
+    "file": "14-antiseptic-rinse-reference.pdf"
+  },
+  {
+    "id": "samples-MI-22008-sample",
+    "title": "Sample documentation · MI-22008",
+    "section": "samples",
+    "audience": "guest",
+    "file": "samples/MI-22008-sample.pdf",
+    "desc": "MI-22008 sample documentation"
+  },
+  {
+    "id": "samples-PE-22004-sample",
+    "title": "Sample documentation · PE-22004",
+    "section": "samples",
+    "audience": "guest",
+    "file": "samples/PE-22004-sample.pdf",
+    "desc": "PE-22004 sample documentation"
+  },
+  {
+    "id": "samples-peppermint-vanilla-flavor",
+    "title": "Peppermint vanilla flavor reference",
+    "section": "samples",
+    "audience": "guest",
+    "file": "samples/peppermint-vanilla-flavor.pdf",
+    "desc": "Peppermint vanilla flavor reference"
+  },
+  {
+    "id": "coas-coa-mi",
+    "title": "Certificate of analysis · MI lot",
+    "section": "quality",
+    "audience": "guest",
+    "file": "coas/coa-mi.pdf",
+    "desc": "COA \u00b7 MI lot example"
+  },
+  {
+    "id": "coas-coa-pe",
+    "title": "Certificate of analysis · PE lot",
+    "section": "quality",
+    "audience": "guest",
+    "file": "coas/coa-pe.pdf",
+    "desc": "COA \u00b7 PE lot example"
+  },
+  {
+    "id": "coas-coa-tr",
+    "title": "Certificate of analysis · TR lot",
+    "section": "quality",
+    "audience": "guest",
+    "file": "coas/coa-tr.pdf",
+    "desc": "COA \u00b7 TR lot example"
+  }
+]

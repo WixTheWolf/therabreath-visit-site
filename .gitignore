@@ -5,5 +5,8 @@ Thumbs.db
 *.log
 _cd_scan/
 _tb_scan/
+booklet/documents/print/
+_build-booklet.py
+_compress-formula.py
 
 .env*.local
