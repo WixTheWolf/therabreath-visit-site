@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Blind flavor mapping — taste a coded cup, match it to a neutral prototype codename. No flavor names until the host reveals." />
     <meta name="theme-color" content="#0a1628" />
-    <title>Blind Flavor Mapping | TFF × TheraBreath</title>
+    <title>Blind Tasting | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
     <style>
@@ -306,7 +306,7 @@
   <body>
     <header class="hero no-print">
       <div class="stamp"><i></i> Station 2 · blind only</div>
-      <h1>Blind flavor mapping</h1>
+      <h1>Blind tasting</h1>
       <p>Taste from your coded cup — then match it to one of ten neutral prototype codenames. No flavor names until reveal. Directional sensory feedback only.</p>
       <div class="hero-qr">
         <img src="/assets/qr/mystery.png" alt="QR — blind flavor mapping" width="92" height="92" />
@@ -323,7 +323,7 @@
     <div class="wrap">
       <div class="steps no-print">
         <div class="step"><b>01</b><span>Taste your cup — code on the label only</span></div>
-        <div class="step"><b>02</b><span>Pick the cipher that matches your palate</span></div>
+        <div class="step"><b>02</b><span>Select the prototype codename that matches your palate</span></div>
         <div class="step"><b>03</b><span>Lock it in — host reveals after tasting</span></div>
       </div>
 
@@ -335,7 +335,7 @@
           <input type="text" id="player" placeholder="First + last" autocomplete="name" />
           <button type="button" id="name-save">Begin</button>
         </div>
-        <span class="sync-pill pending" id="sync-pill">Enter name to unlock ciphers</span>
+        <span class="sync-pill pending" id="sync-pill">Enter name to begin blind tasting</span>
       </div>
 
       <div class="gate no-print" id="gate" style="display:none">
@@ -350,12 +350,12 @@
 
       <div class="panel no-print" id="log-panel" style="opacity:0.45;pointer-events:none">
         <h2>Log a tasting</h2>
-        <p class="sub">Find the code on your cup (M1–M10), then tap the cipher you believe matches.</p>
+        <p class="sub">Find the code on your cup (M1–M10), then select the prototype codename you believe matches.</p>
 
         <span class="pick-label">Cup code on your sample</span>
         <div class="cup-grid" id="cup-pick"></div>
 
-        <span class="pick-label">Your cipher guess</span>
+        <span class="pick-label">Your prototype match</span>
         <div class="cipher-pick" id="cipher-pick"></div>
 
         <span class="pick-label">What you tasted · optional notes</span>
@@ -384,7 +384,7 @@
 
       <div class="panel host-panel no-print" id="host">
         <div class="host-bar">
-          <h2 style="margin:0;font-family:Sora,sans-serif;font-size:0.92rem">Answer key · cup → cipher → concept</h2>
+          <h2 style="margin:0;font-family:Sora,sans-serif;font-size:0.92rem">Answer key · cup → codename → concept</h2>
           <button type="button" id="host-lock-btn">Hide answers</button>
         </div>
         <p class="sub">Confidential — reveal to guests only after tasting block.</p>
@@ -432,7 +432,7 @@
         if (!state.player || !state.nameLocked) return;
         setSyncStatus("pending", "Syncing…");
         TFFMysterySync.push(state, function (data, status) {
-          if (data && data.ok) setSyncStatus("ok", "Live · host sees your ciphers");
+          if (data && data.ok) setSyncStatus("ok", "Live · synced to sensory summary");
           else if (status === 503) setSyncStatus("err", "Saved here · live board needs KV");
           else setSyncStatus("err", "Offline · saved on this phone");
         });
@@ -459,7 +459,7 @@
         panel.classList.toggle("locked", nameOk);
         unlockPanels(nameOk);
         if (nameOk) syncLive();
-        else setSyncStatus("pending", "Enter name to unlock ciphers");
+        else setSyncStatus("pending", "Enter name to begin blind tasting");
       }
 
       function renderRoster() {
@@ -529,7 +529,7 @@
 
         if (!entries.length) {
           document.getElementById("dossier").innerHTML =
-            '<div class="empty-dossier">No guesses yet — taste a cup, then lock your cipher.</div>';
+            '<div class="empty-dossier">No entries yet — taste a cup, then record your match.</div>';
           return;
         }
 
@@ -631,7 +631,7 @@
       }
 
       function resetGame() {
-        if (!confirm("Clear all cipher guesses on this device?")) return;
+        if (!confirm("Clear all blind tasting entries on this device?")) return;
         TFFStorage.remove(STORAGE_KEY);
         nameOk = false;
         pickCup = null;

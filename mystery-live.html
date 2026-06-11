@@ -54,7 +54,7 @@
   </head>
   <body>
     <div class="bar">
-      <strong style="font-family:Sora,sans-serif">Blind mapping live · admin</strong>
+      <strong style="font-family:Sora,sans-serif">Blind tasting · live summary</strong>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <a href="/toolkit">Toolkit</a>
         <a href="/mystery">Guest mapping</a>
@@ -76,7 +76,7 @@
         <div class="stat"><b id="s-set">v1</b><span>Concept set</span></div>
       </div>
       <div class="panel">
-        <h2>Live blind mapping · who matched what</h2>
+        <h2>Live sensory summary · blind tasting matches</h2>
         <div style="overflow-x:auto">
           <table id="board">
             <thead>
@@ -145,7 +145,7 @@
 
         if (latest.length > lastCount) {
           beep();
-          document.title = "(" + latest.length + ") Mystery live";
+          document.title = "(" + latest.length + ") Blind tasting live";
         }
         lastCount = latest.length;
 

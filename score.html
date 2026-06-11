@@ -116,12 +116,12 @@
       <span class="sync-pill wait" id="sync-pill">Set rater name to sync</span>
     </div>
     <div class="wrap">
-      <p class="proto-banner">Ten coded workshop prototypes for directional sensory feedback. QC status and stability considerations are reviewed after reveal. Complete <a href="/mystery">blind flavor mapping</a> first if you haven't — then score what you taste.</p>
+      <p class="proto-banner">Ten coded workshop prototypes for directional sensory feedback. QC status and stability considerations are reviewed after reveal. Complete <a href="/mystery">blind tasting</a> first if you haven't — then score what you taste.</p>
     </div>
     <div class="wrap tff-stagger" id="cards"></div>
     <div class="wrap">
       <div class="leaderboard" id="board">
-        <h3>Your scores · this device</h3>
+        <h3>Sensory summary · this device</h3>
         <div id="board-rows"></div>
         <p class="rater-list" id="rater-summary"></p>
         <div class="room-board" id="room-board">
@@ -133,7 +133,7 @@
     </div>
     <div id="print-summary"></div>
     <div class="actions">
-      <a href="/mystery">Blind mapping</a>
+      <a href="/mystery">Blind tasting</a>
       <button type="button" onclick="exportScores()">Copy results</button>
       <button type="button" onclick="window.print()">Print</button>
       <button type="button" class="danger" onclick="clearScores()">Reset</button>
@@ -383,7 +383,7 @@
       setInterval(pollRoom, 3000);
     </script>
     <nav class="taste-foot" aria-label="Workshop navigation">
-      <a href="/mystery">← Mystery game</a>
+      <a href="/mystery">← Blind tasting</a>
       <a href="/workshop">Workshop hub →</a>
     </nav>
     <p style="text-align:center;font-size:0.68rem;color:var(--muted);margin:0;padding:0 16px 12px">Team live board: <a href="/gate?return=/score-live">/score-live</a> (password required)</p>

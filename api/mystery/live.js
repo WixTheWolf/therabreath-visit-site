@@ -108,7 +108,7 @@ function scoreOf(guesses) {
 async function notifyAdmin(player, correct, total) {
   var topic = process.env.TFF_NTFY_TOPIC;
   if (!topic) return;
-  var title = "Mystery · " + (player || "Guest");
+  var title = "Blind tasting · " + (player || "Guest");
   var body = correct + "/" + total + " correct · " + new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
   try {
     await fetch("https://ntfy.sh/" + encodeURIComponent(topic), {
