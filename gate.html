@@ -72,13 +72,20 @@
       document.getElementById("form").addEventListener("submit", function (e) {
         e.preventDefault();
         var pw = document.getElementById("pw").value;
-        if (TFF.login(pw)) {
-          location.replace(TFF.getReturnUrl());
-        } else {
-          document.getElementById("err").classList.add("show");
-          document.getElementById("pw").value = "";
-          document.getElementById("pw").focus();
-        }
+        var btn = e.target.querySelector("button");
+        btn.disabled = true;
+        btn.textContent = "Checking…";
+        TFF.login(pw).then(function (ok) {
+          btn.disabled = false;
+          btn.textContent = "Unlock command center →";
+          if (ok) {
+            location.replace(TFF.getReturnUrl());
+          } else {
+            document.getElementById("err").classList.add("show");
+            document.getElementById("pw").value = "";
+            document.getElementById("pw").focus();
+          }
+        });
       });
     </script>
   </body>

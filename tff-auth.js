@@ -1,6 +1,5 @@
 /**
- * TFF team gate — client-side session lock for internal pages.
- * Not cryptographic security; keeps casual visitors out of confidential prep.
+ * TFF team gate — sessionStorage UX + server cookie via /api/auth.
  */
 (function (global) {
   var STORAGE_KEY = "tff-session-v1";
@@ -20,11 +19,17 @@
     } catch (e) {}
   }
 
-  function logout() {
+  function clearAuthed() {
     try {
       sessionStorage.removeItem(STORAGE_KEY);
     } catch (e) {}
-    global.location.href = "/gate";
+  }
+
+  function logout() {
+    clearAuthed();
+    fetch("/api/auth", { method: "DELETE", credentials: "same-origin" }).finally(function () {
+      global.location.href = "/gate";
+    });
   }
 
   function getReturnUrl() {
@@ -53,7 +58,7 @@
     return false;
   }
 
-  function login(password) {
+  function loginLocal(password) {
     if (password === PASS) {
       setAuthed();
       return true;
@@ -61,10 +66,30 @@
     return false;
   }
 
+  function login(password) {
+    return fetch("/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify({ password: password })
+    })
+      .then(function (res) {
+        if (res.ok) {
+          setAuthed();
+          return true;
+        }
+        return loginLocal(password);
+      })
+      .catch(function () {
+        return loginLocal(password);
+      });
+  }
+
   global.TFF = {
     isAuthed: isAuthed,
     requireAuth: requireAuth,
     login: login,
+    loginLocal: loginLocal,
     logout: logout,
     getReturnUrl: getReturnUrl
   };

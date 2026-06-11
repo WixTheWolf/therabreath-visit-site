@@ -1,0 +1,546 @@
+[
+  {
+    "type": "answer",
+    "category": "Lakewood site transfer",
+    "q": "What validation plan do you propose for Lakewood mouthrinse production?",
+    "snippet": "We propose a four-rung escalation ladder aligned to your phased trial schedule: Rung 1 — Expert screen: Your R&D team, same as NPD, same/different on Lakewood vs reference. Rung 2 — Triangle test (ISO",
+    "href": "/answers",
+    "badge": "email"
+  },
+  {
+    "type": "answer",
+    "category": "Lakewood site transfer",
+    "q": "How do we know if there is or is not a taste difference between sites?",
+    "snippet": "Triangle test is the primary gate. Panelists receive three blind-coded samples (two from reference site, one from Lakewood). If correct identifications do not exceed the critical value at α=0.05, we c",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Lakewood site transfer",
+    "q": "If there is a difference, how do we understand what it is?",
+    "snippet": "Escalate to duo-trio (match-to-reference) plus 7-point attribute scales : mint intensity, cooling, sweetness, mouthfeel, aftertaste length, herbal/botanical, chlorite character. Output is a flavor fin",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Lakewood site transfer",
+    "q": "What consumer validation methods would you recommend?",
+    "snippet": "Only for Tier-A variants where triangle/blind confirm a difference worth testing for business impact: Invigorating Icy Mint, Whitening Dazzling Mint, AntiCavity Sparkle Mint. Central location test (CL",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Lakewood site transfer",
+    "q": "Can you support all eight variants on our trial timeline?",
+    "snippet": "Yes. We mapped your schedule (Icy/Mild/Rainforest end Jun → Sparkle mid Sep) with sample ETA ~1–2 weeks post-trial. We pull reference retain per variant and run expert → triangle → report within 48 ho",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Lakewood site transfer",
+    "q": "You supply the flavors — does that create bias in sensory testing?",
+    "snippet": "We blind-code and use third-party or joint panels where appropriate. Our role is flavor truth : we know the intended sensory target and retain library, which helps interpret what shifted — not to over",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 1 · Resiliency",
+    "q": "Can you scale flavor production if TheraBreath volume doubles or triples?",
+    "snippet": "Discuss in session with operations — we walk current load vs your growth scenarios on the capacity chart. We do not publish invented utilization percentages on the site. Key messages: single Norco fac",
+    "href": "/answers",
+    "badge": "session"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 1 · Resiliency",
+    "q": "What redundancy do you have if a supplier or equipment fails?",
+    "snippet": "Continuity framework covers: approved raw material suppliers + qualified alternates , primary and overflow production scheduling, cross-trained production and QC staff, documented recovery procedures,",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 1 · Resiliency",
+    "q": "What quality certifications and audits do you maintain?",
+    "snippet": "SQF program (auditable), GMP , FDA registered facility . Kosher, Halal, and Organic certifications are evaluated per formula as part of the development brief — not bolted on after scale-up. Documentat",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 1 · Resiliency",
+    "q": "What is your disaster recovery and business continuity plan?",
+    "snippet": "Discuss in session — documented recovery procedures, cross-training, alternate suppliers, and production scheduling flexibility. We tie this to what you see on the tour: segregation, documentation inv",
+    "href": "/answers",
+    "badge": "session"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "How do you develop flavors for sodium chlorite rinse systems?",
+    "snippet": "We formulate inside your base chemistry — not around it. Stabilized chlorite/chlorine dioxide oxidizes aldehydes, thiols, and phenols — so pure vanillin, citrus esters, berry notes, and organosulfur a",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "Why avoid citrus and berry for TheraBreath prototypes?",
+    "snippet": "Chlorite/chlorine dioxide degrades many ester-forward citrus and berry profiles over shelf life — oxidation chemistry, not preference. Typical failure: pool-water off-notes, browning, or harsh chemica",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "Can you do vanilla in a sodium chlorite rinse?",
+    "snippet": "Yes — with the right architecture, not raw vanillin. Matt's internal strategy: low-vanillin natural vanilla complexes, antioxidant shielding (tocopherols + micro-dose rosemary oleoresin in oil phase),",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "What sensory science support can TFF provide beyond Lakewood?",
+    "snippet": "Triangle and blind protocols for any site transfer or formula change; expert screening forms; attribute lexicon for oral care; pilot batch sensory design; collaboration with your consumer science team",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "What about the GA-22131 garlic functional sample Ryan sent?",
+    "snippet": "Feb–Mar 2026 working concept on the same thread as Listerine intensity tiers — still active. Ryan's hypothesis: alcohol-free garlic extract delivering allicin + DADS at ~0.0004–0.004% in finished rins",
+    "href": "/answers",
+    "badge": "email"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "What did TFF find on Listerine's new Extra Mild tier?",
+    "snippet": "Ross flagged Extra Mild as a competitive threat to TheraBreath Mild Mint (lower intensity, alcohol-free, colorless). Dan tested Intense, Mild, and Extra Mild across Cool Mint and Total Care — Extra Mi",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "What are the ten workshop prototypes and how were they chosen?",
+    "snippet": "Five fresh directions + five functional extensions, all chlorite-stable: 01 Spearmint Garden · 02 Green Tea Fresh · 03 Crisp Cucumber Mint · 04 Warm Ginger Mint · 05 Vanilla Mint Silk 06 Overnight Cal",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "Can you support seasonal and limited-edition lines?",
+    "snippet": "Yes — Winter Frost in the concept set is explicitly LE/seasonal. We discuss 2026–2027 windows in the innovation pillar and capture priorities in the partnership roadmap during the co-creation close.",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 2 · Innovation",
+    "q": "Can you work across rinse, paste, and new formats?",
+    "snippet": "We develop for rinse and paste formats with awareness of sweetener systems, actives, and cooling delivery differences. Format stretch is a partnership pillar topic — we want your priority list for the",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 3 · Operations",
+    "q": "Are you a manufacturer or a broker?",
+    "snippet": "Manufacturer. Family-owned flavor company in Norco, CA. Development, production, and quality under one roof — no third-party hand-off on your formulas. That is what the July 8 tour is designed to prov",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 3 · Operations",
+    "q": "What are your lead times and OTIF performance?",
+    "snippet": "Discuss in session — we share current lead time performance openly with procurement. We do not put unverified OTIF percentages on the public site. Message: lead time discipline, organized sample-to-or",
+    "href": "/answers",
+    "badge": "session"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 3 · Operations",
+    "q": "How does batch traceability work?",
+    "snippet": "Full traceability from raw material receipt through finished flavor release. Lot-level documentation, COAs on request, allergen statements, and label support via quality team. You see raw storage and ",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 3 · Operations",
+    "q": "Where do you source raw materials?",
+    "snippet": "Domestic and global approved suppliers with qualified alternates for critical materials. Sourcing tags: lot traceability, COA on request, per-formula cert review (Kosher/Halal/Organic as needed).",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 3 · Operations",
+    "q": "What facility investments have you made for oral care?",
+    "snippet": "Show on tour — segregation improvements, TheraBreath production area, batch documentation upgrades. Specifics land better on the floor than on a slide; recent investments support oral care volume and ",
+    "href": "/answers",
+    "badge": "session"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 4 · Partnership",
+    "q": "How do you see the partnership evolving over the next 3–5 years?",
+    "snippet": "Vision timeline on site: Now — prove partnership (July visit, co-created priorities). Near-term — pilot winners, formal sensory, claims shaped together. Medium — scale production, seasonal pipeline, f",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 4 · Partnership",
+    "q": "How will you invest in the relationship?",
+    "snippet": "Working conversation — capacity, R&D time, sensory support, proactive concept development, Lakewood transfer embedded support. We want your prioritized investment asks from procurement and R&D so we a",
+    "href": "/answers",
+    "badge": "session"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 4 · Partnership",
+    "q": "What happens in the co-creation workshop?",
+    "snippet": "10:30–12:00 · Alex + R&D lead. Top-scored concepts from tasting go to the bench — adjust cooling, sweetness, finish length in real time. Worksheets document iterations; photographs feed the 24-hour fo",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Pillar 4 · Partnership",
+    "q": "What deliverables do we receive after July 8?",
+    "snippet": "Thank-you + summary within 24 hours (follow-up email template) Sensory scores compiled from live scorer + ballots Co-created innovation roadmap document Pilot batch plan on selected concepts Lakewood ",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "July 8 logistics",
+    "q": "What is the agenda for July 8?",
+    "snippet": "Half day · depart by 12:30 PM: 8:00 — Welcome + facility tour 8:30 — Pillars 1 & 3 (Resiliency + Operations) 9:00 — Pillars 2 & 4 (Innovation + Partnership) 9:30 — Three-station tasting, ten prototype",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "July 8 logistics",
+    "q": "Who from TFF will we meet?",
+    "snippet": "Dan — partnership + facility. Ryan — quality, certifications, documentation. Alex — R&D, innovation, co-creation. Matt — workshop facilitation and digital tools. Name tents and run-of-show cues in hos",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "July 8 logistics",
+    "q": "Is this a sales pitch or a working session?",
+    "snippet": "A capabilities review and working session — four pillars with documentation, real tour, live tasting, bench iteration, and a prioritized close. Interactive site on the room display; passports and scor",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Procurement & commercial",
+    "q": "What is your pricing model / cost structure?",
+    "snippet": "Discuss in session with procurement — formula-specific, volume-tiered, raw material pass-through mechanics. No public rate card on the workshop site.",
+    "href": "/answers",
+    "badge": "session"
+  },
+  {
+    "type": "answer",
+    "category": "Procurement & commercial",
+    "q": "Can you meet our supplier qualification requirements?",
+    "snippet": "Yes — SQF, GMP, FDA registration, COAs, allergen documentation, traceability, and per-formula cert support. Ryan's team aligns to Church & Dwight supplier files; we ask what additional documents you n",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "answer",
+    "category": "Procurement & commercial",
+    "q": "Why single-site supply vs dual source?",
+    "snippet": "Single site gives visibility and speed from sample to production — no broker hand-off. Continuity risk is mitigated through alternate raw suppliers, cross-training, overflow capacity, and documented r",
+    "href": "/answers",
+    "badge": "ready"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "Where should formal triangle and blind panels run — Norco, Lakewood, your site, or a third-party sensory lab?",
+    "snippet": "Drives logistics, panelist pool, and who owns scheduling.",
+    "href": "/questions",
+    "id": "lw1"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "What is the reference manufacturing site for each variant's \"A\" sample in the triangle test?",
+    "snippet": "Must match what consumers know today — confirm per SKU.",
+    "href": "/questions",
+    "id": "lw2"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "Who recruits panelists on your side vs ours? Do you have a trained internal panel we should align with?",
+    "snippet": "ISO triangle needs consistent panel training and n≥24.",
+    "href": "/questions",
+    "id": "lw3"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "If a variant fails triangle at α=0.05, who approves hold-ship vs release while we characterize the difference?",
+    "snippet": "Decision rule before data exists avoids panic.",
+    "href": "/questions",
+    "id": "lw4"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "For Tier-A SKUs (Icy Mint, Dazzling Mint, Sparkle Mint) — is consumer CLT budget approved if analytical difference is found?",
+    "snippet": "Ross asked about consumer methods; confirm funding path.",
+    "href": "/questions",
+    "id": "lw5"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "Can you confirm sample ship timing (~1–2 weeks post-trial) and volume per variant for retain + panel?",
+    "snippet": "Matches Ross's trial table; we need enough for reference retain.",
+    "href": "/questions",
+    "id": "lw6"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "Does Procurement (Neonila) sign off on sensory parity, or is R&D-only?",
+    "snippet": "Cc'd on Ross emails — clarify approval workflow.",
+    "href": "/questions",
+    "id": "lw7"
+  },
+  {
+    "type": "question",
+    "category": "Lakewood validation",
+    "q": "Are Lakewood trials using identical flavor lots from TFF, or reissued lots? Lot numbers help our fingerprint reports.",
+    "snippet": "Separates flavor drift from site/process effects.",
+    "href": "/questions",
+    "id": "lw8"
+  },
+  {
+    "type": "question",
+    "category": "July 8 visit",
+    "q": "Who is attending July 8 — names, titles, and any dietary restrictions or accessibility needs?",
+    "snippet": "Gift baskets, catering, seating, tour pacing.",
+    "href": "/questions",
+    "id": "v1"
+  },
+  {
+    "type": "question",
+    "category": "July 8 visit",
+    "q": "When is the virtual Procurement session before the visit, and what do they want covered?",
+    "snippet": "Ross mentioned meeting procurement virtually first.",
+    "href": "/questions",
+    "id": "v2"
+  },
+  {
+    "type": "question",
+    "category": "July 8 visit",
+    "q": "What does a successful July 8 look like for R&D vs Procurement — one sentence each?",
+    "snippet": "Lets us weight pillars and close correctly.",
+    "href": "/questions",
+    "id": "v3"
+  },
+  {
+    "type": "question",
+    "category": "July 8 visit",
+    "q": "Which growth scenario should we use in the capacity working session — conservative, plan, or stretch?",
+    "snippet": "Site shows bar chart as conversation, not invented OTIF.",
+    "href": "/questions",
+    "id": "v4"
+  },
+  {
+    "type": "question",
+    "category": "July 8 visit",
+    "q": "Any topics that are off-limits or politically sensitive inside C&D we should avoid?",
+    "snippet": "Half-day trust builder — no surprises.",
+    "href": "/questions",
+    "id": "v5"
+  },
+  {
+    "type": "question",
+    "category": "July 8 visit",
+    "q": "Will Ross or Neonila join July 8 in person, or only the Lakewood thread remote?",
+    "snippet": "Right people in co-creation and Lakewood discussion.",
+    "href": "/questions",
+    "id": "v6"
+  },
+  {
+    "type": "question",
+    "category": "July 8 visit",
+    "q": "Do you want NDA/confidentiality reconfirmed for prototypes and roadmap content?",
+    "snippet": "Ten new concepts + partnership charter.",
+    "href": "/questions",
+    "id": "v7"
+  },
+  {
+    "type": "question",
+    "category": "Growth & innovation",
+    "q": "Which formats are highest priority in the next 12 months — rinse, paste, lozenge, spray, other?",
+    "snippet": "Innovation pillar + prototype relevance.",
+    "href": "/questions",
+    "id": "g1"
+  },
+  {
+    "type": "question",
+    "category": "Growth & innovation",
+    "q": "What seasonal or limited-edition windows are on your 2026–2027 calendar?",
+    "snippet": "Winter Frost LE and pipeline planning.",
+    "href": "/questions",
+    "id": "g2"
+  },
+  {
+    "type": "question",
+    "category": "Growth & innovation",
+    "q": "Are there claim constraints (whitening, gum health, overnight) we must design flavor profiles around?",
+    "snippet": "Functional station concepts map to claims.",
+    "href": "/questions",
+    "id": "g3"
+  },
+  {
+    "type": "question",
+    "category": "Growth & innovation",
+    "q": "Which existing TheraBreath SKUs are most sacred — minimal drift tolerance vs open to refresh?",
+    "snippet": "Sets sensory equivalence bar with Lakewood work.",
+    "href": "/questions",
+    "id": "g4"
+  },
+  {
+    "type": "question",
+    "category": "Growth & innovation",
+    "q": "What adjacencies is Church & Dwight exploring beyond current rinse lines?",
+    "snippet": "Partnership vision timeline.",
+    "href": "/questions",
+    "id": "g5"
+  },
+  {
+    "type": "question",
+    "category": "Growth & innovation",
+    "q": "After tasting, how many pilot batches can your team absorb in Q3–Q4?",
+    "snippet": "Realistic co-creation close vs overpromising.",
+    "href": "/questions",
+    "id": "g6"
+  },
+  {
+    "type": "question",
+    "category": "Growth & innovation",
+    "q": "Who is the decision-maker for new flavor approval — R&D, marketing, regulatory, or joint?",
+    "snippet": "Pilot list ownership at 12:00 PM close.",
+    "href": "/questions",
+    "id": "g7"
+  },
+  {
+    "type": "question",
+    "category": "Procurement & operations",
+    "q": "What supplier scorecard metrics matter most — lead time, OTIF, cost, audit score, innovation?",
+    "snippet": "Procurement attendance; weight the ops pillar.",
+    "href": "/questions",
+    "id": "p1"
+  },
+  {
+    "type": "question",
+    "category": "Procurement & operations",
+    "q": "What documentation do you need added to our qualification file after the visit?",
+    "snippet": "SQF, FDA, COA, allergen — Ryan's team prepares.",
+    "href": "/questions",
+    "id": "p2"
+  },
+  {
+    "type": "question",
+    "category": "Procurement & operations",
+    "q": "Are there corporate sustainability or sourcing mandates we should align to?",
+    "snippet": "Domestic vs global sourcing conversation.",
+    "href": "/questions",
+    "id": "p3"
+  },
+  {
+    "type": "question",
+    "category": "Procurement & operations",
+    "q": "What is your standard flavor lead time expectation at current and 2× volume?",
+    "snippet": "Open conversation — site avoids fake stats.",
+    "href": "/questions",
+    "id": "p4"
+  },
+  {
+    "type": "question",
+    "category": "Procurement & operations",
+    "q": "How do you prefer to handle raw material cost volatility — indexed pricing, forecasts, or periodic review?",
+    "snippet": "Long-term partnership transparency.",
+    "href": "/questions",
+    "id": "p5"
+  },
+  {
+    "type": "question",
+    "category": "Procurement & operations",
+    "q": "Is dual-source flavor supply a corporate requirement, or is single-site TFF acceptable with continuity plan?",
+    "snippet": "Resiliency pillar + stress-test demo.",
+    "href": "/questions",
+    "id": "p6"
+  },
+  {
+    "type": "question",
+    "category": "Partnership & ways of working",
+    "q": "What communication cadence do you want post-visit — monthly technical, quarterly business review?",
+    "snippet": "Partnership charter draft.",
+    "href": "/questions",
+    "id": "pt1"
+  },
+  {
+    "type": "question",
+    "category": "Partnership & ways of working",
+    "q": "Should TFF draft the joint innovation roadmap first, or co-write in the 10:30 workshop?",
+    "snippet": "Manage expectations on deliverable timing.",
+    "href": "/questions",
+    "id": "pt2"
+  },
+  {
+    "type": "question",
+    "category": "Partnership & ways of working",
+    "q": "Where do you want TFF to invest alongside you — capacity, R&D headcount, sensory, regulatory support?",
+    "snippet": "Pillar 4 investment conversation.",
+    "href": "/questions",
+    "id": "pt3"
+  },
+  {
+    "type": "question",
+    "category": "Partnership & ways of working",
+    "q": "Who is our single point of contact at C&D for day-to-day flavor business after July 8?",
+    "snippet": "Avoid diffusion after the workshop glow.",
+    "href": "/questions",
+    "id": "pt4"
+  },
+  {
+    "type": "question",
+    "category": "Partnership & ways of working",
+    "q": "How should we involve you in early ideation — proactive concepts vs brief-only?",
+    "snippet": "Sets proactive partner expectation.",
+    "href": "/questions",
+    "id": "pt5"
+  },
+  {
+    "type": "question",
+    "category": "Partnership & ways of working",
+    "q": "For Lakewood + future site transfers, do you want TFF embedded in transfer protocols ongoing?",
+    "snippet": "Extends Ross thread into partnership model.",
+    "href": "/questions",
+    "id": "pt6"
+  }
+]

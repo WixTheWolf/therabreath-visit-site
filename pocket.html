@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/tff-auth.js"></script>
+    <script>TFF.requireAuth();</script>
+    <title>Pocket Run-of-Show · July 8</title>
+    <style>
+      :root { --blue:#008fd3; --ink:#0a1628; --muted:#5c6678; --line:#d0d8de; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:Georgia,"Times New Roman",serif; color:var(--ink); background:#fff; font-size:9.5pt; line-height:1.35; }
+      .screen-bar {
+        display:flex; flex-wrap:wrap; gap:8px; padding:12px 16px;
+        background:var(--ink); color:#fff; font-family:Arial,sans-serif; font-size:12px;
+      }
+      .screen-bar a, .screen-bar button {
+        padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,0.25);
+        background:rgba(255,255,255,0.1); color:#fff; text-decoration:none; cursor:pointer; font-weight:700;
+      }
+      .screen-bar button { border:none; background:var(--blue); }
+      .sheet { width:min(7.5in,100%); margin:0 auto; padding:0.35in 0.4in 0.45in; }
+      .hdr { display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--ink); padding-bottom:8px; margin-bottom:10px; }
+      .hdr h1 { margin:0; font-size:14pt; letter-spacing:-0.02em; }
+      .hdr .meta { text-align:right; font-size:8pt; color:var(--muted); font-family:Arial,sans-serif; }
+      .hdr .meta b { display:block; color:var(--ink); font-size:9pt; }
+      .grid { display:grid; grid-template-columns:52px 1fr; gap:0 10px; }
+      .time { font-family:Arial,sans-serif; font-weight:800; font-size:8.5pt; color:var(--blue); padding-top:2px; }
+      .block { padding:6px 0 8px; border-bottom:1px solid var(--line); page-break-inside:avoid; }
+      .block h2 { margin:0 0 3px; font-size:10pt; font-family:Arial,sans-serif; }
+      .block p, .block li { margin:0; font-size:8.5pt; }
+      .block ul { margin:3px 0 0; padding-left:14px; }
+      .cue { margin-top:4px; padding:4px 6px; border-left:2px solid #f58220; background:#fffaf5; font-size:8pt; font-family:Arial,sans-serif; }
+      .cue b { color:#c45c26; }
+      .leads { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:10px 0; font-family:Arial,sans-serif; font-size:8pt; }
+      .leads div { padding:6px 8px; border:1px solid var(--line); border-radius:6px; }
+      .leads b { display:block; font-size:7pt; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin-bottom:2px; }
+      .footer { margin-top:10px; padding-top:8px; border-top:1px solid var(--line); font-size:7.5pt; color:var(--muted); font-family:Arial,sans-serif; display:flex; justify-content:space-between; }
+      @media print {
+        .screen-bar { display:none !important; }
+        .sheet { width:100%; padding:0.25in 0.3in; }
+        @page { size:letter portrait; margin:0.35in; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen-bar">
+      <span>Pocket run-of-show · print on letter, fold once</span>
+      <a href="/toolkit">← Command center</a>
+      <a href="/host">Full host view</a>
+      <button type="button" onclick="window.print()">Print / Save PDF</button>
+    </div>
+
+    <article class="sheet">
+      <header class="hdr">
+        <div>
+          <h1>TheraBreath × TFF · July 8 run-of-show</h1>
+          <p style="margin:4px 0 0;font-size:8.5pt;color:var(--muted)">Half day · depart 12:30 PM · display <b>/</b> · score <b>/score</b></p>
+        </div>
+        <div class="meta">
+          <b>The Flavor Factory · Norco</b>
+          Dan · Ryan · Alex · Matt<br />
+          Internal · fold for pocket
+        </div>
+      </header>
+
+      <div class="leads">
+        <div><b>Room display</b>therabreath-visit-site.vercel.app/</div>
+        <div><b>Live scoring</b>/score on phones</div>
+        <div><b>Tour sheet</b>/tour · passports /passport</div>
+        <div><b>Co-creation</b>/worksheet · /labels</div>
+      </div>
+
+      <div class="grid">
+        <div class="time">8:00</div>
+        <div class="block">
+          <h2>Welcome &amp; facility tour · 30 min</h2>
+          <p><b>Dan + ops</b> — passports on seats, follow /tour (mixing, QC, TB room, raw, R&amp;D).</p>
+          <div class="cue"><b>Cue:</b> "Sit down — four pillars, starting with resiliency and operations."</div>
+        </div>
+
+        <div class="time">8:30</div>
+        <div class="block">
+          <h2>Pillars 1 &amp; 3 · Resiliency + Operations · 30 min</h2>
+          <p><b>Ryan + ops</b> — capacity as conversation (no invented OTIF). SQF, GMP, FDA. Continuity demo if display up.</p>
+          <div class="cue"><b>Cue:</b> "Innovation and partnership — how we grow together."</div>
+        </div>
+
+        <div class="time">9:00</div>
+        <div class="block">
+          <h2>Pillars 2 &amp; 4 · Innovation + Partnership · 30 min</h2>
+          <p><b>Alex + Dan</b> — chlorite stability story, trend directions, partnership charter (working, not contract).</p>
+          <div class="cue"><b>Cue:</b> "Three stations, ten prototypes — honest reactions."</div>
+        </div>
+
+        <div class="time">9:30</div>
+        <div class="block">
+          <h2>Tasting · 60 min</h2>
+          <p>Stations 1→2→3 · passports + slide 17 + /score · capture top 3 for lab.</p>
+          <div class="cue"><b>Cue:</b> "Winners to the bench — we adjust together."</div>
+        </div>
+
+        <div class="time">10:30</div>
+        <div class="block">
+          <h2>Co-creation lab · 90 min</h2>
+          <p><b>Alex + R&amp;D</b> — /worksheet per table, bench on top scores, photo iterations.</p>
+          <div class="cue"><b>Cue:</b> "Close with action plan — who does what by when."</div>
+        </div>
+
+        <div class="time">12:00</div>
+        <div class="block">
+          <h2>Action plan &amp; depart · 30 min</h2>
+          <p><b>Dan</b> — recap concepts + pillars, sample kits, /followup email within 24h.</p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>Do not invent stats · Lakewood thread → /lakewood-tracker</span>
+        <span>Team portal /gate</span>
+      </footer>
+    </article>
+  </body>
+</html>

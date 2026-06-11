@@ -73,8 +73,63 @@
       .legend i { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:6px; vertical-align:middle; }
       .legend .l-int { background:var(--ink); }
       .legend .l-pub { background:var(--green); }
-      @media (max-width:900px) { .stats, .threads, .grid { grid-template-columns:1fr 1fr; } }
-      @media (max-width:560px) { .stats, .threads, .grid { grid-template-columns:1fr; } }
+      .cmd-bar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:28px; }
+      .cmd-bar button {
+        padding:10px 16px; border-radius:999px; border:none; cursor:pointer;
+        font-family:"Sora",sans-serif; font-size:0.76rem; font-weight:700;
+      }
+      .cmd-share { background:var(--green); color:#fff; }
+      .cmd-pocket { background:#fff; color:var(--ink); border:1px solid var(--line) !important; }
+      .cmd-search-wrap { position:relative; flex:1; min-width:240px; }
+      .cmd-search-wrap input {
+        width:100%; padding:12px 16px; border:1px solid var(--line); border-radius:999px;
+        font:inherit; font-size:0.9rem; background:#fff;
+      }
+      .cmd-search-wrap input:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,143,211,0.12); }
+      .cmd-search-results {
+        display:none; position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:40;
+        max-height:360px; overflow:auto; background:#fff; border:1px solid var(--line);
+        border-radius:14px; box-shadow:0 20px 48px rgba(10,22,40,0.12);
+      }
+      .cmd-search-results.open { display:block; }
+      .cmd-search-hit {
+        display:grid; gap:4px; padding:12px 14px; text-decoration:none; color:inherit;
+        border-bottom:1px solid var(--line);
+      }
+      .cmd-search-hit:hover { background:#f6fafc; }
+      .cmd-search-meta { font-size:0.68rem; color:var(--muted); }
+      .cmd-search-meta b { color:var(--blue); }
+      .cmd-search-hit strong { font-family:"Sora",sans-serif; font-size:0.82rem; line-height:1.35; }
+      .cmd-search-snippet { font-size:0.74rem; color:var(--muted); line-height:1.4; }
+      .cmd-search-empty { margin:0; padding:14px; font-size:0.8rem; color:var(--muted); }
+      .cmd-badge { margin-left:6px; padding:2px 6px; border-radius:999px; font-size:0.58rem; font-weight:800; text-transform:uppercase; }
+      .cmd-badge.warn { background:#fff4e8; color:#c45c26; }
+      .cmd-badge.email { background:#e8f6fd; color:var(--blue); }
+      .dash-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+      .dash-card { padding:20px; border-radius:16px; background:#fff; border:1px solid var(--line); }
+      .dash-head { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; }
+      .dash-head h3 { margin:0; font-family:"Sora",sans-serif; font-size:0.95rem; }
+      .dash-head a { font-size:0.72rem; font-weight:700; color:var(--blue); text-decoration:none; }
+      .dash-stat { margin:0 0 12px; font-size:0.8rem; color:var(--muted); }
+      .dash-stat strong { color:var(--ink); font-family:"Sora",sans-serif; }
+      .dash-list { margin:0; padding:0; list-style:none; }
+      .dash-list li { padding:8px 0; border-top:1px solid var(--line); font-size:0.78rem; }
+      .dash-list li b { display:block; font-size:0.82rem; margin-bottom:2px; }
+      .dash-list li span { color:var(--muted); }
+      .dash-list li.more { color:var(--muted); font-style:italic; }
+      .dash-label { margin:8px 0 4px; font-size:0.68rem; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); }
+      .dash-label.warn { color:#c45c26; }
+      .dash-ok { margin:0; font-size:0.8rem; color:var(--green); font-weight:600; }
+      .dash-muted { margin:0; font-size:0.78rem; color:var(--muted); line-height:1.45; }
+      #cmd-toast {
+        position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(80px);
+        padding:12px 20px; border-radius:999px; background:var(--ink); color:#fff;
+        font-size:0.82rem; font-weight:600; opacity:0; transition:transform 0.3s, opacity 0.3s; z-index:50;
+        pointer-events:none; box-shadow:0 12px 32px rgba(0,0,0,0.2);
+      }
+      #cmd-toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+      @media (max-width:900px) { .stats, .threads, .grid, .dash-grid { grid-template-columns:1fr 1fr; } }
+      @media (max-width:560px) { .stats, .threads, .grid, .dash-grid { grid-template-columns:1fr; } }
     </style>
   </head>
   <body>
@@ -82,7 +137,7 @@
       <div class="brand"><span class="mark">TFF</span> Command center</div>
       <div class="actions">
         <a href="/">Workshop site</a>
-        <a href="/gate">Team login</a>
+        <a href="/pocket">Pocket ROS</a>
         <button type="button" onclick="TFF.logout()">Sign out</button>
       </div>
     </div>
@@ -106,6 +161,20 @@
         <span><i class="l-int"></i>Internal · team only (this portal)</span>
         <span><i class="l-pub"></i>Shareable · screen-share or send to Ross / Nelly</span>
       </p>
+
+      <div class="cmd-bar">
+        <div class="cmd-search-wrap">
+          <input type="search" id="cmd-search" placeholder="Search answers &amp; questions — chlorite, Lakewood, capacity…" autocomplete="off" />
+          <div class="cmd-search-results" id="cmd-search-results"></div>
+        </div>
+        <button type="button" class="cmd-share" id="cmd-share-pack">Copy share pack</button>
+        <button type="button" class="cmd-pocket" id="cmd-pocket-print">Pocket run-of-show</button>
+      </div>
+
+      <section class="sec">
+        <div class="sec-head"><h2>Thread status</h2><span>Open items across active workstreams</span></div>
+        <div id="cmd-dashboard"></div>
+      </section>
 
       <section class="sec">
         <div class="sec-head"><h2>Active threads</h2><span>Jump to what matters now</span></div>
@@ -166,6 +235,7 @@
           <a class="card pub" href="/stations"><span class="card-tag">Print</span><h3>Station signs</h3><p>Three tasting stations.</p><em>/stations</em></a>
           <a class="card pub" href="/score"><span class="card-tag">Live</span><h3>Concept scorer</h3><p>Phones · 1–9 ratings.</p><em>/score</em></a>
           <a class="card lock" href="/host"><span class="card-tag">Hosts only</span><h3>Run-of-show</h3><p>Minute-by-minute · handoff cues.</p><em>/host</em></a>
+          <a class="card lock" href="/pocket"><span class="card-tag">Print</span><h3>Pocket run-of-show</h3><p>One-page foldable · Dan's July 8 cheat sheet.</p><em>/pocket</em></a>
           <a class="card lock" href="/tour"><span class="card-tag">Hosts only</span><h3>Facility tour map</h3><p>8:00 AM walk-through.</p><em>/tour</em></a>
           <a class="card lock" href="/worksheet"><span class="card-tag">Lab</span><h3>Co-creation worksheet</h3><p>10:30 block form.</p><em>/worksheet</em></a>
           <a class="card lock" href="/labels"><span class="card-tag">Print</span><h3>Sample labels</h3><p>Concepts 01–10 stickers.</p><em>/labels</em></a>
@@ -189,5 +259,7 @@
         </div>
       </section>
     </div>
+    <div id="cmd-toast" role="status" aria-live="polite"></div>
+    <script src="/tff-command.js"></script>
   </body>
 </html>

@@ -379,6 +379,8 @@
       }
 
       document.getElementById('search').addEventListener('input', renderList);
+      var qParam = new URLSearchParams(location.search).get('q');
+      if (qParam) document.getElementById('search').value = qParam;
       renderFilters();
       renderList();
     </script>
