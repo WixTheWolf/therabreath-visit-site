@@ -235,11 +235,40 @@
       }
       .sealed-note b { color:var(--blue); }
 
-      .host-panel { display:none; margin-top:16px; }
+      .host-gate {
+        margin-top:16px; border-color:rgba(245,130,32,0.35);
+        background:linear-gradient(160deg,#fff,#fffaf5);
+      }
+      .host-gate form { display:flex; flex-direction:column; gap:10px; }
+      .host-gate input {
+        padding:12px 14px; border:1px solid var(--line); border-radius:12px; font:inherit; font-size:1rem;
+      }
+      .host-gate button[type="submit"] {
+        padding:12px; border:none; border-radius:12px; background:var(--ink); color:#fff;
+        font-family:"Sora",sans-serif; font-size:0.82rem; font-weight:800; cursor:pointer;
+      }
+      .host-gate button[type="submit"]:disabled { opacity:0.55; }
+      .host-err {
+        display:none; margin:10px 0 0; padding:10px 12px; border-radius:10px;
+        background:#fef3f2; border:1px solid rgba(180,35,24,0.2);
+        font-size:0.76rem; font-weight:600; color:#b42318;
+      }
+      .host-err.show { display:block; }
+
+      .host-panel { display:none; margin-top:16px; border-color:rgba(10,22,40,0.2); }
       .host-panel.show { display:block; }
+      .host-panel .host-bar {
+        display:flex; flex-wrap:wrap; gap:8px; justify-content:space-between; align-items:center;
+        margin-bottom:12px;
+      }
+      .host-panel .host-bar button {
+        padding:8px 14px; border-radius:999px; border:1px solid var(--line);
+        background:#fff; font-family:"Sora",sans-serif; font-size:0.68rem; font-weight:700; cursor:pointer;
+      }
       .host-panel table { width:100%; border-collapse:collapse; font-size:0.74rem; }
-      .host-panel th, .host-panel td { padding:8px; border:1px solid var(--line); text-align:left; }
+      .host-panel th, .host-panel td { padding:8px; border:1px solid var(--line); text-align:left; vertical-align:top; }
       .host-panel th { background:#f0f9fd; font-size:0.6rem; text-transform:uppercase; }
+      .host-panel .note-cell { font-size:0.68rem; color:var(--muted); line-height:1.4; }
       .tag-qc { font-size:0.56rem; font-weight:800; text-transform:uppercase; padding:3px 7px; border-radius:999px; }
       .tag-qc.stable { background:#e8f6fd; color:var(--blue); }
       .tag-qc.watch { background:#fff4e8; color:#c45c26; }
@@ -262,7 +291,7 @@
       }
       @media print {
         body { background:#fff !important; }
-        .hero, .toolbar, .taste-foot, .gate, .panel:not(.print-only), .host-panel, .no-print { display:none !important; }
+        .hero, .toolbar, .taste-foot, .gate, .panel:not(.print-only), .host-panel, .host-gate, .no-print { display:none !important; }
         .wrap { width:100%; padding:0; }
         .print-sheet { display:block !important; }
         .print-page { page-break-after:always; padding:0.4in; }
@@ -287,7 +316,7 @@
 
     <div class="toolbar no-print">
       <button type="button" class="primary" onclick="window.print()">Print ballots</button>
-      <button type="button" onclick="toggleHost()">Host key</button>
+      <button type="button" id="host-btn">Host key</button>
       <button type="button" onclick="resetGame()">Reset device</button>
     </div>
 
@@ -342,18 +371,34 @@
         <div class="dossier" id="dossier"></div>
       </div>
 
+      <div class="panel host-gate no-print" id="host-gate" style="display:none">
+        <h2>Host answer key</h2>
+        <p class="sub">Team password required — same credential as the <a href="/gate">team portal</a>. Answers stay hidden from guests until you unlock.</p>
+        <form id="host-form">
+          <label class="pick-label" for="host-pw">Team password</label>
+          <input type="password" id="host-pw" autocomplete="current-password" placeholder="Enter team password" />
+          <button type="submit" id="host-unlock-btn">Show answers</button>
+        </form>
+        <p class="host-err" id="host-err">Incorrect password — try again.</p>
+      </div>
+
       <div class="panel host-panel no-print" id="host">
-        <h2>Host answer key · cup → cipher → concept</h2>
-        <p class="sub">Confidential — do not show guests until the reveal.</p>
+        <div class="host-bar">
+          <h2 style="margin:0;font-family:Sora,sans-serif;font-size:0.92rem">Answer key · cup → cipher → concept</h2>
+          <button type="button" id="host-lock-btn">Hide answers</button>
+        </div>
+        <p class="sub">Confidential — reveal to guests only after tasting block.</p>
         <table id="host-table"></table>
         <p style="font-size:0.7rem;color:var(--muted);margin:12px 0 0">
-          Live board: <a href="/gate?return=/mystery-live">/mystery-live</a> (team password)
+          Live guesses: <a href="/mystery-live">/mystery-live</a> ·
+          <a href="/gate?return=/mystery-live">open via team portal</a>
         </p>
       </div>
     </div>
 
     <div class="print-sheet" id="print-sheet"></div>
 
+    <script src="/tff-auth.js"></script>
     <script src="/tff-concepts.js"></script>
     <script src="/tff-storage.js"></script>
     <script src="/tff-mystery-sync.js"></script>
@@ -529,14 +574,40 @@
 
       function renderHost() {
         document.getElementById("host-table").innerHTML =
-          "<tr><th>Cup</th><th>Cipher</th><th>Concept</th><th>QC</th></tr>" +
+          "<tr><th>Cup</th><th>Cipher</th><th>Concept</th><th>QC</th><th>Host note</th></tr>" +
           concepts.map(function (c) {
             var cipher = TFFConcepts.cipherById(c.id);
             var m = TFFConcepts.stabilityMeta(c.stability);
+            var note = (c.hostNotes && c.hostNotes[0]) ? c.hostNotes[0] : c.qcNote;
             return "<tr><td><b>" + c.code + "</b></td><td>" + cipher.code + " " + cipher.name +
               "</td><td>" + String(c.id).padStart(2, "0") + " " + c.name +
-              "</td><td><span class=\"tag-qc " + m.class + "\">" + m.short + "</span></td></tr>";
+              "</td><td><span class=\"tag-qc " + m.class + "\">" + m.short + "</span></td>" +
+              "<td class=\"note-cell\">" + note + "</td></tr>";
           }).join("");
+      }
+
+      function showHostKey() {
+        document.getElementById("host-gate").style.display = "none";
+        document.getElementById("host").classList.add("show");
+        document.getElementById("host-err").classList.remove("show");
+        document.getElementById("host-pw").value = "";
+        document.getElementById("host-btn").textContent = "Host key · unlocked";
+      }
+
+      function hideHostKey() {
+        document.getElementById("host").classList.remove("show");
+        document.getElementById("host-gate").style.display = "none";
+        document.getElementById("host-btn").textContent = "Host key";
+      }
+
+      function requestHostKey() {
+        if (typeof TFF !== "undefined" && TFF.isAuthed && TFF.isAuthed()) {
+          showHostKey();
+          return;
+        }
+        hideHostKey();
+        document.getElementById("host-gate").style.display = "block";
+        document.getElementById("host-pw").focus();
       }
 
       function renderPrint() {
@@ -557,11 +628,6 @@
           '<tr><th style="border:1px solid #333;padding:8px">Cup code</th>' +
           '<th style="border:1px solid #333;padding:8px">My cipher guess</th>' +
           '<th style="border:1px solid #333;padding:8px">Notes</th></tr>' + rows + '</table></section>';
-      }
-
-      function toggleHost() {
-        if (!confirm("Host only — shows cup-to-concept answer key. Guests should not see this until reveal.")) return;
-        document.getElementById("host").classList.toggle("show");
       }
 
       function resetGame() {
@@ -596,6 +662,36 @@
       });
 
       document.getElementById("submit-guess").addEventListener("click", submitGuess);
+
+      document.getElementById("host-btn").addEventListener("click", function () {
+        if (document.getElementById("host").classList.contains("show")) {
+          hideHostKey();
+        } else {
+          requestHostKey();
+        }
+      });
+
+      document.getElementById("host-lock-btn").addEventListener("click", hideHostKey);
+
+      document.getElementById("host-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var pw = document.getElementById("host-pw").value;
+        var btn = document.getElementById("host-unlock-btn");
+        var err = document.getElementById("host-err");
+        err.classList.remove("show");
+        btn.disabled = true;
+        btn.textContent = "Checking…";
+        TFF.login(pw).then(function (ok) {
+          btn.disabled = false;
+          btn.textContent = "Show answers";
+          if (ok) showHostKey();
+          else {
+            err.classList.add("show");
+            document.getElementById("host-pw").value = "";
+            document.getElementById("host-pw").focus();
+          }
+        });
+      });
 
       renderRoster();
       applyNameLock();
