@@ -1,5 +1,3 @@
-import { next } from "@vercel/functions";
-
 const PROTECTED = new Set([
   "/toolkit",
   "/kickoff",
@@ -42,7 +40,7 @@ export default async function middleware(request) {
   const path = url.pathname.replace(/\/$/, "") || "/";
 
   if (!PROTECTED.has(path)) {
-    return next();
+    return;
   }
 
   const cookie = request.cookies.get("tff-auth");
@@ -53,8 +51,6 @@ export default async function middleware(request) {
     gate.searchParams.set("return", path);
     return Response.redirect(gate);
   }
-
-  return next();
 }
 
 export const config = {
