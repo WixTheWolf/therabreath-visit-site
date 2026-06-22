@@ -53,7 +53,7 @@
     { n: 2, ch: 1, title: "Executive one-pager", type: "site", href: "/onepager", desc: "Single-page summary for procurement — print from the workshop site." },
     { n: 3, ch: 1, title: "Workshop experience · live site", type: "site", href: "/workshop", desc: "Room display — pillars, concepts, agenda, and feedback." },
 
-    { n: 4, ch: 2, title: "Morning agenda · 8:00 – 12:30", type: "site", href: "/agenda", desc: "Simple schedule for email invites — tour, pillars, tasting, co-creation, depart by 12:30." },
+    { n: 4, ch: 2, title: "July 8 agenda · 9:00 AM start", type: "site", href: "/agenda", desc: "Simple schedule for email invites — presentation, walkthrough, tasting, lunch, open Q&A." },
     { n: 5, ch: 2, title: "Visitor passport", type: "site", href: "/passport", desc: "Pocket follow-along — checklist, notes, and scoring lines." },
     { n: 6, ch: 2, title: "Facility tour map", type: "site", href: "/tour", desc: "8:00 AM walk-through — mixing, QC, production, R&D." },
     { n: 7, ch: 2, title: "Slide deck + score sheet", type: "site", href: "/slides", desc: "20 slides and paper 1–9 scoring table for the room." },
@@ -93,12 +93,12 @@
   ];
 
   var AGENDA = [
-    { time: "8:00", label: "Welcome & facility tour", note: "Passports on seats · /tour" },
-    { time: "8:30", label: "Pillars 1 & 3 · Resiliency + Operations", note: "Capacity, certs, traceability" },
-    { time: "9:00", label: "Pillars 2 & 4 · Innovation + Partnership", note: "Chlorite stability · charter" },
-    { time: "9:30", label: "Tasting · three stations", note: "/mystery blind · then /score" },
-    { time: "10:30", label: "Co-creation flavor lab", note: "Top concepts to the bench" },
-    { time: "12:00", label: "Action plan · depart", note: "Sample kits · out by 12:30" }
+    { time: "9:00–10:00", label: "TFF presentation", note: "Conference room across the street · four pillars" },
+    { time: "10:00–10:15", label: "Facility walkthrough", note: "Production, QC, TheraBreath room" },
+    { time: "10:15–10:30", label: "Break", note: "Email, calls, reset" },
+    { time: "10:30–11:15", label: "Tasting · three stations", note: "/mystery blind · then /score" },
+    { time: "11:30–1:00", label: "Lunch", note: "Hosted on site" },
+    { time: "1:00+", label: "Open discussion & Q&A", note: "Wrap when ready" }
   ];
 
   var HOSTS = (global.TFFTeam

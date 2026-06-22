@@ -3,7 +3,7 @@
  */
 (function (global) {
   var INDEX = [
-    { title: "July 8 agenda", category: "Visit", href: "/agenda", snippet: "Simple morning schedule for email and calendar invites — arrive 8:00, depart 12:30.", keywords: "agenda schedule invite email calendar morning" },
+    { title: "July 8 agenda", category: "Visit", href: "/agenda", snippet: "Simple schedule for email — 9:00 presentation, 10:30 tasting, lunch, open Q&A.", keywords: "agenda schedule invite email calendar morning" },
     { title: "Workshop agenda", category: "Visit", href: "/workshop", snippet: "Half-day flow, four pillars, hosts, tasting block, logistics.", keywords: "workshop agenda pillars hosts materials" },
     { title: "Your visit guide", category: "Visit", href: "/visit", snippet: "Block-by-block morning guide — capabilities first, tasting second.", keywords: "visit guide day-of morning flow" },
     { title: "Lakewood site parity", category: "Program", href: "/lakewood", snippet: "Four-rung validation ladder for taste consistency across sites.", keywords: "lakewood parity site transfer triangle" },
@@ -25,7 +25,7 @@
     { title: "Company hub", category: "Company", href: "/companies", snippet: "TFF and TheraBreath profiles in one place.", keywords: "companies profiles hub" },
     { title: "Workshop hosts", category: "Visit", href: "/workshop#hosts", snippet: "Dan, Alex, Kelly, Ryan — who leads each block on July 8.", keywords: "hosts team bios dan alex kelly ryan" },
     { title: "Four pillars", category: "Visit", href: "/workshop#capabilities", snippet: "Resiliency, innovation, operations, and partnership deep dives.", keywords: "pillars capabilities resiliency innovation operations" },
-    { title: "Morning agenda", category: "Visit", href: "/agenda", snippet: "8:00 tour through 12:30 depart — timed blocks for July 8.", keywords: "agenda schedule timeline morning" }
+    { title: "Morning agenda", category: "Visit", href: "/agenda", snippet: "9:00 presentation through open Q&A — timed blocks for July 8.", keywords: "agenda schedule timeline morning" }
   ];
 
   function escapeHtml(s) {

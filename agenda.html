@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="July 8, 2026 morning agenda — Breath of Innovation capabilities workshop at The Flavor Factory, Norco. Arrive 8:00 AM, depart by 12:30 PM." />
+    <meta name="description" content="July 8, 2026 agenda — Breath of Innovation at The Flavor Factory, Norco. Presentation 9:00 AM, tasting 10:30 AM, lunch, and open Q&amp;A." />
     <meta property="og:title" content="July 8 Agenda · TFF × TheraBreath" />
-    <meta property="og:description" content="Half-day capabilities workshop · 8:00 AM arrival · Norco, CA" />
+    <meta property="og:description" content="Capabilities workshop · 9:00 AM start · Norco, CA" />
     <meta property="og:image" content="https://therabreath-visit-site.vercel.app/assets/og-share.svg" />
     <meta name="theme-color" content="#0a1628" />
     <title>July 8 Agenda | TFF × TheraBreath</title>
@@ -58,7 +58,7 @@
       }
       .bar button.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
       .page {
-        width: min(480px, calc(100vw - 32px));
+        width: min(520px, calc(100vw - 32px));
         margin: 0 auto;
         padding: 28px 0 48px;
       }
@@ -151,19 +151,22 @@
       .timeline { display: grid; gap: 0; }
       .slot {
         display: grid;
-        grid-template-columns: 56px 1fr;
-        gap: 14px;
-        padding: 16px 0;
+        grid-template-columns: 118px 1fr;
+        gap: 16px;
+        padding: 18px 0;
         border-bottom: 1px solid var(--line);
+        align-items: start;
       }
       .slot:last-child { border-bottom: none; }
-      .time {
+      .range {
         font-family: "Sora", sans-serif;
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         font-weight: 800;
         color: var(--blue);
-        padding-top: 2px;
+        line-height: 1.35;
+        white-space: nowrap;
       }
+      .range.open { color: var(--muted); font-weight: 700; }
       .slot h3 {
         margin: 0 0 4px;
         font-family: "Sora", sans-serif;
@@ -177,6 +180,12 @@
         color: var(--muted);
         line-height: 1.45;
       }
+      .slot.taste {
+        padding-left: 0;
+        margin-left: 0;
+        border-left: none;
+      }
+      .slot.taste .range { color: var(--green); }
       .note {
         margin-top: 24px;
         padding: 14px 16px;
@@ -214,6 +223,10 @@
         pointer-events: none;
       }
       .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+      @media (max-width: 400px) {
+        .slot { grid-template-columns: 1fr; gap: 6px; }
+        .range { font-size: 0.72rem; }
+      }
       @media print {
         .bar { display: none; }
         body { background: #fff; }
@@ -233,23 +246,26 @@
     <main class="page">
       <div class="accent" aria-hidden="true"></div>
       <p class="kicker">Breath of Innovation</p>
-      <h1>July 8 morning agenda</h1>
-      <p class="sub">The Flavor Factory × TheraBreath · half-day capabilities workshop · Norco, CA</p>
+      <h1>July 8 agenda</h1>
+      <p class="sub">The Flavor Factory × TheraBreath · capabilities workshop · Norco, CA</p>
 
       <section class="logistics" aria-label="Arrival details">
         <h2>Before you arrive</h2>
         <dl>
           <div>
             <dt>When</dt>
-            <dd>Tuesday, July 8, 2026 · arrive <strong>8:00 AM</strong> · depart by <strong>12:30 PM</strong></dd>
+            <dd>Tuesday, July 8, 2026 · please arrive by <strong>8:50 AM</strong> · first session <strong>9:00 AM</strong></dd>
           </div>
           <div>
             <dt>Where</dt>
-            <dd><strong>The Flavor Factory</strong><br />2058 Second Street · Norco, CA 92860</dd>
+            <dd>
+              <strong>9:00 AM</strong> — conference room across from The Flavor Factory<br />
+              <strong>10:00 AM onward</strong> — 2058 Second Street · Norco, CA 92860
+            </dd>
           </div>
           <div>
             <dt>Check-in</dt>
-            <dd>Kelly Ziegler · (951) 273-9877<br />Light refreshments on site · casual business attire</dd>
+            <dd>Kelly Ziegler · (951) 273-9877<br />Casual business attire · lunch provided on site</dd>
           </div>
         </dl>
         <div class="logistics-actions">
@@ -258,57 +274,57 @@
         </div>
       </section>
 
-      <p class="timeline-label">Morning schedule</p>
+      <p class="timeline-label">Schedule</p>
       <ol class="timeline" style="list-style:none;margin:0;padding:0">
         <li class="slot">
-          <span class="time">8:00</span>
+          <span class="range">9:00–10:00 AM</span>
           <div>
-            <h3>Welcome &amp; facility tour</h3>
-            <p>Mixing, QC, TheraBreath production room, raw storage, and R&amp;D — passports on your seat.</p>
+            <h3>TFF presentation</h3>
+            <p>Capabilities workshop in the conference room across the street — resiliency, innovation, operations, and partnership.</p>
           </div>
         </li>
         <li class="slot">
-          <span class="time">8:30</span>
+          <span class="range">10:00–10:15 AM</span>
           <div>
-            <h3>Resiliency + Operations</h3>
-            <p>Capacity, quality systems, certifications, and traceability — how we scale with your volume.</p>
+            <h3>Facility walkthrough</h3>
+            <p>Short guided tour — production floor, QC, and the TheraBreath manufacturing room.</p>
           </div>
         </li>
         <li class="slot">
-          <span class="time">9:00</span>
+          <span class="range">10:15–10:30 AM</span>
           <div>
-            <h3>Innovation + Partnership</h3>
-            <p>Oral-care flavor work, chlorite-stable directions, and long-term growth alignment.</p>
+            <h3>Break</h3>
+            <p>Time for email, calls, or a quick reset before tasting.</p>
           </div>
         </li>
-        <li class="slot">
-          <span class="time">9:30</span>
+        <li class="slot taste">
+          <span class="range">10:30–11:15 AM</span>
           <div>
-            <h3>Sensory block</h3>
+            <h3>Tasting</h3>
             <p>Three stations · ten workshop prototypes · blind flavor mapping, then prototype scorecard.</p>
           </div>
         </li>
         <li class="slot">
-          <span class="time">10:30</span>
+          <span class="range">11:30 AM–1:00 PM</span>
           <div>
-            <h3>Co-creation lab</h3>
-            <p>Top-scored directions to the bench — live iteration with your R&amp;D team.</p>
+            <h3>Lunch</h3>
+            <p>Hosted on site — relaxed conversation with the TFF team.</p>
           </div>
         </li>
         <li class="slot">
-          <span class="time">12:00</span>
+          <span class="range open">1:00 PM onward</span>
           <div>
-            <h3>Action plan &amp; depart</h3>
-            <p>Prioritized next steps, sample kits, and owners — out by 12:30 PM.</p>
+            <h3>Open discussion &amp; Q&amp;A</h3>
+            <p>Your topics, your pace — we wrap when you're ready.</p>
           </div>
         </li>
       </ol>
 
-      <p class="note"><strong>A capabilities review, not a sales pitch.</strong> The morning is built around your four pillars — resiliency, innovation, operations, and partnership — with honest Q&amp;A throughout.</p>
+      <p class="note"><strong>A capabilities review, not a sales pitch.</strong> Presentation and tasting are built around honest Q&amp;A — bring the questions that matter to your team.</p>
 
       <footer class="foot">
         The Flavor Factory × TheraBreath · July 8, 2026<br />
-        Need more detail on the day? <a href="/visit">Visit guide</a> · <a href="/workshop">Full workshop</a>
+        Day-of tools &amp; detail · <a href="/visit">Visit guide</a> · <a href="/workshop">Full workshop</a>
       </footer>
     </main>
 
