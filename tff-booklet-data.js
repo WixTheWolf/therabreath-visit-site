@@ -53,7 +53,7 @@
     { n: 2, ch: 1, title: "Executive one-pager", type: "site", href: "/onepager", desc: "Single-page summary for procurement — print from the workshop site." },
     { n: 3, ch: 1, title: "Workshop experience · live site", type: "site", href: "/workshop", desc: "Room display — pillars, concepts, agenda, and feedback." },
 
-    { n: 4, ch: 2, title: "Morning agenda · 8:00 – 12:30", type: "site", href: "/workshop#agenda", desc: "Tour, pillars, tasting, co-creation lab, depart by 12:30." },
+    { n: 4, ch: 2, title: "Morning agenda · 8:00 – 12:30", type: "site", href: "/agenda", desc: "Simple schedule for email invites — tour, pillars, tasting, co-creation, depart by 12:30." },
     { n: 5, ch: 2, title: "Visitor passport", type: "site", href: "/passport", desc: "Pocket follow-along — checklist, notes, and scoring lines." },
     { n: 6, ch: 2, title: "Facility tour map", type: "site", href: "/tour", desc: "8:00 AM walk-through — mixing, QC, production, R&D." },
     { n: 7, ch: 2, title: "Slide deck + score sheet", type: "site", href: "/slides", desc: "20 slides and paper 1–9 scoring table for the room." },

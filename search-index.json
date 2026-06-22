@@ -698,6 +698,14 @@
   {
     "type": "page",
     "category": "Guest path",
+    "q": "July 8 agenda — simple schedule for email",
+    "snippet": "One-page morning agenda for calendar invites — arrive 8:00 AM, six timed blocks, depart 12:30. Address, check-in, and Maps link included.",
+    "href": "/agenda",
+    "badge": "ready"
+  },
+  {
+    "type": "page",
+    "category": "Guest path",
     "q": "Your visit guide — day-of morning flow",
     "snippet": "Block-by-block July 8 guide — arrive 8:00, tour, four pillars, sensory block, co-creation, depart 12:30. Capabilities first · Tasting second · Partnership outcome third.",
     "href": "/visit",

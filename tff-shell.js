@@ -13,7 +13,7 @@
 
   var MORE = [
     { href: "/concepts", label: "Ten directions", match: ["/concepts"] },
-    { href: "/workshop#agenda", label: "Agenda" },
+    { href: "/agenda", label: "Agenda", match: ["/agenda"] },
     { href: "/workshop#capabilities", label: "Capabilities" },
     { href: "/workshop#next", label: "Next steps" },
     { href: "/onepager", label: "Executive one-pager" },

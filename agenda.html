@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en" data-tff-shell="off">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="July 8, 2026 morning agenda — Breath of Innovation capabilities workshop at The Flavor Factory, Norco. Arrive 8:00 AM, depart by 12:30 PM." />
+    <meta property="og:title" content="July 8 Agenda · TFF × TheraBreath" />
+    <meta property="og:description" content="Half-day capabilities workshop · 8:00 AM arrival · Norco, CA" />
+    <meta property="og:image" content="https://therabreath-visit-site.vercel.app/assets/og-share.svg" />
+    <meta name="theme-color" content="#0a1628" />
+    <title>July 8 Agenda | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --blue: #008fd3;
+        --green: #5fb832;
+        --orange: #f58220;
+        --ink: #0a1628;
+        --muted: #5c6678;
+        --line: #e2e9ec;
+        --paper: #f8fafc;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "DM Sans", system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px 16px;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 5;
+      }
+      .bar span { font-size: 0.78rem; color: var(--muted); }
+      .bar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      .bar a, .bar button {
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .bar button.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+      .page {
+        width: min(480px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 28px 0 48px;
+      }
+      .accent {
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--blue), var(--green), var(--orange));
+        margin-bottom: 24px;
+      }
+      .kicker {
+        margin: 0 0 8px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.66rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--blue);
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-family: "Sora", sans-serif;
+        font-size: clamp(1.5rem, 5vw, 1.85rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.12;
+      }
+      .sub {
+        margin: 0 0 20px;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      .logistics {
+        padding: 18px 20px;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid var(--line);
+        margin-bottom: 24px;
+      }
+      .logistics h2 {
+        margin: 0 0 12px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+      .logistics dl {
+        margin: 0;
+        display: grid;
+        gap: 12px;
+      }
+      .logistics dt {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+      .logistics dd {
+        margin: 0;
+        font-size: 0.88rem;
+        line-height: 1.45;
+      }
+      .logistics-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+      .logistics-actions a {
+        padding: 9px 16px;
+        border-radius: 999px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .logistics-actions .maps { background: var(--blue); color: #fff; }
+      .logistics-actions .more { border: 1px solid var(--line); color: var(--ink); background: #fff; }
+      .timeline-label {
+        margin: 0 0 12px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .timeline { display: grid; gap: 0; }
+      .slot {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 14px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .slot:last-child { border-bottom: none; }
+      .time {
+        font-family: "Sora", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: var(--blue);
+        padding-top: 2px;
+      }
+      .slot h3 {
+        margin: 0 0 4px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .slot p {
+        margin: 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .note {
+        margin-top: 24px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #fff;
+        border: 1px solid var(--line);
+        font-size: 0.8rem;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .note strong { color: var(--ink); }
+      .foot {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        font-size: 0.74rem;
+        color: var(--muted);
+        text-align: center;
+        line-height: 1.55;
+      }
+      .foot a { color: var(--blue); font-weight: 600; }
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(12px);
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 0.8rem;
+        font-weight: 600;
+        opacity: 0;
+        transition: opacity 0.25s, transform 0.25s;
+        pointer-events: none;
+      }
+      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+      @media print {
+        .bar { display: none; }
+        body { background: #fff; }
+        .page { width: 100%; padding: 0.25in; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <span>Share this link in your calendar invite or email</span>
+      <div class="bar-actions">
+        <a href="/visit">Day-of guide</a>
+        <button type="button" class="primary" id="copy-link">Copy link</button>
+      </div>
+    </div>
+
+    <main class="page">
+      <div class="accent" aria-hidden="true"></div>
+      <p class="kicker">Breath of Innovation</p>
+      <h1>July 8 morning agenda</h1>
+      <p class="sub">The Flavor Factory × TheraBreath · half-day capabilities workshop · Norco, CA</p>
+
+      <section class="logistics" aria-label="Arrival details">
+        <h2>Before you arrive</h2>
+        <dl>
+          <div>
+            <dt>When</dt>
+            <dd>Tuesday, July 8, 2026 · arrive <strong>8:00 AM</strong> · depart by <strong>12:30 PM</strong></dd>
+          </div>
+          <div>
+            <dt>Where</dt>
+            <dd><strong>The Flavor Factory</strong><br />2058 Second Street · Norco, CA 92860</dd>
+          </div>
+          <div>
+            <dt>Check-in</dt>
+            <dd>Kelly Ziegler · (951) 273-9877<br />Light refreshments on site · casual business attire</dd>
+          </div>
+        </dl>
+        <div class="logistics-actions">
+          <a class="maps" href="https://maps.google.com/?q=2058+Second+Street+Norco+CA+92860" target="_blank" rel="noopener">Open in Maps</a>
+          <a class="more" href="/visit">Full day-of guide</a>
+        </div>
+      </section>
+
+      <p class="timeline-label">Morning schedule</p>
+      <ol class="timeline" style="list-style:none;margin:0;padding:0">
+        <li class="slot">
+          <span class="time">8:00</span>
+          <div>
+            <h3>Welcome &amp; facility tour</h3>
+            <p>Mixing, QC, TheraBreath production room, raw storage, and R&amp;D — passports on your seat.</p>
+          </div>
+        </li>
+        <li class="slot">
+          <span class="time">8:30</span>
+          <div>
+            <h3>Resiliency + Operations</h3>
+            <p>Capacity, quality systems, certifications, and traceability — how we scale with your volume.</p>
+          </div>
+        </li>
+        <li class="slot">
+          <span class="time">9:00</span>
+          <div>
+            <h3>Innovation + Partnership</h3>
+            <p>Oral-care flavor work, chlorite-stable directions, and long-term growth alignment.</p>
+          </div>
+        </li>
+        <li class="slot">
+          <span class="time">9:30</span>
+          <div>
+            <h3>Sensory block</h3>
+            <p>Three stations · ten workshop prototypes · blind flavor mapping, then prototype scorecard.</p>
+          </div>
+        </li>
+        <li class="slot">
+          <span class="time">10:30</span>
+          <div>
+            <h3>Co-creation lab</h3>
+            <p>Top-scored directions to the bench — live iteration with your R&amp;D team.</p>
+          </div>
+        </li>
+        <li class="slot">
+          <span class="time">12:00</span>
+          <div>
+            <h3>Action plan &amp; depart</h3>
+            <p>Prioritized next steps, sample kits, and owners — out by 12:30 PM.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="note"><strong>A capabilities review, not a sales pitch.</strong> The morning is built around your four pillars — resiliency, innovation, operations, and partnership — with honest Q&amp;A throughout.</p>
+
+      <footer class="foot">
+        The Flavor Factory × TheraBreath · July 8, 2026<br />
+        Need more detail on the day? <a href="/visit">Visit guide</a> · <a href="/workshop">Full workshop</a>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Link copied</div>
+
+    <script>
+      (function () {
+        var url = location.origin + "/agenda";
+        var btn = document.getElementById("copy-link");
+        var toast = document.getElementById("toast");
+        var timer;
+        function showToast(msg) {
+          toast.textContent = msg;
+          toast.classList.add("show");
+          clearTimeout(timer);
+          timer = setTimeout(function () { toast.classList.remove("show"); }, 2200);
+        }
+        btn.addEventListener("click", function () {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(function () { showToast("Link copied"); }).catch(fallback);
+          } else {
+            fallback();
+          }
+        });
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = url;
+          ta.style.position = "fixed";
+          ta.style.left = "-9999px";
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+            showToast("Link copied");
+          } catch (e) {
+            showToast(url);
+          }
+          document.body.removeChild(ta);
+        }
+      })();
+    </script>
+  </body>
+</html>
