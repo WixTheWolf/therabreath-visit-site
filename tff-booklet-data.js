@@ -49,7 +49,7 @@
   ];
 
   var ITEMS = [
-    { n: 1, ch: 1, title: "Together We Win · partnership booklet", type: "pdf", file: "01-together-we-win-partnership.pdf", desc: "Partnership vision, four pillars, and 3–5 year growth framing." },
+    { n: 1, ch: 1, title: "Together We Win · partnership overview", type: "pdf", file: "01-together-we-win-partnership.pdf", desc: "Three-page leave-behind — four pillars, July 8 agenda, and Lakewood validation path." },
     { n: 2, ch: 1, title: "Executive one-pager", type: "site", href: "/onepager", desc: "Single-page summary for procurement — print from the workshop site." },
     { n: 3, ch: 1, title: "Workshop experience · live site", type: "site", href: "/workshop", desc: "Room display — pillars, concepts, agenda, and feedback." },
 
