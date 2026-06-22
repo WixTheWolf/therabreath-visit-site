@@ -4,6 +4,10 @@
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/agenda", "destination": "/", "permanent": false },
+    { "source": "/visit", "destination": "/", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",

@@ -1,292 +1,98 @@
 <!doctype html>
-<html lang="en" data-tff-shell="native">
+<html lang="en" data-tff-shell="off">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="July 8, 2026 capabilities workshop for the TheraBreath team at TFF Norco — agenda, visit guide, tasting tools, and Lakewood site parity." />
-    <meta name="theme-color" content="#0a1628" />
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="apple-mobile-web-app-title" content="TFF Visit" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Breath of Innovation | TFF × TheraBreath" />
-    <meta property="og:description" content="July 8, 2026 — your capabilities workshop at The Flavor Factory, Norco." />
+    <meta name="description" content="July 8, 2026 visit guide for the TheraBreath team — schedule, directions, and tasting tools." />
+    <meta property="og:title" content="July 8 Visit · TFF × TheraBreath" />
+    <meta property="og:description" content="Your Norco schedule — arrive 8:50 AM, tasting at 10:30 AM." />
     <meta property="og:image" content="https://therabreath-visit-site.vercel.app/assets/og-share.svg" />
-    <meta property="og:url" content="https://therabreath-visit-site.vercel.app/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>Breath of Innovation | TFF × TheraBreath</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/tff-shell.css" />
-    <link rel="stylesheet" href="/tff-typography.css" />
-    <style>
-      :root {
-        --blue:#008fd3; --green:#5fb832; --orange:#f58220;
-        --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; --paper:#f6fafc;
-      }
-      * { box-sizing:border-box; }
-      html { scroll-behavior:smooth; }
-      body {
-        margin:0; font-family:"DM Sans",sans-serif; color:var(--ink);
-        background:var(--paper);
-        background-image:
-          radial-gradient(ellipse 70% 50% at 50% -20%, rgba(0,143,211,0.1), transparent),
-          radial-gradient(circle at 100% 80%, rgba(95,184,50,0.06), transparent 40%);
-      }
-      .top {
-        display:grid;
-        grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
-        align-items:center; gap:12px 16px;
-        padding:12px clamp(20px,4vw,48px);
-        min-height:64px;
-        border-bottom:1px solid rgba(226,233,236,0.9);
-        background:rgba(255,255,255,0.94); backdrop-filter:blur(16px);
-        position:sticky; top:0; z-index:900;
-      }
-      .top-nav {
-        display:flex; flex-wrap:nowrap; gap:4px; align-items:center;
-        justify-self:center;
-      }
-      .top-nav a {
-        padding:8px 12px; border-radius:999px; font-family:"Sora",sans-serif;
-        font-size:0.68rem; font-weight:700; text-decoration:none; color:var(--ink);
-        border:1px solid transparent; white-space:nowrap;
-        transition:background 0.2s, transform 0.2s cubic-bezier(0.22,1,0.36,1);
-      }
-      .top-nav a:hover { background:rgba(0,143,211,0.08); transform:translateY(-1px); }
-      .top-nav a.on { background:var(--ink); color:#fff; }
-      .top-nav a.fun {
-        background:linear-gradient(135deg,rgba(95,184,50,0.14),rgba(0,143,211,0.1));
-        border-color:rgba(95,184,50,0.3);
-      }
-      .top-nav a.cta { background:var(--orange); color:#fff; }
-      .brand {
-        display:flex; align-items:center; gap:12px;
-        font-family:"Sora",sans-serif; font-weight:800; font-size:0.9rem;
-        text-decoration:none; color:inherit;
-        justify-self:start;
-      }
-      .mark {
-        width:36px; height:36px; display:grid; place-items:center;
-        border-radius:10px; background:linear-gradient(135deg,var(--ink),var(--blue));
-        color:#fff; font-size:0.65rem; font-weight:800;
-      }
-      .top-end {
-        justify-self:end;
-        display:flex; flex-direction:column; align-items:flex-end; gap:5px;
-      }
-      .top-team {
-        display:inline-flex; align-items:center; padding:7px 12px; border-radius:999px;
-        border:1px solid var(--line); background:#f6fafc;
-        font-family:"Sora",sans-serif; font-size:0.66rem; font-weight:700;
-        text-decoration:none; color:var(--muted); white-space:nowrap;
-      }
-      .top-team.is-on { color:#fff; background:var(--ink); border-color:var(--ink); }
-      .top-meta { font-size:0.68rem; color:var(--muted); font-weight:600; }
-      @media (max-width:980px) {
-        .top { display:flex; flex-wrap:wrap; }
-        .top-end { margin-left:auto; order:2; }
-        .top-nav { order:3; width:100%; justify-content:center; flex-wrap:wrap; }
-        .top-meta { display:none; }
-      }
-      .intro {
-        width:min(720px,calc(100vw - 40px)); margin:0 auto;
-        padding:clamp(40px,7vw,64px) 0 28px; text-align:center;
-      }
-      .kicker {
-        margin:0 0 10px; font-family:"Sora",sans-serif;
-        font-size:0.66rem; font-weight:800; letter-spacing:0.14em;
-        text-transform:uppercase; color:var(--blue);
-      }
-      .intro h1 {
-        margin:0 0 14px; font-family:"Sora",sans-serif;
-        font-size:clamp(1.85rem,5vw,2.6rem); font-weight:800;
-        letter-spacing:-0.04em; line-height:1.08;
-      }
-      .intro p {
-        margin:0 auto; max-width:48ch; font-size:0.98rem;
-        line-height:1.65; color:var(--muted);
-      }
-      .pills {
-        display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:20px;
-      }
-      .pill {
-        padding:8px 14px; border-radius:999px; font-size:0.74rem; font-weight:600;
-        background:#fff; border:1px solid var(--line); color:var(--ink);
-      }
-      .primary-ctas {
-        width:min(720px,calc(100vw - 40px)); margin:0 auto 28px;
-        display:grid; gap:12px;
-      }
-      .primary-cta {
-        display:grid; gap:4px; padding:20px 22px; border-radius:18px;
-        background:#fff; border:1px solid var(--line); text-decoration:none; color:inherit;
-        box-shadow:0 12px 36px rgba(10,22,40,0.04);
-        transition:transform 0.22s cubic-bezier(0.22,1,0.36,1), box-shadow 0.22s;
-      }
-      .primary-cta:hover { transform:translateY(-2px); box-shadow:0 18px 44px rgba(10,22,40,0.08); }
-      .primary-cta b { font-family:"Sora",sans-serif; font-size:1rem; }
-      .primary-cta span { font-size:0.84rem; color:var(--muted); line-height:1.45; }
-      .primary-cta.featured {
-        border-color:rgba(0,143,211,0.28);
-        background:linear-gradient(135deg,#fff 0%,#f0f9fd 100%);
-      }
-      .primary-cta.featured b { color:var(--blue); }
-      .logistics-card {
-        width:min(720px,calc(100vw - 40px)); margin:0 auto 32px;
-        padding:18px 20px; border-radius:16px; background:#fff;
-        border:1px solid var(--line);
-        display:grid; grid-template-columns:1fr 1fr; gap:14px;
-        font-size:0.84rem; line-height:1.5;
-      }
-      .logistics-card strong { display:block; font-family:"Sora",sans-serif; font-size:0.78rem; margin-bottom:4px; }
-      .logistics-card div { color:var(--muted); }
-      .trust-line {
-        width:min(640px,calc(100vw - 40px)); margin:0 auto 40px;
-        padding:14px 18px; border-radius:14px; text-align:center;
-        background:#fff; border:1px solid var(--line);
-        font-size:0.84rem; color:var(--muted); line-height:1.55;
-      }
-      .trust-line strong { color:var(--ink); }
-      .more-links {
-        width:min(720px,calc(100vw - 40px)); margin:0 auto 48px;
-        display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
-      }
-      .more-links a {
-        padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif;
-        font-size:0.74rem; font-weight:700; text-decoration:none;
-        border:1px solid var(--line); background:#fff; color:var(--ink);
-      }
-      .foot {
-        padding:28px 24px 88px; border-top:1px solid var(--line);
-        text-align:center; font-size:0.78rem; color:var(--muted); line-height:1.6;
-      }
-      .foot a { color:var(--blue); font-weight:600; text-decoration:none; }
-      .team-bar {
-        display:inline-flex; flex-wrap:wrap; gap:8px; justify-content:center;
-        margin-bottom:14px; padding:10px 14px; border-radius:999px;
-        background:#fff; border:1px solid var(--line);
-      }
-      .team-bar a {
-        padding:7px 14px; border-radius:999px; font-family:"Sora",sans-serif;
-        font-size:0.72rem; font-weight:700; text-decoration:none;
-        border:1px solid var(--line); color:var(--ink); background:#fff;
-      }
-      .team-bar a.primary { background:var(--ink); color:#fff; border-color:var(--ink); }
-      .team-foot { margin-top:10px; font-size:0.68rem; opacity:0.75; }
-      .guest-search-wrap { width:min(560px,calc(100vw - 40px)); margin:0 auto 28px; position:relative; }
-      .guest-search-wrap input {
-        width:100%; padding:14px 18px; border-radius:999px;
-        border:1px solid var(--line); font-size:0.88rem;
-        background:#fff; box-shadow:0 8px 28px rgba(10,22,40,0.04);
-      }
-      @media (max-width:600px) { .logistics-card { grid-template-columns:1fr; } }
-    </style>
+    <meta name="theme-color" content="#0a1628" />
+    <title>July 8 Visit | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-guest.css" />
   </head>
   <body>
-    <header class="top">
-      <a class="brand" href="/"><span class="mark">TFF</span> Breath of Innovation</a>
-      <nav class="top-nav" aria-label="Primary navigation">
-        <a href="/" class="on">Home</a>
-        <a href="/agenda">Agenda</a>
-        <a href="/visit">Visit</a>
-        <a href="/lakewood">Lakewood</a>
-        <a href="/mystery" class="fun">Mapping</a>
-        <a href="/score" class="cta">Scorecard</a>
-      </nav>
-      <div class="top-end">
-        <a class="top-team" href="/gate" id="top-team-link">Team sign-in</a>
-        <span class="top-meta">July 8, 2026 · Norco, CA</span>
+    <header id="guest-nav"></header>
+
+    <main class="guest-page">
+      <div class="guest-accent" aria-hidden="true"></div>
+      <p class="guest-kicker">TheraBreath team</p>
+      <h1>July 8 visit</h1>
+      <p class="guest-sub">Breath of Innovation · Norco, CA · Tuesday, July 8, 2026</p>
+
+      <section class="guest-box" aria-label="Arrival">
+        <p><strong>Arrive by 8:50 AM</strong> · first session 9:00 AM</p>
+        <p><strong>9:00 AM</strong> — conference room across from The Flavor Factory</p>
+        <p><strong>10:00 AM onward</strong> — 2058 Second Street, Norco, CA 92860</p>
+        <p>Check-in: Kelly Ziegler · <a href="tel:+19512739877">(951) 273-9877</a></p>
+      </section>
+
+      <p class="guest-label">Schedule</p>
+      <ol class="guest-schedule">
+        <li>
+          <span class="guest-time">9:00–10:00</span>
+          <div>
+            <h2>Presentation</h2>
+            <p>Conference room across the street.</p>
+          </div>
+        </li>
+        <li>
+          <span class="guest-time">10:00–10:15</span>
+          <div>
+            <h2>Facility walkthrough</h2>
+            <p>Production floor and TheraBreath room.</p>
+          </div>
+        </li>
+        <li>
+          <span class="guest-time">10:15–10:30</span>
+          <div>
+            <h2>Break</h2>
+          </div>
+        </li>
+        <li class="taste">
+          <span class="guest-time">10:30–11:15</span>
+          <div>
+            <h2>Tasting</h2>
+            <p>Use Mapping first, then Scorecard after reveal.</p>
+          </div>
+        </li>
+        <li>
+          <span class="guest-time">11:30–1:00</span>
+          <div>
+            <h2>Lunch off site</h2>
+            <p>Your hosts will take the group · back by 1:00 PM.</p>
+          </div>
+        </li>
+        <li>
+          <span class="guest-time">1:00 PM+</span>
+          <div>
+            <h2>Open Q&amp;A</h2>
+            <p>At the facility — wrap when you're ready.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="guest-label">Phone tools · open at 10:30 AM</p>
+      <div class="guest-tools">
+        <a class="primary" href="/mystery">
+          <b>Blind Flavor Mapping</b>
+          <span>Match coded cups before names are revealed.</span>
+        </a>
+        <a href="/score">
+          <b>Prototype Scorecard</b>
+          <span>Rate prototypes after the host reveal.</span>
+        </a>
       </div>
-    </header>
 
-    <section class="intro tff-enter">
-      <p class="kicker">Prepared for the TheraBreath team</p>
-      <h1>Your July 8 visit</h1>
-      <p>A capabilities workshop at The Flavor Factory in Norco — presentation, facility walkthrough, prototype tasting, lunch, and open Q&amp;A with your hosts.</p>
-      <div class="pills">
-        <span class="pill">9:00 AM start</span>
-        <span class="pill">Arrive by 8:50 AM</span>
-        <span class="pill">Lunch break 11:30</span>
-      </div>
-    </section>
+      <a class="guest-map" href="https://maps.google.com/?q=2058+Second+Street+Norco+CA+92860" target="_blank" rel="noopener">Open in Maps</a>
 
-    <nav class="primary-ctas tff-stagger" aria-label="What you need before and during the visit">
-      <a class="primary-cta featured" href="/agenda">
-        <b>July 8 agenda</b>
-        <span>Your schedule — share this link in calendar invites or pre-visit email.</span>
-      </a>
-      <a class="primary-cta" href="/visit">
-        <b>Day-of visit guide</b>
-        <span>What happens when, and which phone tools to open at each step.</span>
-      </a>
-      <a class="primary-cta" href="/lakewood">
-        <b>Lakewood site parity</b>
-        <span>How we validate taste consistency as production expands across sites.</span>
-      </a>
-    </nav>
+      <footer class="guest-foot">
+        The Flavor Factory × TheraBreath<br />
+        <a href="/gate">TFF team sign-in</a>
+      </footer>
+    </main>
 
-    <div class="logistics-card tff-reveal">
-      <div>
-        <strong>Where</strong>
-        9:00 AM — conference room across from TFF<br />
-        10:00 AM onward — 2058 Second St, Norco, CA 92860
-      </div>
-      <div>
-        <strong>Check-in</strong>
-        Kelly Ziegler · (951) 273-9877
-      </div>
-    </div>
-
-    <div class="guest-search-wrap tff-reveal" id="guest-search-wrap">
-      <label for="guest-search" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden">Search</label>
-      <input type="search" id="guest-search" placeholder="Search agenda, slides, scorecard…" autocomplete="off" spellcheck="false" />
-      <div class="guest-search-results" id="guest-search-results"></div>
-    </div>
-
-    <p class="trust-line tff-reveal"><strong>A capabilities review, not a sales pitch.</strong> Real systems, honest prototype feedback, and a clear path forward for your team.</p>
-
-    <nav class="more-links tff-reveal" aria-label="Additional resources">
-      <a href="/workshop">Workshop depth</a>
-      <a href="/slides">Slide deck</a>
-      <a href="/concepts">Ten directions</a>
-      <a href="/booklet">Welcome packet</a>
-    </nav>
-
-    <footer class="foot">
-      <div class="team-bar" aria-label="TFF team access">
-        <span>TFF hosts</span>
-        <a href="/gate" id="foot-team-link">Team sign-in</a>
-        <a href="/toolkit" id="foot-cmd-link" class="primary">Command center</a>
-      </div>
-      <p>The Flavor Factory × TheraBreath · July 8, 2026</p>
-      <p class="team-foot">Team sign-in required for internal prep and live boards</p>
-    </footer>
-    <script src="/tff-guest-search.js"></script>
-    <script src="/tff-cinematic.js"></script>
-    <script src="/tff-auth.js"></script>
-    <script src="/tff-shell.js" defer></script>
-    <script>
-      (function () {
-        if (window.TFF && TFF.isAuthed()) {
-          var topTeam = document.getElementById("top-team-link");
-          var footTeam = document.getElementById("foot-team-link");
-          if (topTeam) {
-            topTeam.href = "/toolkit";
-            topTeam.textContent = "Command center";
-            topTeam.classList.add("is-on");
-          }
-          if (footTeam) {
-            footTeam.href = "/toolkit";
-            footTeam.textContent = "Command center";
-            footTeam.classList.add("primary");
-          }
-        }
-        if (window.TFFGuestSearch) {
-          TFFGuestSearch.init("guest-search-wrap", "guest-search", "guest-search-results");
-        }
-      })();
-    </script>
+    <script src="/tff-guest.js" defer></script>
   </body>
 </html>

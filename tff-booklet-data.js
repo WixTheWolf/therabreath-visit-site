@@ -97,7 +97,7 @@
     { time: "10:00–10:15", label: "Facility walkthrough", note: "Production, QC, TheraBreath room" },
     { time: "10:15–10:30", label: "Break", note: "Email, calls, reset" },
     { time: "10:30–11:15", label: "Tasting · three stations", note: "/mystery blind · then /score" },
-    { time: "11:30–1:00", label: "Lunch", note: "On your own · regroup 1:00 PM" },
+    { time: "11:30–1:00", label: "Lunch off site", note: "Hosts take the group · back 1:00 PM" },
     { time: "1:00+", label: "Open discussion & Q&A", note: "Wrap when ready" }
   ];
 
