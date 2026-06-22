@@ -4,6 +4,7 @@
 (function (global) {
   var LINKS = [
     { href: "/", label: "Agenda", match: ["/", "/index.html", "/agenda", "/visit"] },
+    { href: "/brief", label: "Brief", match: ["/brief"] },
     { href: "/mystery", label: "Mapping", match: ["/mystery"] },
     { href: "/score", label: "Scorecard", match: ["/score"], cta: true }
   ];
