@@ -169,7 +169,7 @@ def agenda_table(styles):
         ["10:00–10:15 AM", "Facility walkthrough", "Production, QC, TheraBreath room"],
         ["10:15–10:30 AM", "Break", "Reset before tasting"],
         ["10:30–11:15 AM", "Tasting", "Ten prototypes · blind mapping · scorecard"],
-        ["11:30 AM–1:00 PM", "Lunch", "Hosted on site"],
+        ["11:30 AM–1:00 PM", "Lunch", "On your own near Norco"],
         ["1:00 PM onward", "Open Q&A", "Your topics · wrap when ready"],
     ]
     data = []
