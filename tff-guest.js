@@ -2,11 +2,13 @@
  * Minimal guest chrome — agenda, mapping, scorecard only.
  */
 (function (global) {
+  var LIVE_SITE = "https://breath-of-innovation.vercel.app";
   var LINKS = [
     { href: "/", label: "Agenda", match: ["/", "/index.html", "/agenda", "/visit"] },
     { href: "/brief", label: "Brief", match: ["/brief"] },
+    { href: LIVE_SITE, label: "Live site", external: true, cta: true },
     { href: "/mystery", label: "Mapping", match: ["/mystery"] },
-    { href: "/score", label: "Scorecard", match: ["/score"], cta: true }
+    { href: "/score", label: "Scorecard", match: ["/score"] }
   ];
 
   function path() {
@@ -27,7 +29,8 @@
     LINKS.forEach(function (item) {
       var cls = isActive(item) ? " on" : "";
       if (item.cta && !isActive(item)) cls += " cta";
-      html += '<a class="' + cls.trim() + '" href="' + item.href + '">' + item.label + "</a>";
+      var extra = item.external ? ' target="_blank" rel="noopener"' : "";
+      html += '<a class="' + cls.trim() + '" href="' + item.href + '"' + extra + ">" + item.label + "</a>";
     });
     html += "</div>";
     slot.className = "guest-nav";

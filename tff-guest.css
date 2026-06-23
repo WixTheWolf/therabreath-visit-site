@@ -55,6 +55,38 @@ body {
 .guest-links a:hover { border-color: rgba(0, 143, 211, 0.35); }
 .guest-links a.on { background: var(--ink); color: #fff; border-color: var(--ink); }
 .guest-links a.cta { background: var(--green); color: #fff; border-color: var(--green); }
+.guest-new-site {
+  margin: 0 auto 18px;
+  width: min(440px, calc(100vw - 32px));
+  padding: 0 0 0;
+}
+.guest-new-site a {
+  display: block;
+  padding: 16px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 1px solid rgba(0, 143, 211, 0.35);
+  background: linear-gradient(135deg, #0a1628, #004f87);
+  color: #fff;
+  box-shadow: 0 12px 32px rgba(10, 22, 40, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.guest-new-site a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 143, 211, 0.25);
+}
+.guest-new-site b {
+  display: block;
+  font-family: "Sora", sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+.guest-new-site span {
+  display: block;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+}
 .guest-page {
   width: min(440px, calc(100vw - 32px));
   margin: 0 auto;
