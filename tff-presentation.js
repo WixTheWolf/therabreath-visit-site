@@ -1,26 +1,88 @@
 (function () {
   var slides = Array.prototype.slice.call(document.querySelectorAll(".pres-slide"));
-  var index = 0;
+  var stage = document.getElementById("pres-stage");
   var chrome = document.getElementById("pres-chrome");
-  var progress = document.getElementById("pres-progress-bar");
+  var topbar = document.getElementById("pres-topbar-bar");
   var counter = document.getElementById("pres-counter");
+  var dotsWrap = document.getElementById("pres-dots");
+  var hint = document.getElementById("pres-hint");
+  var index = 0;
   var hideTimer = null;
+  var fitTimer = null;
+
+  function buildDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    slides.forEach(function (_, n) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("aria-label", "Slide " + (n + 1));
+      btn.addEventListener("click", function () {
+        show(n);
+        flashChrome();
+      });
+      dotsWrap.appendChild(btn);
+    });
+  }
+
+  function fitActive() {
+    if (!stage) return;
+    var slide = slides[index];
+    if (!slide) return;
+    var canvas = slide.querySelector(".pres-canvas");
+    if (!canvas) return;
+
+    canvas.style.transform = "none";
+    canvas.style.height = "100%";
+
+    var padY = 24;
+    var padX = 24;
+    var availH = stage.clientHeight - padY;
+    var availW = stage.clientWidth - padX;
+
+    canvas.style.height = "auto";
+    canvas.style.maxHeight = "none";
+    var naturalH = canvas.offsetHeight;
+    var naturalW = canvas.offsetWidth;
+
+    var scale = Math.min(1, availH / naturalH, availW / naturalW);
+    if (scale < 0.995) {
+      canvas.style.height = naturalH + "px";
+      canvas.style.transform = "scale(" + scale + ")";
+      canvas.style.transformOrigin = "center center";
+    } else {
+      canvas.style.height = "100%";
+      canvas.style.transform = "none";
+    }
+  }
+
+  function scheduleFit() {
+    clearTimeout(fitTimer);
+    fitTimer = setTimeout(fitActive, 50);
+  }
 
   function show(i) {
     if (!slides.length) return;
     index = Math.max(0, Math.min(slides.length - 1, i));
     slides.forEach(function (slide, n) {
-      slide.classList.remove("active", "prev");
-      if (n === index) slide.classList.add("active");
-      else if (n < index) slide.classList.add("prev");
+      slide.classList.toggle("active", n === index);
+      var canvas = slide.querySelector(".pres-canvas");
+      if (canvas && n !== index) canvas.style.transform = "none";
     });
-    if (progress) {
-      progress.style.width = ((index + 1) / slides.length * 100) + "%";
+
+    if (topbar) {
+      topbar.style.width = ((index + 1) / slides.length * 100) + "%";
     }
     if (counter) {
       counter.textContent = (index + 1) + " / " + slides.length;
     }
+    if (dotsWrap) {
+      Array.prototype.forEach.call(dotsWrap.children, function (dot, n) {
+        dot.classList.toggle("on", n === index);
+      });
+    }
     history.replaceState(null, "", "#" + (index + 1));
+    scheduleFit();
   }
 
   function next() { show(index + 1); }
@@ -42,13 +104,22 @@
     clearTimeout(hideTimer);
     hideTimer = setTimeout(function () {
       if (document.fullscreenElement) chrome.classList.add("hidden");
-    }, 3000);
+    }, 3500);
   }
 
   function initFromHash() {
     var m = (location.hash || "").match(/^#(\d+)$/);
     if (m) show(parseInt(m[1], 10) - 1);
     else show(0);
+  }
+
+  function showHint() {
+    if (!hint || sessionStorage.getItem("tff-pres-hint")) return;
+    hint.classList.add("show");
+    setTimeout(function () {
+      hint.classList.remove("show");
+      try { sessionStorage.setItem("tff-pres-hint", "1"); } catch (e) {}
+    }, 4500);
   }
 
   document.addEventListener("keydown", function (e) {
@@ -82,10 +153,20 @@
   document.querySelector(".pres-hit.next")?.addEventListener("click", function () { next(); flashChrome(); });
 
   document.addEventListener("fullscreenchange", function () {
+    scheduleFit();
     if (document.fullscreenElement) flashChrome();
     else if (chrome) chrome.classList.remove("hidden");
   });
 
+  window.addEventListener("resize", scheduleFit);
   document.addEventListener("mousemove", flashChrome);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { scheduleFit(); });
+  }
+
+  buildDots();
   initFromHash();
+  showHint();
+  scheduleFit();
 })();
