@@ -189,6 +189,21 @@ body {
   border-color: rgba(95, 184, 50, 0.4);
   background: linear-gradient(135deg, #fff, #edf8e8);
 }
+.guest-tools-feature a:first-child.primary {
+  border-color: rgba(0, 143, 211, 0.4);
+  background: linear-gradient(135deg, #fff, #f0f9fd);
+}
+.guest-schedule a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+.guest-schedule a:hover { text-decoration: underline; }
+.guest-box a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
 .guest-tools b {
   display: block;
   font-family: "Sora", sans-serif;

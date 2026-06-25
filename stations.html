@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/tff-shell.css" />
     <style>
       :root { --blue:#008fd3; --green:#5fb832; --orange:#f58220; --ink:#0a1628; --muted:#5c6678; --line:#d8e2ec; }
-      * { box-sizing: border-box; }
+      * { box-sizing:border-box; }
       body { margin:0; font-family:"DM Sans",sans-serif; background:#e8edf2; }
       .toolbar { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; padding:12px 20px; background:#fff; border-bottom:1px solid var(--line); }
       .toolbar button, .toolbar a { padding:9px 16px; border-radius:999px; font-family:"Sora",sans-serif; font-size:0.8rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; }
@@ -28,8 +28,8 @@
         overflow:hidden;
       }
       .sign::before { content:""; position:absolute; inset:0; opacity:0.06; }
-      .sign.s1::before { background:linear-gradient(135deg,var(--blue),transparent 60%); }
-      .sign.s2::before { background:linear-gradient(135deg,var(--green),transparent 60%); }
+      .sign.s1::before { background:linear-gradient(135deg,var(--green),transparent 60%); }
+      .sign.s2::before { background:linear-gradient(135deg,var(--blue),transparent 60%); }
       .sign.s3::before { background:linear-gradient(135deg,var(--orange),transparent 60%); }
       .sign-top { display:flex; justify-content:space-between; align-items:center; position:relative; z-index:1; }
       .sign-num {
@@ -37,8 +37,8 @@
         border-radius:18px; color:#fff; font-family:"Sora",sans-serif;
         font-size:1.8rem; font-weight:800;
       }
-      .s1 .sign-num { background:linear-gradient(135deg,var(--blue),#006aa6); }
-      .s2 .sign-num { background:linear-gradient(135deg,var(--green),#3d9e2a); }
+      .s1 .sign-num { background:linear-gradient(135deg,var(--green),#3d9e2a); }
+      .s2 .sign-num { background:linear-gradient(135deg,var(--blue),#006aa6); }
       .s3 .sign-num { background:linear-gradient(135deg,var(--orange),#d96e10); }
       .sign-meta { text-align:right; font-size:0.72rem; font-weight:700; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; }
       .sign-body { position:relative; z-index:1; display:grid; align-content:center; }
@@ -47,8 +47,8 @@
       .sign-list { display:grid; grid-template-columns:1fr 1fr; gap:10px 24px; margin:0; padding:0; list-style:none; }
       .sign-list li { font-size:0.95rem; font-weight:600; color:#344054; padding-left:20px; position:relative; }
       .sign-list li::before { content:""; position:absolute; left:0; top:0.55em; width:8px; height:8px; border-radius:50%; }
-      .s1 .sign-list li::before { background:var(--blue); }
-      .s2 .sign-list li::before { background:var(--green); }
+      .s1 .sign-list li::before { background:var(--green); }
+      .s2 .sign-list li::before { background:var(--blue); }
       .s3 .sign-list li::before { background:var(--orange); }
       .sign-foot { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; padding-top:16px; border-top:2px solid var(--line); font-size:0.72rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
       .sign-qr { display:flex; align-items:center; gap:10px; text-transform:none; letter-spacing:0; font-weight:600; color:#344054; }
@@ -61,82 +61,83 @@
   </head>
   <body>
     <div class="toolbar">
-      <span><strong>Station signage</strong> · 3 signs · Letter landscape</span>
-      <div><a href="/workshop">Workshop</a> <button onclick="window.print()">Print signs</button></div>
+      <span><strong>Station signage</strong> · 3 signs · Letter landscape · 10:30 tasting</span>
+      <div><a href="/">Visit guide</a> <button onclick="window.print()">Print signs</button></div>
     </div>
     <div class="signs">
       <article class="sign s1">
         <div class="sign-top">
           <span class="sign-num">1</span>
-          <span class="sign-meta">9:30 AM · Tasting block</span>
+          <span class="sign-meta">10:30 AM · Tasting block</span>
         </div>
         <div class="sign-body">
-          <h1>Classic Freshness</h1>
-          <p>Anchor the conversation in what TheraBreath does best — signature cooling and current-line benchmarks.</p>
+          <h1>Mint Platform Tasting</h1>
+          <p>Five coded workshop prototypes (M1–M5) — blind flavor mapping first, host reveal, then scorecard.</p>
           <ul class="sign-list">
-            <li>Icy Mint — signature cooling</li>
-            <li>Dazzling Mint — bright freshness</li>
-            <li>Healthy Gums — herbal functional</li>
-            <li>Current line benchmarks</li>
+            <li>M1 Fresh Herbal Mint</li>
+            <li>M2 Grove Mint</li>
+            <li>M3 Botanical Mint</li>
+            <li>M4 Immunity Mint</li>
+            <li>M5 Garden Mint</li>
           </ul>
         </div>
         <footer class="sign-foot">
           <span>TFF × TheraBreath · July 8</span>
           <div class="sign-qr">
-            <img src="/assets/qr/score-sm.png" alt="QR — Prototype Scorecard" width="72" height="72" />
-            <div><b>Scan to score</b><span>therabreath-visit-site.vercel.app/score</span></div>
+            <img src="/assets/qr/mystery-sm.png" alt="QR — Blind Flavor Mapping" width="72" height="72" />
+            <div><b>Scan to guess</b><span>Coded cups M1–M5 · /mystery</span></div>
           </div>
-          <span>Station 1 of 3</span>
+          <span>Step 1 · Blind</span>
         </footer>
       </article>
 
       <article class="sign s2">
         <div class="sign-top">
           <span class="sign-num">2</span>
-          <span class="sign-meta">9:30 AM · Innovation lab</span>
+          <span class="sign-meta">10:30 AM · After reveal</span>
         </div>
         <div class="sign-body">
-          <h1>Innovation Lab</h1>
-          <p>Five coded prototypes (M1–M5) — blind flavor mapping first, then reveal &amp; scorecard. QC status reviewed after reveal.</p>
+          <h1>Prototype Scorecard</h1>
+          <p>After the host reveals names, rate all five mint platforms 1–9 on liking, uniqueness, and purchase intent.</p>
           <ul class="sign-list">
-            <li>Blind flavor mapping · /mystery</li>
-            <li>01–05 · Fresh directions</li>
-            <li>M1–M5 · Mint platform prototypes</li>
-            <li>Score on /score after reveals</li>
+            <li>One score per prototype</li>
+            <li>Room aggregate on host live board</li>
+            <li>Reference /concepts for ingredients</li>
+            <li>Full portfolio on breath-of-innovation.vercel.app</li>
           </ul>
         </div>
         <footer class="sign-foot">
-          <span>Workshop prototypes · QC review ongoing</span>
+          <span>Workshop samples · stability review ongoing</span>
           <div class="sign-qr">
-            <img src="/assets/qr/mystery-sm.png" alt="QR — blind flavor mapping" width="72" height="72" />
-            <div><b>Scan to guess</b><span>Coded cups M1–M5 · /mystery</span></div>
+            <img src="/assets/qr/score-sm.png" alt="QR — Prototype Scorecard" width="72" height="72" />
+            <div><b>Scan to score</b><span>therabreath-visit-site.vercel.app/score</span></div>
           </div>
-          <span>Station 2 of 3</span>
+          <span>Step 2 · Score</span>
         </footer>
       </article>
 
       <article class="sign s3">
         <div class="sign-top">
           <span class="sign-num">3</span>
-          <span class="sign-meta">9:30 AM · Functional</span>
+          <span class="sign-meta">Anytime · Reference</span>
         </div>
         <div class="sign-body">
-          <h1>Functional Benefits</h1>
-          <p>Freshness with a reason beyond mint — evening, whitening, seasonal, and gum-health directions.</p>
+          <h1>Flavor Portfolio</h1>
+          <p>On-shelf SKUs, concepts presented, pipeline mint platforms, and Gen Alpha futures — 53 flavors in one gallery.</p>
           <ul class="sign-list">
-            <li>Overnight Calm Mint</li>
-            <li>Crystal Whitening Mint</li>
-            <li>Winter Frost · seasonal LE</li>
-            <li>Healthy Gums Herbal</li>
+            <li>14 in-production TheraBreath SKUs</li>
+            <li>29 presented concepts</li>
+            <li>5 pipeline workshop platforms</li>
+            <li>5 Gen Alpha futures</li>
           </ul>
         </div>
         <footer class="sign-foot">
-          <span>Norco · The Flavor Factory</span>
+          <span>Breath of Innovation · live gallery</span>
           <div class="sign-qr">
-            <img src="/assets/qr/score-sm.png" alt="QR — Prototype Scorecard" width="72" height="72" />
-            <div><b>Scan to score</b><span>Live sensory summary updates as you rate</span></div>
+            <img src="/assets/qr/site-sm.png" alt="QR — Breath of Innovation" width="72" height="72" />
+            <div><b>Scan to explore</b><span>breath-of-innovation.vercel.app/portfolio</span></div>
           </div>
-          <span>Station 3 of 3</span>
+          <span>Gallery</span>
         </footer>
       </article>
     </div>

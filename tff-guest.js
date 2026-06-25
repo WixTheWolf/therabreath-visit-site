@@ -1,14 +1,16 @@
 /**
- * Minimal guest chrome — agenda, mapping, scorecard only.
+ * Minimal guest chrome — agenda, presentation, portfolio, tasting.
  */
 (function (global) {
-  var LIVE_SITE = "https://breath-of-innovation.vercel.app";
+  var LIVE = "https://breath-of-innovation.vercel.app";
   var LINKS = [
     { href: "/", label: "Agenda", match: ["/", "/index.html", "/agenda", "/visit"] },
+    { href: LIVE + "/present", label: "Slides", external: true, match: [] },
+    { href: LIVE + "/portfolio", label: "Flavors", external: true, match: [] },
     { href: "/brief", label: "Brief", match: ["/brief"] },
-    { href: LIVE_SITE, label: "Live site", external: true, cta: true },
     { href: "/mystery", label: "Mapping", match: ["/mystery"] },
-    { href: "/score", label: "Scorecard", match: ["/score"] }
+    { href: "/score", label: "Scorecard", match: ["/score"] },
+    { href: LIVE, label: "Live hub", external: true, cta: true, match: [] }
   ];
 
   function path() {
@@ -18,7 +20,7 @@
 
   function isActive(item) {
     var p = path();
-    if (item.match) return item.match.indexOf(p) !== -1;
+    if (item.match && item.match.length) return item.match.indexOf(p) !== -1;
     return p === item.href;
   }
 
@@ -37,7 +39,7 @@
     slot.innerHTML = html;
   }
 
-  global.TFFGuest = { mountNav: mountNav };
+  global.TFFGuest = { mountNav: mountNav, LIVE_SITE: LIVE };
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mountNav);
   } else {

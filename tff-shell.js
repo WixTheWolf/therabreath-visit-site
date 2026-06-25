@@ -3,9 +3,8 @@
  */
 (function (global) {
   var PRIMARY = [
-    { href: "/", label: "Home", match: ["/", "/index.html"] },
-    { href: "/visit", label: "Visit", title: "Visit guide", match: ["/visit"] },
-    { href: "/workshop", label: "Workshop", match: ["/workshop"] },
+    { href: "/", label: "Visit", title: "July 8 visit guide", match: ["/", "/index.html", "/visit", "/agenda"] },
+    { href: "https://breath-of-innovation.vercel.app", label: "Live hub", title: "Breath of Innovation", external: true },
     { href: "/lakewood", label: "Lakewood", title: "Lakewood site parity", match: ["/lakewood"] },
     { href: "/mystery", label: "Mapping", title: "Blind Flavor Mapping", fun: true, match: ["/mystery"] },
     { href: "/score", label: "Scorecard", title: "Prototype Scorecard", cta: true, match: ["/score"] }
@@ -14,8 +13,8 @@
   var MORE = [
     { href: "/concepts", label: "Five directions", match: ["/concepts"] },
     { href: "/agenda", label: "Agenda", match: ["/agenda"] },
-    { href: "/workshop#capabilities", label: "Capabilities" },
-    { href: "/workshop#next", label: "Next steps" },
+    { href: "https://breath-of-innovation.vercel.app/present", label: "Presentation", external: true },
+    { href: "https://breath-of-innovation.vercel.app/portfolio", label: "Flavor portfolio", external: true },
     { href: "/onepager", label: "Executive one-pager" },
     { href: "/booklet", label: "Welcome packet" },
     { href: "/passport", label: "Visitor passport" },
@@ -85,12 +84,14 @@
       if (item.fun) cls += " tff-shell-fun";
       if (item.cta) cls += " tff-shell-cta";
       var title = item.title ? ' title="' + item.title + '"' : "";
-      return '<a class="' + cls + '" href="' + item.href + '"' + title + ">" + item.label + "</a>";
+      var ext = item.external ? ' target="_blank" rel="noopener"' : "";
+      return '<a class="' + cls + '" href="' + item.href + '"' + title + ext + ">" + item.label + "</a>";
     }).join("");
 
     var moreItems = moreMenuItems().map(function (item) {
       var active = isActive(item) ? " is-active" : "";
-      return '<a href="' + item.href + '" class="' + active + '">' + item.label + "</a>";
+      var ext = item.external ? ' target="_blank" rel="noopener"' : "";
+      return '<a href="' + item.href + '" class="' + active + '"' + ext + ">" + item.label + "</a>";
     }).join("");
 
     var hideBack = p === "/" || p === "/index.html";

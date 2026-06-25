@@ -30,7 +30,9 @@
 
   var sharePack = [
     { label: "Partnership hub", path: "/" },
-    { label: "Workshop experience (room display)", path: "/workshop" },
+    { label: "Breath of Innovation hub", path: "https://breath-of-innovation.vercel.app" },
+    { label: "Live presentation", path: "https://breath-of-innovation.vercel.app/present" },
+    { label: "Flavor portfolio", path: "https://breath-of-innovation.vercel.app/portfolio" },
     { label: "Lakewood site parity proposal", path: "/lakewood" },
     { label: "Triangle test kit (ISO 4120)", path: "/triangle" },
     { label: "Blind comparison kit", path: "/blind" },

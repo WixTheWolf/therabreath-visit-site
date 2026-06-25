@@ -7,7 +7,10 @@
   "redirects": [
     { "source": "/agenda", "destination": "/", "permanent": false },
     { "source": "/visit", "destination": "/", "permanent": false },
-    { "source": "/presentation", "destination": "https://breath-of-innovation.vercel.app/present", "permanent": false }
+    { "source": "/presentation", "destination": "https://breath-of-innovation.vercel.app/present", "permanent": false },
+    { "source": "/present", "destination": "https://breath-of-innovation.vercel.app/present", "permanent": false },
+    { "source": "/portfolio", "destination": "https://breath-of-innovation.vercel.app/portfolio", "permanent": false },
+    { "source": "/taste", "destination": "https://breath-of-innovation.vercel.app/taste", "permanent": false }
   ],
   "headers": [
     {
