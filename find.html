@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-tff-shell="inject">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Find anything on the TheraBreath July 8 visit site — Lakewood, tasting, presentation, print materials, and TFF team tools." />
+    <title>Find Anything · TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/directory.css" />
+  </head>
+  <body class="dir-page">
+    <header class="dir-hero">
+      <div class="dir-hero-in">
+        <p class="dir-hero-kicker">Site directory</p>
+        <h1>Find anything</h1>
+        <p>Every page grouped by topic — Lakewood together, tasting together, team tools together. Search pulls up pages and talk tracks during the meeting.</p>
+      </div>
+    </header>
+
+    <div class="dir-layout">
+      <aside class="dir-search-col">
+        <div class="dir-search" id="dir-search-wrap">
+          <input
+            type="search"
+            id="dir-search"
+            placeholder="Search — Lakewood, chlorite, tasting, capacity…"
+            autocomplete="off"
+            aria-label="Search site"
+          />
+          <div class="dir-search-results" id="dir-search-results"></div>
+        </div>
+        <p class="dir-jump-label">Jump to topic</p>
+        <nav class="dir-jump" id="dir-jump"></nav>
+        <p class="dir-team-note" id="dir-team-note">
+          <strong>TFF team:</strong> <a href="/gate">Sign in</a> to unlock talk tracks, run-of-show, and live admin tools in search.
+        </p>
+      </aside>
+
+      <main id="dir-clusters"></main>
+    </div>
+
+    <script src="/tff-auth.js"></script>
+    <script src="/js/site-directory.js"></script>
+    <script src="/js/directory-ui.js"></script>
+    <script>
+      (function () {
+        var authed = window.TFF && TFF.isAuthed && TFF.isAuthed();
+        DirectoryUI.renderJumpNav("dir-jump", { showInternal: true });
+        DirectoryUI.renderClusters("dir-clusters", { showInternal: true });
+        DirectoryUI.initSearch("dir-search", "dir-search-results", {
+          showInternal: true,
+          includeIndex: authed
+        });
+        var note = document.getElementById("dir-team-note");
+        if (note && authed) {
+          note.innerHTML =
+            '<strong>Signed in.</strong> Search includes talk tracks. <a href="/toolkit">Command center</a> · <a href="/host">Run-of-show</a>';
+        }
+        if (location.hash) {
+          var t = document.querySelector(location.hash);
+          if (t) setTimeout(function () { t.scrollIntoView({ behavior: "smooth", block: "start" }); }, 120);
+        }
+      })();
+    </script>
+    <script src="/tff-shell.js" defer></script>
+  </body>
+</html>

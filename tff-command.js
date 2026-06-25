@@ -29,8 +29,8 @@
   ];
 
   var sharePack = [
-    { label: "Partnership hub", path: "/" },
-    { label: "July 8 visit guide", path: "/" },
+    { label: "Site directory & search", path: "/find" },
+    { label: "July 8 visit home", path: "/" },
     { label: "Breath of Innovation hub", path: "/visit" },
     { label: "Live presentation", path: "/present" },
     { label: "Flavor portfolio", path: "/portfolio" },
@@ -122,8 +122,17 @@
   function initSearch() {
     var input = document.getElementById("cmd-search");
     var results = document.getElementById("cmd-search-results");
-    var wrap = input ? input.closest(".cmd-search-wrap") : null;
     if (!input || !results) return;
+
+    if (global.DirectoryUI) {
+      global.DirectoryUI.initSearch("cmd-search", "cmd-search-results", {
+        showInternal: true,
+        includeIndex: true
+      });
+      return;
+    }
+
+    var wrap = input.closest(".cmd-search-wrap");
 
     var index = [];
     var loaded = false;

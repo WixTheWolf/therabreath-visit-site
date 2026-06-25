@@ -3,14 +3,12 @@
  */
 (function (global) {
   var LINKS = [
-    { href: "/", label: "Agenda", match: ["/", "/index.html", "/agenda", "/visit"] },
+    { href: "/", label: "Home", match: ["/", "/index.html", "/agenda"] },
+    { href: "/find", label: "Find", match: ["/find"], find: true },
+    { href: "/visit", label: "Day hub", match: ["/visit", "/taste"] },
     { href: "/present", label: "Slides", match: ["/present", "/presentation"] },
-    { href: "/portfolio", label: "Flavors", match: ["/portfolio"] },
-    { href: "/lakewood", label: "Lakewood", match: ["/lakewood"] },
-    { href: "/brief", label: "Brief", match: ["/brief"] },
     { href: "/mystery", label: "Mapping", match: ["/mystery", "/map"] },
-    { href: "/score", label: "Scorecard", match: ["/score"] },
-    { href: "/visit", label: "Day hub", cta: true, match: ["/visit", "/taste"] }
+    { href: "/score", label: "Score", cta: true, match: ["/score"] }
   ];
 
   function path() {
@@ -31,6 +29,7 @@
     LINKS.forEach(function (item) {
       var cls = isActive(item) ? " on" : "";
       if (item.cta && !isActive(item)) cls += " cta";
+      if (item.find && !isActive(item)) cls += " find-link";
       html += '<a class="' + cls.trim() + '" href="' + item.href + '">' + item.label + "</a>";
     });
     html += "</div>";

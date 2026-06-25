@@ -255,6 +255,7 @@ window.BOI = {
   },
   nav: [
     { href: "/visit", label: "Your day" },
+    { href: "/find", label: "Find" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/lakewood", label: "Lakewood" },
     { href: "/taste", label: "Tasting" },

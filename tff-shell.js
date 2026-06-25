@@ -3,18 +3,18 @@
  */
 (function (global) {
   var PRIMARY = [
-    { href: "/", label: "Visit", title: "July 8 visit guide", match: ["/", "/index.html", "/visit", "/agenda"] },
+    { href: "/", label: "Home", title: "July 8 visit home", match: ["/", "/index.html", "/agenda"] },
+    { href: "/find", label: "Find", title: "Site directory & search", match: ["/find"] },
+    { href: "/visit", label: "Day hub", title: "Breath of Innovation schedule", match: ["/visit", "/taste"] },
     { href: "/present", label: "Presentation", title: "Live Q&A slides", match: ["/present", "/presentation"] },
-    { href: "/lakewood", label: "Lakewood", title: "Lakewood site parity", match: ["/lakewood"] },
     { href: "/mystery", label: "Mapping", title: "Blind Flavor Mapping", fun: true, match: ["/mystery"] },
     { href: "/score", label: "Scorecard", title: "Prototype Scorecard", cta: true, match: ["/score"] }
   ];
 
   var MORE = [
-    { href: "/concepts", label: "Five directions", match: ["/concepts"] },
-    { href: "/agenda", label: "Agenda", match: ["/agenda"] },
+    { href: "/lakewood", label: "Lakewood parity", match: ["/lakewood", "/triangle", "/blind"] },
     { href: "/portfolio", label: "Flavor portfolio", match: ["/portfolio"] },
-    { href: "/visit", label: "Day-of hub", match: ["/visit", "/taste"] },
+    { href: "/concepts", label: "Five directions", match: ["/concepts"] },
     { href: "/onepager", label: "Executive one-pager" },
     { href: "/booklet", label: "Welcome packet" },
     { href: "/passport", label: "Visitor passport" },
