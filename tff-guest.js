@@ -37,10 +37,22 @@
     slot.innerHTML = html;
   }
 
+  function loadDecor() {
+    if (document.querySelector('script[src*="tff-decor.js"]')) return;
+    var s = document.createElement("script");
+    s.src = "/js/tff-decor.js";
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   global.TFFGuest = { mountNav: mountNav };
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", mountNav);
+    document.addEventListener("DOMContentLoaded", function () {
+      mountNav();
+      loadDecor();
+    });
   } else {
     mountNav();
+    loadDecor();
   }
 })();

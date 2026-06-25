@@ -324,10 +324,22 @@
       .join("");
   }
 
+  function loadDecor() {
+    if (document.querySelector('script[src*="tff-decor.js"]')) return;
+    var s = document.createElement("script");
+    s.src = "/js/tff-decor.js";
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", inject);
+    document.addEventListener("DOMContentLoaded", function () {
+      inject();
+      loadDecor();
+    });
   } else {
     inject();
+    loadDecor();
   }
 
   global.addEventListener("pageshow", function () {
