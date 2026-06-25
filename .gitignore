@@ -10,3 +10,4 @@ _build-booklet.py
 _compress-formula.py
 
 .env*.local
+.env.production

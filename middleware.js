@@ -19,6 +19,8 @@ const PROTECTED = new Set([
   "/search-index.json",
   "/mystery-live",
   "/score-live",
+  "/packet",
+  "/speaker-packet",
   "/booklet/documents/global-supplier-quality-manual-norco-june-2026.docx"
 ]);
 
@@ -74,6 +76,8 @@ export const config = {
     "/search-index.json",
     "/mystery-live",
     "/score-live",
+    "/packet",
+    "/speaker-packet",
     "/booklet/documents/global-supplier-quality-manual-norco-june-2026.docx"
   ]
 };

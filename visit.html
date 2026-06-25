@@ -2,11 +2,68 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0;url=/" />
-    <link rel="canonical" href="https://therabreath-visit-site.vercel.app/" />
-    <title>Redirecting…</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Your July 8 schedule — Breath of Innovation at The Flavor Factory, Norco." />
+    <meta name="theme-color" content="#0a1628" />
+    <title>Your Day · Breath of Innovation</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/site.css" />
   </head>
   <body>
-    <p><a href="/">Continue to July 8 visit page</a></p>
+    <canvas class="boi-canvas" id="boi-canvas" aria-hidden="true"></canvas>
+
+    <nav class="boi-nav">
+      <a class="boi-brand" href="/"><span class="boi-mark">TFF</span> Breath of Innovation</a>
+      <div class="boi-nav-links">
+        <a href="/visit" class="on">Your day</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/taste">Tasting</a>
+        <a class="cta" href="/present">Presentation</a>
+      </div>
+    </nav>
+
+    <div class="boi-wrap">
+      <header class="boi-hero" style="padding-bottom:32px">
+        <p class="boi-kicker"><i aria-hidden="true"></i> Tuesday, July 8, 2026</p>
+        <h1 style="font-size:clamp(1.8rem,5vw,2.8rem)">Your day in Norco</h1>
+        <p class="boi-hero-lead">All times are suggested. We'll adjust in the room to match your team's pace.</p>
+      </header>
+
+      <section class="boi-section">
+        <div class="boi-info" style="margin-bottom:28px">
+          <strong>Arrive 9:00 AM</strong> — conference room across from The Flavor Factory<br />
+          <strong>10:00 AM onward</strong> — 2058 Second Street, Norco, CA 92860<br />
+          Casual business attire · closed-toe shoes for the tour · phone charged for tasting
+        </div>
+        <ul class="boi-timeline" id="boi-timeline"></ul>
+      </section>
+
+      <section class="boi-section">
+        <div class="boi-section-head"><h2>What this visit is</h2></div>
+        <div class="boi-grid-2">
+          <div class="boi-card" style="--card-accent:#008fd3">
+            <h3>Capabilities review</h3>
+            <p>See how we develop, produce, and support your flavors — with honest answers on all four pillars.</p>
+          </div>
+          <div class="boi-card" style="--card-accent:#f58220">
+            <h3>Directional tasting</h3>
+            <p>Five workshop prototypes at 10:30 AM. Blind mapping first, then scorecard — feedback only, not a launch decision.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="boi-hero-actions" style="padding-bottom:40px">
+        <a class="boi-btn primary" href="/present">Open presentation</a>
+        <a class="boi-btn" href="/taste">Tasting tools</a>
+      </div>
+
+      <footer class="boi-foot">Questions? (951) 273-9877 · flavorfactory.net</footer>
+    </div>
+
+    <script src="/js/content.js"></script>
+    <script src="/js/site.js"></script>
   </body>
 </html>

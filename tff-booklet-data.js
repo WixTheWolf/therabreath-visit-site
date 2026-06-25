@@ -51,18 +51,18 @@
   var ITEMS = [
     { n: 1, ch: 1, title: "Together We Win · partnership overview", type: "pdf", file: "01-together-we-win-partnership.pdf", desc: "Three-page leave-behind — four pillars, July 8 agenda, and Lakewood validation path." },
     { n: 2, ch: 1, title: "Executive one-pager", type: "site", href: "/onepager", desc: "Single-page summary for procurement — print from the workshop site." },
-    { n: 3, ch: 1, title: "Breath of Innovation · day-of hub", type: "site", href: "https://breath-of-innovation.vercel.app", desc: "Live presentation, flavor portfolio, schedule, and tasting hub for July 8." },
+    { n: 3, ch: 1, title: "Breath of Innovation · day-of hub", type: "site", href: "/visit", desc: "Live presentation, flavor portfolio, schedule, and tasting — all on therabreath-visit-site." },
 
     { n: 4, ch: 2, title: "July 8 agenda · 9:00 AM start", type: "site", href: "/", desc: "Visit guide — presentation, walkthrough, five mint platforms at 10:30, lunch, open Q&A." },
     { n: 5, ch: 2, title: "Visitor passport", type: "site", href: "/passport", desc: "Pocket follow-along — checklist, notes, and scoring lines." },
     { n: 6, ch: 2, title: "Facility tour map", type: "site", href: "/tour", desc: "8:00 AM walk-through — mixing, QC, production, R&D." },
-    { n: 7, ch: 2, title: "Live presentation + print slides", type: "site", href: "https://breath-of-innovation.vercel.app/present", desc: "Interactive Q&A deck for the projector; /slides on this site is the print backup." },
+    { n: 7, ch: 2, title: "Live presentation + print slides", type: "site", href: "/present", desc: "Interactive Q&A deck for the projector; /slides on this site is the print backup." },
 
     { n: 8, ch: 3, title: "The Flavor Factory · industry brochure", type: "pdf", file: "03-flavor-factory-brochure.pdf", desc: "Company overview, capabilities, and oral-care positioning." },
     { n: 9, ch: 3, title: "Norco facility survey", type: "pdf", file: "04-norco-facility-survey.pdf", desc: "Facility documentation for Church & Dwight qualification." },
     { n: 10, ch: 3, title: "NOP certificate addendum · product list", type: "pdf", file: "12-nop-cert-addendum.pdf", desc: "Organic certification listing for procurement review." },
 
-    { n: 11, ch: 4, title: "Flavor portfolio gallery · live", type: "site", href: "https://breath-of-innovation.vercel.app/portfolio", desc: "53 flavors — on-shelf SKUs, presented concepts, pipeline M1–M5, Gen Alpha." },
+    { n: 11, ch: 4, title: "Flavor portfolio gallery · live", type: "site", href: "/portfolio", desc: "53 flavors — on-shelf SKUs, presented concepts, pipeline M1–M5, Gen Alpha." },
     { n: 36, ch: 4, title: "Professional formula portfolio · PDF", type: "pdf", file: "02-professional-formula-portfolio.pdf", desc: "24-page leave-behind — reference during tasting and R&D." },
     { n: 12, ch: 4, title: "Seasonal flavors · oral care directions", type: "pdf", file: "05-seasonal-flavors-oral-care.pdf", desc: "Seasonal and limited-edition rinse directions." },
     { n: 13, ch: 4, title: "Top 8 seasonal flavor ideas", type: "pdf", file: "06-seasonal-top-8-ideas.pdf", desc: "Curated seasonal concepts for co-creation." },

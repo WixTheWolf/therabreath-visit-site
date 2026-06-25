@@ -4,7 +4,7 @@
 (function (global) {
   var PRIMARY = [
     { href: "/", label: "Visit", title: "July 8 visit guide", match: ["/", "/index.html", "/visit", "/agenda"] },
-    { href: "https://breath-of-innovation.vercel.app", label: "Live hub", title: "Breath of Innovation", external: true },
+    { href: "/present", label: "Presentation", title: "Live Q&A slides", match: ["/present", "/presentation"] },
     { href: "/lakewood", label: "Lakewood", title: "Lakewood site parity", match: ["/lakewood"] },
     { href: "/mystery", label: "Mapping", title: "Blind Flavor Mapping", fun: true, match: ["/mystery"] },
     { href: "/score", label: "Scorecard", title: "Prototype Scorecard", cta: true, match: ["/score"] }
@@ -13,8 +13,8 @@
   var MORE = [
     { href: "/concepts", label: "Five directions", match: ["/concepts"] },
     { href: "/agenda", label: "Agenda", match: ["/agenda"] },
-    { href: "https://breath-of-innovation.vercel.app/present", label: "Presentation", external: true },
-    { href: "https://breath-of-innovation.vercel.app/portfolio", label: "Flavor portfolio", external: true },
+    { href: "/portfolio", label: "Flavor portfolio", match: ["/portfolio"] },
+    { href: "/visit", label: "Day-of hub", match: ["/visit", "/taste"] },
     { href: "/onepager", label: "Executive one-pager" },
     { href: "/booklet", label: "Welcome packet" },
     { href: "/passport", label: "Visitor passport" },

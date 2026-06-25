@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Blind flavor mapping — match coded cups to prototype codenames before the host reveal." />
+    <meta name="theme-color" content="#0a1628" />
+    <title>Blind Flavor Mapping · Breath of Innovation</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/taste.css" />
+  </head>
+  <body>
+    <canvas class="boi-canvas" id="boi-canvas" aria-hidden="true"></canvas>
+
+    <nav class="boi-nav">
+      <a class="boi-brand" href="/"><span class="boi-mark">TFF</span> Breath of Innovation</a>
+      <div class="boi-nav-links">
+        <a href="/visit">Your day</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/taste" class="on">Tasting</a>
+        <a class="cta" href="/present">Presentation</a>
+      </div>
+    </nav>
+
+    <div class="boi-wrap">
+      <header class="boi-hero" style="padding-bottom:20px">
+        <p class="boi-kicker"><i aria-hidden="true"></i> Station 1 · blind only</p>
+        <h1 style="font-size:clamp(1.8rem,5vw,2.4rem)">Blind Flavor Mapping</h1>
+        <p class="boi-hero-lead">Taste from your coded cup — match it to one of five neutral prototype codenames. No flavor names until reveal.</p>
+        <div class="boi-hero-qr no-print">
+          <img src="/assets/qr/mystery-sm.png" alt="QR — blind flavor mapping" width="88" height="88" />
+          <span>therabreath-visit-site.vercel.app/mystery</span>
+        </div>
+      </header>
+
+      <div class="boi-taste-wrap">
+        <div class="boi-toolbar no-print">
+          <button type="button" class="primary" onclick="window.print()">Print ballots</button>
+          <button type="button" id="host-btn">Host key</button>
+          <button type="button" onclick="resetGame()">Reset entries</button>
+        </div>
+
+        <div class="boi-steps no-print">
+          <div class="boi-step"><b>01</b><span>Taste your cup — code on the label only</span></div>
+          <div class="boi-step"><b>02</b><span>Select the prototype codename that matches</span></div>
+          <div class="boi-step"><b>03</b><span>Lock it in — host reveals after tasting</span></div>
+        </div>
+
+        <div class="boi-panel no-print" id="name-panel">
+          <h2>Your name</h2>
+          <p class="sub">Your name syncs to the host live sensory summary during the tasting block.</p>
+          <label class="boi-label" for="player">Your name</label>
+          <div class="boi-name-row">
+            <input type="text" id="player" placeholder="First + last" autocomplete="name" />
+            <button type="button" id="name-save">Begin</button>
+          </div>
+          <span class="boi-sync wait" id="sync-pill">Enter name to begin blind mapping</span>
+        </div>
+
+        <div class="boi-gate no-print" id="gate">Enter your name above to log tastings.</div>
+
+        <div class="boi-panel dim no-print" id="roster-panel">
+          <h2>Prototype codenames</h2>
+          <p class="sub">Five workshop prototypes — neutral codenames only. Which profile did your cup taste like?</p>
+          <div class="boi-cipher-roster" id="roster"></div>
+        </div>
+
+        <div class="boi-panel dim no-print" id="log-panel">
+          <h2>Log a tasting</h2>
+          <p class="sub">Find the code on your cup (M1–M5), then select the prototype codename you believe matches.</p>
+
+          <span class="boi-label">Cup code on your sample</span>
+          <div class="boi-pick-grid" id="cup-pick"></div>
+
+          <span class="boi-label">Your prototype match</span>
+          <div class="boi-cipher-pick" id="cipher-pick"></div>
+
+          <span class="boi-label">What you tasted · optional notes</span>
+          <div class="boi-tags" id="tag-pick"></div>
+
+          <button type="button" class="boi-submit" id="submit-guess" disabled>Lock this guess</button>
+          <p class="boi-sealed-note"><b>Guesses stay sealed</b> on your phone until the host reveals. No right/wrong shown here — that's the point.</p>
+        </div>
+
+        <div class="boi-panel dim no-print" id="dossier-panel">
+          <h2>Your locked guesses</h2>
+          <p class="sub" id="dossier-count">0 cups logged</p>
+          <div class="boi-dossier" id="dossier"></div>
+        </div>
+
+        <div class="boi-panel boi-host-gate no-print" id="host-gate" style="display:none">
+          <h2>Host answer key</h2>
+          <p class="sub">TFF host credential required. Answers stay hidden from guests until you unlock.</p>
+          <form id="host-form">
+            <label class="boi-label" for="host-pw">Team password</label>
+            <input type="password" id="host-pw" autocomplete="current-password" placeholder="Enter team password" />
+            <button type="submit" id="host-unlock-btn">Show answers</button>
+          </form>
+          <p class="boi-host-err" id="host-err">Incorrect password — try again.</p>
+        </div>
+
+        <div class="boi-panel boi-host-panel no-print" id="host">
+          <div class="boi-host-bar">
+            <h2 style="margin:0;font-family:var(--font-display);font-size:0.92rem;color:#fff">Answer key · cup → codename → concept</h2>
+            <button type="button" id="host-lock-btn">Hide answers</button>
+          </div>
+          <p class="sub">Confidential — reveal to guests only after tasting block.</p>
+          <table class="boi-host-table" id="host-table"></table>
+        </div>
+
+        <nav class="boi-taste-foot no-print" aria-label="Tasting navigation">
+          <a href="/taste">← Tasting hub</a>
+          <a href="/score">Prototype scorecard →</a>
+        </nav>
+      </div>
+
+      <footer class="boi-foot">Directional workshop prototypes · July 8, 2026</footer>
+    </div>
+
+    <script src="/js/concepts.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/map-sync.js"></script>
+    <script src="/js/map.js"></script>
+    <script src="/js/site.js"></script>
+  </body>
+</html>

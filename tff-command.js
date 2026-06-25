@@ -30,9 +30,11 @@
 
   var sharePack = [
     { label: "Partnership hub", path: "/" },
-    { label: "Breath of Innovation hub", path: "https://breath-of-innovation.vercel.app" },
-    { label: "Live presentation", path: "https://breath-of-innovation.vercel.app/present" },
-    { label: "Flavor portfolio", path: "https://breath-of-innovation.vercel.app/portfolio" },
+    { label: "July 8 visit guide", path: "/" },
+    { label: "Breath of Innovation hub", path: "/visit" },
+    { label: "Live presentation", path: "/present" },
+    { label: "Flavor portfolio", path: "/portfolio" },
+    { label: "Speaker packet (TFF)", path: "/packet" },
     { label: "Lakewood site parity proposal", path: "/lakewood" },
     { label: "Triangle test kit (ISO 4120)", path: "/triangle" },
     { label: "Blind comparison kit", path: "/blind" },

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="TheraBreath flavor portfolio — in-production SKUs, concepts presented, pipeline prototypes, and Gen Alpha futures. The Flavor Factory × Church & Dwight." />
+    <meta name="theme-color" content="#f8fafc" />
+    <title>Flavor Portfolio · Breath of Innovation</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/portfolio.css" />
+  </head>
+  <body class="port-mode">
+    <canvas class="port-canvas" id="port-canvas" aria-hidden="true"></canvas>
+
+    <nav class="boi-nav">
+      <a class="boi-brand" href="/"><span class="boi-mark">TFF</span> Breath of Innovation</a>
+      <div class="boi-nav-links">
+        <a href="/visit">Your day</a>
+        <a href="/portfolio" class="on">Portfolio</a>
+        <a href="/taste">Tasting</a>
+        <a class="cta" href="/present">Presentation</a>
+      </div>
+    </nav>
+
+    <div class="port-wrap">
+      <header class="port-hero">
+        <div class="port-hero-glow" aria-hidden="true"></div>
+        <p class="port-kicker"><i aria-hidden="true"></i> Church &amp; Dwight × TheraBreath</p>
+        <h1>Where flavor becomes <em>imagination</em></h1>
+        <p class="port-hero-lead">
+          What's on shelf today, what we presented for review, what's in the pipeline, and what comes next —
+          one gallery organized by where each flavor sits in the TheraBreath journey.
+        </p>
+        <div class="port-stat-row">
+          <div class="port-stat"><b id="port-count">0</b><span>Total entries</span></div>
+          <div class="port-stat"><b>4</b><span>Collections</span></div>
+          <div class="port-stat"><b>14</b><span>On shelf</span></div>
+        </div>
+        <div class="port-scroll-cue">Explore the gallery</div>
+      </header>
+
+      <nav class="port-dock" id="port-dock" aria-label="Collection navigation">
+        <div class="port-dock-inner">
+          <button type="button" data-col="all" class="active">All</button>
+          <button type="button" data-col="production">In Production</button>
+          <button type="button" data-col="presented">Concepts Presented</button>
+          <button type="button" data-col="pipeline">Pipeline</button>
+          <button type="button" data-col="genalpha">Gen Alpha</button>
+        </div>
+      </nav>
+
+      <div id="port-chapters"></div>
+
+      <section class="port-close">
+        <h2>Ready to taste the future?</h2>
+        <p>July 8 workshop mint platforms (M1–M5) are live in the tasting room — or schedule a follow-up with The Flavor Factory.</p>
+        <div class="boi-hero-actions">
+          <a class="boi-btn primary" href="/taste">Open tasting tools</a>
+          <a class="boi-btn" href="/present">View presentation</a>
+        </div>
+      </section>
+
+      <footer class="boi-foot">The Flavor Factory × TheraBreath · Confidential · June 2026</footer>
+    </div>
+
+    <div class="port-modal" id="port-modal" role="dialog" aria-modal="true" aria-label="Flavor concept detail">
+      <div class="port-modal-panel">
+        <div class="port-modal-hero">
+          <button type="button" class="port-modal-close" aria-label="Close">×</button>
+          <img src="" alt="" />
+        </div>
+        <div class="port-modal-content">
+          <span class="port-modal-tag"></span>
+          <h2></h2>
+          <div class="port-modal-prod"></div>
+          <p class="port-modal-pos"></p>
+          <p class="port-modal-feel"></p>
+          <p class="port-modal-story"></p>
+          <p class="port-modal-note"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/portfolio-data.js"></script>
+    <script src="/js/portfolio.js"></script>
+  </body>
+</html>

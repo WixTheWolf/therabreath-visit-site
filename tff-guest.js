@@ -2,15 +2,14 @@
  * Minimal guest chrome — agenda, presentation, portfolio, tasting.
  */
 (function (global) {
-  var LIVE = "https://breath-of-innovation.vercel.app";
   var LINKS = [
     { href: "/", label: "Agenda", match: ["/", "/index.html", "/agenda", "/visit"] },
-    { href: LIVE + "/present", label: "Slides", external: true, match: [] },
-    { href: LIVE + "/portfolio", label: "Flavors", external: true, match: [] },
+    { href: "/present", label: "Slides", match: ["/present", "/presentation"] },
+    { href: "/portfolio", label: "Flavors", match: ["/portfolio"] },
     { href: "/brief", label: "Brief", match: ["/brief"] },
-    { href: "/mystery", label: "Mapping", match: ["/mystery"] },
+    { href: "/mystery", label: "Mapping", match: ["/mystery", "/map"] },
     { href: "/score", label: "Scorecard", match: ["/score"] },
-    { href: LIVE, label: "Live hub", external: true, cta: true, match: [] }
+    { href: "/visit", label: "Day hub", cta: true, match: ["/visit", "/taste"] }
   ];
 
   function path() {
@@ -31,15 +30,14 @@
     LINKS.forEach(function (item) {
       var cls = isActive(item) ? " on" : "";
       if (item.cta && !isActive(item)) cls += " cta";
-      var extra = item.external ? ' target="_blank" rel="noopener"' : "";
-      html += '<a class="' + cls.trim() + '" href="' + item.href + '"' + extra + ">" + item.label + "</a>";
+      html += '<a class="' + cls.trim() + '" href="' + item.href + '">' + item.label + "</a>";
     });
     html += "</div>";
     slot.className = "guest-nav";
     slot.innerHTML = html;
   }
 
-  global.TFFGuest = { mountNav: mountNav, LIVE_SITE: LIVE };
+  global.TFFGuest = { mountNav: mountNav };
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mountNav);
   } else {
