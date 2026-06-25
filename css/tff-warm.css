@@ -1,15 +1,15 @@
-/* TFF × TheraBreath — clean, Apple-like visit theme */
+/* TFF × TheraBreath — high-contrast clean theme (light pages only) */
 
 :root {
-  --clean-bg: #f5f5f7;
+  --clean-bg: #ffffff;
   --clean-surface: #ffffff;
-  --clean-ink: #1d1d1f;
-  --clean-muted: #6e6e73;
-  --clean-line: rgba(0, 0, 0, 0.08);
-  --clean-blue: #0071e3;
-  --clean-green: #34c759;
-  --clean-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --clean-shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.08);
+  --clean-ink: #000000;
+  --clean-muted: #3a3a3c;
+  --clean-line: rgba(0, 0, 0, 0.14);
+  --clean-blue: #0066cc;
+  --clean-green: #248a3d;
+  --clean-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --clean-shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 body.tff-warm {
@@ -18,9 +18,17 @@ body.tff-warm {
 }
 
 body.tff-warm .guest-nav {
-  background: rgba(255, 255, 255, 0.88);
+  background: #ffffff;
   border-bottom-color: var(--clean-line);
-  backdrop-filter: saturate(180%) blur(20px);
+}
+
+body.tff-warm .guest-brand,
+body.tff-warm .guest-page h1,
+body.tff-warm .guest-box strong,
+body.tff-warm .guest-quick-card b,
+body.tff-warm .guest-topics a b,
+body.tff-warm .guest-schedule h2 {
+  color: var(--clean-ink);
 }
 
 body.tff-warm .guest-kicker { color: var(--clean-blue); }
@@ -29,26 +37,81 @@ body.tff-warm .guest-accent {
   height: 3px;
 }
 
+body.tff-warm .guest-sub,
+body.tff-warm .guest-label,
+body.tff-warm .guest-foot,
+body.tff-warm .guest-quick-card span,
+body.tff-warm .guest-topics a span,
+body.tff-warm .guest-tools span,
+body.tff-warm .guest-schedule p {
+  color: var(--clean-muted);
+}
+
 body.tff-warm .guest-box,
 body.tff-warm .guest-quick-card,
-body.tff-warm .guest-topics a {
+body.tff-warm .guest-topics a,
+body.tff-warm .guest-tools a {
   background: var(--clean-surface);
   border-color: var(--clean-line);
   box-shadow: var(--clean-shadow);
+  color: var(--clean-ink);
 }
 
 body.tff-warm .guest-quick-card.primary {
   background: var(--clean-surface);
-  border-color: rgba(0, 113, 227, 0.22);
+  border-color: rgba(0, 102, 204, 0.35);
 }
 
 body.tff-warm .guest-map {
   background: var(--clean-blue);
-  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.28);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 102, 204, 0.25);
 }
 
 body.tff-warm .guest-time { color: var(--clean-blue); }
-body.tff-warm .guest-links a.cta { background: var(--clean-green); border-color: var(--clean-green); }
+body.tff-warm .guest-links a {
+  color: var(--clean-ink);
+  background: #fff;
+  border-color: var(--clean-line);
+}
+body.tff-warm .guest-links a.cta {
+  background: var(--clean-green);
+  border-color: var(--clean-green);
+  color: #fff;
+}
+
+/* Hub overrides */
+body.tff-warm.hub,
+body.tff-warm .hub-main {
+  color: var(--clean-ink);
+}
+
+body.tff-warm .hub-nav {
+  background: #ffffff;
+  border-bottom-color: var(--clean-line);
+}
+
+body.tff-warm .hub-eyebrow,
+body.tff-warm .hub-lead,
+body.tff-warm .hub-nav-meta,
+body.tff-warm .hub-section-sub {
+  color: var(--clean-muted);
+}
+
+body.tff-warm .hub-title-line {
+  color: var(--clean-ink);
+}
+
+body.tff-warm .hub-title-accent {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--clean-blue);
+}
+
+body.tff-warm .hub-lab {
+  display: none;
+}
 
 /* Hero media — lineup + facility */
 .guest-hero-media {
@@ -107,7 +170,7 @@ body.tff-warm .guest-links a.cta { background: var(--clean-green); border-color:
   border-top: 1px solid var(--clean-line);
 }
 
-/* Floating bottle decor — subtle edge accents only */
+/* Floating bottle decor — edges only, very subtle */
 .tff-decor {
   position: fixed;
   inset: 0;
@@ -118,10 +181,10 @@ body.tff-warm .guest-links a.cta { background: var(--clean-green); border-color:
 
 .tff-decor-bottle {
   position: absolute;
-  width: clamp(44px, 9vw, 72px);
+  width: clamp(40px, 8vw, 64px);
   height: auto;
   opacity: 0;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
   animation: tff-bottle-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   will-change: transform, opacity;
 }
@@ -134,11 +197,11 @@ body.tff-warm .guest-links a.cta { background: var(--clean-green); border-color:
 
 @keyframes tff-bottle-in {
   from { opacity: 0; transform: translateY(12px) rotate(var(--rot, 0deg)) scale(0.92); }
-  to { opacity: var(--op, 0.2); transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
+  to { opacity: var(--op, 0.1); transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tff-decor-bottle { animation: none; opacity: 0.15; }
+  .tff-decor-bottle { animation: none; opacity: 0.08; }
 }
 
 body.tff-warm .guest-page,
@@ -148,21 +211,6 @@ body.tff-warm .dir-layout,
 body.tff-warm .hub-main {
   position: relative;
   z-index: 1;
-}
-
-/* Dark site pages — keep readable, no warm wash */
-body.tff-warm:not(.port-mode)::before {
-  background: none;
-}
-
-body.tff-warm .boi-btn.primary {
-  background: var(--clean-blue);
-  border-color: transparent;
-}
-
-body.tff-warm .boi-card {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Portfolio */
@@ -181,18 +229,40 @@ body.port-mode.tff-warm .port-card {
 
 body.port-mode.tff-warm .port-surprise {
   background: linear-gradient(135deg, #1d1d1f, #2c2c2e);
+  color: #fff;
 }
 
 /* Directory */
 body.dir-page.tff-warm {
   background: var(--clean-bg);
+  color: var(--clean-ink);
 }
 
 body.dir-page.tff-warm .dir-hero {
-  background: linear-gradient(180deg, #ffffff 0%, var(--clean-bg) 100%);
+  background: linear-gradient(135deg, #0a1628 0%, #003d6b 55%, #004f87);
+  color: #fff;
+}
+
+body.dir-page.tff-warm .dir-hero-kicker {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body.dir-page.tff-warm .dir-hero p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body.dir-page.tff-warm .dir-section-label,
+body.dir-page.tff-warm .dir-card span,
+body.dir-page.tff-warm .dir-jump span {
+  color: var(--clean-muted);
+}
+
+body.dir-page.tff-warm .dir-card b,
+body.dir-page.tff-warm .dir-jump b {
+  color: var(--clean-ink);
 }
 
 @media (max-width: 720px) {
-  .tff-decor-bottle { width: clamp(36px, 12vw, 52px); }
+  .tff-decor-bottle { width: clamp(32px, 10vw, 48px); }
   .tff-decor-bottle:nth-child(n+5) { display: none; }
 }

@@ -1,11 +1,11 @@
 @import url("/css/tff-warm.css");
 
 :root {
-  --dir-blue: #008fd3;
-  --dir-ink: #0a1628;
-  --dir-muted: #5c6678;
-  --dir-line: #e2e9ec;
-  --dir-paper: #f4f7fa;
+  --dir-blue: #0066cc;
+  --dir-ink: #000000;
+  --dir-muted: #3a3a3c;
+  --dir-line: rgba(0, 0, 0, 0.14);
+  --dir-paper: #ffffff;
 }
 .dir-page {
   margin: 0;
