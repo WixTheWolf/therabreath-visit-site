@@ -241,6 +241,68 @@ body {
 .guest-page-hub {
   width: min(560px, calc(100vw - 32px));
 }
+
+.guest-visual {
+  margin-bottom: 22px;
+}
+
+.guest-visual-feature {
+  margin: 0 0 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: 0 12px 36px rgba(10, 22, 40, 0.08);
+}
+
+.guest-visual-feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.guest-visual-feature figcaption,
+.guest-visual-grid figcaption {
+  margin: 0;
+  padding: 10px 14px;
+  font-family: "Sora", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+.guest-visual-feature figcaption {
+  font-size: 0.72rem;
+  color: var(--ink);
+}
+
+.guest-visual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.guest-visual-grid figure {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.guest-visual-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
 .guest-hub-search {
   margin-bottom: 20px;
 }
