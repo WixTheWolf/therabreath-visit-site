@@ -78,10 +78,37 @@
     }).join("");
   }
 
-  /* Nav highlight */
-  var path = location.pathname.replace(/\/$/, "") || "/";
-  document.querySelectorAll(".boi-nav-links a").forEach(function (a) {
-    var href = a.getAttribute("href");
-    if (href === path || (path === "/index.html" && href === "/")) a.classList.add("on");
-  });
+  /* Showcase grid — visit hub */
+  var featureEl = document.getElementById("boi-showcase-feature");
+  var gridEl = document.getElementById("boi-showcase-grid");
+  if (window.BOI && BOI.showcase) {
+    var sc = BOI.showcase;
+    if (featureEl && sc.feature) {
+      var f = sc.feature;
+      featureEl.innerHTML =
+        '<article class="boi-card boi-card-feature" style="--card-accent:' + f.accent + '">' +
+        '<span class="boi-card-tag">' + f.tag + "</span>" +
+        "<h3>" + f.title + "</h3>" +
+        "<p>" + f.desc + "</p>" +
+        (f.stat ? '<span class="boi-card-stat">' + f.stat + "</span>" : "") +
+        '<span class="arrow">Explore program →</span>' +
+        '<a class="stretch" href="' + f.href + '" aria-label="' + f.title + '"></a>' +
+        "</article>";
+    }
+    if (gridEl && sc.items) {
+      gridEl.innerHTML = sc.items
+        .map(function (item) {
+          return (
+            '<article class="boi-card" style="--card-accent:' + item.accent + '">' +
+            '<span class="boi-card-tag">' + item.tag + "</span>" +
+            "<h3>" + item.title + "</h3>" +
+            "<p>" + item.desc + "</p>" +
+            '<span class="arrow">Open →</span>' +
+            '<a class="stretch" href="' + item.href + '" aria-label="' + item.title + '"></a>' +
+            "</article>"
+          );
+        })
+        .join("");
+    }
+  }
 })();

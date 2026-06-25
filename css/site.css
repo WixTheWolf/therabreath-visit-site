@@ -131,6 +131,18 @@ a:hover { text-decoration: underline; }
   color: #fff;
 }
 
+.boi-nav-links a.boi-nav-ext {
+  background: linear-gradient(135deg, #2d6a3f, var(--green));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(95, 184, 50, 0.3);
+}
+
+.boi-nav-links a.boi-nav-ext:hover {
+  background: linear-gradient(135deg, #3d8a4f, #6fd042);
+  color: #fff;
+}
+
 .boi-nav-links a.cta {
   background: linear-gradient(135deg, var(--blue), #006aa6);
   color: #fff;
@@ -235,6 +247,16 @@ a:hover { text-decoration: underline; }
 
 .boi-btn.primary:hover {
   box-shadow: 0 20px 48px rgba(0, 143, 211, 0.45);
+}
+
+.boi-btn.boi-btn-tb {
+  background: linear-gradient(135deg, #2d6a3f, var(--green));
+  border-color: transparent;
+  box-shadow: 0 12px 32px rgba(95, 184, 50, 0.35);
+}
+
+.boi-btn.boi-btn-tb:hover {
+  box-shadow: 0 20px 48px rgba(95, 184, 50, 0.45);
 }
 
 /* Cards grid */
@@ -342,6 +364,49 @@ a:hover { text-decoration: underline; }
   font-size: 0.68rem;
   font-weight: 700;
   color: var(--blue);
+}
+
+.boi-card-tag {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.boi-card-feature {
+  padding: 28px 26px;
+  margin-bottom: 14px;
+}
+
+.boi-card-feature h3 {
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  margin-bottom: 10px;
+}
+
+.boi-card-feature p {
+  font-size: 0.88rem;
+  max-width: 720px;
+}
+
+.boi-card-stat {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(95, 184, 50, 0.15);
+  border: 1px solid rgba(95, 184, 50, 0.35);
+  color: #b8e8a0;
 }
 
 /* Interactive pillars */
@@ -508,5 +573,5 @@ a:hover { text-decoration: underline; }
   .boi-grid-3, .boi-grid-4, .boi-grid-2, .boi-pillars {
     grid-template-columns: 1fr;
   }
-  .boi-nav-links a:not(.cta) { display: none; }
+  .boi-nav-links a:not(.cta):not(.boi-nav-ext) { display: none; }
 }

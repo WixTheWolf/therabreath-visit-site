@@ -6,6 +6,7 @@
     { href: "/", label: "Agenda", match: ["/", "/index.html", "/agenda", "/visit"] },
     { href: "/present", label: "Slides", match: ["/present", "/presentation"] },
     { href: "/portfolio", label: "Flavors", match: ["/portfolio"] },
+    { href: "/lakewood", label: "Lakewood", match: ["/lakewood"] },
     { href: "/brief", label: "Brief", match: ["/brief"] },
     { href: "/mystery", label: "Mapping", match: ["/mystery", "/map"] },
     { href: "/score", label: "Scorecard", match: ["/score"] },

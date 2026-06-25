@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Your July 8 schedule — Breath of Innovation at The Flavor Factory, Norco." />
+    <meta name="description" content="Your July 8 schedule — Breath of Innovation at The Flavor Factory, Norco. Lakewood parity, flavor portfolio, chlorite science, and tasting tools." />
     <meta name="theme-color" content="#0a1628" />
     <title>Your Day · Breath of Innovation</title>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -15,21 +15,18 @@
   <body>
     <canvas class="boi-canvas" id="boi-canvas" aria-hidden="true"></canvas>
 
-    <nav class="boi-nav">
-      <a class="boi-brand" href="/"><span class="boi-mark">TFF</span> Breath of Innovation</a>
-      <div class="boi-nav-links">
-        <a href="/visit" class="on">Your day</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/taste">Tasting</a>
-        <a class="cta" href="/present">Presentation</a>
-      </div>
-    </nav>
+    <nav class="boi-nav" id="boi-nav"></nav>
 
     <div class="boi-wrap">
       <header class="boi-hero" style="padding-bottom:32px">
         <p class="boi-kicker"><i aria-hidden="true"></i> Tuesday, July 8, 2026</p>
         <h1 style="font-size:clamp(1.8rem,5vw,2.8rem)">Your day in Norco</h1>
         <p class="boi-hero-lead">All times are suggested. We'll adjust in the room to match your team's pace.</p>
+        <div class="boi-hero-actions" style="margin-top:24px">
+          <a class="boi-btn primary" href="/present">Open presentation</a>
+          <a class="boi-btn" href="/taste">Tasting tools</a>
+          <a class="boi-btn boi-btn-tb" href="https://www.therabreath.com/" target="_blank" rel="noopener">Visit TheraBreath.com →</a>
+        </div>
       </header>
 
       <section class="boi-section">
@@ -55,15 +52,41 @@
         </div>
       </section>
 
+      <section class="boi-section" id="boi-showcase">
+        <div class="boi-section-head">
+          <h2>Go deeper</h2>
+          <p>Programs, science, and brand context — explore between sessions or after the visit.</p>
+        </div>
+        <div id="boi-showcase-feature"></div>
+        <div class="boi-grid-3" id="boi-showcase-grid"></div>
+      </section>
+
+      <section class="boi-section">
+        <div class="boi-section-head">
+          <h2>Four pillars</h2>
+          <p>Tap a pillar — same framework as the live presentation.</p>
+        </div>
+        <div class="boi-pillars">
+          <div class="boi-pillar" data-pillar="resiliency"><span class="boi-pillar-num" style="background:#008fd3">1</span><h4>Resiliency</h4><span>Capacity &amp; continuity</span></div>
+          <div class="boi-pillar" data-pillar="innovation"><span class="boi-pillar-num" style="background:#5fb832">2</span><h4>Innovation</h4><span>Flavor &amp; chlorite</span></div>
+          <div class="boi-pillar" data-pillar="operations"><span class="boi-pillar-num" style="background:#f58220">3</span><h4>Operations</h4><span>Norco under one roof</span></div>
+          <div class="boi-pillar" data-pillar="partnership"><span class="boi-pillar-num" style="background:#006da3">4</span><h4>Partnership</h4><span>Build together</span></div>
+        </div>
+        <div class="boi-pillar-detail" id="pillar-detail"></div>
+      </section>
+
       <div class="boi-hero-actions" style="padding-bottom:40px">
-        <a class="boi-btn primary" href="/present">Open presentation</a>
-        <a class="boi-btn" href="/taste">Tasting tools</a>
+        <a class="boi-btn primary" href="/portfolio">Flavor portfolio</a>
+        <a class="boi-btn" href="/lakewood">Lakewood parity plan</a>
+        <a class="boi-btn" href="/therabreath-brand">TheraBreath brand hub</a>
+        <a class="boi-btn boi-btn-tb" href="https://www.therabreath.com/" target="_blank" rel="noopener">therabreath.com →</a>
       </div>
 
-      <footer class="boi-foot">Questions? (951) 273-9877 · flavorfactory.net</footer>
+      <footer class="boi-foot">Questions? (951) 273-9877 · <a href="https://www.flavorfactory.net/" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.5)">flavorfactory.net</a></footer>
     </div>
 
     <script src="/js/content.js"></script>
+    <script src="/js/boi-nav.js"></script>
     <script src="/js/site.js"></script>
   </body>
 </html>
