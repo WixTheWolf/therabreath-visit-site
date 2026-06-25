@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="TheraBreath flavor portfolio — in-production SKUs, concepts presented, pipeline prototypes, and Gen Alpha futures. The Flavor Factory × Church & Dwight." />
+    <meta name="description" content="TheraBreath flavor portfolio — 53 flavors across in-production SKUs, concepts presented, pipeline M1–M5, and Gen Alpha futures." />
     <meta name="theme-color" content="#f8fafc" />
     <title>Flavor Portfolio · Breath of Innovation</title>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
@@ -24,34 +24,41 @@
         <p class="port-kicker"><i aria-hidden="true"></i> Church &amp; Dwight × TheraBreath</p>
         <h1>Where flavor becomes <em>imagination</em></h1>
         <p class="port-hero-lead">
-          What's on shelf today, what we presented for review, what's in the pipeline, and what comes next —
-          one gallery organized by where each flavor sits in the TheraBreath journey.
+          Fifty-three flavors organized by where each one lives in your journey — on shelf today, presented for review,
+          workshop pipeline, and Gen Alpha futures. Tap any card to open the full story.
         </p>
-        <div class="port-stat-row">
-          <div class="port-stat"><b id="port-count">0</b><span>Total entries</span></div>
-          <div class="port-stat"><b>4</b><span>Collections</span></div>
-          <div class="port-stat"><b>14</b><span>On shelf</span></div>
+        <div class="port-stat-row" id="port-stats"></div>
+        <div class="port-hero-actions">
+          <button type="button" class="port-surprise" id="port-surprise">Surprise me ✦</button>
+          <a class="port-hero-link" href="/taste">July 8 tasting · M1–M5 →</a>
         </div>
-        <div class="port-scroll-cue">Explore the gallery</div>
       </header>
 
-      <nav class="port-dock" id="port-dock" aria-label="Collection navigation">
-        <div class="port-dock-inner">
-          <button type="button" data-col="all" class="active">All</button>
-          <button type="button" data-col="production">In Production</button>
-          <button type="button" data-col="presented">Concepts Presented</button>
-          <button type="button" data-col="pipeline">Pipeline</button>
-          <button type="button" data-col="genalpha">Gen Alpha</button>
-        </div>
-      </nav>
+      <div class="port-toolbar" id="port-toolbar">
+        <label class="port-search" for="port-search-input">
+          <span class="port-search-icon" aria-hidden="true">⌕</span>
+          <input type="search" id="port-search-input" placeholder="Search flavors, codes, notes…" autocomplete="off" />
+        </label>
+        <nav class="port-dock" id="port-dock" aria-label="Collection navigation">
+          <div class="port-dock-inner">
+            <button type="button" data-col="all" class="active">All <span class="port-dock-count" data-count="all"></span></button>
+            <button type="button" data-col="production">On shelf <span class="port-dock-count" data-count="production"></span></button>
+            <button type="button" data-col="presented">Presented <span class="port-dock-count" data-count="presented"></span></button>
+            <button type="button" data-col="pipeline">Pipeline <span class="port-dock-count" data-count="pipeline"></span></button>
+            <button type="button" data-col="genalpha">Gen Alpha <span class="port-dock-count" data-count="genalpha"></span></button>
+          </div>
+        </nav>
+      </div>
+
+      <p class="port-empty" id="port-empty" hidden>No flavors match your search — try another keyword or clear filters.</p>
 
       <div id="port-chapters"></div>
 
       <section class="port-close">
-        <h2>Ready to taste the future?</h2>
-        <p>July 8 workshop mint platforms (M1–M5) are live in the tasting room — or schedule a follow-up with The Flavor Factory.</p>
+        <h2>Ready to taste the pipeline?</h2>
+        <p>Five workshop mint platforms (M1–M5) are live in the tasting room — blind mapping first, scorecard after reveal.</p>
         <div class="boi-hero-actions">
-          <a class="boi-btn primary" href="/taste">Open tasting tools</a>
+          <a class="boi-btn primary" href="/mystery">Blind flavor mapping</a>
           <a class="boi-btn" href="/present">View presentation</a>
         </div>
       </section>
@@ -62,20 +69,28 @@
     <div class="port-modal" id="port-modal" role="dialog" aria-modal="true" aria-label="Flavor concept detail">
       <div class="port-modal-panel">
         <div class="port-modal-hero">
+          <button type="button" class="port-modal-nav prev" id="port-modal-prev" aria-label="Previous flavor">‹</button>
           <button type="button" class="port-modal-close" aria-label="Close">×</button>
+          <button type="button" class="port-modal-nav next" id="port-modal-next" aria-label="Next flavor">›</button>
           <img src="" alt="" />
         </div>
         <div class="port-modal-content">
-          <span class="port-modal-tag"></span>
+          <div class="port-modal-meta">
+            <span class="port-modal-tag"></span>
+            <span class="port-modal-index" id="port-modal-index"></span>
+          </div>
           <h2></h2>
           <div class="port-modal-prod"></div>
           <p class="port-modal-pos"></p>
           <p class="port-modal-feel"></p>
           <p class="port-modal-story"></p>
           <p class="port-modal-note"></p>
+          <div class="port-modal-actions" id="port-modal-actions"></div>
         </div>
       </div>
     </div>
+
+    <div class="port-sparkle" id="port-sparkle" aria-hidden="true"></div>
 
     <script src="/js/content.js"></script>
     <script src="/js/boi-nav.js"></script>
