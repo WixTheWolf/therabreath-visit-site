@@ -154,17 +154,17 @@ def agenda_rows(styles):
         [
             "9:00 AM",
             "Arrive · check in",
-            "Conference room across from TFF · casual business attire · closed-toe shoes for tour",
+            "2058 Second Street · facility tour first · casual business attire · closed-toe shoes",
         ],
         [
-            "9:00–10:00",
+            "9:00–9:25",
+            "Facility tour",
+            "Production, QC, TheraBreath room — single-site dev + manufacturing + quality",
+        ],
+        [
+            "9:30–10:15",
             "TFF presentation",
             "Four pillars your team asked to see — resiliency, innovation, operations, partnership",
-        ],
-        [
-            "10:00–10:15",
-            "Facility walkthrough",
-            "Production, QC, TheraBreath room — single-site dev + manufacturing + quality",
         ],
         [
             "10:15–10:30",
@@ -320,8 +320,8 @@ def build():
     story.append(Spacer(1, 0.15 * inch))
     story.append(Paragraph(
         "<b>Suggested arrival: 9:00 AM</b><br/>"
-        "Conference room across from The Flavor Factory<br/>"
-        "10:00 AM onward — 2058 Second Street, Norco, CA 92860",
+        "2058 Second Street, Norco, CA 92860 — facility tour first<br/>"
+        "9:30 AM — presentation in conference room across from The Flavor Factory",
         styles["body"],
     ))
 
@@ -334,7 +334,7 @@ def build():
     story.append(agenda_rows(styles))
     story.append(Spacer(1, 0.12 * inch))
 
-    story.append(Paragraph("PRESENTATION BLOCK · 9:00–10:00", styles["kicker"]))
+    story.append(Paragraph("PRESENTATION BLOCK · 9:30–10:15", styles["kicker"]))
     story.append(Paragraph("Four pillars — topics from your email threads", styles["h2"]))
     pillars = [
         ("Resiliency", "Capacity and continuity as volumes grow · redundancy if a supplier or equipment fails · certifications (SQF, GMP, FDA-registered facility)"),

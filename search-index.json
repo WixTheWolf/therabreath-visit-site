@@ -227,7 +227,7 @@
     "type": "answer",
     "category": "July 8 logistics",
     "q": "What is the agenda for July 8?",
-    "snippet": "July 8 schedule: 9:00 presentation · 10:00 walkthrough · 10:30 tasting · 11:30 lunch · 1:00 open Q&A. See /agenda for email-friendly view.",
+    "snippet": "July 8 schedule: 9:00 facility tour · 9:30 presentation · 10:30 tasting · 11:30 lunch · 1:00 open Q&A. See /agenda for email-friendly view.",
     "href": "/answers",
     "badge": "ready"
   },
@@ -699,7 +699,7 @@
     "type": "page",
     "category": "Guest path",
     "q": "July 8 agenda — simple schedule for email",
-    "snippet": "One-page agenda for calendar invites — 9:00 presentation, walkthrough, 10:30 tasting, lunch, open Q&A. Address, check-in, and Maps link included.",
+    "snippet": "One-page agenda for calendar invites — 9:00 facility tour, 9:30 presentation, 10:30 tasting, lunch, open Q&A. Address, check-in, and Maps link included.",
     "href": "/agenda",
     "badge": "ready"
   },

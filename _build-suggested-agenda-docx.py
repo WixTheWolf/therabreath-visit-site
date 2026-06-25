@@ -12,13 +12,13 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "booklet" / "documents" / "suggested-agenda-therabreath.docx"
 
 ITEMS = [
-    ("9:00 AM", "Arrive — conference room across from The Flavor Factory"),
+    ("9:00 AM", "Arrive — 2058 Second Street, Norco · facility tour first"),
+    ("9:00–9:25", "Facility tour — production, QC, TheraBreath room"),
     (
-        "9:00–10:00",
+        "9:30–10:15",
         "Presentation — four pillars (resiliency, innovation, operations, partnership); "
         "Lakewood site parity; competitive & functional innovation",
     ),
-    ("10:00–10:15", "Facility walkthrough — production, QC, TheraBreath room"),
     ("10:15–10:30", "Break"),
     (
         "10:30–11:15",

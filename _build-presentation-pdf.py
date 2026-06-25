@@ -114,9 +114,9 @@ def header_band(styles):
 def schedule_table(styles):
     rows = [
         ["Suggested time", "What we'll do"],
-        ["9:00 AM", "Arrive · conference room across from The Flavor Factory"],
-        ["9:00–10:00", "Presentation — open discussion on the topics below"],
-        ["10:00–10:15", "Facility walkthrough — production and quality areas"],
+        ["9:00 AM", "Arrive · 2058 Second Street — facility tour first"],
+        ["9:00–9:25", "Facility tour — production and quality areas"],
+        ["9:30–10:15", "Presentation — open discussion on the topics below"],
         ["10:15–10:30", "Break"],
         ["10:30–11:15", "Tasting — ten workshop prototypes; your honest feedback"],
         ["11:30–1:00", "Lunch off site — your hosts take the group"],

@@ -165,8 +165,8 @@ def pillar_cards(styles):
 def agenda_table(styles):
     rows = [
         ["Time", "Session", "Focus"],
-        ["9:00–10:00 AM", "TFF presentation", "Four pillars · conference room across the street"],
-        ["10:00–10:15 AM", "Facility walkthrough", "Production, QC, TheraBreath room"],
+        ["9:00–9:25 AM", "Facility tour", "2058 Second Street · production, QC, TheraBreath room"],
+        ["9:30–10:15 AM", "TFF presentation", "Four pillars · conference room across the street"],
         ["10:15–10:30 AM", "Break", "Reset before tasting"],
         ["10:30–11:15 AM", "Tasting", "Ten prototypes · blind mapping · scorecard"],
         ["11:30 AM–1:00 PM", "Lunch off site", "Hosts take the group"],

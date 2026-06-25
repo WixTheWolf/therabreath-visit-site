@@ -53,9 +53,9 @@
     { n: 2, ch: 1, title: "Executive one-pager", type: "site", href: "/onepager", desc: "Single-page summary for procurement — print from the workshop site." },
     { n: 3, ch: 1, title: "Breath of Innovation · day-of hub", type: "site", href: "/visit", desc: "Live presentation, flavor portfolio, schedule, and tasting — all on therabreath-visit-site." },
 
-    { n: 4, ch: 2, title: "July 8 agenda · 9:00 AM start", type: "site", href: "/", desc: "Visit guide — presentation, walkthrough, five mint platforms at 10:30, lunch, open Q&A." },
+    { n: 4, ch: 2, title: "July 8 agenda · 9:00 AM start", type: "site", href: "/", desc: "Visit guide — facility tour 9:00, presentation 9:30, five mint platforms at 10:30, lunch, open Q&A." },
     { n: 5, ch: 2, title: "Visitor passport", type: "site", href: "/passport", desc: "Pocket follow-along — checklist, notes, and scoring lines." },
-    { n: 6, ch: 2, title: "Facility tour map", type: "site", href: "/tour", desc: "8:00 AM walk-through — mixing, QC, production, R&D." },
+    { n: 6, ch: 2, title: "Facility tour map", type: "site", href: "/tour", desc: "9:00 AM walk-through — mixing, QC, production, R&D." },
     { n: 7, ch: 2, title: "Live presentation + print slides", type: "site", href: "/present", desc: "Interactive Q&A deck for the projector; /slides on this site is the print backup." },
 
     { n: 8, ch: 3, title: "The Flavor Factory · industry brochure", type: "pdf", file: "03-flavor-factory-brochure.pdf", desc: "Company overview, capabilities, and oral-care positioning." },
@@ -94,8 +94,8 @@
   ];
 
   var AGENDA = [
-    { time: "9:00–10:00", label: "TFF presentation", note: "Conference room across the street · four pillars" },
-    { time: "10:00–10:15", label: "Facility walkthrough", note: "Production, QC, TheraBreath room" },
+    { time: "9:00–9:25", label: "Facility tour", note: "2058 Second Street · production, QC, TheraBreath room" },
+    { time: "9:30–10:15", label: "TFF presentation", note: "Conference room across the street · four pillars" },
     { time: "10:15–10:30", label: "Break", note: "Email, calls, reset" },
     { time: "10:30–11:15", label: "Tasting · five mint platforms", note: "Cups M1–M5 · /mystery blind · then /score" },
     { time: "11:30–1:00", label: "Lunch off site", note: "Hosts take the group · back 1:00 PM" },
