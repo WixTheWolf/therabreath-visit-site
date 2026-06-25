@@ -11,7 +11,10 @@ body {
   margin: 0;
   font-family: "DM Sans", system-ui, sans-serif;
   color: var(--ink);
-  background: var(--paper);
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(0, 143, 211, 0.09), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 20%, rgba(95, 184, 50, 0.06), transparent 45%),
+    var(--paper);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -303,6 +306,13 @@ body {
   color: inherit;
   border: 1px solid var(--line);
   background: #fff;
+  box-shadow: 0 6px 20px rgba(10, 22, 40, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.guest-quick-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(10, 22, 40, 0.08);
+  border-color: rgba(0, 143, 211, 0.25);
 }
 .guest-quick-card.primary {
   border-color: rgba(0, 143, 211, 0.35);
@@ -334,6 +344,12 @@ body {
   background: #fff;
   border: 1px solid var(--line);
   border-left: 3px solid var(--topic-accent, var(--blue));
+  box-shadow: 0 4px 14px rgba(10, 22, 40, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.guest-topics a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(10, 22, 40, 0.07);
 }
 .guest-topics a b {
   font-family: "Sora", sans-serif;

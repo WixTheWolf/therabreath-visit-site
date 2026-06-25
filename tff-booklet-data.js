@@ -103,13 +103,12 @@
   ];
 
   var HOSTS = (global.TFFTeam
-    ? global.TFFTeam.members.map(function (m) {
+    ? (global.TFFTeam.visitHosts ? global.TFFTeam.visitHosts() : global.TFFTeam.members).map(function (m) {
         return { name: m.name, role: m.title, desc: m.desc };
       })
     : [
         { name: "Dan Wixted", role: "President", desc: "" },
         { name: "Alex Wixted", role: "Operations", desc: "" },
-        { name: "Kelly Ziegler", role: "Office Manager", desc: "" },
         { name: "Ryan Wixted", role: "Quality and Regulatory", desc: "" },
         { name: "Matt Wixted", role: "Production Manager", desc: "" }
       ]);

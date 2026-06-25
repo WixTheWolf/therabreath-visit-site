@@ -2,6 +2,8 @@
  * TFF team roster — canonical titles and bios for the TheraBreath visit site.
  */
 (function (global) {
+  var VISIT_HOST_IDS = ["dan", "alex", "ryan", "matt"];
+
   var TEAM = [
     {
       id: "dan",
@@ -52,30 +54,36 @@
     return null;
   }
 
+  function visitHosts() {
+    return TEAM.filter(function (m) {
+      return VISIT_HOST_IDS.indexOf(m.id) !== -1;
+    });
+  }
+
   function hostNamesShort() {
-    return "Dan, Ryan, Alex, Kelly, and Matt";
+    return "Dan, Alex, Ryan, and Matt";
   }
 
   function hostListComma() {
-    return TEAM.map(function (m) {
+    return visitHosts().map(function (m) {
       return m.name;
     }).join(", ");
   }
 
   function hostListWithTitles() {
-    return TEAM.map(function (m) {
+    return visitHosts().map(function (m) {
       return m.name + " (" + m.title + ")";
     }).join(" · ");
   }
 
   function hostContactLines() {
-    return TEAM.map(function (m) {
+    return visitHosts().map(function (m) {
       return m.name + ", " + m.title;
     }).join("<br />");
   }
 
   function hostCardsHtml() {
-    return TEAM.map(function (m) {
+    return visitHosts().map(function (m) {
       return (
         '<div class="host"><b>' +
         m.name +
@@ -96,6 +104,8 @@
 
   global.TFFTeam = {
     members: TEAM,
+    visitHostIds: VISIT_HOST_IDS,
+    visitHosts: visitHosts,
     byId: byId,
     hostNamesShort: hostNamesShort,
     hostListComma: hostListComma,

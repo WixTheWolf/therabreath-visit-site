@@ -5,7 +5,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/agenda", "destination": "/", "permanent": false },
+    { "source": "/agenda", "destination": "/booklet/documents/suggested-agenda-therabreath.pdf", "permanent": false },
     { "source": "/presentation", "destination": "/present", "permanent": false },
     { "source": "/speaker-packet", "destination": "/packet", "permanent": false },
     { "source": "/team", "destination": "/gate", "permanent": false },

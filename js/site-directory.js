@@ -38,7 +38,7 @@ window.SiteDirectory = {
         { href: "/score", title: "Prototype scorecard", desc: "Rate prototypes after host reveal", path: "/score", keywords: "score scorecard rating", hot: true },
         { href: "/concepts", title: "Five mint platforms", desc: "M1–M5 architecture · post-reveal reference", path: "/concepts", keywords: "concepts m1 m5 mint platforms" },
         { href: "/stations", title: "Tasting station signs", desc: "Three station tent cards for the room", path: "/stations", keywords: "stations signs print room" },
-        { href: "/labels", title: "Sample kit labels", desc: "Concepts 01–10 stickers", path: "/labels", keywords: "labels stickers samples", internal: true },
+        { href: "/labels", title: "Sample kit labels", desc: "Cup codes M1–M5 stickers", path: "/labels", keywords: "labels stickers samples M1 M5", internal: true },
         { href: "/worksheet", title: "Co-creation worksheet", desc: "Lab block form for iterations", path: "/worksheet", keywords: "worksheet co-creation bench", internal: true },
         { href: "/mystery-live", title: "Blind Mapping live", desc: "See guest matches · export CSV", path: "/mystery-live", keywords: "live admin mystery realtime", internal: true, hot: true },
         { href: "/score-live", title: "Live sensory summary", desc: "Room aggregate + per-rater detail", path: "/score-live", keywords: "live admin score aggregate", internal: true, hot: true }

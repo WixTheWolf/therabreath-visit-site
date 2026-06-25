@@ -227,7 +227,7 @@
     "type": "answer",
     "category": "July 8 logistics",
     "q": "What is the agenda for July 8?",
-    "snippet": "July 8 schedule: 9:00 facility tour · 9:30 presentation · 10:30 tasting · 11:30 lunch · 1:00 open Q&A. See /agenda for email-friendly view.",
+    "snippet": "July 8 schedule: 9:00 facility tour · 9:30 presentation · 10:15 break · 10:30 tasting · 11:30 lunch · 1:00 open Q&A. Printable agenda PDF available.",
     "href": "/answers",
     "badge": "ready"
   },
@@ -587,7 +587,7 @@
     "type": "answer",
     "category": "TheraBreath file",
     "q": "What flavor codes tie to TheraBreath rinse programs?",
-    "snippet": "MI-18727 core mint, MI-21336 Total Care, PE-22004 seasonal vanilla swirl, MI-22008 winter spice, MO-22007 mojito.",
+    "snippet": "MI-18727 core mint, MI-21336 Revitalizing Mint, PE-22004 seasonal vanilla swirl, MI-22008 winter spice, MO-22007 mojito.",
     "href": "/therabreath",
     "badge": "ready"
   },
@@ -699,8 +699,8 @@
     "type": "page",
     "category": "Guest path",
     "q": "July 8 agenda — simple schedule for email",
-    "snippet": "One-page agenda for calendar invites — 9:00 facility tour, 9:30 presentation, 10:30 tasting, lunch, open Q&A. Address, check-in, and Maps link included.",
-    "href": "/agenda",
+    "snippet": "One-page agenda for calendar invites — 9:00 facility tour, 9:30 presentation, 10:15 break, 10:30 tasting, 11:30 lunch, open Q&A. PDF download.",
+    "href": "/booklet/documents/suggested-agenda-therabreath.pdf",
     "badge": "ready"
   },
   {
