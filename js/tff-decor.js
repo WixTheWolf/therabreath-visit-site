@@ -1,5 +1,5 @@
 (function (global) {
-  var CSS_HREF = "/css/tff-warm.css?v=1";
+  var CSS_HREF = "/css/tff-warm.css?v=2";
   var BOTTLES = [
     "clean-mint",
     "revitalizing-mint",
@@ -14,14 +14,12 @@
   ];
 
   var SCATTER = [
-    { slug: "clean-mint", left: "2%", top: "14%", rot: "-14deg", op: 0.42, delay: "0.05s" },
-    { slug: "revitalizing-mint", left: "88%", top: "10%", rot: "11deg", op: 0.48, delay: "0.15s" },
-    { slug: "grapes-galore", left: "6%", top: "62%", rot: "8deg", op: 0.4, delay: "0.25s" },
-    { slug: "wacky-watermelon", left: "90%", top: "58%", rot: "-9deg", op: 0.44, delay: "0.2s" },
-    { slug: "rainforest-mint", left: "1%", top: "38%", rot: "6deg", op: 0.32, delay: "0.3s" },
-    { slug: "dazzling-mint", left: "92%", top: "34%", rot: "-7deg", op: 0.36, delay: "0.35s" },
-    { slug: "strawberry-splash", left: "12%", top: "82%", rot: "-5deg", op: 0.3, delay: "0.4s" },
-    { slug: "bubble-gum", left: "78%", top: "78%", rot: "10deg", op: 0.34, delay: "0.45s" }
+    { slug: "clean-mint", left: "1%", top: "12%", rot: "-12deg", op: 0.18, delay: "0.05s" },
+    { slug: "revitalizing-mint", left: "91%", top: "8%", rot: "10deg", op: 0.2, delay: "0.12s" },
+    { slug: "grapes-galore", left: "3%", top: "68%", rot: "7deg", op: 0.17, delay: "0.2s" },
+    { slug: "wacky-watermelon", left: "93%", top: "64%", rot: "-8deg", op: 0.19, delay: "0.18s" },
+    { slug: "rainforest-mint", left: "0.5%", top: "42%", rot: "5deg", op: 0.15, delay: "0.28s" },
+    { slug: "dazzling-mint", left: "94%", top: "38%", rot: "-6deg", op: 0.16, delay: "0.32s" }
   ];
 
   function ensureWarmCss() {
@@ -58,7 +56,7 @@
       wrap.style.setProperty("--op", String(cfg.op));
       wrap.style.animationDelay = cfg.delay;
       var img = document.createElement("img");
-      img.src = "/assets/bottles/" + cfg.slug + ".png?v=1";
+      img.src = "/assets/bottles/" + cfg.slug + ".png?v=2";
       img.alt = "";
       img.loading = "lazy";
       img.decoding = "async";
