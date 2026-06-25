@@ -431,8 +431,34 @@ body.port-mode .boi-nav-links a.on {
 }
 
 .port-mosaic--3 { grid-template-columns: repeat(3, 1fr); }
-.port-mosaic--4 { grid-template-columns: repeat(4, 1fr); }
+.port-mosaic--4 {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+}
 .port-mosaic--5 { grid-template-columns: repeat(5, 1fr); }
+
+.port-mosaic--4 .port-card--production {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.port-mosaic--4 .port-card--production .port-card-img--bottle img,
+.port-mosaic--4 .port-card--production .port-card-img--text {
+  min-height: 0;
+}
+
+.port-mosaic--4 .port-card--production .port-card-img--bottle img {
+  object-fit: contain;
+  object-position: center 42%;
+  padding: 18px 16px 10px;
+  max-height: 100%;
+}
+
+.port-mosaic--4 .port-card--production .port-card-foot {
+  flex: 1;
+  min-height: 78px;
+}
 
 .port-mosaic--pipeline {
   padding: 18px;
@@ -780,6 +806,15 @@ body.port-mode .boi-nav-links a.on {
   font-weight: 800;
   color: #0d9488;
   text-align: right;
+}
+
+.port-modal-prod-row--name strong {
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.port-modal-prod-row--usage strong {
+  font-size: 0.88rem;
 }
 
 .port-modal-pos {

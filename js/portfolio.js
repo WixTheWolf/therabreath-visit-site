@@ -109,10 +109,16 @@
     });
   }
 
+  function cardFootSub(c) {
+    if (c.collection === "production" && c.usage) return c.usage;
+    return c.positioning || teaser(c);
+  }
+
   function renderCard(c) {
     var btn = document.createElement("button");
+    var isProd = c.collection === "production";
     btn.type = "button";
-    btn.className = "port-card" + (data.hasImage(c) ? "" : " port-card--sku");
+    btn.className = "port-card" + (data.hasImage(c) ? "" : " port-card--sku") + (isProd ? " port-card--production" : "");
     btn.dataset.slug = c.slug;
     btn.dataset.collection = c.collection;
     btn.setAttribute("aria-label", "View " + c.name);
@@ -152,7 +158,7 @@
       '<div class="port-card-foot">' +
         '<span class="port-card-foot-tag">' + shortTag(c) + "</span>" +
         "<strong>" + c.name + "</strong>" +
-        "<span>" + (c.positioning || teaser(c)) + "</span>" +
+        "<span>" + cardFootSub(c) + "</span>" +
       "</div>";
 
     btn.addEventListener("click", function () { openModal(c.slug); });
@@ -293,19 +299,28 @@
         : "";
     }
 
-    pos.textContent = c.positioning || "";
-    pos.style.display = c.positioning ? "" : "none";
-
     var prod = modal.querySelector(".port-modal-prod");
-    if (prod) {
-      if (c.tffCode) {
-        prod.style.display = "";
-        prod.innerHTML =
-          '<div class="port-modal-prod-row"><span>TFF flavor</span><strong>' + c.tffCode + "</strong></div>" +
-          (c.usage ? '<div class="port-modal-prod-row"><span>Usage level</span><strong>' + c.usage + "</strong></div>" : "");
-      } else {
-        prod.style.display = "none";
-        prod.innerHTML = "";
+    if (c.collection === "production" && prod) {
+      pos.textContent = c.positioning || "";
+      pos.style.display = "none";
+      prod.style.display = "";
+      prod.innerHTML =
+        '<div class="port-modal-prod-row port-modal-prod-row--name"><span>Flavor</span><strong>' + c.name + "</strong></div>" +
+        (c.usage ? '<div class="port-modal-prod-row port-modal-prod-row--usage"><span>Usage level</span><strong>' + c.usage + "</strong></div>" : "") +
+        (c.tffCode ? '<div class="port-modal-prod-row"><span>TFF code</span><strong>' + c.tffCode + "</strong></div>" : "");
+    } else {
+      pos.textContent = c.positioning || "";
+      pos.style.display = c.positioning ? "" : "none";
+      if (prod) {
+        if (c.tffCode) {
+          prod.style.display = "";
+          prod.innerHTML =
+            '<div class="port-modal-prod-row"><span>TFF flavor</span><strong>' + c.tffCode + "</strong></div>" +
+            (c.usage ? '<div class="port-modal-prod-row"><span>Usage level</span><strong>' + c.usage + "</strong></div>" : "");
+        } else {
+          prod.style.display = "none";
+          prod.innerHTML = "";
+        }
       }
     }
 
