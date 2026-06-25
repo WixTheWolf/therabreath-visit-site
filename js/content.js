@@ -250,7 +250,7 @@ window.BOI = {
   ],
   chapters: null,
   links: {
-    therabreath: "https://www.therabreath.com/",
+    therabreath: "/",
     flavorFactory: "https://www.flavorfactory.net/",
   },
   nav: [

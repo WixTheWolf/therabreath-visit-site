@@ -8,9 +8,14 @@
   }).join("");
 
   var tb = BOI.links && BOI.links.therabreath;
-  var ext = tb
-    ? '<a class="boi-nav-ext" href="' + tb + '" target="_blank" rel="noopener" title="Open therabreath.com">TheraBreath →</a>'
-    : "";
+  var ext = "";
+  if (tb) {
+    var isExternal = /^https?:\/\//i.test(tb);
+    var attrs = isExternal ? ' target="_blank" rel="noopener"' : "";
+    var title = isExternal ? "Open TheraBreath visit site" : "July 8 visit guide";
+    var label = isExternal ? "Visit site →" : "Visit guide →";
+    ext = '<a class="boi-nav-ext" href="' + tb + '"' + attrs + ' title="' + title + '">' + label + "</a>";
+  }
 
   slot.className = "boi-nav";
   slot.innerHTML =
