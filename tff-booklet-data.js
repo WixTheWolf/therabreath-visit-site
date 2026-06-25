@@ -53,7 +53,7 @@
     { n: 2, ch: 1, title: "Executive one-pager", type: "site", href: "/onepager", desc: "Single-page summary for procurement — print from the workshop site." },
     { n: 3, ch: 1, title: "Breath of Innovation · day-of hub", type: "site", href: "/visit", desc: "Live presentation, flavor portfolio, schedule, and tasting — all on therabreath-visit-site." },
 
-    { n: 4, ch: 2, title: "July 8 agenda · 9:00 AM start", type: "site", href: "/", desc: "Visit guide — facility tour 9:00, presentation 9:30, five mint platforms at 10:30, lunch, open Q&A." },
+    { n: 4, ch: 2, title: "July 8 agenda · arrive 9:00 · presentation 9:30", type: "site", href: "/", desc: "Visit guide — facility tour 9:00, presentation 9:30, five mint platforms at 10:30, lunch, open Q&A." },
     { n: 5, ch: 2, title: "Visitor passport", type: "site", href: "/passport", desc: "Pocket follow-along — checklist, notes, and scoring lines." },
     { n: 6, ch: 2, title: "Facility tour map", type: "site", href: "/tour", desc: "9:00 AM walk-through — mixing, QC, production, R&D." },
     { n: 7, ch: 2, title: "Live presentation + print slides", type: "site", href: "/present", desc: "Interactive Q&A deck for the projector; /slides on this site is the print backup." },

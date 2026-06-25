@@ -325,8 +325,8 @@ def build():
     story.append(Paragraph("JULY 8 AGENDA", styles["kicker"]))
     story.append(Paragraph("Your day in Norco", styles["h2"]))
     story.append(Paragraph(
-        "Arrive by <b>8:50 AM</b> · first session <b>9:00 AM</b> in the conference room across from "
-        "The Flavor Factory · <b>2058 Second Street, Norco, CA 92860</b>",
+        "Arrive <b>9:00 AM</b> · facility tour at <b>2058 Second Street, Norco, CA 92860</b> · "
+        "presentation <b>9:30 AM</b> in the conference room across from The Flavor Factory",
         styles["muted"],
     ))
     story.append(Spacer(1, 0.12 * inch))
