@@ -85,10 +85,10 @@
     { n: 29, ch: 6, title: "Sample documentation · PE-22004", type: "pdf", file: "samples/PE-22004-sample.pdf", desc: "Representative sample release packet." },
     { n: 30, ch: 6, title: "Peppermint vanilla flavor reference", type: "pdf", file: "samples/peppermint-vanilla-flavor.pdf", desc: "Flavor reference documentation." },
 
-    { n: 31, ch: 7, title: "Blind flavor mapping · /mystery", type: "site", href: "/mystery", desc: "Coded cups M1–M10 — match taste to neutral codename before reveal." },
+    { n: 31, ch: 7, title: "Blind flavor mapping · /mystery", type: "site", href: "/mystery", desc: "Coded cups M1–M5 — match taste to neutral codename before reveal." },
     { n: 32, ch: 7, title: "Prototype scorecard · /score", type: "site", href: "/score", desc: "Rate prototypes 1–9 after names are shown." },
     { n: 33, ch: 7, title: "Tasting station signs", type: "site", href: "/stations", desc: "Three station signs with mystery and score QRs." },
-    { n: 34, ch: 7, title: "Sample kit labels · M1–M10", type: "site", href: "/labels", desc: "Bottle labels before the 9:30 tasting block." },
+    { n: 34, ch: 7, title: "Sample kit labels · M1–M5", type: "site", href: "/labels", desc: "Bottle labels before the 9:30 tasting block." },
     { n: 35, ch: 7, title: "QR print sheet · all scan codes", type: "site", href: "/qr", desc: "Postcards for workshop, booklet, mystery, score." }
   ];
 

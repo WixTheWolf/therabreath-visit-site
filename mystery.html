@@ -309,7 +309,7 @@
     <header class="hero no-print">
       <div class="stamp"><i></i> Station 2 · blind only</div>
       <h1>Blind Flavor Mapping</h1>
-      <p>Taste from your coded cup — then match it to one of ten neutral prototype codenames. No flavor names until reveal. Directional sensory feedback only.</p>
+      <p>Taste from your coded cup — then match it to one of five neutral prototype codenames. No flavor names until reveal. Directional sensory feedback only.</p>
       <div class="hero-qr">
         <img src="/assets/qr/mystery.png" alt="QR — blind flavor mapping" width="92" height="92" />
         <span>Share · therabreath-visit-site.vercel.app/mystery</span>
@@ -346,13 +346,13 @@
 
       <div class="panel no-print" id="roster-panel" style="opacity:0.45;pointer-events:none">
         <h2>Prototype codenames</h2>
-        <p class="sub">Ten workshop prototypes — neutral codenames only. Which profile did your cup taste like?</p>
+        <p class="sub">Five workshop prototypes — neutral codenames only. Which profile did your cup taste like?</p>
         <div class="cipher-roster" id="roster"></div>
       </div>
 
       <div class="panel no-print" id="log-panel" style="opacity:0.45;pointer-events:none">
         <h2>Log a tasting</h2>
-        <p class="sub">Find the code on your cup (M1–M10), then select the prototype codename you believe matches.</p>
+        <p class="sub">Find the code on your cup (M1–M5), then select the prototype codename you believe matches.</p>
 
         <span class="pick-label">Cup code on your sample</span>
         <div class="cup-grid" id="cup-pick"></div>
@@ -404,7 +404,7 @@
     <script src="/tff-storage.js"></script>
     <script src="/tff-mystery-sync.js"></script>
     <script>
-      var STORAGE_KEY = "tff-mystery-v3";
+      var STORAGE_KEY = "tff-mystery-v4";
       var concepts = TFFConcepts.activeList();
       var ciphers = TFFConcepts.cipherDisplayList();
       var tags = TFFConcepts.sensoryTags;

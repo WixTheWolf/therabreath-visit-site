@@ -12,7 +12,7 @@
   ];
 
   var MORE = [
-    { href: "/concepts", label: "Ten directions", match: ["/concepts"] },
+    { href: "/concepts", label: "Five directions", match: ["/concepts"] },
     { href: "/agenda", label: "Agenda", match: ["/agenda"] },
     { href: "/workshop#capabilities", label: "Capabilities" },
     { href: "/workshop#next", label: "Next steps" },

@@ -130,8 +130,8 @@
   {
     "type": "answer",
     "category": "Pillar 2 · Innovation",
-    "q": "What are the ten workshop prototypes and how were they chosen?",
-    "snippet": "Ten workshop directions for sensory discussion — QC cleared 01/07/08; others under stability or retain review. Coded cups M1–M10 blind flavor mapping at /mystery. QC status reviewed after reveal.",
+    "q": "What are the five workshop prototypes and how were they chosen?",
+    "snippet": "Five mint platforms — Fresh Herbal, Grove, Botanical, Immunity, and Garden Mint. Coded cups M1–M5 blind flavor mapping at /mystery. Ingredient reveal after tasting.",
     "href": "/answers",
     "badge": "ready"
   },
@@ -387,7 +387,7 @@
     "type": "question",
     "category": "July 8 visit",
     "q": "Do you want NDA/confidentiality reconfirmed for prototypes and roadmap content?",
-    "snippet": "Ten new concepts + partnership charter.",
+    "snippet": "Five new concepts + partnership charter.",
     "href": "/questions",
     "id": "v7"
   },
@@ -643,7 +643,7 @@
     "type": "answer",
     "category": "Day-of",
     "q": "Where is the QR code for tasting feedback and the workshop site?",
-    "snippet": "Print sheet at /qr — /mystery for blind guess on coded cups M1–M10, then /score for 1–9 ratings after reveal.",
+    "snippet": "Print sheet at /qr — /mystery for blind guess on coded cups M1–M5, then /score for 1–9 ratings after reveal.",
     "href": "/qr",
     "badge": "ready"
   },
@@ -667,7 +667,7 @@
     "type": "tool",
     "category": "July 8",
     "q": "Mystery live admin board",
-    "snippet": "Real-time mystery submissions — who guessed what on coded cups M1–M10. Password required.",
+    "snippet": "Real-time mystery submissions — who guessed what on coded cups M1–M5. Password required.",
     "href": "/mystery-live",
     "badge": "ready"
   },
@@ -714,8 +714,8 @@
   {
     "type": "page",
     "category": "Tasting",
-    "q": "Ten workshop directions — concept preview",
-    "snippet": "Workshop samples M1–M10 with QC cleared, stability review, and retain review tiers. Station map — cup codes stay blind until reveal.",
+    "q": "Five workshop directions — concept preview",
+    "snippet": "Workshop samples M1–M5 with QC cleared, stability review, and retain review tiers. Station map — cup codes stay blind until reveal.",
     "href": "/concepts",
     "badge": "ready"
   },
