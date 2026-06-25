@@ -782,5 +782,13 @@
     "snippet": "How sodium chlorite changes flavor architecture for TheraBreath OXYD-8 systems.",
     "href": "/chlorite-flavor",
     "badge": "ready"
+  },
+  {
+    "type": "doc",
+    "category": "Quality",
+    "q": "Global Supplier Quality Manual — Norco June 2026",
+    "snippet": "Church & Dwight global supplier quality manual for The Flavor Factory Norco facility. TFF team download — password required.",
+    "href": "/booklet/documents/global-supplier-quality-manual-norco-june-2026.docx",
+    "badge": "internal"
   }
 ]

@@ -18,7 +18,8 @@ const PROTECTED = new Set([
   "/therabreath",
   "/search-index.json",
   "/mystery-live",
-  "/score-live"
+  "/score-live",
+  "/booklet/documents/global-supplier-quality-manual-norco-june-2026.docx"
 ]);
 
 // Matches api/auth.js default HMAC for password TFF4321#
@@ -72,6 +73,7 @@ export const config = {
     "/therabreath",
     "/search-index.json",
     "/mystery-live",
-    "/score-live"
+    "/score-live",
+    "/booklet/documents/global-supplier-quality-manual-norco-june-2026.docx"
   ]
 };
