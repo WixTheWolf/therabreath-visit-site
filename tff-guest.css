@@ -239,7 +239,7 @@ body {
   .guest-schedule li { grid-template-columns: 1fr; gap: 4px; }
 }
 .guest-page-hub {
-  width: min(560px, calc(100vw - 32px));
+  width: min(720px, calc(100vw - 32px));
 }
 
 .guest-visual {

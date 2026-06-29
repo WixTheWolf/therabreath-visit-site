@@ -1,3 +1,5 @@
+@import url("/css/hero-showcase.css");
+
 /* TFF × TheraBreath — high-contrast clean theme (light pages only) */
 
 :root {
@@ -113,64 +115,7 @@ body.tff-warm .hub-lab {
   display: none;
 }
 
-/* Hero media — lineup + facility */
-.guest-hero-media {
-  display: grid;
-  gap: 14px;
-  margin: 0 0 22px;
-}
-
-.guest-lineup,
-.guest-facility,
-.boi-lineup,
-.boi-facility {
-  margin: 0;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--clean-line);
-  background: var(--clean-surface);
-  box-shadow: var(--clean-shadow-lg);
-}
-
-.guest-lineup img,
-.guest-facility img,
-.boi-lineup img,
-.boi-facility img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.guest-lineup img,
-.boi-lineup img {
-  aspect-ratio: 16 / 9;
-  object-position: center 42%;
-}
-
-.guest-facility img,
-.boi-facility img {
-  aspect-ratio: 4 / 3;
-  object-position: center center;
-}
-
-.guest-lineup figcaption,
-.guest-facility figcaption,
-.boi-lineup figcaption,
-.boi-facility figcaption {
-  margin: 0;
-  padding: 11px 14px;
-  font-family: "Sora", sans-serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--clean-muted);
-  text-align: center;
-  background: var(--clean-surface);
-  border-top: 1px solid var(--clean-line);
-}
-
-/* Floating bottle decor — edges only, very subtle */
+/* Floating bottle decor — skip when hero showcase is present */
 .tff-decor {
   position: fixed;
   inset: 0;

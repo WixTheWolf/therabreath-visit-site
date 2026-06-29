@@ -1,5 +1,5 @@
 (function (global) {
-  var CSS_HREF = "/css/tff-warm.css?v=3";
+  var CSS_HREF = "/css/tff-warm.css?v=4";
   var BOTTLES = [
     "clean-mint",
     "revitalizing-mint",
@@ -35,6 +35,7 @@
 
   function shouldScatter() {
     if (!isLightThemePage()) return false;
+    if (document.querySelector(".guest-hero-stage")) return false;
     if (global.matchMedia("(max-width: 520px)").matches) return false;
     return !!(document.querySelector(".guest-page, .hub-main"));
   }
