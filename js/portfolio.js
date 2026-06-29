@@ -7,8 +7,8 @@
   var COL_GRID = {
     production: "port-mosaic--4",
     presented: "port-mosaic--3",
-    pipeline: "port-mosaic--5 port-mosaic--pipeline",
-    genalpha: "port-mosaic--5"
+    pipeline: "port-mosaic--4 port-mosaic--pipeline",
+    genalpha: "port-mosaic--4"
   };
 
   var chapters = document.getElementById("port-chapters");
@@ -118,7 +118,10 @@
     var btn = document.createElement("button");
     var isProd = c.collection === "production";
     btn.type = "button";
-    btn.className = "port-card" + (data.hasImage(c) ? "" : " port-card--sku") + (isProd ? " port-card--production" : "");
+    btn.className =
+      "port-card" +
+      (data.hasImage(c) ? "" : " port-card--sku") +
+      (isProd ? " port-card--production" : " port-card--concept");
     btn.dataset.slug = c.slug;
     btn.dataset.collection = c.collection;
     btn.setAttribute("aria-label", "View " + c.name);

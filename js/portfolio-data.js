@@ -349,7 +349,7 @@
       if (c.collection === "production") {
         return "/assets/portfolio/production/" + PRODUCTION_BOTTLES[c.slug] + "?v=2";
       }
-      return "/assets/portfolio/" + c.slug + ".jpg?v=8";
+      return "/assets/portfolio/" + c.slug + ".jpg?v=9";
     }
   };
 })(typeof window !== "undefined" ? window : global);
