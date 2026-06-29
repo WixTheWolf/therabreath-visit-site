@@ -18,12 +18,15 @@
     wrap.className = "guest-hero-bottles";
     wrap.setAttribute("aria-hidden", "true");
     BOTTLES.forEach(function (slug) {
+      var slot = document.createElement("span");
+      slot.className = "guest-hero-bottle";
       var img = document.createElement("img");
-      img.src = "/assets/bottles/" + slug + ".png?v=4";
+      img.src = "/assets/bottles/" + slug + ".png?v=5";
       img.alt = "";
       img.loading = "eager";
       img.decoding = "async";
-      wrap.appendChild(img);
+      slot.appendChild(img);
+      wrap.appendChild(slot);
     });
     var tank = stage.querySelector(".guest-hero-tank");
     if (tank) {
