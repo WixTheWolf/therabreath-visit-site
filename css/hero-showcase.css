@@ -1,39 +1,79 @@
-/* Hero showcase — clean bottle lineup + production room */
+/* Hero showcase — floating bottle arc + production room */
 
 .guest-hero-stage {
+  width: 100%;
+  max-width: 960px;
+  margin: clamp(24px, 4vw, 40px) auto clamp(28px, 5vw, 48px);
+  padding: 0;
+}
+
+.guest-hero-bottles {
   position: relative;
-  width: min(880px, calc(100vw - 24px));
-  margin: 0 auto 32px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(4px, 1.1vw, 16px);
+  min-height: clamp(140px, 28vw, 220px);
+  padding: clamp(28px, 5vw, 48px) clamp(8px, 2vw, 16px) clamp(16px, 3vw, 28px);
 }
 
-.guest-hero-lineup-stage {
+.guest-hero-bottles::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  width: min(640px, 92%);
+  height: 56px;
+  background: radial-gradient(ellipse at center, rgba(0, 143, 211, 0.35), transparent 68%);
+  filter: blur(22px);
+  pointer-events: none;
+}
+
+.guest-hero-bottles img {
   position: relative;
-  width: 100%;
-  padding: clamp(16px, 3vw, 28px) clamp(10px, 2vw, 20px) clamp(10px, 2vw, 16px);
-  border-radius: 20px;
-  background: #ffffff;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+  width: clamp(42px, 7.8vw, 84px);
+  height: auto;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.38));
+  transform: translateY(var(--drop, 0)) rotate(var(--rot, 0deg));
+  animation: hero-bottle-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--delay, 0s);
 }
 
-.guest-hero-lineup {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
+.guest-hero-bottles img:nth-child(1)  { --drop: 18px; --rot: -7deg;  --delay: 0.04s; }
+.guest-hero-bottles img:nth-child(2)  { --drop: 10px; --rot: -4deg;  --delay: 0.08s; }
+.guest-hero-bottles img:nth-child(3)  { --drop: 4px;  --rot: -2deg;  --delay: 0.12s; }
+.guest-hero-bottles img:nth-child(4)  { --drop: 0;    --rot: 0deg;   --delay: 0.16s; }
+.guest-hero-bottles img:nth-child(5)  { --drop: 0;    --rot: 1deg;   --delay: 0.20s; }
+.guest-hero-bottles img:nth-child(6)  { --drop: 2px;  --rot: 2deg;   --delay: 0.24s; }
+.guest-hero-bottles img:nth-child(7)  { --drop: 6px;  --rot: 4deg;   --delay: 0.28s; }
+.guest-hero-bottles img:nth-child(8)  { --drop: 12px; --rot: 6deg;   --delay: 0.32s; }
+.guest-hero-bottles img:nth-child(9)  { --drop: 16px; --rot: 8deg;   --delay: 0.36s; }
+.guest-hero-bottles img:nth-child(10) { --drop: 20px; --rot: 10deg;  --delay: 0.40s; }
+
+@keyframes hero-bottle-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--drop, 0) + 28px)) rotate(var(--rot, 0deg)) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(var(--drop, 0)) rotate(var(--rot, 0deg)) scale(1);
+  }
 }
 
 .guest-hero-tank {
-  width: min(200px, 44vw);
-  margin: 0;
+  width: min(300px, 72vw);
+  margin: clamp(20px, 4vw, 32px) auto 0;
   padding: 0;
   border: 0;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .guest-hero-tank img {
@@ -42,52 +82,46 @@
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  object-position: center 18%;
-}
-
-/* Dark workshop pages — white stage makes cutout bottles pop */
-body:not(.tff-warm) .guest-hero-stage {
-  margin-top: 8px;
-}
-
-body:not(.tff-warm) .guest-hero-lineup-stage {
-  background: #ffffff;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.06);
-}
-
-body:not(.tff-warm) .guest-hero-tank {
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.12);
+  object-position: center 16%;
 }
 
 /* Light guest / hub pages */
-body.tff-warm .guest-hero-lineup-stage {
-  border: 1px solid rgba(0, 0, 0, 0.06);
+body.tff-warm .guest-hero-bottles::before {
+  background: radial-gradient(ellipse at center, rgba(0, 102, 204, 0.14), transparent 68%);
 }
 
-.boi-hero .guest-hero-stage,
-.hub-hero .guest-hero-stage {
-  width: min(900px, calc(100vw - 32px));
+body.tff-warm .guest-hero-bottles img {
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.14));
 }
 
-@media (min-width: 720px) {
-  .guest-hero-stage {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 24px;
+body.tff-warm .guest-hero-tank {
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.boi-hero .guest-hero-stage {
+  max-width: 100%;
+}
+
+@media (max-width: 520px) {
+  .guest-hero-bottles {
+    gap: 2px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  .guest-hero-lineup-stage {
-    flex: 1 1 auto;
-    min-width: 0;
+  .guest-hero-bottles img {
+    width: clamp(34px, 8.8vw, 48px);
   }
 
-  .guest-hero-tank {
-    flex: 0 0 min(220px, 26%);
-    width: min(220px, 26%);
+  .guest-hero-bottles img:nth-child(n+9) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guest-hero-bottles img {
+    animation: none;
   }
 }
