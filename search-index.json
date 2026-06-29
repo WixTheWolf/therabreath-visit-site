@@ -99,7 +99,7 @@
     "type": "answer",
     "category": "Pillar 2 · Innovation",
     "q": "Can you do vanilla in a sodium chlorite rinse?",
-    "snippet": "Yes — with the right architecture, not raw vanillin. Matt's internal strategy: low-vanillin natural vanilla complexes, antioxidant shielding (tocopherols + micro-dose rosemary oleoresin in oil phase),",
+    "snippet": "Yes — with the right architecture, not raw vanillin. TFF approach: low-vanillin natural vanilla complexes, antioxidant shielding (tocopherols + micro-dose rosemary oleoresin in oil phase),",
     "href": "/answers",
     "badge": "ready"
   },
@@ -658,7 +658,7 @@
   {
     "type": "answer",
     "category": "Day-of",
-    "q": "Where does Matt see mystery guesses live during the tasting?",
+    "q": "Where does the host see mystery guesses live during the tasting?",
     "snippet": "Team password → /mystery-live — polls every 2.5s, shows name and cup-by-cup guesses, CSV export, optional ntfy phone alerts on TFF_NTFY_TOPIC.",
     "href": "/mystery-live",
     "badge": "ready"
@@ -674,7 +674,7 @@
   {
     "type": "answer",
     "category": "Day-of",
-    "q": "Where does Matt see the live sensory summary from all phones?",
+    "q": "Where does the host see the live sensory summary from all phones?",
     "snippet": "Team password → /score-live — live sensory summary, room aggregate, per-rater detail, CSV export. Guests on /score sync automatically; aggregate also shows on their phones.",
     "href": "/score-live",
     "badge": "ready"
