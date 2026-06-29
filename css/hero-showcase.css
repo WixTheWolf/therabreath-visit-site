@@ -36,6 +36,9 @@
   width: clamp(42px, 7.8vw, 84px);
   height: auto;
   flex: 0 0 auto;
+  /* Preserve opaque label whites — no blend modes */
+  opacity: 1;
+  mix-blend-mode: normal;
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.38));
   transform: translateY(var(--drop, 0)) rotate(var(--rot, 0deg));
   animation: hero-bottle-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;

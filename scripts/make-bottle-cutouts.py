@@ -25,7 +25,7 @@ BOTTLES = {
 }
 
 
-def flood_background_mask(rgb: Image.Image, threshold: int = 248, tolerance: int = 22) -> list[list[bool]]:
+def flood_background_mask(rgb: Image.Image, threshold: int = 248, tolerance: int = 18) -> list[list[bool]]:
     """Mark pixels connected to image edges that match near-white studio bg."""
     w, h = rgb.size
     px = rgb.load()
@@ -35,7 +35,10 @@ def flood_background_mask(rgb: Image.Image, threshold: int = 248, tolerance: int
 
     def light_enough(x: int, y: int) -> bool:
         r, g, b = px[x, y]
-        return min(r, g, b) >= threshold - tolerance
+        if min(r, g, b) < threshold - tolerance:
+            return False
+        # Ignore saturated label/product pixels even if bright
+        return max(r, g, b) - min(r, g, b) < 28
 
     for x in range(w):
         q.append((x, 0))
@@ -52,12 +55,16 @@ def flood_background_mask(rgb: Image.Image, threshold: int = 248, tolerance: int
         if not light_enough(x, y):
             continue
         bg[y][x] = True
-        q.append((x + 1, y))
-        q.append((x - 1, y))
-        q.append((x, y + 1))
-        q.append((x, y - 1))
+        q.extend([(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)])
 
     return bg
+
+
+def is_studio_edge_pixel(r: int, g: int, b: int) -> bool:
+    """Only feather neutral studio-white fringe pixels, never label whites."""
+    m = min(r, g, b)
+    spread = max(r, g, b) - m
+    return m >= 238 and spread <= 12
 
 
 def cutout_bottle(img: Image.Image, threshold: int = 248) -> Image.Image:
@@ -74,16 +81,15 @@ def cutout_bottle(img: Image.Image, threshold: int = 248) -> Image.Image:
                 continue
             r, g, b = px_rgb[x, y]
             alpha = 255
-            # Feather edge pixels touching background for clean anti-alias
-            if (
+            touches_bg = (
                 (x > 0 and bg[y][x - 1])
                 or (x < w - 1 and bg[y][x + 1])
                 or (y > 0 and bg[y - 1][x])
                 or (y < h - 1 and bg[y + 1][x])
-            ):
+            )
+            if touches_bg and is_studio_edge_pixel(r, g, b):
                 lightness = min(r, g, b)
-                if lightness > threshold - 40:
-                    alpha = int(max(0, min(255, (threshold - 30 - lightness) * 10)))
+                alpha = int(max(0, min(255, (252 - lightness) * 18)))
             px_out[x, y] = (r, g, b, alpha)
 
     return out
@@ -101,6 +107,13 @@ def trim_transparent(im: Image.Image, pad: int = 2) -> Image.Image:
     return im.crop((left, top, right, bottom))
 
 
+def resize_for_web(im: Image.Image, max_height: int = 520) -> Image.Image:
+    if im.height <= max_height:
+        return im
+    ratio = max_height / im.height
+    return im.resize((int(im.width * ratio), max_height), Image.LANCZOS)
+
+
 for slug, fname in BOTTLES.items():
     src = SRC / fname
     if not src.exists():
@@ -110,6 +123,7 @@ for slug, fname in BOTTLES.items():
     threshold = 245 if fname.endswith(".png") else 248
     out = cutout_bottle(im, threshold=threshold)
     out = trim_transparent(out)
+    out = resize_for_web(out)
     dest = OUT / f"{slug}.png"
     out.save(dest, optimize=True)
     print(dest.name, out.size)

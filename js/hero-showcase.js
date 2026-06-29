@@ -19,7 +19,7 @@
     wrap.setAttribute("aria-hidden", "true");
     BOTTLES.forEach(function (slug) {
       var img = document.createElement("img");
-      img.src = "/assets/bottles/" + slug + ".png?v=3";
+      img.src = "/assets/bottles/" + slug + ".png?v=4";
       img.alt = "";
       img.loading = "eager";
       img.decoding = "async";
