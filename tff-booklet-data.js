@@ -69,7 +69,7 @@
     { n: 14, ch: 4, title: "Seasonal rinse formulas", type: "pdf", file: "07-seasonal-rinse-formulas.pdf", desc: "Workshop-adjacent seasonal prototype notes." },
     { n: 15, ch: 4, title: "2025 seasonal concept sheet", type: "pdf", file: "08-seasonals-2025.pdf", desc: "Latest line-extension concepts under development." },
     { n: 16, ch: 4, title: "Antiseptic rinse reference", type: "pdf", file: "14-antiseptic-rinse-reference.pdf", desc: "Chlorite rinse chemistry context." },
-    { n: 17, ch: 4, title: "Chlorite flavor stability guide", type: "site", href: "/chlorite-flavor", desc: "How we build flavor inside sodium chlorite systems." },
+    { n: 17, ch: 4, title: "Chlorite flavor playbook", type: "site", href: "/chlorite-flavor-playbook", desc: "Team formulation guide for sodium chlorite systems." },
 
     { n: 18, ch: 5, title: "Sensory validation framework", type: "pdf", file: "09-sensory-validation-framework.pdf", desc: "Triangle, blind, and panel protocols with brand teams." },
     { n: 19, ch: 5, title: "Lakewood sensory validation · one-pager", type: "pdf", file: "10-lakewood-sensory-validation.pdf", desc: "Site parity program summary." },

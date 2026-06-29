@@ -64,7 +64,8 @@ window.SiteDirectory = {
       accent: "#0d9488",
       items: [
         { href: "/portfolio", title: "Flavor portfolio", desc: "Production SKUs · concepts · pipeline M1–M5 · Gen Alpha", path: "/portfolio", keywords: "flavors portfolio gallery skus mint", hot: true },
-        { href: "/chlorite-flavor", title: "Chlorite flavor science", desc: "OXYD-8 stability · compound classes · workshop strategy", path: "/chlorite-flavor", keywords: "chlorite oxyd8 sodium stability formulation" },
+        { href: "/chlorite-flavor", title: "Chlorite & flavor overview", desc: "Why OXYD-8 bases need a different flavor approach — guest summary", path: "/chlorite-flavor", keywords: "chlorite oxyd8 sodium stability overview" },
+        { href: "/chlorite-flavor-playbook", title: "Chlorite flavor playbook", desc: "Full formulation guide · stability protocols · team only", path: "/chlorite-flavor-playbook", keywords: "chlorite formulation playbook proprietary", internal: true },
         { href: "/intensity-tiers", title: "Listerine + GA-22131", desc: "Competitive intensity · garlic functional archive", path: "/intensity-tiers", keywords: "listerine garlic ga-22131 competitive mild", internal: true }
       ]
     },

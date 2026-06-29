@@ -282,8 +282,8 @@ window.BOI = {
         href: "/chlorite-flavor",
         accent: "#f58220",
         tag: "Science",
-        title: "Chlorite flavor solutions",
-        desc: "How TFF builds flavor inside OXYD-8 systems — stability tiers, compound classes, workshop strategy.",
+        title: "Chlorite & flavor overview",
+        desc: "Why OXYD-8 bases need a different flavor approach — guest summary.",
       },
       {
         href: "/therabreath-brand",
