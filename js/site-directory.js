@@ -4,7 +4,7 @@ window.SiteDirectory = {
     {
       id: "july8",
       title: "July 8 · Schedule & day-of",
-      desc: "Arrival, tour, lunch, Q&A — guest-facing visit flow",
+      desc: "Arrive 9:00 · tour · presentation 9:30 · tasting 10:30 · lunch · Q&A",
       accent: "#008fd3",
       items: [
         { href: "/", title: "Visit home", desc: "July 8 landing · schedule · quick links", path: "/", keywords: "agenda index home arrival" },
@@ -87,7 +87,7 @@ window.SiteDirectory = {
     {
       id: "print",
       title: "Print & room materials",
-      desc: "Handouts, QR sheet, signs before July 8",
+      desc: "Everything to print before July 8 — QR sheet, passport, signs, deck",
       accent: "#7c3aed",
       items: [
         { href: "/qr", title: "QR code print sheet", desc: "Hub · mapping · scorecard · passport links", path: "/qr", keywords: "qr print codes room display" },

@@ -184,16 +184,17 @@ body.dir-page.tff-warm {
 }
 
 body.dir-page.tff-warm .dir-hero {
-  background: linear-gradient(135deg, #0a1628 0%, #003d6b 55%, #004f87);
-  color: #fff;
+  background: #fff;
+  color: var(--clean-ink);
+  border-bottom-color: var(--clean-line);
 }
 
 body.dir-page.tff-warm .dir-hero-kicker {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--clean-blue);
 }
 
 body.dir-page.tff-warm .dir-hero p {
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--clean-muted);
 }
 
 body.dir-page.tff-warm .dir-section-label,

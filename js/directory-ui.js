@@ -25,12 +25,21 @@
     return item.href;
   }
 
+  function visibleItems(cluster, showInternal) {
+    return cluster.items.filter(function (item) {
+      return showInternal || !item.internal;
+    });
+  }
+
   function flattenItems(opts) {
     var showInternal = !opts || opts.showInternal !== false;
+    var dedupe = !opts || opts.dedupe !== false;
+    var seen = {};
     var list = [];
     DIR.clusters.forEach(function (cluster) {
-      cluster.items.forEach(function (item) {
-        if (item.internal && !showInternal) return;
+      visibleItems(cluster, showInternal).forEach(function (item) {
+        if (dedupe && item.href && seen[item.href]) return;
+        if (dedupe && item.href) seen[item.href] = true;
         list.push({
           cluster: cluster,
           item: item,
@@ -52,6 +61,19 @@
     return list;
   }
 
+  function countVisible(opts) {
+    var showInternal = opts && opts.showInternal;
+    var pages = 0;
+    var clusters = 0;
+    DIR.clusters.forEach(function (cluster) {
+      var items = visibleItems(cluster, showInternal);
+      if (!items.length) return;
+      clusters++;
+      pages += items.length;
+    });
+    return { pages: pages, clusters: clusters };
+  }
+
   function scoreMatch(blob, query) {
     var t = blob.toLowerCase();
     var words = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -71,10 +93,11 @@
 
     var html = DIR.clusters
       .map(function (cluster) {
-        var items = cluster.items.filter(function (item) {
-          return showInternal || !item.internal;
-        });
+        var items = visibleItems(cluster, showInternal);
         if (!items.length) return "";
+
+        var countBadge =
+          '<span class="dir-cluster-count">' + items.length + " page" + (items.length === 1 ? "" : "s") + "</span>";
 
         var cards = items
           .map(function (item) {
@@ -130,9 +153,12 @@
           cluster.accent +
           '">' +
           '<div class="dir-cluster-head">' +
+          '<div class="dir-cluster-title">' +
           "<h2>" +
           escapeHtml(cluster.title) +
           "</h2>" +
+          countBadge +
+          "</div>" +
           "<p>" +
           escapeHtml(cluster.desc) +
           "</p>" +
@@ -329,10 +355,94 @@
     });
   }
 
+  var HERO_PILLS = [
+    { href: "/present", title: "Presentation", guest: true },
+    { href: "/mystery", title: "Blind mapping", guest: true },
+    { href: "/score", title: "Scorecard", guest: true },
+    { href: "/portfolio", title: "Portfolio", guest: true },
+    { href: "/lakewood", title: "Lakewood", guest: true },
+    { href: "/toolkit", title: "Command center", internal: true },
+    { href: "/host", title: "Run-of-show", internal: true },
+    { href: "/answers", title: "Talk tracks", internal: true }
+  ];
+
+  function renderHeroMeta(statsId, pillsId, opts) {
+    var showInternal = opts && opts.showInternal;
+    var statsEl = document.getElementById(statsId);
+    var pillsEl = document.getElementById(pillsId);
+    var counts = countVisible({ showInternal: showInternal });
+
+    if (statsEl) {
+      statsEl.innerHTML =
+        '<span><strong>' +
+        counts.pages +
+        "</strong> pages</span>" +
+        '<span><strong>' +
+        counts.clusters +
+        "</strong> topics</span>" +
+        (showInternal ? '<span class="dir-stat-team">Team tools visible</span>' : "");
+    }
+
+    if (pillsEl) {
+      pillsEl.innerHTML = HERO_PILLS.filter(function (pill) {
+        return !pill.internal || showInternal;
+      })
+        .map(function (pill) {
+          var href = pill.internal && !isAuthed() ? "/gate?return=" + encodeURIComponent(pill.href) : pill.href;
+          return '<a href="' + href + '">' + escapeHtml(pill.title) + "</a>";
+        })
+        .join("");
+    }
+  }
+
+  function initJumpSpy(navId) {
+    var nav = document.getElementById(navId);
+    if (!nav || !global.IntersectionObserver) return;
+
+    var links = nav.querySelectorAll('a[href^="#"]');
+    if (!links.length) return;
+
+    var sections = [];
+    links.forEach(function (link) {
+      var id = link.getAttribute("href").slice(1);
+      var section = document.getElementById(id);
+      if (section) sections.push({ link: link, section: section });
+    });
+    if (!sections.length) return;
+
+    var active = null;
+    function setActive(link) {
+      if (active === link) return;
+      if (active) active.classList.remove("is-active");
+      active = link;
+      if (active) active.classList.add("is-active");
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var match = sections.find(function (row) {
+            return row.section === entry.target;
+          });
+          if (match) setActive(match.link);
+        });
+      },
+      { rootMargin: "-20% 0px -65% 0px", threshold: 0 }
+    );
+
+    sections.forEach(function (row) {
+      observer.observe(row.section);
+    });
+  }
+
   global.DirectoryUI = {
     renderClusters: renderClusters,
     renderJumpNav: renderJumpNav,
+    renderHeroMeta: renderHeroMeta,
     initSearch: initSearch,
-    flattenItems: flattenItems
+    initJumpSpy: initJumpSpy,
+    flattenItems: flattenItems,
+    countVisible: countVisible
   };
 })();

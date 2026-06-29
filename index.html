@@ -99,6 +99,11 @@
           showInternal: authed,
           includeIndex: authed
         });
+        var teamTopic = document.querySelector('.guest-topics a[href="/find#team-prep"]');
+        if (teamTopic && !authed) {
+          teamTopic.href = "/gate";
+          teamTopic.querySelector("span").textContent = "Sign in for talk tracks";
+        }
       });
     </script>
   </body>

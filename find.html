@@ -6,14 +6,17 @@
     <meta name="description" content="Find anything on the TheraBreath July 8 visit site — Lakewood, tasting, presentation, print materials, and TFF team tools." />
     <title>Find Anything · TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-shell.css" />
     <link rel="stylesheet" href="/css/directory.css" />
   </head>
   <body class="dir-page tff-warm">
     <header class="dir-hero">
       <div class="dir-hero-in">
-        <p class="dir-hero-kicker">Site directory</p>
+        <p class="dir-hero-kicker">Site directory · July 8, 2026</p>
         <h1>Find anything</h1>
-        <p>Every page grouped by topic — Lakewood together, tasting together, team tools together. Search pulls up pages and talk tracks during the meeting.</p>
+        <p id="dir-hero-desc">Every page grouped by topic — schedule, tasting, Lakewood, portfolio, and print materials in one place.</p>
+        <div class="dir-hero-stats" id="dir-stats" aria-live="polite"></div>
+        <nav class="dir-hero-pills" id="dir-pills" aria-label="Quick links"></nav>
       </div>
     </header>
 
@@ -32,7 +35,7 @@
         <p class="dir-jump-label">Jump to topic</p>
         <nav class="dir-jump" id="dir-jump"></nav>
         <p class="dir-team-note" id="dir-team-note">
-          <strong>TFF team:</strong> <a href="/gate">Sign in</a> to unlock talk tracks, run-of-show, and live admin tools in search.
+          <strong>TFF team:</strong> <a href="/gate">Sign in</a> to unlock talk tracks, run-of-show, and live admin tools.
         </p>
       </aside>
 
@@ -45,20 +48,33 @@
     <script>
       (function () {
         var authed = window.TFF && TFF.isAuthed && TFF.isAuthed();
-        DirectoryUI.renderJumpNav("dir-jump", { showInternal: true });
-        DirectoryUI.renderClusters("dir-clusters", { showInternal: true });
+        var opts = { showInternal: authed };
+
+        DirectoryUI.renderJumpNav("dir-jump", opts);
+        DirectoryUI.renderClusters("dir-clusters", opts);
+        DirectoryUI.renderHeroMeta("dir-stats", "dir-pills", opts);
         DirectoryUI.initSearch("dir-search", "dir-search-results", {
-          showInternal: true,
+          showInternal: authed,
           includeIndex: authed
         });
+        DirectoryUI.initJumpSpy("dir-jump");
+
+        var desc = document.getElementById("dir-hero-desc");
+        if (desc && authed) {
+          desc.textContent =
+            "Every page grouped by topic — search also pulls talk tracks during the meeting.";
+        }
+
         var note = document.getElementById("dir-team-note");
         if (note && authed) {
+          note.classList.add("is-authed");
           note.innerHTML =
-            '<strong>Signed in.</strong> Search includes talk tracks. <a href="/toolkit">Command center</a> · <a href="/host">Run-of-show</a>';
+            '<strong>Signed in.</strong> Talk tracks in search. <a href="/toolkit">Command center</a> · <a href="/host">Run-of-show</a>';
         }
+
         if (location.hash) {
           var t = document.querySelector(location.hash);
-          if (t) setTimeout(function () { t.scrollIntoView({ behavior: "smooth", block: "start" }); }, 120);
+          if (t) setTimeout(function () { t.scrollIntoView({ behavior: "smooth", block: "start" }); }, 200);
         }
       })();
     </script>
