@@ -1,6 +1,9 @@
 {
   "name": "therabreath-visit-site",
   "private": true,
+  "scripts": {
+    "build:pdfs": "python3 _build-email-pdf.py && python3 _build-partnership-pdf.py && python3 _build-suggested-agenda-pdf.py && python3 _build-presentation-pdf.py"
+  },
   "dependencies": {
     "@vercel/kv": "^3.0.0"
   }

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="TheraBreath × TFF welcome booklet — numbered index, chapters, and every document for the July 8, 2026 Norco visit." />
+    <meta name="description" content="TheraBreath × TFF July 8 visit packet — suggested agenda, discussion prep, and indexed materials for the Norco capabilities workshop." />
     <meta name="theme-color" content="#0a1628" />
-    <title>Welcome Booklet | TFF × TheraBreath · July 8</title>
+    <title>July 8 Visit Packet | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
     <style>
@@ -419,6 +419,36 @@
         color: var(--muted);
       }
 
+      .strat-list { margin: 0; }
+      .strat-row {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        align-items: start;
+      }
+      .strat-row:last-child { border-bottom: none; }
+      .strat-num {
+        font-family: "Sora", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: #6c5ce7;
+      }
+      .strat-q {
+        margin: 0 0 4px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      .strat-why {
+        margin: 0;
+        font-size: 0.68rem;
+        line-height: 1.4;
+        color: var(--muted);
+      }
+
       /* Digital browse (screen only) */
       .digital {
         width: min(920px, calc(100vw - 32px));
@@ -580,10 +610,10 @@
   </head>
   <body>
     <div class="toolbar">
-      <span><strong>Welcome booklet</strong> · 35 items · 7 chapters · scroll or jump below</span>
+      <span id="toolbar-meta"><strong>July 8 visit packet</strong> · scroll or jump below</span>
       <div>
+        <a href="/prepare">Meeting prep</a>
         <a href="#digital-view">Quick jump</a>
-        <a href="/workshop">Workshop</a>
         <a href="/mystery">Blind Flavor Mapping</a>
         <button type="button" class="primary" onclick="window.print()">Print</button>
       </div>
@@ -595,13 +625,14 @@
       <div class="digital-hero">
         <p style="margin:0 0 8px;font-size:0.65rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;opacity:0.75">July 8, 2026 · Norco</p>
         <h1>Quick jump · numbered index</h1>
-        <p>Scroll the booklet pages above, or tap any item below by number.</p>
+        <p>Scroll the packet pages above, or open any item below by number. Start with <a href="/prepare" style="color:#fff;font-weight:700">meeting prep</a> for the suggested agenda and discussion topics.</p>
       </div>
       <nav class="jump-bar" id="jump-bar"></nav>
       <div id="digital-sections"></div>
     </div>
 
     <script src="/tff-team.js"></script>
+    <script src="/js/content.js"></script>
     <script src="/tff-booklet-data.js"></script>
     <script>
       var B = window.TFFBooklet;
@@ -613,7 +644,7 @@
       }
 
       function foot(label) {
-        return '<footer class="page-foot"><span>TFF × TheraBreath · Confidential</span><span class="pg">' + label + '</span></footer>';
+        return '<footer class="page-foot"><span>Prepared for Church &amp; Dwight / TheraBreath</span><span class="pg">' + label + '</span></footer>';
       }
 
       function buildCover() {
@@ -623,8 +654,8 @@
           '<div class="cover-top">' +
           '<div class="cover-mark">TFF</div>' +
           '<p class="cover-kicker">July 8, 2026 · Norco, California</p>' +
-          '<h1 class="cover-title">Welcome Booklet</h1>' +
-          '<p class="cover-sub"><strong>Breath of Innovation</strong> — a capabilities workshop for TheraBreath R&amp;D and procurement. Everything you need is indexed by number in the following pages.</p>' +
+          '<h1 class="cover-title">July 8 Visit Packet</h1>' +
+          '<p class="cover-sub"><strong>Breath of Innovation</strong> — a capabilities workshop for TheraBreath R&amp;D and procurement. Use this index to find the agenda, discussion materials, and live tools for your visit. All times are suggested.</p>' +
           '<div class="cover-partners"><span>The Flavor Factory</span><i></i><span>TheraBreath</span></div>' +
           '</div>' +
           '<div class="cover-bottom">' +
@@ -650,20 +681,22 @@
           var desc = h.desc ? '<p class="host-desc">' + h.desc + "</p>" : "";
           return '<div class="host"><b>' + h.name + '</b><span>' + h.role + "</span>" + desc + "</div>";
         }).join("");
+        var lastNum = String(B.items.length).padStart(2, "0");
         return (
           '<section class="page">' +
-          '<p class="kicker">How to use this booklet</p>' +
-          '<h2>Welcome to Norco</h2>' +
-          '<p class="lead">Thank you for visiting The Flavor Factory. This is a <strong>capabilities workshop</strong> for your team — facility tour at 9:00, presentation at 9:30, tasting, lunch, and open Q&amp;A. Use the <strong>numbered index</strong> to find documents quickly. PDFs are in your binder; live tools are on your phone via QR codes.</p>' +
+          '<p class="kicker">How to use this packet</p>' +
+          '<h2>What to expect July 8</h2>' +
+          '<p class="lead">This is a <strong>capabilities workshop</strong> — not a sales presentation. Your R&amp;D and procurement colleagues asked for a working review of resiliency, innovation, operations, and partnership, plus directional tasting on five mint platforms (M1–M5). Facility tour at 9:00, presentation at 9:30, tasting at 10:30, lunch off site, then open Q&amp;A.</p>' +
+          '<p class="lead" style="margin-top:-8px">Start with <strong>item 03 · meeting prep</strong> and <strong>item 04 · ten questions</strong> so your team can prepare before arrival. Use the numbered index to jump to PDFs or live site tools.</p>' +
           '<div class="how-grid">' +
-          '<div class="how-card"><b>Find by number</b><p>Every item is numbered <strong>01–35</strong>. Reference the number in meetings — e.g. “see item 11, formula portfolio.”</p></div>' +
-          '<div class="how-card"><b>Seven chapters</b><p>Grouped by topic: partnership, today’s visit, operations, innovation, sensory, quality, and live tools.</p></div>' +
-          '<div class="how-card"><b>Phone + binder</b><p>Scan the cover QR for the digital index. Printed PDFs sit behind each chapter tab.</p></div>' +
-          '<div class="how-card"><b>Questions anytime</b><p>Dan, Alex, Ryan, and Matt are your July 8 hosts — see below. No question is off limits for a capabilities review.</p></div>' +
+          '<div class="how-card"><b>Find by number</b><p>Every item is numbered <strong>01–' + lastNum + '</strong>. Reference numbers in the room — e.g. “see item 16, Lakewood parity.”</p></div>' +
+          '<div class="how-card"><b>Seven chapters</b><p>Partnership &amp; prep, schedule, operations, innovation, sensory, quality docs, and live tasting tools.</p></div>' +
+          '<div class="how-card"><b>Phone + print</b><p>Scan the cover QR for this digital index. PDFs open in a new tab; live tools run on your phone at 10:30.</p></div>' +
+          '<div class="how-card"><b>Come with questions</b><p>Technical, operational, and partnership topics are welcome throughout. Dan, Alex, Ryan, and Matt are your July 8 hosts.</p></div>' +
           '</div>' +
           '<p class="kicker" style="margin-top:8px">Your hosts</p>' +
           '<div class="hosts">' + hosts + '</div>' +
-          foot("Welcome · " + nextPage()) +
+          foot("Overview · " + nextPage()) +
           '</section>'
         );
       }
@@ -674,13 +707,47 @@
         }).join("");
         return (
           '<section class="page">' +
-          '<p class="kicker">Chapter 2 preview</p>' +
-          '<h2>Your morning at a glance</h2>' +
+          '<p class="kicker">Suggested schedule</p>' +
+          '<h2>Your day in Norco</h2>' +
           '<table class="agenda"><thead><tr><th>Time</th><th>Block</th></tr></thead><tbody>' + rows + '</tbody></table>' +
-          '<p class="lead" style="margin-top:16px;font-size:0.78rem">Arrive 9:00 AM · presentation 9:30 AM · lunch off site 11:30–1:00 · open Q&amp;A after 1:00 PM. Guest site: <strong>therabreath-visit-site.vercel.app</strong></p>' +
+          '<p class="lead" style="margin-top:16px;font-size:0.78rem">Times adjust in the room to match your pace. Full agenda and discussion topics: <strong>therabreath-visit-site.vercel.app/prepare</strong></p>' +
           foot("Agenda · " + nextPage()) +
           '</section>'
         );
+      }
+
+      function buildStrategicQuestionsPages() {
+        if (!window.BOI || !BOI.strategicQuestions || !BOI.strategicQuestions.length) return "";
+        var halves = [BOI.strategicQuestions.slice(0, 5), BOI.strategicQuestions.slice(5, 10)];
+        return halves.map(function (chunk, pageIndex) {
+          var rows = chunk.map(function (item) {
+            return (
+              '<div class="strat-row">' +
+              '<span class="strat-num">' + item.num + "</span>" +
+              '<div><p class="strat-q">' + item.question + "</p>" +
+              '<p class="strat-why">' + item.why + "</p></div></div>"
+            );
+          }).join("");
+          return (
+            '<section class="page">' +
+            '<p class="kicker">Item 04 · partnership prep</p>' +
+            '<h2>10 questions for your team' + (pageIndex ? " (continued)" : "") + "</h2>" +
+            (pageIndex === 0
+              ? '<p class="lead">We plan to ask these during the presentation or open Q&amp;A. Honest answers help us align capacity, innovation, and partnership.</p>'
+              : "") +
+            '<div class="strat-list">' + rows + "</div>" +
+            (pageIndex === 1
+              ? '<p class="lead" style="margin-top:14px;font-size:0.74rem">Full list online: <strong>therabreath-visit-site.vercel.app/prepare#strategic-questions</strong></p>'
+              : "") +
+            foot("Questions · " + (pageIndex + 1) + " of 2 · " + nextPage()) +
+            "</section>"
+          );
+        }).join("");
+      }
+
+      function itemLabel(href, fallback) {
+        var match = B.items.filter(function (it) { return it.href === href; })[0];
+        return match ? String(match.n).padStart(2, "0") : fallback;
       }
 
       function chapterBlock(ch) {
@@ -711,7 +778,7 @@
             '<section class="page">' +
             '<div class="index-head">' +
             '<h2>Index · ' + (i + 1) + " of " + parts.length + '</h2>' +
-            '<span>Items 01–35 · find by number</span></div>' +
+            '<span>Items 01–' + String(B.items.length).padStart(2, "0") + ' · find by number</span></div>' +
             part +
             foot("Index · " + nextPage()) +
             '</section>'
@@ -749,17 +816,16 @@
           '<h2>Scan on your phone</h2>' +
           '<p class="lead">Use these during the 10:30 tasting block. Blind Flavor Mapping first, then Prototype Scorecard after reveals.</p>' +
           '<div class="qr-grid">' +
-          '<div class="qr-cell"><img src="/assets/qr/booklet-sm.png" alt="" width="80" height="80" /><b>01 Booklet</b><code>/booklet</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/visit-sm.png" alt="" width="80" height="80" /><b>02 Visit guide</b><code>/visit</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/site-sm.png" alt="" width="80" height="80" /><b>03 Workshop</b><code>/workshop</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/mystery-sm.png" alt="" width="80" height="80" /><b>31 Blind Flavor Mapping</b><code>/mystery</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/score-sm.png" alt="" width="80" height="80" /><b>32 Score</b><code>/score</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/passport-sm.png" alt="" width="80" height="80" /><b>05 Passport</b><code>/passport</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/companies-sm.png" alt="" width="80" height="80" /><b>Companies</b><code>/companies</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/booklet-sm.png" alt="" width="80" height="80" /><b>Packet index</b><code>/booklet</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/visit-sm.png" alt="" width="80" height="80" /><b>Meeting prep</b><code>/prepare</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/site-sm.png" alt="" width="80" height="80" /><b>Day-of hub</b><code>/visit</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/mystery-sm.png" alt="" width="80" height="80" /><b>' + itemLabel("/mystery", "28") + ' Blind mapping</b><code>/mystery</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/score-sm.png" alt="" width="80" height="80" /><b>' + itemLabel("/score", "29") + ' Scorecard</b><code>/score</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/passport-sm.png" alt="" width="80" height="80" /><b>' + itemLabel("/passport", "07") + ' Passport</b><code>/passport</code></div>' +
           '</div>' +
           '<p style="margin-top:24px;font-size:0.72rem;color:var(--muted);line-height:1.55">' +
           '<strong>The Flavor Factory</strong> · 2058 Second Street, Norco, CA 92860 · (951) 273-9877<br />' +
-          'Prepared for Church &amp; Dwight / TheraBreath · July 8, 2026 · Confidential</p>' +
+          'Prepared for Church &amp; Dwight / TheraBreath · July 8, 2026</p>' +
           foot("QR reference · " + nextPage()) +
           '</section>'
         );
@@ -795,11 +861,17 @@
         buildCover() +
         buildWelcome() +
         buildAgendaPage() +
+        buildStrategicQuestionsPages() +
         buildIndexPages() +
         buildChapterPages() +
         buildQrPage();
 
       buildDigital();
+
+      var meta = document.getElementById("toolbar-meta");
+      if (meta) {
+        meta.innerHTML = "<strong>July 8 visit packet</strong> · " + B.items.length + " items · " + B.chapters.length + " chapters · scroll or jump below";
+      }
     </script>
     <script src="/tff-shell.js" defer></script>
   </body>

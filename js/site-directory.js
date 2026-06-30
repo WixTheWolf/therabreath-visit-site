@@ -10,6 +10,8 @@ window.SiteDirectory = {
         { href: "/", title: "Visit home", desc: "July 8 landing · schedule · quick links", path: "/", keywords: "agenda index home arrival" },
         { href: "/visit", title: "Breath of Innovation hub", desc: "Day-of timeline · pillars · deep dives", path: "/visit", keywords: "schedule your day boi" },
         { href: "/brief", title: "Pre-visit brief", desc: "What to expect · how to prepare", path: "/brief", keywords: "prepare before arrive" },
+        { href: "/prepare", title: "July 8 meeting prep", desc: "Suggested agenda · discussion highlights · email link", path: "/prepare", keywords: "prepare agenda discussion highlights meeting email july 8", hot: true },
+        { href: "/email", title: "Email packet", desc: "Download PDF · copy email text · send to TheraBreath team", path: "/email", keywords: "email pdf packet send attach download", hot: true },
         { href: "/tour", title: "Facility tour map", desc: "9:00 AM walk-through · 2058 Second Street", path: "/tour", keywords: "tour production qc", internal: true },
         { href: "/passport", title: "Visitor passport", desc: "Pocket follow-along for guests", path: "/passport", keywords: "passport handout print" },
         { href: "/booklet/documents/suggested-agenda-therabreath.docx", title: "Suggested agenda (Word)", desc: "Bullet schedule for calendar invites", path: "docx", keywords: "agenda word download", external: true }
@@ -78,7 +80,7 @@ window.SiteDirectory = {
         { href: "/companies", title: "Company hub", desc: "TFF + TheraBreath profiles side by side", path: "/companies", keywords: "companies partnership profiles" },
         { href: "/flavor-factory", title: "The Flavor Factory", desc: "Norco capabilities · certifications", path: "/flavor-factory", keywords: "tff flavor factory norco supplier" },
         { href: "/therabreath-brand", title: "TheraBreath brand hub", desc: "OXYD-8 · categories · bottle lineup", path: "/therabreath-brand", keywords: "therabreath brand products oxyd8" },
-        { href: "/booklet", title: "Welcome booklet", desc: "Numbered PDF index · partnership · COAs", path: "/booklet", keywords: "booklet welcome binder pdf documents" },
+        { href: "/booklet", title: "July 8 visit packet", desc: "Numbered index · agenda · qualification docs", path: "/booklet", keywords: "booklet packet binder pdf documents visit" },
         { href: "/onepager", title: "Executive one-pager", desc: "Procurement leave-behind summary", path: "/onepager", keywords: "onepager executive procurement summary" },
         { href: "/partnership", title: "Partnership brief", desc: "Relationship · portfolio · qualification threads", path: "/partnership", keywords: "partnership church dwight cd", internal: true },
         { href: "/therabreath", title: "TheraBreath file index", desc: "Flavor codes · qualification map", path: "/therabreath", keywords: "customer file codes qualification", internal: true }
