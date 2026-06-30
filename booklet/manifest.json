@@ -1,5 +1,14 @@
 [
   {
+    "id": "email-packet",
+    "title": "July 8 email packet · PDF",
+    "section": "welcome",
+    "audience": "guest",
+    "name": "july-8-email-packet.pdf",
+    "desc": "Four-page PDF for email — agenda, 10 questions, site links.",
+    "file": "july-8-email-packet.pdf"
+  },
+  {
     "id": "together-we-win",
     "title": "Partnership overview",
     "section": "welcome",
