@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en" data-tff-shell="off">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Prepare for the July 8, 2026 Breath of Innovation workshop — suggested agenda, discussion highlights, and what to expect at TFF Norco." />
+    <meta property="og:title" content="July 8 Meeting Prep · TFF × TheraBreath" />
+    <meta property="og:description" content="Suggested times, discussion highlights, and how to prepare for your July 8 visit in Norco." />
+    <meta property="og:image" content="https://therabreath-visit-site.vercel.app/assets/og-share.svg" />
+    <meta name="theme-color" content="#0a1628" />
+    <title>July 8 Meeting Prep | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-guest.css" />
+    <style>
+      .guest-page--prepare { width: min(640px, calc(100vw - 32px)); }
+      .guest-lead {
+        margin: 0 0 20px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .guest-note {
+        margin: 0 0 22px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: #f0f9fd;
+        border: 1px solid rgba(0, 143, 211, 0.2);
+        font-size: 0.82rem;
+        line-height: 1.5;
+        color: var(--ink);
+      }
+      .guest-note em { font-style: normal; color: var(--muted); }
+      .guest-list {
+        margin: 0 0 22px;
+        padding: 0;
+        list-style: none;
+      }
+      .guest-list li {
+        position: relative;
+        padding: 0 0 10px 16px;
+        font-size: 0.84rem;
+        line-height: 1.5;
+        color: var(--ink);
+      }
+      .guest-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--blue);
+      }
+      .guest-list li:last-child { padding-bottom: 0; }
+      .guest-list.muted li { color: var(--muted); }
+      .guest-topic {
+        margin-bottom: 20px;
+        padding: 16px 18px;
+        border-radius: 14px;
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+      .guest-topic h3 {
+        margin: 0 0 4px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .guest-topic .guest-topic-meta {
+        margin: 0 0 10px;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      .guest-topic ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .guest-topic li {
+        position: relative;
+        padding: 0 0 8px 14px;
+        font-size: 0.8rem;
+        line-height: 1.45;
+        color: var(--ink);
+      }
+      .guest-topic li::before {
+        content: "·";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .guest-topic li:last-child { padding-bottom: 0; }
+      .guest-topic blockquote {
+        margin: 0 0 8px;
+        padding: 0 0 0 12px;
+        border-left: 2px solid rgba(0, 143, 211, 0.35);
+        font-size: 0.8rem;
+        font-style: italic;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .guest-pillars {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+      .guest-pillar {
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-left: 3px solid var(--pillar-color, var(--blue));
+      }
+      .guest-pillar b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.84rem;
+        margin-bottom: 4px;
+      }
+      .guest-pillar span {
+        font-size: 0.78rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .guest-agenda-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 22px;
+        font-size: 0.8rem;
+      }
+      .guest-agenda-table th,
+      .guest-agenda-table td {
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+        border: 1px solid var(--line);
+      }
+      .guest-agenda-table th {
+        background: #f8fafc;
+        font-family: "Sora", sans-serif;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .guest-agenda-table td:first-child {
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        color: #008fd3;
+        white-space: nowrap;
+        width: 1%;
+      }
+      .guest-agenda-table td:nth-child(2) b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.82rem;
+        margin-bottom: 2px;
+      }
+      .guest-agenda-table td:nth-child(3) {
+        color: var(--muted);
+        line-height: 1.4;
+      }
+      .guest-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 22px;
+      }
+      .guest-actions a, .guest-actions button {
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .guest-actions .primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+      .guest-actions .secondary { background: #0a1628; color: #fff; border-color: #0a1628; }
+      @media print {
+        .guest-nav, .guest-actions, .guest-foot a { display: none !important; }
+        body { background: #fff; }
+        .guest-page { width: 100%; padding: 0.4in; }
+        .guest-agenda-table { font-size: 9pt; }
+        .guest-topic { break-inside: avoid; }
+      }
+      @media (max-width: 520px) {
+        .guest-agenda-table thead { display: none; }
+        .guest-agenda-table tr {
+          display: block;
+          margin-bottom: 12px;
+          border: 1px solid var(--line);
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .guest-agenda-table td {
+          display: block;
+          border: none;
+          border-bottom: 1px solid var(--line);
+        }
+        .guest-agenda-table td:last-child { border-bottom: none; }
+        .guest-agenda-table td:first-child {
+          background: #f0f9fd;
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="guest-nav"></header>
+
+    <main class="guest-page guest-page--prepare">
+      <div class="guest-accent" aria-hidden="true"></div>
+      <p class="guest-kicker">TheraBreath team</p>
+      <h1>Prepare for July 8</h1>
+      <p class="guest-sub">Breath of Innovation · Tuesday, July 8, 2026 · Norco, CA</p>
+
+      <p class="guest-lead">
+        This page summarizes the <strong>suggested agenda</strong> and <strong>discussion highlights</strong> for your capabilities visit at The Flavor Factory. All times below are suggested — we will adjust in the room to match your team's pace and priorities.
+      </p>
+
+      <p class="guest-note">
+        <strong>What this day is:</strong> a working session with your R&amp;D and procurement colleagues — not a sales presentation. Bring your questions; we will show you how we operate and taste directional workshop prototypes together.
+      </p>
+
+      <p class="guest-label">Suggested schedule</p>
+      <table class="guest-agenda-table" aria-label="Suggested July 8 agenda">
+        <thead>
+          <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Session</th>
+            <th scope="col">Topics we can cover</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>9:00 AM</td>
+            <td><b>Arrive · check in</b></td>
+            <td>2058 Second Street · facility tour first · casual business attire · closed-toe shoes</td>
+          </tr>
+          <tr>
+            <td>9:00–9:25</td>
+            <td><b>Facility tour</b></td>
+            <td>Production, QC, TheraBreath room — single-site dev + manufacturing + quality</td>
+          </tr>
+          <tr>
+            <td>9:30–10:15</td>
+            <td><b>TFF presentation</b></td>
+            <td>Four pillars your team asked to see — resiliency, innovation, operations, partnership</td>
+          </tr>
+          <tr>
+            <td>10:15–10:30</td>
+            <td><b>Break</b></td>
+            <td>Reset before tasting</td>
+          </tr>
+          <tr>
+            <td>10:30–11:15</td>
+            <td><b>Tasting</b></td>
+            <td>Five workshop prototypes · blind flavor mapping · prototype scorecard</td>
+          </tr>
+          <tr>
+            <td>11:30–1:00</td>
+            <td><b>Lunch off site</b></td>
+            <td>Your hosts take the group · back by 1:00 PM</td>
+          </tr>
+          <tr>
+            <td>1:00 PM+</td>
+            <td><b>Open discussion &amp; Q&amp;A</b></td>
+            <td>Lakewood parity · procurement · growth · chlorite innovation · your pace</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="guest-label">Presentation · 9:30–10:15 · four pillars</p>
+      <div class="guest-pillars">
+        <div class="guest-pillar" style="--pillar-color:#008fd3">
+          <b>Resiliency</b>
+          <span>Capacity and continuity as volumes grow · redundancy if a supplier or equipment fails · certifications (SQF, GMP, FDA-registered facility)</span>
+        </div>
+        <div class="guest-pillar" style="--pillar-color:#5fb832">
+          <b>Innovation</b>
+          <span>Sodium chlorite flavor architecture · chlorite-stable prototypes · GA-22131 garlic functional thread · competitive intensity-tier read</span>
+        </div>
+        <div class="guest-pillar" style="--pillar-color:#f58220">
+          <b>Operations</b>
+          <span>Single-site traceability from sample through production · quality systems · supplier qualification documentation</span>
+        </div>
+        <div class="guest-pillar" style="--pillar-color:#0a1628">
+          <b>Partnership</b>
+          <span>Communication cadence · investment alignment · embedded support for Lakewood and future site transfers</span>
+        </div>
+      </div>
+
+      <p class="guest-label">Discussion highlights · from your email threads</p>
+      <p class="guest-lead" style="margin-top:-6px;font-size:0.82rem">
+        These themes come from conversations with Ross Conroy and Neonila Levitsky. We grouped them by topic — bring anything else that matters to your team.
+      </p>
+
+      <div class="guest-topic">
+        <h3>Lakewood site parity</h3>
+        <p class="guest-topic-meta">Ross Conroy · Jun 2026</p>
+        <ul>
+          <li>What validation plan do you propose for Lakewood mouthrinse production?</li>
+          <li>How to know if there is or is not a taste difference between sites (triangle test, ISO 4120)</li>
+          <li>If there is a difference — how to characterize it (blind paired profiling, flavor fingerprint)</li>
+          <li>Consumer validation methods for Tier-A SKUs (Icy Mint, Dazzling Mint, Sparkle Mint)</li>
+          <li>Support for eight variants on trial timeline (Icy/Mild/Rainforest → Sparkle mid-Sep)</li>
+          <li>Panel location, reference site per SKU, and sensory parity sign-off workflow</li>
+        </ul>
+      </div>
+
+      <div class="guest-topic">
+        <h3>Competitive calibration</h3>
+        <p class="guest-topic-meta">Ross &amp; Nelly · Feb–Mar 2026</p>
+        <blockquote>"This is being seen as a competitive threat… directed towards our core FRESH BREATH — MILD MINT variant" — Ross, Feb 6</blockquote>
+        <ul>
+          <li>Listerine Extra Mild tier evaluation across Cool Mint, Freshburst, Total Care</li>
+          <li>Nelly asked for business-owner framing and TFF's holistic oral-care lexicon</li>
+          <li>GA-22131 garlic functional — efficacy POV, chlorite stability, familiar pleasant odors</li>
+          <li>Open items: allicin/DADS references and chlorite stability read on functional directions</li>
+        </ul>
+      </div>
+
+      <div class="guest-topic">
+        <h3>Capabilities &amp; partnership</h3>
+        <p class="guest-topic-meta">Ongoing threads</p>
+        <ul>
+          <li>Four pillars your team asked to see — not a sales pitch, a working review</li>
+          <li>Virtual procurement session before the visit (topics TBD with your team)</li>
+          <li>Scalability if TheraBreath volume doubles or triples — honest capacity conversation</li>
+          <li>Sensory science support beyond Lakewood — triangle, blind, expert screening, CLT/HUT</li>
+          <li>Sodium chlorite flavor architecture — stability, vanilla directions, mint layering</li>
+        </ul>
+      </div>
+
+      <p class="guest-label">Tasting · 10:30–11:15</p>
+      <div class="guest-box">
+        <p>Five coded workshop prototypes (M1–M5). Use your phone on our site:</p>
+        <p><strong>1.</strong> Open <a href="/mystery">Blind Flavor Mapping</a> while cups are still coded.</p>
+        <p><strong>2.</strong> After the host reveals names, open <a href="/score">Prototype Scorecard</a> and rate each direction.</p>
+        <p>Directional feedback only — not a final product decision.</p>
+      </div>
+
+      <p class="guest-label">Come prepared</p>
+      <ul class="guest-list">
+        <li><strong>Suggested arrival: 9:00 AM</strong> — 2058 Second Street · facility tour first, then presentation across the street at 9:30</li>
+        <li><strong>Casual business attire</strong> — closed-toe shoes for the production walkthrough</li>
+        <li><strong>Phone charged</strong> — Wi‑Fi on site for tasting tools at 10:30 AM</li>
+        <li><strong>Questions ready</strong> — technical, operational, and partnership topics welcome throughout</li>
+        <li><strong>No pre-reading required</strong> — this page and our visit site have what you need</li>
+      </ul>
+
+      <p class="guest-label">What you'll leave with</p>
+      <ul class="guest-list muted">
+        <li>A clear view of our facility, team, and how we work</li>
+        <li>Documented answers on the four capability areas your team asked about</li>
+        <li>A sensory summary from your scorecard submissions</li>
+        <li>Follow-up email within 24 hours with next steps and named owners</li>
+        <li>Lakewood parity reports per variant as trials complete through September</li>
+      </ul>
+
+      <section class="guest-box" aria-label="Logistics">
+        <p><strong>Questions before July 8:</strong> The Flavor Factory team · <a href="tel:+19512739877">(951) 273-9877</a> · <a href="https://www.flavorfactory.net/" target="_blank" rel="noopener">flavorfactory.net</a></p>
+        <p><strong>Facility:</strong> 2058 Second Street, Norco, CA 92860</p>
+        <p><strong>Visit site:</strong> <a href="/">therabreath-visit-site.vercel.app</a></p>
+      </section>
+
+      <div class="guest-actions">
+        <a class="primary" href="/booklet/documents/suggested-agenda-therabreath.pdf">Download agenda (PDF)</a>
+        <a class="secondary" href="/booklet/documents/suggested-agenda-therabreath.docx">Download agenda (Word)</a>
+        <a href="/">Visit home</a>
+        <a href="/brief">Pre-visit brief</a>
+        <button type="button" onclick="window.print()">Print this page</button>
+        <a href="https://maps.google.com/?q=2058+Second+Street+Norco+CA+92860" target="_blank" rel="noopener">Maps</a>
+      </div>
+
+      <footer class="guest-foot">
+        The Flavor Factory × TheraBreath · July 8, 2026<br />
+        Capabilities first · Tasting second · Partnership outcome third<br />
+        <a href="/">Back to visit page</a>
+      </footer>
+    </main>
+
+    <script src="/tff-guest.js" defer></script>
+  </body>
+</html>

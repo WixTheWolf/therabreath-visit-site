@@ -10,6 +10,7 @@ window.SiteDirectory = {
         { href: "/", title: "Visit home", desc: "July 8 landing · schedule · quick links", path: "/", keywords: "agenda index home arrival" },
         { href: "/visit", title: "Breath of Innovation hub", desc: "Day-of timeline · pillars · deep dives", path: "/visit", keywords: "schedule your day boi" },
         { href: "/brief", title: "Pre-visit brief", desc: "What to expect · how to prepare", path: "/brief", keywords: "prepare before arrive" },
+        { href: "/prepare", title: "July 8 meeting prep", desc: "Suggested agenda · discussion highlights · email link", path: "/prepare", keywords: "prepare agenda discussion highlights meeting email july 8", hot: true },
         { href: "/tour", title: "Facility tour map", desc: "9:00 AM walk-through · 2058 Second Street", path: "/tour", keywords: "tour production qc", internal: true },
         { href: "/passport", title: "Visitor passport", desc: "Pocket follow-along for guests", path: "/passport", keywords: "passport handout print" },
         { href: "/booklet/documents/suggested-agenda-therabreath.docx", title: "Suggested agenda (Word)", desc: "Bullet schedule for calendar invites", path: "docx", keywords: "agenda word download", external: true }
