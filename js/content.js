@@ -296,8 +296,8 @@ window.BOI = {
         href: "/booklet",
         accent: "#006da3",
         tag: "Leave-behind",
-        title: "Welcome booklet",
-        desc: "Numbered PDF index — partnership, COAs, sensory protocols, seasonal directions, formulas.",
+        title: "July 8 visit packet",
+        desc: "Numbered index — agenda, partnership overview, qualification docs, sensory protocols, and live tools.",
       },
       {
         href: "/onepager",

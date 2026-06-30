@@ -168,7 +168,7 @@ def agenda_table(styles):
         ["9:00–9:25 AM", "Facility tour", "2058 Second Street · production, QC, TheraBreath room"],
         ["9:30–10:15 AM", "TFF presentation", "Four pillars · conference room across the street"],
         ["10:15–10:30 AM", "Break", "Reset before tasting"],
-        ["10:30–11:15 AM", "Tasting", "Ten prototypes · blind mapping · scorecard"],
+        ["10:30–11:15 AM", "Tasting", "Five mint platforms (M1–M5) · blind mapping · scorecard"],
         ["11:30 AM–1:00 PM", "Lunch off site", "Hosts take the group"],
         ["1:00 PM onward", "Open Q&A", "Your topics · wrap when ready"],
     ]
@@ -255,7 +255,7 @@ def build():
         rightMargin=0.75 * inch,
         topMargin=0.7 * inch,
         bottomMargin=0.85 * inch,
-        title="Together We Win · TFF × TheraBreath",
+        title="Partnership Overview · TFF × TheraBreath",
         author="The Flavor Factory",
     )
     story = []
@@ -263,17 +263,17 @@ def build():
     # Cover
     story.append(header_band())
     story.append(Spacer(1, 0.55 * inch))
-    story.append(Paragraph("Together We Have<br/>the Power to Win", styles["title"]))
+    story.append(Paragraph("Partnership Overview", styles["title"]))
     story.append(Paragraph(
-        "A capabilities partnership for TheraBreath's next chapter of growth.",
+        "Capabilities review for TheraBreath's next chapter of growth.",
         styles["subtitle"],
     ))
     story.append(Spacer(1, 0.15 * inch))
     pills = Table([[
+        Paragraph("RESILIENCY", styles["pill"]),
+        Paragraph("INNOVATION", styles["pill"]),
+        Paragraph("OPERATIONS", styles["pill"]),
         Paragraph("PARTNERSHIP", styles["pill"]),
-        Paragraph("SCALE", styles["pill"]),
-        Paragraph("QUALITY", styles["pill"]),
-        Paragraph("TASTE CONSISTENCY", styles["pill"]),
     ]], colWidths=[1.7 * inch] * 4)
     pills.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, -1), PAPER),
@@ -308,7 +308,7 @@ def build():
     bullets = [
         "Real facility walkthrough and documented quality systems",
         "Honest answers on resiliency, innovation, operations, and partnership",
-        "Directional sensory feedback on ten workshop prototypes",
+        "Directional sensory feedback on five workshop mint platforms (M1–M5)",
         "A clear path for Lakewood site parity validation",
     ]
     for b in bullets:
@@ -333,7 +333,7 @@ def build():
     story.append(agenda_table(styles))
     story.append(Spacer(1, 0.1 * inch))
     story.append(Paragraph(
-        "Full schedule for email: <b>therabreath-visit-site.vercel.app/agenda</b>",
+        "Full schedule and discussion topics: <b>therabreath-visit-site.vercel.app/prepare</b>",
         styles["muted"],
     ))
 
@@ -351,7 +351,7 @@ def build():
     # Close
     story.append(Spacer(1, 0.35 * inch))
     story.append(Paragraph("WHAT COMES NEXT", styles["kicker"]))
-    story.append(Paragraph("Same trusted partner. Future-ready support.", styles["h2"]))
+    story.append(Paragraph("Follow-up after July 8", styles["h2"]))
     story.append(Paragraph(
         "After July 8, you receive a follow-up summary within 24 hours — sensory rollup, "
         "pilot priorities, Lakewood alignment, and named owners for next steps.",

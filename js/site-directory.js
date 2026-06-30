@@ -79,7 +79,7 @@ window.SiteDirectory = {
         { href: "/companies", title: "Company hub", desc: "TFF + TheraBreath profiles side by side", path: "/companies", keywords: "companies partnership profiles" },
         { href: "/flavor-factory", title: "The Flavor Factory", desc: "Norco capabilities · certifications", path: "/flavor-factory", keywords: "tff flavor factory norco supplier" },
         { href: "/therabreath-brand", title: "TheraBreath brand hub", desc: "OXYD-8 · categories · bottle lineup", path: "/therabreath-brand", keywords: "therabreath brand products oxyd8" },
-        { href: "/booklet", title: "Welcome booklet", desc: "Numbered PDF index · partnership · COAs", path: "/booklet", keywords: "booklet welcome binder pdf documents" },
+        { href: "/booklet", title: "July 8 visit packet", desc: "Numbered index · agenda · qualification docs", path: "/booklet", keywords: "booklet packet binder pdf documents visit" },
         { href: "/onepager", title: "Executive one-pager", desc: "Procurement leave-behind summary", path: "/onepager", keywords: "onepager executive procurement summary" },
         { href: "/partnership", title: "Partnership brief", desc: "Relationship · portfolio · qualification threads", path: "/partnership", keywords: "partnership church dwight cd", internal: true },
         { href: "/therabreath", title: "TheraBreath file index", desc: "Flavor codes · qualification map", path: "/therabreath", keywords: "customer file codes qualification", internal: true }

@@ -1,30 +1,21 @@
 [
   {
     "id": "together-we-win",
-    "title": "Together We Win \u00b7 Partnership overview",
+    "title": "Partnership overview",
     "section": "welcome",
     "audience": "guest",
     "name": "01-together-we-win-partnership.pdf",
-    "desc": "Three-page leave-behind \u2014 four pillars, July 8 agenda, and Lakewood validation path.",
+    "desc": "Four pillars, July 8 agenda, and Lakewood validation path.",
     "file": "01-together-we-win-partnership.pdf"
   },
   {
-    "id": "professional-formula",
-    "title": "Professional formula portfolio",
-    "section": "innovation",
+    "id": "suggested-agenda",
+    "title": "Suggested agenda · July 8",
+    "section": "welcome",
     "audience": "guest",
-    "name": "02-professional-formula-portfolio.pdf",
-    "desc": "24-page formula and capability portfolio \u2014 print reference during tasting and R&D sessions.",
-    "file": "02-professional-formula-portfolio.pdf"
-  },
-  {
-    "id": "food-bev-brochure",
-    "title": "The Flavor Factory \u00b7 Industry brochure",
-    "section": "operations",
-    "audience": "guest",
-    "name": "03-flavor-factory-brochure.pdf",
-    "desc": "Company overview, capabilities, and oral-care positioning.",
-    "file": "03-flavor-factory-brochure.pdf"
+    "name": "suggested-agenda-therabreath.pdf",
+    "desc": "Shareable schedule with discussion topics from email threads.",
+    "file": "suggested-agenda-therabreath.pdf"
   },
   {
     "id": "norco-survey",
@@ -32,12 +23,12 @@
     "section": "operations",
     "audience": "guest",
     "name": "04-norco-facility-survey.pdf",
-    "desc": "Facility documentation shared with Church & Dwight qualification.",
+    "desc": "Supplier quality system assessment for Church & Dwight qualification.",
     "file": "04-norco-facility-survey.pdf"
   },
   {
     "id": "seasonal-oral-care",
-    "title": "Seasonal flavors \u00b7 oral care directions",
+    "title": "Seasonal flavors · oral care directions",
     "section": "innovation",
     "audience": "guest",
     "name": "05-seasonal-flavors-oral-care.pdf",
@@ -45,44 +36,17 @@
     "file": "05-seasonal-flavors-oral-care.pdf"
   },
   {
-    "id": "seasonal-top8",
-    "title": "Top 8 seasonal flavor ideas",
-    "section": "innovation",
-    "audience": "guest",
-    "name": "06-seasonal-top-8-ideas.pdf",
-    "desc": "Curated seasonal directions for discussion and co-creation.",
-    "file": "06-seasonal-top-8-ideas.pdf"
-  },
-  {
-    "id": "seasonal-rinse",
-    "title": "Seasonal rinse formulas",
-    "section": "innovation",
-    "audience": "guest",
-    "name": "07-seasonal-rinse-formulas.pdf",
-    "desc": "Workshop-adjacent seasonal rinse prototypes and notes.",
-    "file": "07-seasonal-rinse-formulas.pdf"
-  },
-  {
-    "id": "seasonals-2025",
-    "title": "2025 seasonal concept sheet",
-    "section": "innovation",
-    "audience": "guest",
-    "name": "08-seasonals-2025.pdf",
-    "desc": "Latest seasonal line extensions under development.",
-    "file": "08-seasonals-2025.pdf"
-  },
-  {
     "id": "sensory-validation",
     "title": "Sensory validation framework",
     "section": "sensory",
     "audience": "guest",
     "name": "09-sensory-validation-framework.pdf",
-    "desc": "How TFF runs triangle, blind, and panel work with brand teams.",
+    "desc": "Triangle, blind, and panel protocols with brand teams.",
     "file": "09-sensory-validation-framework.pdf"
   },
   {
     "id": "lakewood-framework",
-    "title": "Lakewood sensory validation \u00b7 one-pager",
+    "title": "Lakewood sensory validation · one-pager",
     "section": "sensory",
     "audience": "guest",
     "name": "10-lakewood-sensory-validation.pdf",
@@ -91,7 +55,7 @@
   },
   {
     "id": "triangle-form",
-    "title": "Triangle test form \u00b7 TheraBreath",
+    "title": "Triangle test form · TheraBreath",
     "section": "sensory",
     "audience": "guest",
     "name": "11-triangle-test-form.pdf",
@@ -100,7 +64,7 @@
   },
   {
     "id": "nop-cert",
-    "title": "NOP certificate addendum \u00b7 product list",
+    "title": "NOP certificate addendum · product list",
     "section": "quality",
     "audience": "guest",
     "name": "12-nop-cert-addendum.pdf",
@@ -109,7 +73,7 @@
   },
   {
     "id": "spec-example",
-    "title": "Sample spec sheet \u00b7 MI-18727",
+    "title": "Sample spec sheet · MI-18727",
     "section": "quality",
     "audience": "guest",
     "name": "13-spec-sheet-example.pdf",
@@ -117,21 +81,12 @@
     "file": "13-spec-sheet-example.pdf"
   },
   {
-    "id": "antiseptic-rinse",
-    "title": "Antiseptic rinse reference",
-    "section": "innovation",
-    "audience": "guest",
-    "name": "14-antiseptic-rinse-reference.pdf",
-    "desc": "Chlorite rinse context for formulation discussions.",
-    "file": "14-antiseptic-rinse-reference.pdf"
-  },
-  {
     "id": "samples-MI-22008-sample",
     "title": "Sample documentation · MI-22008",
     "section": "samples",
     "audience": "guest",
     "file": "samples/MI-22008-sample.pdf",
-    "desc": "MI-22008 sample documentation"
+    "desc": "Sample-release COA — winter spice mint type flavor"
   },
   {
     "id": "samples-PE-22004-sample",
@@ -139,7 +94,7 @@
     "section": "samples",
     "audience": "guest",
     "file": "samples/PE-22004-sample.pdf",
-    "desc": "PE-22004 sample documentation"
+    "desc": "Sample-release COA — peppermint vanilla type flavor"
   },
   {
     "id": "samples-peppermint-vanilla-flavor",
@@ -147,7 +102,7 @@
     "section": "samples",
     "audience": "guest",
     "file": "samples/peppermint-vanilla-flavor.pdf",
-    "desc": "Peppermint vanilla flavor reference"
+    "desc": "Product attribute sheet — documentation format example"
   },
   {
     "id": "coas-coa-mi",
@@ -155,7 +110,7 @@
     "section": "quality",
     "audience": "guest",
     "file": "coas/coa-mi.pdf",
-    "desc": "COA \u00b7 MI lot example"
+    "desc": "Production COA example — mint blend mouthwash flavor"
   },
   {
     "id": "coas-coa-pe",
@@ -163,7 +118,7 @@
     "section": "quality",
     "audience": "guest",
     "file": "coas/coa-pe.pdf",
-    "desc": "COA \u00b7 PE lot example"
+    "desc": "Production COA example — peppermint oil"
   },
   {
     "id": "coas-coa-tr",
@@ -171,6 +126,6 @@
     "section": "quality",
     "audience": "guest",
     "file": "coas/coa-tr.pdf",
-    "desc": "COA \u00b7 TR lot example"
+    "desc": "Production COA example — citrus terpenes blend"
   }
 ]
