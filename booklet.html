@@ -419,6 +419,36 @@
         color: var(--muted);
       }
 
+      .strat-list { margin: 0; }
+      .strat-row {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        align-items: start;
+      }
+      .strat-row:last-child { border-bottom: none; }
+      .strat-num {
+        font-family: "Sora", sans-serif;
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: #6c5ce7;
+      }
+      .strat-q {
+        margin: 0 0 4px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      .strat-why {
+        margin: 0;
+        font-size: 0.68rem;
+        line-height: 1.4;
+        color: var(--muted);
+      }
+
       /* Digital browse (screen only) */
       .digital {
         width: min(920px, calc(100vw - 32px));
@@ -602,6 +632,7 @@
     </div>
 
     <script src="/tff-team.js"></script>
+    <script src="/js/content.js"></script>
     <script src="/tff-booklet-data.js"></script>
     <script>
       var B = window.TFFBooklet;
@@ -656,7 +687,7 @@
           '<p class="kicker">How to use this packet</p>' +
           '<h2>What to expect July 8</h2>' +
           '<p class="lead">This is a <strong>capabilities workshop</strong> — not a sales presentation. Your R&amp;D and procurement colleagues asked for a working review of resiliency, innovation, operations, and partnership, plus directional tasting on five mint platforms (M1–M5). Facility tour at 9:00, presentation at 9:30, tasting at 10:30, lunch off site, then open Q&amp;A.</p>' +
-          '<p class="lead" style="margin-top:-8px">Start with <strong>item 03 · meeting prep</strong> for the suggested agenda and discussion highlights from your email threads. Use the numbered index to jump to PDFs or live site tools.</p>' +
+          '<p class="lead" style="margin-top:-8px">Start with <strong>item 03 · meeting prep</strong> and <strong>item 04 · ten questions</strong> so your team can prepare before arrival. Use the numbered index to jump to PDFs or live site tools.</p>' +
           '<div class="how-grid">' +
           '<div class="how-card"><b>Find by number</b><p>Every item is numbered <strong>01–' + lastNum + '</strong>. Reference numbers in the room — e.g. “see item 16, Lakewood parity.”</p></div>' +
           '<div class="how-card"><b>Seven chapters</b><p>Partnership &amp; prep, schedule, operations, innovation, sensory, quality docs, and live tasting tools.</p></div>' +
@@ -683,6 +714,40 @@
           foot("Agenda · " + nextPage()) +
           '</section>'
         );
+      }
+
+      function buildStrategicQuestionsPages() {
+        if (!window.BOI || !BOI.strategicQuestions || !BOI.strategicQuestions.length) return "";
+        var halves = [BOI.strategicQuestions.slice(0, 5), BOI.strategicQuestions.slice(5, 10)];
+        return halves.map(function (chunk, pageIndex) {
+          var rows = chunk.map(function (item) {
+            return (
+              '<div class="strat-row">' +
+              '<span class="strat-num">' + item.num + "</span>" +
+              '<div><p class="strat-q">' + item.question + "</p>" +
+              '<p class="strat-why">' + item.why + "</p></div></div>"
+            );
+          }).join("");
+          return (
+            '<section class="page">' +
+            '<p class="kicker">Item 04 · partnership prep</p>' +
+            '<h2>10 questions for your team' + (pageIndex ? " (continued)" : "") + "</h2>" +
+            (pageIndex === 0
+              ? '<p class="lead">We plan to ask these during the presentation or open Q&amp;A. Honest answers help us align capacity, innovation, and partnership.</p>'
+              : "") +
+            '<div class="strat-list">' + rows + "</div>" +
+            (pageIndex === 1
+              ? '<p class="lead" style="margin-top:14px;font-size:0.74rem">Full list online: <strong>therabreath-visit-site.vercel.app/prepare#strategic-questions</strong></p>'
+              : "") +
+            foot("Questions · " + (pageIndex + 1) + " of 2 · " + nextPage()) +
+            "</section>"
+          );
+        }).join("");
+      }
+
+      function itemLabel(href, fallback) {
+        var match = B.items.filter(function (it) { return it.href === href; })[0];
+        return match ? String(match.n).padStart(2, "0") : fallback;
       }
 
       function chapterBlock(ch) {
@@ -754,9 +819,9 @@
           '<div class="qr-cell"><img src="/assets/qr/booklet-sm.png" alt="" width="80" height="80" /><b>Packet index</b><code>/booklet</code></div>' +
           '<div class="qr-cell"><img src="/assets/qr/visit-sm.png" alt="" width="80" height="80" /><b>Meeting prep</b><code>/prepare</code></div>' +
           '<div class="qr-cell"><img src="/assets/qr/site-sm.png" alt="" width="80" height="80" /><b>Day-of hub</b><code>/visit</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/mystery-sm.png" alt="" width="80" height="80" /><b>27 Blind mapping</b><code>/mystery</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/score-sm.png" alt="" width="80" height="80" /><b>28 Scorecard</b><code>/score</code></div>' +
-          '<div class="qr-cell"><img src="/assets/qr/passport-sm.png" alt="" width="80" height="80" /><b>06 Passport</b><code>/passport</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/mystery-sm.png" alt="" width="80" height="80" /><b>' + itemLabel("/mystery", "28") + ' Blind mapping</b><code>/mystery</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/score-sm.png" alt="" width="80" height="80" /><b>' + itemLabel("/score", "29") + ' Scorecard</b><code>/score</code></div>' +
+          '<div class="qr-cell"><img src="/assets/qr/passport-sm.png" alt="" width="80" height="80" /><b>' + itemLabel("/passport", "07") + ' Passport</b><code>/passport</code></div>' +
           '</div>' +
           '<p style="margin-top:24px;font-size:0.72rem;color:var(--muted);line-height:1.55">' +
           '<strong>The Flavor Factory</strong> · 2058 Second Street, Norco, CA 92860 · (951) 273-9877<br />' +
@@ -796,6 +861,7 @@
         buildCover() +
         buildWelcome() +
         buildAgendaPage() +
+        buildStrategicQuestionsPages() +
         buildIndexPages() +
         buildChapterPages() +
         buildQrPage();

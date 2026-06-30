@@ -211,6 +211,43 @@
           width: auto;
         }
       }
+      .guest-strat-section { margin-bottom: 22px; }
+      .guest-strat-item {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        gap: 12px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .guest-strat-item:last-child { border-bottom: none; }
+      .guest-strat-num {
+        font-family: "Sora", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: #6c5ce7;
+        line-height: 1.4;
+      }
+      .guest-strat-q {
+        margin: 0 0 6px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.86rem;
+        font-weight: 700;
+        line-height: 1.4;
+        color: var(--ink);
+      }
+      .guest-strat-why {
+        margin: 0;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+      .guest-strat-points {
+        margin: 6px 0 0;
+        padding: 0 0 0 14px;
+        font-size: 0.76rem;
+        line-height: 1.4;
+        color: var(--ink);
+      }
     </style>
   </head>
   <body>
@@ -340,6 +377,14 @@
         </ul>
       </div>
 
+      <section id="strategic-questions" class="guest-strat-section" aria-labelledby="strategic-questions-heading">
+        <p class="guest-label" id="strategic-questions-heading">10 questions we'd like to discuss</p>
+        <p class="guest-lead" style="margin-top:-6px;font-size:0.82rem">
+          We plan to ask these during the presentation or open Q&amp;A. Thoughtful answers help us align on growth, innovation, and partnership — no slides required on your side.
+        </p>
+        <div id="strategic-questions-list"></div>
+      </section>
+
       <p class="guest-label">Tasting · 10:30–11:15</p>
       <div class="guest-box">
         <p>Five coded workshop prototypes (M1–M5). Use your phone on our site:</p>
@@ -353,7 +398,7 @@
         <li><strong>Suggested arrival: 9:00 AM</strong> — 2058 Second Street · facility tour first, then presentation across the street at 9:30</li>
         <li><strong>Casual business attire</strong> — closed-toe shoes for the production walkthrough</li>
         <li><strong>Phone charged</strong> — Wi‑Fi on site for tasting tools at 10:30 AM</li>
-        <li><strong>Questions ready</strong> — technical, operational, and partnership topics welcome throughout</li>
+        <li><strong>Questions ready</strong> — review the 10 discussion questions above; technical and partnership topics welcome throughout</li>
         <li><strong>No pre-reading required</strong> — this page and our visit site have what you need</li>
       </ul>
 
@@ -388,6 +433,25 @@
       </footer>
     </main>
 
+    <script src="/js/content.js"></script>
     <script src="/tff-guest.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var list = document.getElementById("strategic-questions-list");
+        if (!list || !window.BOI || !BOI.strategicQuestions) return;
+        list.innerHTML = BOI.strategicQuestions.map(function (item) {
+          var points = (item.points || []).map(function (p) {
+            return "<li>" + p + "</li>";
+          }).join("");
+          return (
+            '<div class="guest-strat-item">' +
+            '<span class="guest-strat-num">' + item.num + "</span>" +
+            '<div><p class="guest-strat-q">' + item.question + "</p>" +
+            (points ? '<ul class="guest-strat-points">' + points + "</ul>" : "") +
+            '<p class="guest-strat-why">' + item.why + "</p></div></div>"
+          );
+        }).join("");
+      });
+    </script>
   </body>
 </html>
