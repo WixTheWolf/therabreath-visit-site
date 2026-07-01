@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" data-tff-shell="off">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="July 8, 2026 TheraBreath visit — download the email packet PDF, meeting prep, and visit site links." />
+    <meta property="og:title" content="July 8 Visit · Email Packet" />
+    <meta property="og:description" content="Prepare for Breath of Innovation at The Flavor Factory — agenda, 10 questions, and day-of tools." />
+    <meta property="og:image" content="https://therabreath-visit-site.vercel.app/assets/og-share.svg" />
+    <meta name="theme-color" content="#0a1628" />
+    <title>July 8 Email Packet | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-guest.css" />
+    <style>
+      .guest-page--email { width: min(560px, calc(100vw - 32px)); }
+      .guest-lead { margin: 0 0 20px; font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+      .guest-download {
+        display: block;
+        padding: 18px 20px;
+        margin-bottom: 14px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid rgba(0, 143, 211, 0.35);
+        background: linear-gradient(135deg, #fff, #f0f9fd);
+        box-shadow: 0 10px 28px rgba(10, 22, 40, 0.06);
+      }
+      .guest-download:hover { border-color: var(--blue); }
+      .guest-download b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+      }
+      .guest-download span { font-size: 0.8rem; color: var(--muted); line-height: 1.45; }
+      .guest-links { display: grid; gap: 8px; margin-bottom: 22px; }
+      .guest-links a {
+        display: block;
+        padding: 12px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .guest-links a b { display: block; font-family: "Sora", sans-serif; font-size: 0.84rem; }
+      .guest-links a span { font-size: 0.76rem; color: var(--muted); }
+      .guest-copy {
+        margin-bottom: 22px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: #f8fafc;
+        border: 1px solid var(--line);
+        font-size: 0.78rem;
+        line-height: 1.55;
+        color: var(--ink);
+        white-space: pre-wrap;
+      }
+      .guest-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+      .guest-actions a, .guest-actions button {
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .guest-actions .primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+    </style>
+  </head>
+  <body>
+    <header id="guest-nav"></header>
+
+    <main class="guest-page guest-page--email">
+      <div class="guest-accent" aria-hidden="true"></div>
+      <p class="guest-kicker">TheraBreath team</p>
+      <h1>July 8 email packet</h1>
+      <p class="guest-sub">Breath of Innovation · Tuesday, July 8, 2026 · Norco, CA</p>
+
+      <p class="guest-lead">
+        Download the four-page PDF below to share with your team, or use the online prep page for the full agenda, discussion highlights, and ten questions we plan to ask.
+      </p>
+
+      <a class="guest-download" href="/booklet/documents/july-8-email-packet.pdf" download>
+        <b>Download email packet (PDF)</b>
+        <span>Agenda · four pillars · 10 discussion questions · site links · arrive 9:00 AM</span>
+      </a>
+
+      <p class="guest-label">Online prep</p>
+      <div class="guest-links">
+        <a href="/prepare"><b>Meeting prep</b><span>Suggested agenda · email-thread topics · 10 questions</span></a>
+        <a href="/booklet"><b>Visit packet index</b><span>31 numbered items — PDFs and live tools</span></a>
+        <a href="/visit"><b>Day-of hub</b><span>Schedule · presentation · tasting · portfolio</span></a>
+      </div>
+
+      <p class="guest-label">Suggested email text</p>
+      <div class="guest-copy" id="email-blurb">Loading…</div>
+      <div class="guest-actions">
+        <button type="button" class="primary" id="copy-blurb">Copy email text</button>
+        <a href="/booklet/documents/july-8-email-packet.pdf">Open PDF</a>
+        <a href="/prepare">Open prep page</a>
+      </div>
+
+      <section class="guest-box" aria-label="Logistics">
+        <p><strong>Arrive 9:00 AM</strong> — 2058 Second Street, Norco, CA 92860 · facility tour first · presentation 9:30 AM across the street</p>
+        <p><strong>Questions:</strong> The Flavor Factory · <a href="tel:+19512739877">(951) 273-9877</a></p>
+      </section>
+
+      <footer class="guest-foot">
+        The Flavor Factory × TheraBreath · July 8, 2026<br />
+        <a href="/">Visit home</a>
+      </footer>
+    </main>
+
+    <script src="/tff-guest.js" defer></script>
+    <script>
+      (function () {
+        var origin = window.location.origin;
+        var blurb =
+          "TheraBreath team,\n\n" +
+          "We're looking forward to hosting you for Breath of Innovation on Tuesday, July 8, 2026 at The Flavor Factory in Norco.\n\n" +
+          "This is a capabilities workshop — facility tour at 9:00 AM, four-pillar presentation at 9:30 AM, directional tasting at 10:30 AM, lunch off site, then open Q&A.\n\n" +
+          "Please review before you arrive:\n" +
+          "• Email packet (PDF): " + origin + "/booklet/documents/july-8-email-packet.pdf\n" +
+          "• Meeting prep: " + origin + "/prepare\n" +
+          "• Full visit packet: " + origin + "/booklet\n\n" +
+          "The prep page includes our suggested agenda, discussion highlights from your email threads, and ten questions we'd like to discuss — so your team has time to prepare thoughtful answers.\n\n" +
+          "Arrive 9:00 AM · 2058 Second Street, Norco, CA 92860 · casual business attire · closed-toe shoes for the tour.\n\n" +
+          "Questions welcome anytime — (951) 273-9877.\n\n" +
+          "The Flavor Factory team";
+
+        var el = document.getElementById("email-blurb");
+        el.textContent = blurb;
+
+        document.getElementById("copy-blurb").addEventListener("click", function () {
+          navigator.clipboard.writeText(blurb).then(function () {
+            var btn = document.getElementById("copy-blurb");
+            btn.textContent = "Copied";
+            setTimeout(function () { btn.textContent = "Copy email text"; }, 2000);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
