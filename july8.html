@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en" data-tff-shell="off">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Your July 8 briefing — schedule, working sessions, and what to expect before you arrive at The Flavor Factory in Norco." />
+    <meta property="og:title" content="Your July 8 Briefing · TFF × TheraBreath" />
+    <meta property="og:description" content="The only document you need before July 8 — agenda, topics, and what a successful visit looks like for your team." />
+    <meta property="og:image" content="https://therabreath-visit-site.vercel.app/assets/og-share.svg" />
+    <meta name="theme-color" content="#0a1628" />
+    <title>Your July 8 Briefing | TFF × TheraBreath</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/tff-guest.css" />
+    <style>
+      .guest-page--july8 { width: min(640px, calc(100vw - 32px)); }
+      .guest-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 0 18px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 22px;
+      }
+      .guest-header-logos {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex: 1;
+        min-width: 0;
+      }
+      .guest-header-logos img {
+        height: 32px;
+        width: auto;
+        max-width: 40%;
+        object-fit: contain;
+        object-position: center;
+      }
+      .guest-header-logos .guest-header-x {
+        font-family: "Sora", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: #008fd3;
+        flex-shrink: 0;
+      }
+      .guest-header-meta {
+        font-size: 0.72rem;
+        color: var(--muted);
+        text-align: right;
+      }
+      .guest-lead {
+        margin: 0 0 20px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .guest-note {
+        margin: 0 0 22px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: #f0f9fd;
+        border: 1px solid rgba(0, 143, 211, 0.2);
+        font-size: 0.82rem;
+        line-height: 1.5;
+        color: var(--ink);
+      }
+      .guest-list {
+        margin: 0 0 22px;
+        padding: 0;
+        list-style: none;
+      }
+      .guest-list li {
+        position: relative;
+        padding: 0 0 10px 16px;
+        font-size: 0.84rem;
+        line-height: 1.5;
+        color: var(--ink);
+      }
+      .guest-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--blue);
+      }
+      .guest-list li:last-child { padding-bottom: 0; }
+      .guest-topic {
+        margin-bottom: 16px;
+        padding: 16px 18px;
+        border-radius: 14px;
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+      .guest-topic h3 {
+        margin: 0 0 4px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+      .guest-topic .guest-topic-meta {
+        margin: 0 0 10px;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+      .guest-topic ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .guest-topic li {
+        position: relative;
+        padding: 0 0 8px 14px;
+        font-size: 0.8rem;
+        line-height: 1.45;
+      }
+      .guest-topic li::before {
+        content: "·";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .guest-topic li:last-child { padding-bottom: 0; }
+      .guest-pillars {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+      .guest-pillar {
+        padding: 14px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-left: 3px solid var(--pillar-color, var(--blue));
+      }
+      .guest-pillar b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.84rem;
+        margin-bottom: 4px;
+      }
+      .guest-pillar span {
+        font-size: 0.78rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+      .guest-agenda-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 22px;
+        font-size: 0.8rem;
+      }
+      .guest-agenda-table th,
+      .guest-agenda-table td {
+        padding: 10px 12px;
+        text-align: left;
+        vertical-align: top;
+        border: 1px solid var(--line);
+      }
+      .guest-agenda-table th {
+        background: #f8fafc;
+        font-family: "Sora", sans-serif;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .guest-agenda-table td:first-child {
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        color: #008fd3;
+        white-space: nowrap;
+        width: 1%;
+      }
+      .guest-agenda-table td:nth-child(2) b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.82rem;
+        margin-bottom: 2px;
+      }
+      .guest-agenda-table td:nth-child(3) {
+        color: var(--muted);
+        line-height: 1.4;
+      }
+      .guest-outcomes {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+      .guest-outcome {
+        padding: 16px 18px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .guest-outcome h3 {
+        margin: 0 0 10px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+      .guest-outcome ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .guest-outcome li {
+        position: relative;
+        padding: 0 0 8px 14px;
+        font-size: 0.8rem;
+        line-height: 1.45;
+        color: var(--ink);
+      }
+      .guest-outcome li::before {
+        content: "·";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .guest-outcome li:last-child { padding-bottom: 0; }
+      .guest-strat-section { margin-bottom: 22px; }
+      .guest-strat-item {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        gap: 12px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .guest-strat-item:last-child { border-bottom: none; }
+      .guest-strat-num {
+        font-family: "Sora", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: #6c5ce7;
+        line-height: 1.4;
+      }
+      .guest-strat-q {
+        margin: 0 0 6px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.86rem;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+      .guest-strat-why {
+        margin: 0;
+        font-size: 0.78rem;
+        line-height: 1.45;
+        color: var(--muted);
+      }
+      .guest-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 22px;
+      }
+      .guest-actions a, .guest-actions button {
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-family: "Sora", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .guest-actions .primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+      .guest-pdf-banner {
+        display: block;
+        padding: 14px 16px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid rgba(0, 143, 211, 0.35);
+        background: linear-gradient(135deg, #fff, #f0f9fd);
+      }
+      .guest-pdf-banner b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.86rem;
+        margin-bottom: 3px;
+      }
+      .guest-pdf-banner span { font-size: 0.76rem; color: var(--muted); }
+      @media print {
+        .guest-actions { display: none !important; }
+        body { background: #fff; }
+        .guest-page { width: 100%; padding: 0.4in; }
+        .guest-agenda-table { font-size: 9pt; }
+        .guest-topic, .guest-outcome { break-inside: avoid; }
+      }
+      @media (max-width: 520px) {
+        .guest-agenda-table thead { display: none; }
+        .guest-agenda-table tr {
+          display: block;
+          margin-bottom: 12px;
+          border: 1px solid var(--line);
+          border-radius: 10px;
+          overflow: hidden;
+        }
+        .guest-agenda-table td {
+          display: block;
+          border: none;
+          border-bottom: 1px solid var(--line);
+        }
+        .guest-agenda-table td:last-child { border-bottom: none; }
+        .guest-agenda-table td:first-child {
+          background: #f0f9fd;
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="guest-page guest-page--july8">
+      <header class="guest-header">
+        <div class="guest-header-logos">
+          <img src="/assets/companies/logos/tff-logo.png" alt="The Flavor Factory" width="220" height="32" />
+          <span class="guest-header-x" aria-hidden="true">×</span>
+          <img src="/assets/companies/logos/therabreath-logo.svg" alt="TheraBreath" width="124" height="32" />
+        </div>
+        <div class="guest-header-meta">July 8, 2026 · Norco, CA</div>
+      </header>
+
+      <div class="guest-accent" aria-hidden="true"></div>
+      <p class="guest-kicker">TheraBreath team</p>
+      <h1>Your July 8 briefing</h1>
+      <p class="guest-sub">Breath of Innovation · Tuesday, July 8, 2026 · Norco, California</p>
+
+      <p class="guest-lead">
+        A working day at Norco — tour, open conversation, tasting, and time for your agenda. Everything you need before you arrive is here.
+      </p>
+
+      <p class="guest-note">
+        <strong>Arrive 9:00 AM</strong> · 2058 Second Street, Norco · tour first, session 9:30 across the street · closed-toe shoes · phone charged for tasting
+      </p>
+
+      <a class="guest-pdf-banner" href="/booklet/documents/july-8-briefing.pdf" download="july-8-briefing.pdf">
+        <b>Download PDF</b>
+        <span>2 pages · attach to email</span>
+      </a>
+      <a class="guest-pdf-banner" href="/booklet/documents/july-8-briefing.docx" download="july-8-briefing.docx" style="margin-top:10px">
+        <b>Download Word</b>
+        <span>Editable · same briefing content</span>
+      </a>
+
+      <p class="guest-label">Your day</p>
+      <table class="guest-agenda-table" aria-label="July 8 schedule">
+        <thead>
+          <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Session</th>
+            <th scope="col">Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>9:00</td>
+            <td><b>Arrive &amp; tour</b></td>
+            <td>2058 Second Street · production, QC, your room</td>
+          </tr>
+          <tr>
+            <td>9:30</td>
+            <td><b>Working session</b></td>
+            <td>Resiliency · innovation · operations · partnership</td>
+          </tr>
+          <tr>
+            <td>10:30</td>
+            <td><b>Tasting</b></td>
+            <td>Five prototypes · blind, then score · directional only</td>
+          </tr>
+          <tr>
+            <td>11:30</td>
+            <td><b>Lunch off site</b></td>
+            <td>Back by 1:00 PM</td>
+          </tr>
+          <tr>
+            <td>1:00+</td>
+            <td><b>Your agenda</b></td>
+            <td>Lakewood · procurement · growth</td>
+          </tr>
+          <tr>
+            <td>5:00</td>
+            <td><b>Dinner</b></td>
+            <td>Optional with hosts — if available</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="guest-label">Four pillars · 9:30</p>
+      <div class="guest-pillars">
+        <div class="guest-pillar" style="--pillar-color:#008fd3">
+          <b>Resiliency</b>
+          <span>Scale and continuity as you grow</span>
+        </div>
+        <div class="guest-pillar" style="--pillar-color:#5fb832">
+          <b>Innovation</b>
+          <span>Flavor expertise, trends, and next-generation directions</span>
+        </div>
+        <div class="guest-pillar" style="--pillar-color:#f58220">
+          <b>Operations</b>
+          <span>One roof — sample through batch release</span>
+        </div>
+        <div class="guest-pillar" style="--pillar-color:#0a1628">
+          <b>Partnership</b>
+          <span>Lakewood and long-term alignment</span>
+        </div>
+      </div>
+
+      <p class="guest-label">Topics we will cover</p>
+      <div class="guest-topic">
+        <h3>Lakewood</h3>
+        <p class="guest-topic-meta">Validation path · taste parity across sites · Tier-A SKUs · timeline through September</p>
+      </div>
+      <div class="guest-topic">
+        <h3>Innovation · flavor partner</h3>
+        <ul>
+          <li>Flavor expertise — oral-care chemistry, chlorite-stable architecture, sensory-led development</li>
+          <li>Trend pipeline — ingredients and consumer shifts we bring to you proactively</li>
+          <li>Next-generation flavors — cooling systems, natural sweetness, pediatric &amp; wellness adjacencies</li>
+          <li>Rapid prototyping — bench to workshop fast; directional concepts, not months of wait</li>
+          <li>Seasonal &amp; limited edition — calendar-ready concepts and speed to shelf</li>
+          <li>Functional &amp; competitive — efficacy-friendly profiles, intensity-tier benchmark reads</li>
+        </ul>
+      </div>
+      <div class="guest-topic">
+        <h3>Partnership</h3>
+        <p class="guest-topic-meta">Capacity at scale · sensory science · site transfers</p>
+      </div>
+
+      <section class="guest-strat-section" aria-labelledby="strategic-questions-heading">
+        <p class="guest-label" id="strategic-questions-heading">Ten questions for your team</p>
+        <div id="strategic-questions-list"></div>
+      </section>
+
+      <p class="guest-label">What you should leave with</p>
+      <ul class="guest-list">
+        <li>Facility, team, and how we operate — firsthand</li>
+        <li>Direct answers on the four areas your team asked to evaluate</li>
+        <li>Sensory read on five prototypes · Lakewood alignment · 24h follow-up with owners</li>
+      </ul>
+
+      <section class="guest-box" aria-label="Contact">
+        <p><strong>Questions before July 8:</strong> The Flavor Factory · <a href="tel:+19512739877">(951) 273-9877</a></p>
+        <p><strong>Facility:</strong> 2058 Second Street, Norco, CA 92860</p>
+      </section>
+
+      <div class="guest-actions">
+        <a class="primary" href="/booklet/documents/july-8-briefing.pdf" download="july-8-briefing.pdf">Download PDF</a>
+        <a class="secondary" href="/booklet/documents/july-8-briefing.docx" download="july-8-briefing.docx">Download Word</a>
+        <button type="button" onclick="window.print()">Print this page</button>
+      </div>
+
+      <footer class="guest-foot">
+        The Flavor Factory × TheraBreath · July 8, 2026<br />
+        Thank you — we look forward to July 8.
+      </footer>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var list = document.getElementById("strategic-questions-list");
+        if (!list) return;
+        var questions = [
+          "What does success look like for TheraBreath in 3–5 years?",
+          "What are your biggest growth challenges right now?",
+          "What separates your best suppliers from everyone else?",
+          "How should suppliers support your resiliency goals?",
+          "Which innovation opportunities matter most to you?",
+          "What oral care trends are still underappreciated?",
+          "Which sensory attributes matter most to consumers today?",
+          "What would make The Flavor Factory a stronger partner?",
+          "How do you want sensory validation data presented?",
+          "After July 8, what would make you confident we can support your growth?"
+        ];
+        list.innerHTML = questions.map(function (q, i) {
+          return (
+            '<div class="guest-strat-item">' +
+            '<span class="guest-strat-num">' + (i + 1) + "</span>" +
+            '<div><p class="guest-strat-q">' + q + "</p></div></div>"
+          );
+        }).join("");
+      });
+    </script>
+  </body>
+</html>

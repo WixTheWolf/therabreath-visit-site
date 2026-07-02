@@ -118,7 +118,7 @@ def schedule_table(styles):
         ["9:00–9:25", "Facility tour — production and quality areas"],
         ["9:30–10:15", "Presentation — open discussion on the topics below"],
         ["10:15–10:30", "Break"],
-        ["10:30–11:15", "Tasting — ten workshop prototypes; your honest feedback"],
+        ["10:30–11:15", "Tasting — five mint platforms (M1–M5); directional feedback"],
         ["11:30–1:00", "Lunch off site — your hosts take the group"],
         ["1:00 PM+", "Open Q&A — your questions, your pace"],
     ]
@@ -230,15 +230,14 @@ def build():
         styles["subtitle"],
     ))
     story.append(Paragraph(
-        "A quick heads-up from The Flavor Factory before your visit. "
-        "We want you to know what the day looks like and what we plan to talk about — "
-        "so you can come ready with questions.",
+        "A brief overview before your July 8 visit — suggested schedule, discussion topics, "
+        "and how to prepare. Full detail: <b>therabreath-visit-site.vercel.app/prepare</b>",
         styles["body"],
     ))
     story.append(Paragraph(
         "This is a <b>working session</b>, not a sales presentation. "
-        "We'll show you how we operate, answer direct questions, and taste a set of "
-        "workshop prototypes together for honest directional feedback.",
+        "We'll show you how we operate, answer direct questions, and taste "
+        "<b>five mint platforms (M1–M5)</b> for honest directional feedback.",
         styles["body"],
     ))
 
@@ -260,7 +259,7 @@ def build():
     story.append(Paragraph("We can also cover:", styles["muted"]))
     extras = [
         "Lakewood site parity — keeping taste consistent as production expands",
-        "Workshop tasting — ten coded prototypes; directional feedback only, not a launch decision",
+        "Workshop tasting — five coded mint platforms (M1–M5); directional feedback only, not a launch decision",
         "Anything else on your list — procurement, growth, or technical topics",
     ]
     for item in extras:
