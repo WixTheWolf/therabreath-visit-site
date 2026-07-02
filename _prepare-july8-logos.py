@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 LOGO_DIR = os.path.join(ROOT, "assets", "companies", "logos")
 
 PAIRS = [
-    ("tff-logo.svg", "tff-logo.png", 360),
+    ("tff-logo.svg", "tff-logo.png", 840),
     ("therabreath-logo.svg", "therabreath-logo.png", 420),
 ]
 

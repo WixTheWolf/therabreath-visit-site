@@ -51,8 +51,14 @@ PILLAR_COLORS = [BLUE, GREEN, ORANGE, INK]
 PAGE_W, PAGE_H = letter
 MARGIN_L = 0.62 * inch
 MARGIN_R = 0.62 * inch
-MARGIN_T = 0.88 * inch
 MARGIN_B = 0.78 * inch
+ACCENT_H = 5  # points
+LOGO_H = 0.30 * inch
+LOGO_MAX_W = 2.45 * inch
+# Frame starts below logo band + rule + breathing room (prevents hero clipping).
+MARGIN_T = 1.22 * inch
+LOGO_BOTTOM_FROM_TOP = 0.86 * inch
+RULE_FROM_TOP = 0.98 * inch
 
 
 def build_styles():
@@ -60,11 +66,11 @@ def build_styles():
     return {
         "kicker": ParagraphStyle(
             "kicker", parent=base["Normal"], fontName="Helvetica-Bold",
-            fontSize=8, textColor=BLUE, spaceAfter=5, letterSpacing=1.1,
+            fontSize=8, textColor=BLUE, spaceAfter=5, spaceBefore=2, letterSpacing=1.1,
         ),
         "title": ParagraphStyle(
             "title", parent=base["Heading1"], fontName="Helvetica-Bold",
-            fontSize=22, textColor=INK, leading=26, spaceAfter=3,
+            fontSize=22, textColor=INK, leading=26, spaceAfter=3, spaceBefore=2,
         ),
         "subtitle": ParagraphStyle(
             "subtitle", parent=base["Normal"], fontName="Helvetica",
@@ -109,21 +115,43 @@ def draw_top_accent(canvas):
     canvas.restoreState()
 
 
+def _logo_dims(path):
+    from reportlab.lib.utils import ImageReader
+
+    iw, ih = ImageReader(path).getSize()
+    aspect = iw / ih
+    height = LOGO_H
+    width = height * aspect
+    if width > LOGO_MAX_W:
+        width = LOGO_MAX_W
+        height = width / aspect
+    return width, height
+
+
+def _draw_logo(canvas, path, x, y_bottom, align="left"):
+    if not os.path.isfile(path):
+        return 0, 0
+    width, height = _logo_dims(path)
+    draw_x = x - width if align == "right" else x
+    canvas.drawImage(
+        path, draw_x, y_bottom, width=width, height=height,
+        preserveAspectRatio=True, mask="auto",
+    )
+    return width, height
+
+
 def draw_header(canvas):
     canvas.saveState()
-    y = PAGE_H - MARGIN_T + 0.12 * inch
-    if os.path.isfile(TFF_LOGO):
-        canvas.drawImage(TFF_LOGO, MARGIN_L, y - 0.02 * inch, width=1.55 * inch, height=0.28 * inch,
-                         preserveAspectRatio=True, mask="auto")
-    if os.path.isfile(TB_LOGO):
-        canvas.drawImage(TB_LOGO, PAGE_W - MARGIN_R - 1.75 * inch, y - 0.04 * inch,
-                         width=1.75 * inch, height=0.32 * inch, preserveAspectRatio=True, mask="auto")
+    y_bottom = PAGE_H - LOGO_BOTTOM_FROM_TOP
+    tff_w, logo_h = _draw_logo(canvas, TFF_LOGO, MARGIN_L, y_bottom, align="left")
+    tb_w, _ = _draw_logo(canvas, TB_LOGO, PAGE_W - MARGIN_R, y_bottom, align="right")
     canvas.setFont("Helvetica", 11)
     canvas.setFillColor(BLUE)
-    canvas.drawCentredString(PAGE_W / 2, y + 0.06 * inch, "×")
+    canvas.drawCentredString(PAGE_W / 2, y_bottom + logo_h * 0.42, "×")
+    rule_y = PAGE_H - RULE_FROM_TOP
     canvas.setStrokeColor(LINE)
     canvas.setLineWidth(0.75)
-    canvas.line(MARGIN_L, y - 0.14 * inch, PAGE_W - MARGIN_R, y - 0.14 * inch)
+    canvas.line(MARGIN_L, rule_y, PAGE_W - MARGIN_R, rule_y)
     canvas.restoreState()
 
 
@@ -155,20 +183,22 @@ def on_page(canvas, doc):
 
 
 def hero_block(styles):
-    data = [[
-        Paragraph('<font color="#008fd3"><b>BREATH OF INNOVATION</b></font>', styles["kicker"]),
-        Paragraph("Your July 8 briefing", styles["title"]),
-        Paragraph("Tuesday, July 8, 2026 · Norco, California", styles["subtitle"]),
-        Paragraph(OPENING, styles["body"]),
-    ]]
-    t = Table(data, colWidths=[6.86 * inch])
+    rows = [
+        [Paragraph('<font color="#008fd3"><b>BREATH OF INNOVATION</b></font>', styles["kicker"])],
+        [Paragraph("Your July 8 briefing", styles["title"])],
+        [Paragraph("Tuesday, July 8, 2026 · Norco, California", styles["subtitle"])],
+        [Paragraph(OPENING, styles["body"])],
+    ]
+    t = Table(rows, colWidths=[6.86 * inch])
     t.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, -1), SKY),
         ("BOX", (0, 0), (-1, -1), 0.75, colors.HexColor("#cce9f7")),
         ("LEFTPADDING", (0, 0), (-1, -1), 14),
         ("RIGHTPADDING", (0, 0), (-1, -1), 14),
-        ("TOPPADDING", (0, 0), (-1, -1), 10),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
+        ("TOPPADDING", (0, 0), (0, 0), 14),
+        ("BOTTOMPADDING", (0, -1), (-1, -1), 10),
+        ("TOPPADDING", (0, 1), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -2), 0),
     ]))
     return t
 
@@ -318,14 +348,15 @@ def build():
 
     story = []
 
-    # Page 1
+    # Page 1 — breathing room below header rule avoids clipping the hero ascenders.
+    story.append(Spacer(1, 0.06 * inch))
     story.append(hero_block(styles))
-    story.append(Spacer(1, 0.08 * inch))
+    story.append(Spacer(1, 0.06 * inch))
     story.append(arrive_callout(styles))
-    story.append(Spacer(1, 0.1 * inch))
+    story.append(Spacer(1, 0.08 * inch))
     story.append(Paragraph("YOUR DAY", styles["kicker"]))
     story.append(agenda_table(styles))
-    story.append(Spacer(1, 0.1 * inch))
+    story.append(Spacer(1, 0.08 * inch))
     story.append(Paragraph("FOUR PILLARS · 9:30", styles["kicker"]))
     story.append(pillar_grid(styles))
     story.append(Spacer(1, 0.08 * inch))
