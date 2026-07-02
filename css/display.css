@@ -1,0 +1,177 @@
+/* TV lobby — 65" display welcome screen */
+html.display-mode,
+html.display-mode body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #060d18;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.display-app {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 4vw, 48px);
+  color: #e8eef4;
+}
+
+.display-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.display-bg canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.display-inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1400px);
+  text-align: center;
+}
+
+.display-logo-lockup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.5vw, 28px);
+  margin-bottom: clamp(28px, 4vw, 48px);
+  padding: clamp(18px, 2.5vw, 28px) clamp(24px, 4vw, 40px);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.display-logo-tff {
+  height: clamp(36px, 5vw, 56px);
+  width: auto;
+}
+
+.display-logo-tb {
+  height: clamp(32px, 4.5vw, 50px);
+  width: auto;
+}
+
+.display-logo-x {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.display-kicker {
+  margin: 0 0 0.6em;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(0.72rem, 1.4vw, 0.95rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #008fd3;
+}
+
+.display-title {
+  margin: 0 0 0.35em;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  background: linear-gradient(135deg, #fff 25%, #008fd3 65%, #5fb832);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.display-sub {
+  margin: 0 auto clamp(36px, 5vw, 56px);
+  max-width: 28em;
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.display-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.display-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  min-height: clamp(140px, 18vw, 220px);
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: 20px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s, background 0.25s;
+}
+
+.display-tile:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  color: #fff;
+}
+
+.display-tile.primary {
+  background: linear-gradient(145deg, rgba(0, 143, 211, 0.35), rgba(0, 106, 166, 0.2));
+  border-color: rgba(0, 143, 211, 0.45);
+  box-shadow: 0 20px 56px rgba(0, 143, 211, 0.2);
+}
+
+.display-tile.primary:hover {
+  box-shadow: 0 28px 72px rgba(0, 143, 211, 0.35);
+}
+
+.display-tile-icon {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1;
+  margin-bottom: 0.15em;
+}
+
+.display-tile b {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.display-tile span {
+  font-size: clamp(0.82rem, 1.35vw, 1rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.35;
+}
+
+.display-meta {
+  font-size: clamp(0.78rem, 1.2vw, 0.92rem);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.display-meta strong {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 900px) {
+  .display-tiles {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

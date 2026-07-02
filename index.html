@@ -12,21 +12,31 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-guest.css" />
     <link rel="stylesheet" href="/css/directory.css" />
+    <link rel="stylesheet" href="/css/tv-hub.css" />
   </head>
   <body class="tff-warm">
     <header id="guest-nav"></header>
 
     <main class="guest-page guest-page-hub">
       <div class="guest-accent" aria-hidden="true"></div>
-      <p class="guest-kicker">TheraBreath team · Tuesday, July 8, 2026</p>
-      <h1>July 8 visit</h1>
-      <p class="guest-sub">Breath of Innovation · Norco, CA · arrive 9:00 AM · presentation 9:30 AM · lunch off site · open Q&amp;A after 1:00 PM</p>
 
-      <section class="guest-hero-stage" aria-hidden="true">
-        <figure class="guest-hero-tank">
-          <img src="/assets/companies/tff/therabreath-production-room.jpg" alt="" width="384" height="512" loading="eager" decoding="async" />
-        </figure>
-      </section>
+      <div class="guest-hub-hero">
+        <div class="guest-hub-hero-copy">
+          <div class="guest-logo-lockup" aria-label="The Flavor Factory and TheraBreath">
+            <img class="guest-logo-tff" src="/assets/companies/logos/tff-logo.png" alt="The Flavor Factory" width="220" height="32" />
+            <span class="guest-logo-x" aria-hidden="true">×</span>
+            <img class="guest-logo-tb" src="/assets/companies/logos/therabreath-logo.svg" alt="TheraBreath" width="124" height="32" />
+          </div>
+          <p class="guest-kicker">TheraBreath team · Tuesday, July 8, 2026</p>
+          <h1>Breath of Innovation</h1>
+          <p class="guest-sub">Norco, CA · arrive 9:00 AM · presentation 9:30 AM · tasting 10:30 AM · open Q&amp;A after 1:00 PM</p>
+        </div>
+        <section class="guest-hero-stage" aria-hidden="true">
+          <figure class="guest-hero-tank">
+            <img src="/assets/companies/tff/therabreath-production-room.jpg" alt="" width="384" height="512" loading="eager" decoding="async" />
+          </figure>
+        </section>
+      </div>
 
       <div class="guest-hub-search">
         <div class="dir-search" id="home-search-wrap">
@@ -37,25 +47,29 @@
       </div>
 
       <div class="guest-quick">
-        <a class="guest-quick-card primary" href="/email">
-          <b>Email packet</b>
-          <span>Download PDF · copy email text · send today</span>
-        </a>
-        <a class="guest-quick-card" href="/prepare">
-          <b>Prepare for July 8</b>
-          <span>Suggested agenda · discussion highlights</span>
-        </a>
-        <a class="guest-quick-card" href="/visit">
-          <b>Day-of hub</b>
-          <span>Schedule · pillars · presentation · portfolio</span>
-        </a>
-        <a class="guest-quick-card" href="/present">
+        <a class="guest-quick-card primary" href="/present">
           <b>Live presentation</b>
           <span>9:30 AM · four pillars · open Q&amp;A</span>
         </a>
-        <a class="guest-quick-card" href="/taste">
+        <a class="guest-quick-card" href="/email">
           <b>Tasting tools</b>
           <span>10:30 AM · blind mapping · scorecard</span>
+        </a>
+        <a class="guest-quick-card" href="/visit">
+          <b>Day-of hub</b>
+          <span>Schedule · pillars · portfolio</span>
+        </a>
+        <a class="guest-quick-card" href="/email">
+          <b>Email packet</b>
+          <span>PDF · Word doc · copy email text</span>
+        </a>
+        <a class="guest-quick-card" href="/prepare">
+          <b>Prepare for July 8</b>
+          <span>Agenda · discussion highlights</span>
+        </a>
+        <a class="guest-quick-card" href="/display">
+          <b>TV display mode</b>
+          <span>Lobby screen for conference room display</span>
         </a>
       </div>
 
@@ -95,6 +109,7 @@
       </footer>
     </main>
 
+    <script src="/js/tv-display.js" defer></script>
     <script src="/js/hero-showcase.js" defer></script>
     <script src="/tff-auth.js"></script>
     <script src="/js/site-directory.js"></script>

@@ -1,0 +1,189 @@
+/* Large-display / TV layouts for visit hub pages */
+
+html.tv-display body.tff-warm {
+  background: linear-gradient(180deg, #f8fafc 0%, #fff 40%);
+}
+
+html.tv-display .guest-page-hub {
+  width: min(1280px, calc(100vw - 64px));
+  padding-top: clamp(36px, 4vw, 56px);
+}
+
+html.tv-display .guest-hub-hero {
+  display: grid;
+  grid-template-columns: 1fr min(42%, 480px);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+
+html.tv-display .guest-hub-hero-copy h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+}
+
+html.tv-display .guest-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  max-width: 36em;
+}
+
+html.tv-display .guest-hero-stage {
+  margin: 0;
+}
+
+html.tv-display .guest-hero-tank img {
+  border-radius: 20px;
+  box-shadow: 0 32px 80px rgba(10, 22, 40, 0.15);
+}
+
+html.tv-display .guest-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 32px rgba(10, 22, 40, 0.06);
+}
+
+html.tv-display .guest-logo-tff {
+  height: 36px;
+  width: auto;
+}
+
+html.tv-display .guest-logo-tb {
+  height: 32px;
+  width: auto;
+}
+
+html.tv-display .guest-logo-x {
+  font-family: "Sora", sans-serif;
+  font-size: 1.1rem;
+  color: #94a3b8;
+}
+
+html.tv-display .guest-quick {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+html.tv-display .guest-quick-card {
+  padding: 20px 22px;
+  border-radius: 16px;
+}
+
+html.tv-display .guest-quick-card b {
+  font-size: 1.05rem;
+}
+
+html.tv-display .guest-quick-card span {
+  font-size: 0.88rem;
+}
+
+html.tv-display .guest-topics {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+html.tv-display .guest-topics a {
+  padding: 16px 18px;
+}
+
+html.tv-display .guest-topics a b {
+  font-size: 0.88rem;
+}
+
+html.tv-display .guest-schedule-compact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+html.tv-display .guest-schedule-compact li {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(10, 22, 40, 0.04);
+}
+
+html.tv-display .guest-schedule-compact h2 {
+  font-size: 1rem;
+}
+
+html.tv-display .guest-time {
+  font-size: 0.85rem;
+}
+
+html.tv-display .guest-box {
+  font-size: 1.05rem;
+  padding: 24px 28px;
+}
+
+html.tv-display .dir-search input {
+  font-size: 1.05rem;
+  padding: 16px 18px;
+}
+
+/* visit.html — dark site theme */
+html.tv-display .boi-wrap {
+  width: min(1400px, calc(100vw - 64px));
+}
+
+html.tv-display .boi-hero h1 {
+  font-size: clamp(3rem, 6vw, 4.8rem);
+}
+
+html.tv-display .boi-hero-lead {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+}
+
+html.tv-display .boi-btn {
+  padding: 18px 32px;
+  font-size: 1rem;
+}
+
+html.tv-display .boi-timeline li {
+  padding: 20px 24px;
+}
+
+html.tv-display .boi-timeline time {
+  font-size: 1rem;
+}
+
+html.tv-display .boi-timeline h3 {
+  font-size: 1.25rem;
+}
+
+html.tv-display .boi-card h3 {
+  font-size: 1.15rem;
+}
+
+html.tv-display .boi-card p {
+  font-size: 1.02rem;
+}
+
+html.tv-display .boi-pillar h4 {
+  font-size: 1.1rem;
+}
+
+html.tv-display .boi-brand-logos img.boi-brand-tff {
+  height: 32px;
+}
+
+html.tv-display .boi-brand-logos img.boi-brand-tb {
+  height: 28px;
+}
+
+@media (min-width: 1600px) {
+  html:not(.tv-display) .guest-page-hub {
+    width: min(960px, calc(100vw - 48px));
+  }
+
+  html:not(.tv-display) .guest-quick {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -10,6 +10,7 @@
     { "source": "/july8-docx", "destination": "/booklet/documents/july-8-briefing.docx", "permanent": false },
     { "source": "/agenda", "destination": "/booklet/documents/suggested-agenda-therabreath.pdf", "permanent": false },
     { "source": "/presentation", "destination": "/present", "permanent": false },
+    { "source": "/tv", "destination": "/display", "permanent": false },
     { "source": "/speaker-packet", "destination": "/packet", "permanent": false },
     { "source": "/team", "destination": "/gate", "permanent": false },
     { "source": "/map", "destination": "/mystery", "permanent": false }

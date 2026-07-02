@@ -65,14 +65,17 @@
   }
 
   function pillarIntroSlide(section) {
+    var pillar = (window.BOI && BOI.pillars) ? BOI.pillars.find(function (p) { return p.num === section.num; }) : null;
+    var tagline = pillar ? pillar.tagline : "";
     return makeSlide(
       "pres-slide-intro",
       '<div class="pres-slide-inner" style="--pillar-color:' + section.color + '">' +
         '<div class="pres-slide-pad">' +
         '<span class="pres-pillar-badge">' + esc(section.pillarShort) + "</span>" +
         "<h1>" + esc(section.pillar) + "</h1>" +
+        (tagline ? '<p class="pres-lead" style="font-weight:600;color:var(--ink)">' + esc(tagline) + "</p>" : "") +
         '<p class="pres-lead">' + esc(section.intro) + "</p>" +
-        '<p class="pres-intro-hint">' + section.cards.length + " questions · tap to reveal key points</p>" +
+        '<p class="pres-intro-hint">Press Space or click Reveal · ' + section.cards.length + " questions</p>" +
         "</div></div>"
     );
   }

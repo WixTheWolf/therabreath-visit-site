@@ -19,7 +19,13 @@
 
   slot.className = "boi-nav";
   slot.innerHTML =
-    '<a class="boi-brand" href="/visit"><span class="boi-mark">TFF</span> Breath of Innovation</a>' +
+    '<a class="boi-brand" href="/visit">' +
+    '<span class="boi-brand-logos" aria-hidden="true">' +
+    '<img class="boi-brand-tff" src="/assets/companies/logos/tff-logo.png" alt="" width="140" height="20" />' +
+    '<span class="boi-brand-x">×</span>' +
+    '<img class="boi-brand-tb" src="/assets/companies/logos/therabreath-logo.svg" alt="" width="88" height="24" />' +
+    "</span>" +
+    '<span class="boi-brand-text">Breath of Innovation</span></a>' +
     '<div class="boi-nav-links">' +
     links +
     ext +

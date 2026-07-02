@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" class="display-mode">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#060d18" />
+    <title>Breath of Innovation · Display</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/display.css" />
+  </head>
+  <body>
+    <div class="display-app">
+      <div class="display-bg" aria-hidden="true"><canvas id="display-bg-canvas"></canvas></div>
+      <div class="display-inner">
+        <div class="display-logo-lockup" aria-label="The Flavor Factory and TheraBreath">
+          <img class="display-logo-tff" src="/assets/companies/logos/tff-logo.png" alt="The Flavor Factory" width="320" height="46" />
+          <span class="display-logo-x" aria-hidden="true">×</span>
+          <img class="display-logo-tb" src="/assets/companies/logos/therabreath-logo.svg" alt="TheraBreath" width="180" height="48" />
+        </div>
+        <p class="display-kicker">Tuesday, July 8, 2026 · Norco, California</p>
+        <h1 class="display-title">Breath of Innovation</h1>
+        <p class="display-sub">Capabilities workshop for the TheraBreath team — tour at 9:00 AM, presentation at 9:30 AM.</p>
+        <nav class="display-tiles" aria-label="Main destinations">
+          <a class="display-tile primary" href="/present">
+            <span class="display-tile-icon" aria-hidden="true">▶</span>
+            <b>Start presentation</b>
+            <span>9:30 AM · four pillars · open Q&amp;A</span>
+          </a>
+          <a class="display-tile" href="/visit">
+            <span class="display-tile-icon" aria-hidden="true">◎</span>
+            <b>Day-of schedule</b>
+            <span>Timeline · pillars · portfolio links</span>
+          </a>
+          <a class="display-tile" href="/taste">
+            <span class="display-tile-icon" aria-hidden="true">◆</span>
+            <b>Tasting tools</b>
+            <span>10:30 AM · blind mapping · scorecard</span>
+          </a>
+        </nav>
+        <p class="display-meta"><strong>2058 Second Street</strong> · Norco, CA 92860 · (951) 273-9877</p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var canvas = document.getElementById("display-bg-canvas");
+        if (!canvas) return;
+        var ctx = canvas.getContext("2d");
+        if (!ctx) return;
+        var orbs = [
+          { x: 0.15, y: 0.25, r: 0.4, c: "0,143,211", s: 0.00012, a: 0.24 },
+          { x: 0.85, y: 0.65, r: 0.36, c: "95,184,50", s: -0.0001, a: 0.18 },
+          { x: 0.5, y: 0.9, r: 0.3, c: "245,130,32", s: 0.00008, a: 0.14 },
+        ];
+        var t = 0;
+        function resize() {
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = canvas.clientWidth * dpr;
+          canvas.height = canvas.clientHeight * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function draw() {
+          var w = canvas.clientWidth;
+          var h = canvas.clientHeight;
+          ctx.fillStyle = "#060d18";
+          ctx.fillRect(0, 0, w, h);
+          orbs.forEach(function (o, i) {
+            var ox = (o.x + Math.sin(t * o.s * 1000 + i) * 0.06) * w;
+            var oy = (o.y + Math.cos(t * o.s * 1000 + i * 2) * 0.05) * h;
+            var rad = o.r * Math.min(w, h);
+            var g = ctx.createRadialGradient(ox, oy, 0, ox, oy, rad);
+            g.addColorStop(0, "rgba(" + o.c + "," + (o.a || 0.2) + ")");
+            g.addColorStop(1, "rgba(" + o.c + ",0)");
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, w, h);
+          });
+          t += 0.016;
+          requestAnimationFrame(draw);
+        }
+        resize();
+        draw();
+        window.addEventListener("resize", resize);
+      })();
+    </script>
+  </body>
+</html>

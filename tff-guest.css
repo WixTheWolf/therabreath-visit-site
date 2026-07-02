@@ -242,6 +242,46 @@ body {
   width: min(720px, calc(100vw - 32px));
 }
 
+.guest-hub-hero {
+  margin-bottom: 22px;
+}
+
+.guest-logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.guest-logo-tff {
+  height: 26px;
+  width: auto;
+}
+
+.guest-logo-tb {
+  height: 24px;
+  width: auto;
+}
+
+.guest-logo-x {
+  font-family: "Sora", sans-serif;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+@media (min-width: 900px) {
+  .guest-hub-hero {
+    display: grid;
+    grid-template-columns: 1fr min(42%, 420px);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .guest-hub-hero .guest-hero-stage {
+    margin: 0;
+  }
+}
+
 .guest-visual {
   margin-bottom: 22px;
 }

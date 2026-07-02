@@ -90,6 +90,42 @@ a:hover { text-decoration: underline; }
 
 .boi-brand:hover { text-decoration: none; }
 
+.boi-brand-logos {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.boi-brand-tff {
+  height: 18px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+.boi-brand-tb {
+  height: 16px;
+  width: auto;
+}
+
+.boi-brand-x {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.boi-brand-text {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .boi-brand-text { display: none; }
+}
+
 .boi-mark {
   display: grid;
   width: 36px;
