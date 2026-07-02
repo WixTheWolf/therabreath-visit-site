@@ -370,8 +370,7 @@ def build():
     # Page 2
     story.append(PageBreak())
     story.append(Paragraph("TEN QUESTIONS FOR YOUR TEAM", styles["kicker"]))
-    story.append(Paragraph("<i>No prep deck — bring your real answers.</i>", styles["muted"]))
-    story.append(Spacer(1, 0.05 * inch))
+    story.append(Spacer(1, 0.06 * inch))
     story.append(questions_two_col(styles))
     story.append(Spacer(1, 0.1 * inch))
     story.append(Paragraph("WHAT YOU SHOULD LEAVE WITH", styles["kicker"]))

@@ -67,7 +67,7 @@ EMAIL_BODY = """TheraBreath team,
 
 We're excited to welcome you July 8 for Breath of Innovation at The Flavor Factory.
 
-Attached is your briefing — schedule, sessions, and how to get the most from the day. Arrive 9:00 AM, 2058 Second Street (tour first; session 9:30). Closed-toe shoes.
+Attached are your briefing PDF and an editable Word version — schedule, sessions, and how to get the most from the day. Arrive 9:00 AM, 2058 Second Street (tour first; session 9:30). Closed-toe shoes.
 
 Thank you for making time for this. We built the day around your priorities and look forward to a great working session together.
 
