@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 52" role="img" aria-label="The Flavor Factory">
+  <rect x="0" y="6" width="40" height="40" rx="10" fill="#008fd3"/>
+  <text x="20" y="33" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">TFF</text>
+  <text x="50" y="22" fill="#0a1628" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.6">THE FLAVOR</text>
+  <text x="50" y="38" fill="#0a1628" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.6">FACTORY</text>
+</svg>

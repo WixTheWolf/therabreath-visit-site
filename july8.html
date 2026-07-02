@@ -22,12 +22,25 @@
         border-bottom: 1px solid var(--line);
         margin-bottom: 22px;
       }
-      .guest-header-brand {
+      .guest-header-logos {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex: 1;
+        min-width: 0;
+      }
+      .guest-header-logos img {
+        height: 28px;
+        width: auto;
+        max-width: 42%;
+        object-fit: contain;
+      }
+      .guest-header-logos .guest-header-x {
         font-family: "Sora", sans-serif;
-        font-size: 0.82rem;
+        font-size: 0.9rem;
         font-weight: 800;
-        letter-spacing: -0.02em;
-        color: var(--ink);
+        color: #008fd3;
+        flex-shrink: 0;
       }
       .guest-header-meta {
         font-size: 0.72rem;
@@ -306,7 +319,11 @@
   <body>
     <main class="guest-page guest-page--july8">
       <header class="guest-header">
-        <div class="guest-header-brand">The Flavor Factory × TheraBreath</div>
+        <div class="guest-header-logos">
+          <img src="/assets/companies/logos/tff-logo.svg" alt="The Flavor Factory" width="160" height="28" />
+          <span class="guest-header-x" aria-hidden="true">×</span>
+          <img src="/assets/companies/logos/therabreath-logo.svg" alt="TheraBreath" width="180" height="32" />
+        </div>
         <div class="guest-header-meta">July 8, 2026 · Norco, CA</div>
       </header>
 
