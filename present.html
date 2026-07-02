@@ -31,6 +31,16 @@
       <aside class="pres-chapters" id="pres-chapters"></aside>
 
       <div class="pres-main">
+        <div class="pres-hdmi-hint" id="pres-hdmi-hint" hidden>
+          <div class="pres-hdmi-hint-inner">
+            <p><strong>Presenting on the TV?</strong> Connect your MacBook with HDMI, then press <kbd>F</kbd> or <strong>Full</strong> — fullscreen mirrors slides to the screen while you control from the laptop.</p>
+            <div class="pres-hdmi-hint-actions">
+              <button type="button" class="primary" id="pres-hdmi-go">Go fullscreen</button>
+              <button type="button" id="pres-hdmi-dismiss">Dismiss</button>
+            </div>
+          </div>
+        </div>
+
         <div class="pres-viewport" id="pres-viewport">
           <div class="pres-bg"><canvas id="pres-bg-canvas" aria-hidden="true"></canvas></div>
           <button type="button" class="pres-hitzone prev" aria-label="Previous"></button>
@@ -45,7 +55,7 @@
                   <div class="pres-band-tint"></div>
                   <div class="pres-band-content">
                     <div class="pres-band-logos" aria-label="The Flavor Factory and TheraBreath">
-                      <img class="pres-logo-tff" src="/assets/companies/logos/tff-logo.png" alt="The Flavor Factory" width="240" height="34" />
+                      <img class="pres-logo-tff" src="/assets/companies/logos/tff-logo.svg" alt="The Flavor Factory" width="240" height="34" />
                       <span class="pres-logo-x" aria-hidden="true">×</span>
                       <img class="pres-logo-tb" src="/assets/companies/logos/therabreath-logo.svg" alt="TheraBreath" width="140" height="36" />
                     </div>
@@ -101,11 +111,11 @@
                   <div class="pres-oral-care" role="img" aria-label="Oral care flavor development"></div>
                   <div class="pres-features">
                     <div class="pres-feature" style="--feat-color:#008fd3">
-                      <span class="pres-feature-icon" aria-hidden="true">💬</span>
+                      <span class="pres-feature-icon" data-pres-icon="chat" aria-hidden="true"></span>
                       <div><h3>Honest conversation</h3><p>16 question slides + 10 strategic questions. Full talk tracks in the speaker packet.</p></div>
                     </div>
                     <div class="pres-feature" style="--feat-color:#5fb832">
-                      <span class="pres-feature-icon" aria-hidden="true">🏛</span>
+                      <span class="pres-feature-icon" data-pres-icon="pillars" aria-hidden="true"></span>
                       <div><h3>Four pillars</h3><ul><li>Resiliency</li><li>Innovation</li><li>Operations</li><li>Partnership</li></ul></div>
                     </div>
                   </div>
@@ -126,12 +136,12 @@
                   <p class="pres-tag">Schedule</p>
                   <h1>Arrive 9:00 AM — we'll adjust in the room.</h1>
                   <ul class="pres-schedule">
-                    <li><span class="pres-schedule-icon">🏭</span><div><time>9:00–9:25</time><b>Facility tour</b><span>Production &amp; QC</span></div></li>
-                    <li><span class="pres-schedule-icon">📊</span><div><time>9:30–10:15</time><b>Presentation</b><span>Four pillars</span></div></li>
-                    <li><span class="pres-schedule-icon">☕</span><div><time>10:15–10:30</time><b>Break</b><span>Before tasting</span></div></li>
-                    <li><span class="pres-schedule-icon">🧪</span><div><time>10:30–11:15</time><b>Tasting</b><span>Five prototypes</span></div></li>
-                    <li><span class="pres-schedule-icon">🍽</span><div><time>11:30–1:00</time><b>Lunch</b><span>Off site</span></div></li>
-                    <li><span class="pres-schedule-icon">💬</span><div><time>1:00 PM+</time><b>Open Q&amp;A</b><span>Your pace</span></div></li>
+                    <li><span class="pres-schedule-icon" data-pres-icon="tour" aria-hidden="true"></span><div><time>9:00–9:25</time><b>Facility tour</b><span>Production &amp; QC</span></div></li>
+                    <li><span class="pres-schedule-icon" data-pres-icon="present" aria-hidden="true"></span><div><time>9:30–10:15</time><b>Presentation</b><span>Four pillars</span></div></li>
+                    <li><span class="pres-schedule-icon" data-pres-icon="break" aria-hidden="true"></span><div><time>10:15–10:30</time><b>Break</b><span>Before tasting</span></div></li>
+                    <li><span class="pres-schedule-icon" data-pres-icon="taste" aria-hidden="true"></span><div><time>10:30–11:15</time><b>Tasting</b><span>Five prototypes</span></div></li>
+                    <li><span class="pres-schedule-icon" data-pres-icon="lunch" aria-hidden="true"></span><div><time>11:30–1:00</time><b>Lunch</b><span>Off site</span></div></li>
+                    <li><span class="pres-schedule-icon" data-pres-icon="qa" aria-hidden="true"></span><div><time>1:00 PM+</time><b>Open Q&amp;A</b><span>Your pace</span></div></li>
                   </ul>
                 </div>
               </div>
@@ -142,7 +152,7 @@
           <section class="pres-slide" data-i="4">
             <div class="pres-slide-inner">
               <div class="pres-frame">
-                <header class="pres-band pres-band--thin" style="--pres-band-color:#0a1628">
+                <header class="pres-band" style="--pres-band-img:url('/assets/companies/tff/therabreath-production-room.jpg');--pres-band-color:#0a1628">
                   <div class="pres-band-bg"></div><div class="pres-band-tint"></div>
                   <div class="pres-band-content"><span class="pres-band-tag">Capabilities framework</span></div>
                 </header>
@@ -161,7 +171,7 @@
                       <div class="pres-pillar-thumb"><img src="/assets/visit/bottling-quality-line.jpg" alt="" width="80" height="80" /></div>
                       <div><h3>3 · Operations</h3><p>One site — dev, production, QC together.</p></div>
                     </div>
-                    <div class="pres-pillar-tile" style="--pillar-color:#006da3">
+                    <div class="pres-pillar-tile" style="--pillar-color:#0a1628">
                       <div class="pres-pillar-thumb"><img src="/assets/companies/therabreath/complete-rinse.jpg" alt="" width="80" height="80" /></div>
                       <div><h3>4 · Partnership</h3><p>Communication, investment, co-development.</p></div>
                     </div>
@@ -177,7 +187,7 @@
           <section class="pres-slide" data-i="9">
             <div class="pres-slide-inner">
               <div class="pres-frame">
-                <header class="pres-band" style="--pres-band-img:url('/assets/visit/flavor-development-lab.jpg');--pres-band-color:#008fd3">
+                <header class="pres-band" style="--pres-band-img:url('/assets/visit/bottling-quality-line.jpg');--pres-band-color:#008fd3">
                   <div class="pres-band-bg"></div><div class="pres-band-tint"></div>
                   <div class="pres-band-content"><span class="pres-band-label">Sensory validation</span></div>
                 </header>
@@ -205,6 +215,7 @@
                   <div class="pres-band-content"><span class="pres-band-label">Formulation science</span></div>
                 </header>
                 <div class="pres-frame-body pres-frame-body--dense">
+                  <p class="pres-tag">Formulation science</p>
                   <h1>Built for sodium chlorite</h1>
                   <div class="pres-compare">
                     <div class="pres-compare-card pres-compare-card--bad">
@@ -247,7 +258,7 @@
           <section class="pres-slide" data-i="12">
             <div class="pres-slide-inner">
               <div class="pres-frame">
-                <header class="pres-band pres-band--thin" style="--pres-band-color:#008fd3">
+                <header class="pres-band" style="--pres-band-img:url('/assets/visit/tasting-workshop-room.jpg');--pres-band-color:#008fd3">
                   <div class="pres-band-bg"></div><div class="pres-band-tint"></div>
                   <div class="pres-band-content"><span class="pres-band-tag">What's next</span></div>
                 </header>
@@ -256,11 +267,11 @@
                   <div class="pres-certs" role="img" aria-label="SQF GMP Kosher Halal certifications"></div>
                   <div class="pres-features">
                     <div class="pres-feature" style="--feat-color:#008fd3">
-                      <span class="pres-feature-icon">📅</span>
+                      <span class="pres-feature-icon" data-pres-icon="calendar" aria-hidden="true"></span>
                       <div><h3>Today</h3><ul><li>Tour · 9:00</li><li>Presentation · 9:30</li><li>Tasting · 10:30</li><li>Q&amp;A · 1:00 PM</li></ul></div>
                     </div>
                     <div class="pres-feature" style="--feat-color:#5fb832">
-                      <span class="pres-feature-icon">✉</span>
+                      <span class="pres-feature-icon" data-pres-icon="mail" aria-hidden="true"></span>
                       <div><h3>After visit</h3><ul><li>Summary in 24 hours</li><li>Next steps &amp; owners</li></ul></div>
                     </div>
                   </div>
@@ -277,7 +288,7 @@
                   <div class="pres-band-bg"></div><div class="pres-band-tint"></div>
                   <div class="pres-band-content">
                     <div class="pres-band-logos" aria-hidden="true">
-                      <img class="pres-logo-tff" src="/assets/companies/logos/tff-logo.png" alt="" width="200" height="28" />
+                      <img class="pres-logo-tff" src="/assets/companies/logos/tff-logo.svg" alt="" width="200" height="28" />
                       <span class="pres-logo-x">×</span>
                       <img class="pres-logo-tb" src="/assets/companies/logos/therabreath-logo.svg" alt="" width="120" height="30" />
                     </div>
@@ -300,6 +311,7 @@
 
         <footer class="pres-toolbar">
           <span class="pres-toolbar-hint pres-toolbar-hint-desktop"><kbd>←</kbd> <kbd>→</kbd> navigate · <kbd>Space</kbd> reveal · <kbd>F</kbd> fullscreen</span>
+          <span class="pres-toolbar-hint pres-toolbar-hint-laptop"><kbd>←</kbd> <kbd>→</kbd> navigate · <kbd>Space</kbd> reveal · <kbd>F</kbd> fullscreen to TV</span>
           <span class="pres-toolbar-hint pres-toolbar-hint-mobile">Tap to reveal · swipe for next</span>
           <div class="pres-progress-track"><div class="pres-progress-fill" id="pres-progress-fill" style="width:7%"></div></div>
           <span id="pres-counter">1 / 41</span>
