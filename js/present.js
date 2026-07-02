@@ -67,101 +67,84 @@
   function pillarIntroSlide(section) {
     var pillar = (window.BOI && BOI.pillars) ? BOI.pillars.find(function (p) { return p.num === section.num; }) : null;
     var tagline = pillar ? pillar.tagline : "";
-    var vis = (window.PRES_VIS && PRES_VIS.pillars[section.num]) || {};
-    var bg = vis.bg || vis.image || PRES_VIS.cover;
-    var orb = PRES_VIS && PRES_VIS.html
-      ? PRES_VIS.html.pillarNum(section.num, section.color)
-      : "";
+    var vis = (window.PRES_GFX && PRES_GFX.pillars && PRES_GFX.pillars[section.num]) || {};
+    var img = vis.bg || vis.image || "/assets/companies/tff/facility.jpg";
+    var icon = (window.PRES_GFX && PRES_GFX.icons) ? PRES_GFX.icons[["", "resiliency", "innovation", "operations", "partnership"][section.num]] || "" : "";
     return makeSlide(
-      "pres-slide-intro pres-slide-intro-visual",
-      '<div class="pres-slide-inner" style="--pillar-color:' + section.color + '">' +
-        '<div class="pres-slide-split pres-slide-split--hero">' +
-        '<div class="pres-visual">' +
-        '<img src="' + bg + '" alt="" loading="lazy" decoding="async" />' +
-        '<div class="pres-visual-scrim"></div>' +
-        orb +
-        '<div class="pres-visual-badge">' + esc(vis.label || section.pillarShort) + "</div>" +
-        "</div>" +
-        '<div class="pres-content">' +
-        '<div class="pres-slide-pad">' +
+      "pres-slide-intro",
+      '<div class="pres-slide-inner"><div class="pres-frame">' +
+        '<header class="pres-band" style="--pres-band-img:url(\'' + img + "');--pres-band-color:" + section.color + '">' +
+        '<div class="pres-band-bg"></div><div class="pres-band-tint"></div>' +
+        '<div class="pres-band-content">' +
+        '<span class="pres-band-num">' + icon + " " + section.num + "</span>" +
+        '<span class="pres-band-label">' + esc(section.pillar) + "</span></div></header>" +
+        '<div class="pres-frame-body">' +
         '<span class="pres-pillar-badge">' + esc(section.pillarShort) + "</span>" +
-        "<h1>" + esc(section.pillar) + "</h1>" +
-        (tagline ? '<p class="pres-lead" style="font-weight:600;color:var(--ink)">' + esc(tagline) + "</p>" : "") +
+        (tagline ? "<h1>" + esc(tagline) + "</h1>" : "<h1>" + esc(section.pillar) + "</h1>") +
         '<p class="pres-lead">' + esc(section.intro) + "</p>" +
-        '<p class="pres-intro-hint">Press Space or click Reveal · ' + section.cards.length + " questions</p>" +
-        "</div></div></div></div>"
+        '<p class="pres-intro-hint">Space to reveal · ' + section.cards.length + " questions</p>" +
+        "</div></div></div>"
     );
   }
 
   function qaSlide(section, card) {
-    var vis = (window.PRES_VIS && PRES_VIS.pillars[section.num]) || {};
-    var wm = vis.bg || vis.image || "";
+    var vis = (window.PRES_GFX && PRES_GFX.pillars && PRES_GFX.pillars[section.num]) || {};
+    var img = vis.image || vis.bg || "";
+    var bandStyle = "--pres-band-color:" + section.color + ";" + (img ? "--pres-band-img:url('" + img + "');" : "");
     return makeSlide(
-      "pres-slide-qa pres-slide-qa-visual",
-      '<div class="pres-slide-inner" style="--pillar-color:' + section.color + '">' +
-        '<div class="pres-qa-accent-bar" aria-hidden="true"></div>' +
-        (wm ? '<div class="pres-qa-watermark" style="background-image:url(' + wm + ')" aria-hidden="true"></div>' : "") +
-        '<div class="pres-slide-pad">' +
-        '<div class="pres-qa-card-badge">' +
-        '<span class="pres-qa-card-badge-num">' + card.num + "</span>" +
-        '<span class="pres-qa-card-badge-label">' + esc(section.pillarShort) + "</span>" +
-        "</div>" +
+      "pres-slide-qa",
+      '<div class="pres-slide-inner"><div class="pres-frame">' +
+        '<header class="pres-band pres-band--thin" style="' + bandStyle + '">' +
+        '<div class="pres-band-bg"></div><div class="pres-band-tint"></div>' +
+        '<div class="pres-band-content"><span class="pres-band-tag">' + esc(section.pillarShort) + " · Question " + card.num + "</span></div></header>" +
+        '<div class="pres-frame-body pres-frame-body--dense">' +
+        '<span class="pres-qa-num" style="--pillar-color:' + section.color + '">' + card.num + "</span>" +
         '<div class="pres-qa-stage">' +
         '<p class="pres-qa-label">Question</p>' +
         '<h2 class="pres-qa-q">' + esc(card.question) + "</h2>" +
         '<div class="pres-qa-reveal">' +
         '<p class="pres-qa-label answer">Key points</p>' +
-        '<div class="pres-qa-answer">' + bulletList(card.points) + "</div>" +
-        "</div>" +
+        '<div class="pres-qa-answer">' + bulletList(card.points) + "</div></div>" +
         '<button type="button" class="pres-reveal-btn" data-reveal-label="Reveal points" data-hide-label="Hide points">' +
         '<span class="pres-reveal-icon" aria-hidden="true">✦</span> Reveal points</button>' +
-        "</div></div></div>"
-    );
-  }
-
-  function strategicIntroSlide() {
-    var bg = (window.PRES_VIS && PRES_VIS.strategic) || "";
-    return makeSlide(
-      "pres-slide-intro pres-slide-strategic-intro pres-slide-intro-visual",
-      '<div class="pres-slide-inner" style="--pillar-color:#6c5ce7">' +
-        '<div class="pres-slide-split pres-slide-split--hero">' +
-        '<div class="pres-visual">' +
-        '<img src="' + bg + '" alt="" loading="lazy" decoding="async" />' +
-        '<div class="pres-visual-scrim"></div>' +
-        '<div class="pres-visual-badge">Strategic discussion</div>' +
-        "</div>" +
-        '<div class="pres-content">' +
-        '<div class="pres-slide-pad">' +
-        '<span class="pres-pillar-badge">Discussion</span>' +
-        "<h1>Top 10 strategic questions</h1>" +
-        '<p class="pres-lead">Questions for TheraBreath — move beyond supplier review toward long-term partnership.</p>' +
-        '<p class="pres-intro-hint">Reveal talking points before opening the floor.</p>' +
         "</div></div></div></div>"
     );
   }
 
-  function strategicSlide(item) {
-    var wm = (window.PRES_VIS && PRES_VIS.strategic) || "";
+  function strategicIntroSlide() {
     return makeSlide(
-      "pres-slide-qa pres-slide-strategic pres-slide-qa-visual",
-      '<div class="pres-slide-inner" style="--pillar-color:#6c5ce7">' +
-        '<div class="pres-qa-accent-bar" aria-hidden="true"></div>' +
-        (wm ? '<div class="pres-qa-watermark" style="background-image:url(' + wm + ')" aria-hidden="true"></div>' : "") +
-        '<div class="pres-slide-pad">' +
-        '<div class="pres-qa-card-badge">' +
-        '<span class="pres-qa-card-badge-num">' + item.num + "</span>" +
-        '<span class="pres-qa-card-badge-label">Strategic · ' + item.num + " of 10</span>" +
-        "</div>" +
+      "pres-slide-intro pres-slide-strategic-intro",
+      '<div class="pres-slide-inner"><div class="pres-frame">' +
+        '<header class="pres-band" style="--pres-band-img:url(\'/assets/companies/therabreath/oxyd8-hero.jpg\');--pres-band-color:#6c5ce7">' +
+        '<div class="pres-band-bg"></div><div class="pres-band-tint"></div>' +
+        '<div class="pres-band-content"><span class="pres-band-label">Strategic discussion</span></div></header>' +
+        '<div class="pres-frame-body">' +
+        '<span class="pres-pillar-badge">Discussion</span>' +
+        "<h1>Top 10 strategic questions</h1>" +
+        '<p class="pres-lead">For TheraBreath — beyond supplier review toward long-term partnership.</p>' +
+        '<p class="pres-intro-hint">Reveal talking points before opening the floor.</p>' +
+        "</div></div></div>"
+    );
+  }
+
+  function strategicSlide(item) {
+    return makeSlide(
+      "pres-slide-qa pres-slide-strategic",
+      '<div class="pres-slide-inner"><div class="pres-frame">' +
+        '<header class="pres-band pres-band--thin" style="--pres-band-img:url(\'/assets/companies/therabreath/oxyd8-hero.jpg\');--pres-band-color:#6c5ce7">' +
+        '<div class="pres-band-bg"></div><div class="pres-band-tint"></div>' +
+        '<div class="pres-band-content"><span class="pres-band-tag">Strategic · ' + item.num + " of 10</span></div></header>" +
+        '<div class="pres-frame-body pres-frame-body--dense">' +
+        '<span class="pres-qa-num" style="--pillar-color:#6c5ce7;background:#6c5ce7">' + item.num + "</span>" +
         '<div class="pres-qa-stage">' +
         '<p class="pres-qa-label">Ask TheraBreath</p>' +
         '<h2 class="pres-qa-q">' + esc(item.question) + "</h2>" +
         '<div class="pres-qa-reveal">' +
         '<p class="pres-qa-label answer">Why it matters</p>' +
-        '<div class="pres-qa-answer strategic">' + bulletList(item.points) + "</div>" +
-        "</div>" +
+        '<div class="pres-qa-answer strategic">' + bulletList(item.points) + "</div></div>" +
         '<button type="button" class="pres-reveal-btn strategic" data-reveal-label="Reveal points" data-hide-label="Hide">' +
         '<span class="pres-reveal-icon" aria-hidden="true">?</span> Reveal points</button>' +
-        "</div></div></div>"
+        "</div></div></div></div>"
     );
   }
 
@@ -384,18 +367,37 @@
     if (!viewport) return;
     var slide = slides[index];
     if (!slide) return;
-    var inner = slide.querySelector(".pres-slide-inner");
-    if (!inner) return;
 
-    inner.style.transform = "none";
-    var pad = document.documentElement.classList.contains("pres-tv") ? 20 : 12;
-    var availH = viewport.clientHeight - pad;
-    var availW = viewport.clientWidth - pad;
-    var h = inner.offsetHeight;
-    var w = inner.offsetWidth;
-    if (!h || !w) return;
-    var scale = Math.min(1, availH / h, availW / w);
-    inner.style.transform = scale < 0.992 ? "scale(" + scale + ")" : "none";
+    slide.querySelectorAll(".pres-slide-inner, .pres-frame").forEach(function (el) {
+      el.style.transform = "none";
+    });
+
+    var frame = slide.querySelector(".pres-frame");
+    if (!frame) return;
+
+    var availH = viewport.clientHeight - 8;
+    var h = frame.getBoundingClientRect().height;
+    if (h > availH && availH > 0) {
+      var scale = availH / h;
+      frame.style.transform = "scale(" + scale + ")";
+      frame.style.transformOrigin = "center center";
+    }
+  }
+
+  function decorateBands() {
+    if (!window.PRES_GFX || !PRES_GFX.bubbles) return;
+    document.querySelectorAll(".pres-band").forEach(function (band) {
+      if (band.querySelector(".pres-gfx-bubbles")) return;
+      band.insertAdjacentHTML("beforeend", PRES_GFX.bubbles);
+    });
+  }
+
+  function preloadImages() {
+    var urls = (window.PRES_GFX && PRES_GFX.images) || [];
+    urls.forEach(function (src) {
+      var img = new Image();
+      img.src = src;
+    });
   }
 
   function updateMobileNextLabel() {
@@ -594,8 +596,10 @@
   });
 
   buildDynamicSlides();
+  decorateBands();
   bindRevealButtons();
   buildChapters();
+  preloadImages();
 
   var hash = (location.hash || "").match(/^#(\d+)$/);
   initCanvas();

@@ -178,7 +178,8 @@ html.pres-mode body {
 /* Slide */
 .pres-slide {
   position: absolute;
-  width: min(100%, var(--pres-slide-max, 1200px));
+  width: 100%;
+  max-width: none;
   max-height: 100%;
   opacity: 0;
   visibility: hidden;
@@ -199,22 +200,16 @@ html.pres-mode body {
 }
 
 .pres-slide-inner {
-  background: rgba(255, 255, 255, 0.97);
-  border-radius: 20px;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 40px 100px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(0, 143, 211, 0.08);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   color: var(--ink);
   overflow: visible;
   transform-origin: center center;
 }
 
 .pres-slide-inner::before {
-  content: "";
-  display: block;
-  height: 5px;
-  background: linear-gradient(90deg, var(--blue), var(--green), var(--orange));
+  display: none;
 }
 
 .pres-slide-pad {
