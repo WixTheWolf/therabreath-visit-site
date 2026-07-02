@@ -244,17 +244,36 @@
         gap: 8px;
         margin-bottom: 22px;
       }
-      .guest-actions button {
+      .guest-actions a, .guest-actions button {
         padding: 10px 16px;
         border-radius: 999px;
         font-family: "Sora", sans-serif;
         font-size: 0.74rem;
         font-weight: 700;
+        text-decoration: none;
         border: 1px solid var(--line);
-        background: var(--blue);
-        color: #fff;
+        background: #fff;
+        color: var(--ink);
         cursor: pointer;
       }
+      .guest-actions .primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+      .guest-pdf-banner {
+        display: block;
+        padding: 14px 16px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid rgba(0, 143, 211, 0.35);
+        background: linear-gradient(135deg, #fff, #f0f9fd);
+      }
+      .guest-pdf-banner b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.86rem;
+        margin-bottom: 3px;
+      }
+      .guest-pdf-banner span { font-size: 0.76rem; color: var(--muted); }
       @media print {
         .guest-actions { display: none !important; }
         body { background: #fff; }
@@ -303,6 +322,11 @@
       <p class="guest-note">
         <strong>Arrive 9:00 AM.</strong> Facility tour first at 2058 Second Street, then presentation across the street at 9:30. Casual business attire · closed-toe shoes for the production walkthrough · phone charged for the 10:30 tasting.
       </p>
+
+      <a class="guest-pdf-banner" href="/booklet/documents/july-8-briefing.pdf" download="july-8-briefing.pdf">
+        <b>Download PDF version</b>
+        <span>Same content · 6 pages · print or save for your team</span>
+      </a>
 
       <p class="guest-label">Suggested agenda</p>
       <p class="guest-lead" style="margin-top:-6px;font-size:0.82rem">
@@ -463,6 +487,7 @@
       </section>
 
       <div class="guest-actions">
+        <a class="primary" href="/booklet/documents/july-8-briefing.pdf" download="july-8-briefing.pdf">Download PDF</a>
         <button type="button" onclick="window.print()">Print this page</button>
       </div>
 

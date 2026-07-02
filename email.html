@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Copy-ready email for the TheraBreath July 8 visit — one link to the full briefing page." />
+    <meta name="description" content="Copy-ready email for the TheraBreath July 8 visit — attach the briefing PDF." />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#0a1628" />
     <title>July 8 Email · TFF × TheraBreath</title>
@@ -12,6 +12,25 @@
     <style>
       .guest-page--email { width: min(560px, calc(100vw - 32px)); }
       .guest-lead { margin: 0 0 20px; font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+      .guest-download {
+        display: block;
+        padding: 18px 20px;
+        margin-bottom: 14px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid rgba(0, 143, 211, 0.35);
+        background: linear-gradient(135deg, #fff, #f0f9fd);
+        box-shadow: 0 10px 28px rgba(10, 22, 40, 0.06);
+      }
+      .guest-download:hover { border-color: var(--blue); }
+      .guest-download b {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+      }
+      .guest-download span { font-size: 0.8rem; color: var(--muted); line-height: 1.45; }
       .guest-copy {
         margin-bottom: 22px;
         padding: 14px 16px;
@@ -37,23 +56,36 @@
         cursor: pointer;
       }
       .guest-actions .primary { background: var(--blue); color: #fff; border-color: var(--blue); }
-      .guest-preview {
-        display: block;
-        padding: 14px 16px;
-        margin-bottom: 14px;
-        border-radius: 12px;
-        text-decoration: none;
-        color: inherit;
-        border: 1px solid rgba(0, 143, 211, 0.35);
-        background: linear-gradient(135deg, #fff, #f0f9fd);
+      .guest-steps {
+        margin: 0 0 22px;
+        padding: 0;
+        list-style: none;
+        counter-reset: step;
       }
-      .guest-preview b {
-        display: block;
+      .guest-steps li {
+        position: relative;
+        padding: 0 0 12px 28px;
+        font-size: 0.82rem;
+        line-height: 1.5;
+        color: var(--ink);
+      }
+      .guest-steps li::before {
+        counter-increment: step;
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: #fff;
         font-family: "Sora", sans-serif;
-        font-size: 0.9rem;
-        margin-bottom: 4px;
+        font-size: 0.68rem;
+        font-weight: 800;
+        line-height: 20px;
+        text-align: center;
       }
-      .guest-preview span { font-size: 0.78rem; color: var(--muted); }
     </style>
   </head>
   <body>
@@ -61,26 +93,36 @@
       <div class="guest-accent" aria-hidden="true"></div>
       <p class="guest-kicker">Internal · send to TheraBreath</p>
       <h1>July 8 email</h1>
-      <p class="guest-sub">One link in the email · full briefing on one page</p>
+      <p class="guest-sub">Attach the PDF · copy the email text · send</p>
 
       <p class="guest-lead">
-        Copy the text below into your email. It links only to the July 8 briefing page — agenda, what we'll do, discussion topics, and outcomes for both teams. No visit-site navigation for guests.
+        The briefing is a self-contained 6-page PDF — agenda, session activities, discussion topics, 10 questions, and outcomes for both teams. No website links required in the email.
       </p>
 
-      <a class="guest-preview" id="briefing-link" href="/july8">
-        <b>Preview briefing page</b>
-        <span>What TheraBreath will see when they open the link</span>
+      <a class="guest-download" href="/booklet/documents/july-8-briefing.pdf" download="july-8-briefing.pdf">
+        <b>Download briefing PDF</b>
+        <span>6 pages · attach to your email · matches /july8 online page</span>
       </a>
+
+      <p class="guest-label">Send in 3 steps</p>
+      <ol class="guest-steps">
+        <li>Download the PDF above</li>
+        <li>Copy the email text below</li>
+        <li>Attach <strong>july-8-briefing.pdf</strong> and send to the TheraBreath team</li>
+      </ol>
 
       <p class="guest-label">Email text</p>
       <div class="guest-copy" id="email-blurb">Loading…</div>
       <div class="guest-actions">
         <button type="button" class="primary" id="copy-blurb">Copy email text</button>
         <button type="button" id="copy-subject">Copy subject line</button>
+        <a href="/booklet/documents/july-8-briefing.pdf">Open PDF</a>
+        <a href="/july8">Preview web page</a>
       </div>
 
       <section class="guest-box" aria-label="Logistics">
         <p><strong>Subject:</strong> <span id="subject-line">July 8 visit · agenda &amp; briefing · The Flavor Factory</span></p>
+        <p><strong>Attachment:</strong> july-8-briefing.pdf</p>
         <p><strong>Arrive 9:00 AM</strong> — 2058 Second Street, Norco, CA 92860</p>
         <p><strong>Questions:</strong> (951) 273-9877</p>
       </section>
@@ -88,16 +130,12 @@
 
     <script>
       (function () {
-        var origin = window.location.origin;
-        var briefingUrl = origin + "/july8";
         var subject = "July 8 visit · agenda & briefing · The Flavor Factory";
         var blurb =
           "TheraBreath team,\n\n" +
           "We're looking forward to hosting you for Breath of Innovation on Tuesday, July 8, 2026 at The Flavor Factory in Norco.\n\n" +
-          "This is a capabilities workshop — not a sales presentation. Your R&D and procurement colleagues asked to see how we operate, discuss Lakewood parity and growth plans, and taste directional workshop prototypes together.\n\n" +
-          "Everything you need before you arrive is on one page:\n" +
-          briefingUrl + "\n\n" +
-          "That briefing includes:\n" +
+          "Please find attached our July 8 visit briefing (PDF). This is a capabilities workshop — not a sales presentation. Your R&D and procurement colleagues asked to see how we operate, discuss Lakewood parity and growth plans, and taste directional workshop prototypes together.\n\n" +
+          "The attached briefing includes:\n" +
           "• Suggested agenda — facility tour at 9:00 AM, four-pillar presentation at 9:30 AM, tasting at 10:30 AM, lunch off site, open Q&A from 1:00 PM\n" +
           "• What we'll do in each session\n" +
           "• Discussion topics from our email threads — Lakewood parity, competitive calibration, capabilities and partnership\n" +
@@ -107,7 +145,6 @@
           "Questions welcome anytime — (951) 273-9877.\n\n" +
           "The Flavor Factory team";
 
-        document.getElementById("briefing-link").href = "/july8";
         document.getElementById("email-blurb").textContent = blurb;
 
         document.getElementById("copy-blurb").addEventListener("click", function () {
