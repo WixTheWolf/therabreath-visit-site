@@ -178,7 +178,7 @@ html.pres-mode body {
 /* Slide */
 .pres-slide {
   position: absolute;
-  width: min(100%, 1200px);
+  width: min(100%, var(--pres-slide-max, 1200px));
   max-height: 100%;
   opacity: 0;
   visibility: hidden;
@@ -268,19 +268,59 @@ html.pres-mode body {
   min-height: clamp(320px, 55vmin, 520px);
 }
 
-.pres-logo {
-  display: grid;
-  width: clamp(56px, 9vmin, 72px);
-  height: clamp(56px, 9vmin, 72px);
-  place-items: center;
-  margin-bottom: 1em;
+.pres-logo-lockup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vmin, 20px);
+  margin-bottom: clamp(1em, 2.5vmin, 1.6em);
+  padding: clamp(14px, 2.2vmin, 22px) clamp(18px, 3vmin, 32px);
   border-radius: 18px;
-  background: linear-gradient(135deg, var(--ink), var(--blue));
-  color: #fff;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 143, 211, 0.12);
+  box-shadow:
+    0 16px 48px rgba(0, 143, 211, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.pres-logo-lockup--compact {
+  padding: 12px 20px;
+  margin-bottom: 1.2em;
+}
+
+.pres-logo-tff {
+  display: block;
+  width: auto;
+  height: clamp(28px, 4.5vmin, 44px);
+  object-fit: contain;
+}
+
+.pres-logo-tb {
+  display: block;
+  width: auto;
+  height: clamp(26px, 4vmin, 40px);
+  object-fit: contain;
+}
+
+.pres-logo-x {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(0.85rem, 1.5vmin, 1rem);
-  box-shadow: 0 20px 48px rgba(0, 143, 211, 0.3);
+  font-size: clamp(1rem, 2vmin, 1.35rem);
+  font-weight: 300;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.pres-slide-hero .pres-slide-inner {
+  background:
+    radial-gradient(ellipse 80% 60% at 12% 8%, rgba(0, 143, 211, 0.1), transparent 55%),
+    radial-gradient(ellipse 70% 55% at 88% 92%, rgba(95, 184, 50, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(245, 130, 32, 0.06), transparent 45%),
+    #fff;
+}
+
+.pres-logo {
+  display: none;
 }
 
 .pres-lead {
@@ -355,7 +395,10 @@ html.pres-mode body {
   background: #f8fafc;
 }
 
-.pres-tile.accent { border-top: 3px solid var(--tile-accent, var(--blue)); }
+.pres-tile.accent {
+  border-top: 4px solid var(--tile-accent, var(--blue));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tile-accent, var(--blue)) 6%, #fff) 0%, #f8fafc 100%);
+}
 
 .pres-tile h3 {
   margin: 0 0 0.35em;
@@ -455,6 +498,30 @@ html.pres-mode body {
 /* Pillar intro */
 .pres-slide-intro .pres-slide-inner::before {
   background: var(--pillar-color, var(--blue));
+}
+
+.pres-slide.active .pres-logo-lockup {
+  animation: pres-hero-in 0.7s var(--ease) both;
+}
+
+.pres-slide.active.cover h1 {
+  animation: pres-hero-in 0.7s var(--ease) 0.08s both;
+}
+
+.pres-slide.active.cover .pres-lead,
+.pres-slide.active.cover .pres-pills {
+  animation: pres-hero-in 0.7s var(--ease) 0.16s both;
+}
+
+@keyframes pres-hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .pres-pillar-badge {
@@ -1016,4 +1083,206 @@ html.pres-touch .pres-slide-qa.revealed .pres-reveal-btn {
     padding: 8px 10px;
     font-size: 0.6rem;
   }
+}
+
+/* Large display / 65" TV — readable from across the room */
+html.pres-mode {
+  --pres-slide-max: 1200px;
+}
+
+@media (min-width: 1400px) {
+  html.pres-mode {
+    --pres-slide-max: 1360px;
+  }
+
+  .pres-viewport {
+    padding: 20px 28px;
+  }
+
+  .pres-slide-pad {
+    padding: clamp(32px, 4.5vmin, 56px) clamp(36px, 5.5vmin, 64px) clamp(28px, 3.5vmin, 40px);
+  }
+}
+
+html.pres-tv,
+html.pres-fs {
+  --pres-slide-max: 1680px;
+}
+
+html.pres-tv .pres-viewport,
+html.pres-fs .pres-viewport {
+  padding: 24px 32px;
+}
+
+html.pres-tv .pres-slide-inner,
+html.pres-fs .pres-slide-inner {
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 48px 120px rgba(0, 0, 0, 0.55),
+    0 0 120px rgba(0, 143, 211, 0.12);
+}
+
+html.pres-tv .pres-slide-inner::before,
+html.pres-fs .pres-slide-inner::before {
+  height: 6px;
+}
+
+html.pres-tv .pres-tag,
+html.pres-fs .pres-tag {
+  font-size: clamp(0.72rem, 1.35vmin, 0.92rem);
+  letter-spacing: 0.16em;
+}
+
+html.pres-tv .pres-slide h1,
+html.pres-fs .pres-slide h1 {
+  font-size: clamp(1.75rem, 4.8vmin, 3.2rem);
+}
+
+html.pres-tv .pres-slide.cover h1,
+html.pres-fs .pres-slide.cover h1 {
+  font-size: clamp(2.6rem, 6.5vmin, 4.4rem);
+}
+
+html.pres-tv .pres-lead,
+html.pres-fs .pres-lead {
+  font-size: clamp(1rem, 1.9vmin, 1.28rem);
+}
+
+html.pres-tv .pres-body,
+html.pres-fs .pres-body {
+  font-size: clamp(0.95rem, 1.75vmin, 1.15rem);
+}
+
+html.pres-tv .pres-quote,
+html.pres-fs .pres-quote {
+  font-size: clamp(1.05rem, 2vmin, 1.32rem);
+  padding: 1.15em 1.4em;
+}
+
+html.pres-tv .pres-qa-q,
+html.pres-fs .pres-qa-q {
+  font-size: clamp(1.45rem, 3.4vmin, 2.35rem);
+  line-height: 1.14;
+}
+
+html.pres-tv .pres-qa-bullets li,
+html.pres-fs .pres-qa-bullets li {
+  font-size: clamp(1.05rem, 2vmin, 1.32rem);
+  margin-bottom: 0.65em;
+}
+
+html.pres-tv .pres-qa-bullets,
+html.pres-fs .pres-qa-bullets {
+  padding: 1.2em 1.4em 1.2em 2.6em;
+}
+
+html.pres-tv .pres-tile h3,
+html.pres-fs .pres-tile h3 {
+  font-size: clamp(0.9rem, 1.55vmin, 1.08rem);
+}
+
+html.pres-tv .pres-tile p,
+html.pres-tv .pres-tile li,
+html.pres-fs .pres-tile p,
+html.pres-fs .pres-tile li {
+  font-size: clamp(0.82rem, 1.35vmin, 0.98rem);
+}
+
+html.pres-tv .pres-agenda li,
+html.pres-fs .pres-agenda li {
+  padding: 14px 16px;
+}
+
+html.pres-tv .pres-agenda time,
+html.pres-fs .pres-agenda time {
+  font-size: clamp(0.78rem, 1.3vmin, 0.92rem);
+}
+
+html.pres-tv .pres-agenda b,
+html.pres-fs .pres-agenda b {
+  font-size: clamp(0.88rem, 1.45vmin, 1.02rem);
+}
+
+html.pres-tv .pres-step i,
+html.pres-fs .pres-step i {
+  width: 40px;
+  height: 40px;
+  font-size: 0.85rem;
+}
+
+html.pres-tv .pres-step b,
+html.pres-fs .pres-step b {
+  font-size: clamp(0.82rem, 1.35vmin, 0.96rem);
+}
+
+html.pres-tv .pres-reveal-btn,
+html.pres-fs .pres-reveal-btn {
+  min-height: 52px;
+  padding: 0.85em 1.6em;
+  font-size: clamp(0.85rem, 1.45vmin, 1rem);
+}
+
+html.pres-tv .pres-pills span,
+html.pres-fs .pres-pills span {
+  font-size: clamp(0.78rem, 1.3vmin, 0.92rem);
+  padding: 0.45em 1.15em;
+}
+
+html.pres-tv .pres-logo-tff,
+html.pres-fs .pres-logo-tff {
+  height: clamp(36px, 5vmin, 52px);
+}
+
+html.pres-tv .pres-logo-tb,
+html.pres-fs .pres-logo-tb {
+  height: clamp(32px, 4.5vmin, 48px);
+}
+
+html.pres-tv .pres-close-card,
+html.pres-fs .pres-close-card {
+  font-size: clamp(0.92rem, 1.5vmin, 1.08rem);
+  padding: 1.15em 1.6em;
+}
+
+html.pres-tv .pres-slide.cover .pres-slide-pad,
+html.pres-fs .pres-slide.cover .pres-slide-pad {
+  min-height: clamp(380px, 58vmin, 600px);
+}
+
+html.pres-tv .pres-qr-dock,
+html.pres-fs .pres-qr-dock {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
+html.pres-tv .pres-chapters,
+html.pres-fs .pres-chapters {
+  width: 220px;
+}
+
+html.pres-tv .pres-chapter-btn,
+html.pres-fs .pres-chapter-btn {
+  font-size: 0.8rem;
+  padding: 12px 14px;
+}
+
+html.pres-tv .pres-toolbar-hint,
+html.pres-fs .pres-toolbar-hint {
+  font-size: 0.78rem;
+}
+
+html.pres-tv .pres-toolbar-actions button,
+html.pres-tv .pres-toolbar-actions a,
+html.pres-fs .pres-toolbar-actions button,
+html.pres-fs .pres-toolbar-actions a {
+  min-height: 44px;
+  font-size: 0.76rem;
+  padding: 9px 16px;
+}
+
+/* TV-only: auto-hide chrome faster when not interacting */
+html.pres-tv.pres-fs .pres-app.fs-chrome-hidden .pres-toolbar {
+  transform: translateY(100%);
 }

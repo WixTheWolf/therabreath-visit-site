@@ -17,6 +17,25 @@
     document.documentElement.classList.add("pres-touch");
   }
 
+  function isTvDisplay() {
+    if (isTouch) return false;
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    return w >= 1600 && h >= 900;
+  }
+
+  function syncDisplayMode() {
+    var tv = isTvDisplay();
+    document.documentElement.classList.toggle("pres-tv", tv);
+    if (app) app.classList.toggle("pres-tv", tv);
+  }
+
+  syncDisplayMode();
+  window.addEventListener("resize", function () {
+    syncDisplayMode();
+    requestAnimationFrame(fitSlide);
+  });
+
   function esc(s) {
     return String(s)
       .replace(/&/g, "&amp;")
@@ -332,13 +351,14 @@
     if (!inner) return;
 
     inner.style.transform = "none";
-    var availH = viewport.clientHeight - 12;
-    var availW = viewport.clientWidth - 12;
+    var pad = document.documentElement.classList.contains("pres-tv") ? 20 : 12;
+    var availH = viewport.clientHeight - pad;
+    var availW = viewport.clientWidth - pad;
     var h = inner.offsetHeight;
     var w = inner.offsetWidth;
     if (!h || !w) return;
     var scale = Math.min(1, availH / h, availW / w);
-    inner.style.transform = scale < 0.995 ? "scale(" + scale + ")" : "none";
+    inner.style.transform = scale < 0.992 ? "scale(" + scale + ")" : "none";
   }
 
   function updateMobileNextLabel() {
@@ -414,9 +434,9 @@
     if (!ctx) return;
 
     var orbs = [
-      { x: 0.2, y: 0.3, r: 0.35, c: "0,143,211", s: 0.00015 },
-      { x: 0.8, y: 0.7, r: 0.3, c: "95,184,50", s: -0.00012 },
-      { x: 0.5, y: 0.85, r: 0.25, c: "245,130,32", s: 0.0001 },
+      { x: 0.2, y: 0.3, r: 0.38, c: "0,143,211", s: 0.00015, a: 0.22 },
+      { x: 0.8, y: 0.7, r: 0.34, c: "95,184,50", s: -0.00012, a: 0.16 },
+      { x: 0.5, y: 0.85, r: 0.28, c: "245,130,32", s: 0.0001, a: 0.14 },
     ];
     var t = 0;
 
@@ -437,7 +457,7 @@
         var oy = (o.y + Math.cos(t * o.s * 1000 + i * 2) * 0.06) * h;
         var rad = o.r * Math.min(w, h);
         var g = ctx.createRadialGradient(ox, oy, 0, ox, oy, rad);
-        g.addColorStop(0, "rgba(" + o.c + ",0.18)");
+        g.addColorStop(0, "rgba(" + o.c + "," + (o.a || 0.18) + ")");
         g.addColorStop(1, "rgba(" + o.c + ",0)");
         ctx.fillStyle = g;
         ctx.fillRect(0, 0, w, h);
@@ -523,16 +543,18 @@
 
   document.addEventListener("fullscreenchange", function () {
     document.documentElement.classList.toggle("pres-fs", !!document.fullscreenElement);
+    syncDisplayMode();
     if (document.fullscreenElement) flashChrome();
     else if (app) app.classList.remove("fs-chrome-hidden");
     requestAnimationFrame(fitSlide);
   });
 
-  window.addEventListener("resize", function () { requestAnimationFrame(fitSlide); });
+  document.addEventListener("mousemove", flashChrome);
+
   window.addEventListener("orientationchange", function () {
+    syncDisplayMode();
     setTimeout(function () { requestAnimationFrame(fitSlide); }, 120);
   });
-  document.addEventListener("mousemove", flashChrome);
 
   buildDynamicSlides();
   bindRevealButtons();
