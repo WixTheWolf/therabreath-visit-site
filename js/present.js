@@ -67,25 +67,45 @@
   function pillarIntroSlide(section) {
     var pillar = (window.BOI && BOI.pillars) ? BOI.pillars.find(function (p) { return p.num === section.num; }) : null;
     var tagline = pillar ? pillar.tagline : "";
+    var vis = (window.PRES_VIS && PRES_VIS.pillars[section.num]) || {};
+    var bg = vis.bg || vis.image || PRES_VIS.cover;
+    var orb = PRES_VIS && PRES_VIS.html
+      ? PRES_VIS.html.pillarNum(section.num, section.color)
+      : "";
     return makeSlide(
-      "pres-slide-intro",
+      "pres-slide-intro pres-slide-intro-visual",
       '<div class="pres-slide-inner" style="--pillar-color:' + section.color + '">' +
+        '<div class="pres-slide-split pres-slide-split--hero">' +
+        '<div class="pres-visual">' +
+        '<img src="' + bg + '" alt="" loading="lazy" decoding="async" />' +
+        '<div class="pres-visual-scrim"></div>' +
+        orb +
+        '<div class="pres-visual-badge">' + esc(vis.label || section.pillarShort) + "</div>" +
+        "</div>" +
+        '<div class="pres-content">' +
         '<div class="pres-slide-pad">' +
         '<span class="pres-pillar-badge">' + esc(section.pillarShort) + "</span>" +
         "<h1>" + esc(section.pillar) + "</h1>" +
         (tagline ? '<p class="pres-lead" style="font-weight:600;color:var(--ink)">' + esc(tagline) + "</p>" : "") +
         '<p class="pres-lead">' + esc(section.intro) + "</p>" +
         '<p class="pres-intro-hint">Press Space or click Reveal · ' + section.cards.length + " questions</p>" +
-        "</div></div>"
+        "</div></div></div></div>"
     );
   }
 
   function qaSlide(section, card) {
+    var vis = (window.PRES_VIS && PRES_VIS.pillars[section.num]) || {};
+    var wm = vis.bg || vis.image || "";
     return makeSlide(
-      "pres-slide-qa",
+      "pres-slide-qa pres-slide-qa-visual",
       '<div class="pres-slide-inner" style="--pillar-color:' + section.color + '">' +
+        '<div class="pres-qa-accent-bar" aria-hidden="true"></div>' +
+        (wm ? '<div class="pres-qa-watermark" style="background-image:url(' + wm + ')" aria-hidden="true"></div>' : "") +
         '<div class="pres-slide-pad">' +
-        '<p class="pres-tag">' + esc(section.pillarShort) + " · Card " + card.num + "</p>" +
+        '<div class="pres-qa-card-badge">' +
+        '<span class="pres-qa-card-badge-num">' + card.num + "</span>" +
+        '<span class="pres-qa-card-badge-label">' + esc(section.pillarShort) + "</span>" +
+        "</div>" +
         '<div class="pres-qa-stage">' +
         '<p class="pres-qa-label">Question</p>' +
         '<h2 class="pres-qa-q">' + esc(card.question) + "</h2>" +
@@ -100,24 +120,38 @@
   }
 
   function strategicIntroSlide() {
+    var bg = (window.PRES_VIS && PRES_VIS.strategic) || "";
     return makeSlide(
-      "pres-slide-intro pres-slide-strategic-intro",
+      "pres-slide-intro pres-slide-strategic-intro pres-slide-intro-visual",
       '<div class="pres-slide-inner" style="--pillar-color:#6c5ce7">' +
+        '<div class="pres-slide-split pres-slide-split--hero">' +
+        '<div class="pres-visual">' +
+        '<img src="' + bg + '" alt="" loading="lazy" decoding="async" />' +
+        '<div class="pres-visual-scrim"></div>' +
+        '<div class="pres-visual-badge">Strategic discussion</div>' +
+        "</div>" +
+        '<div class="pres-content">' +
         '<div class="pres-slide-pad">' +
         '<span class="pres-pillar-badge">Discussion</span>' +
         "<h1>Top 10 strategic questions</h1>" +
         '<p class="pres-lead">Questions for TheraBreath — move beyond supplier review toward long-term partnership.</p>' +
         '<p class="pres-intro-hint">Reveal talking points before opening the floor.</p>' +
-        "</div></div>"
+        "</div></div></div></div>"
     );
   }
 
   function strategicSlide(item) {
+    var wm = (window.PRES_VIS && PRES_VIS.strategic) || "";
     return makeSlide(
-      "pres-slide-qa pres-slide-strategic",
+      "pres-slide-qa pres-slide-strategic pres-slide-qa-visual",
       '<div class="pres-slide-inner" style="--pillar-color:#6c5ce7">' +
+        '<div class="pres-qa-accent-bar" aria-hidden="true"></div>' +
+        (wm ? '<div class="pres-qa-watermark" style="background-image:url(' + wm + ')" aria-hidden="true"></div>' : "") +
         '<div class="pres-slide-pad">' +
-        '<p class="pres-tag">Strategic discussion · ' + item.num + " of 10</p>" +
+        '<div class="pres-qa-card-badge">' +
+        '<span class="pres-qa-card-badge-num">' + item.num + "</span>" +
+        '<span class="pres-qa-card-badge-label">Strategic · ' + item.num + " of 10</span>" +
+        "</div>" +
         '<div class="pres-qa-stage">' +
         '<p class="pres-qa-label">Ask TheraBreath</p>' +
         '<h2 class="pres-qa-q">' + esc(item.question) + "</h2>" +

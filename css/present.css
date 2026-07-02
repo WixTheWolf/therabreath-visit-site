@@ -268,6 +268,17 @@ html.pres-mode body {
   min-height: clamp(320px, 55vmin, 520px);
 }
 
+.pres-slide.cover .pres-slide-split .pres-slide-pad {
+  min-height: 0;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.pres-slide.cover .pres-slide-split {
+  min-height: clamp(380px, 58vmin, 620px);
+}
+
 .pres-logo-lockup {
   display: flex;
   flex-wrap: wrap;
@@ -1106,7 +1117,7 @@ html.pres-mode {
 
 html.pres-tv,
 html.pres-fs {
-  --pres-slide-max: 1680px;
+  --pres-slide-max: 1720px;
 }
 
 html.pres-tv .pres-viewport,
