@@ -579,3 +579,109 @@
     flex-basis: 28%;
   }
 }
+
+/* ── MacBook 13" + HDMI (laptop drives TV mirror) ── */
+
+html.pres-laptop .pres-app {
+  grid-template-columns: 1fr;
+}
+
+html.pres-laptop .pres-chapters,
+html.pres-laptop .pres-qr-dock {
+  display: none;
+}
+
+html.pres-laptop .pres-viewport {
+  padding: 10px 14px;
+}
+
+html.pres-laptop .pres-frame {
+  width: min(98vw, calc((100vh - 64px) * 16 / 9));
+  height: min(calc(100vh - 64px), calc(98vw * 9 / 16));
+}
+
+/* Fullscreen audience mode — slides fill the mirrored TV */
+html.pres-audience .pres-app {
+  grid-template-columns: 1fr;
+}
+
+html.pres-audience .pres-chapters,
+html.pres-audience .pres-qr-dock,
+html.pres-audience .pres-hdmi-hint {
+  display: none !important;
+}
+
+html.pres-audience .pres-viewport {
+  padding: 6px 10px;
+}
+
+html.pres-audience .pres-frame {
+  width: min(99vw, calc((100vh - 52px) * 16 / 9));
+  height: min(calc(100vh - 52px), calc(99vw * 9 / 16));
+  max-width: none;
+  border-radius: clamp(8px, 0.7vw, 16px);
+}
+
+html.pres-audience .pres-app.fs-chrome-hidden .pres-viewport {
+  padding: 0;
+}
+
+html.pres-audience .pres-app.fs-chrome-hidden .pres-frame {
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Larger type on TV when frame system is active */
+html.pres-audience .pres-frame-body h1,
+html.pres-tv .pres-frame-body h1 {
+  font-size: clamp(1.45rem, 3.6vmin, 2.65rem);
+}
+
+html.pres-audience .pres-frame--cover h1,
+html.pres-tv .pres-frame--cover h1 {
+  font-size: clamp(2rem, 5.2vmin, 3.6rem);
+}
+
+html.pres-audience .pres-frame-body .pres-lead,
+html.pres-tv .pres-frame-body .pres-lead {
+  font-size: clamp(0.95rem, 1.85vmin, 1.22rem);
+}
+
+html.pres-audience .pres-frame-body .pres-qa-q,
+html.pres-tv .pres-frame-body .pres-qa-q {
+  font-size: clamp(1.2rem, 2.8vmin, 2rem);
+  line-height: 1.12;
+}
+
+html.pres-audience .pres-frame-body .pres-qa-bullets li,
+html.pres-tv .pres-frame-body .pres-qa-bullets li {
+  font-size: clamp(0.95rem, 1.75vmin, 1.18rem);
+  margin-bottom: 0.5em;
+}
+
+html.pres-audience .pres-slide-qa.revealed .pres-qa-q,
+html.pres-tv .pres-slide-qa.revealed .pres-qa-q {
+  font-size: clamp(1.05rem, 2.2vmin, 1.45rem);
+}
+
+html.pres-audience .pres-slide-qa.revealed .pres-qa-bullets li,
+html.pres-tv .pres-slide-qa.revealed .pres-qa-bullets li {
+  font-size: clamp(0.88rem, 1.55vmin, 1.05rem);
+}
+
+html.pres-audience .pres-band-num,
+html.pres-tv .pres-band-num {
+  font-size: clamp(2.8rem, 6.5vmin, 4.5rem);
+}
+
+html.pres-audience .pres-band-label,
+html.pres-tv .pres-band-label {
+  font-size: clamp(0.95rem, 2vmin, 1.28rem);
+}
+
+html.pres-audience .pres-bottles img,
+html.pres-tv .pres-bottles img {
+  height: clamp(52px, 9vmin, 88px);
+}
