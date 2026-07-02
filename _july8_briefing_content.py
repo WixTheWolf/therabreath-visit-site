@@ -25,14 +25,22 @@ AGENDA_ROWS = [
 
 PILLARS = [
     ("Resiliency", "Scale and continuity as you grow"),
-    ("Innovation", "Chlorite-stable flavor and what's next"),
+    ("Innovation", "Flavor expertise, trends, and next-generation directions"),
     ("Operations", "One roof — sample through batch release"),
     ("Partnership", "Lakewood and long-term alignment"),
 ]
 
+INNOVATION_ITEMS = [
+    "Flavor expertise — oral-care chemistry, chlorite-stable architecture, sensory-led development",
+    "Trend pipeline — ingredients and consumer shifts we bring to you proactively",
+    "Next-generation flavors — cooling systems, natural sweetness, pediatric & wellness adjacencies",
+    "Rapid prototyping — bench to workshop fast; directional concepts, not months of wait",
+    "Seasonal & limited edition — calendar-ready concepts and speed to shelf",
+    "Functional & competitive — efficacy-friendly profiles, intensity-tier benchmark reads",
+]
+
 TOPICS_COMPACT = [
     ("Lakewood", "Validation path · taste parity across sites · Tier-A SKUs · timeline through September"),
-    ("Innovation", "Competitive calibration · chlorite flavor architecture · GA-22131"),
     ("Partnership", "Capacity at scale · sensory science · site transfers"),
 ]
 

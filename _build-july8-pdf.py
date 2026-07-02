@@ -11,6 +11,7 @@ from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Spacer, 
 from _july8_briefing_content import (
     AGENDA_ROWS,
     ARRIVE_NOTE,
+    INNOVATION_ITEMS,
     OPENING,
     OUTCOMES_TB,
     PILLARS,
@@ -172,6 +173,10 @@ def build():
     story.append(Paragraph("TOPICS WE WILL COVER", styles["kicker"]))
     for title, desc in TOPICS_COMPACT:
         story.append(Paragraph(f"<b>{title}</b> — {desc}", styles["topic"]))
+    story.append(Spacer(1, 0.04 * inch))
+    story.append(Paragraph("INNOVATION · FLAVOR PARTNER", styles["kicker"]))
+    for item in INNOVATION_ITEMS:
+        story.append(Paragraph(f"• {item}", styles["bullet"]))
 
     # Page 2 — questions + outcomes + contact
     story.append(PageBreak())
