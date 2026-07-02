@@ -93,35 +93,37 @@
       <div class="guest-accent" aria-hidden="true"></div>
       <p class="guest-kicker">Internal · send to TheraBreath</p>
       <h1>July 8 email</h1>
-      <p class="guest-sub">Attach the PDF · copy the email text · send</p>
+      <p class="guest-sub">Attach the PDF · copy · send</p>
 
       <p class="guest-lead">
-        The briefing is a self-contained 6-page PDF — agenda, session activities, discussion topics, 10 questions, and outcomes for both teams. No website links required in the email.
+        A tight 5-page briefing written for their team — schedule, working sessions, topics to press on, and what success looks like. No website links in the email.
       </p>
 
       <a class="guest-download" href="/booklet/documents/july-8-briefing.pdf" download="july-8-briefing.pdf">
         <b>Download briefing PDF</b>
-        <span>6 pages · attach to your email · matches /july8 online page</span>
+        <span>july-8-briefing.pdf · attach to email</span>
       </a>
 
-      <p class="guest-label">Send in 3 steps</p>
+      <p class="guest-label">Send</p>
       <ol class="guest-steps">
-        <li>Download the PDF above</li>
-        <li>Copy the email text below</li>
-        <li>Attach <strong>july-8-briefing.pdf</strong> and send to the TheraBreath team</li>
+        <li>Download the PDF</li>
+        <li>Copy subject and body below</li>
+        <li>Attach <strong>july-8-briefing.pdf</strong> and send</li>
       </ol>
 
-      <p class="guest-label">Email text</p>
+      <p class="guest-label">Subject</p>
+      <div class="guest-copy" id="email-subject" style="margin-bottom:12px">Loading…</div>
+
+      <p class="guest-label">Body</p>
       <div class="guest-copy" id="email-blurb">Loading…</div>
       <div class="guest-actions">
-        <button type="button" class="primary" id="copy-blurb">Copy email text</button>
-        <button type="button" id="copy-subject">Copy subject line</button>
+        <button type="button" class="primary" id="copy-blurb">Copy body</button>
+        <button type="button" id="copy-subject">Copy subject</button>
         <a href="/booklet/documents/july-8-briefing.pdf">Open PDF</a>
         <a href="/july8">Preview web page</a>
       </div>
 
       <section class="guest-box" aria-label="Logistics">
-        <p><strong>Subject:</strong> <span id="subject-line">July 8 visit · agenda &amp; briefing · The Flavor Factory</span></p>
         <p><strong>Attachment:</strong> july-8-briefing.pdf</p>
         <p><strong>Arrive 9:00 AM</strong> — 2058 Second Street, Norco, CA 92860</p>
         <p><strong>Questions:</strong> (951) 273-9877</p>
@@ -130,28 +132,28 @@
 
     <script>
       (function () {
-        var subject = "July 8 visit · agenda & briefing · The Flavor Factory";
+        var subject = "July 8 · your briefing before Norco";
         var blurb =
           "TheraBreath team,\n\n" +
-          "We're looking forward to hosting you for Breath of Innovation on Tuesday, July 8, 2026 at The Flavor Factory in Norco.\n\n" +
-          "Please find attached our July 8 visit briefing (PDF). This is a capabilities workshop — not a sales presentation. Your R&D and procurement colleagues asked to see how we operate, discuss Lakewood parity and growth plans, and taste directional workshop prototypes together.\n\n" +
-          "The attached briefing includes:\n" +
-          "• Suggested agenda — facility tour at 9:00 AM, four-pillar presentation at 9:30 AM, tasting at 10:30 AM, lunch off site, open Q&A from 1:00 PM\n" +
-          "• What we'll do in each session\n" +
-          "• Discussion topics from our email threads — Lakewood parity, competitive calibration, capabilities and partnership\n" +
-          "• Ten questions we'd like to discuss so your team can prepare thoughtful answers\n" +
-          "• What we hope both teams walk away with\n\n" +
-          "Please arrive 9:00 AM at 2058 Second Street, Norco, CA 92860. Casual business attire; closed-toe shoes for the production tour.\n\n" +
-          "Questions welcome anytime — (951) 273-9877.\n\n" +
-          "The Flavor Factory team";
+          "On July 8 we host you at Norco for Breath of Innovation — the capabilities workshop your R&D and procurement teams requested.\n\n" +
+          "Attached is your briefing for the day. It is the only document you need before you arrive: the schedule, the working sessions, the topics we will press on together, and what a successful visit looks like for your team.\n\n" +
+          "A few anchors:\n" +
+          "• Arrive 9:00 AM — 2058 Second Street, Norco. Tour first; working session at 9:30 across the street.\n" +
+          "• Come ready to evaluate — we answer directly on resiliency, innovation, operations, and partnership, then taste five directional mint prototypes blind.\n" +
+          "• Lakewood parity, growth, and supplier expectations are on the table — your questions set the pace in the afternoon.\n\n" +
+          "Casual business attire; closed-toe shoes for production.\n\n" +
+          "We built this day around what you told us matters. Review the attachment with your colleagues so July 8 is time well spent.\n\n" +
+          "(951) 273-9877 for anything before the visit.\n\n" +
+          "The Flavor Factory";
 
+        document.getElementById("email-subject").textContent = subject;
         document.getElementById("email-blurb").textContent = blurb;
 
         document.getElementById("copy-blurb").addEventListener("click", function () {
           navigator.clipboard.writeText(blurb).then(function () {
             var btn = document.getElementById("copy-blurb");
             btn.textContent = "Copied";
-            setTimeout(function () { btn.textContent = "Copy email text"; }, 2000);
+            setTimeout(function () { btn.textContent = "Copy body"; }, 2000);
           });
         });
 
@@ -159,7 +161,7 @@
           navigator.clipboard.writeText(subject).then(function () {
             var btn = document.getElementById("copy-subject");
             btn.textContent = "Copied";
-            setTimeout(function () { btn.textContent = "Copy subject line"; }, 2000);
+            setTimeout(function () { btn.textContent = "Copy subject"; }, 2000);
           });
         });
       })();
