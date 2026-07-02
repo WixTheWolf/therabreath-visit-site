@@ -21,6 +21,7 @@ AGENDA_ROWS = [
     ("10:30", "Tasting", "Five prototypes · blind, then score · directional only"),
     ("11:30", "Lunch off site", "Back by 1:00 PM"),
     ("1:00+", "Your agenda", "Lakewood · procurement · growth"),
+    ("5:00", "Dinner", "Optional with hosts — if available"),
 ]
 
 PILLARS = [
