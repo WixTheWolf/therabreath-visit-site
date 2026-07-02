@@ -96,35 +96,49 @@
     var tagline = pillar ? pillar.tagline : "";
     var vis = (window.PRES_GFX && PRES_GFX.pillars && PRES_GFX.pillars[section.num]) || {};
     var img = vis.bg || vis.image || "/assets/companies/tff/facility.jpg";
-    var icon = (window.PRES_GFX && PRES_GFX.icons) ? PRES_GFX.icons[["", "resiliency", "innovation", "operations", "partnership"][section.num]] || "" : "";
+    var iconName = vis.icon || "shield";
+    var iconHtml = (window.PRES_GFX && PRES_GFX.icon) ? PRES_GFX.icon(iconName) : "";
     return makeSlide(
       "pres-slide-intro",
       '<div class="pres-slide-inner"><div class="pres-frame">' +
         '<header class="pres-band" style="--pres-band-img:url(\'' + img + "');--pres-band-color:" + section.color + '">' +
         '<div class="pres-band-bg"></div><div class="pres-band-tint"></div>' +
         '<div class="pres-band-content">' +
-        '<span class="pres-band-num">' + icon + " " + section.num + "</span>" +
+        '<span class="pres-band-num">' + iconHtml + section.num + "</span>" +
         '<span class="pres-band-label">' + esc(section.pillar) + "</span></div></header>" +
         '<div class="pres-frame-body">' +
-        '<span class="pres-pillar-badge">' + esc(section.pillarShort) + "</span>" +
+        '<span class="pres-pillar-badge" style="--pillar-color:' + section.color + '">' + esc(section.pillarShort) + "</span>" +
         (tagline ? "<h1>" + esc(tagline) + "</h1>" : "<h1>" + esc(section.pillar) + "</h1>") +
         '<p class="pres-lead">' + esc(section.intro) + "</p>" +
-        '<p class="pres-intro-hint">Space to reveal · ' + section.cards.length + " questions</p>" +
+        '<p class="pres-intro-hint">' + section.cards.length + " questions · Space to reveal talking points</p>" +
         "</div></div></div>"
+    );
+  }
+
+  function qaProgressHtml(section, card) {
+    var idx = section.cards.findIndex(function (c) { return c.num === card.num; });
+    var total = section.cards.length;
+    var pct = total ? ((idx + 1) / total) * 100 : 0;
+    return (
+      '<div class="pres-qa-progress" style="--pillar-color:' + section.color + '">' +
+      '<span class="pres-qa-progress-label">' + esc(section.pillarShort) + " · " + (idx + 1) + " of " + total + "</span>" +
+      '<div class="pres-qa-progress-track"><div class="pres-qa-progress-fill" style="width:' + pct + '%"></div></div>' +
+      "</div>"
     );
   }
 
   function qaSlide(section, card) {
     var vis = (window.PRES_GFX && PRES_GFX.pillars && PRES_GFX.pillars[section.num]) || {};
-    var img = vis.image || vis.bg || "";
-    var bandStyle = "--pres-band-color:" + section.color + ";" + (img ? "--pres-band-img:url('" + img + "');" : "");
+    var qaImg = (window.PRES_GFX && PRES_GFX.qaBands && PRES_GFX.qaBands[card.num]) || vis.image || vis.bg || "";
+    var bandStyle = "--pres-band-color:" + section.color + ";" + (qaImg ? "--pres-band-img:url('" + qaImg + "');" : "");
     return makeSlide(
       "pres-slide-qa",
       '<div class="pres-slide-inner"><div class="pres-frame">' +
         '<header class="pres-band pres-band--thin" style="' + bandStyle + '">' +
         '<div class="pres-band-bg"></div><div class="pres-band-tint"></div>' +
-        '<div class="pres-band-content"><span class="pres-band-tag">' + esc(section.pillarShort) + " · Question " + card.num + "</span></div></header>" +
+        '<div class="pres-band-content"><span class="pres-band-tag">Question ' + card.num + "</span></div></header>" +
         '<div class="pres-frame-body pres-frame-body--dense">' +
+        qaProgressHtml(section, card) +
         '<span class="pres-qa-num" style="--pillar-color:' + section.color + '">' + card.num + "</span>" +
         '<div class="pres-qa-stage">' +
         '<p class="pres-qa-label">Question</p>' +
@@ -132,7 +146,7 @@
         '<div class="pres-qa-reveal">' +
         '<p class="pres-qa-label answer">Key points</p>' +
         '<div class="pres-qa-answer">' + bulletList(card.points) + "</div></div>" +
-        '<button type="button" class="pres-reveal-btn" data-reveal-label="Reveal points" data-hide-label="Hide points">' +
+        '<button type="button" class="pres-reveal-btn" style="--pillar-color:' + section.color + '" data-reveal-label="Reveal points" data-hide-label="Hide points">' +
         '<span class="pres-reveal-icon" aria-hidden="true">✦</span> Reveal points</button>' +
         "</div></div></div></div>"
     );
@@ -155,13 +169,17 @@
   }
 
   function strategicSlide(item) {
+    var bands = (window.PRES_GFX && PRES_GFX.strategicBands) || ["/assets/companies/therabreath/oxyd8-hero.jpg"];
+    var bandImg = bands[(item.num - 1) % bands.length];
     return makeSlide(
       "pres-slide-qa pres-slide-strategic",
       '<div class="pres-slide-inner"><div class="pres-frame">' +
-        '<header class="pres-band pres-band--thin" style="--pres-band-img:url(\'/assets/companies/therabreath/oxyd8-hero.jpg\');--pres-band-color:#6c5ce7">' +
+        '<header class="pres-band pres-band--thin" style="--pres-band-img:url(\'' + bandImg + '\');--pres-band-color:#6c5ce7">' +
         '<div class="pres-band-bg"></div><div class="pres-band-tint"></div>' +
         '<div class="pres-band-content"><span class="pres-band-tag">Strategic · ' + item.num + " of 10</span></div></header>" +
         '<div class="pres-frame-body pres-frame-body--dense">' +
+        '<div class="pres-qa-progress strategic"><span class="pres-qa-progress-label">Top 10 · ' + item.num + " of 10</span>" +
+        '<div class="pres-qa-progress-track"><div class="pres-qa-progress-fill" style="width:' + (item.num * 10) + '%"></div></div></div>' +
         '<span class="pres-qa-num" style="--pillar-color:#6c5ce7;background:#6c5ce7">' + item.num + "</span>" +
         '<div class="pres-qa-stage">' +
         '<p class="pres-qa-label">Ask TheraBreath</p>' +
@@ -404,18 +422,40 @@
 
     var availH = viewport.clientHeight - 8;
     var h = frame.getBoundingClientRect().height;
-    if (h > availH && availH > 0) {
-      var scale = availH / h;
-      frame.style.transform = "scale(" + scale + ")";
-      frame.style.transformOrigin = "center center";
+    if (h <= availH || availH <= 0) return;
+
+    var denseBody = slide.querySelector(".pres-frame-body--dense");
+    if (denseBody && denseBody.scrollHeight > denseBody.clientHeight + 4) {
+      var overflow = h - availH;
+      if (overflow < h * 0.12) return;
     }
+
+    var scale = availH / h;
+    if (scale < 0.92) scale = Math.max(scale, 0.88);
+    frame.style.transform = "scale(" + scale + ")";
+    frame.style.transformOrigin = "center center";
+  }
+
+  function enhanceIcons() {
+    if (!window.PRES_GFX || !PRES_GFX.svg) return;
+    document.querySelectorAll("[data-pres-icon]").forEach(function (el) {
+      var name = el.getAttribute("data-pres-icon");
+      var svg = PRES_GFX.svg[name];
+      if (!svg) return;
+      el.innerHTML = svg;
+      el.classList.add("pres-icon-host");
+    });
   }
 
   function decorateBands() {
-    if (!window.PRES_GFX || !PRES_GFX.bubbles) return;
+    if (!window.PRES_GFX) return;
     document.querySelectorAll(".pres-band").forEach(function (band) {
-      if (band.querySelector(".pres-gfx-bubbles")) return;
-      band.insertAdjacentHTML("beforeend", PRES_GFX.bubbles);
+      if (PRES_GFX.bubbles && !band.querySelector(".pres-gfx-bubbles")) {
+        band.insertAdjacentHTML("beforeend", PRES_GFX.bubbles);
+      }
+      if (PRES_GFX.wave && !band.querySelector(".pres-gfx-wave")) {
+        band.insertAdjacentHTML("beforeend", PRES_GFX.wave);
+      }
     });
   }
 
@@ -634,6 +674,7 @@
 
   buildDynamicSlides();
   decorateBands();
+  enhanceIcons();
   bindRevealButtons();
   buildChapters();
   preloadImages();
