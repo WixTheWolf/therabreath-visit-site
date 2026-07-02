@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 80" role="img" aria-label="The Flavor Factory">
+  <defs>
+    <radialGradient id="b1" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ff8a80"/>
+      <stop offset="100%" stop-color="#d32f2f"/>
+    </radialGradient>
+    <radialGradient id="b2" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#b9f6ca"/>
+      <stop offset="100%" stop-color="#43a047"/>
+    </radialGradient>
+    <radialGradient id="b3" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fff59d"/>
+      <stop offset="100%" stop-color="#fbc02d"/>
+    </radialGradient>
+    <radialGradient id="b4" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffcc80"/>
+      <stop offset="100%" stop-color="#f57c00"/>
+    </radialGradient>
+    <radialGradient id="b5" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#e1bee7"/>
+      <stop offset="100%" stop-color="#8e24aa"/>
+    </radialGradient>
+  </defs>
+  <text x="2" y="18" fill="#000" font-family="'Times New Roman', Times, Georgia, serif" font-size="13" font-weight="700">The</text>
+  <text x="0" y="58" fill="#000" font-family="'Times New Roman', Times, Georgia, serif" font-size="54" font-weight="700">F</text>
+  <text x="34" y="58" fill="#000" font-family="'Times New Roman', Times, Georgia, serif" font-size="34" font-weight="700" letter-spacing="1">LAVOR</text>
+  <circle cx="248" cy="52" r="7.5" fill="url(#b1)" opacity="0.92"/>
+  <circle cx="256" cy="40" r="7.5" fill="url(#b2)" opacity="0.92"/>
+  <circle cx="248" cy="28" r="7.5" fill="url(#b3)" opacity="0.92"/>
+  <circle cx="256" cy="16" r="7.5" fill="url(#b4)" opacity="0.92"/>
+  <circle cx="248" cy="4" r="7.5" fill="url(#b5)" opacity="0.92"/>
+  <text x="272" y="58" fill="#000" font-family="'Times New Roman', Times, Georgia, serif" font-size="34" font-weight="700" letter-spacing="1">FACTORY</text>
+</svg>

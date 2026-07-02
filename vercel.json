@@ -6,6 +6,8 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/email-pdf", "destination": "/booklet/documents/july-8-email-packet.pdf", "permanent": false },
+    { "source": "/july8-pdf", "destination": "/booklet/documents/july-8-briefing.pdf", "permanent": false },
+    { "source": "/july8-docx", "destination": "/booklet/documents/july-8-briefing.docx", "permanent": false },
     { "source": "/agenda", "destination": "/booklet/documents/suggested-agenda-therabreath.pdf", "permanent": false },
     { "source": "/presentation", "destination": "/present", "permanent": false },
     { "source": "/speaker-packet", "destination": "/packet", "permanent": false },
