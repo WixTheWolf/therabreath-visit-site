@@ -17,6 +17,12 @@
     document.documentElement.classList.add("pres-touch");
   }
 
+  function isLaptopDisplay() {
+    if (isTouch) return false;
+    var w = window.innerWidth;
+    return w >= 1024 && w < 1600;
+  }
+
   function isTvDisplay() {
     if (isTouch) return false;
     var w = window.innerWidth;
@@ -24,10 +30,31 @@
     return w >= 1600 && h >= 900;
   }
 
+  function isAudienceMode() {
+    return !!document.fullscreenElement || document.documentElement.classList.contains("pres-fs");
+  }
+
   function syncDisplayMode() {
+    var laptop = isLaptopDisplay();
     var tv = isTvDisplay();
-    document.documentElement.classList.toggle("pres-tv", tv);
-    if (app) app.classList.toggle("pres-tv", tv);
+    var audience = isAudienceMode();
+    document.documentElement.classList.toggle("pres-laptop", laptop && !audience);
+    document.documentElement.classList.toggle("pres-tv", tv || audience);
+    document.documentElement.classList.toggle("pres-audience", audience);
+    if (app) {
+      app.classList.toggle("pres-laptop", laptop && !audience);
+      app.classList.toggle("pres-tv", tv || audience);
+      app.classList.toggle("pres-audience", audience);
+    }
+    updateHdmiHint();
+  }
+
+  function updateHdmiHint() {
+    var hint = document.getElementById("pres-hdmi-hint");
+    if (!hint) return;
+    var dismissed = sessionStorage.getItem("pres-hdmi-dismiss") === "1";
+    var show = !dismissed && !isAudienceMode() && isLaptopDisplay();
+    hint.hidden = !show;
   }
 
   syncDisplayMode();
@@ -577,14 +604,24 @@
   document.getElementById("pres-prev")?.addEventListener("click", function () { prev(); flashChrome(); });
   document.getElementById("pres-next")?.addEventListener("click", function () { handleAdvance(); flashChrome(); });
   document.getElementById("pres-fs")?.addEventListener("click", toggleFullscreen);
+  document.getElementById("pres-hdmi-go")?.addEventListener("click", function () {
+    toggleFullscreen();
+    flashChrome();
+  });
+  document.getElementById("pres-hdmi-dismiss")?.addEventListener("click", function () {
+    try { sessionStorage.setItem("pres-hdmi-dismiss", "1"); } catch (e) {}
+    updateHdmiHint();
+  });
   document.querySelector(".pres-hitzone.prev")?.addEventListener("click", function () { prev(); flashChrome(); });
   document.querySelector(".pres-hitzone.next")?.addEventListener("click", function () { handleAdvance(); flashChrome(); });
 
   document.addEventListener("fullscreenchange", function () {
     document.documentElement.classList.toggle("pres-fs", !!document.fullscreenElement);
     syncDisplayMode();
-    if (document.fullscreenElement) flashChrome();
-    else if (app) app.classList.remove("fs-chrome-hidden");
+    if (document.fullscreenElement) {
+      flashChrome();
+      try { sessionStorage.setItem("pres-hdmi-dismiss", "1"); } catch (e) {}
+    } else if (app) app.classList.remove("fs-chrome-hidden");
     requestAnimationFrame(fitSlide);
   });
 

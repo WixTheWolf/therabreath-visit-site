@@ -31,6 +31,16 @@
       <aside class="pres-chapters" id="pres-chapters"></aside>
 
       <div class="pres-main">
+        <div class="pres-hdmi-hint" id="pres-hdmi-hint" hidden>
+          <div class="pres-hdmi-hint-inner">
+            <p><strong>Presenting on the TV?</strong> Connect your MacBook with HDMI, then press <kbd>F</kbd> or <strong>Full</strong> — fullscreen mirrors slides to the screen while you control from the laptop.</p>
+            <div class="pres-hdmi-hint-actions">
+              <button type="button" class="primary" id="pres-hdmi-go">Go fullscreen</button>
+              <button type="button" id="pres-hdmi-dismiss">Dismiss</button>
+            </div>
+          </div>
+        </div>
+
         <div class="pres-viewport" id="pres-viewport">
           <div class="pres-bg"><canvas id="pres-bg-canvas" aria-hidden="true"></canvas></div>
           <button type="button" class="pres-hitzone prev" aria-label="Previous"></button>
@@ -300,6 +310,7 @@
 
         <footer class="pres-toolbar">
           <span class="pres-toolbar-hint pres-toolbar-hint-desktop"><kbd>←</kbd> <kbd>→</kbd> navigate · <kbd>Space</kbd> reveal · <kbd>F</kbd> fullscreen</span>
+          <span class="pres-toolbar-hint pres-toolbar-hint-laptop"><kbd>←</kbd> <kbd>→</kbd> navigate · <kbd>Space</kbd> reveal · <kbd>F</kbd> fullscreen to TV</span>
           <span class="pres-toolbar-hint pres-toolbar-hint-mobile">Tap to reveal · swipe for next</span>
           <div class="pres-progress-track"><div class="pres-progress-fill" id="pres-progress-fill" style="width:7%"></div></div>
           <span id="pres-counter">1 / 41</span>
