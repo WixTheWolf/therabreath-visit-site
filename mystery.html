@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Blind flavor mapping — taste a coded cup, match it to a neutral prototype codename. No flavor names until the host reveals." />
+    <meta name="description" content="Flavor Flight Challenge — taste a coded cup, match it to a neutral prototype codename. No flavor names until the host reveals." />
     <meta name="theme-color" content="#0a1628" />
-    <title>Blind Flavor Mapping | TFF × TheraBreath</title>
+    <title>Flavor Flight Challenge | TFF × TheraBreath</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
     <link rel="stylesheet" href="/tff-guest.css" />
@@ -308,11 +308,11 @@
     <header id="guest-nav"></header>
     <header class="hero no-print">
       <div class="stamp"><i></i> Station 2 · blind only</div>
-      <h1>Blind Flavor Mapping</h1>
-      <p>Taste from your coded cup — then match it to one of five neutral prototype codenames. No flavor names until reveal. Directional sensory feedback only.</p>
+      <h1>Flavor Flight Challenge</h1>
+      <p>Taste from your coded cup — then match it to one of five neutral blind sample feedback. No flavor names until reveal. Directional sensory feedback only.</p>
       <div class="hero-qr">
-        <img src="/assets/qr/mystery.png" alt="QR — blind flavor mapping" width="92" height="92" />
-        <span>Share · therabreath-visit-site.vercel.app/mystery</span>
+        <img src="/assets/qr/taste.png" alt="QR — Flavor Flight Challenge" width="92" height="92" />
+        <span>Share · therabreath-visit-site.vercel.app/taste</span>
       </div>
     </header>
 
@@ -337,7 +337,7 @@
           <input type="text" id="player" placeholder="First + last" autocomplete="name" />
           <button type="button" id="name-save">Begin</button>
         </div>
-        <span class="sync-pill pending" id="sync-pill">Enter name to begin Blind Flavor Mapping</span>
+        <span class="sync-pill pending" id="sync-pill">Enter name to begin Flavor Flight Challenge</span>
       </div>
 
       <div class="gate no-print" id="gate" style="display:none">
@@ -352,7 +352,7 @@
 
       <div class="panel no-print" id="log-panel" style="opacity:0.45;pointer-events:none">
         <h2>Log a tasting</h2>
-        <p class="sub">Find the code on your cup (M1–M5), then select the prototype codename you believe matches.</p>
+        <p class="sub">Find the code on your cup (M1–M5), then select the blind sample feedback you believe matches.</p>
 
         <span class="pick-label">Cup code on your sample</span>
         <div class="cup-grid" id="cup-pick"></div>
@@ -460,7 +460,7 @@
         panel.classList.toggle("locked", nameOk);
         unlockPanels(nameOk);
         if (nameOk) syncLive();
-        else setSyncStatus("pending", "Enter name to begin Blind Flavor Mapping");
+        else setSyncStatus("pending", "Enter name to begin Flavor Flight Challenge");
       }
 
       function renderRoster() {
@@ -626,9 +626,9 @@
         }).join("");
         document.getElementById("print-sheet").innerHTML =
           '<section class="print-page">' +
-          '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Blind flavor mapping ballot</h2>' +
+          '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Flavor Flight Challenge ballot</h2>' +
           '<p style="font-size:0.82rem;margin:0 0 12px">Name: _______________ · Blind guess only — no flavor names on cups</p>' +
-          '<div style="text-align:center;margin-bottom:12px"><img src="/assets/qr/mystery.png" width="100" height="100" alt="QR" /><p style="font-size:0.68rem">/mystery</p></div>' +
+          '<div style="text-align:center;margin-bottom:12px"><img src="/assets/qr/taste.png" width="100" height="100" alt="QR" /><p style="font-size:0.68rem">/taste</p></div>' +
           '<p style="font-size:0.72rem;font-weight:700;margin:0 0 8px">Codename roster (reference)</p>' +
           '<div class="print-roster">' + roster + '</div>' +
           '<table style="width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:16px">' +
@@ -638,7 +638,7 @@
       }
 
       function resetGame() {
-        if (!confirm("Clear all Blind Flavor Mapping entries on this device?")) return;
+        if (!confirm("Clear all Flavor Flight Challenge entries on this device?")) return;
         TFFStorage.remove(STORAGE_KEY);
         nameOk = false;
         pickCup = null;

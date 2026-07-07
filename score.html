@@ -1,394 +1,73 @@
 <!doctype html>
-<html lang="en" data-tff-shell="off">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Prototype scorecard — rate workshop prototypes 1–9 after reveals. Liking, uniqueness, and purchase intent compile into the workshop sensory summary." />
-    <meta name="theme-color" content="#0a1628" />
-    <title>Prototype Scorecard | TFF × TheraBreath</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/tff-shell.css" />
-    <link rel="stylesheet" href="/tff-guest.css" />
-    <style>
-      :root { --blue:#008fd3; --green:#5fb832; --ink:#0a1628; --muted:#5c6678; --line:#e2e9ec; }
-      * { box-sizing: border-box; }
-      body {
-        margin:0; font-family:"DM Sans",sans-serif; color:var(--ink);
-        background:#f6fafc;
-        background-image:radial-gradient(ellipse 70% 40% at 50% 0%, rgba(0,143,211,0.1), transparent);
-      }
-      .page-hero { padding:24px 20px; background:linear-gradient(135deg,var(--ink),#005f9e); color:#fff; text-align:center; }
-      .page-hero h1 { margin:0; font-family:"Sora",sans-serif; font-size:clamp(1.15rem,4vw,1.35rem); }
-      .page-hero p { margin:8px 0 0; font-size:0.82rem; opacity:0.85; }
-      .header-qr { margin-top:14px; display:flex; flex-direction:column; align-items:center; gap:6px; }
-      .header-qr img { width:88px; height:88px; border-radius:8px; background:#fff; padding:4px; }
-      .header-qr span { font-size:0.68rem; opacity:0.75; }
-      .rater-bar {
-        display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center;
-        padding:12px 16px; background:#fff; border-bottom:1px solid var(--line);
-      }
-      .rater-bar label { font-size:0.72rem; font-weight:700; color:var(--muted); text-transform:uppercase; }
-      .rater-bar input, .rater-bar select { padding:8px 12px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:0.84rem; }
-      .rater-bar .hint { font-size:0.68rem; color:var(--muted); width:100%; text-align:center; }
-      .sync-pill {
-        display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
-        border-radius:999px; font-size:0.68rem; font-weight:700;
-      }
-      .sync-pill.pending { background:#fff4e8; color:#c45c26; }
-      .sync-pill.ok { background:#edf8e8; color:#2d6a3f; }
-      .sync-pill.err { background:#fef3f2; color:#b42318; }
-      .sync-pill.wait { background:#eef4f8; color:var(--muted); }
-      .room-board { margin-top:16px; padding-top:16px; border-top:1px dashed var(--line); }
-      .room-board h4 { margin:0 0 10px; font-family:"Sora",sans-serif; font-size:0.78rem; color:var(--blue); text-transform:uppercase; letter-spacing:0.06em; }
-      .room-meta { font-size:0.68rem; color:var(--muted); margin:8px 0 0; }
-      .wrap { padding:16px; max-width:520px; margin:0 auto; }
-      .card {
-        margin-bottom:14px; padding:16px; background:#fff;
-        border:1px solid var(--line); border-radius:14px;
-        box-shadow:0 8px 24px rgba(10,22,40,0.05);
-        transition:transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
-      }
-      .card:hover { transform:translateY(-2px); box-shadow:0 14px 32px rgba(10,22,40,0.08); }
-      .card-head { display:flex; gap:12px; align-items:center; margin-bottom:12px; }
-      .num { width:36px; height:36px; display:grid; place-items:center; border-radius:10px; background:var(--ink); color:#fff; font-family:"Sora",sans-serif; font-weight:800; font-size:0.8rem; flex-shrink:0; }
-      .card h2 { margin:0; font-family:"Sora",sans-serif; font-size:1rem; }
-      .card .sub { margin:2px 0 0; font-size:0.72rem; color:var(--muted); }
-      .sliders { display:grid; gap:10px; }
-      .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; align-items:center; font-size:0.75rem; font-weight:600; }
-      .row input[type=range] { width:100%; accent-color:var(--blue); }
-      .row output { text-align:right; color:var(--blue); font-family:"Sora",sans-serif; font-weight:800; }
-      .leaderboard { margin-top:24px; padding:18px; background:#fff; border-radius:14px; border:1px solid var(--line); }
-      .leaderboard h3 { margin:0 0 12px; font-family:"Sora",sans-serif; font-size:0.9rem; }
-      .lb-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line); font-size:0.82rem; }
-      .lb-row b { color:var(--blue); }
-      .bar { height:6px; background:#eef4f8; border-radius:999px; margin-top:4px; overflow:hidden; }
-      .bar i { display:block; height:100%; background:linear-gradient(90deg,var(--blue),var(--green)); border-radius:999px; transition:width 0.45s cubic-bezier(0.22,1,0.36,1); }
-      .rater-list { margin-top:12px; font-size:0.72rem; color:var(--muted); }
-      .proto-banner {
-        margin:0 auto 16px; max-width:520px; padding:14px 16px;
-        border-radius:12px; background:#fff4e8; border:1px solid rgba(245,130,32,0.3);
-        font-size:0.78rem; line-height:1.5; color:#344054;
-      }
-      .proto-banner a { color:var(--blue); font-weight:700; }
-      .actions {
-        position:fixed; bottom:0; left:0; right:0;
-        display:flex; gap:10px; padding:12px 16px calc(12px + env(safe-area-inset-bottom,0));
-        background:rgba(255,255,255,0.95); border-top:1px solid var(--line); backdrop-filter:blur(12px);
-        z-index:50;
-      }
-      .actions button, .actions a { flex:1; padding:12px; border-radius:10px; font-family:"Sora",sans-serif; font-size:0.78rem; font-weight:700; text-align:center; text-decoration:none; border:none; cursor:pointer; }
-      .actions a { background:#fff; border:1px solid var(--line); color:var(--ink); }
-      .actions button { background:var(--blue); color:#fff; }
-      .actions button.danger { background:#fff; border:1px solid var(--line); color:#b54708; flex:0.6; }
-      #print-summary { display:none; }
-      .taste-foot {
-        display:flex; justify-content:space-between; align-items:center; gap:12px;
-        padding:14px 20px; margin-bottom:72px;
-        background:#fff; border-top:1px solid var(--line);
-      }
-      .taste-foot a {
-        font-family:"Sora",sans-serif; font-size:0.74rem; font-weight:700;
-        color:var(--blue); text-decoration:none;
-      }
-      @media print {
-        header .header-qr, .rater-bar, .actions, .hint { display:none !important; }
-        body { background:#fff; padding:0; }
-        .wrap { max-width:none; }
-        #print-summary { display:block !important; page-break-after:always; padding:0.4in; }
-        .card { break-inside:avoid; box-shadow:none; }
-      }
-    </style>
+    <meta name="description" content="Admin results dashboard for the Flavor Flight Challenge." />
+    <meta name="theme-color" content="#071522" />
+    <title>Flight Results Admin · Breath of Innovation</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/taste.css" />
+    <link rel="stylesheet" href="/css/system.css" />
+    <meta property="og:title" content="Breath of Innovation" />
+    <meta property="og:description" content="July 8, 2026 capabilities workshop. The Flavor Factory and TheraBreath, Norco CA." />
+    <meta property="og:image" content="https://breath-of-innovation.vercel.app/assets/og.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
-  <body>
-    <header id="guest-nav"></header>
-    <header class="page-hero tff-enter">
-      <h1>Prototype Scorecard</h1>
-      <p>Rate 1–9 on workshop prototypes · Liking · Uniqueness · Intent</p>
-      <div class="header-qr">
-        <img src="/assets/qr/score-sm.png" alt="QR code — share this scorecard with the room" width="88" height="88" />
-        <span>Scan to open · your ratings join the room sensory summary</span>
-      </div>
-    </header>
-    <div class="rater-bar no-print">
-      <label for="rater-name">Rater</label>
-      <input type="text" id="rater-name" placeholder="Your name" />
-      <button type="button" id="rater-save" style="padding:8px 14px;border-radius:8px;border:none;background:var(--blue);color:#fff;font-family:Sora,sans-serif;font-weight:700;cursor:pointer">Set rater</button>
-      <select id="rater-pick"></select>
-      <span class="hint">Enter your name first — your scores contribute to the room summary. A local backup stays on this phone.</span>
-      <span class="sync-pill wait" id="sync-pill">Set rater name to sync</span>
-    </div>
-    <div class="wrap">
-      <p class="proto-banner">Five coded workshop prototypes for directional sensory feedback. QC status and stability considerations are reviewed after reveal. Complete <a href="/mystery">Blind Flavor Mapping</a> first if you haven't — then score what you taste.</p>
-    </div>
-    <div class="wrap tff-stagger" id="cards"></div>
-    <div class="wrap">
-      <div class="leaderboard" id="board">
-        <h3>Sensory summary · this device</h3>
-        <div id="board-rows"></div>
-        <p class="rater-list" id="rater-summary"></p>
-        <div class="room-board" id="room-board">
-          <h4>Room sensory summary · all raters</h4>
-          <div id="room-rows"></div>
-          <p class="room-meta" id="room-meta">Waiting for scores…</p>
+  <body class="flight-admin-body sys">
+    <canvas class="boi-canvas" id="boi-canvas" aria-hidden="true"></canvas>
+    <nav class="boi-nav" id="boi-nav"></nav>
+
+    <main class="flight-admin">
+      <header class="flight-admin-head">
+        <p class="boi-kicker"><i aria-hidden="true"></i> Admin only</p>
+        <h1>Flavor Flight Results</h1>
+        <p>Guest feedback by blind sample. Internal flavor key stays hidden until admin unlock.</p>
+      </header>
+
+      <section class="flight-admin-lock" id="flight-admin-lock">
+        <h2>Admin access</h2>
+        <p>Enter the team password to view results and the flavor key.</p>
+        <form id="flight-admin-login">
+          <input type="password" id="flight-admin-password" autocomplete="current-password" placeholder="Team password" />
+          <button type="submit">Unlock dashboard</button>
+        </form>
+        <p class="flight-admin-error" id="flight-admin-error">Incorrect password. Please try again.</p>
+      </section>
+
+      <section class="flight-admin-panel" id="flight-admin-panel" hidden>
+        <div class="flight-admin-actions">
+          <button type="button" id="flight-refresh">Refresh</button>
+          <button type="button" class="primary" id="flight-export">Export CSV</button>
+          <button type="button" class="danger" id="flight-reset">Reset live results</button>
         </div>
-      </div>
-    </div>
-    <div id="print-summary"></div>
-    <div class="actions">
-      <a href="/mystery">Blind Flavor Mapping</a>
-      <button type="button" onclick="exportScores()">Copy results</button>
-      <button type="button" onclick="window.print()">Print</button>
-      <button type="button" class="danger" onclick="clearScores()">Reset</button>
-    </div>
-    <script src="/tff-concepts.js"></script>
-    <script src="/tff-storage.js"></script>
-    <script src="/tff-score-sync.js"></script>
-    <script>
-      var STORAGE_KEY = "tff-scores";
-      var concepts = TFFConcepts.activeList().map(function (c) {
-        return { id: c.id, name: c.name, sub: c.sub, stability: c.stability };
-      });
 
-      function migrate(raw) {
-        if (!raw || raw.version === 2) return raw || { version:2, activeRater:"", raters:{} };
-        if (raw.raters) return raw;
-        return { version:2, activeRater:"Rater 1", raters:{ "Rater 1": raw } };
-      }
+        <div class="flight-admin-summary">
+          <article><span>Responses</span><b id="flight-response-count">0</b></article>
+          <article><span>Top ranked</span><b id="flight-top-ranked">-</b></article>
+          <article><span>Last update</span><b id="flight-updated">-</b></article>
+        </div>
 
-      function load() {
-        return migrate(TFFStorage.get(STORAGE_KEY, { version:2, activeRater:"", raters:{} }));
-      }
+        <div class="flight-admin-grid" id="flight-results"></div>
 
-      function save(data) {
-        TFFStorage.set(STORAGE_KEY, data);
-      }
+        <section class="flight-admin-key">
+          <h2>Flavor key / reveal</h2>
+          <div id="flight-key"></div>
+        </section>
+      </section>
+    </main>
 
-      function activeScores(data) {
-        var name = data.activeRater;
-        if (!name) return {};
-        if (!data.raters[name]) data.raters[name] = {};
-        return data.raters[name];
-      }
-
-      function setSyncStatus(state, msg) {
-        var pill = document.getElementById("sync-pill");
-        if (!pill) return;
-        pill.className = "sync-pill " + state;
-        pill.textContent = msg;
-      }
-
-      function syncActiveRater() {
-        var data = load();
-        if (!data.activeRater) {
-          setSyncStatus("wait", "Set rater name to sync");
-          return;
-        }
-        setSyncStatus("pending", "Syncing…");
-        TFFScoreSync.push(activeScores(data), data.activeRater, concepts.length, function (res, status) {
-          if (res && res.ok) {
-            setSyncStatus("ok", "Live · " + (res.rated || 0) + " concepts synced");
-          } else if (status === 503) {
-            setSyncStatus("err", "Live storage offline — saved locally");
-          } else {
-            setSyncStatus("err", "Sync failed — saved locally");
-          }
-        });
-      }
-
-      function setRater(name) {
-        name = (name || "").trim();
-        if (!name) return;
-        var data = load();
-        data.activeRater = name;
-        if (!data.raters[name]) data.raters[name] = {};
-        save(data);
-        updateRaterUI();
-        renderCards();
-        syncActiveRater();
-      }
-
-      function updateRaterUI() {
-        var data = load();
-        var pick = document.getElementById("rater-pick");
-        var names = Object.keys(data.raters).sort();
-        pick.innerHTML = names.map(function(n) {
-          return '<option value="' + n + '"' + (n === data.activeRater ? ' selected' : '') + '>' + n + '</option>';
-        }).join("");
-        document.getElementById("rater-name").value = data.activeRater || "";
-        document.getElementById("rater-summary").textContent =
-          names.length ? names.length + " rater(s) on this device: " + names.join(", ") : "No raters yet — enter your name.";
-      }
-
-      function renderCards() {
-        var data = load();
-        var scores = activeScores(data);
-        var html = concepts.map(function (c) {
-          var s = scores[c.id] || { liking:5, unique:5, intent:5 };
-          return '<article class="card" data-id="' + c.id + '">' +
-            '<div class="card-head"><span class="num">' + String(c.id).padStart(2,'0') + '</span><div><h2>' + c.name + '</h2><p class="sub">' + c.sub + '</p></div></div>' +
-            '<div class="sliders">' +
-            slider('liking', 'Liking', s.liking, c.id) +
-            slider('unique', 'Uniqueness', s.unique, c.id) +
-            slider('intent', 'Purchase intent', s.intent, c.id) +
-            '</div></article>';
-        }).join('');
-        document.getElementById('cards').innerHTML = html;
-        document.querySelectorAll('input[type=range]').forEach(function (inp) {
-          inp.addEventListener('input', onSlide);
-        });
-        renderBoard();
-        renderPrintSummary();
-        var cardsWrap = document.getElementById("cards");
-        cardsWrap.classList.remove("is-visible");
-        requestAnimationFrame(function () { cardsWrap.classList.add("is-visible"); });
-      }
-
-      function slider(key, label, val, id) {
-        return '<label class="row"><span>' + label + '</span><output id="o-' + id + '-' + key + '">' + val + '</output></label>' +
-          '<input type="range" min="1" max="9" step="1" value="' + val + '" data-id="' + id + '" data-key="' + key + '">';
-      }
-
-      function onSlide(e) {
-        var id = e.target.dataset.id;
-        var key = e.target.dataset.key;
-        var val = +e.target.value;
-        document.getElementById('o-' + id + '-' + key).textContent = val;
-        var data = load();
-        var scores = activeScores(data);
-        if (!scores[id]) scores[id] = { liking:5, unique:5, intent:5 };
-        scores[id][key] = val;
-        save(data);
-        renderBoard();
-        renderPrintSummary();
-        syncActiveRater();
-      }
-
-      function aggregateScores(data) {
-        var names = Object.keys(data.raters);
-        var agg = {};
-        concepts.forEach(function(c) {
-          var liking = 0, unique = 0, intent = 0, count = 0;
-          names.forEach(function(n) {
-            var s = (data.raters[n] || {})[c.id];
-            if (!s) return;
-            liking += s.liking || 0;
-            unique += s.unique || 0;
-            intent += s.intent || 0;
-            count++;
-          });
-          agg[c.id] = {
-            liking: count ? liking / count : 0,
-            unique: count ? unique / count : 0,
-            intent: count ? intent / count : 0,
-            count: count
-          };
-        });
-        return agg;
-      }
-
-      function renderRoomBoard(aggregate, count, updatedAt) {
-        var rows = concepts.map(function (c) {
-          var a = (aggregate || {})[c.id] || (aggregate || {})[String(c.id)] || { liking: 0, count: 0 };
-          return { name: c.name, id: c.id, liking: a.liking, count: a.count };
-        }).sort(function (a, b) { return b.liking - a.liking || b.count - a.count; });
-
-        document.getElementById("room-rows").innerHTML = rows.map(function (r, i) {
-          var pct = r.count ? (r.liking / 9) * 100 : 0;
-          var val = r.count ? r.liking.toFixed(1) : "—";
-          return '<div class="lb-row"><span><b>#' + (i + 1) + '</b> ' + r.name + '</span><span>' + val + '/9</span></div>' +
-            (r.count ? '<div class="bar"><i style="width:' + pct + '%"></i></div>' : '');
-        }).join("");
-
-        var meta = document.getElementById("room-meta");
-        if (!count) {
-          meta.textContent = "No room scores yet — be the first rater.";
-        } else {
-          meta.textContent = count + " rater(s) in the room" + (updatedAt ? " · updated " + new Date(updatedAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : "");
-        }
-      }
-
-      function pollRoom() {
-        TFFScoreSync.fetchPublic(function (res) {
-          if (res && res.ok && res.aggregate) {
-            renderRoomBoard(res.aggregate, res.count, res.updatedAt);
-          }
-        });
-      }
-
-      function renderBoard() {
-        var data = load();
-        var agg = aggregateScores(data);
-        var rows = concepts.map(function (c) {
-          var s = agg[c.id];
-          return { name: c.name, id: c.id, liking: s.liking, avg: (s.liking + s.unique + s.intent) / 3, count: s.count };
-        }).sort(function (a, b) { return b.liking - a.liking || b.avg - a.avg; });
-
-        document.getElementById('board-rows').innerHTML = rows.map(function (r, i) {
-          var pct = (r.liking / 9) * 100;
-          var val = r.count ? r.liking.toFixed(1) : '—';
-          return '<div class="lb-row"><span><b>#' + (i+1) + '</b> ' + r.name + '</span><span>' + val + '/9</span></div>' +
-            (r.count ? '<div class="bar"><i style="width:' + pct + '%"></i></div>' : '');
-        }).join('');
-        updateRaterUI();
-      }
-
-      function renderPrintSummary() {
-        var data = load();
-        var agg = aggregateScores(data);
-        var names = Object.keys(data.raters).sort();
-        var rows = concepts.map(function(c) {
-          var s = agg[c.id];
-          return '<tr><td>' + c.id + '</td><td>' + c.name + '</td><td>' + (s.count ? s.liking.toFixed(1) : '—') + '</td><td>' + (s.count ? s.unique.toFixed(1) : '—') + '</td><td>' + (s.count ? s.intent.toFixed(1) : '—') + '</td></tr>';
-        }).join('');
-        document.getElementById('print-summary').innerHTML =
-          '<h2 style="font-family:Sora,sans-serif;margin:0 0 8px">Prototype Scorecard · aggregated results</h2>' +
-          '<p style="font-size:0.82rem;margin:0 0 16px">Raters (' + names.length + '): ' + (names.join(', ') || 'none') + ' · Printed ' + new Date().toLocaleDateString() + '</p>' +
-          '<table style="width:100%;border-collapse:collapse;font-size:0.8rem"><tr><th style="border:1px solid #ccc;padding:6px">#</th><th style="border:1px solid #ccc;padding:6px">Concept</th><th style="border:1px solid #ccc;padding:6px">Avg liking</th><th style="border:1px solid #ccc;padding:6px">Avg unique</th><th style="border:1px solid #ccc;padding:6px">Avg intent</th></tr>' + rows + '</table>';
-      }
-
-      function exportScores() {
-        var data = load();
-        var lines = ['TFF × TheraBreath concept scores · ' + new Date().toLocaleDateString(), ''];
-        Object.keys(data.raters).sort().forEach(function(name) {
-          lines.push('=== ' + name + ' ===');
-          concepts.forEach(function(c) {
-            var s = (data.raters[name] || {})[c.id] || {};
-            lines.push(c.id + '. ' + c.name + ' — L:' + (s.liking||'-') + ' U:' + (s.unique||'-') + ' I:' + (s.intent||'-'));
-          });
-          lines.push('');
-        });
-        lines.push('=== AGGREGATE (avg liking) ===');
-        var agg = aggregateScores(data);
-        concepts.forEach(function(c) {
-          var s = agg[c.id];
-          lines.push(c.id + '. ' + c.name + ' — L:' + (s.count ? s.liking.toFixed(1) : '-'));
-        });
-        navigator.clipboard.writeText(lines.join('\n')).then(function () { alert('All rater scores copied'); });
-      }
-
-      function clearScores() {
-        if (confirm('Clear all scores for all raters on this device?')) {
-          TFFStorage.remove(STORAGE_KEY);
-          renderCards();
-        }
-      }
-
-      document.getElementById('rater-save').addEventListener('click', function() {
-        setRater(document.getElementById('rater-name').value);
-      });
-      document.getElementById('rater-pick').addEventListener('change', function() {
-        setRater(this.value);
-      });
-
-      renderCards();
-      pollRoom();
-      setInterval(pollRoom, 3000);
-    </script>
-    <nav class="taste-foot" aria-label="Workshop navigation">
-      <a href="/mystery">← Blind Flavor Mapping</a>
-      <a href="/">Visit guide →</a>
-    </nav>
-    <p style="text-align:center;font-size:0.68rem;color:var(--muted);margin:0;padding:0 16px 12px">Room aggregate above updates as guests submit scores.</p>
-    <script src="/tff-guest.js" defer></script>
+    <script src="/js/content.js"></script>
+    <script src="/js/boi-nav.js"></script>
+    <script src="/js/concepts.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/flight-admin.js"></script>
+    <script src="/js/site.js"></script>
   </body>
 </html>

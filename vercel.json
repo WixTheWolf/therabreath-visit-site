@@ -13,7 +13,8 @@
     { "source": "/tv", "destination": "/display", "permanent": false },
     { "source": "/speaker-packet", "destination": "/packet", "permanent": false },
     { "source": "/team", "destination": "/gate", "permanent": false },
-    { "source": "/map", "destination": "/mystery", "permanent": false }
+    { "source": "/mystery", "destination": "/taste", "permanent": false },
+    { "source": "/map", "destination": "/taste", "permanent": false }
   ],
   "headers": [
     {

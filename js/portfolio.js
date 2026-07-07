@@ -201,7 +201,7 @@
       section.dataset.collection = colId;
 
       var extra = colId === "pipeline"
-        ? '<a class="port-chapter-cta" href="/mystery">Taste M1–M5 July 8 →</a>'
+        ? '<a class="port-chapter-cta" href="/taste">Taste Samples A-E July 8 →</a>'
         : "";
 
       section.innerHTML =
@@ -339,7 +339,7 @@
 
     if (actions) {
       actions.innerHTML = c.collection === "pipeline"
-        ? '<a class="port-modal-btn primary" href="/mystery">Blind mapping · ' + mintCode(c) + "</a>" +
+        ? '<a class="port-modal-btn primary" href="/taste">Flavor Flight · ' + mintCode(c) + "</a>" +
           '<a class="port-modal-btn" href="/concepts">Prototype reference</a>'
         : c.collection === "production"
           ? '<a class="port-modal-btn" href="/lakewood">Lakewood parity context</a>'

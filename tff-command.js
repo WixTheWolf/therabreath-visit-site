@@ -42,10 +42,10 @@
     { label: "Welcome booklet (PDF index)", path: "/booklet" },
     { label: "Visitor passport", path: "/passport" },
     { label: "Tasting station signs", path: "/stations" },
-    { label: "Blind flavor mapping", path: "/mystery" },
-    { label: "Blind Flavor Mapping live (admin)", path: "/mystery-live" },
-    { label: "Prototype scorecard", path: "/score" },
-    { label: "Live sensory summary (admin)", path: "/score-live" },
+    { label: "Flavor Flight Challenge", path: "/taste" },
+
+    { label: "Flavor Flight results admin", path: "/score" },
+
     { label: "Executive one-pager", path: "/onepager" },
     { label: "QR code print sheet", path: "/qr" },
     { label: "Co-creation worksheet", path: "/worksheet" }

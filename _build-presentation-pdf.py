@@ -118,7 +118,7 @@ def schedule_table(styles):
         ["9:00–9:25", "Facility tour — production and quality areas"],
         ["9:30–10:15", "Presentation — open discussion on the topics below"],
         ["10:15–10:30", "Break"],
-        ["10:30–11:15", "Tasting — five mint platforms (M1–M5); directional feedback"],
+        ["10:30–11:15", "Tasting — Flavor Flight Challenge with Samples A-E; directional feedback"],
         ["11:30–1:00", "Lunch off site — your hosts take the group"],
         ["1:00 PM+", "Open Q&A — your questions, your pace"],
     ]
@@ -237,7 +237,7 @@ def build():
     story.append(Paragraph(
         "This is a <b>working session</b>, not a sales presentation. "
         "We'll show you how we operate, answer direct questions, and taste "
-        "<b>five mint platforms (M1–M5)</b> for honest directional feedback.",
+        "<b>five blind samples labeled Sample A through Sample E</b> for honest directional feedback.",
         styles["body"],
     ))
 
@@ -259,7 +259,7 @@ def build():
     story.append(Paragraph("We can also cover:", styles["muted"]))
     extras = [
         "Lakewood site parity — keeping taste consistent as production expands",
-        "Workshop tasting — five coded mint platforms (M1–M5); directional feedback only, not a launch decision",
+        "Workshop tasting — Flavor Flight Challenge with Samples A-E; directional feedback only, not a launch decision",
         "Anything else on your list — procurement, growth, or technical topics",
     ]
     for item in extras:

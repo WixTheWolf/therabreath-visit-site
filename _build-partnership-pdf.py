@@ -168,7 +168,7 @@ def agenda_table(styles):
         ["9:00–9:25 AM", "Facility tour", "2058 Second Street · production, QC, TheraBreath room"],
         ["9:30–10:15 AM", "TFF presentation", "Four pillars · conference room across the street"],
         ["10:15–10:30 AM", "Break", "Reset before tasting"],
-        ["10:30–11:15 AM", "Tasting", "Five mint platforms (M1–M5) · blind mapping · scorecard"],
+        ["10:30–11:15 AM", "Tasting", "Flavor Flight Challenge · Samples A-E · admin results"],
         ["11:30 AM–1:00 PM", "Lunch off site", "Hosts take the group"],
         ["1:00 PM onward", "Open Q&A", "Your topics · wrap when ready"],
     ]
@@ -308,7 +308,7 @@ def build():
     bullets = [
         "Real facility walkthrough and documented quality systems",
         "Honest answers on resiliency, innovation, operations, and partnership",
-        "Directional sensory feedback on five workshop mint platforms (M1–M5)",
+        "Directional sensory feedback on five blind samples labeled Sample A through Sample E",
         "A clear path for Lakewood site parity validation",
     ]
     for b in bullets:

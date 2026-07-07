@@ -22,7 +22,7 @@ ITEMS = [
     ("10:15–10:30", "Break"),
     (
         "10:30–11:15",
-        "Tasting — five workshop mint platforms (M1–M5); blind flavor mapping & prototype scorecard",
+        "Tasting — ten workshop prototypes; Flavor Flight Challenge & Flavor Flight results admin",
     ),
     ("11:30–1:00", "Lunch off site — hosts take the group"),
     (

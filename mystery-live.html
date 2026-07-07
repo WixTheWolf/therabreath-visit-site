@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>Blind Flavor Mapping · Live Summary · Admin | TFF</title>
+    <title>Flavor Flight Challenge · Live Summary · Admin | TFF</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/tff-shell.css" />
     <script src="/tff-auth.js"></script>
@@ -54,10 +54,10 @@
   </head>
   <body>
     <div class="bar">
-      <strong style="font-family:Sora,sans-serif">Blind Flavor Mapping · live summary</strong>
+      <strong style="font-family:Sora,sans-serif">Flavor Flight Challenge · live summary</strong>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <a href="/toolkit">Toolkit</a>
-        <a href="/mystery">Guest mapping</a>
+        <a href="/taste">Guest mapping</a>
         <button type="button" id="sound-btn" class="warn">Sound off</button>
         <button type="button" id="export-btn">Export CSV</button>
         <button type="button" id="clear-btn" class="warn">Clear all</button>
@@ -76,7 +76,7 @@
         <div class="stat"><b id="s-set">v1</b><span>Concept set</span></div>
       </div>
       <div class="panel">
-        <h2>Live sensory summary · Blind Flavor Mapping matches</h2>
+        <h2>Live sensory summary · Flavor Flight Challenge matches</h2>
         <div style="overflow-x:auto">
           <table id="board">
             <thead>
@@ -145,7 +145,7 @@
 
         if (latest.length > lastCount) {
           beep();
-          document.title = "(" + latest.length + ") Blind Flavor Mapping live";
+          document.title = "(" + latest.length + ") Flavor Flight Challenge live";
         }
         lastCount = latest.length;
 
@@ -154,7 +154,7 @@
             "</td><td><b>" + s.correct + "</b> / " + s.total +
             "</td><td style=\"font-size:0.68rem;line-height:1.5\">" + guessSummary(s.guesses) +
             "</td><td style=\"white-space:nowrap;color:var(--muted)\">" + timeAgo(s.updatedAt) + "</td></tr>";
-        }).join("") || "<tr><td colspan=\"5\" style=\"color:var(--muted);text-align:center\">No submissions yet — guests scan QR at /mystery</td></tr>";
+        }).join("") || "<tr><td colspan=\"5\" style=\"color:var(--muted);text-align:center\">No submissions yet — guests scan QR at /taste</td></tr>";
 
         var head = "<table><thead><tr><th>Name</th>" +
           concepts.map(function (c) { return "<th>" + c.code + "</th>"; }).join("") + "</tr></thead><tbody>";
@@ -186,7 +186,7 @@
       }
 
       function poll() {
-        fetch("/api/mystery/live", { credentials: "include" })
+        fetch("/api/taste/live", { credentials: "include" })
           .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
           .then(function (res) {
             var el = document.getElementById("status");
@@ -233,7 +233,7 @@
       });
       document.getElementById("clear-btn").addEventListener("click", function () {
         if (!confirm("Clear ALL live mystery submissions?")) return;
-        fetch("/api/mystery/live", { method: "DELETE", credentials: "include" })
+        fetch("/api/taste/live", { method: "DELETE", credentials: "include" })
           .then(function () { lastCount = 0; poll(); });
       });
 

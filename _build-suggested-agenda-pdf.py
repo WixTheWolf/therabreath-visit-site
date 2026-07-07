@@ -174,7 +174,7 @@ def agenda_rows(styles):
         [
             "10:30–11:15",
             "Tasting",
-            "Five workshop mint platforms (M1–M5) · blind flavor mapping · prototype scorecard",
+            "Ten workshop prototypes · Flavor Flight Challenge · Flavor Flight results admin",
         ],
         [
             "11:30–1:00",
@@ -310,7 +310,7 @@ def build():
         "<b>Four pillars</b> — resiliency, innovation, operations, and partnership (your team's ask)",
         "<b>Norco facility</b> — real walkthrough of production, QC, and TheraBreath-dedicated areas",
         "<b>Lakewood site parity</b> — sensory validation plan for mouthrinse production as you scale",
-        "<b>Directional tasting</b> — five workshop mint platforms (M1–M5); honest feedback via blind mapping and scorecard",
+        "<b>Directional tasting</b> — ten workshop prototypes; honest feedback via blind mapping and scorecard",
         "<b>Partnership alignment</b> — growth scenarios, procurement qualification, long-term supplier fit",
         "<b>Oral-care innovation</b> — sodium chlorite flavor work, competitive calibration, functional directions",
     ]
@@ -348,8 +348,9 @@ def build():
     story.append(Spacer(1, 0.1 * inch))
     story.append(Paragraph("TASTING · 10:30–11:15", styles["kicker"]))
     story.append(Paragraph(
-        "Five coded workshop mint platforms (M1–M5). Use your phone on our site: "
-        "<b>Blind Flavor Mapping</b> while cups are coded, then <b>Prototype Scorecard</b> after the host reveal. "
+        "Five blind samples labeled Sample A through Sample E. Guests use the "
+        "<b>Flavor Flight Challenge</b> to rate each sample and rank their top three; the team reviews "
+        "<b>Flavor Flight Results Admin</b> after responses are submitted. "
         "Directional feedback only — not a final product decision.",
         styles["body"],
     ))

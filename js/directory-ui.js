@@ -357,8 +357,8 @@
 
   var HERO_PILLS = [
     { href: "/present", title: "Presentation", guest: true },
-    { href: "/mystery", title: "Blind mapping", guest: true },
-    { href: "/score", title: "Scorecard", guest: true },
+    { href: "/taste", title: "Flavor Flight", guest: true },
+    { href: "/score", title: "Results admin", internal: true },
     { href: "/portfolio", title: "Portfolio", guest: true },
     { href: "/lakewood", title: "Lakewood", guest: true },
     { href: "/toolkit", title: "Command center", internal: true },

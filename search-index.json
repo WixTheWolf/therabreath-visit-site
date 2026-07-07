@@ -131,7 +131,7 @@
     "type": "answer",
     "category": "Pillar 2 · Innovation",
     "q": "What are the five workshop prototypes and how were they chosen?",
-    "snippet": "Five mint platforms — Fresh Herbal, Grove, Botanical, Immunity, and Garden Mint. Coded cups M1–M5 blind flavor mapping at /mystery. Ingredient reveal after tasting.",
+    "snippet": "Five mint platforms — Fresh Herbal, Grove, Botanical, Immunity, and Garden Mint. Samples A-E Flavor Flight Challenge at /taste. Ingredient reveal after tasting.",
     "href": "/answers",
     "badge": "ready"
   },
@@ -211,7 +211,7 @@
     "type": "answer",
     "category": "Pillar 4 · Partnership",
     "q": "What happens in the co-creation workshop?",
-    "snippet": "10:30–11:15 tasting on M1–M5 — blind mapping, scorecard, directional feedback. Pilot priorities close during open Q&A after 1:00 PM.",
+    "snippet": "10:30–11:15 tasting on Samples A-E — Flavor Flight, scorecard, directional feedback. Pilot priorities close during open Q&A after 1:00 PM.",
     "href": "/answers",
     "badge": "ready"
   },
@@ -219,7 +219,7 @@
     "type": "answer",
     "category": "Pillar 4 · Partnership",
     "q": "What deliverables do we receive after July 8?",
-    "snippet": "Thank-you + summary within 24 hours (follow-up email template) Sensory scores compiled from Prototype Scorecard + ballots Co-created innovation roadmap document Pilot batch plan on selected concepts Lakewood ",
+    "snippet": "Thank-you + summary within 24 hours (follow-up email template) Sensory scores compiled from Flavor Flight Results Admin + ballots Co-created innovation roadmap document Pilot batch plan on selected concepts Lakewood ",
     "href": "/answers",
     "badge": "ready"
   },
@@ -643,7 +643,7 @@
     "type": "answer",
     "category": "Day-of",
     "q": "Where is the QR code for tasting feedback and the workshop site?",
-    "snippet": "Print sheet at /qr — /mystery for blind guess on coded cups M1–M5, then /score for 1–9 ratings after reveal.",
+    "snippet": "Print sheet at /qr — /taste for blind guess on Samples A-E, then /score for 1–9 ratings after the guided flight.",
     "href": "/qr",
     "badge": "ready"
   },
@@ -651,7 +651,7 @@
     "type": "answer",
     "category": "Day-of",
     "q": "How do guests score prototypes on their phones during tasting?",
-    "snippet": "Mystery first at /mystery (Station 2 QR), then scan /score after reveals — station signs, slide 17, passport, feedback section.",
+    "snippet": "Mystery first at /taste (Station 2 QR), then scan /score after the guided flights — station signs, slide 17, passport, feedback section.",
     "href": "/score",
     "badge": "ready"
   },
@@ -659,24 +659,24 @@
     "type": "answer",
     "category": "Day-of",
     "q": "Where does the host see mystery guesses live during the tasting?",
-    "snippet": "Team password → /mystery-live — polls every 2.5s, shows name and cup-by-cup guesses, CSV export, optional ntfy phone alerts on TFF_NTFY_TOPIC.",
-    "href": "/mystery-live",
+    "snippet": "Team password → /score — polls every 2.5s, shows name and sample ratings, CSV export, optional ntfy phone alerts on TFF_NTFY_TOPIC.",
+    "href": "/score",
     "badge": "ready"
   },
   {
     "type": "tool",
     "category": "July 8",
     "q": "Mystery live admin board",
-    "snippet": "Real-time mystery submissions — who guessed what on coded cups M1–M5. Password required.",
-    "href": "/mystery-live",
+    "snippet": "Real-time mystery submissions — who guessed what on Samples A-E. Password required.",
+    "href": "/score",
     "badge": "ready"
   },
   {
     "type": "answer",
     "category": "Day-of",
     "q": "Where does the host see the live sensory summary from all phones?",
-    "snippet": "Team password → /score-live — live sensory summary, room aggregate, per-rater detail, CSV export. Guests on /score sync automatically; aggregate also shows on their phones.",
-    "href": "/score-live",
+    "snippet": "Team password → /score — live sensory summary, room aggregate, per-rater detail, CSV export. Guests on /score sync automatically; aggregate also shows on their phones.",
+    "href": "/score",
     "badge": "ready"
   },
   {
@@ -692,7 +692,7 @@
     "category": "July 8",
     "q": "Score live admin board",
     "snippet": "Real-time concept scores from all raters — avg liking aggregate, per-rater sliders, CSV export. Password required.",
-    "href": "/score-live",
+    "href": "/score",
     "badge": "ready"
   },
   {
@@ -715,7 +715,7 @@
     "type": "page",
     "category": "Tasting",
     "q": "Five workshop directions — concept preview",
-    "snippet": "Workshop samples M1–M5 with QC cleared, stability review, and retain review tiers. Station map — cup codes stay blind until reveal.",
+    "snippet": "Workshop samples Samples A-E with QC cleared, stability review, and retain review tiers. Station map — cup codes stay blind until reveal.",
     "href": "/concepts",
     "badge": "ready"
   },

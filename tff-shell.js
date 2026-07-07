@@ -7,8 +7,8 @@
     { href: "/find", label: "Find", title: "Site directory & search", match: ["/find"] },
     { href: "/visit", label: "Day hub", title: "Breath of Innovation schedule", match: ["/visit", "/taste"] },
     { href: "/present", label: "Presentation", title: "Live Q&A slides", match: ["/present", "/presentation"] },
-    { href: "/mystery", label: "Mapping", title: "Blind Flavor Mapping", fun: true, match: ["/mystery"] },
-    { href: "/score", label: "Scorecard", title: "Prototype Scorecard", cta: true, match: ["/score"] }
+    { href: "/taste", label: "Flight", title: "Flavor Flight Challenge", fun: true, match: ["/taste"] },
+    { href: "/score", label: "Results", title: "Flavor Flight Results Admin", cta: true, match: ["/score"] }
   ];
 
   var MORE = [
@@ -24,8 +24,8 @@
     { href: "/stations", label: "Station signs" },
     { href: "/gate", label: "Team sign-in", signin: true },
     { href: "/toolkit", label: "Command center", authedOnly: true },
-    { href: "/mystery-live", label: "Blind Flavor Mapping live", authedOnly: true },
-    { href: "/score-live", label: "Sensory summary live", authedOnly: true }
+
+    { href: "/qr", label: "QR directory", authedOnly: true }
   ];
 
   function isTeamAuthed() {
@@ -43,8 +43,8 @@
   var DOCK = [
     { href: "/", label: "Home", icon: "home" },
     { href: "/visit", label: "Visit", icon: "workshop" },
-    { href: "/mystery", label: "Mapping", icon: "mystery" },
-    { href: "/score", label: "Scorecard", icon: "score" }
+    { href: "/taste", label: "Flight", icon: "mystery" },
+    { href: "/score", label: "Results", icon: "score" }
   ];
 
   var ICONS = {

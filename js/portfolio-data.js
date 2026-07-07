@@ -5,7 +5,7 @@
   var COLLECTIONS = {
     production: { id: "production", label: "In Production", count: 14, color: "#0d9488", desc: "TheraBreath SKUs greenlit and on shelf — mapped to TFF flavor codes and usage levels." },
     presented: { id: "presented", label: "Concepts Presented", count: 29, color: "#008fd3", desc: "Heritage Top 8 and C&D storytelling flavors sent for review — not selected for production." },
-    pipeline: { id: "pipeline", label: "Pipeline", count: 5, color: "#5fb832", desc: "July 8 workshop mint platforms (M1–M5) — chlorite-aware prototypes in active development." },
+    pipeline: { id: "pipeline", label: "Pipeline", count: 5, color: "#5fb832", desc: "July 8 workshop mint platforms (Samples A-E) — chlorite-aware prototypes in active development." },
     genalpha: { id: "genalpha", label: "Gen Alpha", count: 5, color: "#6c5ce7", desc: "Social-first futures — scroll-stopping shelf stories." }
   };
 

@@ -57,8 +57,8 @@
       <strong style="font-family:Sora,sans-serif">Live sensory summary · admin</strong>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <a href="/toolkit">Toolkit</a>
-        <a href="/mystery-live">Blind Flavor Mapping live</a>
-        <a href="/score">Prototype Scorecard</a>
+        <a href="/score">Flavor Flight Challenge live</a>
+        <a href="/score">Flavor Flight Results Admin</a>
         <button type="button" id="sound-btn" class="warn">Sound off</button>
         <button type="button" id="export-btn">Export CSV</button>
         <button type="button" id="clear-btn" class="warn">Clear all</button>
@@ -189,7 +189,7 @@
             "</td><td><b>" + (s.rated ? s.avgLiking.toFixed(1) : "—") + "</b>/9" +
             "</td><td>" + (s.rated || 0) + " / " + concepts.length +
             "</td><td style=\"white-space:nowrap;color:var(--muted)\">" + timeAgo(s.updatedAt) + "</td></tr>";
-        }).join("") || "<tr><td colspan=\"5\" style=\"color:var(--muted);text-align:center\">No scores yet — guests scan QR at /score after reveal</td></tr>";
+        }).join("") || "<tr><td colspan=\"5\" style=\"color:var(--muted);text-align:center\">No scores yet — guests scan QR at /score after the guided flight</td></tr>";
 
         var head = "<table><thead><tr><th>Rater</th>" +
           concepts.map(function (c) { return "<th>" + String(c.id).padStart(2, "0") + "</th>"; }).join("") + "</tr></thead><tbody>";

@@ -18,8 +18,8 @@ const PROTECTED = new Set([
   "/partnership",
   "/therabreath",
   "/search-index.json",
-  "/mystery-live",
-  "/score-live",
+  "/score",
+  "/qr",
   "/packet",
   "/speaker-packet",
   "/booklet/documents/global-supplier-quality-manual-norco-june-2026.docx"
@@ -76,8 +76,8 @@ export const config = {
     "/partnership",
     "/therabreath",
     "/search-index.json",
-    "/mystery-live",
-    "/score-live",
+    "/score",
+    "/qr",
     "/packet",
     "/speaker-packet",
     "/booklet/documents/global-supplier-quality-manual-norco-june-2026.docx"

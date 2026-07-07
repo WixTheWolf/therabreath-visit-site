@@ -119,7 +119,7 @@ def agenda_table(styles):
         ["9:00–9:25", "Facility tour", "2058 Second Street · production, QC, TheraBreath room"],
         ["9:30–10:15", "TFF presentation", "Four pillars · conference room across the street"],
         ["10:15–10:30", "Break", "Reset before tasting"],
-        ["10:30–11:15", "Tasting", "Five mint platforms (M1–M5) · blind mapping · scorecard"],
+        ["10:30–11:15", "Tasting", "Flavor Flight Challenge · Samples A-E · admin results"],
         ["11:30–1:00", "Lunch off site", "Hosts take the group · back 1:00 PM"],
         ["1:00+", "Open discussion", "Lakewood · procurement · your pace"],
     ]
@@ -204,8 +204,8 @@ def build():
         ("Meeting prep &amp; discussion highlights", f"{SITE_URL}/prepare"),
         ("Full visit packet index", f"{SITE_URL}/booklet"),
         ("Day-of hub · schedule &amp; tools", f"{SITE_URL}/visit"),
-        ("Blind Flavor Mapping (10:30 AM)", f"{SITE_URL}/mystery"),
-        ("Prototype Scorecard (after reveal)", f"{SITE_URL}/score"),
+        ("Flavor Flight Challenge (10:30 AM)", f"{SITE_URL}/taste"),
+        ("Flavor Flight Results Admin (team only)", f"{SITE_URL}/score"),
     ]
     for label, url in links:
         story.append(Paragraph(f"• <b>{label}</b><br/>{url}", styles["bullet"]))

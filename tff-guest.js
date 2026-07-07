@@ -7,8 +7,7 @@
     { href: "/find", label: "Find", match: ["/find"], find: true },
     { href: "/visit", label: "Day hub", match: ["/visit", "/taste"] },
     { href: "/present", label: "Slides", match: ["/present", "/presentation"] },
-    { href: "/mystery", label: "Mapping", match: ["/mystery", "/map"] },
-    { href: "/score", label: "Score", cta: true, match: ["/score"] }
+    { href: "/taste", label: "Flight", cta: true, match: ["/taste", "/map"] }
   ];
 
   function path() {

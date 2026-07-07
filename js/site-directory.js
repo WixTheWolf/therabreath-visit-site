@@ -33,18 +33,17 @@ window.SiteDirectory = {
     {
       id: "tasting",
       title: "Tasting · 10:30 AM",
-      desc: "Blind mapping, scorecard, stations, live admin",
+      desc: "Guest Flavor Flight, station materials, admin results",
       accent: "#f58220",
       items: [
-        { href: "/taste", title: "Tasting hub", desc: "Gateway to mapping + scorecard", path: "/taste", keywords: "tasting 1030 sensory" },
-        { href: "/mystery", title: "Blind Flavor Mapping", desc: "Match coded cups M1–M5 before reveal", path: "/mystery", keywords: "blind mystery mapping m1 m2 m3 m4 m5", hot: true },
-        { href: "/score", title: "Prototype scorecard", desc: "Rate prototypes after host reveal", path: "/score", keywords: "score scorecard rating", hot: true },
-        { href: "/concepts", title: "Five mint platforms", desc: "M1–M5 architecture · post-reveal reference", path: "/concepts", keywords: "concepts m1 m5 mint platforms" },
+        { href: "/taste", title: "Flavor Flight Challenge", desc: "Guest-guided blind tasting for Sample A through Sample E", path: "/taste", keywords: "tasting 1030 sensory flavor flight samples a b c d e", hot: true },
+        { href: "/score", title: "Flavor Flight results admin", desc: "Admin dashboard for averages, rankings, descriptors, daily-use intent, CSV export, and flavor key", path: "/score", keywords: "score results admin dashboard flight csv flavor key", internal: true, hot: true },
+        { href: "/concepts", title: "Five mint platforms", desc: "Internal flavor architecture and reveal reference", path: "/concepts", keywords: "concepts mint platforms" },
         { href: "/stations", title: "Tasting station signs", desc: "Three station tent cards for the room", path: "/stations", keywords: "stations signs print room" },
-        { href: "/labels", title: "Sample kit labels", desc: "Cup codes M1–M5 stickers", path: "/labels", keywords: "labels stickers samples M1 M5", internal: true },
+        { href: "/labels", title: "Sample kit labels", desc: "Sample A-E blind-label stickers", path: "/labels", keywords: "labels stickers samples", internal: true },
         { href: "/worksheet", title: "Co-creation worksheet", desc: "Lab block form for iterations", path: "/worksheet", keywords: "worksheet co-creation bench", internal: true },
-        { href: "/mystery-live", title: "Blind Mapping live", desc: "See guest matches · export CSV", path: "/mystery-live", keywords: "live admin mystery realtime", internal: true, hot: true },
-        { href: "/score-live", title: "Live sensory summary", desc: "Room aggregate + per-rater detail", path: "/score-live", keywords: "live admin score aggregate", internal: true, hot: true }
+
+        { href: "/qr", title: "QR directory", desc: "Updated guest and team QR codes", path: "/qr", keywords: "qr directory codes print", internal: true, hot: true }
       ]
     },
     {
@@ -66,7 +65,7 @@ window.SiteDirectory = {
       desc: "53 flavors, chlorite science, competitive intel",
       accent: "#0d9488",
       items: [
-        { href: "/portfolio", title: "Flavor portfolio", desc: "Production SKUs · concepts · pipeline M1–M5 · Gen Alpha", path: "/portfolio", keywords: "flavors portfolio gallery skus mint", hot: true },
+        { href: "/portfolio", title: "Flavor portfolio", desc: "Production SKUs · concepts · pipeline flavors · Gen Alpha", path: "/portfolio", keywords: "flavors portfolio gallery skus mint", hot: true },
         { href: "/chlorite-flavor", title: "Chlorite & flavor overview", desc: "Why OXYD-8 bases need a different flavor approach — guest summary", path: "/chlorite-flavor", keywords: "chlorite oxyd8 sodium stability overview" },
         { href: "/chlorite-flavor-playbook", title: "Chlorite flavor playbook", desc: "Full formulation guide · stability protocols · team only", path: "/chlorite-flavor-playbook", keywords: "chlorite formulation playbook proprietary", internal: true },
         { href: "/intensity-tiers", title: "Listerine + GA-22131", desc: "Competitive intensity · garlic functional archive", path: "/intensity-tiers", keywords: "listerine garlic ga-22131 competitive mild", internal: true }
@@ -93,7 +92,7 @@ window.SiteDirectory = {
       desc: "Everything to print before July 8 — QR sheet, passport, signs, deck",
       accent: "#7c3aed",
       items: [
-        { href: "/qr", title: "QR code print sheet", desc: "Hub · mapping · scorecard · passport links", path: "/qr", keywords: "qr print codes room display" },
+        { href: "/qr", title: "QR code print sheet", desc: "Hub · Flavor Flight · admin · passport links", path: "/qr", keywords: "qr print codes room display" },
         { href: "/passport", title: "Visitor passport", desc: "Folded pocket follow-along", path: "/passport", keywords: "passport print guest" },
         { href: "/stations", title: "Station signs", desc: "Three tasting station tent cards", path: "/stations", keywords: "stations print signs" },
         { href: "/slides", title: "Slide deck printout", desc: "20 slides + scoring sheet", path: "/slides", keywords: "slides print deck" },

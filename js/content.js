@@ -276,7 +276,7 @@ window.BOI = {
         accent: "#008fd3",
         tag: "Innovation",
         title: "Flavor portfolio",
-        desc: "53 flavors — on-shelf SKUs, presented concepts, pipeline M1–M5, and Gen Alpha futures.",
+        desc: "53 flavors — on-shelf SKUs, presented concepts, pipeline Samples A-E, and Gen Alpha futures.",
       },
       {
         href: "/chlorite-flavor",
